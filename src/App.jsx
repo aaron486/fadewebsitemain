@@ -503,8 +503,8 @@ const Footer = () => (
         <p>The social sports betting platform. Share picks, track records, and bet smarter — together.</p>
       </div>
       <div className="footer-col"><h5>Product</h5><a href="#features">Features</a><a href="#fadeai">FadeAI</a><a href="#leaderboard">Leaderboard</a><a href="#compatibility">Sportsbooks</a></div>
-      <div className="footer-col"><h5>Company</h5><a href="https://www.fade.bet/about-1">About</a><a href="https://www.fade.bet/contact-8">Contact</a><a href="#">Blog</a><a href="#">Press</a></div>
-      <div className="footer-col"><h5>Legal</h5><a href="https://www.fade.bet/blank">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Responsible Gaming</a></div>
+      <div className="footer-col"><h5>Company</h5><a href="https://www.fade.bet/about-1">About</a><a href="https://www.fade.bet/support">Contact</a><a href="#">Blog</a><a href="#">Press</a></div>
+      <div className="footer-col"><h5>Legal</h5><a href="https://www.fade.bet/privacy">Privacy Policy</a><a href="https://www.fade.bet/terms">Terms of Service</a><a href="https://www.fade.bet/support">Support</a></div>
     </div>
     <div className="footer-bottom">
       <p>© 2025 FADE. All rights reserved. You must be 21+ to use this app. Please bet responsibly.</p>
@@ -598,7 +598,7 @@ a { color:inherit; }
 .pf-secondary { padding:1.25rem 0 1.25rem 1.75rem; }
 .pf-accent-dot { position:absolute; left:0; top:50%; transform:translateY(-50%); width:6px; height:6px; background:#3b82f6; border-radius:50%; box-shadow:0 0 8px rgba(59,130,246,0.4); }
 
-@media(max-width:900px) { .phone-showcase-grid{grid-template-columns:1fr; gap:2.5rem;} .phone-features-col{flex-direction:row; flex-wrap:wrap; justify-content:center; gap:0;} .phone-features-left,.phone-features-right{align-items:center; text-align:center;} .phone-feature-stat{padding:1rem 1.5rem!important;} .phone-feature-stat + .phone-feature-stat{border-top:none; border-left:1px solid rgba(255,255,255,0.06);} .pf-accent-line{display:none;} .pf-accent-dot{display:none;} }
+@media(max-width:900px) { .phone-showcase-grid{grid-template-columns:1fr; gap:1rem;} .phone-features-col{display:none;} .phone-showcase-section{padding:20px 0 10px!important;} .pf-accent-line{display:none;} .pf-accent-dot{display:none;} }
 @media(max-width:480px) { .phone-features-col{flex-direction:column;} .phone-feature-stat + .phone-feature-stat{border-left:none; border-top:1px solid rgba(255,255,255,0.06);} .pf-primary-title{font-size:1.4rem!important;} }
 
 /* Carousel */
@@ -626,8 +626,8 @@ a { color:inherit; }
 .carousel-progress-bar { height:100%; width:100%; background:linear-gradient(90deg, #3b82f6, #60a5fa); border-radius:2px; transform-origin:left; animation:carouselProgress 7s linear; }
 @keyframes carouselProgress { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 
-@media(max-width:900px) { .carousel-arrow{display:none;} .carousel-tabs{flex-wrap:wrap;} }
-@media(max-width:480px) { .carousel-tab{padding:0.5rem 1rem; font-size:0.65rem;} }
+@media(max-width:900px) { .carousel-arrow{display:none;} .carousel-tabs{flex-wrap:nowrap; margin-bottom:1.5rem; gap:0.25rem;} .carousel-section .section-header{margin-bottom:0;} .carousel-section .section-subtitle{font-size:0.8125rem; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;} }
+@media(max-width:480px) { .carousel-tab{padding:0.4rem 0.65rem; font-size:0.55rem; letter-spacing:0.04em;} }
 .phone-frame { position:relative; z-index:1; width:clamp(300px, 28vw, 380px); border-radius:48px; overflow:hidden; padding:10px; background:linear-gradient(145deg, #2a2a2e 0%, #1a1a1e 50%, #1d1d21 100%); box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 0 60px rgba(59,130,246,0.15), 0 0 120px rgba(59,130,246,0.08), 0 8px 24px rgba(0,0,0,0.3), 0 24px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06); transition:transform 0.5s cubic-bezier(0.23,1,0.32,1); animation:phoneFloat 6s ease-in-out infinite; }
 .phone-frame::before { content:''; position:absolute; right:-2.5px; top:160px; width:3px; height:56px; background:linear-gradient(180deg, #3a3a3e, #2a2a2e, #3a3a3e); border-radius:0 2px 2px 0; }
 .phone-frame::after { content:''; position:absolute; left:-2.5px; top:140px; width:3px; height:36px; background:linear-gradient(180deg, #3a3a3e, #2a2a2e, #3a3a3e); border-radius:2px 0 0 2px; }
