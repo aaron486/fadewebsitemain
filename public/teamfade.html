@@ -11,38 +11,54 @@
 body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: #3b82f6; text-decoration: none; }
 a:hover { text-decoration: underline; }
-
-/* Header */
-.header { padding: 1.5rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
-.header a.back { font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
-.header a.back:hover { color: white; text-decoration: none; }
-.logo { font-size: 1.5rem; font-weight: 700; color: white; letter-spacing: -0.03em; text-decoration: none; }
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
 
 /* Hero */
-.hero { text-align: center; padding: 5rem 1.5rem 3rem; position: relative; }
-.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
-.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.25rem; }
-.hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1rem; position: relative; }
+.hero { text-align: center; padding: 5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.25rem; }
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; position: relative; }
 .hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero p { font-size: 1.0625rem; color: rgba(255,255,255,0.45); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
-.btn-apply { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2.25rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
+.hero p { font-size: 1.125rem; color: rgba(255,255,255,0.5); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
+.hero-stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; position: relative; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 800; color: white; }
+.hero-stat-value span { color: #3b82f6; }
+.hero-stat-label { font-size: 0.6875rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-top: 0.2rem; }
+.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.08); }
+.btn-apply { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
 .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.25s ease; position: relative; }
+.btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: white; text-decoration: none; }
+.hero-actions { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Sell Section */
+.sell { padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+.sell h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 1.25rem; line-height: 1.1; }
+.sell-text { font-size: 1.0625rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+.sell-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+.sell-highlight { margin-top: 2rem; padding: 1.75rem; background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.1); border-radius: 14px; }
+.sell-highlight p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.sell-highlight strong { color: white; }
 
 /* Perks */
-.perks { padding: 3rem 1.5rem 4rem; max-width: 900px; margin: 0 auto; }
+.perks { padding: 4rem 1.5rem; max-width: 960px; margin: 0 auto; }
 .perks h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
 .perks-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.5rem; }
 .perks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.perk-card { padding: 1.75rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; transition: all 0.25s ease; }
+.perk-card { padding: 2rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; transition: all 0.25s ease; }
 .perk-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(59,130,246,0.15); transform: translateY(-3px); }
 .perk-icon { font-size: 2rem; margin-bottom: 0.875rem; }
-.perk-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.375rem; }
+.perk-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
 .perk-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
 
 /* How It Works */
-.how-it-works { padding: 3rem 1.5rem 4rem; max-width: 740px; margin: 0 auto; }
+.how-it-works { padding: 4rem 1.5rem; max-width: 740px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
 .how-it-works h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 2.5rem; }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
 .steps::before { content: ''; position: absolute; top: 28px; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.1), transparent); }
 .step { text-align: center; position: relative; }
 .step-num { width: 52px; height: 52px; border-radius: 50%; background: #0d0d14; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: #3b82f6; position: relative; z-index: 1; }
@@ -50,10 +66,10 @@ a:hover { text-decoration: underline; }
 .step p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
 
 /* CTA */
-.cta { text-align: center; padding: 3rem 1.5rem 5rem; position: relative; }
-.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 300px; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 60%); filter: blur(60px); pointer-events: none; }
-.cta h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; position: relative; }
-.cta p { font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; position: relative; }
+.cta { text-align: center; padding: 4rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; position: relative; }
+.cta p { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
 
 /* Footer */
 .footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); font-size: 0.8125rem; }
@@ -61,75 +77,112 @@ a:hover { text-decoration: underline; }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .hero { padding: 3.5rem 1.25rem 2rem; }
+  .hero { padding: 3.5rem 1.25rem 2.5rem; }
   .hero h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
   .hero p { font-size: 0.9375rem; }
+  .hero-stats { gap: 1.5rem; }
+  .hero-stat-value { font-size: 1.25rem; }
+  .hero-stat-divider { display: none; }
+  .sell { padding: 3rem 1.25rem; }
+  .sell h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  .sell-text { font-size: 0.9375rem; }
   .perks-grid { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; gap: 1.5rem; }
   .steps::before { display: none; }
-  .perks, .how-it-works { padding: 2rem 1.25rem 3rem; }
-  .cta { padding: 2rem 1.25rem 4rem; }
+  .perks, .how-it-works { padding: 3rem 1.25rem; }
+  .cta { padding: 3rem 1.25rem 4rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-apply, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
 }
 @media (max-width: 480px) {
-  .header { padding: 1.25rem 1rem; }
-  .hero { padding: 2.5rem 1rem 1.5rem; }
+  .hero { padding: 2.5rem 1rem 2rem; }
   .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
   .hero p { font-size: 0.875rem; }
   .perks-grid { grid-template-columns: 1fr; }
   .perk-card { padding: 1.25rem 1rem; }
-  .perks, .how-it-works { padding: 1.5rem 1rem 2.5rem; }
-  .cta { padding: 1.5rem 1rem 3rem; }
-  .btn-apply { width: 100%; justify-content: center; }
+  .sell { padding: 2rem 1rem; }
+  .perks, .how-it-works { padding: 2rem 1rem; }
+  .cta { padding: 2rem 1rem 3rem; }
+  .btn-apply, .btn-secondary { max-width: 100%; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <a href="/" style="text-decoration:none;display:flex;align-items:center;"><svg viewBox="80 420 840 170" height="26" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg></a>
-  <a href="/" class="back">&#8592; Back to Fade</a>
+  <a href="/" class="header-brand">
+    <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">BET TOGETHER</span>
+  </a>
 </div>
 
 <div class="hero">
-  <div class="hero-eyebrow">AMBASSADOR PROGRAM</div>
-  <h1>Join <span>Team Fade</span></h1>
-  <p>Be one of the first Fade ambassadors. Represent the future of social sports betting and earn through sponsorships, affiliate revenue, and exclusive perks.</p>
-  <a href="#" class="btn-apply">Apply Now &#8594;</a>
+  <div class="hero-eyebrow">TEAM FADE</div>
+  <h1>Grow Your Brand.<br />Get Sponsored.<br />Get <span>Paid.</span></h1>
+  <p>Promote Fade and turn your sports betting content into paid sponsorship opportunities.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>Betting</span> Community</div>
+      <div class="hero-stat-label">Sportsbooks, Bettors, Athletes &amp; Celebrities</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>VIP</span> Events</div>
+      <div class="hero-stat-label">Exclusive Access</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>Paid</span> Sponsorships</div>
+      <div class="hero-stat-label">From Top Brands</div>
+    </div>
+  </div>
+  <div class="hero-actions">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIn5YDufkCB-nL1oEEgqCUjMGVzz34wo5UeGUuioCikX6R_A/viewform?usp=header" target="_blank" rel="noopener" class="btn-apply">Become an Ambassador &#8594;</a>
+  </div>
+</div>
+
+<div class="sell">
+  <h2>Your Brand Deserves<br />a Bigger Stage</h2>
+  <p class="sell-text">As a <strong>Fade ambassador</strong>, you get direct access to <strong>paid sponsorships from sportsbooks and brands</strong>, invites to exclusive events, and the PR and branding support to take your profile to the next level.</p>
+  <p class="sell-text">This isn't just another affiliate program. It's a <strong>launchpad for your personal brand</strong> — backed by the community, the partnerships, and the platform to make it happen.</p>
+  <div class="sell-highlight">
+    <p><strong>Sportsbooks and brands are spending millions on sports betting creators.</strong> Fade connects you directly to those deals. Whether you're a content creator, a sharp bettor with a following, or an influencer in the sports space — <strong>there's a seat at the table for you.</strong></p>
+  </div>
 </div>
 
 <div class="perks">
-  <h2>Ambassador Perks</h2>
-  <p class="perks-subtitle">Everything you get as a founding Fade ambassador.</p>
+  <h2>What We're Looking For</h2>
+  <p class="perks-subtitle">UGC sports betting creators who want to grow their brand and earn through sharing sports betting content on social media.</p>
   <div class="perks-grid">
     <div class="perk-card">
       <div class="perk-icon">&#128176;</div>
-      <h3>Affiliate Revenue</h3>
-      <p>Earn commission on every user you refer to Fade. The more your community grows, the more you earn.</p>
+      <h3>Paid Sponsorships</h3>
+      <p>Get paid by sportsbooks, betting brands, and lifestyle companies. We connect you with campaign deals across TikTok, Instagram, X, and YouTube — you create the content, we bring the brands.</p>
     </div>
     <div class="perk-card">
-      <div class="perk-icon">&#127908;</div>
-      <h3>Paid Sponsorship</h3>
-      <p>Get paid to create content. We partner with ambassadors on campaigns across social media.</p>
+      <div class="perk-icon">&#127775;</div>
+      <h3>Event Experiences</h3>
+      <p>VIP access to sports events, watch parties, and industry meetups. Network with top creators and brand partners in person.</p>
     </div>
     <div class="perk-card">
-      <div class="perk-icon">&#9889;</div>
-      <h3>Early Access</h3>
-      <p>Be the first to test new features before anyone else. Your feedback shapes the product.</p>
+      <div class="perk-icon">&#128247;</div>
+      <h3>PR &amp; Branding</h3>
+      <p>Get featured across Fade's channels, media placements, and marketing campaigns. We invest in growing your name and your reach.</p>
     </div>
     <div class="perk-card">
-      <div class="perk-icon">&#128085;</div>
+      <div class="perk-icon">&#128640;</div>
+      <h3>Grow Your Audience</h3>
+      <p>Featured profile, verified badge, and leaderboard placement on a fast-growing sports betting community. Your brand, amplified.</p>
+    </div>
+    <div class="perk-card">
+      <div class="perk-icon">&#127942;</div>
+      <h3>Ambassador Network</h3>
+      <p>Join a private network of top sports betting creators. Share strategies, collaborate on content, and access exclusive resources.</p>
+    </div>
+    <div class="perk-card">
+      <div class="perk-icon"><svg viewBox="80 420 840 170" width="48" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg></div>
       <h3>Exclusive Merch</h3>
-      <p>Unlock limited-edition Fade gear only available to Team Fade ambassadors.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#11088;</div>
-      <h3>Featured Profile</h3>
-      <p>Get a verified badge and featured placement on the Fade leaderboard and discover page.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#127760;</div>
-      <h3>Community Access</h3>
-      <p>Join an exclusive ambassador network. Connect with other creators and the Fade team directly.</p>
+      <p>Custom Fade ambassador gear and limited-edition drops you can't buy. Rep the brand and stand out at events and on content.</p>
     </div>
   </div>
 </div>
@@ -140,29 +193,35 @@ a:hover { text-decoration: underline; }
     <div class="step">
       <div class="step-num">01</div>
       <h3>Apply</h3>
-      <p>Fill out a quick application. We're looking for creators, bettors, and influencers with an engaged audience.</p>
+      <p>Takes 2 minutes. We're looking for bettors, creators, and influencers who bring real energy to the community.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <h3>Create</h3>
-      <p>Share Fade with your community. Post content, share your picks, and bring people into the platform.</p>
+      <h3>Test Fade</h3>
+      <p>Become one of the first Fade ambassadors to test the platform and give feedback that shapes the product.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
+      <h3>Create</h3>
+      <p>Engage with the community, create content, and build your presence across Fade and social platforms.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
       <h3>Earn</h3>
-      <p>Get paid through affiliate commissions, sponsorship deals, and exclusive ambassador rewards.</p>
+      <p>Unlock sponsorship deals, event invites, brand partnerships, and ambassador rewards as your brand grows.</p>
     </div>
   </div>
 </div>
 
 <div class="cta">
-  <h2>Ready to rep <span style="background:linear-gradient(135deg,#3b82f6,#e0eaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Fade</span>?</h2>
-  <p>Spots are limited for our founding ambassador class. Apply now before they're gone.</p>
-  <a href="#" class="btn-apply">Apply Now &#8594;</a>
+  <h2>The Founding Class<br />Is Almost Full</h2>
+  <p>We're handpicking a limited number of ambassadors for our launch. Join our community, provide feedback, promote and earn.</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIn5YDufkCB-nL1oEEgqCUjMGVzz34wo5UeGUuioCikX6R_A/viewform?usp=header" target="_blank" rel="noopener" class="btn-apply">Apply Now &#8594;</a>
 </div>
 
 <div class="footer">
-  &#169; 2025 FADE. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
+  General Inquiries: <a href="mailto:info@fade.bet">info@fade.bet</a><br /><br />
+  &#169; 2026 Fade Social LLC. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
 </div>
 
 </body>
