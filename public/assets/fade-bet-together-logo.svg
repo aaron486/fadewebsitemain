@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 220" width="840" height="220">
+  <rect width="840" height="220" rx="12" fill="#050507"/>
+  <g transform="translate(-80,-410)">
+    <polygon fill="white" points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path fill="white" d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon fill="white" points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    <polygon fill="white" points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+  </g>
+  <text x="420" y="200" text-anchor="middle" fill="#3b82f6" font-family="monospace" font-size="16" font-weight="700" letter-spacing="4">BET TOGETHER</text>
+</svg>

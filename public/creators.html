@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Creator Campaign Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Password Gate */
+.gate { position: fixed; inset: 0; background: #050507; display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.gate-box { text-align: center; max-width: 400px; padding: 2rem; }
+.gate-logo { margin-bottom: 1.5rem; }
+.gate-title { font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+.gate-subtitle { font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+.gate-input { width: 100%; padding: 0.875rem 1.25rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.2s; }
+.gate-input:focus { border-color: #3b82f6; }
+.gate-input::placeholder { color: rgba(255,255,255,0.25); }
+.gate-btn { width: 100%; margin-top: 0.75rem; padding: 0.875rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+.gate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); }
+.gate-error { color: #ef4444; font-size: 0.8125rem; margin-top: 0.75rem; display: none; }
+.gate.hidden { display: none; }
+
+/* Page Content */
+.page-content { display: none; }
+.page-content.visible { display: block; }
+
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+/* Hero */
+.hero { text-align: center; padding: 4rem 1.5rem 3rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; }
+.hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.0625rem; color: rgba(255,255,255,0.45); max-width: 600px; margin: 0 auto; line-height: 1.7; position: relative; }
+
+/* Sections */
+.section { padding: 3rem 1.5rem; max-width: 800px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 1.5rem; line-height: 1.1; }
+.section h2 .concept-num { color: #3b82f6; }
+.section-intro { font-size: 1rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 2rem; max-width: 640px; }
+.section-intro strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* Concept Cards */
+.concept { padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 1.5rem; }
+.concept-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.concept-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.1); padding: 0.35rem 0.75rem; border-radius: 6px; }
+.concept h3 { font-size: 1.25rem; font-weight: 800; color: white; margin-bottom: 0.75rem; }
+.concept-format { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(59,130,246,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.concept p { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 0.75rem; }
+.concept p:last-child { margin-bottom: 0; }
+.concept strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* Script blocks */
+.script { margin: 1.25rem 0; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid #3b82f6; border-radius: 0 10px 10px 0; }
+.script-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #3b82f6; margin-bottom: 0.75rem; }
+.script-line { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 0.5rem; }
+.script-line:last-child { margin-bottom: 0; }
+.script-line .speaker { color: white; font-weight: 600; }
+.script-line .direction { color: rgba(59,130,246,0.6); font-style: italic; }
+.script-line .hook { color: #3b82f6; font-weight: 600; }
+
+/* Sub-sections within concepts */
+.concept-sub { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.concept-sub h4 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.75rem; }
+
+/* Dropdown / Accordion */
+.dropdown { margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: rgba(255,255,255,0.02); overflow: hidden; }
+.dropdown[open] { border-color: rgba(59,130,246,0.15); background: rgba(255,255,255,0.03); }
+.dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; cursor: pointer; list-style: none; user-select: none; transition: background 0.2s; }
+.dropdown summary::-webkit-details-marker { display: none; }
+.dropdown summary::marker { display: none; content: ''; }
+.dropdown summary:hover { background: rgba(255,255,255,0.03); }
+.dropdown-title { display: flex; align-items: center; gap: 0.75rem; }
+.dropdown-title h3 { font-size: 1.125rem; font-weight: 800; color: white; margin: 0; }
+.dropdown-title .concept-num { color: #3b82f6; font-weight: 800; }
+.dropdown-title .dropdown-format { font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; color: rgba(59,130,246,0.7); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(59,130,246,0.1); padding: 0.25rem 0.6rem; border-radius: 5px; }
+.dropdown-arrow { font-size: 1.25rem; color: rgba(255,255,255,0.3); transition: transform 0.25s ease; flex-shrink: 0; }
+.dropdown[open] .dropdown-arrow { transform: rotate(180deg); color: #3b82f6; }
+.dropdown-content { padding: 0 1.5rem 1.5rem; }
+.dropdown-intro { font-size: 0.9375rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 1.25rem; }
+
+/* Brand Assets */
+.assets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.asset-card { padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; }
+.asset-card h4 { font-size: 0.875rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+.asset-card p { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+.color-swatch { width: 48px; height: 48px; border-radius: 10px; margin: 0 auto 0.75rem; border: 1px solid rgba(255,255,255,0.1); }
+
+/* Submit CTA */
+.submit-cta { text-align: center; padding: 3rem 1.5rem 4rem; border-top: 1px solid rgba(255,255,255,0.04); position: relative; }
+.submit-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 350px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.submit-cta h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; position: relative; }
+.submit-cta p { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+.btn-submit { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+
+/* Deliverable Tabs */
+.del-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.del-tab { padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; user-select: none; }
+.del-tab:hover { background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.2); color: rgba(255,255,255,0.7); }
+.del-tab.active { background: rgba(59,130,246,0.12); border-color: #3b82f6; color: #3b82f6; }
+.del-panel { display: none; padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.del-panel.active { display: block; }
+.del-panel p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.del-panel strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* Footer */
+.footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); font-size: 0.8125rem; }
+.footer a { color: rgba(255,255,255,0.35); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1.25rem 2rem; }
+  .hero h1 { font-size: clamp(1.5rem, 5.5vw, 2.25rem); }
+  .section { padding: 2.5rem 1.25rem; }
+  .concept { padding: 1.5rem; }
+  .assets-grid { grid-template-columns: 1fr 1fr; }
+  .submit-cta { padding: 2.5rem 1.25rem 3rem; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 2rem 1rem 1.5rem; }
+  .section { padding: 2rem 1rem; }
+  .concept { padding: 1.25rem; }
+  .assets-grid { grid-template-columns: 1fr; }
+  .submit-cta { padding: 2rem 1rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Password Gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">
+      <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    </div>
+    <div class="gate-title">Creator Access</div>
+    <div class="gate-subtitle">Enter the password provided to you to view your campaign brief.</div>
+    <input type="password" class="gate-input" id="gate-password" placeholder="Enter password" autocomplete="off" />
+    <button class="gate-btn" id="gate-submit">Enter &rarr;</button>
+    <div class="gate-error" id="gate-error">Incorrect password. Please try again.</div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="page-content" id="page-content">
+
+<div class="header">
+  <a href="/" class="header-brand">
+    <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">BET TOGETHER</span>
+  </a>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">CREATOR CAMPAIGN BRIEF</div>
+  <h1>Welcome to<br /><span>Fade</span></h1>
+  <p>You've been selected for the first Fade creator campaign. Below you'll find content concepts, scripts, guidelines, and everything you need to start creating.</p>
+</div>
+
+<!-- Overview -->
+<div class="section">
+  <h2>What is Fade?</h2>
+  <p class="section-intro"><strong>The first platform to connect sports betting, social media, and culture — all under one roof.</strong> For the full breakdown, visit <a href="https://www.fade.bet" target="_blank" rel="noopener">fade.bet</a>.</p>
+  <div class="concept">
+    <p><strong>See what everyone is betting on</strong> — follow friend picks, fade celebrities, and bet together</p>
+    <p><strong>Tail or fade your favorite sports personalities</strong> — follow the creators and bettors you trust, or go against them</p>
+    <p><strong>Sync your sportsbook</strong> — connect your accounts and track your real performance in one place</p>
+    <p><strong>Betting community in one place</strong> — join the conversation around every game, every bet, every moment</p>
+    <p><strong>Leaderboards</strong> — see where you rank among friends and celebrities</p>
+    <p><strong>FadeIQ</strong> — knows your history, roasts your worst habits, and calls out your biggest leaks. Built from real betting culture — not corporate AI</p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Content Goals</span>
+    </div>
+    <p>Make Fade feel like the thing every sports bettor needs. Content should be authentic, funny, and rooted in real sports betting culture.</p>
+    <p><strong>Tone:</strong> entertaining, relatable, discovery-driven. Not a scripted ad — a real moment.</p>
+  </div>
+</div>
+
+<!-- Concepts -->
+<div class="section">
+  <h2>Campaign Concepts</h2>
+  <p class="section-intro">Outlined are briefs we'd like you to work off. Please use your creativity in what makes Fade fun. Before filming, read all content guidelines at the bottom of the page.</p>
+
+  <details class="dropdown">
+    <summary>
+      <div class="dropdown-title">
+        <h3><span class="concept-num">01</span> &nbsp;"How Much Have You Won?"</h3>
+        <span class="dropdown-format">Man on the Street</span>
+      </div>
+      <span class="dropdown-arrow">&#9662;</span>
+    </summary>
+    <div class="dropdown-content">
+      <p class="dropdown-intro">Go out in public — bars, tailgates, campuses, sports events — and ask real people about their betting habits. Capture genuine, funny, unfiltered reactions.</p>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Hooks</span></div>
+        <p><strong>"I asked strangers how much they've won betting."</strong></p>
+        <p><strong>"We asked people at the bar their worst bet ever."</strong></p>
+        <p><strong>"How much have you actually won sports betting?"</strong></p>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="direction">Creator approaches people at a sports bar / tailgate / campus.</span></div>
+          <div class="script-line"><span class="speaker">Creator:</span> "Hey — real quick — how much have you won sports betting?"</div>
+          <div class="script-line"><span class="direction">Cut between 3–5 reactions. Some honest, some funny, some delusional.</span></div>
+          <div class="script-line"><span class="speaker">Person 1:</span> "I'm up like $200... this year... okay maybe lifetime."</div>
+          <div class="script-line"><span class="speaker">Person 2:</span> "Bro I don't even wanna talk about it."</div>
+          <div class="script-line"><span class="speaker">Person 3:</span> "I hit a 10-leg parlay once. Been chasing that high ever since."</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "If you actually tracked your bets you'd know. That's what Fade does."</div>
+          <div class="script-line"><span class="hook">CTA: "Download Fade — link in bio."</span></div>
+        </div>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Ideas</span></div>
+        <p>Film at sports bars during games, college campuses on game day, tailgates, watch parties, or anywhere sports fans hang out. The more real and unscripted, the better.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="dropdown">
+    <summary>
+      <div class="dropdown-title">
+        <h3><span class="concept-num">02</span> &nbsp;"Fade of the Week"</h3>
+        <span class="dropdown-format">Weekly Series</span>
+      </div>
+      <span class="dropdown-arrow">&#9662;</span>
+    </summary>
+    <div class="dropdown-content">
+      <p class="dropdown-intro">A recurring weekly series where you highlight the worst bet, worst take, or biggest L of the week in sports betting. Think community roast meets weekly recap.</p>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Hooks</span></div>
+        <p><strong>"This is the Fade of the Week."</strong></p>
+        <p><strong>"Someone actually bet this... and lost."</strong></p>
+        <p><strong>"The worst bet of the week goes to..."</strong></p>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "Welcome back to Fade of the Week."</div>
+          <div class="script-line">"This week's winner... someone bet a 12-leg parlay on a Tuesday."</div>
+          <div class="script-line"><span class="direction">Show the bet / screenshot / recreation.</span></div>
+          <div class="script-line"><span class="speaker">Creator:</span> "Bro... 12 legs... on a Tuesday... what are we doing."</div>
+          <div class="script-line">"If you're making bets like this, you need Fade."</div>
+          <div class="script-line">"It actually tracks your bets so you can see exactly where you're going wrong."</div>
+          <div class="script-line"><span class="hook">CTA: "Download Fade — stop guessing, start tracking."</span></div>
+        </div>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Ideas</span></div>
+        <p>Pull from real betting culture — bad parlays, overreactions, public money fails. You can feature your own bad bets, friends' bets, or viral betting Ls from the week. Make it a series people come back to.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="dropdown">
+    <summary>
+      <div class="dropdown-title">
+        <h3><span class="concept-num">03</span> &nbsp;"Your Betting AI Assistant"</h3>
+        <span class="dropdown-format">FadeIQ</span>
+      </div>
+      <span class="dropdown-arrow">&#9662;</span>
+    </summary>
+    <div class="dropdown-content">
+      <p class="dropdown-intro">FadeIQ is Fade's AI betting assistant. It connects to your sportsbooks, analyzes your betting behavior, and gives you real insights before you bet. Show how it works and capture your genuine reaction.</p>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Hooks</span></div>
+        <p><strong>"My AI betting assistant just called me out."</strong></p>
+        <p><strong>"This app just exposed my biggest betting mistake."</strong></p>
+        <p><strong>"Before I bet now I check my AI assistant."</strong></p>
+        <p><strong>"I finally figured out why I lose money betting."</strong></p>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script — Reaction</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "I just connected my sportsbooks to this AI betting assistant called FadeIQ."</div>
+          <div class="script-line">"It just told me something crazy."</div>
+          <div class="script-line"><span class="direction">Cut to screen:</span></div>
+          <div class="script-line"><span class="hook">"You lose most of your money on player props after midnight."</span></div>
+          <div class="script-line"><span class="speaker">Creator:</span> "That is literally exactly what I do."</div>
+          <div class="script-line">"This thing actually analyzes your betting habits."</div>
+          <div class="script-line">"It's basically like having a betting coach."</div>
+          <div class="script-line"><span class="hook">CTA: "Try FadeIQ on Fade."</span></div>
+        </div>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script — Pre-Bet Check</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "I was about to bet this game."</div>
+          <div class="script-line">"But I asked FadeIQ first."</div>
+          <div class="script-line"><span class="direction">Show assistant insight:</span></div>
+          <div class="script-line"><span class="hook">"You historically lose betting NBA player props."</span></div>
+          <div class="script-line"><span class="speaker">Creator:</span> "Yeah... that's definitely true."</div>
+          <div class="script-line">"So instead I'm betting spreads tonight."</div>
+          <div class="script-line">"This thing knows your betting history better than you do."</div>
+        </div>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Ideas</span></div>
+        <p>Show real FadeIQ insights on screen — betting personality profiles, tilt detection alerts, daily briefings. Film with friends and compare results. The more genuine the reaction, the better.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="dropdown">
+    <summary>
+      <div class="dropdown-title">
+        <h3><span class="concept-num">04</span> &nbsp;"Worst Bettors I Know"</h3>
+        <span class="dropdown-format">Fade Score</span>
+      </div>
+      <span class="dropdown-arrow">&#9662;</span>
+    </summary>
+    <div class="dropdown-content">
+      <p class="dropdown-intro">Use the Fade leaderboard to find out who the worst bettor in your friend group is — then profit by fading them.</p>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Hook</span></div>
+        <p><strong>"I just made over $3,000 this week fading the worst bettor I know."</strong></p>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "I downloaded the Fade app and saw one of my friends had a 0.1 Fade Score... which basically means he's the worst bettor in our group."</div>
+          <div class="script-line">"So every time he placed a bet, I got a notification."</div>
+          <div class="script-line">"And I just faded him."</div>
+          <div class="script-line">"Now I'm up over $3,000 this week alone just betting the opposite of him."</div>
+          <div class="script-line">"You can actually see this stuff on the Fade leaderboard now and find out who the worst bettors in your friend group are."</div>
+          <div class="script-line"><span class="hook">Closing: "Sometimes the best bet is just fading your friends."</span></div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dropdown">
+    <summary>
+      <div class="dropdown-title">
+        <h3><span class="concept-num">05</span> &nbsp;"Group Chat Bettor"</h3>
+        <span class="dropdown-format">Social / Friends</span>
+      </div>
+      <span class="dropdown-arrow">&#9662;</span>
+    </summary>
+    <div class="dropdown-content">
+      <p class="dropdown-intro">Your group chat is full of bets but nobody actually knows who's good. Fade fixes that.</p>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Hook</span></div>
+        <p><strong>"Tired of your friends sending chalked plays in the group chat?"</strong></p>
+      </div>
+      <div class="concept">
+        <div class="concept-header"><span class="concept-badge">Example Script</span></div>
+        <div class="script">
+          <div class="script-label">Script Flow</div>
+          <div class="script-line"><span class="speaker">Creator:</span> "My group chat is constantly sending bets."</div>
+          <div class="script-line">"But nobody actually knows who's good."</div>
+          <div class="script-line">"So I downloaded the Fade app."</div>
+          <div class="script-line">"Now everyone shares their picks in one place."</div>
+          <div class="script-line">"And you can actually see who's worth tailing... and who you can profit off fading."</div>
+          <div class="script-line"><span class="hook">Closing: "No more guessing in the group chat. Fade shows who the real bettors are."</span></div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<!-- Guidelines -->
+<div class="section">
+  <h2>Content Guidelines</h2>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Platforms</span>
+    </div>
+    <p>TikTok, Instagram Reels, YouTube Shorts, X (Twitter)</p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Format</span>
+    </div>
+    <p><strong>Vertical (9:16)</strong> &middot; 15&ndash;45 seconds &middot; Authentic / conversational</p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Do's</span>
+    </div>
+    <p><strong>Show Fade in your content</strong> — the app, stats, leaderboards, or FadeIQ insights.</p>
+    <p><strong>Be authentic.</strong> Content should feel real, not like a scripted ad.</p>
+    <p><strong>Show real reactions.</strong> Film with friends. Include humor and real betting culture.</p>
+    <p><strong>Tag us on every post:</strong></p>
+    <p>Instagram: <strong>@fade.bet</strong></p>
+    <p>X: <strong>@Fade_Bet_</strong></p>
+    <p>TikTok: <strong>@fade_bet</strong></p>
+    <p>Use <strong>#TeamFade</strong>, <strong>#FadeBet</strong>, and <strong>#FadeIQ</strong> in all posts.</p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Don'ts</span>
+    </div>
+    <p>Don't refer to Fade as a sports betting app — no bets are placed on Fade.</p>
+    <p>Don't make guaranteed income or winning claims.</p>
+    <p>Don't use other brand logos or competitor names.</p>
+    <p>Don't post without mentioning Fade in at least one shot.</p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Closing Lines</span>
+    </div>
+    <p><strong>"Download the Fade app and bet together"</strong> &middot; <strong>"Download Fade"</strong></p>
+  </div>
+  <div class="concept">
+    <div class="concept-header">
+      <span class="concept-badge">Creative Freedom</span>
+    </div>
+    <p>You're encouraged to bring your own ideas. Possible directions: man on the street interviews, sports bar content, betting with friends, reacting to FadeIQ insights, exposing betting mistakes, weekly series.</p>
+    <p>Possible opening: <strong>"I'm on #TeamFade."</strong></p>
+  </div>
+</div>
+
+<!-- Brand Assets -->
+<div class="section">
+  <h2>Brand Assets</h2>
+  <div class="assets-grid">
+    <div class="asset-card">
+      <svg viewBox="80 420 840 170" height="32" fill="white" style="margin-bottom: 0.75rem;"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+      <h4>Fade Logo</h4>
+      <p>White on dark backgrounds</p>
+    </div>
+    <div class="asset-card">
+      <div class="color-swatch" style="background: #3b82f6;"></div>
+      <h4>Fade Blue</h4>
+      <p>#3b82f6</p>
+    </div>
+    <div class="asset-card">
+      <div class="color-swatch" style="background: #050507; border: 1px solid rgba(255,255,255,0.15);"></div>
+      <h4>Fade Black</h4>
+      <p>#050507</p>
+    </div>
+  </div>
+  <div class="concept" style="margin-top: 1.5rem;">
+    <div class="concept-header">
+      <span class="concept-badge">Downloads</span>
+    </div>
+    <p><a href="/assets/fade-logo.svg" download="fade-logo.svg"><strong>Fade Logo (SVG) &rarr;</strong></a></p>
+    <p><a href="/assets/fade-bet-together-logo.svg" download="fade-bet-together-logo.svg"><strong>Fade "Bet Together" Logo (SVG) &rarr;</strong></a></p>
+  </div>
+</div>
+
+<!-- Deliverables -->
+<div class="section">
+  <h2>Deliverables</h2>
+  <div class="del-tabs">
+    <div class="del-tab active" onclick="showDel(0)">&#128241; Posts</div>
+    <div class="del-tab" onclick="showDel(1)">&#128172; Engage</div>
+    <div class="del-tab" onclick="showDel(2)">&#9889; Stories</div>
+  </div>
+  <div class="del-panel active" id="del-0">
+    <p><strong>3–5 Instagram Reels / TikToks / X posts</strong> about Fade. Use one of the campaign concepts above or put your own spin on it — just make sure Fade is front and center.</p>
+  </div>
+  <div class="del-panel" id="del-1">
+    <p><strong>Comment and share</strong> Fade's social media posts. We'll tag you when they go live — like, comment, and repost to help amplify the launch.</p>
+  </div>
+  <div class="del-panel" id="del-2">
+    <p><strong>3–5 Stories</strong> featuring fade.bet stats with your affiliate links. Show off leaderboards, bet history, or your own stats — and drive traffic with your unique link.</p>
+  </div>
+</div>
+
+<!-- Affiliate Link -->
+<div class="section">
+  <h2>Your Share Link</h2>
+  <p class="section-intro">Use this link in all your content, stories, and bios. This is how we track your referrals and attribute downloads to you.</p>
+  <div class="concept" style="text-align: center;">
+    <div class="concept-header" style="justify-content: center;">
+      <span class="concept-badge">Affiliate Link</span>
+    </div>
+    <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(59,130,246,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <code style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #3b82f6; word-break: break-all;">https://fade.bet/download?ref=YOUR_CODE</code>
+      <button onclick="navigator.clipboard.writeText('https://fade.bet/download?ref=YOUR_CODE');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)" style="padding: 0.5rem 1rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; color: #3b82f6; font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; cursor: pointer; white-space: nowrap;">Copy</button>
+    </div>
+    <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.3); margin-top: 0.5rem;">Add this to your Instagram bio, TikTok bio, story swipe-ups, and post captions.</p>
+  </div>
+</div>
+
+<!-- Submit Content -->
+<div class="submit-cta">
+  <h2>Submit Your Content</h2>
+  <p>Once your content is ready, submit it through the form below for review. Include all links and any notes.</p>
+  <a href="https://forms.gle/FQahb5Fy12pKPRwG9" target="_blank" rel="noopener" class="btn-submit">Submit Content &rarr;</a>
+</div>
+
+<div class="footer">
+  Questions? <a href="mailto:info@fade.bet">info@fade.bet</a><br /><br />
+  &copy; 2026 Fade Social LLC. All rights reserved. &middot; <a href="https://www.fade.bet/privacy">Privacy</a> &middot; <a href="https://www.fade.bet/terms">Terms</a>
+</div>
+
+</div><!-- end page-content -->
+
+<script>
+(function() {
+  var PASSWORD = 'fade2026';
+  var STORAGE_KEY = 'fade_creator_auth';
+
+  var gate = document.getElementById('gate');
+  var content = document.getElementById('page-content');
+  var input = document.getElementById('gate-password');
+  var btn = document.getElementById('gate-submit');
+  var error = document.getElementById('gate-error');
+
+  function unlock() {
+    gate.classList.add('hidden');
+    content.classList.add('visible');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  }
+
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+    unlock();
+  }
+
+  btn.addEventListener('click', function() {
+    if (input.value === PASSWORD) {
+      unlock();
+    } else {
+      error.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') btn.click();
+  });
+})();
+
+function showDel(idx) {
+  document.querySelectorAll('.del-tab').forEach(function(t, i) { t.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.del-panel').forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+}
+</script>
+
+</body>
+</html>

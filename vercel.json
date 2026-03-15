@@ -4,6 +4,7 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/support", "destination": "/support.html" },
-    { "source": "/teamfade", "destination": "/teamfade.html" }
+    { "source": "/teamfade", "destination": "/teamfade.html" },
+    { "source": "/creators", "destination": "/creators.html" }
   ]
 }
