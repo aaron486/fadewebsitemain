@@ -136,9 +136,9 @@ const carouselSlides = [
   },
   {
     id: "fadeai",
-    eyebrow: "FADE AI",
+    eyebrow: "FADE IQ",
     title: "Your AI\nBetting Coach",
-    subtitle: "FadeAI knows your history, roasts your repetitive ignorance, and calls out your worst habits. Built from real betting culture — not corporate AI. The most advanced betting intelligence system ever built.",
+    subtitle: "Fade IQ knows your history, roasts your repetitive ignorance, and calls out your worst habits. Built from real betting culture — not corporate AI. The most advanced betting intelligence system ever built.",
     screen: "fadeiq",
     left: [
       { accent: "Knows", rest: "Your Game", label: "Analyzes Every Bet You've Ever Made — Knows Your Strengths, Exposes Your Leaks" },
@@ -287,7 +287,7 @@ const steps = [
   { num: "01", title: "Download FADE", desc: "Available on iOS. Create your account with Apple, Google, or email in seconds." },
   { num: "02", title: "Follow Your Circle", desc: "Find friends, creators, and top bettors. Build a feed of picks from people you actually trust." },
   { num: "03", title: "Sync Sportsbooks", desc: "Link FanDuel, DraftKings, BetMGM, Caesars, and more via FadeSync. Bets import automatically." },
-  { num: "04", title: "Bet Smarter", desc: "Use FadeAI insights, leaderboard data, and community picks to make better decisions every day." },
+  { num: "04", title: "Bet Smarter", desc: "Use Fade IQ insights, community picks, and data to make better decisions every day." },
 ];
 
 const HowItWorks = () => (
@@ -314,25 +314,16 @@ const Community = () => (
     <Reveal className="section-header">
       <span className="section-eyebrow">BET TOGETHER</span>
       <h2 className="section-title">Your Betting<br />Community</h2>
-      <p className="section-subtitle" style={{ maxWidth: "720px" }}>
-        Every bet placed — now tracked under one roof. From sportsbook sync to our database of millions of celebrities, influencers, and athletes, Fade is home to the biggest betting community in sports.
-      </p>
     </Reveal>
 
     <div className="community-content">
       <Reveal delay={0.1}>
         <div className="community-block">
           <p className="community-text">
-            Group chats chasing the same play. Influencer "locks" bricking. Parlays sweating, one pick away. All scattered across group chats, social media — with zero context, zero credibility, and zero central community.
+            Our social-first platform is designed to share picks with your friends, fade your least favorite influencer, and connect with the largest betting community in the world. Our users share picks, talk trash, track results, and learn from their bets in real time.
           </p>
           <p className="community-highlight">
             FADE connects a sports betting community with millions of followers under one platform.
-          </p>
-          <p className="community-text">
-            Our social-first platform is designed to share picks with your friends, fade your least favorite influencer, and connect with the largest betting community in the world. Our users share picks, talk trash, track results, and learn from their bets in real time.
-          </p>
-          <p className="community-tagline">
-            Connecting the sports betting community in one platform. Every bet, every moment. All on Fade.
           </p>
         </div>
       </Reveal>
@@ -359,7 +350,6 @@ const sportsbooksRow1 = [
   { img: "/assets/sportsbooks/draftkings.png", name: "DraftKings" },
   { img: "/assets/sportsbooks/betmgm.png", name: "BetMGM" },
   { img: "/assets/sportsbooks/caesars.png", name: "Caesars" },
-  { img: "/assets/sportsbooks/espnbet.png", name: "ESPN Bet" },
   { img: "/assets/sportsbooks/hardrock.png", name: "Hard Rock" },
   { img: "/assets/sportsbooks/betrivers.png", name: "BetRivers" },
 ];
@@ -393,25 +383,12 @@ const Compatibility = () => (
     <Reveal className="section-header">
       <span className="section-eyebrow">FADESYNC</span>
       <h2 className="section-title">Every Sportsbook.<br />One Tap.</h2>
-      <p className="section-subtitle">FadeSync auto-imports every bet from every linked sportsbook — no screenshots, no manual entry. Tail it, fade it, or just watch it burn.</p>
+      <p className="section-subtitle">Stop toggling between group chats and betting apps — Fade brings every pick, play, and win into one streamlined feed. Get the alert, choose your side, and export directly to your sportsbook to place the live wager instantly.</p>
     </Reveal>
     <div className="sb-marquee-container">
       <MarqueeRow items={sportsbooksRow1} />
       <MarqueeRow items={sportsbooksRow2} reverse />
     </div>
-    <Reveal>
-      <div className="sb-stats-row">
-        <div className="sb-stat-item"><span className="sb-stat-num">13+</span><span className="sb-stat-label">Sportsbooks</span></div>
-        <div className="sb-stat-divider" />
-        <div className="sb-stat-item"><span className="sb-stat-num">Auto</span><span className="sb-stat-label">Bet Import</span></div>
-        <div className="sb-stat-divider" />
-        <div className="sb-stat-item"><span className="sb-stat-num">1-Tap</span><span className="sb-stat-label">Export</span></div>
-        <div className="sb-stat-divider" />
-        <div className="sb-stat-item"><span className="sb-stat-num">Tail</span><span className="sb-stat-label">or Fade</span></div>
-        <div className="sb-stat-divider" />
-        <div className="sb-stat-item"><span className="sb-stat-num">100%</span><span className="sb-stat-label">Verified</span></div>
-      </div>
-    </Reveal>
   </section>
 );
 
@@ -438,9 +415,9 @@ const Footer = () => (
     <div className="footer-content">
       <div className="footer-brand">
         <FadeLogo height={26} />
-        <p>The social sports betting platform. Share picks, track records, and bet smarter — together.</p>
+        <p>The social sports bet tracking platform. Share picks, track records, and bet together.</p>
       </div>
-      <div className="footer-col"><h5>Product</h5><a href="#features">Features</a><a href="#fadeai">FadeAI</a><a href="#compatibility">Sportsbooks</a></div>
+      <div className="footer-col"><h5>Product</h5><a href="#features">Features</a><a href="#fadeai">Fade IQ</a><a href="#compatibility">Sportsbooks</a></div>
       <div className="footer-col"><h5>Company</h5><a href="https://www.fade.bet/about-1">About</a><a href="https://www.fade.bet/support">Contact</a><a href="#">Blog</a><a href="#">Press</a></div>
       <div className="footer-col"><h5>Legal</h5><a href="https://www.fade.bet/privacy">Privacy Policy</a><a href="https://www.fade.bet/terms">Terms of Service</a><a href="https://www.fade.bet/support">Support</a></div>
     </div>
@@ -688,6 +665,13 @@ a { color:inherit; }
 .sb-stat-label { font-size:0.75rem; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.08em; font-weight:500; }
 .sb-stat-divider { width:1px; height:40px; background:rgba(255,255,255,0.08); }
 @media(max-width:640px) { .sb-stats-row{gap:1.25rem;} .sb-stat-num{font-size:1.25rem;} .sb-stat-divider{height:32px;} .sb-card{padding:0.6rem 1rem;} .sb-card img{width:44px;height:44px;} .sb-name{font-size:0.8125rem;} }
+.sync-features { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; max-width:960px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem); }
+.sync-feature-card { padding:1.75rem 1.5rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:16px; transition:all 0.3s ease; }
+.sync-feature-card:hover { background:rgba(255,255,255,0.06); border-color:rgba(59,130,246,0.2); transform:translateY(-4px); }
+.sync-feature-icon { font-size:1.75rem; margin-bottom:0.75rem; }
+.sync-feature-card h4 { font-size:1rem; font-weight:700; margin-bottom:0.5rem; color:white; }
+.sync-feature-card p { font-size:0.8125rem; line-height:1.6; color:rgba(255,255,255,0.5); }
+@media(max-width:768px) { .sync-features{grid-template-columns:1fr;} }
 
 /* ===== CTA ===== */
 .cta-section { position:relative; padding:100px clamp(1.5rem,5vw,4rem); text-align:center; overflow:hidden; background:#050507; }
@@ -718,10 +702,10 @@ a { color:inherit; }
       <Nav />
       <Hero />
       <FeatureCarousel />
-      <Community />
       <Compatibility />
+      <Community />
       <HowItWorks />
-      <CTA />
+
       <Footer />
     </>
   );
