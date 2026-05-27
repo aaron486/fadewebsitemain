@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Can Normal People Beat Wall Street?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+
+/* Accent color */
+:root { --accent: #00ff87; --accent-dim: rgba(0,255,135,0.15); --accent-glow: rgba(0,255,135,0.3); --bg: #0a0a0b; --card: #111113; --border: rgba(255,255,255,0.08); --text: rgba(255,255,255,0.75); --text-dim: rgba(255,255,255,0.4); }
+
+/* Progress Bar */
+.progress-wrap { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.06); z-index: 100; }
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 0 12px var(--accent-glow); }
+
+/* Layout */
+.survey-container { max-width: 640px; margin: 0 auto; padding: 2rem 1.25rem 4rem; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Logo */
+.logo-area { text-align: center; padding: 2rem 0 1rem; }
+.logo-placeholder { display: inline-block; }
+.logo-placeholder svg { height: 32px; fill: white; }
+
+/* Hero */
+.hero-section { text-align: center; padding: 3rem 0 2rem; animation: fadeUp 0.6s ease; }
+.hero-section h1 { font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+.hero-section h1 .green { color: var(--accent); }
+.hero-section p { font-size: 1.0625rem; color: var(--text-dim); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+.start-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: var(--accent); color: #0a0a0b; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 700; cursor: pointer; transition: all 0.25s; letter-spacing: -0.01em; }
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+
+/* Sections */
+.section-screen { animation: fadeUp 0.4s ease; }
+.section-eyebrow { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.section-title { font-size: clamp(1.25rem, 3.5vw, 1.75rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+.section-subtitle { font-size: 0.875rem; color: var(--text-dim); margin-bottom: 2rem; line-height: 1.6; }
+
+/* Form Fields */
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+.field label .req { color: var(--accent); margin-left: 2px; }
+.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="date"], .field select, .field textarea {
+  width: 100%; padding: 0.875rem 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-size: 0.9375rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.field select option { background: #1a1a1e; color: white; }
+.field textarea { resize: vertical; min-height: 100px; }
+.field-error { font-size: 0.75rem; color: #ff4d4d; margin-top: 0.35rem; }
+
+/* Radio / Checkbox groups */
+.option-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.option-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; user-select: none; }
+.option-item:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+.option-item.selected { border-color: var(--accent); background: var(--accent-dim); }
+.option-item input { display: none; }
+.option-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+.option-item.selected .option-dot { border-color: var(--accent); }
+.option-item.selected .option-dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.option-check { width: 20px; height: 20px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-size: 0.75rem; }
+.option-item.selected .option-check { border-color: var(--accent); background: var(--accent); color: #0a0a0b; }
+.option-label { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
+
+/* Multi-select grid */
+.multi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+@media(max-width: 480px) { .multi-grid { grid-template-columns: 1fr; } }
+
+/* Slider */
+.slider-wrap { padding: 0.5rem 0; }
+.slider-wrap input[type="range"] { width: 100%; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.1); border-radius: 3px; outline: none; }
+.slider-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 0 12px var(--accent-glow); }
+.slider-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem; }
+.slider-value { text-align: center; font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+
+/* Attestation */
+.attestation { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; }
+.attestation:hover { border-color: rgba(255,255,255,0.15); }
+.attestation.checked { border-color: var(--accent); background: var(--accent-dim); }
+.attestation .att-check { width: 22px; height: 22px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; transition: all 0.2s; margin-top: 1px; }
+.attestation.checked .att-check { border-color: var(--accent); background: var(--accent); color: #0a0a0b; }
+.attestation .att-text { font-size: 0.8125rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+/* Navigation */
+.nav-row { display: flex; gap: 0.75rem; margin-top: 2rem; }
+.nav-btn { flex: 1; padding: 0.875rem 1.5rem; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
+.nav-back { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); }
+.nav-back:hover { background: rgba(255,255,255,0.1); }
+.nav-next { background: var(--accent); color: #0a0a0b; }
+.nav-next:hover { box-shadow: 0 6px 24px var(--accent-glow); transform: translateY(-1px); }
+.nav-next:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
+.nav-submit { background: var(--accent); color: #0a0a0b; font-weight: 700; }
+
+/* End screens */
+.end-screen { text-align: center; padding: 4rem 0 2rem; animation: fadeUp 0.6s ease; }
+.end-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+.end-screen h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.end-screen p { font-size: 1rem; color: var(--text-dim); max-width: 440px; margin: 0 auto 2rem; line-height: 1.7; }
+.end-screen a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 10px; color: white; text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: all 0.2s; }
+.end-screen a:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
+
+/* Multiple choice quiz */
+.quiz-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; margin-bottom: 0.5rem; }
+.quiz-option:hover { border-color: rgba(255,255,255,0.15); }
+.quiz-option.selected { border-color: var(--accent); background: var(--accent-dim); }
+.quiz-letter { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.5); flex-shrink: 0; }
+.quiz-option.selected .quiz-letter { background: var(--accent); color: #0a0a0b; }
+.quiz-text { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
+
+/* Animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile tweaks */
+@media(max-width: 480px) {
+  .survey-container { padding: 1.5rem 1rem 3rem; }
+  .hero-section { padding: 2rem 0 1.5rem; }
+  .hero-section h1 { font-size: 1.625rem; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+
+// ===== US STATES =====
+const US_STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
+
+// ===== UTM TRACKING =====
+function getUTM() {
+  const p = new URLSearchParams(window.location.search);
+  return { utm_source: p.get('utm_source')||'', utm_medium: p.get('utm_medium')||'', utm_campaign: p.get('utm_campaign')||'', utm_content: p.get('utm_content')||'', utm_term: p.get('utm_term')||'' };
+}
+
+// ===== FADE LOGO =====
+const FadeLogo = () => (
+  <svg viewBox="80 420 840 170" height="32" fill="white">
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+  </svg>
+);
+
+// ===== PROGRESS BAR =====
+const ProgressBar = ({ step, total }) => (
+  <div className="progress-wrap">
+    <div className="progress-fill" style={{ width: `${(step / total) * 100}%` }} />
+  </div>
+);
+
+// ===== MAIN APP =====
+function App() {
+  const TOTAL_SECTIONS = 9;
+  const STORAGE_KEY = 'fade_survey_data';
+
+  // Load saved data from localStorage
+  const loadSaved = () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  };
+
+  const [step, setStep] = useState(0); // 0=hero, 1-9=sections, 10=success, 11=not-eligible
+  const [data, setData] = useState(() => ({
+    // Section 1
+    fullName: '', email: '', phone: '', state: 'Florida', dob: '',
+    // Section 2
+    gender: '', ageBracket: '', income: '', employment: '', education: '',
+    // Section 3
+    sportsbooks: [], bettingDuration: '', monthlyVolume: '', pnl: '', betFrequency: '', sports: [],
+    // Section 4
+    usedPredictionMarket: '', predMarketDetails: '', nonSportsPredictions: '', predPlatforms: [], predConfidence: 3, predMarketExplain: '', predVsSportsbook: '',
+    // Section 5
+    seenKalshiMarketing: '', marketingSources: [],
+    // Section 6
+    att_notMarketMaker: false, att_notInstitutional: false, att_notProGambler: false, att_notKalshiEmployee: false, att_noTradingLicense: false, att_notPropTrader: false,
+    // Section 7
+    quiz1: '', quiz2: '', quiz3: '',
+    // Section 8
+    available4Weeks: '', hasKalshiAccount: '', willConnectSportsbook: '', willConnectKalshi: '',
+    // Section 9
+    consentParticipate: false, consentAnonymized: false, consentRealMoney: false, consentAge: false,
+    ...loadSaved()
+  }));
+  const [errors, setErrors] = useState({});
+
+  // Save to localStorage on every data change
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }, [data]);
+
+  const utm = getUTM();
+
+  const update = (field, value) => {
+    setData(prev => ({ ...prev, [field]: value }));
+    setErrors(prev => ({ ...prev, [field]: undefined }));
+  };
+
+  const toggleMulti = (field, value) => {
+    setData(prev => {
+      const arr = prev[field] || [];
+      return { ...prev, [field]: arr.includes(value) ? arr.filter(v => v !== value) : [...arr, value] };
+    });
+  };
+
+  const toggleAtt = (field) => {
+    setData(prev => ({ ...prev, [field]: !prev[field] }));
+  };
+
+  // ===== VALIDATION =====
+  const validateSection = (s) => {
+    const e = {};
+    if (s === 1) {
+      if (!data.fullName.trim()) e.fullName = 'Required';
+      if (!data.email.trim() || !/\S+@\S+\.\S+/.test(data.email)) e.email = 'Valid email required';
+      if (!data.phone.trim()) e.phone = 'Required';
+      if (!data.dob) e.dob = 'Required';
+      else {
+        const age = Math.floor((Date.now() - new Date(data.dob).getTime()) / 31557600000);
+        if (age < 21) e.dob = 'You must be 21 or older';
+      }
+    }
+    if (s === 2) {
+      if (!data.gender) e.gender = 'Required';
+      if (!data.ageBracket) e.ageBracket = 'Required';
+      if (!data.income) e.income = 'Required';
+      if (!data.employment) e.employment = 'Required';
+      if (!data.education) e.education = 'Required';
+    }
+    if (s === 3) {
+      if (data.sportsbooks.length === 0) e.sportsbooks = 'Select at least one';
+      if (!data.bettingDuration) e.bettingDuration = 'Required';
+      if (!data.monthlyVolume) e.monthlyVolume = 'Required';
+      if (!data.pnl) e.pnl = 'Required';
+      if (!data.betFrequency) e.betFrequency = 'Required';
+      if (data.sports.length === 0) e.sports = 'Select at least one';
+    }
+    if (s === 4) {
+      if (!data.usedPredictionMarket) e.usedPredictionMarket = 'Required';
+      if (!data.nonSportsPredictions) e.nonSportsPredictions = 'Required';
+      if (!data.predMarketExplain.trim()) e.predMarketExplain = 'Required';
+      if (!data.predVsSportsbook.trim()) e.predVsSportsbook = 'Required';
+    }
+    if (s === 5) {
+      if (!data.seenKalshiMarketing) e.seenKalshiMarketing = 'Required';
+    }
+    // Section 6: attestations checked in branching logic
+    if (s === 7) {
+      if (!data.quiz1) e.quiz1 = 'Required';
+      if (!data.quiz2) e.quiz2 = 'Required';
+      if (!data.quiz3) e.quiz3 = 'Required';
+    }
+    if (s === 8) {
+      if (!data.available4Weeks) e.available4Weeks = 'Required';
+      if (!data.hasKalshiAccount) e.hasKalshiAccount = 'Required';
+      if (!data.willConnectSportsbook) e.willConnectSportsbook = 'Required';
+      if (!data.willConnectKalshi) e.willConnectKalshi = 'Required';
+    }
+    if (s === 9) {
+      if (!data.consentParticipate) e.consentParticipate = 'Required';
+      if (!data.consentAnonymized) e.consentAnonymized = 'Required';
+      if (!data.consentRealMoney) e.consentRealMoney = 'Required';
+      if (!data.consentAge) e.consentAge = 'Required';
+    }
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const next = () => {
+    if (!validateSection(step)) return;
+    // Branching: Section 6 attestation check
+    if (step === 6) {
+      const allChecked = data.att_notMarketMaker && data.att_notInstitutional && data.att_notProGambler && data.att_notKalshiEmployee && data.att_noTradingLicense && data.att_notPropTrader;
+      if (!allChecked) { setStep(11); return; }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setStep(s => s + 1);
+  };
+
+  const back = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setStep(s => s - 1);
+  };
+
+  const submit = () => {
+    if (!validateSection(9)) return;
+    const submission = { ...data, utm, submittedAt: new Date().toISOString() };
+    console.log('=== FADE SURVEY SUBMISSION ===', submission);
+    localStorage.removeItem(STORAGE_KEY);
+    setStep(10);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ===== FIELD RENDERERS =====
+  const TextField = ({ name, label, type = 'text', placeholder = '', required = true }) => (
+    <div className="field">
+      <label>{label}{required && <span className="req">*</span>}</label>
+      <input type={type} value={data[name]||''} onChange={e => update(name, e.target.value)} placeholder={placeholder} />
+      {errors[name] && <div className="field-error">{errors[name]}</div>}
+    </div>
+  );
+
+  const SelectField = ({ name, label, options, required = true }) => (
+    <div className="field">
+      <label>{label}{required && <span className="req">*</span>}</label>
+      <select value={data[name]||''} onChange={e => update(name, e.target.value)}>
+        <option value="">Select...</option>
+        {options.map(o => <option key={o} value={o}>{o}</option>)}
+      </select>
+      {errors[name] && <div className="field-error">{errors[name]}</div>}
+    </div>
+  );
+
+  const RadioGroup = ({ name, label, options, required = true }) => (
+    <div className="field">
+      <label>{label}{required && <span className="req">*</span>}</label>
+      <div className="option-group">
+        {options.map(o => (
+          <div key={o} className={`option-item ${data[name]===o?'selected':''}`} onClick={() => update(name, o)}>
+            <div className="option-dot" />
+            <span className="option-label">{o}</span>
+          </div>
+        ))}
+      </div>
+      {errors[name] && <div className="field-error">{errors[name]}</div>}
+    </div>
+  );
+
+  const MultiSelect = ({ name, label, options, grid = false, required = true }) => (
+    <div className="field">
+      <label>{label}{required && <span className="req">*</span>}</label>
+      <div className={grid ? 'multi-grid' : 'option-group'}>
+        {options.map(o => (
+          <div key={o} className={`option-item ${(data[name]||[]).includes(o)?'selected':''}`} onClick={() => toggleMulti(name, o)}>
+            <div className="option-check">{(data[name]||[]).includes(o) ? '✓' : ''}</div>
+            <span className="option-label">{o}</span>
+          </div>
+        ))}
+      </div>
+      {errors[name] && <div className="field-error">{errors[name]}</div>}
+    </div>
+  );
+
+  const YesNo = ({ name, label, required = true }) => (
+    <RadioGroup name={name} label={label} options={['Yes', 'No']} required={required} />
+  );
+
+  const TextArea = ({ name, label, placeholder = '', required = true }) => (
+    <div className="field">
+      <label>{label}{required && <span className="req">*</span>}</label>
+      <textarea value={data[name]||''} onChange={e => update(name, e.target.value)} placeholder={placeholder} />
+      {errors[name] && <div className="field-error">{errors[name]}</div>}
+    </div>
+  );
+
+  const Slider = ({ name, label, min = 1, max = 5, labels }) => (
+    <div className="field">
+      <label>{label}</label>
+      <div className="slider-wrap">
+        <div className="slider-value">{data[name]||3}</div>
+        <input type="range" min={min} max={max} value={data[name]||3} onChange={e => update(name, parseInt(e.target.value))} />
+        {labels && <div className="slider-labels"><span>{labels[0]}</span><span>{labels[1]}</span></div>}
+      </div>
+    </div>
+  );
+
+  const NavButtons = ({ showBack = true, isSubmit = false }) => (
+    <div className="nav-row">
+      {showBack && <button className="nav-btn nav-back" onClick={back}>Back</button>}
+      <button className={`nav-btn ${isSubmit?'nav-submit':'nav-next'}`} onClick={isSubmit ? submit : next}>
+        {isSubmit ? 'Apply to the Study' : 'Continue'}
+      </button>
+    </div>
+  );
+
+  // ===== SCREENS =====
+  // Hero
+  if (step === 0) return (
+    <div className="survey-container">
+      <div className="logo-area"><FadeLogo /></div>
+      <div className="hero-section">
+        <h1>Can Normal People<br/>Actually <span className="green">Beat Wall Street?</span></h1>
+        <p>We're running the study to find out. Apply to be part of it.</p>
+        <button className="start-btn" onClick={() => { setStep(1); window.scrollTo({top:0,behavior:'smooth'}); }}>Start Application →</button>
+      </div>
+    </div>
+  );
+
+  // Success
+  if (step === 10) return (
+    <div className="survey-container">
+      <div className="logo-area"><FadeLogo /></div>
+      <div className="end-screen">
+        <div className="end-icon">🎯</div>
+        <h2>You're in the running.</h2>
+        <p>We'll review your application and reach out within 7 days if you're selected. In the meantime, follow @fade on X for behind-the-scenes content from the case study.</p>
+        <a href="https://x.com/fade_bet_" target="_blank" rel="noopener">Follow @fade on X →</a>
+      </div>
+    </div>
+  );
+
+  // Not eligible
+  if (step === 11) return (
+    <div className="survey-container">
+      <div className="logo-area"><FadeLogo /></div>
+      <div className="end-screen">
+        <div className="end-icon">🙏</div>
+        <h2>Thanks for your interest.</h2>
+        <p>Based on your responses, you don't fit the criteria for this study — but we appreciate you taking the time. Follow @fade on X to see the results when they drop.</p>
+        <a href="https://x.com/fade_bet_" target="_blank" rel="noopener">Follow @fade on X →</a>
+      </div>
+    </div>
+  );
+
+  // ===== SURVEY SECTIONS =====
+  return (
+    <div className="survey-container">
+      <ProgressBar step={step} total={TOTAL_SECTIONS} />
+      <div className="logo-area"><FadeLogo /></div>
+
+      {/* Section 1: Identity & Contact */}
+      {step === 1 && (
+        <div className="section-screen" key="s1">
+          <div className="section-eyebrow">Section 1 of 9</div>
+          <div className="section-title">Identity & Contact</div>
+          <div className="section-subtitle">Let's start with the basics.</div>
+          <TextField name="fullName" label="Full Name" placeholder="Your full name" />
+          <TextField name="email" label="Email" type="email" placeholder="you@email.com" />
+          <TextField name="phone" label="Phone Number" type="tel" placeholder="(555) 555-5555" />
+          <SelectField name="state" label="State of Residence" options={US_STATES} />
+          <div className="field">
+            <label>Date of Birth<span className="req">*</span></label>
+            <input type="date" value={data.dob||''} onChange={e => update('dob', e.target.value)} />
+            {errors.dob && <div className="field-error">{errors.dob}</div>}
+          </div>
+          <NavButtons showBack={false} />
+        </div>
+      )}
+
+      {/* Section 2: Demographics */}
+      {step === 2 && (
+        <div className="section-screen" key="s2">
+          <div className="section-eyebrow">Section 2 of 9</div>
+          <div className="section-title">Demographics</div>
+          <div className="section-subtitle">Helps us ensure a representative sample.</div>
+          <RadioGroup name="gender" label="Gender" options={['Male','Female','Non-binary','Prefer not to say']} />
+          <RadioGroup name="ageBracket" label="Age Bracket" options={['21–25','26–30','31–35','36–45','46+']} />
+          <RadioGroup name="income" label="Annual Income" options={['Less than $30k','$30k–$60k','$60k–$100k','$100k–$150k','$150k+','Prefer not to say']} />
+          <RadioGroup name="employment" label="Employment Status" options={['Employed full-time','Part-time','Self-employed','Student','Unemployed','Retired']} />
+          <RadioGroup name="education" label="Highest Education" options={['High school','Some college','Bachelor\'s degree','Master\'s degree','Doctorate','Other']} />
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 3: Sports Betting Background */}
+      {step === 3 && (
+        <div className="section-screen" key="s3">
+          <div className="section-eyebrow">Section 3 of 9</div>
+          <div className="section-title">Sports Betting Background</div>
+          <div className="section-subtitle">Tell us about your betting experience.</div>
+          <MultiSelect name="sportsbooks" label="Which sportsbook(s) do you use?" options={['Hard Rock Bet','DraftKings','FanDuel','BetMGM','Caesars','Other']} grid />
+          <RadioGroup name="bettingDuration" label="How long have you been sports betting?" options={['Less than 6 months','6–12 months','1–3 years','3–5 years','5+ years']} />
+          <RadioGroup name="monthlyVolume" label="Average monthly betting volume" options={['Less than $100','$100–$500','$500–$1,000','$1,000–$5,000','$5,000+']} />
+          <RadioGroup name="pnl" label="Self-reported P&L over last 12 months" options={['Up significantly','Up slightly','Roughly breakeven','Down slightly','Down significantly']} />
+          <RadioGroup name="betFrequency" label="How often do you bet?" options={['Daily','Weekly','Monthly','Occasionally']} />
+          <MultiSelect name="sports" label="What sports do you bet on most?" options={['NFL','NBA','MLB','NHL','College Football','College Basketball','Soccer','MMA/Boxing','Other']} grid />
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 4: Prediction Market Experience */}
+      {step === 4 && (
+        <div className="section-screen" key="s4">
+          <div className="section-eyebrow">Section 4 of 9</div>
+          <div className="section-title">Prediction Market Experience</div>
+          <div className="section-subtitle">Have you ventured beyond traditional sports betting?</div>
+          <YesNo name="usedPredictionMarket" label="Have you ever used Kalshi, Polymarket, PredictIt, or any prediction market?" />
+          {data.usedPredictionMarket === 'Yes' && (
+            <TextArea name="predMarketDetails" label="How often and for how long?" placeholder="e.g., I've used Kalshi weekly for 6 months..." required={false} />
+          )}
+          <YesNo name="nonSportsPredictions" label="Outside of sports betting, do you have experience making predictions on non-sports outcomes (weather, entertainment, politics, pop culture, macroeconomics, etc.)?" />
+          {data.nonSportsPredictions === 'Yes' && (
+            <MultiSelect name="predPlatforms" label="Where?" options={['Kalshi','Polymarket','Fantasy/prediction games','Casual betting with friends','Social media polls','Other']} required={false} />
+          )}
+          <Slider name="predConfidence" label="How confident are you in making predictions outside of sports?" min={1} max={5} labels={['Not confident','Very confident']} />
+          <TextArea name="predMarketExplain" label="In your own words, explain what a prediction market is in 1–2 sentences." placeholder="A prediction market is..." />
+          <TextArea name="predVsSportsbook" label="Do you think prediction markets and sportsbooks are the same thing? Why or why not?" placeholder="I think they are / aren't the same because..." />
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 5: Marketing Claim Acknowledgment */}
+      {step === 5 && (
+        <div className="section-screen" key="s5">
+          <div className="section-eyebrow">Section 5 of 9</div>
+          <div className="section-title">Marketing Claim Acknowledgment</div>
+          <div className="section-subtitle">One quick question about what you've seen online.</div>
+          <YesNo name="seenKalshiMarketing" label="Have you seen any marketing from Kalshi or Tarek Mansour claiming retail traders can beat Wall Street?" />
+          {data.seenKalshiMarketing === 'Yes' && (
+            <MultiSelect name="marketingSources" label="Where did you see it?" options={['Twitter/X','TikTok','YouTube','Podcasts','Ads','News articles','Other']} grid required={false} />
+          )}
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 6: Professional Background Disclosure */}
+      {step === 6 && (
+        <div className="section-screen" key="s6">
+          <div className="section-eyebrow">Section 6 of 9</div>
+          <div className="section-title">Professional Background</div>
+          <div className="section-subtitle">Please confirm each of the following statements. All must be true to participate.</div>
+          {[
+            ['att_notMarketMaker', 'I am not a professional market maker'],
+            ['att_notInstitutional', 'I am not an institutional trader or hedge fund employee'],
+            ['att_notProGambler', 'I am not a professional gambler or part of a betting syndicate'],
+            ['att_notKalshiEmployee', 'I am not an employee of Kalshi or any financial exchange'],
+            ['att_noTradingLicense', 'I do not hold a Series 7, 63, or any active trading license'],
+            ['att_notPropTrader', 'I do not work for a prop trading firm or proprietary trading desk'],
+          ].map(([field, text]) => (
+            <div key={field} className={`attestation ${data[field]?'checked':''}`} onClick={() => toggleAtt(field)}>
+              <div className="att-check">{data[field] ? '✓' : ''}</div>
+              <div className="att-text">{text}</div>
+            </div>
+          ))}
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 7: Financial Literacy */}
+      {step === 7 && (
+        <div className="section-screen" key="s7">
+          <div className="section-eyebrow">Section 7 of 9</div>
+          <div className="section-title">Financial Literacy</div>
+          <div className="section-subtitle">Three quick questions. No trick answers.</div>
+          <div className="field">
+            <label>If you invest $100 at 10% annual interest, how much will you have after 2 years (with compounding)?<span className="req">*</span></label>
+            {['$110','$120','$121','$200'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.quiz1===o?'selected':''}`} onClick={() => update('quiz1', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.quiz1 && <div className="field-error">{errors.quiz1}</div>}
+          </div>
+          <div className="field">
+            <label>Which of the following is the least risky?<span className="req">*</span></label>
+            {['Single stock','Diversified index fund','Cryptocurrency','Lottery ticket'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.quiz2===o?'selected':''}`} onClick={() => update('quiz2', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.quiz2 && <div className="field-error">{errors.quiz2}</div>}
+          </div>
+          <div className="field">
+            <label>If a coin is flipped 10 times and lands heads every time, what's the chance it lands heads on the 11th flip?<span className="req">*</span></label>
+            {['0%','50%','100%','More than 50%'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.quiz3===o?'selected':''}`} onClick={() => update('quiz3', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.quiz3 && <div className="field-error">{errors.quiz3}</div>}
+          </div>
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 8: Commitment & Availability */}
+      {step === 8 && (
+        <div className="section-screen" key="s8">
+          <div className="section-eyebrow">Section 8 of 9</div>
+          <div className="section-title">Commitment & Availability</div>
+          <div className="section-subtitle">Make sure you're ready for the full study.</div>
+          <YesNo name="available4Weeks" label="Are you available to actively participate for a full 4 weeks?" />
+          <YesNo name="hasKalshiAccount" label="Do you have a Kalshi account already, or are you willing to create one?" />
+          <YesNo name="willConnectSportsbook" label="Are you willing to connect your sportsbook account to Fade for the duration of the study?" />
+          <YesNo name="willConnectKalshi" label="Are you willing to connect your Kalshi account to Fade via read-only API?" />
+          <NavButtons />
+        </div>
+      )}
+
+      {/* Section 9: Consent & Legal */}
+      {step === 9 && (
+        <div className="section-screen" key="s9">
+          <div className="section-eyebrow">Section 9 of 9</div>
+          <div className="section-title">Consent & Legal</div>
+          <div className="section-subtitle">Final step. Please review and confirm each statement.</div>
+          {[
+            ['consentParticipate', 'I consent to participate in the study'],
+            ['consentAnonymized', 'I consent to anonymized data being published in a public-facing report'],
+            ['consentRealMoney', 'I acknowledge that participation involves real money on Kalshi'],
+            ['consentAge', 'I confirm I am 21 years of age or older'],
+          ].map(([field, text]) => (
+            <div key={field} className={`attestation ${data[field]?'checked':''}`} onClick={() => toggleAtt(field)}>
+              <div className="att-check">{data[field] ? '✓' : ''}</div>
+              <div className="att-text">{text}</div>
+            </div>
+          ))}
+          {(errors.consentParticipate || errors.consentAnonymized || errors.consentRealMoney || errors.consentAge) && (
+            <div className="field-error" style={{marginTop:'0.5rem'}}>All consent items are required.</div>
+          )}
+          <NavButtons isSubmit />
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
