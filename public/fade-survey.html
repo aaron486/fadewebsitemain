@@ -383,6 +383,8 @@ function App() {
     ...loadSaved()
   }));
   const [errors, setErrors] = useState({});
+  const [socials, setSocials] = useState({ instagram: '', twitter: '' });
+  const [socialsSent, setSocialsSent] = useState(false);
 
   // Save to localStorage on every data change
   useEffect(() => {
@@ -528,8 +530,6 @@ function App() {
   );
 
   // Social handles submit (post-survey)
-  const [socials, setSocials] = useState({ instagram: '', twitter: '' });
-  const [socialsSent, setSocialsSent] = useState(false);
   const submitSocials = () => {
     if (!socials.instagram && !socials.twitter) return;
     fetch(SHEET_URL, {
