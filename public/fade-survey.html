@@ -11,10 +11,10 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; color: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
 
 /* Accent color */
-:root { --accent: #00ff87; --accent-dim: rgba(0,255,135,0.15); --accent-glow: rgba(0,255,135,0.3); --bg: #0a0a0b; --card: #111113; --border: rgba(255,255,255,0.08); --text: rgba(255,255,255,0.75); --text-dim: rgba(255,255,255,0.4); }
+:root { --accent: #3b82f6; --accent-dim: rgba(59,130,246,0.15); --accent-glow: rgba(59,130,246,0.3); --bg: #050507; --card: #0c0c0f; --border: rgba(255,255,255,0.08); --text: rgba(255,255,255,0.75); --text-dim: rgba(255,255,255,0.4); }
 
 /* Progress Bar */
 .progress-wrap { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.06); z-index: 100; }
@@ -29,12 +29,21 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; col
 .logo-placeholder svg { height: 32px; fill: white; }
 
 /* Hero */
-.hero-section { text-align: center; padding: 3rem 0 2rem; animation: fadeUp 0.6s ease; }
-.hero-section h1 { font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
-.hero-section h1 .green { color: var(--accent); }
-.hero-section p { font-size: 1.0625rem; color: var(--text-dim); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
-.start-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: var(--accent); color: #0a0a0b; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 700; cursor: pointer; transition: all 0.25s; letter-spacing: -0.01em; }
+.hero-section { text-align: center; padding: 2rem 0 2rem; position: relative; }
+.hero-section::before { content: ''; position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 65%); filter: blur(60px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; animation: fadeUp 0.5s ease 0.1s both; position: relative; }
+.hero-section h1 { font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 1.25rem; position: relative; animation: fadeUp 0.6s ease 0.2s both; }
+.hero-section h1 .accent { background: linear-gradient(135deg, #3b82f6 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 1rem; color: var(--text-dim); max-width: 460px; margin: 0 auto 1.5rem; line-height: 1.75; position: relative; animation: fadeUp 0.6s ease 0.3s both; }
+.hero-stats { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; position: relative; animation: fadeUp 0.6s ease 0.4s both; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-size: 1.5rem; font-weight: 800; color: white; display: block; }
+.hero-stat-label { font-size: 0.6875rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+.hero-divider { width: 1px; height: 44px; background: rgba(255,255,255,0.08); }
+.start-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 700; cursor: pointer; transition: all 0.25s; letter-spacing: -0.01em; position: relative; animation: fadeUp 0.6s ease 0.5s both; box-shadow: 0 4px 20px rgba(59,130,246,0.25); }
 .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+.hero-fine { font-size: 0.75rem; color: rgba(255,255,255,0.2); margin-top: 1.25rem; position: relative; animation: fadeUp 0.6s ease 0.6s both; }
+@media(max-width: 480px) { .hero-stats { gap: 1.25rem; } .hero-stat-num { font-size: 1.25rem; } }
 
 /* Sections */
 .section-screen { animation: fadeUp 0.4s ease; }
@@ -66,7 +75,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; col
 .option-item.selected .option-dot { border-color: var(--accent); }
 .option-item.selected .option-dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 .option-check { width: 20px; height: 20px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-size: 0.75rem; }
-.option-item.selected .option-check { border-color: var(--accent); background: var(--accent); color: #0a0a0b; }
+.option-item.selected .option-check { border-color: var(--accent); background: var(--accent); color: #fff; }
 .option-label { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
 
 /* Multi-select grid */
@@ -85,7 +94,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; col
 .attestation:hover { border-color: rgba(255,255,255,0.15); }
 .attestation.checked { border-color: var(--accent); background: var(--accent-dim); }
 .attestation .att-check { width: 22px; height: 22px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; transition: all 0.2s; margin-top: 1px; }
-.attestation.checked .att-check { border-color: var(--accent); background: var(--accent); color: #0a0a0b; }
+.attestation.checked .att-check { border-color: var(--accent); background: var(--accent); color: #fff; }
 .attestation .att-text { font-size: 0.8125rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
 
 /* Navigation */
@@ -93,10 +102,10 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; col
 .nav-btn { flex: 1; padding: 0.875rem 1.5rem; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
 .nav-back { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); }
 .nav-back:hover { background: rgba(255,255,255,0.1); }
-.nav-next { background: var(--accent); color: #0a0a0b; }
+.nav-next { background: var(--accent); color: #fff; }
 .nav-next:hover { box-shadow: 0 6px 24px var(--accent-glow); transform: translateY(-1px); }
 .nav-next:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
-.nav-submit { background: var(--accent); color: #0a0a0b; font-weight: 700; }
+.nav-submit { background: var(--accent); color: #fff; font-weight: 700; }
 
 /* End screens */
 .end-screen { text-align: center; padding: 4rem 0 2rem; animation: fadeUp 0.6s ease; }
@@ -111,7 +120,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0b; col
 .quiz-option:hover { border-color: rgba(255,255,255,0.15); }
 .quiz-option.selected { border-color: var(--accent); background: var(--accent-dim); }
 .quiz-letter { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.5); flex-shrink: 0; }
-.quiz-option.selected .quiz-letter { background: var(--accent); color: #0a0a0b; }
+.quiz-option.selected .quiz-letter { background: var(--accent); color: #fff; }
 .quiz-text { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
 
 /* Animations */
@@ -142,12 +151,7 @@ function getUTM() {
 
 // ===== FADE LOGO =====
 const FadeLogo = () => (
-  <svg viewBox="80 420 840 170" height="32" fill="white">
-    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
-    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
-    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
-    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
-  </svg>
+  <img src="/assets/fade-bet-together-logo.svg" alt="Fade - Bet Together" height="44" />
 );
 
 // ===== PROGRESS BAR =====
@@ -389,9 +393,18 @@ function App() {
     <div className="survey-container">
       <div className="logo-area"><FadeLogo /></div>
       <div className="hero-section">
-        <h1>Can Normal People<br/>Actually <span className="green">Beat Wall Street?</span></h1>
-        <p>We're running the study to find out. Apply to be part of it.</p>
-        <button className="start-btn" onClick={() => { setStep(1); window.scrollTo({top:0,behavior:'smooth'}); }}>Start Application →</button>
+        <div className="hero-eyebrow">Fade Case Study — Now Recruiting</div>
+        <h1>Can Normal People<br/>Actually <span className="accent">Beat Wall Street?</span></h1>
+        <p className="hero-desc">Kalshi says retail traders can outperform the pros. We're putting that claim to the test — with real money, real bettors, and real data. No theory. No simulations. Just results.</p>
+        <div className="hero-stats">
+          <div className="hero-stat"><span className="hero-stat-num">4 Weeks</span><span className="hero-stat-label">Study Length</span></div>
+          <div className="hero-divider" />
+          <div className="hero-stat"><span className="hero-stat-num">Real $</span><span className="hero-stat-label">On Kalshi</span></div>
+          <div className="hero-divider" />
+          <div className="hero-stat"><span className="hero-stat-num">Public</span><span className="hero-stat-label">Results</span></div>
+        </div>
+        <button className="start-btn" onClick={() => { setStep(1); window.scrollTo({top:0,behavior:'smooth'}); }}>Apply Now →</button>
+        <div className="hero-fine">Takes about 5 minutes. Must be 21+ and US-based.</div>
       </div>
     </div>
   );
