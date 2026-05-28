@@ -429,7 +429,6 @@ function App() {
     // Section 5: attestations checked in branching logic
     if (s === 6) {
       if (!data.quiz1) e.quiz1 = 'Required';
-      if (!data.quiz2) e.quiz2 = 'Required';
       if (!data.quiz3) e.quiz3 = 'Required';
       if (!data.usBettingVolume) e.usBettingVolume = 'Required';
       if (!data.avgBetSize) e.avgBetSize = 'Required';
@@ -653,7 +652,7 @@ function App() {
           <div className="section-subtitle">A few quick questions about betting and finance.</div>
           <div className="field">
             <label>If you invest $100 at 10% annual interest, how much will you have after 2 years (with compounding)?<span className="req">*</span></label>
-            {['$110','$120','$121','$200'].map((o,i) => (
+            {['$110','$120','$121','$200+'].map((o,i) => (
               <div key={o} className={`quiz-option ${data.quiz1===o?'selected':''}`} onClick={() => update('quiz1', o)}>
                 <div className="quiz-letter">{['A','B','C','D'][i]}</div>
                 <span className="quiz-text">{o}</span>
@@ -662,18 +661,8 @@ function App() {
             {errors.quiz1 && <div className="field-error">{errors.quiz1}</div>}
           </div>
           <div className="field">
-            <label>Which of the following is the least risky?<span className="req">*</span></label>
-            {['Single stock','Diversified index fund','Cryptocurrency','Lottery ticket'].map((o,i) => (
-              <div key={o} className={`quiz-option ${data.quiz2===o?'selected':''}`} onClick={() => update('quiz2', o)}>
-                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
-                <span className="quiz-text">{o}</span>
-              </div>
-            ))}
-            {errors.quiz2 && <div className="field-error">{errors.quiz2}</div>}
-          </div>
-          <div className="field">
             <label>If a coin is flipped 10 times and lands heads every time, what's the chance it lands heads on the 11th flip?<span className="req">*</span></label>
-            {['0%','50%','100%','More than 50%'].map((o,i) => (
+            {['0%','50%','100%','50%+'].map((o,i) => (
               <div key={o} className={`quiz-option ${data.quiz3===o?'selected':''}`} onClick={() => update('quiz3', o)}>
                 <div className="quiz-letter">{['A','B','C','D'][i]}</div>
                 <span className="quiz-text">{o}</span>
@@ -683,7 +672,7 @@ function App() {
           </div>
           <div className="field">
             <label>How much do you think Americans bet on sports per year?<span className="req">*</span></label>
-            {['$5 billion','$50 billion','$120 billion','$500 billion'].map((o,i) => (
+            {['$5 billion','$50 billion','$120 billion','$500 billion+'].map((o,i) => (
               <div key={o} className={`quiz-option ${data.usBettingVolume===o?'selected':''}`} onClick={() => update('usBettingVolume', o)}>
                 <div className="quiz-letter">{['A','B','C','D'][i]}</div>
                 <span className="quiz-text">{o}</span>
@@ -693,7 +682,7 @@ function App() {
           </div>
           <div className="field">
             <label>What do you think the average bet size is in the US?<span className="req">*</span></label>
-            {['$5–$10','$20–$50','$50–$100','$100–$250'].map((o,i) => (
+            {['$5–$10','$20–$50','$50–$100','$250+'].map((o,i) => (
               <div key={o} className={`quiz-option ${data.avgBetSize===o?'selected':''}`} onClick={() => update('avgBetSize', o)}>
                 <div className="quiz-letter">{['A','B','C','D'][i]}</div>
                 <span className="quiz-text">{o}</span>
