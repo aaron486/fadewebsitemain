@@ -651,26 +651,6 @@ function App() {
           <div className="section-title">Financial Literacy</div>
           <div className="section-subtitle">A few quick questions about betting and finance.</div>
           <div className="field">
-            <label>If you invest $100 at 10% annual interest, how much will you have after 2 years (with compounding)?<span className="req">*</span></label>
-            {['$110','$120','$121','$200+'].map((o,i) => (
-              <div key={o} className={`quiz-option ${data.quiz1===o?'selected':''}`} onClick={() => update('quiz1', o)}>
-                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
-                <span className="quiz-text">{o}</span>
-              </div>
-            ))}
-            {errors.quiz1 && <div className="field-error">{errors.quiz1}</div>}
-          </div>
-          <div className="field">
-            <label>If a coin is flipped 10 times and lands heads every time, what's the chance it lands heads on the 11th flip?<span className="req">*</span></label>
-            {['0%','50%','100%','50%+'].map((o,i) => (
-              <div key={o} className={`quiz-option ${data.quiz3===o?'selected':''}`} onClick={() => update('quiz3', o)}>
-                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
-                <span className="quiz-text">{o}</span>
-              </div>
-            ))}
-            {errors.quiz3 && <div className="field-error">{errors.quiz3}</div>}
-          </div>
-          <div className="field">
             <label>How much do you think Americans bet on sports per year?<span className="req">*</span></label>
             {['$5 billion','$50 billion','$120 billion','$500 billion+'].map((o,i) => (
               <div key={o} className={`quiz-option ${data.usBettingVolume===o?'selected':''}`} onClick={() => update('usBettingVolume', o)}>
@@ -692,6 +672,26 @@ function App() {
           </div>
           <TextField {...f} name="biggestWin" label="What's the most you've ever won on a single bet?" placeholder="e.g. $500" />
           <TextField {...f} name="biggestLoss" label="What's the most you've ever lost on a single bet?" placeholder="e.g. $200" />
+          <div className="field">
+            <label>If you invest $100 at 10% annual interest, how much will you have after 2 years (with compounding)?<span className="req">*</span></label>
+            {['$110','$120','$121','$200+'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.quiz1===o?'selected':''}`} onClick={() => update('quiz1', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.quiz1 && <div className="field-error">{errors.quiz1}</div>}
+          </div>
+          <div className="field">
+            <label>If a coin is flipped 10 times and lands heads every time, what's the chance it lands heads on the 11th flip?<span className="req">*</span></label>
+            {['0%','50%','100%','50%+'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.quiz3===o?'selected':''}`} onClick={() => update('quiz3', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.quiz3 && <div className="field-error">{errors.quiz3}</div>}
+          </div>
           <NavButtons />
         </div>
       )}
