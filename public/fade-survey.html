@@ -43,6 +43,9 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; col
 .start-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 700; cursor: pointer; transition: all 0.25s; letter-spacing: -0.01em; position: relative; animation: fadeUp 0.6s ease 0.5s both; box-shadow: 0 4px 20px rgba(59,130,246,0.25); }
 .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
 .hero-fine { font-size: 0.75rem; color: rgba(255,255,255,0.2); margin-top: 1.25rem; position: relative; animation: fadeUp 0.6s ease 0.6s both; }
+.spots-counter { font-variant-numeric: tabular-nums; transition: all 0.3s ease; }
+.spots-pulse { animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
 @media(max-width: 480px) { .hero-stats { gap: 1.25rem; } .hero-stat-num { font-size: 1.25rem; } }
 
 /* Sections */
@@ -149,6 +152,37 @@ function getUTM() {
   return { utm_source: p.get('utm_source')||'', utm_medium: p.get('utm_medium')||'', utm_campaign: p.get('utm_campaign')||'', utm_content: p.get('utm_content')||'', utm_term: p.get('utm_term')||'' };
 }
 
+// ===== SPOTS COUNTER =====
+const useSpotsCounter = () => {
+  // Start from 5000, decrease based on time since launch date
+  const launchDate = new Date('2026-05-27T00:00:00Z').getTime();
+  const getSpots = () => {
+    const elapsed = Date.now() - launchDate;
+    const hoursPassed = elapsed / (1000 * 60 * 60);
+    // Lose ~3-8 spots per hour (randomized but deterministic per hour)
+    let taken = 0;
+    for (let h = 0; h < Math.floor(hoursPassed); h++) {
+      taken += 3 + (((h * 7 + 13) % 6));
+    }
+    // Partial hour progress
+    const partialHour = hoursPassed - Math.floor(hoursPassed);
+    const currentHourRate = 3 + (((Math.floor(hoursPassed) * 7 + 13) % 6));
+    taken += Math.floor(partialHour * currentHourRate);
+    return Math.max(100, 5000 - taken);
+  };
+  const [spots, setSpots] = useState(getSpots);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSpots(prev => {
+        const newVal = prev - 1;
+        return newVal < 100 ? 100 : newVal;
+      });
+    }, Math.floor(Math.random() * 20000) + 25000); // tick down every 25-45s
+    return () => clearInterval(interval);
+  }, []);
+  return spots;
+};
+
 // ===== FADE LOGO =====
 const FadeLogo = () => (
   <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'0.35rem'}}>
@@ -245,6 +279,7 @@ const Slider = ({ name, label, min = 1, max = 5, labels, data, update }) => (
 // ===== MAIN APP =====
 function App() {
   const TOTAL_SECTIONS = 8;
+  const spotsLeft = useSpotsCounter();
   const STORAGE_KEY = 'fade_survey_data';
 
   // Load saved data from localStorage
@@ -407,7 +442,7 @@ function App() {
         <div className="hero-stats">
           <div className="hero-stat"><span className="hero-stat-num">Early</span><span className="hero-stat-label">Access</span></div>
           <div className="hero-divider" />
-          <div className="hero-stat"><span className="hero-stat-num">Limited</span><span className="hero-stat-label">Spots</span></div>
+          <div className="hero-stat"><span className="hero-stat-num spots-counter spots-pulse">{spotsLeft.toLocaleString()}</span><span className="hero-stat-label">Spots Left</span></div>
           <div className="hero-divider" />
           <div className="hero-stat"><span className="hero-stat-num">Free</span><span className="hero-stat-label">To Join</span></div>
         </div>
