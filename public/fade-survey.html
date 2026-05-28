@@ -223,7 +223,7 @@ function getUTM() {
 }
 
 // ===== CONFIG =====
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwWNA8J6aLVBX3SxZO-ESbzA84P8IcpKWvbEKYY5m0ChNfknlPj4vq-e82FehXxRoSafg/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzMvi3wc1jokaKNxZEgeC8RfKjumuYqB1ODcUgtiYe1hQnkOLMHXr4FAfvFnWOBKcXzmw/exec';
 
 // ===== SPOTS COUNTER (time-based) =====
 const TOTAL_SPOTS = 5000;
@@ -475,16 +475,25 @@ function App() {
 
   // Send data to Google Sheets via hidden iframe GET
   const sendToSheet = (payload) => {
-    // Method 1: sendBeacon (most reliable for fire-and-forget)
-    const body = 'payload=' + encodeURIComponent(JSON.stringify(payload));
-    const blob = new Blob([body], { type: 'application/x-www-form-urlencoded' });
-    navigator.sendBeacon(SHEET_URL, blob);
-    // Method 2: backup fetch
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: blob,
-    }).catch(() => {});
+    // Convert arrays and booleans to strings to reduce payload size
+    const clean = {};
+    Object.keys(payload).forEach(k => {
+      const v = payload[k];
+      if (Array.isArray(v)) clean[k] = v.join(', ');
+      else if (typeof v === 'boolean') clean[k] = v ? 'Yes' : 'No';
+      else if (typeof v === 'object' && v !== null) clean[k] = JSON.stringify(v);
+      else clean[k] = v || '';
+    });
+    const encoded = encodeURIComponent(JSON.stringify(clean));
+    const url = SHEET_URL + '?action=submit&payload=' + encoded;
+    // Use iframe to handle the GET (no URL length issue in iframe src)
+    if (!document.getElementById('hidden_iframe')) {
+      const iframe = document.createElement('iframe');
+      iframe.id = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    document.getElementById('hidden_iframe').src = url;
   };
 
   const submit = () => {
