@@ -701,11 +701,27 @@ function App() {
         <div className="section-screen" key="s7">
           <div className="section-eyebrow">Section 7 of 8</div>
           <div className="section-title">Commitment & Availability</div>
-          <div className="section-subtitle">Make sure you're ready for the full study.</div>
-          <YesNo {...f} name="available4Weeks" label="Are you available to actively participate for a full 4 weeks?" />
-          <YesNo {...f} name="hasKalshiAccount" label="Do you have a Kalshi account already, or are you willing to create one?" />
-          <YesNo {...f} name="willConnectSportsbook" label="Are you willing to connect your sportsbook account to Fade for the duration of the study?" />
-          <YesNo {...f} name="willConnectKalshi" label="Are you willing to connect your Kalshi account to Fade via read-only API?" />
+          <div className="section-subtitle">By submitting, you're confirming that you're willing to participate in the Fade Founder Study pending further information.</div>
+          {(() => {
+            const commitField = 'commitAll';
+            const isChecked = data.available4Weeks === 'Yes' && data.hasKalshiAccount === 'Yes' && data.willConnectSportsbook === 'Yes' && data.willConnectKalshi === 'Yes';
+            const toggleCommit = () => {
+              const val = isChecked ? 'No' : 'Yes';
+              setData(prev => ({...prev, available4Weeks: val, hasKalshiAccount: val, willConnectSportsbook: val, willConnectKalshi: val}));
+            };
+            return (
+              <div className={`attestation ${isChecked?'checked':''}`} onClick={toggleCommit} style={{padding:'1.25rem',marginBottom:'1.5rem',borderColor:isChecked?'var(--accent)':'rgba(59,130,246,0.3)',background:isChecked?'var(--accent-dim)':'rgba(59,130,246,0.05)'}}>
+                <div className="att-check" style={{width:'24px',height:'24px',borderColor:isChecked?'var(--accent)':'rgba(59,130,246,0.4)'}}>{isChecked ? '✓' : ''}</div>
+                <div className="att-text" style={{fontWeight:600,color:'rgba(255,255,255,0.85)',fontSize:'0.9375rem'}}>I confirm all of the following:</div>
+              </div>
+            );
+          })()}
+          <div style={{paddingLeft:'0.5rem',marginBottom:'1.5rem'}}>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am available to actively participate for a full 4 weeks</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I have a Kalshi account or am willing to create one</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am willing to connect my sportsbook account to Fade for the duration of the study</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)'}}>• I am willing to connect my Kalshi account to Fade via read-only API</p>
+          </div>
           <NavButtons />
         </div>
       )}
