@@ -498,9 +498,59 @@ function App() {
 
   const submit = () => {
     if (!validateSection(6)) return;
-    const submission = { ...data, utm, submittedAt: new Date().toISOString() };
 
-    // Send to Google Sheets
+    // Build ordered submission with flattened UTM
+    const submission = {
+      // Section 1: Identity
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      state: data.state,
+      dob: data.dob,
+      // Section 2: Demographics
+      gender: data.gender,
+      ageBracket: data.ageBracket,
+      income: data.income,
+      employment: data.employment,
+      education: data.education,
+      // Section 3: Betting Background
+      sportsbooks: data.sportsbooks,
+      bettingDuration: data.bettingDuration,
+      monthlyVolume: data.monthlyVolume,
+      pnl: data.pnl,
+      betFrequency: data.betFrequency,
+      sports: data.sports,
+      // Section 4: Prediction Markets
+      usedPredictionMarket: data.usedPredictionMarket,
+      predMarketDetails: data.predMarketDetails,
+      nonSportsPredictions: data.nonSportsPredictions,
+      predPlatforms: data.predPlatforms,
+      predConfidence: data.predConfidence,
+      predMarketExplain: data.predMarketExplain,
+      predVsSportsbook: data.predVsSportsbook,
+      // Section 5: Financial Literacy
+      usBettingVolume: data.usBettingVolume,
+      avgBetSize: data.avgBetSize,
+      biggestWin: data.biggestWin,
+      biggestLoss: data.biggestLoss,
+      quiz1: data.quiz1,
+      quiz3: data.quiz3,
+      // Section 6: Confirmations
+      available4Weeks: data.available4Weeks,
+      hasKalshiAccount: data.hasKalshiAccount,
+      willConnectSportsbook: data.willConnectSportsbook,
+      willConnectKalshi: data.willConnectKalshi,
+      consentParticipate: data.consentParticipate,
+      consentAnonymized: data.consentAnonymized,
+      consentRealMoney: data.consentRealMoney,
+      consentAge: data.consentAge,
+      // Meta
+      submittedAt: new Date().toISOString(),
+      utm_source: utm.utm_source,
+      utm_medium: utm.utm_medium,
+      utm_campaign: utm.utm_campaign,
+    };
+
     sendToSheet(submission);
     console.log('=== FADE SURVEY SUBMISSION ===', submission);
     decrementSpots();
