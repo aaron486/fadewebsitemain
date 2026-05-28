@@ -223,7 +223,7 @@ function getUTM() {
 }
 
 // ===== CONFIG =====
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwbrfvud-JlxP1XvDZNslcmO1OYvbNEqGKTOIvbW4E4j8XGnyGN_sPtksl1Dx5g5Y-59w/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxeolQOznSkNOUUIW6nRfB_z1U6CH76KzL8rg33ub4LW3SFJe77z5T4AGpltdHUUK-_-g/exec';
 
 // ===== SPOTS COUNTER =====
 const TOTAL_SPOTS = 5000;
@@ -472,30 +472,11 @@ function App() {
     setStep(s => s - 1);
   };
 
-  // Send data to Google Sheets via hidden form (avoids CORS issues)
+  // Send data to Google Sheets via GET request with encoded payload
   const sendToSheet = (payload) => {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = SHEET_URL;
-    form.target = 'hidden_iframe';
-    form.style.display = 'none';
-    // Flatten the payload into a single JSON field
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'payload';
-    input.value = JSON.stringify(payload);
-    form.appendChild(input);
-    // Create hidden iframe if not exists
-    if (!document.getElementById('hidden_iframe')) {
-      const iframe = document.createElement('iframe');
-      iframe.name = 'hidden_iframe';
-      iframe.id = 'hidden_iframe';
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-    }
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    const encoded = encodeURIComponent(JSON.stringify(payload));
+    const img = new Image();
+    img.src = SHEET_URL + '?action=submit&payload=' + encoded;
   };
 
   const submit = () => {
