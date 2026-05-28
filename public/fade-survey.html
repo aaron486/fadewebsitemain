@@ -360,7 +360,7 @@ function App() {
     // Section 6
     att_notMarketMaker: false, att_notInstitutional: false, att_notProGambler: false, att_notKalshiEmployee: false, att_noTradingLicense: false, att_notPropTrader: false,
     // Section 7
-    quiz1: '', quiz2: '', quiz3: '',
+    quiz1: '', quiz2: '', quiz3: '', usBettingVolume: '', avgBetSize: '', biggestWin: '', biggestLoss: '',
     // Section 8
     available4Weeks: '', hasKalshiAccount: '', willConnectSportsbook: '', willConnectKalshi: '',
     // Section 9
@@ -431,6 +431,10 @@ function App() {
       if (!data.quiz1) e.quiz1 = 'Required';
       if (!data.quiz2) e.quiz2 = 'Required';
       if (!data.quiz3) e.quiz3 = 'Required';
+      if (!data.usBettingVolume) e.usBettingVolume = 'Required';
+      if (!data.avgBetSize) e.avgBetSize = 'Required';
+      if (!data.biggestWin.trim()) e.biggestWin = 'Required';
+      if (!data.biggestLoss.trim()) e.biggestLoss = 'Required';
     }
     if (s === 7) {
       if (!data.available4Weeks) e.available4Weeks = 'Required';
@@ -646,7 +650,7 @@ function App() {
         <div className="section-screen" key="s6">
           <div className="section-eyebrow">Section 6 of 8</div>
           <div className="section-title">Financial Literacy</div>
-          <div className="section-subtitle">Three quick questions. No trick answers.</div>
+          <div className="section-subtitle">A few quick questions about betting and finance.</div>
           <div className="field">
             <label>If you invest $100 at 10% annual interest, how much will you have after 2 years (with compounding)?<span className="req">*</span></label>
             {['$110','$120','$121','$200'].map((o,i) => (
@@ -677,6 +681,28 @@ function App() {
             ))}
             {errors.quiz3 && <div className="field-error">{errors.quiz3}</div>}
           </div>
+          <div className="field">
+            <label>How much do you think Americans bet on sports per year?<span className="req">*</span></label>
+            {['$5 billion','$50 billion','$120 billion','$500 billion'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.usBettingVolume===o?'selected':''}`} onClick={() => update('usBettingVolume', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.usBettingVolume && <div className="field-error">{errors.usBettingVolume}</div>}
+          </div>
+          <div className="field">
+            <label>What do you think the average bet size is in the US?<span className="req">*</span></label>
+            {['$5–$10','$20–$50','$50–$100','$100–$250'].map((o,i) => (
+              <div key={o} className={`quiz-option ${data.avgBetSize===o?'selected':''}`} onClick={() => update('avgBetSize', o)}>
+                <div className="quiz-letter">{['A','B','C','D'][i]}</div>
+                <span className="quiz-text">{o}</span>
+              </div>
+            ))}
+            {errors.avgBetSize && <div className="field-error">{errors.avgBetSize}</div>}
+          </div>
+          <TextField {...f} name="biggestWin" label="What's the most you've ever won on a single bet?" placeholder="e.g. $500" />
+          <TextField {...f} name="biggestLoss" label="What's the most you've ever lost on a single bet?" placeholder="e.g. $200" />
           <NavButtons />
         </div>
       )}
