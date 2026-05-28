@@ -478,20 +478,40 @@ function App() {
     setStep(s => s - 1);
   };
 
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyxOHGk6y-CLZDdGI4SJHve6P_vJFvunlzvvsJc7MtrZDeUHxwTMv80ALNLfQaFqTzE6Q/exec';
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxoxKVZreTKSCh7x3ZudQYqnYpXQv2zLQiBjG6FwgUZgkJ_GPNSHkrA2wZOG5P7ok6A5Q/exec';
+
+  // Send data to Google Sheets via hidden form (avoids CORS issues)
+  const sendToSheet = (payload) => {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = SHEET_URL;
+    form.target = 'hidden_iframe';
+    form.style.display = 'none';
+    // Flatten the payload into a single JSON field
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'payload';
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+    // Create hidden iframe if not exists
+    if (!document.getElementById('hidden_iframe')) {
+      const iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.id = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  };
 
   const submit = () => {
     if (!validateSection(6)) return;
     const submission = { ...data, utm, submittedAt: new Date().toISOString() };
 
     // Send to Google Sheets
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(submission),
-    }).catch(() => {});
-
+    sendToSheet(submission);
     console.log('=== FADE SURVEY SUBMISSION ===', submission);
     decrementSpots();
     localStorage.removeItem(STORAGE_KEY);
@@ -532,12 +552,7 @@ function App() {
   // Social handles submit (post-survey)
   const submitSocials = () => {
     if (!socials.instagram && !socials.twitter) return;
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: data.email, fullName: data.fullName, instagramHandle: socials.instagram, twitterHandle: socials.twitter, type: 'social_handles' }),
-    }).catch(() => {});
+    sendToSheet({ email: data.email, fullName: data.fullName, instagramHandle: socials.instagram, twitterHandle: socials.twitter, type: 'social_handles' });
     setSocialsSent(true);
   };
 
