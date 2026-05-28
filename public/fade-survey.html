@@ -475,18 +475,18 @@ function App() {
 
   // Send data to Google Sheets via hidden iframe GET
   const sendToSheet = (payload) => {
-    // Convert arrays and booleans to strings to reduce payload size
-    const clean = {};
+    // Send each field as a URL parameter (avoids JSON bloat in URL)
+    const params = ['action=submit'];
     Object.keys(payload).forEach(k => {
-      const v = payload[k];
-      if (Array.isArray(v)) clean[k] = v.join(', ');
-      else if (typeof v === 'boolean') clean[k] = v ? 'Yes' : 'No';
-      else if (typeof v === 'object' && v !== null) clean[k] = JSON.stringify(v);
-      else clean[k] = v || '';
+      let v = payload[k];
+      if (Array.isArray(v)) v = v.join(', ');
+      else if (typeof v === 'boolean') v = v ? 'Yes' : 'No';
+      else if (typeof v === 'object' && v !== null) v = JSON.stringify(v);
+      // Truncate long text fields to keep URL short
+      if (typeof v === 'string' && v.length > 300) v = v.substring(0, 300);
+      params.push(encodeURIComponent(k) + '=' + encodeURIComponent(v || ''));
     });
-    const encoded = encodeURIComponent(JSON.stringify(clean));
-    const url = SHEET_URL + '?action=submit&payload=' + encoded;
-    // Use iframe to handle the GET (no URL length issue in iframe src)
+    const url = SHEET_URL + '?' + params.join('&');
     if (!document.getElementById('hidden_iframe')) {
       const iframe = document.createElement('iframe');
       iframe.id = 'hidden_iframe';
