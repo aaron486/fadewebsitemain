@@ -527,6 +527,20 @@ function App() {
     </div>
   );
 
+  // Social handles submit (post-survey)
+  const [socials, setSocials] = useState({ instagram: '', twitter: '' });
+  const [socialsSent, setSocialsSent] = useState(false);
+  const submitSocials = () => {
+    if (!socials.instagram && !socials.twitter) return;
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: data.email, fullName: data.fullName, instagramHandle: socials.instagram, twitterHandle: socials.twitter, type: 'social_handles' }),
+    }).catch(() => {});
+    setSocialsSent(true);
+  };
+
   // Success
   if (step === 10) return (
     <div className="survey-container">
@@ -535,6 +549,24 @@ function App() {
 
         <h2>You're in the running.</h2>
         <p>We'll review your application and reach out within 7 days if you're selected for the beta. In the meantime, follow @fade on X to stay in the loop.</p>
+
+        {!socialsSent ? (
+          <div style={{maxWidth:'400px',margin:'0 auto 2rem',textAlign:'left'}}>
+            <p style={{fontSize:'0.875rem',color:'rgba(255,255,255,0.6)',marginBottom:'1rem',textAlign:'center'}}>Drop your socials so we can follow you back</p>
+            <div className="field">
+              <label>Instagram @</label>
+              <input type="text" value={socials.instagram} onChange={e => setSocials(p => ({...p, instagram: e.target.value}))} placeholder="@yourusername" />
+            </div>
+            <div className="field">
+              <label>X (Twitter) @</label>
+              <input type="text" value={socials.twitter} onChange={e => setSocials(p => ({...p, twitter: e.target.value}))} placeholder="@yourusername" />
+            </div>
+            <button className="nav-btn nav-next" style={{width:'100%'}} onClick={submitSocials}>Submit</button>
+          </div>
+        ) : (
+          <p style={{fontSize:'0.875rem',color:'var(--accent)',marginBottom:'2rem'}}>Got it — we'll follow you back! 🤝</p>
+        )}
+
         <a href="https://x.com/fade_bet_" target="_blank" rel="noopener">Follow @fade on X →</a>
       </div>
     </div>
