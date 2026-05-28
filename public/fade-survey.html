@@ -473,18 +473,10 @@ function App() {
     setStep(s => s - 1);
   };
 
-  // Send data to Google Sheets via hidden form POST
+  // Send data to Google Sheets via hidden iframe GET
   const sendToSheet = (payload) => {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = SHEET_URL;
-    form.target = 'hidden_iframe';
-    form.style.display = 'none';
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'payload';
-    input.value = JSON.stringify(payload);
-    form.appendChild(input);
+    const encoded = encodeURIComponent(JSON.stringify(payload));
+    const url = SHEET_URL + '?action=submit&payload=' + encoded;
     if (!document.getElementById('hidden_iframe')) {
       const iframe = document.createElement('iframe');
       iframe.name = 'hidden_iframe';
@@ -492,9 +484,7 @@ function App() {
       iframe.style.display = 'none';
       document.body.appendChild(iframe);
     }
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    document.getElementById('hidden_iframe').src = url;
   };
 
   const submit = () => {
