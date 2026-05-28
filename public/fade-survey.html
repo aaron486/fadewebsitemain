@@ -476,9 +476,20 @@ function App() {
     setStep(s => s - 1);
   };
 
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyxOHGk6y-CLZDdGI4SJHve6P_vJFvunlzvvsJc7MtrZDeUHxwTMv80ALNLfQaFqTzE6Q/exec';
+
   const submit = () => {
     if (!validateSection(6)) return;
     const submission = { ...data, utm, submittedAt: new Date().toISOString() };
+
+    // Send to Google Sheets
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(submission),
+    }).catch(() => {});
+
     console.log('=== FADE SURVEY SUBMISSION ===', submission);
     decrementSpots();
     localStorage.removeItem(STORAGE_KEY);
