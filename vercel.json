@@ -8,6 +8,7 @@
     { "source": "/creators", "destination": "/creators.html" },
     { "source": "/sportsbooks", "destination": "/sportsbooks.html" },
     { "source": "/fade-survey", "destination": "/fade-survey.html" },
-    { "source": "/survey", "destination": "/fade-survey.html" }
+    { "source": "/survey", "destination": "/fade-survey.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
