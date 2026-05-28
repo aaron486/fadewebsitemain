@@ -222,35 +222,29 @@ function getUTM() {
   return { utm_source: p.get('utm_source')||'', utm_medium: p.get('utm_medium')||'', utm_campaign: p.get('utm_campaign')||'', utm_content: p.get('utm_content')||'', utm_term: p.get('utm_term')||'' };
 }
 
+// ===== CONFIG =====
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwbrfvud-JlxP1XvDZNslcmO1OYvbNEqGKTOIvbW4E4j8XGnyGN_sPtksl1Dx5g5Y-59w/exec';
+
 // ===== SPOTS COUNTER =====
-const SPOTS_KEY = 'fade_spots_count';
 const TOTAL_SPOTS = 5000;
 
-// Get current spots: starts at 5000, subtract real submissions stored in localStorage
-const getSpotsCount = () => {
-  try {
-    const submitted = parseInt(localStorage.getItem(SPOTS_KEY) || '0', 10);
-    return Math.max(0, TOTAL_SPOTS - submitted);
-  } catch { return TOTAL_SPOTS; }
-};
-
-const recordSubmission = () => {
-  try {
-    const current = parseInt(localStorage.getItem(SPOTS_KEY) || '0', 10);
-    localStorage.setItem(SPOTS_KEY, String(current + 1));
-  } catch {}
-};
-
 const useSpotsCounter = () => {
-  const [spots, setSpots] = useState(getSpotsCount);
-  // Refresh from localStorage periodically (in case another tab submits)
+  const [spots, setSpots] = useState(TOTAL_SPOTS);
+
+  // Fetch real count from sheet on load
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSpots(getSpotsCount());
-    }, 5000);
-    return () => clearInterval(interval);
+    const countUrl = SHEET_URL.replace('/exec', '/exec?action=count');
+    fetch(countUrl)
+      .then(r => r.text())
+      .then(text => {
+        const count = parseInt(text, 10);
+        if (!isNaN(count)) setSpots(Math.max(0, TOTAL_SPOTS - count));
+      })
+      .catch(() => {});
   }, []);
-  return [spots, () => { recordSubmission(); setSpots(getSpotsCount()); }];
+
+  const decrement = () => setSpots(prev => Math.max(0, prev - 1));
+  return [spots, decrement];
 };
 
 // ===== FADE LOGO =====
@@ -477,8 +471,6 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setStep(s => s - 1);
   };
-
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwbrfvud-JlxP1XvDZNslcmO1OYvbNEqGKTOIvbW4E4j8XGnyGN_sPtksl1Dx5g5Y-59w/exec';
 
   // Send data to Google Sheets via hidden form (avoids CORS issues)
   const sendToSheet = (payload) => {
