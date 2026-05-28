@@ -333,7 +333,7 @@ const Slider = ({ name, label, min = 1, max = 5, labels, data, update }) => (
 
 // ===== MAIN APP =====
 function App() {
-  const TOTAL_SECTIONS = 8;
+  const TOTAL_SECTIONS = 7;
   const [spotsLeft, decrementSpots] = useSpotsCounter();
   const STORAGE_KEY = 'fade_survey_data';
 
@@ -427,7 +427,7 @@ function App() {
       if (!data.predVsSportsbook.trim()) e.predVsSportsbook = 'Required';
     }
     // Section 5: attestations checked in branching logic
-    if (s === 6) {
+    if (s === 5) {
       if (!data.quiz1) e.quiz1 = 'Required';
       if (!data.quiz3) e.quiz3 = 'Required';
       if (!data.usBettingVolume) e.usBettingVolume = 'Required';
@@ -436,12 +436,6 @@ function App() {
       if (!data.biggestLoss.trim()) e.biggestLoss = 'Required';
     }
     if (s === 7) {
-      if (!data.available4Weeks) e.available4Weeks = 'Required';
-      if (!data.hasKalshiAccount) e.hasKalshiAccount = 'Required';
-      if (!data.willConnectSportsbook) e.willConnectSportsbook = 'Required';
-      if (!data.willConnectKalshi) e.willConnectKalshi = 'Required';
-    }
-    if (s === 8) {
       if (!data.consentParticipate) e.consentParticipate = 'Required';
       if (!data.consentAnonymized) e.consentAnonymized = 'Required';
       if (!data.consentRealMoney) e.consentRealMoney = 'Required';
@@ -454,7 +448,7 @@ function App() {
   const next = () => {
     if (!validateSection(step)) return;
     // Branching: Professional background attestation check
-    if (step === 5) {
+    if (step === 6) {
       const allChecked = data.att_notMarketMaker && data.att_notInstitutional && data.att_notProGambler && data.att_notKalshiEmployee && data.att_noTradingLicense && data.att_notPropTrader;
       if (!allChecked) { setStep(11); return; }
     }
@@ -468,7 +462,7 @@ function App() {
   };
 
   const submit = () => {
-    if (!validateSection(8)) return;
+    if (!validateSection(7)) return;
     const submission = { ...data, utm, submittedAt: new Date().toISOString() };
     console.log('=== FADE SURVEY SUBMISSION ===', submission);
     decrementSpots();
@@ -542,7 +536,7 @@ function App() {
       {/* Section 1: Identity & Contact */}
       {step === 1 && (
         <div className="section-screen" key="s1">
-          <div className="section-eyebrow">Section 1 of 9</div>
+          <div className="section-eyebrow">Section 1 of 7</div>
           <div className="section-title">Identity & Contact</div>
           <div className="section-subtitle">Let's start with the basics.</div>
           <TextField {...f} name="fullName" label="Full Name" placeholder="Your full name" />
@@ -561,7 +555,7 @@ function App() {
       {/* Section 2: Demographics */}
       {step === 2 && (
         <div className="section-screen" key="s2">
-          <div className="section-eyebrow">Section 2 of 9</div>
+          <div className="section-eyebrow">Section 2 of 7</div>
           <div className="section-title">Demographics</div>
           <div className="section-subtitle">Helps us ensure a representative sample.</div>
           <RadioGroup {...f} name="gender" label="Gender" options={['Male','Female','Non-binary','Prefer not to say']} />
@@ -576,7 +570,7 @@ function App() {
       {/* Section 3: Sports Betting Background */}
       {step === 3 && (
         <div className="section-screen" key="s3">
-          <div className="section-eyebrow">Section 3 of 9</div>
+          <div className="section-eyebrow">Section 3 of 7</div>
           <div className="section-title">Sports Betting Background</div>
           <div className="section-subtitle">Tell us about your betting experience.</div>
           <MultiSelect {...f} name="sportsbooks" label="Which sportsbook(s) do you use?" options={['Hard Rock Bet','DraftKings','FanDuel','BetMGM','Caesars','Other']} grid />
@@ -592,7 +586,7 @@ function App() {
       {/* Section 4: Prediction Market Experience */}
       {step === 4 && (
         <div className="section-screen" key="s4">
-          <div className="section-eyebrow">Section 4 of 9</div>
+          <div className="section-eyebrow">Section 4 of 7</div>
           <div className="section-title">Prediction Market Experience</div>
           <div className="section-subtitle">Have you ventured beyond traditional sports betting?</div>
           <YesNo {...f} name="usedPredictionMarket" label="Have you ever used Kalshi, Polymarket, PredictIt, or any prediction market?" />
@@ -610,44 +604,10 @@ function App() {
         </div>
       )}
 
-      {/* Section 5: Professional Background Disclosure */}
+      {/* Section 5: Financial Literacy */}
       {step === 5 && (
-        <div className="section-screen" key="s6">
-          <div className="section-eyebrow">Section 5 of 8</div>
-          <div className="section-title">Professional Background</div>
-          <div className="section-subtitle">Please confirm each of the following statements. All must be true to participate.</div>
-          {(() => {
-            const attFields = ['att_notMarketMaker','att_notInstitutional','att_notProGambler','att_notKalshiEmployee','att_noTradingLicense','att_notPropTrader'];
-            const allChecked = attFields.every(f => data[f]);
-            const selectAll = () => { const newData = {...data}; attFields.forEach(f => { newData[f] = !allChecked; }); setData(newData); };
-            return (<div>
-              <div className={`attestation ${allChecked?'checked':''}`} onClick={selectAll} style={{marginBottom:'1.25rem',borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.3)',background:allChecked?'var(--accent-dim)':'rgba(59,130,246,0.05)'}}>
-                <div className="att-check" style={{borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.4)'}}>{allChecked ? '✓' : ''}</div>
-                <div className="att-text" style={{fontWeight:600,color:'rgba(255,255,255,0.85)'}}>I confirm all of the below</div>
-              </div>
-              {[
-                ['att_notMarketMaker', 'I am not a professional market maker'],
-                ['att_notInstitutional', 'I am not an institutional trader or hedge fund employee'],
-                ['att_notProGambler', 'I am not a professional gambler or part of a betting syndicate'],
-                ['att_notKalshiEmployee', 'I am not an employee of Kalshi or any financial exchange'],
-                ['att_noTradingLicense', 'I do not hold a Series 7, 63, or any active trading license'],
-                ['att_notPropTrader', 'I do not work for a prop trading firm or proprietary trading desk'],
-              ].map(([field, text]) => (
-                <div key={field} className={`attestation ${data[field]?'checked':''}`} onClick={() => toggleAtt(field)}>
-                  <div className="att-check">{data[field] ? '✓' : ''}</div>
-                  <div className="att-text">{text}</div>
-                </div>
-              ))}
-            </div>);
-          })()}
-          <NavButtons />
-        </div>
-      )}
-
-      {/* Section 6: Financial Literacy */}
-      {step === 6 && (
-        <div className="section-screen" key="s6">
-          <div className="section-eyebrow">Section 6 of 8</div>
+        <div className="section-screen" key="s5">
+          <div className="section-eyebrow">Section 5 of 7</div>
           <div className="section-title">Financial Literacy</div>
           <div className="section-subtitle">A few quick questions about betting and finance.</div>
           <div className="field">
@@ -697,21 +657,26 @@ function App() {
       )}
 
       {/* Section 7: Commitment & Availability */}
-      {step === 7 && (
-        <div className="section-screen" key="s7">
-          <div className="section-eyebrow">Section 7 of 8</div>
+      {step === 6 && (
+        <div className="section-screen" key="s6">
+          <div className="section-eyebrow">Section 6 of 7</div>
           <div className="section-title">Commitment & Availability</div>
           <div className="section-subtitle">By submitting, you're confirming that you're willing to participate in the Fade Founder Study pending further information.</div>
           {(() => {
-            const commitField = 'commitAll';
-            const isChecked = data.available4Weeks === 'Yes' && data.hasKalshiAccount === 'Yes' && data.willConnectSportsbook === 'Yes' && data.willConnectKalshi === 'Yes';
-            const toggleCommit = () => {
-              const val = isChecked ? 'No' : 'Yes';
-              setData(prev => ({...prev, available4Weeks: val, hasKalshiAccount: val, willConnectSportsbook: val, willConnectKalshi: val}));
+            const attFields = ['att_notMarketMaker','att_notInstitutional','att_notProGambler','att_notKalshiEmployee','att_noTradingLicense','att_notPropTrader'];
+            const commitFields = ['available4Weeks','hasKalshiAccount','willConnectSportsbook','willConnectKalshi'];
+            const allAttChecked = attFields.every(f => data[f]);
+            const allCommitChecked = commitFields.every(f => data[f] === 'Yes');
+            const allChecked = allAttChecked && allCommitChecked;
+            const toggleAll = () => {
+              const newData = {...data};
+              attFields.forEach(f => { newData[f] = !allChecked; });
+              commitFields.forEach(f => { newData[f] = allChecked ? 'No' : 'Yes'; });
+              setData(newData);
             };
             return (
-              <div className={`attestation ${isChecked?'checked':''}`} onClick={toggleCommit} style={{padding:'1.25rem',marginBottom:'1.5rem',borderColor:isChecked?'var(--accent)':'rgba(59,130,246,0.3)',background:isChecked?'var(--accent-dim)':'rgba(59,130,246,0.05)'}}>
-                <div className="att-check" style={{width:'24px',height:'24px',borderColor:isChecked?'var(--accent)':'rgba(59,130,246,0.4)'}}>{isChecked ? '✓' : ''}</div>
+              <div className={`attestation ${allChecked?'checked':''}`} onClick={toggleAll} style={{padding:'1.25rem',marginBottom:'1.5rem',borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.3)',background:allChecked?'var(--accent-dim)':'rgba(59,130,246,0.05)'}}>
+                <div className="att-check" style={{width:'24px',height:'24px',borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.4)'}}>{allChecked ? '✓' : ''}</div>
                 <div className="att-text" style={{fontWeight:600,color:'rgba(255,255,255,0.85)',fontSize:'0.9375rem'}}>I confirm all of the following:</div>
               </div>
             );
@@ -720,16 +685,21 @@ function App() {
             <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am available to actively participate for a full 4 weeks</p>
             <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I have a Kalshi account or am willing to create one</p>
             <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am willing to connect my sportsbook account to Fade for the duration of the study</p>
-            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)'}}>• I am willing to connect my Kalshi account to Fade via read-only API</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am willing to connect my Kalshi account to Fade via read-only API</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am not a professional market maker or institutional trader</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am not a professional gambler or part of a betting syndicate</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I am not an employee of Kalshi or any financial exchange</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)',marginBottom:'0.5rem'}}>• I do not hold a Series 7, 63, or any active trading license</p>
+            <p style={{fontSize:'0.8125rem',color:'rgba(255,255,255,0.5)'}}>• I do not work for a prop trading firm or proprietary trading desk</p>
           </div>
           <NavButtons />
         </div>
       )}
 
-      {/* Section 8: Consent & Legal */}
-      {step === 8 && (
-        <div className="section-screen" key="s8">
-          <div className="section-eyebrow">Section 8 of 8</div>
+      {/* Section 7: Consent & Legal */}
+      {step === 7 && (
+        <div className="section-screen" key="s7">
+          <div className="section-eyebrow">Section 7 of 7</div>
           <div className="section-title">Consent & Legal</div>
           <div className="section-subtitle">Final step. Please review and confirm each statement.</div>
           {[
