@@ -583,7 +583,7 @@ function App() {
           <div className="hero-stat"><span className="hero-stat-num spots-counter spots-pulse" style={{fontSize:'2rem',color:'var(--accent)'}}>{spotsLeft.toLocaleString()}</span><span className="hero-stat-label">Spots Remaining</span></div>
         </div>
         <p style={{fontSize:'0.875rem',color:'var(--text-dim)',marginBottom:'2rem',position:'relative',animation:'fadeUp 0.6s ease 0.45s both'}}>We're accepting 5,000 applicants. Once selected, you'll be one of the founding members with early access. Our team will reach out with next steps.</p>
-        <button className="start-btn" onClick={() => { setStep(1); window.scrollTo({top:0,behavior:'smooth'}); }}>Apply Now →</button>
+        <button className="start-btn" onClick={() => { decrementSpots(); setStep(1); window.scrollTo({top:0,behavior:'smooth'}); }}>Apply Now →</button>
         <div className="hero-fine">Takes about 5 minutes. Must be 21+ and US-based.</div>
       </div>
     </div>
