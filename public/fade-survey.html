@@ -225,24 +225,25 @@ function getUTM() {
 // ===== CONFIG =====
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxUMwxhcJ9RVmzkPkmOO-oSEcCM9XTfZ39Q1DPCR8OsXrtCcKrB0Yc0tn3KH8Pu4tDUYQ/exec';
 
-// ===== SPOTS COUNTER =====
+// ===== SPOTS COUNTER (time-based) =====
 const TOTAL_SPOTS = 5000;
-
 const useSpotsCounter = () => {
-  const [spots, setSpots] = useState(TOTAL_SPOTS);
-
-  // Fetch real count from sheet on load
+  const launchDate = new Date('2026-05-27T00:00:00Z').getTime();
+  const getSpots = () => {
+    const hoursPassed = (Date.now() - launchDate) / (1000 * 60 * 60);
+    let taken = 0;
+    for (let h = 0; h < Math.floor(hoursPassed); h++) {
+      taken += 3 + (((h * 7 + 13) % 6));
+    }
+    return Math.max(100, TOTAL_SPOTS - taken);
+  };
+  const [spots, setSpots] = useState(getSpots);
   useEffect(() => {
-    const countUrl = SHEET_URL.replace('/exec', '/exec?action=count');
-    fetch(countUrl)
-      .then(r => r.text())
-      .then(text => {
-        const count = parseInt(text, 10);
-        if (!isNaN(count)) setSpots(Math.max(0, TOTAL_SPOTS - count));
-      })
-      .catch(() => {});
+    const interval = setInterval(() => {
+      setSpots(prev => Math.max(100, prev - 1));
+    }, Math.floor(Math.random() * 20000) + 25000);
+    return () => clearInterval(interval);
   }, []);
-
   const decrement = () => setSpots(prev => Math.max(0, prev - 1));
   return [spots, decrement];
 };
@@ -472,11 +473,28 @@ function App() {
     setStep(s => s - 1);
   };
 
-  // Send data to Google Sheets via GET request with encoded payload
+  // Send data to Google Sheets via hidden form POST
   const sendToSheet = (payload) => {
-    const encoded = encodeURIComponent(JSON.stringify(payload));
-    const img = new Image();
-    img.src = SHEET_URL + '?action=submit&payload=' + encoded;
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = SHEET_URL;
+    form.target = 'hidden_iframe';
+    form.style.display = 'none';
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'payload';
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+    if (!document.getElementById('hidden_iframe')) {
+      const iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.id = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
   };
 
   const submit = () => {
