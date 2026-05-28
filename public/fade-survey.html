@@ -613,19 +613,30 @@ function App() {
           <div className="section-eyebrow">Section 5 of 8</div>
           <div className="section-title">Professional Background</div>
           <div className="section-subtitle">Please confirm each of the following statements. All must be true to participate.</div>
-          {[
-            ['att_notMarketMaker', 'I am not a professional market maker'],
-            ['att_notInstitutional', 'I am not an institutional trader or hedge fund employee'],
-            ['att_notProGambler', 'I am not a professional gambler or part of a betting syndicate'],
-            ['att_notKalshiEmployee', 'I am not an employee of Kalshi or any financial exchange'],
-            ['att_noTradingLicense', 'I do not hold a Series 7, 63, or any active trading license'],
-            ['att_notPropTrader', 'I do not work for a prop trading firm or proprietary trading desk'],
-          ].map(([field, text]) => (
-            <div key={field} className={`attestation ${data[field]?'checked':''}`} onClick={() => toggleAtt(field)}>
-              <div className="att-check">{data[field] ? '✓' : ''}</div>
-              <div className="att-text">{text}</div>
-            </div>
-          ))}
+          {(() => {
+            const attFields = ['att_notMarketMaker','att_notInstitutional','att_notProGambler','att_notKalshiEmployee','att_noTradingLicense','att_notPropTrader'];
+            const allChecked = attFields.every(f => data[f]);
+            const selectAll = () => { const newData = {...data}; attFields.forEach(f => { newData[f] = !allChecked; }); setData(newData); };
+            return (<div>
+              <div className={`attestation ${allChecked?'checked':''}`} onClick={selectAll} style={{marginBottom:'1.25rem',borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.3)',background:allChecked?'var(--accent-dim)':'rgba(59,130,246,0.05)'}}>
+                <div className="att-check" style={{borderColor:allChecked?'var(--accent)':'rgba(59,130,246,0.4)'}}>{allChecked ? '✓' : ''}</div>
+                <div className="att-text" style={{fontWeight:600,color:'rgba(255,255,255,0.85)'}}>I confirm all of the below</div>
+              </div>
+              {[
+                ['att_notMarketMaker', 'I am not a professional market maker'],
+                ['att_notInstitutional', 'I am not an institutional trader or hedge fund employee'],
+                ['att_notProGambler', 'I am not a professional gambler or part of a betting syndicate'],
+                ['att_notKalshiEmployee', 'I am not an employee of Kalshi or any financial exchange'],
+                ['att_noTradingLicense', 'I do not hold a Series 7, 63, or any active trading license'],
+                ['att_notPropTrader', 'I do not work for a prop trading firm or proprietary trading desk'],
+              ].map(([field, text]) => (
+                <div key={field} className={`attestation ${data[field]?'checked':''}`} onClick={() => toggleAtt(field)}>
+                  <div className="att-check">{data[field] ? '✓' : ''}</div>
+                  <div className="att-text">{text}</div>
+                </div>
+              ))}
+            </div>);
+          })()}
           <NavButtons />
         </div>
       )}
