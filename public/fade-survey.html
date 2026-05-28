@@ -236,7 +236,7 @@ const Slider = ({ name, label, min = 1, max = 5, labels, data, update }) => (
 
 // ===== MAIN APP =====
 function App() {
-  const TOTAL_SECTIONS = 9;
+  const TOTAL_SECTIONS = 8;
   const STORAGE_KEY = 'fade_survey_data';
 
   // Load saved data from localStorage
@@ -328,22 +328,19 @@ function App() {
       if (!data.predMarketExplain.trim()) e.predMarketExplain = 'Required';
       if (!data.predVsSportsbook.trim()) e.predVsSportsbook = 'Required';
     }
-    if (s === 5) {
-      if (!data.seenKalshiMarketing) e.seenKalshiMarketing = 'Required';
-    }
-    // Section 6: attestations checked in branching logic
-    if (s === 7) {
+    // Section 5: attestations checked in branching logic
+    if (s === 6) {
       if (!data.quiz1) e.quiz1 = 'Required';
       if (!data.quiz2) e.quiz2 = 'Required';
       if (!data.quiz3) e.quiz3 = 'Required';
     }
-    if (s === 8) {
+    if (s === 7) {
       if (!data.available4Weeks) e.available4Weeks = 'Required';
       if (!data.hasKalshiAccount) e.hasKalshiAccount = 'Required';
       if (!data.willConnectSportsbook) e.willConnectSportsbook = 'Required';
       if (!data.willConnectKalshi) e.willConnectKalshi = 'Required';
     }
-    if (s === 9) {
+    if (s === 8) {
       if (!data.consentParticipate) e.consentParticipate = 'Required';
       if (!data.consentAnonymized) e.consentAnonymized = 'Required';
       if (!data.consentRealMoney) e.consentRealMoney = 'Required';
@@ -355,8 +352,8 @@ function App() {
 
   const next = () => {
     if (!validateSection(step)) return;
-    // Branching: Section 6 attestation check
-    if (step === 6) {
+    // Branching: Professional background attestation check
+    if (step === 5) {
       const allChecked = data.att_notMarketMaker && data.att_notInstitutional && data.att_notProGambler && data.att_notKalshiEmployee && data.att_noTradingLicense && data.att_notPropTrader;
       if (!allChecked) { setStep(11); return; }
     }
@@ -370,7 +367,7 @@ function App() {
   };
 
   const submit = () => {
-    if (!validateSection(9)) return;
+    if (!validateSection(8)) return;
     const submission = { ...data, utm, submittedAt: new Date().toISOString() };
     console.log('=== FADE SURVEY SUBMISSION ===', submission);
     localStorage.removeItem(STORAGE_KEY);
@@ -515,24 +512,10 @@ function App() {
         </div>
       )}
 
-      {/* Section 5: Marketing Claim Acknowledgment */}
+      {/* Section 5: Professional Background Disclosure */}
       {step === 5 && (
-        <div className="section-screen" key="s5">
-          <div className="section-eyebrow">Section 5 of 9</div>
-          <div className="section-title">Marketing Claim Acknowledgment</div>
-          <div className="section-subtitle">One quick question about what you've seen online.</div>
-          <YesNo {...f} name="seenKalshiMarketing" label="Have you seen any marketing from Kalshi or Tarek Mansour claiming retail traders can beat Wall Street?" />
-          {data.seenKalshiMarketing === 'Yes' && (
-            <MultiSelect {...f} name="marketingSources" label="Where did you see it?" options={['Twitter/X','TikTok','YouTube','Podcasts','Ads','News articles','Other']} grid required={false} />
-          )}
-          <NavButtons />
-        </div>
-      )}
-
-      {/* Section 6: Professional Background Disclosure */}
-      {step === 6 && (
         <div className="section-screen" key="s6">
-          <div className="section-eyebrow">Section 6 of 9</div>
+          <div className="section-eyebrow">Section 5 of 8</div>
           <div className="section-title">Professional Background</div>
           <div className="section-subtitle">Please confirm each of the following statements. All must be true to participate.</div>
           {[
@@ -552,10 +535,10 @@ function App() {
         </div>
       )}
 
-      {/* Section 7: Financial Literacy */}
-      {step === 7 && (
-        <div className="section-screen" key="s7">
-          <div className="section-eyebrow">Section 7 of 9</div>
+      {/* Section 6: Financial Literacy */}
+      {step === 6 && (
+        <div className="section-screen" key="s6">
+          <div className="section-eyebrow">Section 6 of 8</div>
           <div className="section-title">Financial Literacy</div>
           <div className="section-subtitle">Three quick questions. No trick answers.</div>
           <div className="field">
@@ -592,10 +575,10 @@ function App() {
         </div>
       )}
 
-      {/* Section 8: Commitment & Availability */}
-      {step === 8 && (
-        <div className="section-screen" key="s8">
-          <div className="section-eyebrow">Section 8 of 9</div>
+      {/* Section 7: Commitment & Availability */}
+      {step === 7 && (
+        <div className="section-screen" key="s7">
+          <div className="section-eyebrow">Section 7 of 8</div>
           <div className="section-title">Commitment & Availability</div>
           <div className="section-subtitle">Make sure you're ready for the full study.</div>
           <YesNo {...f} name="available4Weeks" label="Are you available to actively participate for a full 4 weeks?" />
@@ -606,10 +589,10 @@ function App() {
         </div>
       )}
 
-      {/* Section 9: Consent & Legal */}
-      {step === 9 && (
-        <div className="section-screen" key="s9">
-          <div className="section-eyebrow">Section 9 of 9</div>
+      {/* Section 8: Consent & Legal */}
+      {step === 8 && (
+        <div className="section-screen" key="s8">
+          <div className="section-eyebrow">Section 8 of 8</div>
           <div className="section-title">Consent & Legal</div>
           <div className="section-subtitle">Final step. Please review and confirm each statement.</div>
           {[
