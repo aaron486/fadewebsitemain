@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade × Kalshi — Case Study</title>
+<meta name="description" content="An 8-week pre-registered study testing whether normal sportsbook bettors can succeed on Kalshi's prediction markets." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Header */
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+/* Section helpers */
+.section { max-width: 920px; margin: 0 auto; padding: 4rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.875rem; display: block; }
+.section h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: white; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+.section p.lead { font-size: 1.0625rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 1rem; }
+.section p.lead strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+/* Hero */
+.hero { text-align: center; padding: 5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 760px; height: 520px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.25rem; position: relative; }
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.1875rem; color: rgba(255,255,255,0.52); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
+.hero-tags { display: flex; align-items: center; justify-content: center; gap: 0.625rem; flex-wrap: wrap; position: relative; }
+.hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.55); padding: 0.5rem 0.9rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; background: rgba(255,255,255,0.02); }
+
+/* Stats bar */
+.stats-bar { max-width: 920px; margin: 0 auto; padding: 0 1.5rem 1rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.stat-card { padding: 1.75rem 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; }
+.stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.75rem; font-weight: 800; color: white; line-height: 1.1; }
+.stat-value span { color: #3b82f6; }
+.stat-label { font-size: 0.6875rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-top: 0.5rem; }
+
+/* Claim callout */
+.claim { background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.12); border-radius: 16px; padding: 2.25rem; margin-top: 2rem; }
+.claim .q { font-size: 1.25rem; color: rgba(255,255,255,0.85); line-height: 1.6; font-weight: 500; font-style: italic; }
+.claim .q::before { content: '“'; color: rgba(59,130,246,0.6); }
+.claim .q::after { content: '”'; color: rgba(59,130,246,0.6); }
+.claim .attr { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: rgba(255,255,255,0.4); margin-top: 0.875rem; }
+.claim .attr + .q { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.claim .resp { font-size: 1.0625rem; color: rgba(255,255,255,0.6); margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.claim .resp strong { color: white; font-weight: 600; }
+.sub-head { font-size: 1.375rem; font-weight: 800; color: white; letter-spacing: -0.02em; margin-top: 2.75rem; margin-bottom: 0.875rem; }
+.claim-figure { margin-top: 1.75rem; }
+.claim-figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); }
+.claim-figure figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.75rem; text-align: center; letter-spacing: 0.02em; }
+
+/* Timeline */
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; position: relative; margin-top: 1rem; }
+.timeline::before { content: ''; position: absolute; top: 26px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), rgba(255,255,255,0.12), transparent); }
+.tl-step { position: relative; }
+.tl-num { width: 52px; height: 52px; border-radius: 50%; background: #0d0d14; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 1.0625rem; font-weight: 700; color: #3b82f6; position: relative; z-index: 1; }
+.tl-step h3 { font-size: 0.9375rem; font-weight: 700; color: white; margin-bottom: 0.375rem; text-align: center; }
+.tl-step p { font-size: 0.8125rem; color: rgba(255,255,255,0.42); line-height: 1.55; text-align: center; }
+
+/* Two-col measure grid */
+.measure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.measure-card { padding: 1.75rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.measure-card h3 { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; }
+.measure-card ul { list-style: none; }
+.measure-card li { font-size: 0.9375rem; color: rgba(255,255,255,0.6); padding: 0.5rem 0 0.5rem 1.5rem; position: relative; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.04); }
+.measure-card li:first-child { border-top: none; }
+.measure-card li::before { content: '→'; position: absolute; left: 0; color: rgba(59,130,246,0.6); }
+.measure-card li strong { color: white; font-weight: 600; }
+
+/* Hypotheses */
+.hyp-list { display: flex; flex-direction: column; gap: 0.875rem; margin-top: 1rem; }
+.hyp { display: flex; gap: 1.25rem; padding: 1.5rem 1.75rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; transition: all 0.2s ease; }
+.hyp:hover { border-color: rgba(59,130,246,0.18); background: rgba(255,255,255,0.035); }
+.hyp-tag { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 800; color: #3b82f6; flex-shrink: 0; padding-top: 0.1rem; }
+.hyp-body h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.35rem; }
+.hyp-body p { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+/* Counterparty cards */
+.cp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.cp-card { padding: 1.75rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.cp-card h3 { font-size: 1.0625rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+.cp-card p { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.cp-card p strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+.bignum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.bignum-card { text-align: center; padding: 1.5rem 1rem; background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.1); border-radius: 14px; }
+.bignum-val { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800; color: #3b82f6; }
+.bignum-lbl { font-size: 0.8125rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; line-height: 1.4; }
+
+/* Methodology grid */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.method-card { padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.method-card h3 { font-size: 0.9375rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+.method-card p { font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+/* Cohort survey */
+.cohort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+.cohort-card { padding: 1.5rem 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.cohort-val { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 800; color: white; }
+.cohort-val span { color: #3b82f6; }
+.cohort-lbl { font-size: 0.8125rem; color: rgba(255,255,255,0.45); margin-top: 0.35rem; line-height: 1.45; }
+.note { font-size: 0.875rem; color: rgba(255,255,255,0.35); margin-top: 1.5rem; line-height: 1.6; font-style: italic; }
+
+/* Survey visual */
+.svy-highlight { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.svy-stat { padding: 1.6rem 1rem; background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.14); border-radius: 14px; text-align: center; }
+.svy-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 800; color: #3b82f6; line-height: 1; }
+.svy-stat-lbl { font-size: 0.8125rem; color: rgba(255,255,255,0.55); margin-top: 0.65rem; line-height: 1.4; }
+.survey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.svy-card { padding: 1.6rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.svy-card h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.15rem; }
+.bar-row { margin-bottom: 0.9rem; }
+.bar-row:last-child { margin-bottom: 0; }
+.bar-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.38rem; gap: 0.75rem; }
+.bar-label { font-size: 0.875rem; color: rgba(255,255,255,0.7); }
+.bar-val { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; font-weight: 700; color: white; flex-shrink: 0; }
+.bar-track { height: 7px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #2563eb, #60a5fa); border-radius: 999px; }
+.bar-fill.up { background: linear-gradient(90deg, #16a34a, #4ade80); }
+.bar-fill.down { background: linear-gradient(90deg, #dc2626, #f87171); }
+.bar-fill.neutral { background: rgba(255,255,255,0.28); }
+.svy-foot { font-size: 0.8125rem; color: rgba(255,255,255,0.38); line-height: 1.55; margin-top: 1.25rem; font-style: italic; }
+
+/* Quote wall */
+.qcol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; align-items: start; }
+.qcol { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 1.25rem; }
+.qcol-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-bottom: 0.9rem; margin-bottom: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.qcol-title { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.qcol-count { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 999px; flex-shrink: 0; }
+.qquote { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.5; padding: 0.7rem 0.85rem; background: rgba(255,255,255,0.025); border-radius: 10px; margin-bottom: 0.6rem; border-left: 2px solid; }
+.qquote:last-child { margin-bottom: 0; }
+.qcol.acc .qcol-title { color: #4ade80; }
+.qcol.acc .qcol-count { background: rgba(34,197,94,0.12); color: #4ade80; }
+.qcol.acc .qquote { border-left-color: rgba(34,197,94,0.45); }
+.qcol.par .qcol-title { color: #60a5fa; }
+.qcol.par .qcol-count { background: rgba(59,130,246,0.14); color: #60a5fa; }
+.qcol.par .qquote { border-left-color: rgba(59,130,246,0.45); }
+.qcol.vag .qcol-title { color: #fbbf24; }
+.qcol.vag .qcol-count { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.qcol.vag .qquote { border-left-color: rgba(251,191,36,0.4); }
+
+/* Season strip */
+.season { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; margin-top: 1.5rem; }
+.mo { text-align: center; padding: 0.7rem 0.2rem; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+.mo-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.03em; color: rgba(255,255,255,0.4); }
+.mo.on { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.28); }
+.mo.on .mo-lbl { color: #60a5fa; }
+.mo.peak { background: rgba(59,130,246,0.32); border-color: rgba(59,130,246,0.55); }
+.mo.peak .mo-lbl { color: #fff; }
+.season-key { display: flex; gap: 1.5rem; margin-top: 0.85rem; flex-wrap: wrap; }
+.season-key span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 0.45rem; }
+.season-key i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* Scope stats + criteria */
+.scope-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.crit-card { padding: 1.6rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.crit-card h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.crit-card.inc h4 { color: #4ade80; }
+.crit-card.exc h4 { color: #f87171; }
+.crit-item { display: flex; gap: 0.7rem; font-size: 0.9rem; color: rgba(255,255,255,0.68); line-height: 1.5; padding: 0.7rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.crit-item:first-of-type { border-top: none; }
+.crit-ic { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; margin-top: 0.1rem; }
+.crit-card.inc .crit-ic { background: rgba(34,197,94,0.15); color: #4ade80; }
+.crit-card.exc .crit-ic { background: rgba(248,113,113,0.15); color: #f87171; }
+.crit-item strong { color: white; font-weight: 600; }
+
+/* CTA */
+.cta { text-align: center; padding: 4.5rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.875rem; position: relative; }
+.cta p { font-size: 1rem; color: rgba(255,255,255,0.45); margin-bottom: 2rem; position: relative; max-width: 520px; margin-left: auto; margin-right: auto; }
+.btn-apply { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
+.btn-apply:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+
+/* Footer */
+.footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); font-size: 0.8125rem; line-height: 1.9; }
+.footer a { color: rgba(255,255,255,0.35); }
+.disclaimer { max-width: 920px; margin: 0 auto; padding: 2rem 1.5rem; }
+.disclaimer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 1.25rem 2.5rem; }
+  .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+  .hero p { font-size: 1rem; }
+  .section { padding: 3rem 1.25rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .timeline { grid-template-columns: 1fr; gap: 1.75rem; }
+  .timeline::before { display: none; }
+  .measure-grid, .cp-grid, .method-grid { grid-template-columns: 1fr; }
+  .bignum, .cohort-grid { grid-template-columns: 1fr; }
+  .svy-highlight { grid-template-columns: 1fr 1fr; }
+  .survey-grid { grid-template-columns: 1fr; }
+  .qcol-grid { grid-template-columns: 1fr; }
+  .season { grid-template-columns: repeat(6, 1fr); }
+  .scope-stats { grid-template-columns: 1fr; }
+  .crit-grid { grid-template-columns: 1fr; }
+  .claim { padding: 1.75rem; }
+  .claim .q { font-size: 1.1rem; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .hero-tag { font-size: 0.6875rem; padding: 0.4rem 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="header-brand">
+    <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">BET TOGETHER</span>
+  </a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">FADE &times; KALSHI</div>
+  <h1>FADE Prediction Market<br /><span>Case Study</span></h1>
+  <p>An 8-week, pre-registered empirical study putting Kalshi's central marketing claims to the test &mdash; with 1,000 retail sportsbook bettors and their own trading history as the control.</p>
+</div>
+
+<!-- The claim -->
+<div class="section">
+  <span class="section-eyebrow">The claim we're testing</span>
+  <h2>&ldquo;On Kalshi there is no house,<br />anybody can win.&rdquo;</h2>
+  <figure class="claim-figure">
+    <img src="/assets/kalshi-cnbc.png" alt="Kalshi CEO Tarek Mansour on CNBC's Mad Money with Jim Cramer, under the chyron 'On Kalshi there is no house, anybody can win.'" />
+    <figcaption>Tarek Mansour, Kalshi CEO &middot; CNBC, Mad Money with Jim Cramer</figcaption>
+  </figure>
+  <p class="lead">Prediction markets, by their &ldquo;foundational principles,&rdquo; are framed as venues where average people &mdash; not experts or authority figures &mdash; compete against each other. Through aggressive marketing, Kalshi has worked to convince the average retail bettor that they're trading against their peers and have a real chance to succeed on the platform. The primary goal of this research is to highlight the claims Kalshi has made publicly and test them with the average retail bettor.</p>
+  <div class="claim">
+    <p class="q">The foundational principles around prediction markets, is like a lot of these markets, the people that will price them the best may not actually be the experts or the authority figures that you usually would think about.</p>
+    <p class="attr">&mdash; Tarek Mansour, Kalshi CEO &middot; Cheeky Pint podcast, Mar 2026</p>
+    <p class="q">Users who place resting orders on Kalshi (which include a wide variety of users, not just institutions) compete with each other based on their assessments of the underlying event's probability. Market forces drive the &lsquo;price&rsquo; toward a fair value, unlike a sportsbook, where the house can charge any amount it wishes to its individual customers.</p>
+    <p class="attr">&mdash; Kalshi, to Sportico &middot; Sept 2025</p>
+  </div>
+  <span class="section-eyebrow" style="margin-top:2.75rem;">Who you're really trading against</span>
+  <h2>&ldquo;There is no house.&rdquo;</h2>
+  <p class="lead">Kalshi positions itself as a peer-to-peer exchange where retail users trade against each other. In practice, institutional market makers post the deepest, tightest quotes &mdash; and for RFQ-priced parlays, only API-onboarded firms can quote at all.</p>
+  <div class="cp-grid">
+    <div class="cp-card">
+      <h3>The order book</h3>
+      <p>Anyone can technically be a Maker, but institutional firms end up on the Maker side of most retail trades. Academic data on Kalshi's own tape finds <strong>Takers lose ~32% while Makers lose ~10%</strong> &mdash; a 22-point edge at the venue level.</p>
+    </div>
+    <div class="cp-card">
+      <h3>The RFQ parlay system</h3>
+      <p>Retail can't post resting orders on parlays. They request a quote, institutional makers price the other side via API, and retail gets a take-it-or-leave-it price. Every parlay fill is, by design, <strong>against an institutional maker</strong>.</p>
+    </div>
+  </div>
+  <div class="bignum">
+    <div class="bignum-card"><div class="bignum-val">~$117M</div><div class="bignum-lbl">Retail losses on Kalshi parlays, Jan&ndash;Apr 2026 (Sportico)</div></div>
+    <div class="bignum-card"><div class="bignum-val">~$35M</div><div class="bignum-lbl">Of that, paid to Kalshi in fees &mdash; the rest went to makers</div></div>
+    <div class="bignum-card"><div class="bignum-val">~100%</div><div class="bignum-lbl">Institutional maker share on RFQ parlays, by structure</div></div>
+  </div>
+  <h3 class="sub-head">The test</h3>
+  <p class="lead">We know how the cohort performs against the books &mdash; their sportsbook history is synced via <strong>Fade Sync</strong>. Across 8 weeks of Kalshi-exclusive trading, we measure whether retail sports bettors perform better on prediction markets than they do on sportsbooks.</p>
+</div>
+
+<!-- Study scope & population -->
+<div class="section">
+  <span class="section-eyebrow">Scope &amp; population</span>
+  <h2>What we're studying,<br />and who.</h2>
+  <h3 class="sub-head">Founding-member survey baseline</h3>
+  <p class="lead">Before recruiting the full 1,000, Fade ran a founding-member survey to establish what the recruitable population actually looks like. <strong>n=23 unique respondents.</strong></p>
+  <div class="svy-highlight">
+    <div class="svy-stat"><div class="svy-stat-val">87%</div><div class="svy-stat-lbl">Male</div></div>
+    <div class="svy-stat"><div class="svy-stat-val">74%</div><div class="svy-stat-lbl">Bet weekly or daily</div></div>
+    <div class="svy-stat"><div class="svy-stat-val">65%</div><div class="svy-stat-lbl">New to prediction markets</div></div>
+    <div class="svy-stat"><div class="svy-stat-val">91%</div><div class="svy-stat-lbl">Bet $20&ndash;$100 per wager</div></div>
+  </div>
+  <div class="survey-grid">
+    <div class="svy-card">
+      <h4>Geography</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Florida</span><span class="bar-val">21 &middot; 91%</span></div><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Washington DC</span><span class="bar-val">1 &middot; 4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Iowa</span><span class="bar-val">1 &middot; 4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Sportsbook usage</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Hard Rock Bet</span><span class="bar-val">96%</span></div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">DraftKings</span><span class="bar-val">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">FanDuel</span><span class="bar-val">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">BetMGM</span><span class="bar-val">4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Age</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">26&ndash;30</span><span class="bar-val">70%</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">21&ndash;25</span><span class="bar-val">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Betting tenure</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">1+ year</span><span class="bar-val">74%</span></div><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">3+ years</span><span class="bar-val">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Self-reported P&amp;L</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Up</span><span class="bar-val">35%</span></div><div class="bar-track"><div class="bar-fill up" style="width:35%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Breakeven</span><span class="bar-val">30%</span></div><div class="bar-track"><div class="bar-fill neutral" style="width:30%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Down</span><span class="bar-val">22%</span></div><div class="bar-track"><div class="bar-fill down" style="width:22%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Monthly volume</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Under $500</span><span class="bar-val">83%</span></div><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">$1,000&ndash;$5,000</span><span class="bar-val">17%</span></div><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Income &amp; work</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Employed full-time</span><span class="bar-val">91%</span></div><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Earn under $100k</span><span class="bar-val">70%</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Bachelor's degree</span><span class="bar-val">52%</span></div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Some college</span><span class="bar-val">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+    </div>
+    <div class="svy-card">
+      <h4>Consent &amp; willingness</h4>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">All four consent fields</span><span class="bar-val">100%</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+      <div class="bar-row"><div class="bar-top"><span class="bar-label">Will connect accounts</span><span class="bar-val">100%</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+    </div>
+  </div>
+  <p class="svy-foot">n=23 founding-member respondents. Prior prediction-market activity is measured in Fade Sync at enrollment, not by self-report; of the 35% who report prior use, Kalshi and Polymarket lead (4 each).</p>
+
+  <h3 class="sub-head">Sports mix &amp; launch timing</h3>
+  <p class="lead">NFL is the one near-universal sport, then College Football and NBA. The pre-registered contract slate weights NFL/CFB/NBA &mdash; matching both the cohort's actual interest and Kalshi's highest-volume sports markets.</p>
+  <div class="svy-card" style="margin-top:1.5rem;">
+    <h4>Sports followed &middot; multiple allowed</h4>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">NFL</span><span class="bar-val">22 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div></div>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">College Football</span><span class="bar-val">14 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div></div>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">NBA</span><span class="bar-val">13 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:57%"></div></div></div>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">MMA / Boxing</span><span class="bar-val">9 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div></div>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">MLB</span><span class="bar-val">9 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div></div>
+    <div class="bar-row"><div class="bar-top"><span class="bar-label">College Basketball</span><span class="bar-val">8 of 23</span></div><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div></div>
+  </div>
+  <p class="svy-foot">Respondents could select multiple sports, so these don't sum to the sample &mdash; each bar shows how many of the 23 follow that sport.</p>
+  <div class="season" style="margin-top:1.5rem;">
+    <div class="mo on"><div class="mo-lbl">JAN</div></div>
+    <div class="mo on"><div class="mo-lbl">FEB</div></div>
+    <div class="mo"><div class="mo-lbl">MAR</div></div>
+    <div class="mo"><div class="mo-lbl">APR</div></div>
+    <div class="mo"><div class="mo-lbl">MAY</div></div>
+    <div class="mo"><div class="mo-lbl">JUN</div></div>
+    <div class="mo"><div class="mo-lbl">JUL</div></div>
+    <div class="mo on"><div class="mo-lbl">AUG</div></div>
+    <div class="mo peak"><div class="mo-lbl">SEP</div></div>
+    <div class="mo peak"><div class="mo-lbl">OCT</div></div>
+    <div class="mo peak"><div class="mo-lbl">NOV</div></div>
+    <div class="mo on"><div class="mo-lbl">DEC</div></div>
+  </div>
+  <div class="season-key">
+    <span><i style="background:rgba(59,130,246,0.32);border:1px solid rgba(59,130,246,0.55);"></i>Recommended 8-week window</span>
+    <span><i style="background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.28);"></i>Football in season</span>
+    <span><i style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);"></i>Off-season</span>
+  </div>
+  <div class="claim" style="margin-top:2rem;">
+    <p class="attr" style="margin-top:0;">Launch-timing implication</p>
+    <p class="resp" style="border-top:none;padding-top:0.75rem;margin-top:0.75rem;">Enrollment and Fade Sync baselining should complete in <strong>late summer</strong> so the 8-week Kalshi-exclusive treatment runs across <strong>September&ndash;November</strong> &mdash; the densest stretch of weekly NFL and CFB action. Launching off-season would suppress natural trade volume and put the <strong>&ge;30-trades-per-user</strong> primary-analysis threshold at risk, biasing engagement downward for reasons that have nothing to do with the platform.</p>
+  </div>
+
+  <h3 class="sub-head">In their own words</h3>
+  <p class="lead">We asked the cohort to describe, in their own words, what a prediction market is. <strong>Only about 1 in 5 named the actual mechanism</strong> &mdash; buying and selling shares priced on likelihood. Most reached for &ldquo;betting,&rdquo; &ldquo;guessing,&rdquo; or &ldquo;gambling.&rdquo; That's the starting line.</p>
+  <div class="qcol-grid">
+    <div class="qcol acc">
+      <div class="qcol-head"><span class="qcol-title">Named the mechanism</span><span class="qcol-count">4 / 21</span></div>
+      <div class="qquote">Something that allows people to buy and sell &ldquo;shares&rdquo; of future events.</div>
+      <div class="qquote">A place where people buy and sell shares based on what they predict to happen in the future.</div>
+      <div class="qquote">Kinda like a stock market where you can buy or sell events and profit based off the likelihood of them happening.</div>
+      <div class="qquote">Buying and selling shares based on if something will or will not happen.</div>
+    </div>
+    <div class="qcol par">
+      <div class="qcol-head"><span class="qcol-title">Roughly right</span><span class="qcol-count">7 / 21</span></div>
+      <div class="qquote">Betting on a binary outcome.</div>
+      <div class="qquote">Group pool betting in favor of 1 side of something or the other.</div>
+      <div class="qquote">A realm where occurrences happen and people come together to analyze and wager the outcome.</div>
+      <div class="qquote">Betting on real world events like culture or weather versus sports.</div>
+      <div class="qquote">Lets people bet on real world outcomes of everyday events, not just sports.</div>
+      <div class="qquote">Use money to predict events happening around the world.</div>
+      <div class="qquote">It is a trading platform.</div>
+    </div>
+    <div class="qcol vag">
+      <div class="qcol-head"><span class="qcol-title">Vague or off</span><span class="qcol-count">10 / 21</span></div>
+      <div class="qquote">Guessing what could or may not happen.</div>
+      <div class="qquote">Loophole for betting on current events.</div>
+      <div class="qquote">Guessing what will happen in weather and current events.</div>
+      <div class="qquote">I just started gambling so not sure.</div>
+      <div class="qquote">Speculation on something happening.</div>
+      <div class="qquote">Something skewing what the outcome of a bet most likely is.</div>
+      <div class="qquote">Wallstreet.</div>
+      <div class="qquote">Based on team and match-up history and how a team is performing at the moment.</div>
+      <div class="qquote">A prediction market is a market for predictions.</div>
+      <div class="qquote">Can you predict what's gonna happen on the market in the future?</div>
+    </div>
+  </div>
+
+  <h3 class="sub-head">What it does &mdash; and doesn't &mdash; confirm</h3>
+  <div class="measure-grid">
+    <div class="measure-card">
+      <h3>What this confirms</h3>
+      <ul>
+        <li>The cohort is the <strong>exact population Kalshi markets to and acquires</strong> &mdash; young, male, employed, weekly-active retail bettors with no Wall Street background. The textbook &ldquo;average Joe.&rdquo;</li>
+        <li>The <strong>Branch 2 benchmark</strong> is cleaner than expected &mdash; Hard Rock dominance means most users are benchmarked against the same book.</li>
+        <li>The <strong>&le;5 prior-trade criterion is realistic</strong> &mdash; 65% have zero prior prediction-market experience.</li>
+      </ul>
+    </div>
+    <div class="measure-card">
+      <h3>What it doesn't confirm</h3>
+      <ul>
+        <li>Geographically concentrated in <strong>Florida</strong> &mdash; may not generalize across state regulatory environments.</li>
+        <li><strong>87% male</strong> &mdash; inference limited to male retail bettors.</li>
+        <li><strong>92% under 35</strong> &mdash; inference limited to younger bettors.</li>
+        <li>Skews working-to-middle class &mdash; may not generalize to high-net-worth bettors or the <strong>&gt;$500K-volume cohort</strong> Citizens JMP identified as the only profitable Kalshi tier.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="claim" style="margin-top:2rem;">
+    <p class="attr" style="margin-top:0;">Pre-registered language</p>
+    <p class="resp" style="border-top:none;padding-top:0.75rem;margin-top:0.75rem;">&ldquo;Findings apply to U.S.-residing active sportsbook bettors with Fade Sync accounts, with minimal prior prediction-market activity. Based on the founding-member survey (n=23), the recruitable population is concentrated geographically (Florida), demographically (87% male, 92% age 21&ndash;30), and by sportsbook (96% Hard Rock Bet). The study does not generalize to retail traders broadly, to Kalshi's overall user base, or to high-volume bettors. Findings are interpreted as describing the population Kalshi is actively marketing to and acquiring. Final cohort distributions are reported separately when enrollment completes.&rdquo;</p>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="section">
+  <span class="section-eyebrow">How the study runs</span>
+  <h2>Each user is their own control.</h2>
+  <p class="lead">Fade Sync captures every participant's full sportsbook history as a baseline, then tracks the same person through 8 weeks of Kalshi-exclusive sports trading. No cross-user noise &mdash; we compare each bettor against themselves.</p>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-num">01</div>
+      <h3>Recruit &amp; onboard</h3>
+      <p>1,000 active U.S. sportsbook bettors with little to no prediction-market experience join through the Fade app. Onboarding is staggered over week one.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">02</div>
+      <h3>Baseline</h3>
+      <p>Fade Sync pulls each user's full sportsbook history &mdash; handle, bets, prices, outcomes &mdash; from the books they actually use. Min. 90 days, 50 bets.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">03</div>
+      <h3>Treatment</h3>
+      <p>8 consecutive weeks trading sports contracts on Kalshi via read-only OAuth. Min. 30 Kalshi trades per user for the primary analysis.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-num">04</div>
+      <h3>Publish</h3>
+      <p>Public whitepaper at week 12. Anonymized data and analysis code released openly on OSF, pre-committed before any user trades.</p>
+    </div>
+  </div>
+</div>
+
+<!-- What we measure -->
+<div class="section">
+  <span class="section-eyebrow">What we measure</span>
+  <h2>Forecast accuracy, not just P&amp;L.</h2>
+  <p class="lead">The headline statistics are strictly proper scoring rules that converge faster than dollar returns &mdash; so luck washes out and skill shows through over a realistic window.</p>
+  <div class="measure-grid">
+    <div class="measure-card">
+      <h3>Primary outcomes</h3>
+      <ul>
+        <li><strong>Brier score</strong> &mdash; per-trade forecast calibration (lower is better)</li>
+        <li><strong>Log loss</strong> &mdash; per-trade forecast accuracy (lower is better)</li>
+        <li><strong>Closing-line value</strong> &mdash; entry price vs. vig-removed closing price at the user's own book or Kalshi mid</li>
+      </ul>
+    </div>
+    <div class="measure-card">
+      <h3>Secondary &amp; descriptive</h3>
+      <ul>
+        <li><strong>Net P&amp;L per user</strong> &mdash; gross and net of fees</li>
+        <li><strong>Maker vs. Taker fill share</strong> by user and contract type</li>
+        <li><strong>Implied maker margin</strong> on RFQ parlay quotes</li>
+        <li><strong>RFQ refusal rate</strong> &mdash; requests that produced no fillable quote</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Hypotheses -->
+<div class="section">
+  <span class="section-eyebrow">Pre-registered hypotheses</span>
+  <h2>Five falsifiable bets,<br />locked in advance.</h2>
+  <p class="lead">Each is tested independently and publishes in either direction, with Bonferroni correction applied across all five at &alpha;&nbsp;=&nbsp;0.01.</p>
+  <div class="hyp-list">
+    <div class="hyp">
+      <div class="hyp-tag">H1</div>
+      <div class="hyp-body">
+        <h3>Venue effect on CLV</h3>
+        <p>Cohort median Kalshi CLV is no better than their median sportsbook CLV.</p>
+      </div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-tag">H2</div>
+      <div class="hyp-body">
+        <h3>Counterparty composition</h3>
+        <p>Institutional market-maker share exceeds Kalshi's stated &ldquo;7 percent or lower.&rdquo;</p>
+      </div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-tag">H3</div>
+      <div class="hyp-body">
+        <h3>Retail base-rate replication</h3>
+        <p>Cohort Taker return clusters at or below the academic Taker baseline of &minus;32%.</p>
+      </div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-tag">H4</div>
+      <div class="hyp-body">
+        <h3>Parlay margin</h3>
+        <p>Cohort parlay implied maker margin exceeds the 15% documented venue average.</p>
+      </div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-tag">H5</div>
+      <div class="hyp-body">
+        <h3>Size-dependent pricing</h3>
+        <p>RFQ maker margin scales monotonically with request size &mdash; bigger orders, worse prices.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Sync your books.<br />Be part of the study.</h2>
+  <p>Active sportsbook bettors can join the cohort through the Fade app. Connect your accounts, trade your own way, and help settle the question for good.</p>
+  <a href="/" class="btn-apply">Get Fade &#8594;</a>
+</div>
+
+<div class="disclaimer">
+  <p>This page summarizes a pre-registered research study and does not constitute investment, betting, or financial advice. Sports betting and prediction-market trading involve risk of loss. Participation is voluntary and uses each user's own capital. The study funder is disclosed to all participants. Third-party figures are attributed to their published sources.</p>
+</div>
+
+<div class="footer">
+  General Inquiries: <a href="mailto:info@fade.bet">info@fade.bet</a><br /><br />
+  &#169; 2026 Fade Social LLC. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
+</div>
+
+</body>
+</html>
