@@ -31,10 +31,9 @@ a:hover { text-decoration: underline; }
 .gate-card button:disabled { opacity: 0.6; cursor: wait; transform: none; }
 .gate-err { min-height: 1.2rem; margin-top: 0.9rem; font-size: 0.85rem; color: #f87171; font-family: 'JetBrains Mono', monospace; }
 
-/* Doc + comment-rail layout */
-.docwrap { max-width: 1160px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.75rem; align-items: start; }
+/* Layout */
+.docwrap { max-width: 780px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
 .tracker { position: relative; min-width: 0; }
-.rail { position: relative; }
 
 /* Tracker */
 .t-brand { margin-bottom: 1.75rem; }
@@ -110,27 +109,21 @@ a:hover { text-decoration: underline; }
 .t-item.done .t-item-body strong { color: rgba(255,255,255,0.6); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.25); }
 .t-item-body span { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
 
-/* Comment anchors + add button */
-[data-anchor] { position: relative; }
-.cmt-add { position: absolute; top: 0.5rem; right: -2.5rem; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); background: rgba(13,13,20,0.9); color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.15s, color 0.15s, border-color 0.15s; font-size: 0.95rem; line-height: 1; padding: 0; }
-[data-anchor]:hover .cmt-add, .cmt-add:focus { opacity: 1; }
-.cmt-add:hover { color: #3b82f6; border-color: rgba(59,130,246,0.45); }
-[data-anchor].has-comments > .cmt-add { opacity: 1; color: #60a5fa; border-color: rgba(59,130,246,0.35); }
-[data-anchor].cmt-active { box-shadow: -3px 0 0 0 #3b82f6; }
-.t-group h2[data-anchor].cmt-active { box-shadow: -3px 0 0 0 #3b82f6; padding-left: 0.6rem; }
+/* Phase 0 header + category sections */
+.ph-head { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-top: 2.75rem; }
+.cat { margin-top: 1.25rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
+.cat-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 1rem; }
+.cat-thread { display: flex; flex-direction: column; gap: 0.7rem; }
+.cat-empty { font-size: 0.85rem; color: rgba(255,255,255,0.3); font-style: italic; }
+.cat-addwrap { margin-top: 0.2rem; }
+.cat-add { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(96,165,250,0.85); background: none; border: 1px dashed rgba(59,130,246,0.3); padding: 0.5rem 0.8rem; border-radius: 8px; cursor: pointer; }
+.cat-add:hover { color: #60a5fa; border-color: rgba(59,130,246,0.5); }
 
-/* Comment rail */
-.rail-empty { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
-.cmt-card { position: absolute; left: 0; width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 0.85rem 0.95rem; transition: top 0.2s ease, border-color 0.15s, box-shadow 0.15s; }
-.cmt-card.cmt-active { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 1px rgba(59,130,246,0.3); }
-.cmt-on { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(96,165,250,0.85); margin-bottom: 0.55rem; display: block; cursor: pointer; line-height: 1.4; }
-.cmt-on:hover { color: #60a5fa; }
-.cmt-thread { display: flex; flex-direction: column; gap: 0.7rem; }
-.cmt-msg .cmt-meta { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 0.15rem; }
-.cmt-msg .cmt-meta strong { color: rgba(255,255,255,0.8); font-weight: 600; }
-.cmt-msg .cmt-body { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere; }
-.cmt-reply-btn { margin-top: 0.55rem; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer; padding: 0; }
-.cmt-reply-btn:hover { color: #60a5fa; }
+/* Comments / notes */
+.cmt-msg { padding: 0.75rem 0.9rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; }
+.cmt-meta { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem; }
+.cmt-meta strong { color: rgba(255,255,255,0.82); font-weight: 600; }
+.cmt-body { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere; }
 .cmt-form { margin-top: 0.65rem; }
 .cmt-form input.cmt-name { width: 100%; margin-bottom: 0.4rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.8rem; padding: 0.45rem 0.55rem; outline: none; }
 .cmt-form textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.85rem; padding: 0.5rem 0.55rem; resize: vertical; min-height: 56px; outline: none; line-height: 1.45; }
@@ -143,16 +136,21 @@ a:hover { text-decoration: underline; }
 .cmt-cancel { background: transparent; color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.15); }
 .cmt-cancel:hover { color: white; }
 .cmt-err { color: #f87171; font-size: 0.72rem; margin-top: 0.4rem; }
+.cmt-drop { margin-top: 0.6rem; border: 1px dashed rgba(255,255,255,0.18); border-radius: 8px; padding: 0.7rem; text-align: center; font-size: 0.74rem; color: rgba(255,255,255,0.4); cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+.cmt-drop:hover { border-color: rgba(59,130,246,0.4); color: #60a5fa; }
+.cmt-drop.drag { border-color: #3b82f6; color: #60a5fa; background: rgba(59,130,246,0.07); }
+.cmt-previews { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.cmt-prev { position: relative; }
+.cmt-prev img, .cmt-prev video { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); display: block; background: #000; }
+.cmt-prev.uploading { opacity: 0.45; }
+.cmt-prev .rm { position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; border-radius: 50%; background: #f87171; color: #1a0000; border: none; font-size: 0.8rem; line-height: 1; cursor: pointer; padding: 0; }
+.cmt-imgs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.cmt-imgs a { display: block; }
+.cmt-imgs img { max-width: 240px; max-height: 170px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); object-fit: cover; display: block; }
+.cmt-imgs video { max-width: 340px; max-height: 230px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; background: #000; }
 
-@media (max-width: 900px) {
-  .docwrap { grid-template-columns: 1fr; gap: 1.5rem; }
-  .rail { min-height: 0 !important; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; }
-  .cmt-card { position: static !important; top: auto !important; margin-bottom: 0.85rem; }
-  .cmt-add { right: 0.5rem; }
-}
 @media (max-width: 600px) {
-  .t-item { flex-direction: column; gap: 0.6rem; }
-  .t-status { margin-top: 0; }
+  .cat { padding: 1.1rem; }
 }
 </style>
 </head>
@@ -175,7 +173,6 @@ a:hover { text-decoration: underline; }
 
 <div id="docwrap" class="docwrap" hidden>
   <main id="content" class="tracker"></main>
-  <aside id="rail" class="rail" aria-label="Comments"></aside>
 </div>
 
 <script>
@@ -268,7 +265,7 @@ a:hover { text-decoration: underline; }
     function parseDate(s) { if (!s) return null; var p = ('' + s).split('-'); if (p.length !== 3) return null; return new Date(+p[0], +p[1] - 1, +p[2]); }
     function fmt(d) { return d ? d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : '—'; }
     function defaults() { return { label: root.getAttribute('data-label') || 'Countdown', start: root.getAttribute('data-start') || '', target: root.getAttribute('data-target') || '' }; }
-    function config() { try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.target) return s; } catch (e) {} return defaults(); }
+    function config() { return defaults(); } // fixed countdown — no in-page editing
 
     var cfg, TARGET, START, spanDays;
     function apply() {
@@ -331,11 +328,9 @@ a:hover { text-decoration: underline; }
   var SUPABASE_URL = '__SUPABASE_URL__';
   var SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
 
-  var rail, store, comments = [], openComposers = {}, activeAnchor = null;
+  var store, comments = [];
 
-  function cssEsc(id) { return (window.CSS && CSS.escape) ? CSS.escape(id) : id; }
   function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
-  function debounce(fn, ms) { var t; return function () { clearTimeout(t); t = setTimeout(fn, ms); }; }
   function getAuthor() { return localStorage.getItem('fade_tracker_author') || ''; }
   function setAuthor(n) { try { localStorage.setItem('fade_tracker_author', n); } catch (e) {} }
   function relTime(iso) {
@@ -381,102 +376,106 @@ a:hover { text-decoration: underline; }
     };
   }
 
-  function anchorEls() { return Array.prototype.slice.call(content.querySelectorAll('[data-anchor]')); }
-  function anchorById(id) { return content.querySelector('[data-anchor="' + cssEsc(id) + '"]'); }
+  // Compress an image client-side to a small JPEG blob.
+  function compressToBlob(file) {
+    return new Promise(function (resolve, reject) {
+      var img = new Image();
+      img.onload = function () {
+        var max = 1600, w = img.naturalWidth, h = img.naturalHeight;
+        if (w > max || h > max) { if (w >= h) { h = Math.round(h * max / w); w = max; } else { w = Math.round(w * max / h); h = max; } }
+        var c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(img.src);
+        c.toBlob(function (blob) { blob ? resolve(blob) : reject(new Error('encode failed')); }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(img.src); reject(new Error('image load failed')); };
+      img.src = URL.createObjectURL(file);
+    });
+  }
+
+  // Upload to Supabase Storage; returns the public URL.
+  // Images are compressed to JPEG; videos upload as-is.
+  async function uploadMedia(anchor, file) {
+    var isVideo = file.type && file.type.indexOf('video/') === 0;
+    var body, ext, ctype;
+    if (isVideo) {
+      body = file;
+      ext = (file.name.match(/\.[a-z0-9]+$/i) || ['.mp4'])[0].toLowerCase();
+      ctype = file.type || 'video/mp4';
+    } else {
+      body = await compressToBlob(file); ext = '.jpg'; ctype = 'image/jpeg';
+    }
+    var path = anchor + '/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + ext;
+    var base = SUPABASE_URL.replace(/\/$/, '');
+    var r = await fetch(base + '/storage/v1/object/screenshots/' + path, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': ctype },
+      body: body
+    });
+    if (!r.ok) throw new Error('upload failed');
+    return base + '/storage/v1/object/public/screenshots/' + path;
+  }
+
+  function isVideoUrl(u) { return /\.(mp4|webm|mov|m4v|ogg)$/i.test(u); }
+
+  // Notes with images are stored as JSON in the body: {"t": text, "i": [dataURIs]}.
+  // Plain-text bodies (and any future `images` column) still work.
+  function decodeNote(c) {
+    var text = c.body || '', images = (c.images && c.images.length) ? c.images.slice() : [];
+    if (text && text.charAt(0) === '{') {
+      try { var o = JSON.parse(text); if (o && typeof o.t === 'string' && Array.isArray(o.i)) { text = o.t; images = images.concat(o.i); } } catch (e) {}
+    }
+    return { text: text, images: images };
+  }
+
   function commentsFor(id) { return comments.filter(function (c) { return c.anchor === id; }); }
 
   async function initComments() {
-    rail = document.getElementById('rail');
     store = makeStore();
-    anchorEls().forEach(function (el) {
-      var b = document.createElement('button');
-      b.className = 'cmt-add'; b.type = 'button'; b.title = 'Add comment'; b.setAttribute('aria-label', 'Add comment'); b.textContent = '+';
-      b.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var id = el.getAttribute('data-anchor');
-        openComposers[id] = true;
-        renderRail(true);
-        setActive(id);
-      });
-      el.appendChild(b);
-    });
     try { comments = await store.list(); } catch (e) { comments = []; }
-    renderRail(false);
-    window.addEventListener('resize', debounce(layoutRail, 150));
+    Array.prototype.slice.call(content.querySelectorAll('.cat-thread')).forEach(renderThread);
   }
 
-  function setActive(id) {
-    activeAnchor = id;
-    anchorEls().forEach(function (el) { el.classList.toggle('cmt-active', el.getAttribute('data-anchor') === id); });
-    Array.prototype.slice.call(rail.querySelectorAll('.cmt-card')).forEach(function (c) {
-      c.classList.toggle('cmt-active', c.getAttribute('data-for') === id);
-    });
-  }
-
-  function focusAnchor(id) {
-    var el = anchorById(id); if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setActive(id);
-  }
-
-  function renderRail(focusComposer) {
-    rail.innerHTML = '';
-    anchorEls().forEach(function (el) {
-      el.classList.toggle('has-comments', commentsFor(el.getAttribute('data-anchor')).length > 0);
-    });
-    var ids = {};
-    comments.forEach(function (c) { ids[c.anchor] = true; });
-    Object.keys(openComposers).forEach(function (id) { if (openComposers[id]) ids[id] = true; });
-    var idList = Object.keys(ids).filter(function (id) { return anchorById(id); });
-
-    if (idList.length === 0) {
-      var em = document.createElement('div'); em.className = 'rail-empty'; em.textContent = 'No comments yet';
-      rail.appendChild(em); rail.style.minHeight = ''; return;
-    }
-
-    idList.forEach(function (id) {
-      var el = anchorById(id);
-      var label = el.getAttribute('data-anchor-label') || 'this item';
-      var card = document.createElement('div');
-      card.className = 'cmt-card'; card.setAttribute('data-for', id);
-
-      var on = document.createElement('span'); on.className = 'cmt-on'; on.textContent = 'On: ' + label;
-      on.addEventListener('click', function () { focusAnchor(id); });
-      card.appendChild(on);
-
-      var thread = document.createElement('div'); thread.className = 'cmt-thread';
-      commentsFor(id).forEach(function (c) {
+  function renderThread(container) {
+    var anchor = container.getAttribute('data-thread');
+    container.innerHTML = '';
+    var list = commentsFor(anchor);
+    if (!list.length) {
+      var em = document.createElement('div'); em.className = 'cat-empty'; em.textContent = 'No notes yet.';
+      container.appendChild(em);
+    } else {
+      list.forEach(function (c) {
+        var n = decodeNote(c);
         var msg = document.createElement('div'); msg.className = 'cmt-msg';
-        msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; ' + relTime(c.created_at) + '</div><div class="cmt-body">' + esc(c.body) + '</div>';
-        thread.appendChild(msg);
+        msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; ' + relTime(c.created_at) + '</div>' + (n.text ? '<div class="cmt-body">' + esc(n.text) + '</div>' : '');
+        if (n.images.length) {
+          var iw = document.createElement('div'); iw.className = 'cmt-imgs';
+          n.images.forEach(function (u) {
+            if (isVideoUrl(u)) {
+              var v = document.createElement('video'); v.src = u; v.controls = true; v.preload = 'metadata'; v.playsInline = true; iw.appendChild(v);
+            } else {
+              var a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer';
+              var im = document.createElement('img'); im.src = u; im.loading = 'lazy'; a.appendChild(im); iw.appendChild(a);
+            }
+          });
+          msg.appendChild(iw);
+        }
+        container.appendChild(msg);
       });
-      card.appendChild(thread);
-
-      if (openComposers[id]) {
-        card.appendChild(buildComposer(id));
-      } else {
-        var rb = document.createElement('button'); rb.className = 'cmt-reply-btn'; rb.type = 'button';
-        rb.textContent = commentsFor(id).length ? 'Reply' : 'Comment';
-        rb.addEventListener('click', function () { openComposers[id] = true; renderRail(true); setActive(id); });
-        card.appendChild(rb);
-      }
-
-      card.addEventListener('click', function () { setActive(id); });
-      rail.appendChild(card);
-    });
-
-    layoutRail();
-
-    if (focusComposer) {
-      var openIds = Object.keys(openComposers);
-      if (openIds.length) {
-        var c = rail.querySelector('.cmt-card[data-for="' + cssEsc(openIds[openIds.length - 1]) + '"] textarea');
-        if (c) c.focus();
-      }
     }
+    var addWrap = document.createElement('div'); addWrap.className = 'cat-addwrap';
+    var addBtn = document.createElement('button'); addBtn.className = 'cat-add'; addBtn.type = 'button'; addBtn.textContent = '+ Add note';
+    addBtn.addEventListener('click', function () {
+      addBtn.style.display = 'none';
+      var form = buildComposer(anchor, function () { renderThread(container); }, function () { addBtn.style.display = ''; form.remove(); });
+      addWrap.appendChild(form);
+      var ta = form.querySelector('textarea'); if (ta) ta.focus();
+    });
+    addWrap.appendChild(addBtn);
+    container.appendChild(addWrap);
   }
 
-  function buildComposer(id) {
+  function buildComposer(anchor, onDone, onCancel) {
     var form = document.createElement('div'); form.className = 'cmt-form';
     var nameInput = null;
     if (!getAuthor()) {
@@ -484,26 +483,69 @@ a:hover { text-decoration: underline; }
       nameInput.className = 'cmt-name'; nameInput.type = 'text'; nameInput.placeholder = 'Your name';
       form.appendChild(nameInput);
     }
-    var ta = document.createElement('textarea'); ta.placeholder = 'Write a comment…'; form.appendChild(ta);
-    var errEl = document.createElement('div'); errEl.className = 'cmt-err'; errEl.style.display = 'none'; form.appendChild(errEl);
+    var ta = document.createElement('textarea'); ta.placeholder = 'Write a note…'; form.appendChild(ta);
+    var errEl = document.createElement('div'); errEl.className = 'cmt-err'; errEl.style.display = 'none';
+
+    // ---- Image attachments (drop / paste / click) ----
+    var pending = []; // { url, uploading }
+    var previews = document.createElement('div'); previews.className = 'cmt-previews';
+    var drop = document.createElement('div'); drop.className = 'cmt-drop'; drop.textContent = 'Drop screenshots or videos here, paste, or click to upload';
+    var fileInput = document.createElement('input'); fileInput.type = 'file'; fileInput.accept = 'image/*,video/*'; fileInput.multiple = true; fileInput.style.display = 'none';
+    form.appendChild(previews); form.appendChild(drop); form.appendChild(fileInput);
+
+    function addFiles(files) {
+      Array.prototype.forEach.call(files, function (file) {
+        var isImg = file.type && file.type.indexOf('image/') === 0;
+        var isVid = file.type && file.type.indexOf('video/') === 0;
+        if (!isImg && !isVid) return;
+        var item = { url: null, uploading: true };
+        var prev = document.createElement('div'); prev.className = 'cmt-prev uploading';
+        var media = document.createElement(isVid ? 'video' : 'img');
+        if (isVid) { media.muted = true; media.playsInline = true; }
+        media.src = URL.createObjectURL(file); prev.appendChild(media);
+        var rm = document.createElement('button'); rm.className = 'rm'; rm.type = 'button'; rm.textContent = '×';
+        rm.addEventListener('click', function () { var i = pending.indexOf(item); if (i >= 0) pending.splice(i, 1); prev.remove(); });
+        prev.appendChild(rm); previews.appendChild(prev); pending.push(item);
+        uploadMedia(anchor, file).then(function (url) {
+          item.url = url; item.uploading = false; prev.classList.remove('uploading');
+        }).catch(function () {
+          var i = pending.indexOf(item); if (i >= 0) pending.splice(i, 1); prev.remove();
+          errEl.textContent = 'Upload failed (large videos may exceed the storage limit).'; errEl.style.display = 'block';
+        });
+      });
+    }
+    drop.addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () { addFiles(fileInput.files); fileInput.value = ''; });
+    drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('drag'); });
+    drop.addEventListener('dragleave', function () { drop.classList.remove('drag'); });
+    drop.addEventListener('drop', function (e) { e.preventDefault(); drop.classList.remove('drag'); if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+    ta.addEventListener('paste', function (e) {
+      var items = e.clipboardData && e.clipboardData.items; if (!items) return;
+      var imgs = []; for (var i = 0; i < items.length; i++) { if (items[i].type && items[i].type.indexOf('image/') === 0) { var f = items[i].getAsFile(); if (f) imgs.push(f); } }
+      if (imgs.length) addFiles(imgs);
+    });
+
+    form.appendChild(errEl);
     var actions = document.createElement('div'); actions.className = 'cmt-actions';
     var cancel = document.createElement('button'); cancel.className = 'cmt-cancel'; cancel.type = 'button'; cancel.textContent = 'Cancel';
     var post = document.createElement('button'); post.className = 'cmt-post'; post.type = 'button'; post.textContent = 'Post';
     actions.appendChild(cancel); actions.appendChild(post); form.appendChild(actions);
 
-    cancel.addEventListener('click', function () { delete openComposers[id]; renderRail(false); });
+    cancel.addEventListener('click', function () { if (onCancel) onCancel(); });
     post.addEventListener('click', async function () {
       var body = ta.value.trim();
       var author = (nameInput ? nameInput.value.trim() : getAuthor()) || 'Anonymous';
-      if (!body) { ta.focus(); return; }
+      if (!body && !pending.length) { ta.focus(); return; }
+      if (pending.some(function (p) { return p.uploading; })) { errEl.textContent = 'Hold on — images still uploading.'; errEl.style.display = 'block'; return; }
       post.disabled = true; post.textContent = 'Posting…'; errEl.style.display = 'none';
+      var images = pending.map(function (p) { return p.url; }).filter(Boolean);
+      var payload = { anchor: anchor, author: author, body: body };
+      if (images.length) payload.images = images;
       try {
-        var saved = await store.add({ anchor: id, author: author, body: body });
+        var saved = await store.add(payload);
         if (nameInput && nameInput.value.trim()) setAuthor(nameInput.value.trim());
         comments.push(saved);
-        delete openComposers[id];
-        renderRail(false);
-        setActive(id);
+        if (onDone) onDone();
       } catch (e) {
         errEl.textContent = 'Could not save — check connection.'; errEl.style.display = 'block';
         post.disabled = false; post.textContent = 'Post';
@@ -511,30 +553,6 @@ a:hover { text-decoration: underline; }
     });
     ta.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') post.click(); });
     return form;
-  }
-
-  function layoutRail() {
-    if (!rail) return;
-    var cards = Array.prototype.slice.call(rail.querySelectorAll('.cmt-card'));
-    if (window.innerWidth <= 900) {
-      cards.forEach(function (c) { c.style.top = ''; });
-      rail.style.minHeight = '';
-      return;
-    }
-    var railRect = rail.getBoundingClientRect();
-    var arr = cards.map(function (card) {
-      var el = anchorById(card.getAttribute('data-for'));
-      var top = el ? (el.getBoundingClientRect().top - railRect.top) : 0;
-      return { card: card, top: Math.max(0, top) };
-    });
-    arr.sort(function (a, b) { return a.top - b.top; });
-    var prevBottom = 0, GAP = 12;
-    arr.forEach(function (o) {
-      var top = o.top; if (top < prevBottom + GAP) top = prevBottom + GAP;
-      o.card.style.top = top + 'px';
-      prevBottom = top + o.card.offsetHeight;
-    });
-    rail.style.minHeight = prevBottom + 'px';
   }
 })();
 </script>
