@@ -123,7 +123,15 @@ a:hover { text-decoration: underline; }
 .cmt-msg { padding: 0.75rem 0.9rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; }
 .cmt-meta { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem; }
 .cmt-meta strong { color: rgba(255,255,255,0.82); font-weight: 600; }
-.cmt-body { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere; }
+.cmt-body { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; word-wrap: break-word; overflow-wrap: anywhere; }
+.cmt-body .note-h1 { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(96,165,250,0.9); margin: 1.1rem 0 0.5rem; }
+.cmt-body .note-h1:first-child { margin-top: 0; }
+.cmt-body .note-h2 { font-size: 0.95rem; font-weight: 700; color: #fff; margin: 1rem 0 0.4rem; }
+.cmt-body .note-p { font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.6; margin: 0.5rem 0; }
+.cmt-body .note-ul { list-style: none; margin: 0.3rem 0 0.7rem; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.cmt-body .note-ul li { position: relative; padding-left: 1.15rem; font-size: 0.9rem; color: rgba(255,255,255,0.74); line-height: 1.5; }
+.cmt-body .note-ul li::before { content: '•'; position: absolute; left: 0.1rem; color: rgba(59,130,246,0.75); }
+.cmt-body .note-hr { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.1rem 0; }
 .cmt-form { margin-top: 0.65rem; }
 .cmt-form input.cmt-name { width: 100%; margin-bottom: 0.4rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.8rem; padding: 0.45rem 0.55rem; outline: none; }
 .cmt-form textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.85rem; padding: 0.5rem 0.55rem; resize: vertical; min-height: 56px; outline: none; line-height: 1.45; }
@@ -428,6 +436,32 @@ a:hover { text-decoration: underline; }
     return { text: text, images: images };
   }
 
+  // Lightly format a note body into headers / sub-headers / bullets / dividers.
+  function formatNoteBody(text) {
+    var lines = ('' + text).split('\n');
+    var html = '', inList = false;
+    function closeList() { if (inList) { html += '</ul>'; inList = false; } }
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (line === '') { closeList(); continue; }
+      if (/^[—–\-\s]{3,}$/.test(line)) { closeList(); html += '<hr class="note-hr">'; continue; }
+      if (/^[•\-–]\s+/.test(line)) {
+        if (!inList) { html += '<ul class="note-ul">'; inList = true; }
+        html += '<li>' + esc(line.replace(/^[•\-–]\s+/, '')) + '</li>';
+        continue;
+      }
+      closeList();
+      var letters = line.replace(/[^A-Za-z]/g, '');
+      if (letters.length >= 2 && letters === letters.toUpperCase()) { html += '<div class="note-h1">' + esc(line) + '</div>'; continue; }
+      var nextBullet = false;
+      for (var j = i + 1; j < lines.length; j++) { var nl = lines[j].trim(); if (nl === '') continue; nextBullet = /^[•\-–]\s+/.test(nl); break; }
+      if (nextBullet && line.length <= 42 && !/[.:!?]$/.test(line)) { html += '<div class="note-h2">' + esc(line) + '</div>'; continue; }
+      html += '<p class="note-p">' + esc(line) + '</p>';
+    }
+    closeList();
+    return html;
+  }
+
   function commentsFor(id) { return comments.filter(function (c) { return c.anchor === id; }); }
 
   async function initComments() {
@@ -447,7 +481,7 @@ a:hover { text-decoration: underline; }
       list.forEach(function (c) {
         var n = decodeNote(c);
         var msg = document.createElement('div'); msg.className = 'cmt-msg';
-        msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; ' + relTime(c.created_at) + '</div>' + (n.text ? '<div class="cmt-body">' + esc(n.text) + '</div>' : '');
+        msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; ' + relTime(c.created_at) + '</div>' + (n.text ? '<div class="cmt-body">' + formatNoteBody(n.text) + '</div>' : '');
         if (n.images.length) {
           var iw = document.createElement('div'); iw.className = 'cmt-imgs';
           n.images.forEach(function (u) {
