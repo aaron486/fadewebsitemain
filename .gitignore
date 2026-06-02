@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private progress-tracker plaintext (never commit)
+scripts/tracker-content.html

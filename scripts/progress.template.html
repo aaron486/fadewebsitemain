@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Progress Tracker</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Gate */
+.gate { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: #050507; z-index: 10; }
+.gate::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 620px; height: 420px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 62%); filter: blur(80px); pointer-events: none; }
+.gate-card { position: relative; width: 100%; max-width: 380px; text-align: center; }
+.gate-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+.gate-brand svg { display: block; }
+.gate-brand .tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+.gate-lock { width: 52px; height: 52px; border-radius: 14px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin: 0 auto 1.5rem; }
+.gate-card h1 { font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.gate-card p { font-size: 0.9375rem; color: rgba(255,255,255,0.5); margin-bottom: 1.75rem; }
+.gate-card input { width: 100%; padding: 0.9rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: white; font-size: 1rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+.gate-card input:focus { border-color: #3b82f6; }
+.gate-card button { width: 100%; margin-top: 0.75rem; padding: 0.9rem; background: #3b82f6; color: white; border: none; border-radius: 12px; font-size: 0.95rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+.gate-card button:hover { background: #2f6fe0; transform: translateY(-1px); }
+.gate-card button:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.gate-err { min-height: 1.2rem; margin-top: 0.9rem; font-size: 0.85rem; color: #f87171; font-family: 'JetBrains Mono', monospace; }
+
+/* Doc + comment-rail layout */
+.docwrap { max-width: 1160px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.75rem; align-items: start; }
+.tracker { position: relative; min-width: 0; }
+.rail { position: relative; }
+
+/* Tracker */
+.t-brand { margin-bottom: 1.75rem; }
+.t-brand svg { display: block; }
+.t-head { margin-bottom: 2rem; }
+.t-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,113,113,0.85); display: inline-block; margin-bottom: 0.75rem; padding: 0.3rem 0.7rem; border: 1px solid rgba(248,113,113,0.25); border-radius: 999px; }
+.t-head h1 { font-size: clamp(1.8rem, 4.5vw, 2.5rem); font-weight: 900; color: white; letter-spacing: -0.03em; line-height: 1.1; }
+.t-sub { font-size: 1rem; color: rgba(255,255,255,0.5); margin-top: 0.6rem; }
+.t-day { display: inline-flex; align-items: baseline; gap: 0.6rem; margin-top: 1.1rem; padding: 0.5rem 0.95rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 999px; }
+.t-day-num { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.95rem; color: #60a5fa; letter-spacing: 0.03em; }
+.t-day-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); }
+.t-lock-out { float: right; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); cursor: pointer; background: none; border: 1px solid rgba(255,255,255,0.12); padding: 0.4rem 0.8rem; border-radius: 999px; }
+.t-lock-out:hover { color: white; }
+
+.t-summary { padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; margin-bottom: 2.5rem; }
+.t-summary-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.9rem; }
+.t-summary-top .pct { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 800; color: #3b82f6; }
+.t-summary-top .lbl { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+.t-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; }
+.t-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+.t-summary-meta { display: flex; gap: 1.5rem; margin-top: 1rem; font-size: 0.8125rem; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+.t-summary-meta strong { color: white; font-family: 'JetBrains Mono', monospace; }
+.t-summary-meta .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; }
+.dot-done { background: #4ade80; } .dot-prog { background: #fbbf24; } .dot-soon { background: rgba(255,255,255,0.3); }
+
+.t-group { margin-bottom: 2.25rem; }
+.t-group h2 { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.t-group h2 .t-when { color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.04em; }
+.t-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.t-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.t-status { flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.35rem 0.65rem; border-radius: 999px; margin-top: 0.1rem; min-width: 92px; text-align: center; }
+.t-item.done .t-status { background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+.t-item.prog .t-status { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+.t-item.soon .t-status { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.1); }
+.t-item-body { display: flex; flex-direction: column; gap: 0.15rem; }
+.t-item-body strong { color: white; font-weight: 600; font-size: 0.95rem; }
+.t-item.done .t-item-body strong { color: rgba(255,255,255,0.6); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.25); }
+.t-item-body span { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+/* Comment anchors + add button */
+[data-anchor] { position: relative; }
+.cmt-add { position: absolute; top: 0.5rem; right: -2.5rem; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); background: rgba(13,13,20,0.9); color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.15s, color 0.15s, border-color 0.15s; font-size: 0.95rem; line-height: 1; padding: 0; }
+[data-anchor]:hover .cmt-add, .cmt-add:focus { opacity: 1; }
+.cmt-add:hover { color: #3b82f6; border-color: rgba(59,130,246,0.45); }
+[data-anchor].has-comments > .cmt-add { opacity: 1; color: #60a5fa; border-color: rgba(59,130,246,0.35); }
+[data-anchor].cmt-active { box-shadow: -3px 0 0 0 #3b82f6; }
+.t-group h2[data-anchor].cmt-active { box-shadow: -3px 0 0 0 #3b82f6; padding-left: 0.6rem; }
+
+/* Comment rail */
+.rail-empty { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+.cmt-card { position: absolute; left: 0; width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 0.85rem 0.95rem; transition: top 0.2s ease, border-color 0.15s, box-shadow 0.15s; }
+.cmt-card.cmt-active { border-color: rgba(59,130,246,0.5); box-shadow: 0 0 0 1px rgba(59,130,246,0.3); }
+.cmt-on { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(96,165,250,0.85); margin-bottom: 0.55rem; display: block; cursor: pointer; line-height: 1.4; }
+.cmt-on:hover { color: #60a5fa; }
+.cmt-thread { display: flex; flex-direction: column; gap: 0.7rem; }
+.cmt-msg .cmt-meta { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 0.15rem; }
+.cmt-msg .cmt-meta strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+.cmt-msg .cmt-body { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere; }
+.cmt-reply-btn { margin-top: 0.55rem; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer; padding: 0; }
+.cmt-reply-btn:hover { color: #60a5fa; }
+.cmt-form { margin-top: 0.65rem; }
+.cmt-form input.cmt-name { width: 100%; margin-bottom: 0.4rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.8rem; padding: 0.45rem 0.55rem; outline: none; }
+.cmt-form textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: white; font-family: inherit; font-size: 0.85rem; padding: 0.5rem 0.55rem; resize: vertical; min-height: 56px; outline: none; line-height: 1.45; }
+.cmt-form input.cmt-name:focus, .cmt-form textarea:focus { border-color: #3b82f6; }
+.cmt-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; justify-content: flex-end; }
+.cmt-actions button { font-family: inherit; font-size: 0.78rem; font-weight: 600; padding: 0.42rem 0.85rem; border-radius: 7px; cursor: pointer; border: 1px solid transparent; }
+.cmt-post { background: #3b82f6; color: white; }
+.cmt-post:hover { background: #2f6fe0; }
+.cmt-post:disabled { opacity: 0.5; cursor: default; }
+.cmt-cancel { background: transparent; color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.15); }
+.cmt-cancel:hover { color: white; }
+.cmt-err { color: #f87171; font-size: 0.72rem; margin-top: 0.4rem; }
+
+@media (max-width: 900px) {
+  .docwrap { grid-template-columns: 1fr; gap: 1.5rem; }
+  .rail { min-height: 0 !important; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; }
+  .cmt-card { position: static !important; top: auto !important; margin-bottom: 0.85rem; }
+  .cmt-add { right: 0.5rem; }
+}
+@media (max-width: 600px) {
+  .t-item { flex-direction: column; gap: 0.6rem; }
+  .t-status { margin-top: 0; }
+}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <form id="gateForm" class="gate-card" autocomplete="off">
+    <div class="gate-brand">
+      <svg viewBox="80 420 840 170" height="34" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+      <span class="tagline">Bet Together</span>
+    </div>
+    <div class="gate-lock">&#128274;</div>
+    <h1>Private</h1>
+    <p>This page is locked. Enter the password to continue.</p>
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password" />
+    <button type="submit" id="unlockBtn">Unlock</button>
+    <div class="gate-err" id="err"></div>
+  </form>
+</div>
+
+<div id="docwrap" class="docwrap" hidden>
+  <main id="content" class="tracker"></main>
+  <aside id="rail" class="rail" aria-label="Comments"></aside>
+</div>
+
+<script>
+(function () {
+  var PAYLOAD = /*__PAYLOAD__*/null;
+
+  function b64ToBytes(b64) {
+    var bin = atob(b64), b = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
+    return b;
+  }
+
+  async function decrypt(password) {
+    var enc = new TextEncoder();
+    var km = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+    var key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: b64ToBytes(PAYLOAD.salt), iterations: PAYLOAD.iter, hash: 'SHA-256' },
+      km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+    );
+    var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64ToBytes(PAYLOAD.iv) }, key, b64ToBytes(PAYLOAD.ct));
+    return new TextDecoder().decode(pt);
+  }
+
+  var form = document.getElementById('gateForm');
+  var input = document.getElementById('pw');
+  var err = document.getElementById('err');
+  var btn = document.getElementById('unlockBtn');
+  var gate = document.getElementById('gate');
+  var content = document.getElementById('content');
+
+  input.focus();
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Unlocking…';
+    try {
+      var html = await decrypt(input.value);
+      content.innerHTML = html;
+      gate.remove();
+      document.getElementById('docwrap').hidden = false;
+      input.value = '';
+      var lo = document.getElementById('lockBtn');
+      if (lo) lo.addEventListener('click', function () { location.reload(); });
+      // Days since official kickoff (June 1, 2026). Kickoff day = Day 1.
+      var dc = document.getElementById('dayCount');
+      if (dc) {
+        var kickoff = new Date(2026, 5, 1);
+        var now = new Date();
+        var k = new Date(kickoff.getFullYear(), kickoff.getMonth(), kickoff.getDate());
+        var t = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var dayNum = Math.round((t - k) / 86400000) + 1;
+        if (dayNum < 1) dayNum = 1;
+        dc.textContent = 'Day ' + dayNum;
+      }
+      initComments();
+    } catch (e2) {
+      err.textContent = 'Incorrect password.';
+      btn.disabled = false;
+      btn.textContent = 'Unlock';
+      input.select();
+    }
+  });
+
+  // ---------- Comments ----------
+  // Backend config is injected at build time from env (SUPABASE_URL / SUPABASE_ANON_KEY).
+  // If left empty, comments fall back to this browser's localStorage (not shared).
+  var SUPABASE_URL = '__SUPABASE_URL__';
+  var SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
+
+  var rail, store, comments = [], openComposers = {}, activeAnchor = null;
+
+  function cssEsc(id) { return (window.CSS && CSS.escape) ? CSS.escape(id) : id; }
+  function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+  function debounce(fn, ms) { var t; return function () { clearTimeout(t); t = setTimeout(fn, ms); }; }
+  function getAuthor() { return localStorage.getItem('fade_tracker_author') || ''; }
+  function setAuthor(n) { try { localStorage.setItem('fade_tracker_author', n); } catch (e) {} }
+  function relTime(iso) {
+    var t = new Date(iso).getTime(); if (isNaN(t)) return '';
+    var s = Math.floor((Date.now() - t) / 1000);
+    if (s < 60) return 'just now';
+    var m = Math.floor(s / 60); if (m < 60) return m + 'm ago';
+    var h = Math.floor(m / 60); if (h < 24) return h + 'h ago';
+    var d = Math.floor(h / 24); if (d < 7) return d + 'd ago';
+    return new Date(iso).toLocaleDateString();
+  }
+
+  function makeStore() {
+    var useBackend = SUPABASE_URL.indexOf('http') === 0 && SUPABASE_ANON_KEY.length > 10;
+    if (useBackend) {
+      var base = SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/comments';
+      var headers = { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+      return {
+        backend: true,
+        list: async function () {
+          var r = await fetch(base + '?select=*&order=created_at.asc', { headers: headers });
+          if (!r.ok) throw new Error('load');
+          return await r.json();
+        },
+        add: async function (c) {
+          var h2 = Object.assign({ Prefer: 'return=representation' }, headers);
+          var r = await fetch(base, { method: 'POST', headers: h2, body: JSON.stringify(c) });
+          if (!r.ok) throw new Error('post');
+          return (await r.json())[0];
+        }
+      };
+    }
+    var KEY = 'fade_tracker_comments';
+    function all() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+    return {
+      backend: false,
+      list: async function () { return all(); },
+      add: async function (c) {
+        var a = all();
+        var item = Object.assign({ id: 'local-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7), created_at: new Date().toISOString() }, c);
+        a.push(item); localStorage.setItem(KEY, JSON.stringify(a)); return item;
+      }
+    };
+  }
+
+  function anchorEls() { return Array.prototype.slice.call(content.querySelectorAll('[data-anchor]')); }
+  function anchorById(id) { return content.querySelector('[data-anchor="' + cssEsc(id) + '"]'); }
+  function commentsFor(id) { return comments.filter(function (c) { return c.anchor === id; }); }
+
+  async function initComments() {
+    rail = document.getElementById('rail');
+    store = makeStore();
+    anchorEls().forEach(function (el) {
+      var b = document.createElement('button');
+      b.className = 'cmt-add'; b.type = 'button'; b.title = 'Add comment'; b.setAttribute('aria-label', 'Add comment'); b.textContent = '+';
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var id = el.getAttribute('data-anchor');
+        openComposers[id] = true;
+        renderRail(true);
+        setActive(id);
+      });
+      el.appendChild(b);
+    });
+    try { comments = await store.list(); } catch (e) { comments = []; }
+    renderRail(false);
+    window.addEventListener('resize', debounce(layoutRail, 150));
+  }
+
+  function setActive(id) {
+    activeAnchor = id;
+    anchorEls().forEach(function (el) { el.classList.toggle('cmt-active', el.getAttribute('data-anchor') === id); });
+    Array.prototype.slice.call(rail.querySelectorAll('.cmt-card')).forEach(function (c) {
+      c.classList.toggle('cmt-active', c.getAttribute('data-for') === id);
+    });
+  }
+
+  function focusAnchor(id) {
+    var el = anchorById(id); if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setActive(id);
+  }
+
+  function renderRail(focusComposer) {
+    rail.innerHTML = '';
+    anchorEls().forEach(function (el) {
+      el.classList.toggle('has-comments', commentsFor(el.getAttribute('data-anchor')).length > 0);
+    });
+    var ids = {};
+    comments.forEach(function (c) { ids[c.anchor] = true; });
+    Object.keys(openComposers).forEach(function (id) { if (openComposers[id]) ids[id] = true; });
+    var idList = Object.keys(ids).filter(function (id) { return anchorById(id); });
+
+    if (idList.length === 0) {
+      var em = document.createElement('div'); em.className = 'rail-empty'; em.textContent = 'No comments yet';
+      rail.appendChild(em); rail.style.minHeight = ''; return;
+    }
+
+    idList.forEach(function (id) {
+      var el = anchorById(id);
+      var label = el.getAttribute('data-anchor-label') || 'this item';
+      var card = document.createElement('div');
+      card.className = 'cmt-card'; card.setAttribute('data-for', id);
+
+      var on = document.createElement('span'); on.className = 'cmt-on'; on.textContent = 'On: ' + label;
+      on.addEventListener('click', function () { focusAnchor(id); });
+      card.appendChild(on);
+
+      var thread = document.createElement('div'); thread.className = 'cmt-thread';
+      commentsFor(id).forEach(function (c) {
+        var msg = document.createElement('div'); msg.className = 'cmt-msg';
+        msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; ' + relTime(c.created_at) + '</div><div class="cmt-body">' + esc(c.body) + '</div>';
+        thread.appendChild(msg);
+      });
+      card.appendChild(thread);
+
+      if (openComposers[id]) {
+        card.appendChild(buildComposer(id));
+      } else {
+        var rb = document.createElement('button'); rb.className = 'cmt-reply-btn'; rb.type = 'button';
+        rb.textContent = commentsFor(id).length ? 'Reply' : 'Comment';
+        rb.addEventListener('click', function () { openComposers[id] = true; renderRail(true); setActive(id); });
+        card.appendChild(rb);
+      }
+
+      card.addEventListener('click', function () { setActive(id); });
+      rail.appendChild(card);
+    });
+
+    layoutRail();
+
+    if (focusComposer) {
+      var openIds = Object.keys(openComposers);
+      if (openIds.length) {
+        var c = rail.querySelector('.cmt-card[data-for="' + cssEsc(openIds[openIds.length - 1]) + '"] textarea');
+        if (c) c.focus();
+      }
+    }
+  }
+
+  function buildComposer(id) {
+    var form = document.createElement('div'); form.className = 'cmt-form';
+    var nameInput = null;
+    if (!getAuthor()) {
+      nameInput = document.createElement('input');
+      nameInput.className = 'cmt-name'; nameInput.type = 'text'; nameInput.placeholder = 'Your name';
+      form.appendChild(nameInput);
+    }
+    var ta = document.createElement('textarea'); ta.placeholder = 'Write a comment…'; form.appendChild(ta);
+    var errEl = document.createElement('div'); errEl.className = 'cmt-err'; errEl.style.display = 'none'; form.appendChild(errEl);
+    var actions = document.createElement('div'); actions.className = 'cmt-actions';
+    var cancel = document.createElement('button'); cancel.className = 'cmt-cancel'; cancel.type = 'button'; cancel.textContent = 'Cancel';
+    var post = document.createElement('button'); post.className = 'cmt-post'; post.type = 'button'; post.textContent = 'Post';
+    actions.appendChild(cancel); actions.appendChild(post); form.appendChild(actions);
+
+    cancel.addEventListener('click', function () { delete openComposers[id]; renderRail(false); });
+    post.addEventListener('click', async function () {
+      var body = ta.value.trim();
+      var author = (nameInput ? nameInput.value.trim() : getAuthor()) || 'Anonymous';
+      if (!body) { ta.focus(); return; }
+      post.disabled = true; post.textContent = 'Posting…'; errEl.style.display = 'none';
+      try {
+        var saved = await store.add({ anchor: id, author: author, body: body });
+        if (nameInput && nameInput.value.trim()) setAuthor(nameInput.value.trim());
+        comments.push(saved);
+        delete openComposers[id];
+        renderRail(false);
+        setActive(id);
+      } catch (e) {
+        errEl.textContent = 'Could not save — check connection.'; errEl.style.display = 'block';
+        post.disabled = false; post.textContent = 'Post';
+      }
+    });
+    ta.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') post.click(); });
+    return form;
+  }
+
+  function layoutRail() {
+    if (!rail) return;
+    var cards = Array.prototype.slice.call(rail.querySelectorAll('.cmt-card'));
+    if (window.innerWidth <= 900) {
+      cards.forEach(function (c) { c.style.top = ''; });
+      rail.style.minHeight = '';
+      return;
+    }
+    var railRect = rail.getBoundingClientRect();
+    var arr = cards.map(function (card) {
+      var el = anchorById(card.getAttribute('data-for'));
+      var top = el ? (el.getBoundingClientRect().top - railRect.top) : 0;
+      return { card: card, top: Math.max(0, top) };
+    });
+    arr.sort(function (a, b) { return a.top - b.top; });
+    var prevBottom = 0, GAP = 12;
+    arr.forEach(function (o) {
+      var top = o.top; if (top < prevBottom + GAP) top = prevBottom + GAP;
+      o.card.style.top = top + 'px';
+      prevBottom = top + o.card.offsetHeight;
+    });
+    rail.style.minHeight = prevBottom + 'px';
+  }
+})();
+</script>
+
+</body>
+</html>
