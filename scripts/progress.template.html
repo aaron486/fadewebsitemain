@@ -111,8 +111,26 @@ a:hover { text-decoration: underline; }
 
 /* Phase 0 header + category sections */
 .ph-head { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-top: 2.75rem; }
-.cat { margin-top: 1.25rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
-.cat-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 1rem; }
+.cat { margin-top: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; }
+.cat-head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: none; border: none; cursor: pointer; text-align: left; }
+.cat-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
+.cat-head:hover .cat-title { color: #60a5fa; }
+.cat-chev { color: rgba(255,255,255,0.4); font-size: 0.85rem; transition: transform 0.2s; }
+.cat.collapsed .cat-chev { transform: rotate(-90deg); }
+.cat-body { padding: 0 1.5rem 1.5rem; }
+.cat.collapsed .cat-body { display: none; }
+.cat-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0.4rem 0 0.7rem; }
+.dlv-list { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.4rem; }
+.dlv-item { display: flex; align-items: flex-start; gap: 0.65rem; }
+.dlv-box { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.25); background: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; line-height: 1; margin-top: 0.1rem; transition: all 0.15s; padding: 0; }
+.dlv-box:hover { border-color: #3b82f6; }
+.dlv-item.done .dlv-box { background: #3b82f6; border-color: #3b82f6; }
+.dlv-label { font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.45; flex: 1; }
+.dlv-item.done .dlv-label { color: rgba(255,255,255,0.4); text-decoration: line-through; }
+.dlv-rm { flex-shrink: 0; background: none; border: none; color: rgba(255,255,255,0.22); font-size: 1.05rem; cursor: pointer; padding: 0 0.15rem; line-height: 1; }
+.dlv-rm:hover { color: #f87171; }
+.dlv-add input { width: 100%; margin-top: 0.35rem; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-family: inherit; font-size: 0.88rem; padding: 0.55rem 0.65rem; outline: none; }
+.dlv-add input:focus { border-color: #3b82f6; border-style: solid; }
 .cat-thread { display: flex; flex-direction: column; gap: 0.7rem; }
 .cat-empty { font-size: 0.85rem; color: rgba(255,255,255,0.3); font-style: italic; }
 .cat-addwrap { margin-top: 0.2rem; }
@@ -187,6 +205,10 @@ a:hover { text-decoration: underline; }
 (function () {
   var PAYLOAD = /*__PAYLOAD__*/null;
 
+  // Backend config, injected at build time. If empty, comments/deliverables fall back to localStorage.
+  var SUPABASE_URL = '__SUPABASE_URL__';
+  var SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
+
   function b64ToBytes(b64) {
     var bin = atob(b64), b = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
@@ -249,6 +271,8 @@ a:hover { text-decoration: underline; }
         requestAnimationFrame(tick);
       }
       initCountdown();
+      initCollapse();
+      initDeliverables();
       initComments();
     } catch (e2) {
       err.textContent = 'Incorrect password.';
@@ -330,12 +354,80 @@ a:hover { text-decoration: underline; }
     setInterval(render, 1000);
   }
 
-  // ---------- Comments ----------
-  // Backend config is injected at build time from env (SUPABASE_URL / SUPABASE_ANON_KEY).
-  // If left empty, comments fall back to this browser's localStorage (not shared).
-  var SUPABASE_URL = '__SUPABASE_URL__';
-  var SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
+  // ---------- Collapse / expand sections (state saved per browser) ----------
+  function initCollapse() {
+    var KEY = 'fade_tracker_collapsed';
+    var state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+    Array.prototype.slice.call(content.querySelectorAll('.cat')).forEach(function (cat) {
+      var sec = cat.getAttribute('data-section');
+      var head = cat.querySelector('.cat-head');
+      if (state[sec]) cat.classList.add('collapsed');
+      if (head) {
+        head.setAttribute('aria-expanded', String(!cat.classList.contains('collapsed')));
+        head.addEventListener('click', function () {
+          cat.classList.toggle('collapsed');
+          var c = cat.classList.contains('collapsed');
+          head.setAttribute('aria-expanded', String(!c));
+          state[sec] = c; try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+        });
+      }
+    });
+  }
 
+  // ---------- Deliverables (checkable, shared via Supabase) ----------
+  var DLV_BASE = SUPABASE_URL.indexOf('http') === 0 ? SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/deliverables' : null;
+  var DLV_HEADERS = { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+  var deliverables = [];
+
+  async function initDeliverables() {
+    if (DLV_BASE) {
+      try { var r = await fetch(DLV_BASE + '?select=*&order=created_at.asc', { headers: DLV_HEADERS }); deliverables = r.ok ? await r.json() : []; }
+      catch (e) { deliverables = []; }
+    }
+    Array.prototype.slice.call(content.querySelectorAll('.dlv-list')).forEach(renderDlv);
+  }
+  function dlvFor(section) { return deliverables.filter(function (d) { return d.section === section; }); }
+
+  function renderDlv(container) {
+    var section = container.getAttribute('data-dlv');
+    container.innerHTML = '';
+    dlvFor(section).forEach(function (d) {
+      var row = document.createElement('div'); row.className = 'dlv-item' + (d.done ? ' done' : '');
+      var box = document.createElement('button'); box.className = 'dlv-box'; box.type = 'button'; box.setAttribute('aria-label', 'Toggle done'); box.innerHTML = d.done ? '&#10003;' : '';
+      box.addEventListener('click', function () { toggleDlv(d, row, box); });
+      var lbl = document.createElement('span'); lbl.className = 'dlv-label'; lbl.textContent = d.label;
+      var rm = document.createElement('button'); rm.className = 'dlv-rm'; rm.type = 'button'; rm.title = 'Remove'; rm.textContent = '×';
+      rm.addEventListener('click', function () { removeDlv(d, row); });
+      row.appendChild(box); row.appendChild(lbl); row.appendChild(rm);
+      container.appendChild(row);
+    });
+    var add = document.createElement('div'); add.className = 'dlv-add';
+    var inp = document.createElement('input'); inp.type = 'text'; inp.placeholder = '+ Add deliverable';
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var t = inp.value.trim(); if (t) { inp.value = ''; addDlv(section, t, container); } } });
+    add.appendChild(inp); container.appendChild(add);
+  }
+
+  async function toggleDlv(d, row, box) {
+    var nv = !d.done; d.done = nv; row.classList.toggle('done', nv); box.innerHTML = nv ? '&#10003;' : '';
+    if (!DLV_BASE) return;
+    try { await fetch(DLV_BASE + '?id=eq.' + d.id, { method: 'PATCH', headers: Object.assign({ Prefer: 'return=minimal' }, DLV_HEADERS), body: JSON.stringify({ done: nv }) }); }
+    catch (e) { d.done = !nv; row.classList.toggle('done', !nv); box.innerHTML = !nv ? '&#10003;' : ''; }
+  }
+
+  async function addDlv(section, label, container) {
+    if (!DLV_BASE) return;
+    try {
+      var r = await fetch(DLV_BASE, { method: 'POST', headers: Object.assign({ Prefer: 'return=representation' }, DLV_HEADERS), body: JSON.stringify({ section: section, label: label }) });
+      if (r.ok) { deliverables.push((await r.json())[0]); renderDlv(container); var inp = container.querySelector('.dlv-add input'); if (inp) inp.focus(); }
+    } catch (e) {}
+  }
+
+  async function removeDlv(d, row) {
+    if (DLV_BASE) { try { await fetch(DLV_BASE + '?id=eq.' + d.id, { method: 'DELETE', headers: DLV_HEADERS }); } catch (e) {} }
+    var i = deliverables.indexOf(d); if (i >= 0) deliverables.splice(i, 1); row.remove();
+  }
+
+  // ---------- Comments ----------
   var store, comments = [];
 
   function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
@@ -475,7 +567,7 @@ a:hover { text-decoration: underline; }
     container.innerHTML = '';
     var list = commentsFor(anchor);
     if (!list.length) {
-      var em = document.createElement('div'); em.className = 'cat-empty'; em.textContent = 'No notes yet.';
+      var em = document.createElement('div'); em.className = 'cat-empty'; em.textContent = 'No comments yet.';
       container.appendChild(em);
     } else {
       list.forEach(function (c) {
@@ -498,7 +590,7 @@ a:hover { text-decoration: underline; }
       });
     }
     var addWrap = document.createElement('div'); addWrap.className = 'cat-addwrap';
-    var addBtn = document.createElement('button'); addBtn.className = 'cat-add'; addBtn.type = 'button'; addBtn.textContent = '+ Add note';
+    var addBtn = document.createElement('button'); addBtn.className = 'cat-add'; addBtn.type = 'button'; addBtn.textContent = '+ Add comment';
     addBtn.addEventListener('click', function () {
       addBtn.style.display = 'none';
       var form = buildComposer(anchor, function () { renderThread(container); }, function () { addBtn.style.display = ''; form.remove(); });
@@ -517,7 +609,7 @@ a:hover { text-decoration: underline; }
       nameInput.className = 'cmt-name'; nameInput.type = 'text'; nameInput.placeholder = 'Your name';
       form.appendChild(nameInput);
     }
-    var ta = document.createElement('textarea'); ta.placeholder = 'Write a note…'; form.appendChild(ta);
+    var ta = document.createElement('textarea'); ta.placeholder = 'Write a comment or feedback…'; form.appendChild(ta);
     var errEl = document.createElement('div'); errEl.className = 'cmt-err'; errEl.style.display = 'none';
 
     // ---- Image attachments (drop / paste / click) ----
