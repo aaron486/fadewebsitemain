@@ -131,6 +131,8 @@ a:hover { text-decoration: underline; }
 .dlv-rm:hover { color: #f87171; }
 .dlv-add input { width: 100%; margin-top: 0.35rem; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-family: inherit; font-size: 0.88rem; padding: 0.55rem 0.65rem; outline: none; }
 .dlv-add input:focus { border-color: #3b82f6; border-style: solid; }
+.dlv-done-group { margin-top: 1.1rem; padding-top: 0.95rem; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 0.45rem; }
+.dlv-done-head { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(74,222,128,0.7); margin-bottom: 0.2rem; }
 .cat-thread { display: flex; flex-direction: column; gap: 0.7rem; }
 .cat-empty { font-size: 0.85rem; color: rgba(255,255,255,0.3); font-style: italic; }
 .cat-addwrap { margin-top: 0.2rem; }
@@ -391,30 +393,46 @@ a:hover { text-decoration: underline; }
   }
   function dlvFor(section) { return deliverables.filter(function (d) { return d.section === section; }); }
 
+  function makeDlvRow(d, container) {
+    var row = document.createElement('div'); row.className = 'dlv-item' + (d.done ? ' done' : '');
+    var box = document.createElement('button'); box.className = 'dlv-box'; box.type = 'button'; box.setAttribute('aria-label', 'Toggle done'); box.innerHTML = d.done ? '&#10003;' : '';
+    box.addEventListener('click', function () { toggleDlv(d, container); });
+    var lbl = document.createElement('span'); lbl.className = 'dlv-label'; lbl.textContent = d.label;
+    var rm = document.createElement('button'); rm.className = 'dlv-rm'; rm.type = 'button'; rm.title = 'Remove'; rm.textContent = '×';
+    rm.addEventListener('click', function () { removeDlv(d, container); });
+    row.appendChild(box); row.appendChild(lbl); row.appendChild(rm);
+    return row;
+  }
+
   function renderDlv(container) {
     var section = container.getAttribute('data-dlv');
     container.innerHTML = '';
-    dlvFor(section).forEach(function (d) {
-      var row = document.createElement('div'); row.className = 'dlv-item' + (d.done ? ' done' : '');
-      var box = document.createElement('button'); box.className = 'dlv-box'; box.type = 'button'; box.setAttribute('aria-label', 'Toggle done'); box.innerHTML = d.done ? '&#10003;' : '';
-      box.addEventListener('click', function () { toggleDlv(d, row, box); });
-      var lbl = document.createElement('span'); lbl.className = 'dlv-label'; lbl.textContent = d.label;
-      var rm = document.createElement('button'); rm.className = 'dlv-rm'; rm.type = 'button'; rm.title = 'Remove'; rm.textContent = '×';
-      rm.addEventListener('click', function () { removeDlv(d, row); });
-      row.appendChild(box); row.appendChild(lbl); row.appendChild(rm);
-      container.appendChild(row);
-    });
+    var items = dlvFor(section);
+    var active = items.filter(function (d) { return !d.done; });
+    var done = items.filter(function (d) { return d.done; });
+
+    active.forEach(function (d) { container.appendChild(makeDlvRow(d, container)); });
+
     var add = document.createElement('div'); add.className = 'dlv-add';
     var inp = document.createElement('input'); inp.type = 'text'; inp.placeholder = '+ Add deliverable';
     inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var t = inp.value.trim(); if (t) { inp.value = ''; addDlv(section, t, container); } } });
     add.appendChild(inp); container.appendChild(add);
+
+    if (done.length) {
+      var grp = document.createElement('div'); grp.className = 'dlv-done-group';
+      var hd = document.createElement('div'); hd.className = 'dlv-done-head'; hd.textContent = 'Completed · ' + done.length;
+      grp.appendChild(hd);
+      done.forEach(function (d) { grp.appendChild(makeDlvRow(d, container)); });
+      container.appendChild(grp);
+    }
   }
 
-  async function toggleDlv(d, row, box) {
-    var nv = !d.done; d.done = nv; row.classList.toggle('done', nv); box.innerHTML = nv ? '&#10003;' : '';
+  async function toggleDlv(d, container) {
+    var nv = !d.done; d.done = nv;
+    renderDlv(container); // moves the item into / out of the Completed group
     if (!DLV_BASE) return;
     try { await fetch(DLV_BASE + '?id=eq.' + d.id, { method: 'PATCH', headers: Object.assign({ Prefer: 'return=minimal' }, DLV_HEADERS), body: JSON.stringify({ done: nv }) }); }
-    catch (e) { d.done = !nv; row.classList.toggle('done', !nv); box.innerHTML = !nv ? '&#10003;' : ''; }
+    catch (e) { d.done = !nv; renderDlv(container); }
   }
 
   async function addDlv(section, label, container) {
@@ -425,9 +443,10 @@ a:hover { text-decoration: underline; }
     } catch (e) {}
   }
 
-  async function removeDlv(d, row) {
+  async function removeDlv(d, container) {
     if (DLV_BASE) { try { await fetch(DLV_BASE + '?id=eq.' + d.id, { method: 'DELETE', headers: DLV_HEADERS }); } catch (e) {} }
-    var i = deliverables.indexOf(d); if (i >= 0) deliverables.splice(i, 1); row.remove();
+    var i = deliverables.indexOf(d); if (i >= 0) deliverables.splice(i, 1);
+    renderDlv(container);
   }
 
   // ---------- Comments ----------
