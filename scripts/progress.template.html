@@ -140,7 +140,16 @@ a:hover { text-decoration: underline; }
 .cat-add:hover { color: #60a5fa; border-color: rgba(59,130,246,0.5); }
 
 /* Comments / notes */
-.cmt-msg { padding: 0.75rem 0.9rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; }
+.cmt-msg { position: relative; padding: 0.75rem 0.9rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; }
+.cmt-ctrl { display: flex; gap: 0.8rem; margin-top: 0.6rem; opacity: 0; transition: opacity 0.15s; }
+.cmt-msg:hover .cmt-ctrl { opacity: 1; }
+.cmt-edit-btn, .cmt-del-btn { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none; cursor: pointer; padding: 0; }
+.cmt-edit-btn { color: rgba(96,165,250,0.8); }
+.cmt-edit-btn:hover { color: #60a5fa; }
+.cmt-del-btn { color: rgba(255,255,255,0.3); }
+.cmt-del-btn:hover { color: #f87171; }
+.cmt-edit-ta { width: 100%; min-height: 180px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; color: #fff; font-family: inherit; font-size: 0.9rem; line-height: 1.5; padding: 0.6rem; outline: none; resize: vertical; margin-top: 0.4rem; }
+.cmt-edit-ta:focus { border-color: #3b82f6; }
 .cmt-meta { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem; }
 .cmt-meta strong { color: rgba(255,255,255,0.82); font-weight: 600; }
 .cmt-body { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; word-wrap: break-word; overflow-wrap: anywhere; }
@@ -636,6 +645,12 @@ a:hover { text-decoration: underline; }
           });
           msg.appendChild(ie);
         }
+        var ctrl = document.createElement('div'); ctrl.className = 'cmt-ctrl';
+        var eb = document.createElement('button'); eb.className = 'cmt-edit-btn'; eb.type = 'button'; eb.textContent = 'Edit';
+        eb.addEventListener('click', function () { startEditComment(c, msg, container); });
+        var db = document.createElement('button'); db.className = 'cmt-del-btn'; db.type = 'button'; db.textContent = 'Delete';
+        db.addEventListener('click', function () { deleteComment(c, container); });
+        ctrl.appendChild(eb); ctrl.appendChild(db); msg.appendChild(ctrl);
         container.appendChild(msg);
       });
     }
@@ -649,6 +664,50 @@ a:hover { text-decoration: underline; }
     });
     addWrap.appendChild(addBtn);
     container.appendChild(addWrap);
+  }
+
+  function startEditComment(c, msg, container) {
+    var n = decodeNote(c);
+    msg.innerHTML = '<div class="cmt-meta"><strong>' + esc(c.author || 'Anonymous') + '</strong> &middot; editing</div>';
+    var ta = document.createElement('textarea'); ta.className = 'cmt-edit-ta'; ta.value = n.text;
+    msg.appendChild(ta);
+    var err = document.createElement('div'); err.className = 'cmt-err'; err.style.display = 'none'; msg.appendChild(err);
+    var actions = document.createElement('div'); actions.className = 'cmt-actions';
+    var cancel = document.createElement('button'); cancel.className = 'cmt-cancel'; cancel.type = 'button'; cancel.textContent = 'Cancel';
+    var save = document.createElement('button'); save.className = 'cmt-post'; save.type = 'button'; save.textContent = 'Save';
+    actions.appendChild(cancel); actions.appendChild(save); msg.appendChild(actions);
+    ta.focus();
+    cancel.addEventListener('click', function () { renderThread(container); });
+    save.addEventListener('click', async function () {
+      var nb = ta.value;
+      save.disabled = true; save.textContent = 'Saving…'; err.style.display = 'none';
+      var ok = await updateComment(c, nb);
+      if (ok) { c.body = nb; renderThread(container); }
+      else { err.textContent = 'Couldn’t save — editing isn’t enabled yet (run the update policy).'; err.style.display = 'block'; save.disabled = false; save.textContent = 'Save'; }
+    });
+    ta.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') save.click(); });
+  }
+
+  async function updateComment(c, body) {
+    if (SUPABASE_URL.indexOf('http') !== 0 || String(c.id).indexOf('local-') === 0) { return true; }
+    try {
+      var r = await fetch(SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/comments?id=eq.' + c.id, {
+        method: 'PATCH',
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json', Prefer: 'return=representation' },
+        body: JSON.stringify({ body: body })
+      });
+      if (!r.ok) return false;
+      return (await r.json()).length > 0; // 0 rows => RLS blocked (no update policy)
+    } catch (e) { return false; }
+  }
+
+  async function deleteComment(c, container) {
+    if (typeof window.confirm === 'function' && !window.confirm('Delete this note?')) return;
+    if (SUPABASE_URL.indexOf('http') === 0 && String(c.id).indexOf('local-') !== 0) {
+      try { await fetch(SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/comments?id=eq.' + c.id, { method: 'DELETE', headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY } }); } catch (e) {}
+    }
+    var i = comments.indexOf(c); if (i >= 0) comments.splice(i, 1);
+    renderThread(container);
   }
 
   function buildComposer(anchor, onDone, onCancel) {
