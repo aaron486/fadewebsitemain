@@ -125,6 +125,13 @@ a:hover { text-decoration: underline; }
 .cat-body { padding: 0 1.5rem 1.5rem; }
 .cat.collapsed .cat-body { display: none; }
 .cat-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0.4rem 0 0.7rem; }
+.media-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.media-tab { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.9rem; border-radius: 999px; cursor: pointer; transition: color 0.15s, background 0.15s, border-color 0.15s; }
+.media-tab:hover { color: #fff; }
+.media-tab.active { color: #fff; background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.5); }
+.media-panel { display: none; }
+.media-panel.active { display: block; }
+.media-panel .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary .cmt-body { color: rgba(255,255,255,0.8); }
 .cat-summary .summary-edit { margin-top: 0.5rem; }
@@ -294,6 +301,7 @@ a:hover { text-decoration: underline; }
       }
       initCountdown();
       initCollapse();
+      initTabs();
       initDeliverables();
       initComments();
     } catch (e2) {
@@ -393,6 +401,22 @@ a:hover { text-decoration: underline; }
           state[sec] = c; try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
         });
       }
+    });
+  }
+
+  // ---------- Tabs (Media section) ----------
+  function initTabs() {
+    Array.prototype.slice.call(content.querySelectorAll('.media-tabs')).forEach(function (tabs) {
+      var scope = tabs.parentNode;
+      var btns = tabs.querySelectorAll('.media-tab');
+      var panels = scope.querySelectorAll('.media-panel');
+      Array.prototype.forEach.call(btns, function (b) {
+        b.addEventListener('click', function () {
+          var t = b.getAttribute('data-tab');
+          Array.prototype.forEach.call(btns, function (x) { x.classList.toggle('active', x === b); });
+          Array.prototype.forEach.call(panels, function (p) { p.classList.toggle('active', p.getAttribute('data-panel') === t); });
+        });
+      });
     });
   }
 
