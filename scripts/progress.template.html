@@ -111,6 +111,11 @@ a:hover { text-decoration: underline; }
 
 /* Phase 0 header + category sections */
 .ph-head { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-top: 2.75rem; }
+.ph-overview { margin: 0.85rem 0 0.25rem; }
+.ph-overview .cmt-body { font-size: 1.02rem; color: rgba(255,255,255,0.78); line-height: 1.7; }
+.ph-overview .summary-edit { margin-top: 0.5rem; }
+.ph-wins .cmt-body .note-ul li::before { content: '\2713'; color: #4ade80; font-weight: 700; }
+.ph-wins .cmt-body .note-ul li { color: rgba(255,255,255,0.85); }
 .cat { margin-top: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; }
 .cat-head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: none; border: none; cursor: pointer; text-align: left; }
 .cat-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
@@ -120,6 +125,9 @@ a:hover { text-decoration: underline; }
 .cat-body { padding: 0 1.5rem 1.5rem; }
 .cat.collapsed .cat-body { display: none; }
 .cat-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0.4rem 0 0.7rem; }
+.cat-summary { margin-bottom: 1.4rem; }
+.cat-summary .cmt-body { color: rgba(255,255,255,0.8); }
+.cat-summary .summary-edit { margin-top: 0.5rem; }
 .dlv-list { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.4rem; }
 .dlv-item { display: flex; align-items: flex-start; gap: 0.65rem; }
 .dlv-box { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.25); background: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; line-height: 1; margin-top: 0.1rem; transition: all 0.15s; padding: 0; }
@@ -609,6 +617,55 @@ a:hover { text-decoration: underline; }
     store = makeStore();
     try { comments = await store.list(); } catch (e) { comments = []; }
     Array.prototype.slice.call(content.querySelectorAll('.cat-thread')).forEach(renderThread);
+    Array.prototype.slice.call(content.querySelectorAll('.cat-summary')).forEach(renderSummary);
+  }
+
+  function renderSummary(container) {
+    var section = container.getAttribute('data-summary');
+    var anchor = section + '--summary';
+    var rows = comments.filter(function (c) { return c.anchor === anchor; });
+    var c = rows.length ? rows[rows.length - 1] : null;
+    container.innerHTML = '';
+    if (c) {
+      var body = document.createElement('div'); body.className = 'cmt-body'; body.innerHTML = formatNoteBody(decodeNote(c).text);
+      container.appendChild(body);
+      var edit = document.createElement('button'); edit.className = 'cmt-edit-btn summary-edit'; edit.type = 'button'; edit.textContent = 'Edit summary';
+      edit.addEventListener('click', function () { editSummary(container, c, section); });
+      container.appendChild(edit);
+    } else {
+      var add = document.createElement('button'); add.className = 'cat-add'; add.type = 'button'; add.textContent = '+ Add summary';
+      add.addEventListener('click', function () { editSummary(container, null, section); });
+      container.appendChild(add);
+    }
+  }
+
+  function editSummary(container, c, section) {
+    container.innerHTML = '';
+    var ta = document.createElement('textarea'); ta.className = 'cmt-edit-ta'; ta.style.minHeight = '90px';
+    ta.value = c ? decodeNote(c).text : ''; ta.placeholder = 'Three-sentence summary of what we did…';
+    container.appendChild(ta);
+    var err = document.createElement('div'); err.className = 'cmt-err'; err.style.display = 'none'; container.appendChild(err);
+    var actions = document.createElement('div'); actions.className = 'cmt-actions';
+    var cancel = document.createElement('button'); cancel.className = 'cmt-cancel'; cancel.type = 'button'; cancel.textContent = 'Cancel';
+    var save = document.createElement('button'); save.className = 'cmt-post'; save.type = 'button'; save.textContent = 'Save';
+    actions.appendChild(cancel); actions.appendChild(save); container.appendChild(actions);
+    ta.focus();
+    cancel.addEventListener('click', function () { renderSummary(container); });
+    save.addEventListener('click', async function () {
+      var txt = ta.value.trim(); if (!txt) { renderSummary(container); return; }
+      save.disabled = true; save.textContent = 'Saving…'; err.style.display = 'none';
+      if (c) {
+        var ok = await updateComment(c, txt);
+        if (ok) { c.body = txt; renderSummary(container); }
+        else { err.textContent = 'Couldn’t save — enable the comments update policy.'; err.style.display = 'block'; save.disabled = false; save.textContent = 'Save'; }
+      } else {
+        try {
+          var r = await fetch(SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/comments', { method: 'POST', headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json', Prefer: 'return=representation' }, body: JSON.stringify({ anchor: section + '--summary', author: 'Summary', body: txt }) });
+          if (r.ok) { comments.push((await r.json())[0]); renderSummary(container); }
+          else { err.textContent = 'Couldn’t save.'; err.style.display = 'block'; save.disabled = false; save.textContent = 'Save'; }
+        } catch (e) { err.textContent = 'Couldn’t save — check connection.'; err.style.display = 'block'; save.disabled = false; save.textContent = 'Save'; }
+      }
+    });
   }
 
   function renderThread(container) {
