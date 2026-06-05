@@ -42,11 +42,12 @@ a:hover { text-decoration: underline; }
 .t-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,113,113,0.85); display: inline-block; margin-bottom: 0.75rem; padding: 0.3rem 0.7rem; border: 1px solid rgba(248,113,113,0.25); border-radius: 999px; }
 .t-head h1 { font-size: clamp(1.8rem, 4.5vw, 2.5rem); font-weight: 900; color: white; letter-spacing: -0.03em; line-height: 1.1; }
 .t-sub { font-size: 1rem; color: rgba(255,255,255,0.5); margin-top: 0.6rem; }
-.t-day { display: inline-flex; align-items: center; gap: 1.1rem; margin-top: 1.25rem; padding: 1rem 1.5rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 18px; }
-.t-day-num { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: clamp(2.6rem, 8vw, 3.6rem); line-height: 0.9; color: #60a5fa; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; min-width: 1.4ch; text-align: right; }
-.t-day-meta { display: flex; flex-direction: column; gap: 0.25rem; }
-.t-day-word { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; color: white; letter-spacing: 0.01em; }
-.t-day-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); }
+.t-day { display: flex; align-items: center; gap: 1.6rem; margin-top: 1.5rem; padding: 1.7rem 2rem; background: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(59,130,246,0.03)); border: 1px solid rgba(59,130,246,0.22); border-radius: 18px; }
+.t-day-num { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: clamp(3.4rem, 13vw, 5.2rem); line-height: 0.82; color: #60a5fa; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.t-day-meta { display: flex; flex-direction: column; gap: 0.4rem; }
+.t-day-word { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.3rem; color: #fff; }
+.t-day-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+@media (max-width: 600px) { .t-day { gap: 1rem; padding: 1.3rem 1.4rem; } }
 
 /* Countdown */
 @font-face { font-family: 'DSEG7'; src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
