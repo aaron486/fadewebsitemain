@@ -697,7 +697,7 @@ a:hover { text-decoration: underline; }
     container.innerHTML = '';
     var list = commentsFor(anchor);
     if (!list.length) {
-      var em = document.createElement('div'); em.className = 'cat-empty'; em.textContent = 'No comments yet.';
+      var em = document.createElement('div'); em.className = 'cat-empty'; em.textContent = 'No notes yet.';
       container.appendChild(em);
     } else {
       list.forEach(function (c) {
@@ -736,7 +736,7 @@ a:hover { text-decoration: underline; }
       });
     }
     var addWrap = document.createElement('div'); addWrap.className = 'cat-addwrap';
-    var addBtn = document.createElement('button'); addBtn.className = 'cat-add'; addBtn.type = 'button'; addBtn.textContent = '+ Add comment';
+    var addBtn = document.createElement('button'); addBtn.className = 'cat-add'; addBtn.type = 'button'; addBtn.textContent = '+ Add note';
     addBtn.addEventListener('click', function () {
       addBtn.style.display = 'none';
       var form = buildComposer(anchor, function () { renderThread(container); }, function () { addBtn.style.display = ''; form.remove(); });
