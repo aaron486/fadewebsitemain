@@ -136,6 +136,14 @@ a:hover { text-decoration: underline; }
 .bar-fill.up { background: linear-gradient(90deg, #16a34a, #4ade80); }
 .bar-fill.down { background: linear-gradient(90deg, #dc2626, #f87171); }
 .bar-fill.neutral { background: rgba(255,255,255,0.28); }
+.svy-details { margin-top: 0.6rem; }
+.svy-details > summary { list-style: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(96,165,250,0.85); display: flex; align-items: center; padding: 0.7rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.svy-details > summary:hover { color: #60a5fa; }
+.svy-details > summary::-webkit-details-marker { display: none; }
+.svy-details > summary::after { content: '+'; margin-left: auto; color: rgba(255,255,255,0.5); font-weight: 700; }
+.svy-details[open] > summary::after { content: '\2013'; }
+.svy-details[open] .survey-grid { margin-top: 0.9rem; }
+.svy-details:not([open]) .survey-grid { display: none; }
 @media (max-width: 600px) { .svy-highlight { grid-template-columns: 1fr 1fr; } .survey-grid { grid-template-columns: 1fr; } }
 .cat { margin-top: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; }
 .cat-head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: none; border: none; cursor: pointer; text-align: left; }
