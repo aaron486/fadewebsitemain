@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade × Kalshi Study — Onboarding</title>
+<meta name="description" content="Join the Fade × Kalshi study — check eligibility, set up Fade, sync your sportsbooks, and start the 8-week test. A step-by-step participant walkthrough." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.header { padding: 1.5rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+.brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.brand:hover { text-decoration: none; }
+.brand svg { display: block; }
+.brand .tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+.skip { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+/* Progress */
+.progress-wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 0; }
+.progress-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.progress-step { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+.progress-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.progress-track { height: 4px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #3b82f6, #60a5fa); width: 0%; transition: width 0.45s cubic-bezier(0.4,0,0.2,1); }
+
+/* Stage */
+.stage { position: relative; max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 2rem; min-height: 52vh; }
+.screen { display: none; animation: fade 0.5s ease; }
+.screen.active { display: block; }
+@keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+.screen-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.75rem; }
+.screen-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.75rem; display: block; }
+.screen h1 { font-size: clamp(1.9rem, 5vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.035em; line-height: 1.08; margin-bottom: 1.1rem; }
+.screen h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.screen p.lead { font-size: 1.0625rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1.75rem; max-width: 560px; }
+.screen p.lead strong { color: rgba(255,255,255,0.92); font-weight: 600; }
+
+/* Instruction list */
+.steps { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; margin-top: 0.5rem; }
+.steps li { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.steps li .n { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 0.1rem; }
+.steps li .txt { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+.steps li .txt strong { color: white; font-weight: 600; }
+
+/* Callout note */
+.callout { margin-top: 1.5rem; padding: 1.1rem 1.25rem; background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.16); border-radius: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.callout strong { color: white; font-weight: 600; }
+
+/* Tags */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.chip { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.6); padding: 0.45rem 0.85rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; background: rgba(255,255,255,0.02); }
+
+/* Footer nav */
+.nav { position: sticky; bottom: 0; background: linear-gradient(to top, #050507 60%, transparent); border-top: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { max-width: 720px; margin: 0 auto; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.btn { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: 999px; border: 1px solid transparent; cursor: pointer; transition: all 0.2s ease; }
+.btn-back { background: transparent; color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.12); }
+.btn-back:hover { color: white; border-color: rgba(255,255,255,0.3); }
+.btn-back:disabled { opacity: 0; pointer-events: none; }
+.btn-next { background: #3b82f6; color: white; box-shadow: 0 4px 20px rgba(59,130,246,0.3); }
+.btn-next:hover { background: #2f6fe0; transform: translateY(-1px); }
+.dots { display: flex; gap: 0.45rem; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); transition: all 0.3s ease; cursor: pointer; }
+.dot.active { background: #3b82f6; width: 22px; border-radius: 999px; }
+
+@media (max-width: 640px) {
+  .header { padding: 1.25rem 1.25rem; }
+  .stage { padding-top: 2.5rem; min-height: 46vh; }
+  .dots { display: none; }
+  .btn { padding: 0.8rem 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="/" class="brand" aria-label="Fade — Bet Together">
+    <svg viewBox="80 420 840 170" height="28" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="tagline">Bet Together</span>
+  </a>
+  <a href="/" class="skip">Skip &rarr;</a>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-meta">
+    <span class="progress-step" id="pStep">Step 01 / 06</span>
+    <span class="progress-label" id="pLabel">Welcome</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="pFill"></div></div>
+</div>
+
+<main class="stage" id="stage">
+
+  <!-- 1 -->
+  <section class="screen active" data-label="Welcome">
+    <div class="screen-icon">&#128075;</div>
+    <span class="screen-eyebrow">The Fade &times; Kalshi Study</span>
+    <h1>You&rsquo;re part of<br /><span>the study.</span></h1>
+    <p class="lead">You&rsquo;re joining a pre-registered study of <strong>1,000 retail sports bettors</strong> testing one question: can normal bettors actually succeed on Kalshi&rsquo;s prediction markets? This walkthrough gets you set up in a few minutes.</p>
+    <div class="chips">
+      <span class="chip">1,000 bettors</span>
+      <span class="chip">8-week test</span>
+      <span class="chip">Fully transparent</span>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="screen" data-label="Eligibility">
+    <div class="screen-icon">&#9989;</div>
+    <span class="screen-eyebrow">Step 1 &middot; Make sure you qualify</span>
+    <h1>Do you qualify?</h1>
+    <p class="lead">The study recruits active U.S. sportsbook bettors who are new to prediction markets. Quick check:</p>
+    <ul class="steps">
+      <li><span class="n">&#10003;</span><span class="txt">You&rsquo;re <strong>21+</strong> and bet in the U.S.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">You have an <strong>active sportsbook account</strong> with real history &mdash; roughly <strong>90 days and 50+ bets</strong>.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">You&rsquo;re <strong>new to prediction markets</strong> &mdash; 5 or fewer prior Kalshi-style trades.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">You&rsquo;re willing to trade on <strong>Kalshi for the 8-week window</strong>.</span></li>
+    </ul>
+    <div class="callout">Not a perfect match? You can still download Fade and follow along with the community group.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="screen" data-label="Set up">
+    <div class="screen-icon">&#128241;</div>
+    <span class="screen-eyebrow">Step 2 &middot; Get set up</span>
+    <h1>Download Fade &amp; sign up.</h1>
+    <p class="lead">Fade is where you&rsquo;ll join the cohort and connect your books.</p>
+    <ul class="steps">
+      <li><span class="n">1</span><span class="txt">Install <strong>Fade</strong> from the App Store or Google Play.</span></li>
+      <li><span class="n">2</span><span class="txt">Create your account and <strong>verify</strong> your email or phone.</span></li>
+      <li><span class="n">3</span><span class="txt">Confirm you&rsquo;re 21+ and tap <strong>Join the Study</strong>.</span></li>
+    </ul>
+    <div class="callout"><strong>Tip:</strong> Make sure it&rsquo;s the official app &mdash; the publisher should be Fade Social LLC.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="screen" data-label="Sync">
+    <div class="screen-icon">&#128279;</div>
+    <span class="screen-eyebrow">Step 3 &middot; Connect with Fade Sync</span>
+    <h1>Sync your <span>sportsbooks.</span></h1>
+    <p class="lead">Fade Sync securely links the books you already use and imports your betting history &mdash; <strong>read-only, no money moves.</strong> This becomes your personal baseline.</p>
+    <ul class="steps">
+      <li><span class="n">1</span><span class="txt">Tap <strong>Connect a Sportsbook</strong> and choose your book.</span></li>
+      <li><span class="n">2</span><span class="txt">Securely sign in to authorize a <strong>read-only</strong> connection.</span></li>
+      <li><span class="n">3</span><span class="txt">Connect <strong>every book you use</strong> so your baseline is complete.</span></li>
+    </ul>
+    <div class="callout"><strong>Read-only by design.</strong> Fade Sync can see your bets and outcomes to measure performance. It can never deposit, withdraw, or place wagers.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="screen" data-label="Consent">
+    <div class="screen-icon">&#128737;</div>
+    <span class="screen-eyebrow">Step 4 &middot; Consent &amp; privacy</span>
+    <h1>What you&rsquo;re agreeing to.</h1>
+    <p class="lead">Participation is voluntary and uses your own money. Before you start, here&rsquo;s the deal:</p>
+    <ul class="steps">
+      <li><span class="n">&#10003;</span><span class="txt">You trade with <strong>your own capital</strong> &mdash; Fade never places bets for you.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">Your data is <strong>anonymized</strong> in any published results.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">The study&rsquo;s <strong>funder is disclosed</strong> to every participant.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">You can <strong>leave the study</strong> at any time.</span></li>
+    </ul>
+    <div class="callout">This is research &mdash; not financial or betting advice. Trading involves risk of loss.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="screen" data-label="Timeline">
+    <div class="screen-icon">&#128197;</div>
+    <span class="screen-eyebrow">Step 5 &middot; How it runs</span>
+    <h1>What happens next.</h1>
+    <p class="lead">Two phases, then we publish. Here&rsquo;s the path:</p>
+    <ul class="steps">
+      <li><span class="n">1</span><span class="txt"><strong>Baseline.</strong> We establish your sportsbook history (&asymp;90 days, 50+ bets).</span></li>
+      <li><span class="n">2</span><span class="txt"><strong>Treatment.</strong> 8 weeks trading sports on Kalshi &mdash; aim for <strong>30+ trades</strong>, with <strong>80%+ of your volume</strong> on Kalshi.</span></li>
+      <li><span class="n">3</span><span class="txt"><strong>Publish.</strong> Anonymized results and analysis released openly at week 12.</span></li>
+    </ul>
+    <div class="callout">Trade your own way &mdash; there are no right or wrong picks. We&rsquo;re measuring outcomes, not coaching.</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="screen" data-label="Done">
+    <div class="screen-icon">&#127881;</div>
+    <span class="screen-eyebrow">You&rsquo;re in</span>
+    <h1>Welcome to <span>the study.</span></h1>
+    <p class="lead">That&rsquo;s everything. Keep betting your way, keep your books synced, and let Fade handle the tracking.</p>
+    <ul class="steps">
+      <li><span class="n">&#10003;</span><span class="txt">Keep your sportsbooks <strong>connected</strong> so nothing&rsquo;s missed.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">Turn on <strong>notifications</strong> for study updates.</span></li>
+      <li><span class="n">&#10003;</span><span class="txt">Questions? Visit <a href="/support">Support</a> any time.</span></li>
+    </ul>
+    <div class="callout"><strong>Want the full methodology?</strong> Read the <a href="/kalshi-study">case study</a>.</div>
+  </section>
+
+</main>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="btn btn-back" id="backBtn" disabled>Back</button>
+    <div class="dots" id="dots"></div>
+    <button class="btn btn-next" id="nextBtn">Next</button>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var screens = Array.prototype.slice.call(document.querySelectorAll('.screen'));
+  var total = screens.length;
+  var i = 0;
+  var fill = document.getElementById('pFill');
+  var pStep = document.getElementById('pStep');
+  var pLabel = document.getElementById('pLabel');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var dotsWrap = document.getElementById('dots');
+
+  // build dots
+  screens.forEach(function (s, idx) {
+    var d = document.createElement('span');
+    d.className = 'dot' + (idx === 0 ? ' active' : '');
+    d.addEventListener('click', function () { go(idx); });
+    dotsWrap.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function render() {
+    screens.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
+    dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
+    fill.style.width = ((i + 1) / total * 100) + '%';
+    pStep.textContent = 'Step ' + pad(i + 1) + ' / ' + pad(total);
+    pLabel.textContent = screens[i].getAttribute('data-label');
+    backBtn.disabled = i === 0;
+    nextBtn.textContent = i === total - 1 ? 'Open Fade →' : 'Next';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function go(n) {
+    if (n < 0) return;
+    if (n >= total) { window.location.assign('/'); return; }
+    i = n;
+    render();
+  }
+
+  nextBtn.addEventListener('click', function () { go(i + 1); });
+  backBtn.addEventListener('click', function () { go(i - 1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(i + 1);
+    if (e.key === 'ArrowLeft') go(i - 1);
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>

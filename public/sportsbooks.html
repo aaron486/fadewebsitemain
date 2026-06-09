@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sportsbooks — Fade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+/* Hero */
+.hero { text-align: center; padding: 5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.25rem; }
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.125rem; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
+.hero-stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; position: relative; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 800; color: white; }
+.hero-stat-value span { color: #3b82f6; }
+.hero-stat-label { font-size: 0.6875rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-top: 0.2rem; }
+.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.08); }
+
+/* Intro */
+.intro { padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+.intro h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 1.25rem; line-height: 1.1; }
+.intro-text { font-size: 1.0625rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+.intro-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+.intro-highlight { margin-top: 2rem; padding: 1.75rem; background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.1); border-radius: 14px; }
+.intro-highlight p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.intro-highlight strong { color: white; }
+
+/* Sportsbook Grid */
+.books { padding: 4rem 1.5rem; max-width: 960px; margin: 0 auto; }
+.books h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.books-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.5rem; }
+.books-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.book-card { padding: 2rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; transition: all 0.25s ease; }
+.book-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(59,130,246,0.15); transform: translateY(-3px); }
+.book-icon { font-size: 2.5rem; margin-bottom: 0.875rem; }
+.book-card h3 { font-size: 1.125rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
+.book-card .book-type { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #3b82f6; margin-bottom: 0.625rem; }
+.book-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+/* Features */
+.features { padding: 4rem 1.5rem; max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.features h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.features-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.5rem; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.feature-card { padding: 2rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; transition: all 0.25s ease; }
+.feature-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(59,130,246,0.15); transform: translateY(-3px); }
+.feature-icon { font-size: 2rem; margin-bottom: 0.875rem; }
+.feature-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+.feature-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+/* How It Works */
+.how-it-works { padding: 4rem 1.5rem; max-width: 740px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.how-it-works h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 2.5rem; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+.steps::before { content: ''; position: absolute; top: 28px; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.1), transparent); }
+.step { text-align: center; position: relative; }
+.step-num { width: 52px; height: 52px; border-radius: 50%; background: #0d0d14; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: #3b82f6; position: relative; z-index: 1; }
+.step h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.375rem; }
+.step p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+/* FAQ */
+.faq { padding: 4rem 1.5rem; max-width: 740px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.faq h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 2.5rem; }
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 1.25rem 0; }
+.faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+.faq-q { font-size: 0.9375rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+.faq-a { font-size: 0.875rem; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+/* CTA */
+.cta { text-align: center; padding: 4rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; position: relative; }
+.cta p { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+
+/* Footer */
+.footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); font-size: 0.8125rem; }
+.footer a { color: rgba(255,255,255,0.35); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 1.25rem 2.5rem; }
+  .hero h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+  .hero p { font-size: 0.9375rem; }
+  .hero-stats { gap: 1.5rem; }
+  .hero-stat-value { font-size: 1.25rem; }
+  .hero-stat-divider { display: none; }
+  .intro { padding: 3rem 1.25rem; }
+  .intro h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  .intro-text { font-size: 0.9375rem; }
+  .books-grid, .features-grid { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+  .steps::before { display: none; }
+  .books, .features, .how-it-works, .faq { padding: 3rem 1.25rem; }
+  .cta { padding: 3rem 1.25rem 4rem; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 2.5rem 1rem 2rem; }
+  .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .hero p { font-size: 0.875rem; }
+  .books-grid, .features-grid { grid-template-columns: 1fr; }
+  .book-card, .feature-card { padding: 1.25rem 1rem; }
+  .intro { padding: 2rem 1rem; }
+  .books, .features, .how-it-works, .faq { padding: 2rem 1rem; }
+  .cta { padding: 2rem 1rem 3rem; }
+  .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="header-brand">
+    <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">BET TOGETHER</span>
+  </a>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">SPORTSBOOKS</div>
+  <h1>Every Book.<br />One <span>Platform.</span></h1>
+  <p>Fade connects to the biggest sportsbooks in the game. Sync your bets, share your picks, and track your record — all from one place.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>6+</span></div>
+      <div class="hero-stat-label">Supported Books</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>Auto</span> Sync</div>
+      <div class="hero-stat-label">Via FadeSync</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value"><span>Real</span> Records</div>
+      <div class="hero-stat-label">Verified Bets Only</div>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <h2>Why Sportsbook Integration<br />Changes Everything</h2>
+  <p class="intro-text">Most betting apps make you screenshot slips and manually enter picks. <strong>Fade doesn't.</strong> With FadeSync, your bets are pulled directly from your sportsbook accounts — automatically, accurately, and in real time.</p>
+  <p class="intro-text">That means <strong>every record is verified</strong>, every ROI is real, and every pick on your profile is backed by actual money. No capping. No fake screenshots. Just real bets from real books.</p>
+  <div class="intro-highlight">
+    <p><strong>Link once, sync forever.</strong> FadeSync connects to your sportsbook accounts and continuously imports your bets. Your Fade profile updates automatically — you never have to lift a finger.</p>
+  </div>
+</div>
+
+<div class="books">
+  <h2>Supported Sportsbooks</h2>
+  <p class="books-subtitle">Connect any of these platforms to start syncing your bets to Fade.</p>
+  <div class="books-grid">
+    <div class="book-card">
+      <div class="book-icon">&#127922;</div>
+      <h3>FanDuel</h3>
+      <div class="book-type">Sportsbook</div>
+      <p>America's most popular sportsbook. Sync your FanDuel bets and share verified picks with the community.</p>
+    </div>
+    <div class="book-card">
+      <div class="book-icon">&#9819;</div>
+      <h3>DraftKings</h3>
+      <div class="book-type">Sportsbook</div>
+      <p>Full integration with DraftKings. Every straight bet, parlay, and same-game parlay — imported automatically.</p>
+    </div>
+    <div class="book-card">
+      <div class="book-icon">&#127183;</div>
+      <h3>BetMGM</h3>
+      <div class="book-type">Sportsbook</div>
+      <p>Connect your BetMGM account and let FadeSync pull every bet into your verified Fade record.</p>
+    </div>
+    <div class="book-card">
+      <div class="book-icon">&#127942;</div>
+      <h3>Caesars</h3>
+      <div class="book-type">Sportsbook</div>
+      <p>Caesars Sportsbook integration keeps your profile up to date with every wager you place.</p>
+    </div>
+    <div class="book-card">
+      <div class="book-icon">&#9889;</div>
+      <h3>ESPN Bet</h3>
+      <div class="book-type">Sportsbook</div>
+      <p>Powered by Penn Entertainment. Link ESPN Bet and your picks sync straight to your Fade profile.</p>
+    </div>
+    <div class="book-card">
+      <div class="book-icon">&#128200;</div>
+      <h3>Kalshi</h3>
+      <div class="book-type">Prediction Market</div>
+      <p>The first regulated prediction market. Sync your event contracts and track your forecasting record on Fade.</p>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <h2>What FadeSync Does for You</h2>
+  <p class="features-subtitle">One connection. Fully automated. Here's what you get.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">&#128260;</div>
+      <h3>Auto-Import Bets</h3>
+      <p>Every bet you place is pulled into Fade automatically. Straights, parlays, teasers, props — all of it.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#9989;</div>
+      <h3>Verified Records</h3>
+      <p>Your win rate, ROI, and betting history are backed by real sportsbook data. No way to fake it.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128101;</div>
+      <h3>Share With Friends</h3>
+      <p>Your synced bets show up on your profile. Friends can tail your picks or fade them — one tap.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128202;</div>
+      <h3>Track Your ROI</h3>
+      <p>Detailed stats on your performance across every linked book. See what's working and what's not.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128275;</div>
+      <h3>Secure Connection</h3>
+      <p>Your sportsbook credentials are encrypted and never stored on our servers. Read-only access only.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128640;</div>
+      <h3>More Books Coming</h3>
+      <p>We're actively adding more sportsbooks. bet365, Hard Rock, BetRivers, and others are on the roadmap.</p>
+    </div>
+  </div>
+</div>
+
+<div class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Download Fade</h3>
+      <p>Get the app and create your free account. Takes less than a minute.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Link Your Books</h3>
+      <p>Connect your sportsbook accounts through FadeSync. Secure, encrypted, read-only.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Bets Sync</h3>
+      <p>Every bet you place auto-imports to your Fade profile. No screenshots, no manual entry.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Bet Together</h3>
+      <p>Share picks, tail friends, fade the faders — all backed by verified sportsbook records.</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>Common Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">Is my sportsbook login safe?</div>
+    <div class="faq-a">Yes. FadeSync uses encrypted, read-only connections. We never store your sportsbook passwords, and we can't place bets or make changes to your account.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Which bet types are supported?</div>
+    <div class="faq-a">Straight bets, parlays, same-game parlays, teasers, round robins, futures, and props. If your sportsbook tracks it, Fade syncs it.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How fast do bets sync?</div>
+    <div class="faq-a">Most bets appear on your Fade profile within minutes of being placed. Live bets and in-play wagers sync as they settle.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I connect multiple sportsbooks?</div>
+    <div class="faq-a">Absolutely. Link as many books as you want. Your Fade profile aggregates everything into one unified record across all your accounts.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if my sportsbook isn't listed?</div>
+    <div class="faq-a">We're adding new integrations regularly. bet365, Hard Rock, BetRivers, and more are on the roadmap. Request a book through the app and we'll prioritize it.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Does Fade work with daily fantasy or casino bets?</div>
+    <div class="faq-a">Fade is focused on sports betting and prediction markets. DFS and casino integrations are not currently supported.</div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Ready to Sync<br />Your Bets?</h2>
+  <p>Download Fade, link your sportsbooks, and start building your verified betting record today.</p>
+  <a href="/" class="btn-primary">Get Started &#8594;</a>
+</div>
+
+<div class="footer">
+  General Inquiries: <a href="mailto:info@fade.bet">info@fade.bet</a><br /><br />
+  &#169; 2026 Fade Social LLC. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
+</div>
+
+</body>
+</html>
