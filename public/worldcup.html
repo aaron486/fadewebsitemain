@@ -105,6 +105,10 @@ a:hover { text-decoration: underline; }
   .bignum { grid-template-columns: 1fr; }
   .crit-grid { grid-template-columns: 1fr; }
 }
+.faq { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+.faq-item { padding: 1.4rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.faq-item h4 { font-size: 1rem; color: #fff; font-weight: 700; margin-bottom: 0.5rem; }
+.faq-item p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -174,6 +178,18 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- Rewards -->
+<div class="section">
+  <span class="section-eyebrow">What you earn</span>
+  <h2>Why it's worth it.</h2>
+  <p class="lead">You're getting in before everyone else &mdash; and getting paid to help us build it.</p>
+  <div class="bignum">
+    <div class="bignum-card"><div class="bignum-val">$25</div><div class="bignum-lbl">Cash for completing the study (10+ events traded)</div></div>
+    <div class="bignum-card"><div class="bignum-val">Early access</div><div class="bignum-lbl">First-member access to the Fade app and new features</div></div>
+    <div class="bignum-card"><div class="bignum-val">Partnerships</div><div class="bignum-lbl">A shot at exclusive brand partnerships and deeper access</div></div>
+  </div>
+</div>
+
 <!-- Eligibility -->
 <div class="section">
   <span class="section-eyebrow">Eligibility</span>
@@ -229,6 +245,19 @@ a:hover { text-decoration: underline; }
     <div class="bignum-card"><div class="bignum-val">Jun 11</div><div class="bignum-lbl">Group stage begins &mdash; trading window opens</div></div>
     <div class="bignum-card"><div class="bignum-val">Knockouts</div><div class="bignum-lbl">Round of 32 through the semifinals</div></div>
     <div class="bignum-card"><div class="bignum-val">Jul 19</div><div class="bignum-lbl">Final &mdash; window closes, results compiled</div></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+  <span class="section-eyebrow">FAQ</span>
+  <h2>Common questions.</h2>
+  <div class="faq">
+    <div class="faq-item"><h4>Is my money safe?</h4><p>Yes. Fade Sync is read-only &mdash; it can see your bets and outcomes to measure performance, but it never deposits, withdraws, or places wagers. You trade with your own capital on your own accounts.</p></div>
+    <div class="faq-item"><h4>How do I get the $25?</h4><p>Complete the study &mdash; sync your books and trade at least 10 World Cup events on Kalshi across the tournament. Payout details are shared in the app once you're set up.</p></div>
+    <div class="faq-item"><h4>What counts as an event?</h4><p>Any World Cup market you trade on Kalshi &mdash; match outcomes, advancement, group winners, the tournament winner, and more. Ten or more distinct trades across the tournament keeps you active.</p></div>
+    <div class="faq-item"><h4>Do I have to bet a certain way?</h4><p>No. Trade your own way &mdash; there are no right or wrong picks. We're measuring real outcomes, not coaching you.</p></div>
+    <div class="faq-item"><h4>Why prediction markets?</h4><p>We're testing whether everyday bettors actually do better trading prediction markets than at their sportsbook. Your sportsbook history is the baseline; your Kalshi trades are the comparison.</p></div>
   </div>
 </div>
 
