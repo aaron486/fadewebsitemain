@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Casting — The Bookie</title>
+<meta name="description" content="Fade is casting The Bookie for an upcoming shoot in Downtown LA on Thursday, June 11. Reach out to info@fade.bet or (941) 786-5956." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+.section { max-width: 920px; margin: 0 auto; padding: 4rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.875rem; display: block; }
+.section h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: white; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+.section p.lead { font-size: 1.0625rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 1rem; }
+.section p.lead strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+.hero { text-align: center; padding: 5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 760px; height: 520px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1.25rem; position: relative; }
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.1875rem; color: rgba(255,255,255,0.52); max-width: 640px; margin: 0 auto 2.25rem; line-height: 1.7; position: relative; }
+.hero p strong { color: #fff; font-weight: 700; }
+
+.measure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.measure-card { padding: 1.75rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.measure-card h3 { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; }
+.measure-card ul { list-style: none; }
+.measure-card li { font-size: 0.9375rem; color: rgba(255,255,255,0.6); padding: 0.5rem 0 0.5rem 1.5rem; position: relative; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.04); }
+.measure-card li:first-child { border-top: none; }
+.measure-card li::before { content: '\2192'; position: absolute; left: 0; color: rgba(59,130,246,0.6); }
+.measure-card li strong { color: white; font-weight: 600; }
+
+.bignum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.bignum-card { text-align: center; padding: 1.5rem 1rem; background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.1); border-radius: 14px; }
+.bignum-val { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800; color: #3b82f6; }
+.bignum-lbl { font-size: 0.8125rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; line-height: 1.4; }
+
+/* Reference photo gallery */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1rem; }
+.shots a { display: block; }
+.shots img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); display: block; background: rgba(255,255,255,0.03); }
+.shots-empty { grid-column: 1 / -1; padding: 2.5rem 1rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); border: 1px dashed rgba(255,255,255,0.12); border-radius: 14px; }
+
+.cta { text-align: center; padding: 4.5rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.875rem; position: relative; }
+.cta p { font-size: 1rem; color: rgba(255,255,255,0.45); margin-bottom: 2rem; position: relative; max-width: 520px; margin-left: auto; margin-right: auto; }
+.btn-apply { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
+.btn-apply:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+
+.disclaimer { max-width: 920px; margin: 0 auto; padding: 2rem 1.5rem; }
+.disclaimer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 1.25rem 2.5rem; }
+  .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+  .hero p { font-size: 1rem; }
+  .section { padding: 3rem 1.25rem; }
+  .measure-grid { grid-template-columns: 1fr; }
+  .bignum { grid-template-columns: 1fr; }
+  .shots { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="header-brand">
+    <svg viewBox="80 420 840 170" height="38" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">Bet Together</span>
+  </a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">Fade Casting &middot; The Bookie</div>
+  <h1>We're casting<br />our <span>Bookie.</span></h1>
+  <p>One standout role at the center of the story. Fade is shooting in <strong>Downtown LA on Thursday, June 11</strong> &mdash; and we're looking for the right person to play the Bookie.</p>
+  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie" class="btn-apply">Reach out to apply &#8594;</a>
+</div>
+
+<!-- The role -->
+<div class="section">
+  <span class="section-eyebrow">The role</span>
+  <h2>The Bookie.</h2>
+  <p class="lead">[Role description coming &mdash; the character, the vibe, the energy we're after.]</p>
+</div>
+
+<!-- Wardrobe -->
+<div class="section">
+  <span class="section-eyebrow">Wardrobe</span>
+  <h2>The look.</h2>
+  <p class="lead">[Specific Bookie wardrobe coming &mdash; pieces, colors, accessories, vibe.]</p>
+</div>
+
+<!-- Reference looks -->
+<div class="section">
+  <span class="section-eyebrow">Reference</span>
+  <h2>The vibe.</h2>
+  <div class="shots">
+    <div class="shots-empty">Reference photos coming</div>
+  </div>
+</div>
+
+<!-- Details -->
+<div class="section">
+  <span class="section-eyebrow">Details</span>
+  <h2>The basics.</h2>
+  <div class="bignum">
+    <div class="bignum-card"><div class="bignum-val">June 11</div><div class="bignum-lbl">Thursday &middot; 2:30&ndash;6:00 PM</div></div>
+    <div class="bignum-card"><div class="bignum-val">Downtown LA</div><div class="bignum-lbl">Exact location shared with selected talent</div></div>
+    <div class="bignum-card"><div class="bignum-val">Reach out</div><div class="bignum-lbl">Email info@fade.bet or call/text (941) 786-5956</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Think you're the Bookie?</h2>
+  <p>Email a quick intro and a photo or two, or call/text us &mdash; we'll take it from there.</p>
+  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie" class="btn-apply">Email info@fade.bet &#8594;</a>
+  <p style="margin-top:1.5rem;font-size:0.95rem;color:rgba(255,255,255,0.5);position:relative;">or call / text <a href="tel:+19417865956" style="color:#60a5fa;">(941) 786-5956</a></p>
+</div>
+
+<div class="disclaimer">
+  <p>Fade Casting is an open call for an upcoming Fade content shoot. Reaching out does not guarantee selection. Details, call times, and any compensation are confirmed directly with selected participants.</p>
+</div>
+
+</body>
+</html>
