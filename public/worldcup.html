@@ -109,6 +109,18 @@ a:hover { text-decoration: underline; }
 .faq-item { padding: 1.4rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
 .faq-item h4 { font-size: 1rem; color: #fff; font-weight: 700; margin-bottom: 0.5rem; }
 .faq-item p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.sign-form { max-width: 520px; margin: 1.5rem auto 0; display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+.sign-field { display: flex; flex-direction: column; gap: 0.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.sign-field input { font-family: 'Inter', sans-serif; font-size: 1rem; text-transform: none; letter-spacing: normal; color: #fff; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 0.8rem 0.9rem; outline: none; }
+.sign-field input:focus { border-color: #3b82f6; }
+.sign-agree { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.5; }
+.sign-agree input { margin-top: 0.2rem; width: 18px; height: 18px; flex-shrink: 0; accent-color: #3b82f6; }
+.sign-btn { padding: 0.95rem; background: #3b82f6; color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+.sign-btn:hover { background: #2f6fe0; }
+.sign-btn:disabled { opacity: 0.6; cursor: default; }
+.sign-msg { font-size: 0.92rem; margin-top: 0.25rem; min-height: 1.2rem; text-align: center; }
+.sign-msg.ok { color: #4ade80; }
+.sign-msg.err { color: #f87171; }
 </style>
 </head>
 <body>
@@ -261,6 +273,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- Sign -->
+<div class="section" id="sign">
+  <span class="section-eyebrow">Enroll</span>
+  <h2>Sign to join the study.</h2>
+  <p class="lead">Add your name to lock in your spot in the FIFA World Cup Case Study and the $25 reward.</p>
+  <form class="sign-form" id="signForm" autocomplete="on">
+    <label class="sign-field">Full name (your signature)<input type="text" id="sig-name" autocomplete="name" required /></label>
+    <label class="sign-field">Email<input type="email" id="sig-email" autocomplete="email" required /></label>
+    <label class="sign-agree"><input type="checkbox" id="sig-agree" required /> <span>I'm 21+, participating voluntarily with my own capital, and I agree to sync my accounts (read-only) for the study. This is research &mdash; not betting or financial advice.</span></label>
+    <button type="submit" class="sign-btn" id="sigBtn">Sign &amp; enroll</button>
+    <div class="sign-msg" id="sigMsg"></div>
+  </form>
+</div>
+
 <!-- CTA -->
 <div class="cta">
   <h2>You're in.<br />Let's get started.</h2>
@@ -271,6 +297,40 @@ a:hover { text-decoration: underline; }
 <div class="disclaimer">
   <p>This page explains how to participate in a Fade research study and does not constitute investment, betting, or financial advice. Sports betting and prediction-market trading involve risk of loss. Participation is voluntary and uses each participant's own capital. The study funder is disclosed to all participants.</p>
 </div>
+
+<script>
+(function () {
+  var SB_URL = 'https://fznaaoiptgpunyxddowd.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6bmFhb2lwdGdwdW55eGRkb3dkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzNzA5NzUsImV4cCI6MjA5NTk0Njk3NX0.lIiX79S3MNSAPxFvlYcDr8Csi7s1ijXLU1hgzP4eXTE';
+  var form = document.getElementById('signForm');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var name = document.getElementById('sig-name').value.trim();
+    var email = document.getElementById('sig-email').value.trim();
+    var agree = document.getElementById('sig-agree').checked;
+    var msg = document.getElementById('sigMsg'); var btn = document.getElementById('sigBtn');
+    msg.className = 'sign-msg';
+    if (!name || !email || !agree) { msg.textContent = 'Add your name, email, and check the box to sign.'; msg.className = 'sign-msg err'; return; }
+    btn.disabled = true; btn.textContent = 'Signing…';
+    try {
+      var r = await fetch(SB_URL + '/rest/v1/signatures', {
+        method: 'POST',
+        headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ name: name, email: email, campaign: 'fifa-world-cup' })
+      });
+      if (!r.ok) throw new Error('post');
+      Array.prototype.forEach.call(form.querySelectorAll('input'), function (i) { i.disabled = true; });
+      btn.style.display = 'none';
+      msg.textContent = '✓ You’re enrolled, ' + name + ' — watch your email for next steps.';
+      msg.className = 'sign-msg ok';
+    } catch (err) {
+      msg.textContent = 'Couldn’t register — please try again in a moment.'; msg.className = 'sign-msg err';
+      btn.disabled = false; btn.textContent = 'Sign & enroll';
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
