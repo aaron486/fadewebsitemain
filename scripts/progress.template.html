@@ -49,6 +49,14 @@ a:hover { text-decoration: underline; }
 .t-day-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
 @media (max-width: 600px) { .t-day { gap: 1rem; padding: 1.3rem 1.4rem; } }
 
+/* This week */
+.tw { margin-top: 1.5rem; padding: 1.5rem 1.7rem; background: linear-gradient(135deg, rgba(96,165,250,0.12), rgba(96,165,250,0.02)); border: 1px solid rgba(96,165,250,0.22); border-radius: 18px; }
+.tw-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(96,165,250,0.9); margin-bottom: 1rem; }
+.tw-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.tw-list li { position: relative; padding-left: 1.5rem; font-size: 0.98rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.tw-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.7); }
+.tw-list li strong { color: #fff; font-weight: 700; }
+
 /* Countdown */
 @font-face { font-family: 'DSEG7'; src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 .cd { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.75rem; padding: 1.6rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
