@@ -71,6 +71,14 @@ a:hover { text-decoration: underline; }
   .bignum { grid-template-columns: 1fr; }
   .shots { grid-template-columns: 1fr 1fr; }
 }
+.lines { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+.line-group { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; }
+.line-group > summary { list-style: none; cursor: pointer; padding: 1.05rem 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(96,165,250,0.9); display: flex; align-items: center; justify-content: space-between; }
+.line-group > summary::-webkit-details-marker { display: none; }
+.line-group > summary::after { content: '+'; color: rgba(255,255,255,0.45); font-weight: 700; }
+.line-group[open] > summary::after { content: '\2013'; }
+.lg-body { padding: 0 1.4rem 1.3rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.quote { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6; padding-left: 0.95rem; border-left: 2px solid rgba(59,130,246,0.45); }
 </style>
 </head>
 <body>
@@ -85,23 +93,129 @@ a:hover { text-decoration: underline; }
 <!-- Hero -->
 <div class="hero">
   <div class="hero-eyebrow">Fade Casting &middot; The Bookie</div>
-  <h1>We're casting<br />our <span>Bookie.</span></h1>
-  <p>One standout role at the center of the story. Fade is shooting in <strong>Downtown LA on Thursday, June 11</strong> &mdash; and we're looking for the right person to play the Bookie.</p>
-  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie" class="btn-apply">Reach out to apply &#8594;</a>
+  <h1>Meet <span>Sal.</span></h1>
+  <p>A retired bookie who spent thirty years <em>being</em> the operation &mdash; and loved every single second of it. We're casting Sal for Fade's shoot in <strong>Downtown LA on Thursday, June 11</strong>.</p>
+  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie%20(Sal)" class="btn-apply">Reach out to apply &#8594;</a>
 </div>
 
 <!-- The role -->
 <div class="section">
   <span class="section-eyebrow">The role</span>
-  <h2>The Bookie.</h2>
-  <p class="lead">[Role description coming &mdash; the character, the vibe, the energy we're after.]</p>
+  <h2>Who Sal is.</h2>
+  <p class="lead">Sal is the calmest, happiest man in any room &mdash; because he's still playing the game he fell in love with fifty years ago. The app didn't replace him. It just handed him a new place to point everything he already knew.</p>
+  <p class="lead">For thirty years &mdash; before any of this was legal &mdash; Sal <strong>was</strong> the book. No software, no model, no risk desk. Just a phone, a fax, a cork board, a legal pad, and his own head. Guys called him, he wrote it down, and he knew everybody's record before "records" existed. He carried the whole operation in his memory.</p>
+  <p class="lead">And those were the best years of his life &mdash; not a grind he survived, the time he loved most. Now he's retired and on the betting app like everyone else, and he's <strong>delighted</strong>: it does, effortlessly, what used to nearly kill him every Sunday. He opens the feed, sees what everyone's betting, sees their records, and acts. He still keeps score on everybody. He still knows who's sharp and who's a sucker.</p>
+  <p class="lead">He's not bitter about the new world &mdash; he's amazed by it. <strong>Play the wonder, not the grievance.</strong> Loyalty is a religion to him: his loyalties and his grudges are both permanent, both delivered as calm fact. What he misses isn't the danger &mdash; it's the ceremony. The knock on the door, the envelope, somebody looking him in the eye. When that flickers across him, it's wistful, never sad. He's the last guy who'd ask for your pity.</p>
 </div>
 
-<!-- Wardrobe -->
+<!-- Playing Sal -->
 <div class="section">
-  <span class="section-eyebrow">Wardrobe</span>
-  <h2>The look.</h2>
-  <p class="lead">[Specific Bookie wardrobe coming &mdash; pieces, colors, accessories, vibe.]</p>
+  <span class="section-eyebrow">On camera</span>
+  <h2>Playing Sal.</h2>
+  <div class="measure-grid">
+    <div class="measure-card">
+      <h3>How he moves</h3>
+      <ul>
+        <li>Late 60s. Completely at ease in his body. Unhurried &mdash; the opposite of anxious.</li>
+        <li>A man who is <strong>done sweating Sundays.</strong></li>
+        <li>Holds the phone like it slightly amuses him. Taps "fade" without even looking at it.</li>
+        <li>Settled. He doesn't lean in to make a point &mdash; the point comes to him.</li>
+      </ul>
+    </div>
+    <div class="measure-card">
+      <h3>Wardrobe</h3>
+      <ul>
+        <li>Zip-up <strong>track jacket.</strong></li>
+        <li>A <strong>gold chain</strong> and/or a <strong>pinky ring</strong> if it reads right.</li>
+        <li>Pressed but casual &mdash; a man who had money and stayed practical about it.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Sample lines -->
+<div class="section">
+  <span class="section-eyebrow">Sample lines</span>
+  <h2>How Sal talks.</h2>
+  <p class="lead">A feel for the voice &mdash; calm, certain, amused, never bitter. Tap a section to read.</p>
+  <div class="lines">
+    <details class="line-group">
+      <summary>The bookie (who he is)</summary>
+      <div class="lg-body">
+        <div class="quote">I took bets for thirty years. You called me. I wrote it down. I knew everybody's record before there was a record.</div>
+        <div class="quote">The kids ask me for picks now. Me. The bookie. You spend your whole life on one side of the phone, and now they want you on theirs.</div>
+        <div class="quote">People think it was the Wild West. It was the most organized thing you ever saw. No software. No cloud. It was all up here. I was the spreadsheet. I was the cloud. I was the whole &mdash; what do they call it &mdash; the infrastructure.</div>
+        <div class="quote">We had rules. You bet, you pay. You don't pay, we talk. You still don't pay, well &mdash; point is, there was a system. The app's got the same system. They just automated the talking part.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>The fade</summary>
+      <div class="lg-body">
+        <div class="quote">I knew Portnoy was no good. Years ago. I just knew. Now the app tells me every time he places a bet &mdash; little notification, ding. And every time? I fade him. Every. Single. Time. Best feature they ever made.</div>
+        <div class="quote">Tail the sharps, fade the Tonys. That's the whole game. Took me thirty years to learn it. The app teaches it to you on the loading screen.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>The read (he still clocks everybody)</summary>
+      <div class="lg-body">
+        <div class="quote">The app shows me everybody's record. I don't need it. I had the records up here before there was an app, before there was a here. It just tells me quicker what I already knew about you.</div>
+        <div class="quote">You can spot a sucker by how happy he is before the game. A sharp's miserable all week. A sucker's having the time of his life right up until kickoff. Then they trade places.</div>
+        <div class="quote">Forty years I read faces. Now I read little cartoon pictures. Same information. Guy's got a cartoon for a face and a six-leg parlay? I know that man. I been knowing that man my whole life.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>Vinny (the human "cash out")</summary>
+      <div class="lg-body">
+        <div class="quote">These kids got a button says "cash out." I had a guy named Vinny said "cash out." Different energy.</div>
+        <div class="quote">You didn't pay? There was no late fee. There was Vinny. Vinny was the late fee.</div>
+        <div class="quote">There's a button for everything now. Cash out, boost, parlay this, parlay that. In my day the only button was Vinny &mdash; and he wasn't a button. He was a man. And you did not press him.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>The app (loves it, baffled by it)</summary>
+      <div class="lg-body">
+        <div class="quote">I download the app, I see what everybody's betting, and I act accordingly. Take my friend Tony. Parlay every Sunday. Six legs, every week, like clockwork. I get the notification he placed it &mdash; I fade him before he's done tapping. Right to my sportsbook.</div>
+        <div class="quote">They got "live betting." You can bet during the game. During it! In my day, you wanted to bet during the game, you had to know me personally, and I had to like you.</div>
+        <div class="quote">My grandson set the whole thing up in four minutes. Four minutes. Took me thirty years to build what this thing does on the loading screen. I'm not bitter. I'm impressed. I'm mostly impressed.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>Real money (the cash he misses)</summary>
+      <div class="lg-body">
+        <div class="quote">The app pays out, sure. Number goes up on the screen. But a number going up ain't the same as a man counting hundreds onto your kitchen table. One of those you can feel.</div>
+        <div class="quote">You win, they put it in your account. No envelope. No rubber band. No nothing. I hit big on a Thursday and the only thing that happened was my phone buzzed. That was the party. The phone buzzed.</div>
+        <div class="quote">Cash, you could hold up to the light. Go ahead &mdash; hold a bank transfer up to the light. I'll wait.</div>
+        <div class="quote">There's a button, "withdraw." Three to five business days, it says. Three to five! Vinny paid same day. Rain, snow, a funeral &mdash; didn't matter. Vinny was the original instant transfer.</div>
+        <div class="quote">I press "cash out" and I keep waiting for somebody to come to the door. Nobody comes to the door no more. I miss the door.</div>
+        <div class="quote">Forty years I trusted nobody. Now there's a number on a screen says I'm up four grand and I just gotta &mdash; believe it. I believe a phone now. That's where we're at. That's the world.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>The big scores</summary>
+      <div class="lg-body">
+        <div class="quote">I had ten million in action against the Celtics in '81. Ten million. They win it all, and I'm wiped &mdash; except I didn't take the other side, I rode with 'em. Never fade the C's. That title paid my daughter's college tuition. Every semester, I thanked Larry Bird.</div>
+        <div class="quote">Patriots-Rams, the first one, '02. Nobody had the Pats. NOBODY. Brady's a kid. Field goal goes up &mdash; and I'm a made man for a month off that one game. I been a Brady guy ever since. Loyalty.</div>
+        <div class="quote">'86 Mets. Bill Buckner. That ground ball goes through his legs and half my book goes through the floor. I made a year's salary in four seconds. I lit a candle for that man. Still do.</div>
+        <div class="quote">Twenty-eight to three. Everybody in America had the Falcons. Everybody. And I got my guy Brady down twenty-five points, and I never moved. Not once. They wrote him off &mdash; again. Loyalty pays, kid. I made more that one night than I made in all of 1994.</div>
+        <div class="quote">Eighteen and one. The one game. The ONE. Helmet catch. We don't say that man's name in this house. I lit no candle. Some wounds, you keep 'em.</div>
+        <div class="quote">Buster Douglas. Tokyo, 1990. Nobody had Buster Douglas &mdash; not in that building, not on this planet. A guy put fifty on him as a joke and walked out a different man. I think about that fifty bucks more than I think about some of my own relatives.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>Retirement (Sundays used to nearly kill him)</summary>
+      <div class="lg-body">
+        <div class="quote">Sundays used to almost finish me. Phone off the hook, action everywhere, heart going like a drum. Now? Same Sunday. I'm on the couch. I point the phone at the dumb money, I tap, I lie back down. I should've retired into this job forty years ago.</div>
+        <div class="quote">Best part? I don't gotta take the calls anymore. No phone, no fax, no Vinny. Just me, the couch, and a notification that says somebody dumb just bet. I love it here.</div>
+      </div>
+    </details>
+    <details class="line-group">
+      <summary>Carol (if she's in the scene)</summary>
+      <div class="lg-body">
+        <div class="quote">She asks did we win. I say yeah. She says where's the money. I point at the phone. She's not impressed. Cash &mdash; cash, she was always impressed.</div>
+        <div class="quote">She says I'm on that phone too much. I tell her &mdash; Carol. This phone is doing the work of me, Vinny, two phone lines, a fax machine, and a legal pad. Let me have the phone.</div>
+      </div>
+    </details>
+  </div>
 </div>
 
 <!-- Reference looks -->
@@ -126,9 +240,9 @@ a:hover { text-decoration: underline; }
 
 <!-- CTA -->
 <div class="cta">
-  <h2>Think you're the Bookie?</h2>
+  <h2>Think you're Sal?</h2>
   <p>Email a quick intro and a photo or two, or call/text us &mdash; we'll take it from there.</p>
-  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie" class="btn-apply">Email info@fade.bet &#8594;</a>
+  <a href="mailto:info@fade.bet?subject=Fade%20Casting%20%E2%80%94%20The%20Bookie%20(Sal)" class="btn-apply">Email info@fade.bet &#8594;</a>
   <p style="margin-top:1.5rem;font-size:0.95rem;color:rgba(255,255,255,0.5);position:relative;">or call / text <a href="tel:+19417865956" style="color:#60a5fa;">(941) 786-5956</a></p>
 </div>
 
