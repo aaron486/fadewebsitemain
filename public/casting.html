@@ -73,7 +73,53 @@ a:hover { text-decoration: underline; }
   .stats-grid { grid-template-columns: 1fr; }
   .measure-grid { grid-template-columns: 1fr; }
   .bignum { grid-template-columns: 1fr; }
+  .cr-nations { grid-template-columns: 1fr; }
+  .creative-details > summary { padding: 1.25rem 1.25rem; }
+  .creative-body { padding: 0 1.25rem 1.75rem; }
 }
+
+/* Full creative dropdown */
+.creative-wrap { margin-top: 1.5rem; }
+.creative-details { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; overflow: hidden; }
+.creative-details > summary { list-style: none; cursor: pointer; padding: 1.5rem 1.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.creative-details > summary::-webkit-details-marker { display: none; }
+.creative-summary-text { display: flex; flex-direction: column; gap: 0.25rem; }
+.creative-summary-text .cs-title { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.creative-summary-text .cs-sub { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+.cs-chev { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(96,165,250,0.95); border: 1px solid rgba(59,130,246,0.35); padding: 0.45rem 0.85rem; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+.creative-details[open] > summary .cs-chev .cs-open { display: none; }
+.creative-details:not([open]) > summary .cs-chev .cs-close { display: none; }
+.creative-body { padding: 0 1.75rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.cr-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0.5rem; }
+.cr-meta span { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.6); padding: 0.45rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; background: rgba(255,255,255,0.02); }
+.cr-h3 { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(96,165,250,0.9); margin: 2rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.cr-h3:first-of-type { border-top: none; padding-top: 0.5rem; }
+.cr-p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin: 0.6rem 0; }
+.cr-p strong { color: #fff; font-weight: 600; }
+.cr-sub { font-size: 0.92rem; font-weight: 700; color: #fff; margin: 1.3rem 0 0.5rem; }
+.cr-ul { list-style: none; margin: 0.4rem 0 0.8rem; }
+.cr-ul li { font-size: 0.92rem; color: rgba(255,255,255,0.62); padding: 0.35rem 0 0.35rem 1.4rem; position: relative; line-height: 1.55; }
+.cr-ul li::before { content: '\2192'; position: absolute; left: 0; color: rgba(59,130,246,0.6); }
+.cr-ul li strong { color: #fff; font-weight: 600; }
+.cr-ol { counter-reset: cr; list-style: none; margin: 0.5rem 0 0.8rem; }
+.cr-ol li { counter-increment: cr; font-size: 0.93rem; color: rgba(255,255,255,0.68); padding: 0.45rem 0 0.45rem 2.1rem; position: relative; line-height: 1.55; }
+.cr-ol li::before { content: counter(cr); position: absolute; left: 0; top: 0.35rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: #60a5fa; width: 1.4rem; height: 1.4rem; border: 1px solid rgba(59,130,246,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.cr-ol li strong { color: #fff; font-weight: 700; }
+.cr-quote { font-size: 0.92rem; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.55; padding: 0.4rem 0 0.4rem 1rem; border-left: 2px solid rgba(59,130,246,0.4); margin: 0.5rem 0; }
+.cr-nations { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0.8rem 0; }
+.cr-nation { padding: 1rem 1.1rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.cr-nation h5 { font-size: 0.88rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.3rem; }
+.cr-nation .cr-nation-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.45; margin-bottom: 0.5rem; }
+.cr-nation .cr-quote { font-size: 0.85rem; margin: 0; padding: 0 0 0 0.8rem; }
+.cr-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+.cr-table td { font-size: 0.9rem; color: rgba(255,255,255,0.65); padding: 0.7rem 0.9rem; border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.5; }
+.cr-table tr:first-child td { border-top: none; }
+.cr-table td:first-child { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: #60a5fa; white-space: nowrap; width: 1%; vertical-align: top; }
+.cr-must { margin-top: 1.5rem; padding: 1.4rem 1.5rem; background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.2); border-radius: 14px; }
+.cr-must .cr-h3 { border-top: none; padding-top: 0; margin-top: 0; color: #60a5fa; }
+.cr-note { font-size: 0.82rem; color: rgba(255,255,255,0.38); font-style: italic; margin: 0.5rem 0; }
+.cr-ul li.cr-ph { color: rgba(255,255,255,0.38); font-style: italic; }
+.cr-ul li.cr-ph::before { color: rgba(255,255,255,0.25); }
 </style>
 </head>
 <body>
@@ -108,6 +154,215 @@ a:hover { text-decoration: underline; }
   <h2>A day on set with Fade.</h2>
   <p class="lead">We're filming the content that launches Fade &mdash; smart, funny, native-to-the-feed pieces about sports, betting, and prediction markets. We're a media company bringing out the life in sport, community, betting, and games. Real bettor energy, not actors reading lines.</p>
   <p class="lead">On set, creators will read from lines about <strong>sports, betting culture, the World Cup, and their own background</strong> &mdash; in your own voice.</p>
+
+  <div class="creative-wrap">
+    <details class="creative-details">
+      <summary>
+        <span class="creative-summary-text">
+          <span class="cs-title">Fade Testimonial Shoot &mdash; Creative Brief</span>
+          <span class="cs-sub">Talking-head testimonials &middot; aligned to the World Cup</span>
+        </span>
+        <span class="cs-chev"><span class="cs-open">Read &#8595;</span><span class="cs-close">Close &#8593;</span></span>
+      </summary>
+      <div class="creative-body">
+
+        <div class="cr-meta">
+          <span>Unit &middot; Testimonials (Half 2 of 2)</span>
+          <span>Format &middot; Talking-head to camera</span>
+          <span>Session &middot; 30&ndash;45 min per talent</span>
+          <span>Timing &middot; Aligned to the World Cup</span>
+        </div>
+
+        <div class="cr-h3">1 &middot; The Idea</div>
+        <p class="cr-p">We&rsquo;re capturing real, sensory testimonials from sports fans who bet with Fade. Not polished ad-speak &mdash; the kind of vivid, in-the-moment storytelling that makes a viewer feel the matchday before they&rsquo;ve thought about it.</p>
+        <p class="cr-p">Every clip should be able to stand alone in the edit: a self-contained, emotive, sensory soundbite about loving sport, backing a team, and the thrill of having skin in the game &mdash; building toward the World Cup.</p>
+
+        <div class="cr-h3">2 &middot; What We&rsquo;re Capturing</div>
+        <p class="cr-p">Four themes. Each delivered with concrete, sensory detail &mdash; what they <strong>see, hear, smell, feel</strong> &mdash; not just how they feel about it.</p>
+        <ol class="cr-ol">
+          <li><strong>Their team</strong> &mdash; who they support and the bond behind it</li>
+          <li><strong>Why they love sports</strong> &mdash; what the game gives them</li>
+          <li><strong>Why they bet</strong> &mdash; what backing a wager adds to the experience</li>
+          <li><strong>World Cup / home nation</strong> &mdash; pride, nerves, and where they&rsquo;ll be watching</li>
+        </ol>
+
+        <div class="cr-h3">3 &middot; Tone &amp; Style</div>
+        <ul class="cr-ul">
+          <li><strong>Sensory and present-tense.</strong> &ldquo;I&rsquo;m walking up the steps and the pitch opens up in front of me&hellip;&rdquo; Immediate, alive, cinematic.</li>
+          <li><strong>Honest, not salesy.</strong> The energy comes from genuine passion, not selling.</li>
+          <li><strong>Range.</strong> Capture both the loud, euphoric deliveries and the quiet, half-whispered ones &mdash; sensory lines often land better hushed, and it gives the editor options.</li>
+          <li><strong>Self-contained.</strong> Talent folds the question into the answer and speaks in full sentences (&ldquo;My team is&hellip;&rdquo;, not just &ldquo;Liverpool&rdquo;) so each clip works on its own.</li>
+        </ul>
+
+        <div class="cr-h3">4 &middot; Prompts by Theme</div>
+        <p class="cr-p">Open-ended by design &mdash; no yes/no answers. Push for the senses every time.</p>
+        <div class="cr-sub">Their team</div>
+        <ul class="cr-ul">
+          <li>Take me to your seat in the stadium. What do you see, hear, smell?</li>
+          <li>Describe the exact moment your team scores &mdash; what happens around you?</li>
+          <li>What does the shirt feel like when you pull it on for matchday?</li>
+          <li>How did you first fall for this team?</li>
+        </ul>
+        <div class="cr-sub">Why they love sports</div>
+        <ul class="cr-ul">
+          <li>Describe the smell of fresh turf and the sound of the crowd before kickoff.</li>
+          <li>What does that first roar feel like in your chest?</li>
+          <li>Paint the scene of your perfect matchday, from the moment you wake up.</li>
+          <li>What does sport give you that nothing else does?</li>
+        </ul>
+        <div class="cr-sub">Why they bet</div>
+        <ul class="cr-ul">
+          <li>Describe the feeling in your stomach in the final minutes when your bet&rsquo;s still alive.</li>
+          <li>What does the room sound like when it comes through?</li>
+          <li>Walk me through that split second when everything&rsquo;s on the line.</li>
+          <li>What does having a stake in the game add to watching it?</li>
+        </ul>
+        <div class="cr-sub">World Cup / home nation</div>
+        <p class="cr-p"><strong>Every fan must name their home nation, use their team&rsquo;s nickname, and put their World Cup pride into words.</strong> (See the reference in Section 6.)</p>
+        <ul class="cr-ul">
+          <li>What&rsquo;s your home nation, and what does it mean to wear those colours?</li>
+          <li>Describe the colours, the flags, the noise when your nation plays.</li>
+          <li>What does it smell and sound like watching with your people?</li>
+          <li>Take me to where you&rsquo;ll be &mdash; the bar, the living room, the street &mdash; and make me feel it.</li>
+          <li>Why do you love the World Cup? What does that pride feel like when your nation walks out?</li>
+        </ul>
+
+        <div class="cr-h3">5 &middot; Sample Lines to Read</div>
+        <p class="cr-p">Reference deliveries in the right tone &mdash; talent can read these, riff on them, or use them to find their own. Keep them sensory, present-tense, and self-contained.</p>
+        <div class="cr-sub">Their team</div>
+        <div class="cr-quote">&ldquo;The second the whistle goes, eighty thousand voices hit you at once &mdash; you feel it in your ribs before you even hear it.&rdquo;</div>
+        <div class="cr-quote">&ldquo;I pull on that shirt and it still smells like the first match my old man ever took me to.&rdquo;</div>
+        <div class="cr-quote">&ldquo;When we score, the whole stand surges &mdash; strangers grabbing you, beer in the air, everyone screaming the same name.&rdquo;</div>
+        <div class="cr-sub">Why they love sports</div>
+        <div class="cr-quote">&ldquo;There&rsquo;s nothing like that first lungful of fresh-cut grass and cold air right before kickoff.&rdquo;</div>
+        <div class="cr-quote">&ldquo;For ninety minutes, nothing else exists &mdash; just me, the noise, and the game.&rdquo;</div>
+        <div class="cr-quote">&ldquo;It&rsquo;s the one place I can lose my voice and not care who&rsquo;s watching.&rdquo;</div>
+        <div class="cr-sub">Why they bet</div>
+        <div class="cr-quote">&ldquo;When my bet&rsquo;s still alive in the last minute, my heart&rsquo;s going so hard I can hear it over the telly.&rdquo;</div>
+        <div class="cr-quote">&ldquo;It turns a match you&rsquo;re watching into a match you&rsquo;re living.&rdquo;</div>
+        <div class="cr-quote">&ldquo;That split second before the final whistle &mdash; the whole room holding its breath &mdash; there&rsquo;s nothing like it.&rdquo;</div>
+        <div class="cr-sub">World Cup / home nation</div>
+        <div class="cr-quote">&ldquo;When my country walks out, the whole bar goes silent, then erupts &mdash; flags everywhere, strangers hugging like family.&rdquo;</div>
+        <div class="cr-quote">&ldquo;There&rsquo;s no sound like home &mdash; ten thousand of us singing the anthem at once.&rdquo;</div>
+        <div class="cr-quote">&ldquo;Four years you wait for this, and the second the ball moves, it&rsquo;s like the whole nation breathes together.&rdquo;</div>
+
+        <div class="cr-h3">6 &middot; Home Nation Reference &mdash; Nicknames &amp; Pride</div>
+        <p class="cr-p">Casting should aim for a spread of nations for variety. Each fan should name their nation, drop the team nickname, and speak to its World Cup pride. Examples below &mdash; swap in whatever fits your cast.</p>
+        <div class="cr-nations">
+          <div class="cr-nation">
+            <h5>Brazil &mdash; the Sele&ccedil;&atilde;o / Canarinho</h5>
+            <div class="cr-nation-desc">Five-time champions, the samba football pedigree, the yellow-and-green everywhere.</div>
+            <div class="cr-quote">&ldquo;When the Sele&ccedil;&atilde;o plays, the whole street turns yellow and green &mdash; drums going, and you believe, every single time, the trophy&rsquo;s coming home.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Argentina &mdash; La Albiceleste</h5>
+            <div class="cr-nation-desc">World champions, the Messi-and-Maradona lineage, deafening pride.</div>
+            <div class="cr-quote">&ldquo;We&rsquo;re La Albiceleste &mdash; and after lifting that cup, every kid on my street swears they&rsquo;re the next Messi.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>England &mdash; the Three Lions</h5>
+            <div class="cr-nation-desc">1966 and a lifetime of hope, the whole pub singing as one.</div>
+            <div class="cr-quote">&ldquo;The Three Lions on the shirt, the anthem rattling the pub windows &mdash; for one summer the whole country dares to dream again.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>France &mdash; Les Bleus</h5>
+            <div class="cr-nation-desc">Champions and a side that carries the whole nation&rsquo;s colours.</div>
+            <div class="cr-quote">&ldquo;You pull on Les Bleus and you carry the whole country with you &mdash; and when we win, the Champs-&Eacute;lys&eacute;es doesn&rsquo;t sleep.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Mexico &mdash; El Tri</h5>
+            <div class="cr-nation-desc">Host nation in 2026, the green wave in the stands, the loudest love in the game.</div>
+            <div class="cr-quote">&ldquo;El Tri &mdash; green everywhere, the green wave rolling round the stadium &mdash; and this year the World Cup&rsquo;s on our own soil.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>USA &mdash; the Stars and Stripes</h5>
+            <div class="cr-nation-desc">Co-hosts in 2026, the underdog energy, a home tournament to prove a point.</div>
+            <div class="cr-quote">&ldquo;We&rsquo;re the underdogs of the soccer world &mdash; but on home turf in &rsquo;26, stars and stripes everywhere, this is our moment.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Nigeria &mdash; the Super Eagles</h5>
+            <div class="cr-nation-desc">The green-and-white, the drums and the dancing, unmatched colour in the stands.</div>
+            <div class="cr-quote">&ldquo;Super Eagles &mdash; those green-and-white jerseys, the drums, the dancing &mdash; nobody brings noise and colour like we do.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Morocco &mdash; the Atlas Lions</h5>
+            <div class="cr-nation-desc">First African and Arab side to reach a World Cup semi-final, a whole continent behind them.</div>
+            <div class="cr-quote">&ldquo;The Atlas Lions made history &mdash; and the whole continent roared with us, like the whole of Africa was in that stadium.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Portugal &mdash; Os Navegadores</h5>
+            <div class="cr-nation-desc">A nation of explorers in red and green, never afraid to chase glory.</div>
+            <div class="cr-quote">&ldquo;A nation of navigators &mdash; and when the Sele&ccedil;&atilde;o sails out in red and green, we believe we can conquer anything.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Croatia &mdash; the Vatreni</h5>
+            <div class="cr-nation-desc">The red-and-white checkerboard, a small country that keeps stunning the giants.</div>
+            <div class="cr-quote">&ldquo;That red-and-white checkerboard &mdash; the Vatreni &mdash; a tiny country that refuses to know its own size.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Japan &mdash; Samurai Blue</h5>
+            <div class="cr-nation-desc">Discipline, heart, and famously the fans who tidy the stands after every match.</div>
+            <div class="cr-quote">&ldquo;Samurai Blue &mdash; all heart and discipline &mdash; and our fans clean the stadium after, because pride is in the details.&rdquo;</div>
+          </div>
+          <div class="cr-nation">
+            <h5>Netherlands &mdash; Oranje</h5>
+            <div class="cr-nation-desc">Total football and a sea of orange that takes over every host city.</div>
+            <div class="cr-quote">&ldquo;When the Dutch march in, it&rsquo;s one orange tide rolling through the stands &mdash; you can&rsquo;t miss us, you can&rsquo;t out-sing us.&rdquo;</div>
+          </div>
+        </div>
+
+        <div class="cr-h3">7 &middot; Directing the Talent</div>
+        <ul class="cr-ul">
+          <li><strong>Name the sense.</strong> People default to &ldquo;it was amazing&rdquo; unless prompted directly &mdash; ask &ldquo;what could you <em>smell</em>?&rdquo;, &ldquo;what did you <em>hear</em>?&rdquo;</li>
+          <li><strong>Push for present tense.</strong> It forces detail and feels more immediate on screen.</li>
+          <li><strong>Let silences sit.</strong> The descriptive gold usually arrives after the first answer &mdash; stay quiet and they keep reaching.</li>
+          <li><strong>Roll early.</strong> Mic up and start a warm-up chat while recording; the best lines often come before talent thinks we&rsquo;ve &ldquo;started.&rdquo;</li>
+          <li><strong>Get full-sentence takes.</strong> Re-ask if an answer starts mid-thought or relies on the question for context.</li>
+          <li><strong>Lock the home-nation beat.</strong> Don&rsquo;t wrap a fan until you have a clean take of their nation, nickname, and World Cup pride.</li>
+        </ul>
+
+        <div class="cr-h3">8 &middot; Session Structure (30&ndash;45 min)</div>
+        <table class="cr-table">
+          <tr><td>First ~5 min</td><td>Mic up + warm-up chat (rolling)</td></tr>
+          <tr><td>Middle 20&ndash;30 min</td><td>Work the four themes, 2&ndash;3 prompts each</td></tr>
+          <tr><td>Last ~5 min</td><td>Pickups: punchy one-liners + branded tags</td></tr>
+        </table>
+
+        <div class="cr-h3">9 &middot; Casting Notes</div>
+        <ul class="cr-ul">
+          <li>Genuine sports fans, or talent who can convincingly carry that passion.</li>
+          <li>A spread of supported teams and home nations for World Cup range (see Section 6).</li>
+          <li>Comfortable improvising and reaching for sensory detail on the spot.</li>
+        </ul>
+
+        <div class="cr-must">
+          <div class="cr-h3">Must-haves &mdash; Brand Lines to Capture</div>
+          <p class="cr-p">Every session <strong>must</strong> land these. Get clean, full-sentence takes of each before talent wraps.</p>
+          <p class="cr-note">[Confirm exact wording with client.]</p>
+          <div class="cr-sub">Core tagline</div>
+          <ul class="cr-ul">
+            <li>&ldquo;Fade &mdash; Bet Together.&rdquo;</li>
+          </ul>
+          <div class="cr-sub">Bet with friends (social)</div>
+          <ul class="cr-ul">
+            <li>&ldquo;With Fade, I&rsquo;m never betting alone &mdash; me and the lads are all in on the same game.&rdquo;</li>
+            <li>&ldquo;Half the fun is the group chat going off when it comes through.&rdquo;</li>
+          </ul>
+          <div class="cr-sub">Fade the celebrities</div>
+          <ul class="cr-ul">
+            <li>&ldquo;I love fading the so-called experts &mdash; soon as a celeb makes their pick, I take the other side.&rdquo;</li>
+            <li>&ldquo;With Fade you can back yourself against the big names &mdash; and beat them.&rdquo;</li>
+          </ul>
+          <div class="cr-sub">Add your own</div>
+          <ul class="cr-ul">
+            <li class="cr-ph">[client / brand message]</li>
+            <li class="cr-ph">[feature or offer to highlight]</li>
+          </ul>
+        </div>
+
+      </div>
+    </details>
+  </div>
 </div>
 
 <!-- Wardrobe -->
