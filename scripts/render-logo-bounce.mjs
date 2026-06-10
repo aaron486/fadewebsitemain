@@ -54,13 +54,12 @@ const GLYPHS = [
 function frameSVG(t) {
   const x = tri(t, Lx, Tx);
   const y = tri(t, Ly, Ty);
-  const color = PALETTE[colorIndex(t)];
+  const color = '#3b82f6';                 // brand blue only — no color cycling
   const bg = MODE === 'alpha' ? '' : `<rect width="${W}" height="${H}" fill="#000000"/>`;
-  const glow = isCornerNear(t)
-    ? `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})" opacity="0.5"><svg width="${w}" height="${h.toFixed(1)}" viewBox="80 420 840 170"><g fill="${color}" filter="url(#b)">${GLYPHS}</g></svg></g>`
-    : '';
+  const gOp = isCornerNear(t) ? 0.95 : 0.6; // soft blue blur/glow, brighter on corner hits
+  const glow = `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})" opacity="${gOp}"><svg width="${w}" height="${h.toFixed(1)}" viewBox="80 420 840 170"><g fill="${color}" filter="url(#b)">${GLYPHS}</g></svg></g>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
-<defs><filter id="b" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<defs><filter id="b" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="13"/></filter></defs>
 ${bg}
 ${glow}
 <svg x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w}" height="${h.toFixed(1)}" viewBox="80 420 840 170">

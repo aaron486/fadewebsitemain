@@ -12,13 +12,13 @@ body { background: #000; overflow: hidden; }
 #field { position: fixed; inset: 0; }
 #logo {
   position: absolute; top: 0; left: 0; will-change: transform;
-  color: #ffffff; /* glyphs use currentColor */
+  color: #3b82f6; /* brand blue */
   width: clamp(170px, 22vw, 460px);
-  filter: drop-shadow(0 0 0 transparent);
+  filter: drop-shadow(0 0 22px rgba(59,130,246,0.55));
   transition: filter 0.25s ease;
 }
 #logo svg { display: block; width: 100%; height: auto; }
-#logo.flash { filter: drop-shadow(0 0 26px currentColor); }
+#logo.flash { filter: drop-shadow(0 0 40px rgba(59,130,246,0.95)); }
 </style>
 </head>
 <body>
@@ -35,9 +35,7 @@ body { background: #000; overflow: hidden; }
 
 <script>
 (function () {
-  var PALETTE = ['#ffffff', '#3b82f6', '#22d3ee', '#4ade80', '#fbbf24', '#f87171', '#a855f7', '#60a5fa'];
   var logo = document.getElementById('logo');
-  var ci = 0;
   var W, H, w, h, x, y, vx, vy;
   var SPEED = 230; // px/sec
 
@@ -51,11 +49,9 @@ body { background: #000; overflow: hidden; }
   measure();
   // initial diagonal heading
   vx = SPEED * 0.82; vy = SPEED * 0.57;
-  logo.style.color = PALETTE[0];
 
   window.addEventListener('resize', measure);
 
-  function nextColor() { ci = (ci + 1) % PALETTE.length; logo.style.color = PALETTE[ci]; }
   function flash() {
     logo.classList.add('flash');
     setTimeout(function () { logo.classList.remove('flash'); }, 240);
@@ -71,7 +67,7 @@ body { background: #000; overflow: hidden; }
     else if (x >= W - w) { x = W - w; vx = -Math.abs(vx); bx = true; }
     if (y <= 0) { y = 0; vy = Math.abs(vy); by = true; }
     else if (y >= H - h) { y = H - h; vy = -Math.abs(vy); by = true; }
-    if (bx || by) { nextColor(); if (bx && by) flash(); }
+    if (bx && by) flash();   // glow pulse on corner hits; color stays brand blue
     logo.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
     requestAnimationFrame(tick);
   }
