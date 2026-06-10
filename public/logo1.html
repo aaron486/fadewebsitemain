@@ -8,51 +8,62 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
-body { background: #000; overflow: hidden; }
+body { background: #231f20; overflow: hidden; }
 
-.screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.screen { position: fixed; inset: 0; background: #231f20; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 
-.content { transform-origin: center center; color: #3b82f6; }
+.content { transform-origin: center center; color: #ffffff; }
 .content svg { display: block; width: clamp(190px, 46vw, 520px); height: auto; }
 
 .beam {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: var(--lw, 420px); height: 5px; border-radius: 999px;
-  background: #eaf3ff; opacity: 0;
-  box-shadow: 0 0 22px 4px rgba(120,180,255,0.85), 0 0 60px 12px rgba(59,130,246,0.5);
+  background: #ffffff; opacity: 0;
+  box-shadow: 0 0 22px 4px rgba(255,255,255,0.85), 0 0 60px 14px rgba(255,255,255,0.4);
 }
 
-/* --- play gating so Replay can restart cleanly --- */
-.screen.play .content { animation: crtContent 1.6s cubic-bezier(0.6,0,0.85,0.2) forwards; }
-.screen.play .beam    { animation: crtBeam 1.6s ease-out forwards; }
+/* film grain overlay */
+.grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%; pointer-events: none; z-index: 4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.11; mix-blend-mode: overlay; animation: grainShift 0.5s steps(3) infinite;
+}
+@keyframes grainShift {
+  0% { transform: translate(0,0); } 33% { transform: translate(-3%,2%); }
+  66% { transform: translate(2%,-3%); } 100% { transform: translate(-2%,-1%); }
+}
+
+/* --- play gating so Replay can restart cleanly; long hold then power-off --- */
+.screen.play .content { animation: crtContent 3.4s cubic-bezier(0.6,0,0.85,0.2) forwards; }
+.screen.play .beam    { animation: crtBeam 3.4s ease-out forwards; }
 
 @keyframes crtContent {
-  0%, 24% { transform: scaleY(1);     opacity: 1; filter: brightness(1); }
-  33%     { transform: scaleY(0.016); opacity: 1; filter: brightness(2.4); }
-  36%,100%{ transform: scaleY(0.016); opacity: 0; }
+  0%, 57% { transform: scaleY(1);     opacity: 1; filter: brightness(1); }
+  62%     { transform: scaleY(0.016); opacity: 1; filter: brightness(2.4); }
+  65%,100%{ transform: scaleY(0.016); opacity: 0; }
 }
 @keyframes crtBeam {
-  0%, 23% { opacity: 0; width: var(--lw,420px); height: 5px; }
-  33%     { opacity: 1; width: var(--lw,420px); height: 5px; }   /* bright line */
-  44%     { opacity: 1; width: var(--lw,420px); height: 5px; }
-  53%     { opacity: 1; width: 20px; height: 5px; }              /* collapse to dot */
-  60%     { opacity: 1; width: 22px; height: 22px;
-            box-shadow: 0 0 60px 18px rgba(180,210,255,0.95), 0 0 120px 36px rgba(59,130,246,0.6); } /* bloom */
-  74%     { opacity: 0.85; width: 12px; height: 12px; }
-  88%,100%{ opacity: 0; width: 6px; height: 6px; }
+  0%, 56% { opacity: 0;   width: var(--lw,420px); height: 5px; }
+  62%     { opacity: 1;   width: var(--lw,420px); height: 5px; }   /* bright line */
+  68%     { opacity: 1;   width: var(--lw,420px); height: 5px; }
+  72%     { opacity: 1;   width: 20px; height: 5px; }              /* collapse to dot */
+  76%     { opacity: 1;   width: 24px; height: 24px;
+            box-shadow: 0 0 60px 18px rgba(255,255,255,0.95), 0 0 130px 40px rgba(255,255,255,0.55); } /* bloom */
+  87%     { opacity: 0.85; width: 12px; height: 12px; }
+  96%,100%{ opacity: 0;   width: 6px; height: 6px; }
 }
 
 .replay {
   position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
   font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.66rem; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
   border-radius: 999px; padding: 0.6rem 1.1rem; cursor: pointer; z-index: 5;
 }
-.replay:hover { color: #60a5fa; border-color: rgba(59,130,246,0.4); }
+.replay:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 
 @media (prefers-reduced-motion: reduce) {
-  .screen.play .content, .screen.play .beam { animation: none; }
+  .screen.play .content, .screen.play .beam, .grain { animation: none; }
   .beam { display: none; }
 }
 </style>
@@ -69,6 +80,7 @@ body { background: #000; overflow: hidden; }
   </div>
   <div class="beam" id="beam"></div>
 </div>
+<div class="grain"></div>
 <button class="replay" id="replay" type="button">&#8635; Replay</button>
 
 <script>
@@ -83,7 +95,7 @@ body { background: #000; overflow: hidden; }
   function play() {
     screen.classList.remove('play');
     syncWidth();
-    void screen.offsetWidth; // reflow -> restart animations
+    void screen.offsetWidth;
     screen.classList.add('play');
   }
   window.addEventListener('resize', syncWidth);
