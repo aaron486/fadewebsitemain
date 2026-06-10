@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Logo Animation</title>
+<meta name="description" content="The Fade wordmark, animated." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #050507;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; overflow: hidden;
+}
+
+.stage { position: relative; width: 100%; max-width: 820px; padding: 2rem 1.5rem; text-align: center; }
+
+/* Ambient glow behind the mark */
+.glow {
+  position: absolute; top: 44%; left: 50%; transform: translate(-50%, -50%);
+  width: 720px; height: 460px; max-width: 92vw;
+  background: radial-gradient(circle, rgba(59,130,246,0.22) 0%, rgba(59,130,246,0.05) 42%, transparent 66%);
+  filter: blur(36px); pointer-events: none; z-index: 0;
+  animation: glowPulse 4.5s ease-in-out infinite;
+}
+@keyframes glowPulse { 0%,100% { opacity: 0.55; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.06); } }
+
+.wordmark { position: relative; z-index: 1; display: block; width: clamp(280px, 62vw, 680px); height: auto; margin: 0 auto; overflow: visible; }
+
+/* Two effects on separate elements so they never fight over opacity:
+   the glyph <polygon> handles the intro focus-in; the wrapping <g> handles
+   the ongoing ripple. Their opacities multiply for a clean hand-off. */
+.g { fill: #fff; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.play .g-f { animation: focusIn 0.7s 0.15s forwards; }
+.play .g-a { animation: focusIn 0.7s 0.30s forwards; }
+.play .g-d { animation: focusIn 0.7s 0.45s forwards; }
+.play .g-e { animation: focusIn 0.7s 0.60s forwards; }
+
+.rip { opacity: 1; }
+.play .rip-f { animation: ripple 3.4s 1.95s ease-in-out infinite; }
+.play .rip-a { animation: ripple 3.4s 2.10s ease-in-out infinite; }
+.play .rip-d { animation: ripple 3.4s 2.25s ease-in-out infinite; }
+.play .rip-e { animation: ripple 3.4s 2.40s ease-in-out infinite; }
+
+@keyframes focusIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.94); filter: blur(10px); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+/* The pun: the letters keep gently fading and returning, like a fade */
+@keyframes ripple { 0%, 100% { opacity: 1; } 45% { opacity: 0.22; } }
+
+/* Light sweep across the actual letterforms */
+.sheen { opacity: 0; }
+.play .sheen { animation: sweep 3.6s 2.1s ease-in-out infinite; }
+@keyframes sweep {
+  0%   { transform: translateX(-360px); opacity: 0; }
+  8%   { opacity: 1; }
+  48%  { transform: translateX(900px); opacity: 1; }
+  56%  { transform: translateX(900px); opacity: 0; }
+  100% { transform: translateX(900px); opacity: 0; }
+}
+
+.tagline {
+  position: relative; z-index: 1; margin-top: 1.6rem;
+  font-size: clamp(0.7rem, 1.6vw, 0.9rem); font-weight: 700;
+  letter-spacing: 0.42em; text-transform: uppercase; padding-left: 0.42em;
+  color: rgba(96,165,250,0.9); opacity: 0;
+}
+.play .tagline { animation: rise 0.9s 1.25s both; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.replay {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: inherit; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 999px;
+  padding: 0.6rem 1.1rem; cursor: pointer; opacity: 0; z-index: 2;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.play .replay { animation: rise 0.6s 1.8s both; }
+.replay:hover { color: #60a5fa; border-color: rgba(59,130,246,0.4); background: rgba(59,130,246,0.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .glow, .play .g-f, .play .g-a, .play .g-d, .play .g-e,
+  .play .rip-f, .play .rip-a, .play .rip-d, .play .rip-e, .play .sheen { animation: none; }
+  .g { opacity: 1; } .tagline, .replay { opacity: 1; animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage play" id="stage">
+  <div class="glow"></div>
+
+  <svg class="wordmark" viewBox="80 420 840 170" role="img" aria-label="FADE">
+    <defs>
+      <clipPath id="wm-clip">
+        <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+        <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+        <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+        <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+      </clipPath>
+      <linearGradient id="sheen-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#dbe7ff" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#eaf2ff" stop-opacity="0.85"/>
+        <stop offset="1" stop-color="#dbe7ff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- F A D E (left to right). Each glyph wrapped so intro + ripple don't conflict. -->
+    <g class="rip rip-f"><polygon class="g g-f" points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g>
+    <g class="rip rip-a"><polygon class="g g-a" points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/></g>
+    <g class="rip rip-d"><path class="g g-d" d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/></g>
+    <g class="rip rip-e"><polygon class="g g-e" points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/></g>
+
+    <!-- Light sweep, clipped to the letterforms -->
+    <g clip-path="url(#wm-clip)">
+      <rect class="sheen" x="80" y="410" width="240" height="190" fill="url(#sheen-grad)"/>
+    </g>
+  </svg>
+
+  <div class="tagline">Bet Together</div>
+
+  <button class="replay" id="replay" type="button" aria-label="Replay animation">&#8635; Replay</button>
+</div>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var replay = document.getElementById('replay');
+  function play() {
+    stage.classList.remove('play');
+    void stage.offsetWidth; // force reflow so animations restart
+    stage.classList.add('play');
+  }
+  if (replay) replay.addEventListener('click', play);
+})();
+</script>
+
+</body>
+</html>
