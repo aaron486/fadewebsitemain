@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#050507"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <text x="600" y="150" text-anchor="middle" fill="#3b82f6" font-family="Helvetica,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="7">FIFA WORLD CUP CASE STUDY</text>
+  <svg viewBox="80 420 840 170" x="350" y="210" width="500" height="101" fill="white">
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+  </svg>
+  <text x="600" y="420" text-anchor="middle" fill="#ffffff" font-family="Helvetica,Arial,sans-serif" font-size="58" font-weight="800" letter-spacing="-1">Bet the World Cup.</text>
+  <text x="600" y="478" text-anchor="middle" fill="rgba(255,255,255,0.62)" font-family="Helvetica,Arial,sans-serif" font-size="26" font-weight="600">$25 reward &#183; Early access &#183; Trade 10+ events</text>
+  <text x="600" y="572" text-anchor="middle" fill="#3b82f6" font-family="Helvetica,Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="6">BET TOGETHER</text>
+</svg>

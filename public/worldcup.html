@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fade × FIFA World Cup — How to Participate</title>
 <meta name="description" content="How to participate in the Fade × FIFA World Cup case study — sync your books, trade World Cup markets on Kalshi, and let Fade grade every bet against the line." />
+<link rel="canonical" href="https://fade.bet/worldcup" />
+<meta name="theme-color" content="#050507" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fade × FIFA World Cup — You're In" />
+<meta property="og:description" content="You've been selected for the FIFA World Cup Case Study on Fade. Sync your books, trade 10+ World Cup events on Kalshi, and earn $25 — plus early access." />
+<meta property="og:image" content="https://fade.bet/assets/og-worldcup.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://fade.bet/worldcup" />
+<meta property="og:site_name" content="Fade" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fade × FIFA World Cup — You're In" />
+<meta name="twitter:description" content="Sync your books, trade 10+ World Cup events on Kalshi, and earn $25 — plus early access." />
+<meta name="twitter:image" content="https://fade.bet/assets/og-worldcup.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
@@ -121,6 +140,45 @@ a:hover { text-decoration: underline; }
 .sign-msg { font-size: 0.92rem; margin-top: 0.25rem; min-height: 1.2rem; text-align: center; }
 .sign-msg.ok { color: #4ade80; }
 .sign-msg.err { color: #f87171; }
+
+/* Smooth in-page scroll */
+html { scroll-behavior: smooth; }
+
+/* Hero CTA buttons */
+.hero-cta { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; position: relative; margin: 0 auto 2.25rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 2rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border: none; border-radius: 10px; font-size: 1.0625rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,130,246,0.42); text-decoration: none; }
+.btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 1.6rem; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
+.btn-ghost:hover { border-color: rgba(59,130,246,0.5); color: #fff; background: rgba(59,130,246,0.06); text-decoration: none; }
+
+/* Countdown to kickoff */
+.countdown { position: relative; margin: 0 auto 2.25rem; max-width: 460px; }
+.cd-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.85rem; }
+.cd-eyebrow b { color: #60a5fa; font-weight: 700; }
+.cd-units { display: flex; align-items: stretch; justify-content: center; gap: 0.6rem; }
+.cd-unit { flex: 1; min-width: 0; padding: 1rem 0.4rem 0.75rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+.cd-unit .cd-n { font-family: 'JetBrains Mono', monospace; font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 800; color: #fff; line-height: 1; font-variant-numeric: tabular-nums; }
+.cd-unit .cd-l { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+.cd-live { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.7rem 1.2rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(74,222,128,0.3); border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4ade80; }
+.cd-live .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,0.6); animation: cdpulse 1.8s infinite; }
+@keyframes cdpulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); } 70% { box-shadow: 0 0 0 10px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } .cd-live .dot { animation: none; } }
+
+/* Sticky mobile enroll bar */
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.8rem 1.1rem; background: rgba(10,10,14,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.08); transform: translateY(110%); transition: transform 0.3s ease; }
+.sticky-cta.show { transform: none; }
+.sticky-cta .sc-txt { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.3; }
+.sticky-cta .sc-txt b { color: #fff; font-weight: 700; }
+.sticky-cta a { flex-shrink: 0; padding: 0.7rem 1.3rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border-radius: 9px; font-size: 0.92rem; font-weight: 700; text-decoration: none; }
+@media (max-width: 768px) {
+  .sticky-cta { display: flex; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn-primary, .hero-cta .btn-ghost { width: 100%; justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -137,6 +195,22 @@ a:hover { text-decoration: underline; }
   <div class="hero-eyebrow">FIFA World Cup Case Study</div>
   <h1>You're <span>in.</span></h1>
   <p>Congratulations &mdash; you've been selected for the FIFA World Cup Case Study on Fade. As one of our first members, you'll get early access to the app and help test its features. The concept is simple: sync your sportsbook and Kalshi accounts, trade at least 10 events across the World Cup, and earn <strong>$25</strong> &mdash; plus a shot at deeper access and brand partnerships.</p>
+
+  <div class="countdown" id="countdown" aria-live="polite">
+    <div class="cd-eyebrow">Kickoff in &mdash; <b>group stage begins June 11</b></div>
+    <div class="cd-units">
+      <div class="cd-unit"><div class="cd-n" id="cd-days">00</div><div class="cd-l">Days</div></div>
+      <div class="cd-unit"><div class="cd-n" id="cd-hrs">00</div><div class="cd-l">Hours</div></div>
+      <div class="cd-unit"><div class="cd-n" id="cd-mins">00</div><div class="cd-l">Minutes</div></div>
+      <div class="cd-unit"><div class="cd-n" id="cd-secs">00</div><div class="cd-l">Seconds</div></div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#sign" class="btn-primary">Claim your spot &mdash; earn $25 &#8594;</a>
+    <a href="#how" class="btn-ghost">See how it works</a>
+  </div>
+
   <div class="hero-tags">
     <span class="hero-tag">$25 reward</span>
     <span class="hero-tag">Early access</span>
@@ -163,7 +237,7 @@ a:hover { text-decoration: underline; }
 </div>
 
 <!-- How to participate -->
-<div class="section">
+<div class="section" id="how">
   <span class="section-eyebrow">Getting started</span>
   <h2>Four steps to join.</h2>
   <div class="timeline">
@@ -298,6 +372,12 @@ a:hover { text-decoration: underline; }
   <p>This page explains how to participate in a Fade research study and does not constitute investment, betting, or financial advice. Sports betting and prediction-market trading involve risk of loss. Participation is voluntary and uses each participant's own capital. The study funder is disclosed to all participants.</p>
 </div>
 
+<!-- Sticky mobile enroll bar -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sc-txt"><b>Lock in your spot</b> &mdash; earn $25</span>
+  <a href="#sign">Enroll &#8594;</a>
+</div>
+
 <script>
 (function () {
   var SB_URL = 'https://fznaaoiptgpunyxddowd.supabase.co';
@@ -329,6 +409,60 @@ a:hover { text-decoration: underline; }
       btn.disabled = false; btn.textContent = 'Sign & enroll';
     }
   });
+})();
+
+/* Countdown + scroll polish (progressive enhancement) */
+(function () {
+  // World Cup 2026 opening match — June 11, 2026 (evening, Mexico City).
+  // 18:00 CDT == 00:00 UTC June 12. Adjust here if the exact kickoff time shifts.
+  var KICKOFF = Date.UTC(2026, 5, 12, 0, 0, 0);
+  var cd = document.getElementById('countdown');
+  var elD = document.getElementById('cd-days'), elH = document.getElementById('cd-hrs'),
+      elM = document.getElementById('cd-mins'), elS = document.getElementById('cd-secs');
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var timer;
+  function tick() {
+    var diff = KICKOFF - Date.now();
+    if (diff <= 0) {
+      if (cd) cd.innerHTML = '<div class="cd-live"><span class="dot"></span>The tournament is live &mdash; start trading</div>';
+      if (timer) clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    if (elD) elD.textContent = pad(Math.floor(s / 86400));
+    if (elH) elH.textContent = pad(Math.floor((s % 86400) / 3600));
+    if (elM) elM.textContent = pad(Math.floor((s % 3600) / 60));
+    if (elS) elS.textContent = pad(s % 60);
+  }
+  if (cd) { tick(); timer = setInterval(tick, 1000); }
+
+  // Scroll-reveal: add the class via JS so no-JS users always see content.
+  var sections = document.querySelectorAll('.section');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    sections.forEach(function (s) { s.classList.add('reveal'); io.observe(s); });
+  }
+
+  // Sticky mobile enroll bar: show after the hero, hide once the sign form is in view.
+  var sticky = document.getElementById('stickyCta');
+  var sign = document.getElementById('sign');
+  var signVisible = false;
+  if (sticky && sign && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      signVisible = entries[0].isIntersecting;
+      update();
+    }, { threshold: 0.15 }).observe(sign);
+  }
+  function update() {
+    if (!sticky) return;
+    var past = window.scrollY > 520;
+    if (past && !signVisible) sticky.classList.add('show');
+    else sticky.classList.remove('show');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 })();
 </script>
 
