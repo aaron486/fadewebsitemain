@@ -17,6 +17,8 @@
     { "source": "/worldcup", "destination": "/worldcup.html" },
     { "source": "/world-cup", "destination": "/worldcup.html" },
     { "source": "/fifa", "destination": "/worldcup.html" },
+    { "source": "/worldcup-terms", "destination": "/worldcup-terms.html" },
+    { "source": "/world-cup-terms", "destination": "/worldcup-terms.html" },
     { "source": "/casting", "destination": "/casting.html" },
     { "source": "/bookie", "destination": "/bookie.html" },
     { "source": "/(.*)", "destination": "/index.html" }

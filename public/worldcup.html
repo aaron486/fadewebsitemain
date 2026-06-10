@@ -134,6 +134,7 @@ a:hover { text-decoration: underline; }
 .sign-field input:focus { border-color: #3b82f6; }
 .sign-agree { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.5; }
 .sign-agree input { margin-top: 0.2rem; width: 18px; height: 18px; flex-shrink: 0; accent-color: #3b82f6; }
+.sign-agree a { color: #60a5fa; text-decoration: underline; }
 .sign-btn { padding: 0.95rem; background: #3b82f6; color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; }
 .sign-btn:hover { background: #2f6fe0; }
 .sign-btn:disabled { opacity: 0.6; cursor: default; }
@@ -284,7 +285,7 @@ html { scroll-behavior: smooth; }
   <form class="sign-form" id="signForm" autocomplete="on">
     <label class="sign-field">Full name (your signature)<input type="text" id="sig-name" autocomplete="name" required /></label>
     <label class="sign-field">Email<input type="email" id="sig-email" autocomplete="email" required /></label>
-    <label class="sign-agree"><input type="checkbox" id="sig-agree" required /> <span>I'm 21+, participating voluntarily with my own capital, and I agree to sync my accounts (read-only) for the study. This is research &mdash; not betting or financial advice.</span></label>
+    <label class="sign-agree"><input type="checkbox" id="sig-agree" required /> <span>I'm 21+, participating voluntarily with my own capital, and I agree to the <a href="/worldcup-terms" target="_blank" rel="noopener">Case Study Terms of Service</a>. This is research &mdash; not betting or financial advice.</span></label>
     <button type="submit" class="sign-btn" id="sigBtn">Sign &amp; enroll</button>
     <div class="sign-msg" id="sigMsg"></div>
   </form>
