@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Power Off</title>
+<meta name="description" content="The Fade logo, powering off like an old TV." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: #000; overflow: hidden; }
+
+.screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+.content { transform-origin: center center; color: #3b82f6; }
+.content svg { display: block; width: clamp(190px, 46vw, 520px); height: auto; }
+
+.beam {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: var(--lw, 420px); height: 5px; border-radius: 999px;
+  background: #eaf3ff; opacity: 0;
+  box-shadow: 0 0 22px 4px rgba(120,180,255,0.85), 0 0 60px 12px rgba(59,130,246,0.5);
+}
+
+/* --- play gating so Replay can restart cleanly --- */
+.screen.play .content { animation: crtContent 1.6s cubic-bezier(0.6,0,0.85,0.2) forwards; }
+.screen.play .beam    { animation: crtBeam 1.6s ease-out forwards; }
+
+@keyframes crtContent {
+  0%, 24% { transform: scaleY(1);     opacity: 1; filter: brightness(1); }
+  33%     { transform: scaleY(0.016); opacity: 1; filter: brightness(2.4); }
+  36%,100%{ transform: scaleY(0.016); opacity: 0; }
+}
+@keyframes crtBeam {
+  0%, 23% { opacity: 0; width: var(--lw,420px); height: 5px; }
+  33%     { opacity: 1; width: var(--lw,420px); height: 5px; }   /* bright line */
+  44%     { opacity: 1; width: var(--lw,420px); height: 5px; }
+  53%     { opacity: 1; width: 20px; height: 5px; }              /* collapse to dot */
+  60%     { opacity: 1; width: 22px; height: 22px;
+            box-shadow: 0 0 60px 18px rgba(180,210,255,0.95), 0 0 120px 36px rgba(59,130,246,0.6); } /* bloom */
+  74%     { opacity: 0.85; width: 12px; height: 12px; }
+  88%,100%{ opacity: 0; width: 6px; height: 6px; }
+}
+
+.replay {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px; padding: 0.6rem 1.1rem; cursor: pointer; z-index: 5;
+}
+.replay:hover { color: #60a5fa; border-color: rgba(59,130,246,0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .screen.play .content, .screen.play .beam { animation: none; }
+  .beam { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="screen play" id="screen">
+  <div class="content" id="content">
+    <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    </svg>
+  </div>
+  <div class="beam" id="beam"></div>
+</div>
+<button class="replay" id="replay" type="button">&#8635; Replay</button>
+
+<script>
+(function () {
+  var screen = document.getElementById('screen');
+  var content = document.getElementById('content');
+  var replay = document.getElementById('replay');
+  function syncWidth() {
+    var w = content.getBoundingClientRect().width;
+    document.documentElement.style.setProperty('--lw', Math.round(w) + 'px');
+  }
+  function play() {
+    screen.classList.remove('play');
+    syncWidth();
+    void screen.offsetWidth; // reflow -> restart animations
+    screen.classList.add('play');
+  }
+  window.addEventListener('resize', syncWidth);
+  syncWidth();
+  if (replay) replay.addEventListener('click', play);
+})();
+</script>
+</body>
+</html>
