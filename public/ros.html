@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Run of Show — June 11 — Fade</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.78); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: #60a5fa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.brand { display: flex; align-items: center; gap: 0.8rem; }
+.brand svg { display: block; }
+.badge { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #f87171; border: 1px solid rgba(248,113,113,0.35); padding: 0.35rem 0.7rem; border-radius: 999px; }
+
+.head h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.05; }
+.head .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(96,165,250,0.9); display: block; margin-bottom: 0.6rem; }
+.head .sub { font-size: 1rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; }
+
+.shoot { margin-top: 2.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; overflow: hidden; }
+.shoot-head { padding: 1.4rem 1.6rem; background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(59,130,246,0.02)); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.shoot-head .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(96,165,250,0.9); }
+.shoot-head h2 { font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-top: 0.25rem; }
+.shoot-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 0.8rem; font-size: 0.9rem; color: rgba(255,255,255,0.62); }
+.shoot-meta b { color: #fff; font-weight: 600; }
+.shoot-body { padding: 1.5rem 1.6rem; }
+
+.sub-h { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin: 1.6rem 0 0.7rem; }
+.sub-h:first-child { margin-top: 0; }
+
+table.sched { width: 100%; border-collapse: collapse; }
+table.sched td { padding: 0.7rem 0.6rem; border-top: 1px solid rgba(255,255,255,0.07); vertical-align: top; font-size: 0.92rem; }
+table.sched tr:first-child td { border-top: none; }
+table.sched .t { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #60a5fa; white-space: nowrap; width: 1%; font-weight: 600; }
+table.sched .who { color: #fff; font-weight: 600; white-space: nowrap; }
+table.sched .role { color: rgba(255,255,255,0.6); }
+table.sched .lines { color: rgba(255,255,255,0.35); font-style: italic; font-size: 0.85rem; }
+.flag { color: #fbbf24; font-style: normal; font-weight: 600; }
+
+ul.checks, ul.assets { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem 1rem; }
+ul.checks li, ul.assets li { position: relative; padding-left: 1.5rem; font-size: 0.92rem; color: rgba(255,255,255,0.72); }
+ul.checks li::before { content: '\2610'; position: absolute; left: 0; color: rgba(96,165,250,0.7); font-size: 1rem; line-height: 1.4; }
+ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgba(96,165,250,0.7); }
+
+.note { background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.14); border-radius: 10px; padding: 0.9rem 1.1rem; font-size: 0.9rem; color: rgba(255,255,255,0.45); }
+.note.warn { border-color: rgba(251,191,36,0.35); color: rgba(251,191,36,0.85); }
+
+.foot { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); text-align: center; }
+
+@media (max-width: 600px) {
+  ul.checks, ul.assets { grid-template-columns: 1fr; }
+  table.sched .who, table.sched .t { white-space: normal; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <svg viewBox="80 420 840 170" height="22" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+      <span class="badge">Private &middot; Internal</span>
+    </div>
+  </div>
+
+  <div class="head">
+    <span class="eyebrow">Run of Show</span>
+    <h1>Thursday, June 11</h1>
+    <p class="sub">Two shoots &mdash; Morning: The Bookie (Jim) &middot; Afternoon: Testimonials. Call sheet below.</p>
+  </div>
+
+  <!-- SHOOT 1 -->
+  <section class="shoot">
+    <div class="shoot-head">
+      <span class="tag">Shoot 1 &middot; Morning</span>
+      <h2>The Bookie</h2>
+      <div class="shoot-meta">
+        <span><b>Crew call</b> 9:30 AM arrival</span>
+        <span><b>Location</b> <a href="https://maps.google.com/?q=110%20E%2011th%20St%20Los%20Angeles%20CA%2090015" target="_blank" rel="noopener">110 E 11th St, Los Angeles, CA 90015</a></span>
+      </div>
+    </div>
+    <div class="shoot-body">
+
+      <div class="sub-h">Schedule</div>
+      <table class="sched">
+        <tr><td class="t">9:30 AM</td><td><span class="who">Crew arrival</span> <span class="role">&mdash; set up</span></td></tr>
+        <tr><td class="t">10:00&ndash;11:30</td><td><span class="who">Jim Donnelly</span> <span class="role">&mdash; The Bookie (Receipts)</span></td></tr>
+        <tr><td class="t">12:00&ndash;1:00</td><td><span class="who">Receipts / Fade B-roll assets</span></td></tr>
+      </table>
+
+      <div class="sub-h">Talent</div>
+      <table class="sched">
+        <tr><td class="t">Jim</td><td><span class="who">Jim Donnelly</span> <span class="role">&mdash; Role/Scene: The Bookie / Receipts</span></td></tr>
+      </table>
+
+      <div class="sub-h">Props</div>
+      <ul class="checks">
+        <li>Fax machine</li>
+        <li>Cigarettes</li>
+        <li>Money</li>
+        <li>Envelope</li>
+        <li>Sharpies / pens</li>
+        <li>Note pad</li>
+        <li>Phone</li>
+      </ul>
+
+      <div class="sub-h">Fade brand assets</div>
+      <ul class="assets">
+        <li>Logo for screen</li>
+      </ul>
+
+      <div class="sub-h">Lines for Jim</div>
+      <div class="note">To be added.</div>
+
+      <div class="sub-h">Important reminders</div>
+      <div class="note">To be added.</div>
+
+    </div>
+  </section>
+
+  <!-- SHOOT 2 -->
+  <section class="shoot">
+    <div class="shoot-head">
+      <span class="tag">Shoot 2 &middot; Afternoon</span>
+      <h2>Testimonials</h2>
+      <div class="shoot-meta">
+        <span><b>Crew call</b> 2:00 PM</span>
+        <span><b>First shoot</b> 2:10 PM</span>
+        <span><b>Location</b> <a href="https://maps.google.com/?q=1340%20E%206th%20St%20Unit%20419%20Los%20Angeles%20CA%2090021" target="_blank" rel="noopener">1340 E 6th St, Unit 419, Los Angeles, CA 90021</a></span>
+      </div>
+    </div>
+    <div class="shoot-body">
+
+      <div class="sub-h">Talent schedule</div>
+      <table class="sched">
+        <tr><td class="t">2:15</td><td><span class="who">Kery</span> <span class="role">&mdash; Sports Fan / Parlay Princess / Germany (World Cup)</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">2:30</td><td><span class="who">Jose</span> <span class="role">&mdash; New York Fan / Bookie / Baseball</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">3:10</td><td><span class="who">Colin Marlit</span> <span class="role">&mdash; Quant / Team USA</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">3:45</td><td><span class="who">Alvin Curry</span> <span class="role">&mdash; African Team / World Cup Promo / Betting in the Group Chat</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">4:00</td><td><span class="who">Miguel Portillo</span> <span class="role">&mdash; LatAm</span> <span class="flag">&middot; overlaps 4:00</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">4:00</td><td><span class="who">Daisy Tamayo</span> <span class="role">&mdash; Eastern Europe / Parlay Princess</span> <span class="flag">&middot; overlaps 4:00</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">4:30</td><td><span class="who">Kei Shi</span> <span class="role">&mdash; Quant / Team Asia</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">5:00&ndash;6:00</td><td><span class="who">Stragglers / final cuts</span> <span class="role">&mdash; B-roll, brand assets</span></td></tr>
+      </table>
+
+      <div class="note warn">Heads up: Miguel Portillo and Daisy Tamayo are both listed at 4:00 PM &mdash; confirm staggering.</div>
+
+    </div>
+  </section>
+
+  <div class="foot">Fade &middot; Private call sheet &middot; Thursday, June 11 &middot; not for distribution</div>
+
+</div>
+</body>
+</html>
