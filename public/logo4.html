@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Bounce (White)</title>
+<meta name="description" content="The Fade logo, bouncing — white." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: #000; overflow: hidden; }
+#field { position: fixed; inset: 0; }
+#logo {
+  position: absolute; top: 0; left: 0; will-change: transform;
+  color: #ffffff; /* white */
+  width: clamp(170px, 22vw, 460px);
+  filter: drop-shadow(0 0 22px rgba(255,255,255,0.45));
+  transition: filter 0.25s ease;
+}
+#logo svg { display: block; width: 100%; height: auto; }
+#logo.flash { filter: drop-shadow(0 0 40px rgba(255,255,255,0.9)); }
+</style>
+</head>
+<body>
+<div id="field">
+  <div id="logo">
+    <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+(function () {
+  var logo = document.getElementById('logo');
+  var W, H, w, h, x, y, vx, vy;
+  var SPEED = 230; // px/sec
+
+  function measure() {
+    var r = logo.getBoundingClientRect();
+    w = r.width; h = r.height; W = window.innerWidth; H = window.innerHeight;
+    if (x === undefined) { x = (W - w) * 0.5; y = (H - h) * 0.5; }
+    x = Math.max(0, Math.min(x, W - w));
+    y = Math.max(0, Math.min(y, H - h));
+  }
+  measure();
+  // initial diagonal heading
+  vx = SPEED * 0.82; vy = SPEED * 0.57;
+
+  window.addEventListener('resize', measure);
+
+  function flash() {
+    logo.classList.add('flash');
+    setTimeout(function () { logo.classList.remove('flash'); }, 240);
+  }
+
+  var last = null;
+  function tick(ts) {
+    if (last === null) last = ts;
+    var dt = Math.min(0.05, (ts - last) / 1000); last = ts;
+    x += vx * dt; y += vy * dt;
+    var bx = false, by = false;
+    if (x <= 0) { x = 0; vx = Math.abs(vx); bx = true; }
+    else if (x >= W - w) { x = W - w; vx = -Math.abs(vx); bx = true; }
+    if (y <= 0) { y = 0; vy = Math.abs(vy); by = true; }
+    else if (y >= H - h) { y = H - h; vy = -Math.abs(vy); by = true; }
+    if (bx && by) flash();   // glow pulse on corner hits; color stays white
+    logo.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
