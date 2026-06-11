@@ -30,6 +30,7 @@
     { "source": "/logo4", "destination": "/logo4.html" },
     { "source": "/logo5", "destination": "/logo5.html" },
     { "source": "/logo6", "destination": "/logo6.html" },
+    { "source": "/logo7", "destination": "/logo7.html" },
     { "source": "/bookie", "destination": "/bookie.html" },
     { "source": "/the-bookie-casting-brief", "destination": "/the-bookie-casting-brief.html" },
     { "source": "/the-bookie-shotboard", "destination": "/the-bookie-shotboard.html" },
