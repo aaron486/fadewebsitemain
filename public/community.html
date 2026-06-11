@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Share Your Picks, Grow Your Following</title>
+<meta name="description" content="Fade promotes your picks to a community of sports bettors — bet sharing, communities, leaderboards, and analytics tools to grow your following." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+/* Hero */
+.hero { text-align: center; padding: 4.5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-mark { margin-bottom: 1.75rem; position: relative; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; position: relative; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 1.1rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.0625rem; color: rgba(255,255,255,0.45); max-width: 620px; margin: 0 auto; line-height: 1.7; position: relative; }
+
+/* Sections */
+.section { padding: 3.25rem 1.5rem; max-width: 860px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.sec-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.7rem; }
+.section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.12; }
+.section > p { font-size: 1rem; color: rgba(255,255,255,0.48); line-height: 1.75; margin-bottom: 1.5rem; max-width: 680px; }
+.section strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.feature { padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+.feature h3 { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+.feature p { font-size: 0.9rem; color: rgba(255,255,255,0.48); line-height: 1.65; }
+.feature .ic { font-size: 1.3rem; margin-bottom: 0.6rem; display: block; }
+
+/* Mock app cards */
+.mock { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.4rem; max-width: 680px; }
+.mock-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.mock-title { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.mock-live { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4ade80; }
+.mock-live::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; margin-right: 0.4rem; box-shadow: 0 0 8px rgba(74,222,128,0.8); }
+
+.pick { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 0.7rem; }
+.pick:last-child { margin-bottom: 0; }
+.avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: white; }
+.av-1 { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.av-2 { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.av-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.pick-body { flex: 1; min-width: 0; }
+.pick-user { font-size: 0.9rem; font-weight: 700; color: white; }
+.pick-user .rec { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; color: #4ade80; margin-left: 0.45rem; }
+.pick-line { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 0.15rem; }
+.pick-line b { color: white; font-weight: 600; }
+.pick-meta { display: flex; gap: 1.1rem; margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: rgba(255,255,255,0.38); }
+.pick-meta .fadeit { color: #3b82f6; font-weight: 700; }
+.pick-meta .tail { color: #4ade80; font-weight: 700; }
+
+/* Dashboard mock */
+.dash { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; margin-bottom: 0.7rem; }
+.dash-stat { padding: 0.9rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; text-align: center; }
+.dash-num { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: white; }
+.dash-num.up { color: #4ade80; }
+.dash-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 0.25rem; }
+.dash-bars { display: flex; align-items: flex-end; gap: 5px; height: 72px; padding: 0.9rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+.dash-bars i { flex: 1; background: linear-gradient(180deg, #3b82f6, rgba(59,130,246,0.25)); border-radius: 3px 3px 0 0; }
+
+/* Communities */
+.comm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; max-width: 680px; }
+.comm { padding: 1.1rem 1.2rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; display: flex; align-items: center; gap: 0.85rem; }
+.comm .ic { font-size: 1.35rem; }
+.comm-name { font-size: 0.92rem; font-weight: 700; color: white; }
+.comm-members { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: rgba(255,255,255,0.38); margin-top: 0.1rem; }
+
+/* Leaderboard */
+table.lb { width: 100%; max-width: 680px; border-collapse: collapse; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
+table.lb th { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+table.lb td { padding: 0.85rem 1rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); }
+table.lb .rank { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #3b82f6; width: 1%; }
+table.lb .who { color: white; font-weight: 700; }
+table.lb .recd, table.lb .roi { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+table.lb .roi.up { color: #4ade80; }
+table.lb .flw { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+/* CTA + footer */
+.cta { text-align: center; padding: 4rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.cta h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.8rem; }
+.cta p { color: rgba(255,255,255,0.45); margin-bottom: 1.6rem; }
+.cta-btn { display: inline-block; padding: 0.95rem 2.4rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.25s; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
+
+.footer { padding: 2.5rem 1.5rem 3.5rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+.footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.9; max-width: 640px; margin: 0 auto; }
+.footer b { color: rgba(255,255,255,0.6); }
+
+@media (max-width: 640px) {
+  .feature-grid, .comm-grid { grid-template-columns: 1fr; }
+  .dash { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="header-brand" href="/">
+    <svg viewBox="80 420 840 170" height="30" fill="white" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">Bet Together</span>
+  </a>
+</header>
+
+<section class="hero">
+  <div class="hero-mark">
+    <svg viewBox="80 420 840 170" height="44" fill="white" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+  </div>
+  <span class="hero-eyebrow">Community &amp; Promotion</span>
+  <h1>Share your picks,<br /><span>grow your following</span></h1>
+  <p>Fade provides advertising, marketing and promotion services for the sports wagering community — tools that broadcast your picks, build your audience, and turn your verified record into a following.</p>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Bet Sharing</div>
+  <h2>Broadcast your wagers to the community</h2>
+  <p>Every pick you make on Fade can be <strong>shared, promoted, and tracked in public</strong>. Sync your sportsbook in one tap and your wagers post to your profile and the community feed — where followers can tail you, fade you, and spread your picks further.</p>
+  <div class="mock">
+    <div class="mock-head"><span class="mock-title">Community Feed</span><span class="mock-live">Live</span></div>
+    <div class="pick">
+      <div class="avatar av-1">MK</div>
+      <div class="pick-body">
+        <div class="pick-user">@MarcusKnows <span class="rec">62–41 · +18.2u</span></div>
+        <div class="pick-line">Knicks ML <b>+145</b> · Game 5 · $50 to win $122.50</div>
+        <div class="pick-meta"><span class="tail">▲ 214 tails</span><span class="fadeit">▼ 96 fades</span><span>38 comments</span><span>Shared to 3 communities</span></div>
+      </div>
+    </div>
+    <div class="pick">
+      <div class="avatar av-2">PP</div>
+      <div class="pick-body">
+        <div class="pick-user">@ParlayPrincess <span class="rec">31–28 · +6.4u</span></div>
+        <div class="pick-line">5-leg parlay <b>+1240</b> · World Cup group stage · $20 to win $248</div>
+        <div class="pick-meta"><span class="tail">▲ 188 tails</span><span class="fadeit">▼ 145 fades</span><span>71 comments</span><span>Promoted to feed</span></div>
+      </div>
+    </div>
+    <div class="pick">
+      <div class="avatar av-3">TQ</div>
+      <div class="pick-body">
+        <div class="pick-user">@TheQuant <span class="rec">44–51 · −12.1u</span></div>
+        <div class="pick-line">USA o2.5 goals <b>−110</b> · "The thesis is fine."</div>
+        <div class="pick-meta"><span class="tail">▲ 12 tails</span><span class="fadeit">▼ 502 fades</span><span>164 comments</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Bet Tracking</div>
+  <h2>Your record, tracked and on display</h2>
+  <p>A user-generated <strong>bet tracking dashboard</strong> turns your wagering history into a verified, public record — the proof behind every pick you promote. Wins, losses, units, ROI: all of it auditable, all of it working for your following.</p>
+  <div class="mock">
+    <div class="mock-head"><span class="mock-title">My Dashboard · Last 30 Days</span></div>
+    <div class="dash">
+      <div class="dash-stat"><div class="dash-num">127</div><div class="dash-lbl">Bets Tracked</div></div>
+      <div class="dash-stat"><div class="dash-num">58%</div><div class="dash-lbl">Win Rate</div></div>
+      <div class="dash-stat"><div class="dash-num up">+14.6u</div><div class="dash-lbl">Units</div></div>
+      <div class="dash-stat"><div class="dash-num up">+9.2%</div><div class="dash-lbl">ROI</div></div>
+    </div>
+    <div class="dash-bars" aria-hidden="true">
+      <i style="height:34%"></i><i style="height:52%"></i><i style="height:41%"></i><i style="height:66%"></i><i style="height:48%"></i><i style="height:75%"></i><i style="height:58%"></i><i style="height:83%"></i><i style="height:64%"></i><i style="height:90%"></i><i style="height:71%"></i><i style="height:100%"></i>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Communities</div>
+  <h2>Join communities, follow top bettors</h2>
+  <p>Group chats and betting communities put your picks in front of the people who care. <strong>Promote your wagers inside your circles</strong> — your friends, your league, your city — or go wide and build a following across the whole platform.</p>
+  <div class="comm-grid">
+    <div class="comm"><span class="ic">🏀</span><div><div class="comm-name">NBA Playoffs Central</div><div class="comm-members">12,408 members · 3.1k picks this week</div></div></div>
+    <div class="comm"><span class="ic">🌍</span><div><div class="comm-name">World Cup '26</div><div class="comm-members">28,917 members · 9.4k picks this week</div></div></div>
+    <div class="comm"><span class="ic">💬</span><div><div class="comm-name">The Group Chat</div><div class="comm-members">Private · 14 members · daily sweat</div></div></div>
+    <div class="comm"><span class="ic">📈</span><div><div class="comm-name">Sharps &amp; Fades</div><div class="comm-members">7,233 members · verified records only</div></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Leaderboard</div>
+  <h2>Top bettors, ranked in public</h2>
+  <p>The leaderboard highlights the community's <strong>top-performing bettors</strong> — promoting the picks, records and profiles worth following. Climb it and your reach grows with you.</p>
+  <table class="lb">
+    <tr><th>#</th><th>Bettor</th><th>Record</th><th>ROI</th><th>Followers</th></tr>
+    <tr><td class="rank">1</td><td class="who">@BrooklynSharp</td><td class="recd">71–43</td><td class="roi up">+21.4%</td><td class="flw">48.2k</td></tr>
+    <tr><td class="rank">2</td><td class="who">@MarcusKnows</td><td class="recd">62–41</td><td class="roi up">+18.2%</td><td class="flw">31.7k</td></tr>
+    <tr><td class="rank">3</td><td class="who">@OchoLocks</td><td class="recd">55–38</td><td class="roi up">+15.9%</td><td class="flw">26.1k</td></tr>
+    <tr><td class="rank">4</td><td class="who">@ParlayPrincess</td><td class="recd">31–28</td><td class="roi up">+6.4%</td><td class="flw">19.8k</td></tr>
+    <tr><td class="rank">5</td><td class="who">@FadeTheChalk</td><td class="recd">49–44</td><td class="roi up">+4.1%</td><td class="flw">12.3k</td></tr>
+  </table>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Analytics</div>
+  <h2>Tools to promote your picks and grow engagement</h2>
+  <p>Fade's analytics suite shows you <strong>what's working and who's watching</strong> — so every pick you publish promotes your profile harder than the last one.</p>
+  <div class="feature-grid">
+    <div class="feature"><span class="ic">📊</span><h3>Pick performance</h3><p>Impressions, tails, fades and engagement on every shared wager — see which picks pull a crowd.</p></div>
+    <div class="feature"><span class="ic">👥</span><h3>Audience growth</h3><p>Follower trends, community reach, and where your new audience is coming from.</p></div>
+    <div class="feature"><span class="ic">🔥</span><h3>Streak &amp; record promotion</h3><p>Hot streaks and milestone records are automatically packaged and promoted to the community feed.</p></div>
+    <div class="feature"><span class="ic">🧠</span><h3>FadeIQ insights</h3><p>Sport-by-sport breakdowns of your edge — and your leaks — so you know exactly what to promote next.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>The back room's open.</h2>
+  <p>Share your picks. Grow your following. Bet together.</p>
+  <a class="cta-btn" href="/">Get Fade</a>
+</section>
+
+<footer class="footer">
+  <p><b>21+</b> &middot; If you or someone you know has a gambling problem, call <b>1-800-GAMBLER</b>.<br />
+  Fade is a <b>social platform, not a sportsbook</b> — it does not accept or place wagers. Records and statistics shown are illustrative of platform features.<br />
+  FADE&trade; &middot; Advertising, marketing and promotion services for the sports wagering community.</p>
+</footer>
+
+</body>
+</html>
