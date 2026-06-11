@@ -59,6 +59,18 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
 .q.tag { font-style: normal; font-weight: 700; color: #fff; border-left-color: #3b82f6; }
 .suggest { color: rgba(255,255,255,0.4); font-weight: 500; text-transform: none; letter-spacing: 0.02em; }
 
+details.loc { margin-top: 1rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; }
+details.loc > summary { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; list-style: none; padding: 0.8rem 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(96,165,250,0.9); }
+details.loc > summary::-webkit-details-marker { display: none; }
+details.loc > summary::after { content: '+'; margin-left: auto; color: rgba(255,255,255,0.5); font-weight: 700; font-size: 0.9rem; }
+details.loc[open] > summary::after { content: '\2013'; }
+.loc-body { padding: 0.2rem 1.1rem 1rem; }
+.loc-body ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.loc-body li { position: relative; padding-left: 1.3rem; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; }
+.loc-body li::before { content: '\2192'; position: absolute; left: 0; color: rgba(96,165,250,0.7); }
+.loc-body b { color: #fff; font-weight: 600; }
+.loc-body .loc-warn { color: rgba(251,191,36,0.9); }
+
 .foot { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); text-align: center; }
 
 @media (max-width: 600px) {
@@ -92,6 +104,21 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
         <span><b>Crew call</b> 9:30 AM arrival</span>
         <span><b>Location</b> <a href="https://maps.google.com/?q=110%20E%2011th%20St%20Los%20Angeles%20CA%2090015" target="_blank" rel="noopener">110 E 11th St, Los Angeles, CA 90015</a></span>
       </div>
+      <details class="loc">
+        <summary>Location details &middot; Parking &amp; instructions</summary>
+        <div class="loc-body">
+          <ul>
+            <li><b>Address:</b> 110 E 11th St, Los Angeles, CA 90015</li>
+            <li><b>Contact:</b> <a href="tel:+14356401005">(435) 640-1005</a> &mdash; if other site rep info is noted, please contact the site rep first</li>
+            <li><b>Entrance</b> is at the front of the building &mdash; the one that says &ldquo;happy i&rsquo;m sad&rdquo;</li>
+            <li><b>Parking:</b> street parking available, first come first serve</li>
+            <li>Use the <b>alleyway</b> if you need to temporarily stage a vehicle to unload</li>
+            <li><b>Overtime</b> is charged by the half hour at the same regular rate</li>
+            <li><b>WiFi:</b> happyimsad &middot; <b>Password:</b> sadyourhappy</li>
+            <li class="loc-warn"><b>Lockbox:</b> code will be sent before the booking. When finished, if a site rep is not on site, lock the front door and put the key back in the lockbox before leaving the space.</li>
+          </ul>
+        </div>
+      </details>
     </div>
     <div class="shoot-body">
 
