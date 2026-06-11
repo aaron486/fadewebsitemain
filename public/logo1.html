@@ -4,14 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fade — Static</title>
-<meta name="description" content="The Fade logo over full-screen CRT static." />
+<meta name="description" content="The Fade logo over full-screen CRT static, powering off like an old TV." />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
-body { background: #1a1a1a; overflow: hidden; }
+body { background: #050505; overflow: hidden; }
 
 .screen { position: fixed; inset: 0; overflow: hidden; }
-.screen > * { position: absolute; inset: 0; }
+
+/* everything that "is the picture" collapses together on power-off */
+.picture { position: absolute; inset: 0; transform-origin: center center; }
+.picture > * { position: absolute; inset: 0; }
 
 /* full-screen snow */
 #static {
@@ -20,7 +23,7 @@ body { background: #1a1a1a; overflow: hidden; }
   opacity: 0.9;
 }
 
-/* the logo, always on */
+/* the logo, always on while the set is on */
 .content {
   display: flex; align-items: center; justify-content: center;
   color: #ffffff; z-index: 5;
@@ -62,35 +65,82 @@ body { background: #1a1a1a; overflow: hidden; }
   66% { transform: translate(2%,-3%); } 100% { transform: translate(-2%,-1%); }
 }
 
+/* collapse beam for power-off */
+.beam {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 100vw; height: 5px; border-radius: 999px;
+  background: #ffffff; opacity: 0; z-index: 10;
+  box-shadow: 0 0 22px 4px rgba(255,255,255,0.85), 0 0 60px 14px rgba(255,255,255,0.4);
+}
+
+/* ---- power off ---- */
+.screen.off .picture { animation: crtOff 0.9s cubic-bezier(0.6,0,0.85,0.2) forwards; }
+.screen.off .beam    { animation: crtBeam 0.9s ease-out forwards; }
+@keyframes crtOff {
+  0%       { transform: scaleY(1);     opacity: 1; filter: brightness(1); }
+  42%      { transform: scaleY(0.012); opacity: 1; filter: brightness(2.6); }
+  55%,100% { transform: scaleY(0.012); opacity: 0; }
+}
+@keyframes crtBeam {
+  0%   { opacity: 0;    width: 100vw; height: 5px; }
+  30%  { opacity: 1;    width: 100vw; height: 5px; }
+  46%  { opacity: 1;    width: 100vw; height: 5px; }
+  58%  { opacity: 1;    width: 22px;  height: 5px; }
+  68%  { opacity: 1;    width: 24px;  height: 24px;
+         box-shadow: 0 0 60px 18px rgba(255,255,255,0.95), 0 0 130px 40px rgba(255,255,255,0.55); }
+  84%  { opacity: 0.85; width: 12px;  height: 12px; }
+  100% { opacity: 0;    width: 6px;   height: 6px; }
+}
+
+.replay {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px; padding: 0.6rem 1.1rem; cursor: pointer; z-index: 20;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+}
+.replay.show { opacity: 1; pointer-events: auto; }
+.replay:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
 @media (prefers-reduced-motion: reduce) {
   #static { opacity: 0.35; }
-  .hum, .grain { animation: none; display: none; }
+  .hum, .grain { display: none; }
+  .screen.off .picture, .screen.off .beam { animation: none; }
+  .screen.off .picture { opacity: 0; }
 }
 </style>
 </head>
 <body>
-<div class="screen">
-  <canvas id="static"></canvas>
-  <div class="content">
-    <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
-      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
-      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
-      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
-      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
-    </svg>
+<div class="screen" id="screen">
+  <div class="picture" id="picture">
+    <canvas id="static"></canvas>
+    <div class="content">
+      <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+        <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+        <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+        <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+        <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+      </svg>
+    </div>
+    <div class="hum"></div>
+    <div class="scan"></div>
+    <div class="grain"></div>
   </div>
-  <div class="hum"></div>
-  <div class="scan"></div>
-  <div class="grain"></div>
+  <div class="beam"></div>
 </div>
+<button class="replay" id="replay" type="button">&#8635; Replay</button>
 
 <script>
 (function () {
+  var screen = document.getElementById('screen');
+  var replay = document.getElementById('replay');
   var canvas = document.getElementById('static');
   var ctx = canvas.getContext('2d');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var bw, bh, img, last = 0;
+  /* ---- snow ---- */
+  var bw, bh, img, last = 0, snowing = true;
   function sizeStatic() {
     bw = Math.max(2, Math.min(window.innerWidth, 640));
     bh = Math.max(2, Math.round(bw * (window.innerHeight / window.innerWidth)));
@@ -108,14 +158,34 @@ body { background: #1a1a1a; overflow: hidden; }
   }
   function loop(ts) {
     requestAnimationFrame(loop);
-    if (ts - last < 33) return;   /* ~30fps for an authentic flicker */
+    if (!snowing || ts - last < 33) return;   /* ~30fps for an authentic flicker */
     last = ts;
     drawFrame();
   }
 
+  /* ---- 6s on, then power off ---- */
+  var offTimer, showTimer;
+  function play() {
+    clearTimeout(offTimer); clearTimeout(showTimer);
+    screen.classList.remove('off');
+    replay.classList.remove('show');
+    snowing = true;
+    void screen.offsetWidth;                   /* reflow so animations restart */
+    offTimer = setTimeout(function () {
+      screen.classList.add('off');
+      showTimer = setTimeout(function () {
+        snowing = false;                       /* stop burning CPU once dark */
+        replay.classList.add('show');
+      }, 1000);
+    }, 6000);
+  }
+
   window.addEventListener('resize', sizeStatic);
+  replay.addEventListener('click', play);
+
   sizeStatic();
   if (!reduce) requestAnimationFrame(loop);
+  play();
 })();
 </script>
 </body>
