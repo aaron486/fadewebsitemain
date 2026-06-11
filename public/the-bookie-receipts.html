@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FADE — Receipts: Script &amp; Shotlist (The Bookie)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;900&family=Saira:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0b0b0b;--panel:#131313;--panel2:#181818;--line:#2a2a2a;--bone:#f4f3ee;--mute:#9a9a92;--green:#16c77e;--maxw:1040px;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:'Saira',system-ui,'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .display{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:900;text-transform:uppercase;line-height:.9;}
+  .skew{display:inline-block;transform:skewX(-7deg);}
+  .mono{font-family:'Space Mono',ui-monospace,Menlo,monospace;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);}
+  .green{color:var(--green);}
+  .crayon{display:block;width:100%;height:10px;margin-top:2px;}
+
+  header.top{border-bottom:1px solid var(--line);padding:46px 0 30px;}
+  header.top h1{font-size:clamp(46px,10vw,104px);margin:.14em 0 .06em;}
+  .meta-strip{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px;}
+  .meta-strip div{font-family:'Space Mono',monospace;font-size:13px;color:var(--mute);}
+  .meta-strip b{color:var(--bone);}
+
+  section{padding:46px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;}
+  .sec-head .num{font-family:'Space Mono',monospace;color:var(--green);font-size:13px;}
+  h2.display{font-size:clamp(28px,5vw,46px);}
+
+  .idea{font-size:18px;line-height:1.7;color:#e7e6df;max-width:760px;}
+  .idea b{color:var(--bone);}
+  .idea .pull{font-family:'Saira Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(24px,4vw,38px);line-height:1;display:inline-block;transform:skewX(-7deg);margin:18px 0 2px;}
+
+  /* SCRIPT beat sheet */
+  .runtime{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--mute);margin-bottom:20px;letter-spacing:.04em;}
+  .runtime b{color:var(--green);}
+  .beat{border:1px solid var(--line);background:var(--panel);border-radius:2px;padding:16px 20px;margin-bottom:12px;display:grid;grid-template-columns:74px 1fr 116px;gap:20px;align-items:start;}
+  .beatframe img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;border:1px solid var(--line);border-radius:2px;}
+  .beatframe .cap{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:5px;}
+  .beat .tcwrap{border-right:1px solid var(--line);padding-right:6px;}
+  .beat .tc{font-family:'Space Mono',monospace;color:var(--green);font-size:12px;line-height:1.5;}
+  .beat .bname{font-family:'Saira Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;color:var(--mute);margin-top:6px;line-height:1;}
+  .beat .vis{color:var(--mute);font-size:14px;line-height:1.55;}
+  .beat .vis b{color:#cfcfc8;font-weight:600;}
+  .line{margin:11px 0 4px;padding-left:16px;border-left:2px solid var(--green);}
+  .line .who{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--green);text-transform:uppercase;}
+  .line .say{font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(20px,3vw,26px);line-height:1.05;color:var(--bone);letter-spacing:.01em;margin-top:2px;}
+  .line .say em{font-style:normal;color:var(--green);}
+  .sfx{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--mute);margin-top:9px;letter-spacing:.03em;}
+  .sfx b{color:#cfcfc8;}
+
+  /* framing reference */
+  .keygrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .keycell{border:1px solid var(--line);background:var(--panel);border-radius:2px;padding:14px;text-align:center;}
+  .keycell svg{width:64px;height:auto;}
+  .keycell .nm{font-family:'Saira Condensed',sans-serif;font-weight:900;text-transform:uppercase;margin-top:8px;font-size:18px;}
+  .keycell .ds{font-family:'Space Mono',monospace;font-size:11px;color:var(--mute);margin-top:3px;line-height:1.4;}
+  .keynote{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--mute);margin-top:18px;line-height:1.7;}
+  .keynote b{color:var(--green);}
+
+  /* shotlist */
+  .setup-lab{display:flex;align-items:center;gap:12px;margin:32px 0 14px;flex-wrap:wrap;}
+  .setup-lab .tag{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--green);padding:4px 10px;border-radius:2px;font-weight:700;}
+  .setup-lab .ttl{font-family:'Saira Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:22px;}
+  .setup-lab .ttl small{font-family:'Space Mono',monospace;font-weight:400;text-transform:none;color:var(--mute);font-size:12px;margin-left:8px;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .shotcard{display:grid;grid-template-columns:108px 1fr;gap:16px;border:1px solid var(--line);background:var(--panel);border-radius:2px;padding:13px;align-items:start;}
+  .frame{width:108px;}
+  .frame .diagram{width:108px;height:192px;border:1px dashed var(--line);border-radius:2px;display:flex;align-items:center;justify-content:center;background:var(--panel2);}
+  .frame .diagram svg{width:62px;height:auto;}
+  .frame .tobeshot{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--mute);text-align:center;margin-top:5px;letter-spacing:.05em;}
+  .cardhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .cardhead .id{font-family:'Space Mono',monospace;color:var(--green);font-weight:700;font-size:14px;}
+  .cardhead .szname{font-family:'Saira Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:21px;letter-spacing:.02em;}
+  .specrow{font-family:'Space Mono',monospace;font-size:12px;color:#cfcfc8;margin:5px 0 8px;}
+  .act{color:#e7e6df;font-size:14.5px;line-height:1.45;}
+  .act b{color:var(--bone);}
+  .cov{color:var(--mute);font-size:12.5px;margin-top:8px;font-family:'Space Mono',monospace;letter-spacing:.03em;}
+  .cov b{color:#cfcfc8;}
+  .props{display:block;margin-top:6px;font-family:'Space Mono',monospace;font-size:10.5px;color:var(--green);}
+
+  /* checklist */
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .check{background:var(--panel);padding:14px 16px;}
+  .check .k{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+  .check ul{margin:0;padding-left:18px;}
+  .check li{color:#e7e6df;font-size:14px;line-height:1.6;margin:3px 0;}
+
+  .notes{border:1px solid var(--line);border-left:3px solid var(--green);background:var(--panel);border-radius:2px;padding:6px 22px 12px;}
+  .notes li{margin:12px 0;color:#d9d8d1;}
+  .notes li b{color:var(--bone);}
+
+  footer{padding:34px 0 64px;}
+  .fadehead{font-family:'Saira Condensed',sans-serif;font-weight:900;letter-spacing:.04em;font-size:18px;}
+  .compliance{font-family:'Space Mono',monospace;font-size:12px;color:var(--mute);line-height:1.9;margin-top:12px;}
+  .compliance b{color:var(--bone);}
+
+  @media (max-width:860px){
+    .keygrid{grid-template-columns:repeat(2,1fr);}
+    .cards{grid-template-columns:1fr;}
+    .checks{grid-template-columns:1fr;}
+    .beat{grid-template-columns:52px 1fr 92px;gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="fr-ws" viewBox="0 0 90 160"><rect x="4" y="4" width="82" height="152" rx="2" fill="none" stroke="#f4f3ee" stroke-width="1.6"/><rect x="4" y="57" width="82" height="46" fill="none" stroke="#16c77e" stroke-width="1.2" stroke-dasharray="4 3" opacity=".7"/><circle cx="45" cy="96" r="4" fill="#54544e"/><path d="M38 103 L52 103 L56 150 L34 150 Z" fill="#54544e"/></symbol>
+  <symbol id="fr-ms" viewBox="0 0 90 160"><rect x="4" y="4" width="82" height="152" rx="2" fill="none" stroke="#f4f3ee" stroke-width="1.6"/><rect x="4" y="57" width="82" height="46" fill="none" stroke="#16c77e" stroke-width="1.2" stroke-dasharray="4 3" opacity=".7"/><circle cx="45" cy="66" r="7" fill="#6a6a63"/><path d="M31 82 L59 82 L66 156 L24 156 Z" fill="#6a6a63"/></symbol>
+  <symbol id="fr-mcu" viewBox="0 0 90 160"><rect x="4" y="4" width="82" height="152" rx="2" fill="none" stroke="#f4f3ee" stroke-width="1.6"/><rect x="4" y="57" width="82" height="46" fill="none" stroke="#16c77e" stroke-width="1.2" stroke-dasharray="4 3" opacity=".7"/><circle cx="45" cy="56" r="11" fill="#7a7a72"/><path d="M26 76 L64 76 L72 156 L18 156 Z" fill="#7a7a72"/></symbol>
+  <symbol id="fr-cu" viewBox="0 0 90 160"><rect x="4" y="4" width="82" height="152" rx="2" fill="none" stroke="#f4f3ee" stroke-width="1.6"/><rect x="4" y="57" width="82" height="46" fill="none" stroke="#16c77e" stroke-width="1.2" stroke-dasharray="4 3" opacity=".7"/><circle cx="45" cy="74" r="24" fill="#8a8a82"/><path d="M16 156 C 22 132, 68 132, 74 156 Z" fill="#8a8a82"/></symbol>
+  <symbol id="fr-ecu" viewBox="0 0 90 160"><rect x="4" y="4" width="82" height="152" rx="2" fill="none" stroke="#f4f3ee" stroke-width="1.6"/><rect x="4" y="57" width="82" height="46" fill="none" stroke="#16c77e" stroke-width="1.2" stroke-dasharray="4 3" opacity=".7"/><rect x="33" y="56" width="24" height="48" rx="3" fill="#8a8a82"/><rect x="37" y="62" width="16" height="30" rx="1.5" fill="#131313"/></symbol>
+</defs></svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">FADE · The Bookie · Script &amp; Shotlist</div>
+    <h1 class="display"><span class="skew">Receipts</span></h1>
+    <svg class="crayon" viewBox="0 0 360 12" preserveAspectRatio="none"><path d="M4 8 C 70 3, 120 11, 190 6 S 300 9, 356 5" fill="none" stroke="#16c77e" stroke-width="4" stroke-linecap="round"/></svg>
+    <div class="eyebrow" style="color:var(--bone);letter-spacing:.1em;margin-top:14px;">Sal prints the proof and pins it under the FADE logo — the back room goes public</div>
+    <div class="meta-strip">
+      <div>FORMAT &nbsp;<b>9:16 master → 16:9 / 1:1</b></div>
+      <div>RUNTIME &nbsp;<b>~42s</b></div>
+      <div>WORLD &nbsp;<b>The back office · corkboard + printer</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE IDEA ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2 class="display"><span class="skew">The Idea</span></h2></div>
+    <p class="idea">
+      In betting, <b>"show me the receipts"</b> means one thing: <b>prove your record.</b> For forty years Sal kept his receipts in the back room — every bet, every result — where nobody could see them but him. That secrecy <em>was</em> the bookie's edge.<br><br>
+      Now he's pinning them up in the open, <b>delighted</b>, under the FADE logo. Because the game changed: on FADE your record is public, verified, out where everyone can see it. The corkboard <b>is</b> the feed. The receipts are everybody's now.
+      <span class="pull green">Show me the receipts.</span><br>
+      <span style="font-family:'Space Mono',monospace;font-size:13px;color:var(--mute);">Play the wonder, not the grievance. Sal loves that the back room is finally open.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ SCRIPT ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2 class="display"><span class="skew">The Script</span></h2></div>
+    <div class="runtime">SPOKEN BY SAL, TO CAMERA · <b>printer whir / paper tear / pin thunk</b> carry the rhythm · any line can flip to FADE Narrator VO if you'd rather keep Sal silent &amp; visual</div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:00<br>0:03</div><div class="bname">Cold open</div></div>
+      <div>
+        <div class="vis">Black. A printer <b>WHIRRS</b> in the dark. ECU — a receipt feeds out and curls. Sal's hand enters and tears it clean.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">You want the truth about a guy?</div></div>
+        <div class="sfx">SFX &nbsp;<b>printer whir · paper tear</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_030736_59e5fa9c-00f1-479c-8267-cf4adf24cd75.png" alt="Printer feeding a receipt"><div class="cap">Printer feed</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:03<br>0:09</div><div class="bname">First pin</div></div>
+      <div>
+        <div class="vis">Pull to reveal the corkboard. At the top, the <b>FADE logo</b> — a green crayon underline draws on. Sal pins the first receipt. <b>THUNK.</b></div>
+        <div class="line"><div class="who">Sal</div><div class="say">It's on the receipt. <em>Always was.</em></div></div>
+        <div class="sfx">SFX &nbsp;<b>pin thunk · cork give</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_025223_06cbea8d-8ef4-4443-904f-d1b19da8fffb.png" alt="Sal pinning a receipt to the board"><div class="cap">The board</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:09<br>0:16</div><div class="bname">The back room</div></div>
+      <div>
+        <div class="vis">Wider. Sal at the board in the warm back office. Board half-full. He gestures across it.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">Forty years I kept these in the back. Every bet. Every beat. Every guy who swore he had a lock.</div></div>
+        <div class="sfx">SFX &nbsp;<b>low room tone · a dry chuckle</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_025223_06cbea8d-8ef4-4443-904f-d1b19da8fffb.png" alt="Sal at the board, gesturing"><div class="cap">At the board</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:16<br>0:26</div><div class="bname">The print run</div></div>
+      <div>
+        <div class="vis">Rhythm builds. Printer spitting receipts fast — Sal tearing, pinning, tearing, pinning. Quick inserts: a receipt reads <b>"W"</b>; one reads <b>"L"</b>; a green crayon circles a number. The board fills.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">I knew who was hot. I knew who was kiddin' themselves.</div></div>
+        <div class="line"><div class="who">Sal &nbsp;(beat)</div><div class="say">Only problem was — <em>so did I. Just me.</em></div></div>
+        <div class="sfx">SFX &nbsp;<b>building printer / tear / pin tempo — like a snare</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_030736_59e5fa9c-00f1-479c-8267-cf4adf24cd75.png" alt="Printer spitting receipts"><div class="cap">Print run</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:26<br>0:33</div><div class="bname">The turn</div></div>
+      <div>
+        <div class="vis">Tempo drops out. Sal steps back. The board is <b>full, edge to edge</b>, the logo crowning it. He taps the logo.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">Then the game changed. Now <em>everybody</em> shows their receipts.</div></div>
+        <div class="sfx">SFX &nbsp;<b>one clean pin · a breath · silence opens up</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_030740_515b12a5-3cdd-45c0-bd36-17294a2d4e39.png" alt="The full board crowned by FADE"><div class="cap">Full board</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:33<br>0:38</div><div class="bname">Verified</div></div>
+      <div>
+        <div class="vis">ECU on a receipt: a green crayon checks <b>"VERIFIED."</b> Pull to the whole board glowing under the logo.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">Win or lose — it's all up there. <em>Verified.</em> Out in the open.</div></div>
+        <div class="sfx">SFX &nbsp;<b>soft tick</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_030745_235519ef-447b-43d5-b454-419bffd6683d.png" alt="Receipt with a green check"><div class="cap">Verified</div></div>
+    </div>
+
+    <div class="beat">
+      <div class="tcwrap"><div class="tc">0:38<br>0:42</div><div class="bname">The button</div></div>
+      <div>
+        <div class="vis">Sal pins one last receipt dead center. Steps back. The delighted half-smile, to camera. <b>HARD CUT</b> to FADE end card — logo, green crayon underline, compliance footer.</div>
+        <div class="line"><div class="who">Sal</div><div class="say">The back room's open. <em>Bet together.</em></div></div>
+        <div class="sfx">SFX &nbsp;<b>final thunk · bass hit · cut to black</b></div>
+      </div>
+      <div class="beatframe"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260611_030750_0bb1c537-a71c-486b-8952-9b2c20d1c877.png" alt="Sal's delighted half-smile to camera"><div class="cap">The smile</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAMING REFERENCE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2 class="display"><span class="skew">Framing reference</span></h2></div>
+    <div class="keygrid">
+      <div class="keycell"><svg><use href="#fr-ws"/></svg><div class="nm">WS</div><div class="ds">Wide<br>Sal + board</div></div>
+      <div class="keycell"><svg><use href="#fr-ms"/></svg><div class="nm">MS</div><div class="ds">Medium<br>At the board</div></div>
+      <div class="keycell"><svg><use href="#fr-mcu"/></svg><div class="nm">MCU</div><div class="ds">Med close<br>Chest-up</div></div>
+      <div class="keycell"><svg><use href="#fr-cu"/></svg><div class="nm">CU</div><div class="ds">Close<br>The face</div></div>
+      <div class="keycell"><svg><use href="#fr-ecu"/></svg><div class="nm">ECU</div><div class="ds">Insert<br>Printer / pin</div></div>
+    </div>
+    <p class="keynote">White outline = the <b>9:16 master frame</b>. Dashed green = the <b>16:9 safe area</b>. Keep Sal, the FADE logo, and every legible receipt inside the green box AND the vertical center, so the editor can pull 9:16, 16:9, and 1:1 from one take.</p>
+  </div>
+</section>
+
+<!-- ============ SHOTLIST ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2 class="display"><span class="skew">Shotlist</span></h2></div>
+    <p class="keynote" style="margin-top:0;margin-bottom:6px;">Grouped by setup so you shoot all of one camera position together. Frames are framing diagrams for now — <b>say the word and I'll generate photoreal reference frames in the office set.</b></p>
+
+    <!-- SETUP A -->
+    <div class="setup-lab"><span class="tag">Setup A</span><span class="ttl">The Board <small>Sal — hero performance coverage</small></span></div>
+    <div class="cards">
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ws"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">A1</span><span class="szname">WS · Wide</span></div>
+          <div class="specrow">35mm · Static</div>
+          <div class="act">Sal at the corkboard in the back office, board partly full, <b>FADE logo crowning the top.</b> Establishes the world.</div>
+          <div class="cov"><b>Establish</b> · the back room</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ms"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">A2 / A3</span><span class="szname">MS → MCU</span></div>
+          <div class="specrow">35–85mm · Static, then slow push</div>
+          <div class="act">The workhorse. Run the <b>entire script clean</b> at MS while he prints &amp; pins, then again tighter at MCU, matching the blocking.</div>
+          <div class="cov"><b>All beats</b> · master performance</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-cu"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">A4</span><span class="szname">CU · Close</span></div>
+          <div class="specrow">85mm · Slow push-in</div>
+          <div class="act">The face. The one move of the day — save it for <b>the turn</b> ("Then the game changed") and the delighted half-smile.</div>
+          <div class="cov">The turn · the button</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ms"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">A5</span><span class="szname">MS · The tap</span></div>
+          <div class="specrow">50mm · Static</div>
+          <div class="act">Sal steps back and <b>taps the FADE logo</b> at the top of the board. The "everybody shows their receipts" gesture.</div>
+          <div class="cov">The turn</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-mcu"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">A6</span><span class="szname">MCU · Reactions</span></div>
+          <div class="specrow">85mm · Static</div>
+          <div class="act">Silent — the chuckle, the knowing look, the satisfaction as the board fills. No dialogue.</div>
+          <div class="cov"><b>B-roll</b> · editor cutaways</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETUP B -->
+    <div class="setup-lab"><span class="tag">Setup B</span><span class="ttl">The Printer <small>macro inserts — half the rhythm lives here</small></span></div>
+    <div class="cards">
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT — MOS</div></div>
+        <div>
+          <div class="cardhead"><span class="id">B1</span><span class="szname">ECU · Feed</span></div>
+          <div class="specrow">50mm / macro · Static · opt 48–60fps</div>
+          <div class="act">The printer spitting a receipt, paper curling. Hero the feed in slow-mo for the print-run montage.<span class="props">PROPS: working printer + receipt roll</span></div>
+          <div class="cov">Cold open · print run</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT — MOS</div></div>
+        <div>
+          <div class="cardhead"><span class="id">B2</span><span class="szname">ECU · The tear</span></div>
+          <div class="specrow">85mm / macro · Static</div>
+          <div class="act">Sal's hand tears the receipt clean off the roll. Gold pinky ring catching the light.<span class="props">PROPS: pinky ring continuity</span></div>
+          <div class="cov">Cold open · print run</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT — MOS</div></div>
+        <div>
+          <div class="cardhead"><span class="id">B3</span><span class="szname">ECU · The proof</span></div>
+          <div class="specrow">50mm / macro · Static</div>
+          <div class="act">A finished receipt held to camera — legible <b>W / L / a record line.</b> Shoot several variations so the editor has options.<span class="props">PROPS: pre-printed receipt props (compliant copy)</span></div>
+          <div class="cov">The proof · verified</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT / COMPOSITE</div></div>
+        <div>
+          <div class="cardhead"><span class="id">B4</span><span class="szname">ECU · The accent</span></div>
+          <div class="specrow">macro · Static</div>
+          <div class="act">A green crayon circles a number / checks <b>"VERIFIED"</b> on a receipt. Practical on set, or composite the crayon stroke in post.<span class="props">ACCENT: Kalshi-green crayon — one or two max</span></div>
+          <div class="cov">Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETUP C -->
+    <div class="setup-lab"><span class="tag">Setup C</span><span class="ttl">The Pin <small>the THUNK — tactile proof going up</small></span></div>
+    <div class="cards">
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT — MOS</div></div>
+        <div>
+          <div class="cardhead"><span class="id">C1</span><span class="szname">ECU · The pin</span></div>
+          <div class="specrow">85mm / macro · Static</div>
+          <div class="act">A hand pushes a pin into the cork, receipt held. <b>The THUNK.</b> Grab a few angles — this is the beat of the edit.<span class="props">PROPS: corkboard, plenty of pins</span></div>
+          <div class="cov">First pin · print run</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT — MOS</div></div>
+        <div>
+          <div class="cardhead"><span class="id">C2</span><span class="szname">ECU · Layering</span></div>
+          <div class="specrow">50mm / macro · Static</div>
+          <div class="act">Receipts overlapping on the board, density building. Cuts together to imply time passing.</div>
+          <div class="cov">Print run · the turn</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ecu"/></svg></div><div class="tobeshot">SHOOT / COMPOSITE</div></div>
+        <div>
+          <div class="cardhead"><span class="id">C3</span><span class="szname">Insert · The logo</span></div>
+          <div class="specrow">50mm · Static</div>
+          <div class="act">Clean hero of the <b>FADE logo placard</b> at the top of the board, green crayon underline. The crown of the whole piece.<span class="props">PROPS: FADE logo placard (B&amp;W)</span></div>
+          <div class="cov">First pin · the turn</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETUP D -->
+    <div class="setup-lab"><span class="tag">Setup D</span><span class="ttl">The Board, Full <small>hero reveals + the end card</small></span></div>
+    <div class="cards">
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-ws"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">D1</span><span class="szname">WS/MS · Full board</span></div>
+          <div class="specrow">35mm · Slow push or static</div>
+          <div class="act">The full board, edge to edge, crowned by the logo — the <b>"everybody shows their receipts"</b> reveal.</div>
+          <div class="cov">The turn · verified</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-cu"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">D2</span><span class="szname">CU · Last pin</span></div>
+          <div class="specrow">85mm · Static</div>
+          <div class="act">The last receipt pinned <b>dead center</b>. The button — hold the beat.</div>
+          <div class="cov">The button</div>
+        </div>
+      </div>
+      <div class="shotcard">
+        <div class="frame"><div class="diagram"><svg><use href="#fr-mcu"/></svg></div><div class="tobeshot">SHOOT ON DAY</div></div>
+        <div>
+          <div class="cardhead"><span class="id">D3</span><span class="szname">MCU · Hero / end</span></div>
+          <div class="specrow">85mm · Static</div>
+          <div class="act">Sal steps back from the full board, that delighted half-smile to camera. The hand-off into the end card.</div>
+          <div class="cov">The button · CTA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROPS & ART DEPT ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2 class="display"><span class="skew">Props &amp; Art Dept</span></h2></div>
+    <div class="checks">
+      <div class="check">
+        <div class="k">Hero props</div>
+        <ul>
+          <li>Working printer (thermal or dot-matrix — period-plausible but functional) + receipt roll</li>
+          <li>Corkboard + plenty of push pins</li>
+          <li><b>FADE logo placard</b> for the top of the board — pure B&amp;W, green crayon underline (practical or post)</li>
+          <li>Green crayon for the live VERIFIED / circle accents</li>
+        </ul>
+      </div>
+      <div class="check">
+        <div class="k">Receipt props (pre-print a stack)</div>
+        <ul>
+          <li>Legible bet lines, W/L results, short record summaries</li>
+          <li>Print large + high contrast so they read in a 9:16 crop</li>
+          <li>Vary the look — fresh white rolls, a few older/curled ones</li>
+          <li>At least one clean "VERIFIED" receipt for the accent insert</li>
+        </ul>
+      </div>
+      <div class="check">
+        <div class="k">Continuity</div>
+        <ul>
+          <li>Sal wardrobe + pinky ring per the casting brief</li>
+          <li>Shoot the board at 3 stages of fullness: near-empty → half → packed</li>
+          <li>Keep the logo + key receipts in the 16:9 safe box &amp; vertical center</li>
+        </ul>
+      </div>
+      <div class="check">
+        <div class="k">Keep OFF the set</div>
+        <ul>
+          <li>Trademarked sportsbook logos / names on receipts</li>
+          <li>Real-person callouts (no "Portnoy" line, no named bettors)</li>
+          <li>Guaranteed-win / "lock" language presented as fact</li>
+          <li>Cigarettes / smoking (classifier + brand reasons)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ON-DAY NOTES ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2 class="display"><span class="skew">On-day notes</span></h2></div>
+    <ul class="notes">
+      <li><b>Capture the sound, even on MOS inserts.</b> Record the real printer whir, paper tear, and pin thunk <b>wild</b> — that audio is the track's percussion. Grab 60s of room tone too.</li>
+      <li><b>The board fills over the spot.</b> Shoot it empty-ish, half, and packed so the editor can imply time without a single dissolve.</li>
+      <li><b>Receipts must be legible in vertical.</b> Frame tight on the proof inserts; if a number matters, it has to be readable on a phone screen.</li>
+      <li><b>Green is a crayon accent only</b> — never a UI color or fill. One or two annotations on the whole board, max.</li>
+      <li><b>One frame, three crops.</b> Logo and hero receipts stay inside the green 16:9 box and the vertical center so 9:16 / 16:9 / 1:1 all pull from the same take.</li>
+      <li><b>The smile sells it.</b> Sal is delighted the back room is open — wistful is fine, bitter is not. Protect the half-smile in A4 and D3.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fadehead green">FADE</div>
+    <div class="compliance">
+      <b>21+</b> &nbsp;·&nbsp; If you or someone you know has a gambling problem, call <b>1-800-GAMBLER</b>.<br>
+      FADE is a <b>social platform, not a sportsbook</b> — it does not accept wagers. &nbsp;·&nbsp; Add <b>#ad</b> on any paid placement.<br>
+      No guaranteed-win language. AI-generated or composited visuals must be disclosed. Any stats shown must match the verified record.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

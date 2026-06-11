@@ -28,6 +28,7 @@
     { "source": "/the-bookie-casting-brief", "destination": "/the-bookie-casting-brief.html" },
     { "source": "/the-bookie-shotboard", "destination": "/the-bookie-shotboard.html" },
     { "source": "/the-bookie-storyboard", "destination": "/the-bookie-storyboard.html" },
+    { "source": "/the-bookie-receipts", "destination": "/the-bookie-receipts.html" },
     { "source": "/ros", "destination": "/ros.html" },
     { "source": "/callsheet", "destination": "/ros.html" },
     { "source": "/run-of-show", "destination": "/ros.html" },
