@@ -4,41 +4,37 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fade</title>
-<meta name="description" content="The FADE logo filled with sports footage." />
+<meta name="description" content="The Fade logo over full-screen sports highlights." />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 body { background: #000; overflow: hidden; }
 
-.stage { position: fixed; inset: 0; overflow: hidden; background: #000; }
+/* one filter graded over everything inside — footage and logo alike */
+.stage {
+  position: fixed; inset: 0; overflow: hidden; background: #000;
+  filter: grayscale(0.8) contrast(1.12) brightness(0.92) sepia(0.12);
+}
 
-/* shared full-screen, cropped-to-fill video sizing */
-.layer {
+/* full-screen video, cropped to fill */
+.bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
 }
 
-/* 1) dimmed footage playing behind everything */
-.back { filter: brightness(0.32) saturate(0.9); }
-
-/* darken the background a touch more so the logo separates */
-.scrim {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 100%);
-  z-index: 1;
+/* the logo, centered on top */
+.logo {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffffff;
+}
+.logo svg {
+  display: block; width: clamp(190px, 46vw, 560px); height: auto;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.85)) drop-shadow(0 0 8px rgba(0,0,0,0.9));
 }
 
-/* 2) the same footage, full brightness, clipped to the FADE letters */
-.fill {
-  z-index: 2;
-  -webkit-mask: url(assets/fade-mask.svg) center / clamp(240px, 58vw, 720px) auto no-repeat;
-          mask: url(assets/fade-mask.svg) center / clamp(240px, 58vw, 720px) auto no-repeat;
-  filter: contrast(1.05) saturate(1.05)
-          drop-shadow(0 6px 26px rgba(0,0,0,0.85));
-}
-
-/* sound toggle (autoplay requires muted) */
+/* tap-to-unmute hint (autoplay requires muted) */
 .sound {
   position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
   font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.66rem; font-weight: 700;
@@ -53,36 +49,27 @@ body { background: #000; overflow: hidden; }
 </head>
 <body>
 <div class="stage">
-  <video class="layer back" id="back" autoplay muted loop playsinline>
+  <video class="bg" id="bg" autoplay muted loop playsinline>
     <source src="assets/sports-history.mp4" type="video/mp4" />
   </video>
-  <div class="scrim"></div>
-  <video class="layer fill" id="fill" autoplay muted loop playsinline>
-    <source src="assets/sports-history.mp4" type="video/mp4" />
-  </video>
+  <div class="logo">
+    <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    </svg>
+  </div>
 </div>
 <button class="sound" id="sound" type="button">&#128266; Sound On</button>
 
 <script>
 (function () {
-  var back = document.getElementById('back');
-  var fill = document.getElementById('fill');
+  var video = document.getElementById('bg');
   var sound = document.getElementById('sound');
-
-  /* keep the two layers in sync so the letters match the background */
-  function resync() {
-    if (Math.abs(fill.currentTime - back.currentTime) > 0.12) {
-      fill.currentTime = back.currentTime;
-    }
-  }
-  back.addEventListener('timeupdate', resync);
-  back.addEventListener('seeked', resync);
-  back.addEventListener('play', function () { fill.play(); });
-
-  /* sound rides on the background layer */
   sound.addEventListener('click', function () {
-    back.muted = !back.muted;
-    if (!back.muted) { back.play(); sound.classList.add('hide'); }
+    video.muted = !video.muted;
+    if (!video.muted) { video.play(); sound.classList.add('hide'); }
   });
 })();
 </script>
