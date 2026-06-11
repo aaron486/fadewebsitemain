@@ -23,6 +23,7 @@
     { "source": "/logo", "destination": "/logo.html" },
     { "source": "/logo-animation", "destination": "/logo.html" },
     { "source": "/logo1", "destination": "/logo1.html" },
+    { "source": "/logo2", "destination": "/logo2.html" },
     { "source": "/bookie", "destination": "/bookie.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
