@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — The Last Shot</title>
+<meta name="description" content="FADE — a tribute to the buzzer-beating last shot, 1998." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: radial-gradient(120% 100% at 50% 0%, #b5611f 0%, #6e370f 50%, #2c1606 100%);
+  overflow: hidden; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+.year { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 46vh; color: rgba(255,255,255,0.05); letter-spacing: -0.04em; }
+/* hoop top-right */
+.hoop { position: absolute; right: 12%; top: 26%; width: 90px; height: 10px;
+  background: #ff5a1f; border-radius: 4px; box-shadow: 0 0 16px rgba(255,90,31,0.6); }
+.hoop::after { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; height: 46px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.6) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.6) 0 1px, transparent 1px 10px);
+  clip-path: polygon(0 0, 100% 0, 78% 100%, 22% 100%); }
+.ballx { position: absolute; left: 16%; bottom: 18%; animation: bx 3.0s cubic-bezier(.4,0,.7,.5) infinite; }
+.bally { animation: by 1.5s cubic-bezier(.15,.7,.5,1) infinite alternate; }
+.ball { width: 30px; height: 30px; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, #f08a3c, #c85412);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4); }
+.ball::before { content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: linear-gradient(90deg, transparent 48%, rgba(0,0,0,0.5) 48% 52%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(0,0,0,0.5) 48% 52%, transparent 52%); }
+@keyframes bx { 0% { left: 16%; } 100% { left: 80%; } }
+@keyframes by { 0% { transform: translateY(0); } 100% { transform: translateY(-44vh); } }
+.buzzer { position: absolute; top: 9%; left: 0; right: 0; text-align: center; font-weight: 800;
+  font-size: clamp(36px, 8vw, 92px); color: #ff2b2b; letter-spacing: 0.08em; opacity: 0.25;
+  text-shadow: 0 0 18px rgba(255,43,43,0.5); animation: buzz 3.0s ease-in-out infinite; }
+@keyframes buzz { 0%,80% { opacity: 0.2; } 88% { opacity: 1; } 100% { opacity: 0.2; } }
+.logo { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  color: #fff; pointer-events: none; }
+.logo svg { width: clamp(170px, 40vw, 470px); height: auto; filter: drop-shadow(0 8px 26px rgba(0,0,0,0.5)); }
+.cap { position: fixed; left: 0; right: 0; bottom: 1.4rem; text-align: center; z-index: 11;
+  color: rgba(255,255,255,0.72); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.cap b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="year">&rsquo;98</div>
+  <div class="buzzer">0.0</div>
+  <div class="hoop"></div>
+  <div class="ballx"><div class="bally"><div class="ball"></div></div></div>
+</div>
+<div class="logo">
+  <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+  </svg>
+</div>
+<div class="cap">The Last Shot &middot; <b>0.0 on the Clock &middot; 1998</b></div>
+</body>
+</html>

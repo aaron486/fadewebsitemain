@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — 9.58</title>
+<meta name="description" content="FADE — a tribute to the 9.58 world record, Berlin 2009." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: linear-gradient(180deg, #2a0d0d 0%, #5a1414 55%, #7a1f1f 100%);
+  overflow: hidden; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+/* track lanes */
+.lanes { position: absolute; inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0 11.5%, rgba(255,255,255,0.12) 11.5% calc(11.5% + 2px)); }
+.finish { position: absolute; right: 11%; top: 0; bottom: 0; width: 14px;
+  background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%),
+    linear-gradient(45deg, #fff 25%, #111 25%, #111 75%, #fff 75%);
+  background-size: 14px 14px; background-position: 0 0, 7px 7px; opacity: 0.85; }
+.streak { position: absolute; left: -20%; top: 50%; width: 30vw; height: 8px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, #ffd23f, #fff);
+  box-shadow: 0 0 30px 6px rgba(255,210,63,0.6); border-radius: 6px;
+  animation: dash 2.6s cubic-bezier(.3,.6,.2,1) infinite; }
+@keyframes dash { 0% { left: -32%; } 60%,100% { left: 92%; } }
+.timer { position: absolute; top: 12%; left: 0; right: 0; text-align: center;
+  font-weight: 800; font-size: clamp(48px, 12vw, 150px); color: rgba(255,255,255,0.16);
+  letter-spacing: 0.02em; }
+.logo { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  color: #fff; pointer-events: none; }
+.logo svg { width: clamp(170px, 40vw, 470px); height: auto; filter: drop-shadow(0 8px 26px rgba(0,0,0,0.5)); }
+.cap { position: fixed; left: 0; right: 0; bottom: 1.4rem; text-align: center; z-index: 11;
+  color: rgba(255,255,255,0.72); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.cap b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="lanes"></div>
+  <div class="timer" id="timer">0.00</div>
+  <div class="finish"></div>
+  <div class="streak"></div>
+</div>
+<div class="logo">
+  <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+  </svg>
+</div>
+<div class="cap">World Record &middot; <b>Berlin &middot; 9.58 &middot; 2009</b></div>
+<script>
+(function () {
+  var el = document.getElementById('timer'), MAX = 9.58, DUR = 2600;
+  function run(start) {
+    var t = (performance.now() - start);
+    var p = Math.min(1, t / DUR);
+    var v = (p < 0.6) ? (p / 0.6) * MAX : MAX;     /* count up while the streak runs */
+    el.textContent = v.toFixed(2);
+    if (t < DUR) requestAnimationFrame(function(){ run(start); });
+    else setTimeout(function(){ requestAnimationFrame(function(ts){ run(ts); }); }, 0);
+  }
+  requestAnimationFrame(function(ts){ run(ts); });
+})();
+</script>
+</body>
+</html>

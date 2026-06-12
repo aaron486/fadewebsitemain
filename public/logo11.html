@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Shot Heard 'Round the World</title>
+<meta name="description" content="FADE — a tribute to Bobby Thomson's 1951 pennant-winning home run." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: radial-gradient(120% 90% at 50% 120%, #14552e 0%, #0a2b18 45%, #04120a 100%);
+  overflow: hidden; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+.year { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 46vh; color: rgba(255,255,255,0.05); letter-spacing: -0.04em; }
+.fence { position: absolute; left: 0; right: 0; bottom: 19%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent); }
+.ballx { position: absolute; left: -6%; bottom: 24%; animation: bx 3.4s linear infinite; }
+.bally { animation: by 1.7s cubic-bezier(.2,.6,.4,1) infinite alternate; }
+.ball { width: 20px; height: 20px; border-radius: 50%; position: relative;
+  background: radial-gradient(circle at 35% 30%, #fff, #d9d9d9);
+  box-shadow: 0 0 14px rgba(255,255,255,0.7), inset -3px -3px 6px rgba(0,0,0,0.25); }
+.ball::before, .ball::after { content: ""; position: absolute; inset: 3px;
+  border: 1.5px solid #c0202a; border-radius: 50%; clip-path: inset(0 60% 0 0); }
+.ball::after { clip-path: inset(0 0 0 60%); }
+.trail { position: absolute; left: -42px; top: 8px; width: 42px; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55)); border-radius: 2px; }
+@keyframes bx { 0% { left: -6%; } 100% { left: 106%; } }
+@keyframes by { 0% { transform: translateY(0); } 100% { transform: translateY(-46vh); } }
+.logo { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  color: #fff; pointer-events: none; }
+.logo svg { width: clamp(170px, 40vw, 470px); height: auto; filter: drop-shadow(0 8px 26px rgba(0,0,0,0.55)); }
+.cap { position: fixed; left: 0; right: 0; bottom: 1.4rem; text-align: center; z-index: 11;
+  color: rgba(255,255,255,0.7); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.cap b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="year">&rsquo;51</div>
+  <div class="fence"></div>
+  <div class="ballx"><div class="bally"><div class="ball"><div class="trail"></div></div></div></div>
+</div>
+<div class="logo">
+  <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+  </svg>
+</div>
+<div class="cap">The Shot Heard &rsquo;Round the World &middot; <b>Thomson &middot; 1951</b></div>
+</body>
+</html>

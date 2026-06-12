@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — 31 Lengths</title>
+<meta name="description" content="FADE — a tribute to Secretariat's 31-length Belmont, 1973." />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: linear-gradient(180deg, #0f3d63 0%, #0a2b47 55%, #061a2e 100%);
+  overflow: hidden; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+.year { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 50vh; color: rgba(255,255,255,0.06); letter-spacing: -0.05em; }
+.dirt { position: absolute; left: 0; right: 0; bottom: 0; height: 22%;
+  background: linear-gradient(180deg, #7a4a22, #3f2611); }
+/* leader streak well ahead */
+.leader { position: absolute; top: 56%; left: -20%; width: 24vw; height: 10px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, #ffd98a, #fff); border-radius: 6px;
+  box-shadow: 0 0 26px 5px rgba(255,217,138,0.5); animation: lead 2.4s cubic-bezier(.3,.5,.3,1) infinite; }
+/* trailing pack */
+.pack { position: absolute; top: 56%; left: -60%; width: 16vw; height: 7px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4)); border-radius: 5px;
+  animation: lead 2.4s cubic-bezier(.3,.5,.3,1) infinite; opacity: 0.55; }
+@keyframes lead { 0% { transform: translate(0,-50%); } 100% { transform: translate(130vw,-50%); } }
+.logo { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  color: #fff; pointer-events: none; }
+.logo svg { width: clamp(170px, 40vw, 470px); height: auto; filter: drop-shadow(0 8px 26px rgba(0,0,0,0.55)); }
+.cap { position: fixed; left: 0; right: 0; bottom: 1.4rem; text-align: center; z-index: 11;
+  color: rgba(255,255,255,0.72); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.cap b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="year">31</div>
+  <div class="dirt"></div>
+  <div class="pack"></div>
+  <div class="leader"></div>
+</div>
+<div class="logo">
+  <svg viewBox="80 420 840 170" fill="currentColor" aria-label="FADE">
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+  </svg>
+</div>
+<div class="cap">Thirty-One Lengths &middot; <b>Belmont &middot; 1973</b></div>
+</body>
+</html>
