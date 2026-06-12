@@ -180,6 +180,27 @@ html { scroll-behavior: smooth; }
   .hero-cta { flex-direction: column; }
   .hero-cta .btn-primary, .hero-cta .btn-ghost { width: 100%; justify-content: center; }
 }
+
+/* Reel hero — the video from /logo6 */
+.reel { position: relative; width: 100%; height: clamp(380px, 72vh, 760px); overflow: hidden; background: #000; }
+.reel-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel-logo { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.reel-logo svg { width: clamp(160px, 34vw, 440px); height: auto; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.5)); }
+.reel-grain { position: absolute; inset: -100%; z-index: 3; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.16; mix-blend-mode: overlay; animation: reelgrain 0.9s steps(6) infinite; }
+@keyframes reelgrain {
+  0%, 100% { transform: translate(0, 0); }
+  16% { transform: translate(-6%, -8%); }
+  33% { transform: translate(4%, -12%); }
+  50% { transform: translate(-9%, 6%); }
+  66% { transform: translate(8%, 10%); }
+  83% { transform: translate(-4%, 12%); }
+}
+.reel-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; z-index: 4; pointer-events: none;
+  background: linear-gradient(180deg, rgba(5,5,7,0) 0%, #050507 100%); }
+@media (max-width: 768px) { .reel { height: clamp(300px, 56vh, 520px); } }
+@media (prefers-reduced-motion: reduce) { .reel-grain { animation: none; } }
 </style>
 </head>
 <body>
@@ -190,6 +211,23 @@ html { scroll-behavior: smooth; }
     <span class="header-tagline">Bet Together</span>
   </a>
 </div>
+
+<!-- Reel hero (video from /logo6) -->
+<section class="reel" aria-label="Fade reel">
+  <video class="reel-video" autoplay muted loop playsinline>
+    <source src="assets/fade-reel.mp4" type="video/mp4" />
+  </video>
+  <div class="reel-grain" aria-hidden="true"></div>
+  <div class="reel-logo">
+    <svg viewBox="80 420 840 170" fill="#ffffff" aria-label="FADE">
+      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+    </svg>
+  </div>
+  <div class="reel-fade" aria-hidden="true"></div>
+</section>
 
 <!-- Hero -->
 <div class="hero">
