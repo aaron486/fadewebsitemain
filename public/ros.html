@@ -59,6 +59,18 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
 .q.tag { font-style: normal; font-weight: 700; color: #fff; border-left-color: #3b82f6; }
 .suggest { color: rgba(255,255,255,0.4); font-weight: 500; text-transform: none; letter-spacing: 0.02em; }
 
+details.loc { margin-top: 1rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; }
+details.loc > summary { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; list-style: none; padding: 0.8rem 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(96,165,250,0.9); }
+details.loc > summary::-webkit-details-marker { display: none; }
+details.loc > summary::after { content: '+'; margin-left: auto; color: rgba(255,255,255,0.5); font-weight: 700; font-size: 0.9rem; }
+details.loc[open] > summary::after { content: '\2013'; }
+.loc-body { padding: 0.2rem 1.1rem 1rem; }
+.loc-body ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.loc-body li { position: relative; padding-left: 1.3rem; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; }
+.loc-body li::before { content: '\2192'; position: absolute; left: 0; color: rgba(96,165,250,0.7); }
+.loc-body b { color: #fff; font-weight: 600; }
+.loc-body .loc-warn { color: rgba(251,191,36,0.9); }
+
 .foot { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); text-align: center; }
 
 @media (max-width: 600px) {
@@ -81,6 +93,7 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
     <span class="eyebrow">Run of Show</span>
     <h1>Thursday, June 11</h1>
     <p class="sub">Two shoots &mdash; Morning: The Bookie (Jim) &middot; Afternoon: Testimonials. Call sheet below.</p>
+    <p class="sub" style="margin-top:0.6rem;"><b style="color:#fff;">DALTON</b> &mdash; contact upon arrival &middot; <a href="tel:+12173130809">+1 (217) 313-0809</a></p>
   </div>
 
   <!-- SHOOT 1 -->
@@ -92,6 +105,21 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
         <span><b>Crew call</b> 9:30 AM arrival</span>
         <span><b>Location</b> <a href="https://maps.google.com/?q=110%20E%2011th%20St%20Los%20Angeles%20CA%2090015" target="_blank" rel="noopener">110 E 11th St, Los Angeles, CA 90015</a></span>
       </div>
+      <details class="loc">
+        <summary>Location details &middot; Parking &amp; instructions</summary>
+        <div class="loc-body">
+          <ul>
+            <li><b>Address:</b> 110 E 11th St, Los Angeles, CA 90015</li>
+            <li><b>Contact:</b> <a href="tel:+14356401005">(435) 640-1005</a> &mdash; if other site rep info is noted, please contact the site rep first</li>
+            <li><b>Entrance</b> is at the front of the building &mdash; the one that says &ldquo;happy i&rsquo;m sad&rdquo;</li>
+            <li><b>Parking:</b> street parking available, first come first serve</li>
+            <li>Use the <b>alleyway</b> if you need to temporarily stage a vehicle to unload</li>
+            <li><b>Overtime</b> is charged by the half hour at the same regular rate</li>
+            <li><b>WiFi:</b> happyimsad &middot; <b>Password:</b> sadyourhappy</li>
+            <li class="loc-warn"><b>Lockbox:</b> code will be sent before the booking. When finished, if a site rep is not on site, lock the front door and put the key back in the lockbox before leaving the space.</li>
+          </ul>
+        </div>
+      </details>
     </div>
     <div class="shoot-body">
 
@@ -116,64 +144,38 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
         <li>Sharpies / pens</li>
         <li>Note pad</li>
         <li>Phone</li>
+        <li>Cork board</li>
       </ul>
 
       <div class="sub-h">Fade brand assets</div>
       <ul class="assets">
-        <li>Logo for screen</li>
+        <li>B-roll of Fade logo on TV</li>
+        <li>B-roll of Fade logo on gaming system</li>
+        <li>B-roll of cork board</li>
+        <li>B-roll of Fade receipts printing</li>
+        <li>B-roll of Fade receipts being pinned</li>
+        <li>B-roll of user on the app</li>
       </ul>
 
-      <div class="sub-h">Lines for Jim</div>
-      <p class="note" style="border-style:solid;color:rgba(255,255,255,0.55);">Deliver these as written first &mdash; that&rsquo;s where the gold is &mdash; then riff in character.</p>
-      <div class="qgroup">
-        <h4>The bookie (who he is)</h4>
-        <div class="q">&ldquo;I took bets for thirty years. You called me. I wrote it down. I knew everybody&rsquo;s record before there was a record.&rdquo;</div>
-        <div class="q">&ldquo;The kids ask me for picks now. Me. The bookie. You spend your whole life on one side of the phone, and now they want you on theirs.&rdquo;</div>
+      <div class="sub-h">Boards &amp; briefs</div>
+      <ul class="assets">
+        <li><a href="https://www.fade.bet/the-bookie-storyboard" target="_blank" rel="noopener">Storyboard</a></li>
+        <li><a href="https://www.fade.bet/the-bookie-casting-brief" target="_blank" rel="noopener">Casting brief</a></li>
+        <li><a href="https://www.fade.bet/the-bookie-shotboard" target="_blank" rel="noopener">Shotboard</a></li>
+        <li><a href="https://www.fade.bet/the-bookie-receipts" target="_blank" rel="noopener">Receipts &mdash; script &amp; shotlist</a></li>
+      </ul>
 
-        <h4>The fade</h4>
-        <div class="q">&ldquo;I knew Portnoy was no good. Years ago. I just knew. Now the app tells me every time he places a bet &mdash; little notification, ding. And every time? I fade him. Every. Single. Time. Best feature they ever made.&rdquo;</div>
-
-        <h4>Vinny (the human &ldquo;cash out&rdquo;)</h4>
-        <div class="q">&ldquo;These kids got a button says &lsquo;cash out.&rsquo; I had a guy named Vinny said &lsquo;cash out.&rsquo; Different energy.&rdquo;</div>
-        <div class="q">&ldquo;You didn&rsquo;t pay? There was no late fee. There was Vinny. Vinny was the late fee.&rdquo;</div>
-
-        <h4>The big scores</h4>
-        <div class="q">&ldquo;I had ten million in action against the Celtics in &rsquo;81. Ten million. They win it all, and I&rsquo;m wiped &mdash; except I didn&rsquo;t take the other side, I rode with &rsquo;em. Never fade the C&rsquo;s. That title paid my daughter&rsquo;s college tuition. Every semester, I thanked Larry Bird.&rdquo;</div>
-        <div class="q">&ldquo;Patriots-Rams, the first one, &rsquo;02. Nobody had the Pats. NOBODY. Brady&rsquo;s a kid. Field goal goes up &mdash; and I&rsquo;m a made man for a month off that one game. I been a Brady guy ever since. Loyalty.&rdquo;</div>
-        <div class="q">&ldquo;&rsquo;86 Mets. Bill Buckner. That ground ball goes through his legs and half my book goes through the floor. I made a year&rsquo;s salary in four seconds. I lit a candle for that man. Still do.&rdquo;</div>
-
-        <h4>The app</h4>
-        <div class="q">&ldquo;I download the app, I see what everybody&rsquo;s betting, and I act accordingly. Take my friend Tony. Parlay every Sunday. Six legs, every week, like clockwork. I get the notification he placed it &mdash; I fade him before he&rsquo;s done tapping. Right to my sportsbook.&rdquo;</div>
-        <div class="q">&ldquo;Tail the sharps, fade the Tonys. That&rsquo;s the whole game. Took me thirty years to learn it. The app teaches it to you on the loading screen.&rdquo;</div>
-        <div class="q">&ldquo;Best part? I don&rsquo;t gotta take the calls anymore. No phone, no fax, no Vinny. Just me, the couch, and a notification that says somebody dumb just bet. I love it here.&rdquo;</div>
-      </div>
-
-      <div class="sub-h">Must-have brand lines</div>
-      <div class="qgroup">
-        <div class="q tag">&ldquo;Fade &mdash; Bet Together.&rdquo;</div>
-        <div class="q tag">&ldquo;Never miss a bet again. Get on Fade.&rdquo;</div>
-        <div class="q tag">&ldquo;Fade &rsquo;em.&rdquo;</div>
-      </div>
-
-      <div class="sub-h">A few more <span class="suggest">&mdash; suggested, in Jim&rsquo;s voice (use or lose)</span></div>
-      <div class="qgroup">
-        <h4>More brand tags</h4>
-        <div class="q tag">&ldquo;Tail the sharps. Fade the Tonys. That&rsquo;s Fade.&rdquo;</div>
-        <div class="q tag">&ldquo;Everybody&rsquo;s bets. One feed. Fade.&rdquo;</div>
-        <div class="q tag">&ldquo;Fade &rsquo;em before they&rsquo;re done tapping.&rdquo;</div>
-        <div class="q tag">&ldquo;The Sharps already downloaded it.&rdquo;</div>
-        <div class="q tag">&ldquo;See it. Fade it. Cash it.&rdquo;</div>
-
-        <h4>More Jim lines</h4>
-        <div class="q">&ldquo;Forty years I needed a phone, a fax, and Vinny. Now I need a thumb.&rdquo;</div>
-        <div class="q">&ldquo;They built a whole app outta what I used to do in my head &mdash; and they pay me to talk about it. Beautiful.&rdquo;</div>
-        <div class="q">&ldquo;I don&rsquo;t take bets anymore. I take screenshots.&rdquo;</div>
-        <div class="q">&ldquo;Download it, fade your friends, thank me later. That&rsquo;s the whole pitch.&rdquo;</div>
-        <div class="q">&ldquo;In my day you had to know me to get a number. Now? Four minutes and a thumbprint. I&rsquo;m not bitter. I&rsquo;m impressed.&rdquo;</div>
-      </div>
-
-      <div class="sub-h">Important reminders</div>
-      <div class="note">To be added.</div>
+      <div class="sub-h">Logo &amp; brand files</div>
+      <ul class="assets">
+        <li><a href="https://www.fade.bet/logo" target="_blank" rel="noopener">Fade bounce logo</a></li>
+        <li><a href="https://www.fade.bet/logo4" target="_blank" rel="noopener">Fade bounce logo &mdash; white</a></li>
+        <li><a href="https://www.fade.bet/logo5" target="_blank" rel="noopener">Fade logo &mdash; crayon underline</a></li>
+        <li><a href="https://www.fade.bet/logo1" target="_blank" rel="noopener">Fade logo &mdash; page 1</a></li>
+        <li><a href="https://www.fade.bet/logo2" target="_blank" rel="noopener">Fade logo &mdash; page 2</a></li>
+        <li><a href="https://www.fade.bet/logo3" target="_blank" rel="noopener">Fade logo &mdash; page 3</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1_JUx7XYyto0C9r4KE5z0pI4UGEm6YyT9?usp=drive_link" target="_blank" rel="noopener">Fade master logo (Drive)</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1USA_KgCiOqMLtoS8UstrAyGsk7zMcnxr?usp=drive_link" target="_blank" rel="noopener">Fade app screen recording (Drive)</a></li>
+      </ul>
 
     </div>
   </section>
@@ -188,22 +190,270 @@ ul.assets li::before { content: '\2192'; position: absolute; left: 0; color: rgb
         <span><b>First shoot</b> 2:10 PM</span>
         <span><b>Location</b> <a href="https://maps.google.com/?q=1340%20E%206th%20St%20Unit%20419%20Los%20Angeles%20CA%2090021" target="_blank" rel="noopener">1340 E 6th St, Unit 419, Los Angeles, CA 90021</a></span>
       </div>
+      <details class="loc">
+        <summary>Location details &middot; Parking &amp; instructions</summary>
+        <div class="loc-body">
+          <ul>
+            <li><b>Need help?</b> Message the host through the booking platform first. If no response, <b>text only</b> <a href="sms:+12135742169">+1 (213) 574-2169</a>.</li>
+            <li><b>Building access:</b> the front door code is finicky &mdash; press the buttons firmly and slowly to make sure it registers.</li>
+            <li><b>Loading in:</b> arrive 15&ndash;30 minutes early if you have lots of equipment. The elevator gets busy &mdash; loading into the hallway before your start time is recommended.</li>
+            <li><b>Restrooms</b> are by the passenger elevator on each floor.</li>
+            <li class="loc-warn"><b>Cyc wall rules &amp; safety:</b> all crew must review the cyc wall rules before the shoot and follow them during the booking to avoid additional fees. Can&rsquo;t find the rules? Contact the host ASAP for a copy.</li>
+            <li>At least <b>2 people</b> move the movable cyc wall together &mdash; never kick it or move it with your feet.</li>
+            <li>Props on the cyc: <b>do not slide them</b> &mdash; carry with 2 people.</li>
+            <li class="loc-warn"><b>Any scratches will result in a penalty.</b></li>
+          </ul>
+        </div>
+      </details>
     </div>
     <div class="shoot-body">
 
+      <div class="sub-h">Concept</div>
+      <div class="note" style="margin-bottom:1.2rem; color: rgba(255,255,255,0.7);">
+        Talking-head testimonials &mdash; <b style="color:#fff;">footage we can use across different concepts and channels.</b> Sports, social, and betting focused: real fans on loving the game, betting with friends, and the World Cup. Every clip should stand alone in the edit.<br /><br />
+        Ask <b style="color:#fff;">everyone</b>, in their own words: <b style="color:#fff;">what is a prediction market?</b> And: <b style="color:#fff;">do they think prediction markets are the same as gambling?</b> Open-ended &mdash; no right answer, the honest fumbles are usable too.
+      </div>
+
       <div class="sub-h">Talent schedule</div>
       <table class="sched">
-        <tr><td class="t">2:15</td><td><span class="who">Kery</span> <span class="role">&mdash; Sports Fan / Parlay Princess / Germany (World Cup)</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">2:30</td><td><span class="who">Jose</span> <span class="role">&mdash; New York Fan / Bookie / Baseball</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">3:10</td><td><span class="who">Colin Marlit</span> <span class="role">&mdash; Quant / Team USA</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">3:45</td><td><span class="who">Alvin Curry</span> <span class="role">&mdash; African Team / World Cup Promo / Betting in the Group Chat</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">4:00</td><td><span class="who">Miguel Portillo</span> <span class="role">&mdash; LatAm</span> <span class="flag">&middot; overlaps 4:00</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">4:00</td><td><span class="who">Daisy Tamayo</span> <span class="role">&mdash; Eastern Europe / Parlay Princess</span> <span class="flag">&middot; overlaps 4:00</span><br /><span class="lines">Lines: TBD</span></td></tr>
-        <tr><td class="t">4:30</td><td><span class="who">Kei Shi</span> <span class="role">&mdash; Quant / Team Asia</span><br /><span class="lines">Lines: TBD</span></td></tr>
+        <tr><td class="t">2:15</td><td><span class="who">Kery</span> <span class="role">&mdash; Parlay Princess / Soccer (World Cup)</span><br /><span class="lines">Lines: see below</span></td></tr>
+        <tr><td class="t">2:30</td><td><span class="who">Jose</span> <span class="role">&mdash; New York Fan / Bookie / Baseball</span></td></tr>
+        <tr><td class="t">3:10</td><td><span class="who">Colin Marlit</span> <span class="role">&mdash; Quant / Team USA</span><br /><span class="lines">Lines: see below</span></td></tr>
+        <tr><td class="t">3:45</td><td><span class="who">Alvin Curry</span> <span class="role">&mdash; Sports Fan / World Cup Promo / Betting in the Group Chat</span><br /><span class="lines">Lines: see below</span></td></tr>
+        <tr><td class="t">4:00</td><td><span class="who">Miguel Portillo</span> <span class="role">&mdash; LatAm</span><br /><span class="lines">Lines: see below</span></td></tr>
+        <tr><td class="t">4:00</td><td><span class="who">Daisy Tamayo</span> <span class="role">&mdash; Eastern Europe / Parlay Princess</span><br /><span class="lines">Lines: see below</span></td></tr>
+        <tr><td class="t">4:30</td><td><span class="who">Kei Shi</span> <span class="role">&mdash; Quant / Team Asia</span><br /><span class="lines">Lines: see below</span></td></tr>
         <tr><td class="t">5:00&ndash;6:00</td><td><span class="who">Stragglers / final cuts</span> <span class="role">&mdash; B-roll, brand assets</span></td></tr>
+        <tr><td class="t">5:40</td><td><span class="who">Carlos</span><br /><span class="lines">Lines: see below</span></td></tr>
       </table>
 
-      <div class="note warn">Heads up: Miguel Portillo and Daisy Tamayo are both listed at 4:00 PM &mdash; confirm staggering.</div>
+      <div class="sub-h">Lines by talent</div>
+      <div class="note" style="margin-bottom:0.9rem;">Reference deliveries &mdash; talent can read them, riff on them, or use them to find their own. Keep it sensory, present-tense, and self-contained (fold the question into the answer). Capture both the loud takes and the quiet, half-whispered ones.</div>
+
+      <div class="qgroup">
+        <h4>Kery &mdash; Parlay Princess / Soccer <span class="suggest">(bets with her friends &middot; fantasy team: &ldquo;I Like When It Hurts&rdquo;)</span></h4>
+        <div class="q">&ldquo;Honestly? The betting <i>is</i> the fun part of sports. No bet, no butterflies.&rdquo;</div>
+        <div class="q">&ldquo;Last year me and all my friends did a fantasy football draft. This year I downloaded Fade &mdash; it tells me who&rsquo;s good, who&rsquo;s not, who to start, who to bench. All on one app.&rdquo;</div>
+        <div class="q">&ldquo;My AI assistant on Fade keeps telling me to stop making six-team touchdown parlays. It&rsquo;s like my betting coach. [beat] I don&rsquo;t listen.&rdquo;</div>
+        <div class="q">&ldquo;They call me the Parlay Princess. One leg is boring &mdash; I want five sweats going on a Sunday.&rdquo;</div>
+        <div class="q">&ldquo;My group chat goes feral on game day. Going out to watch is sooo much more fun when the whole table has money on it.&rdquo;</div>
+        <div class="q">&ldquo;You know those guys who act like they know everything about sports? [beat] I just fade them. Thanks for the picks, losers.&rdquo;</div>
+        <div class="q">&ldquo;I bet on the prediction market that Taylor Swift and Travis Kelce would get married. [beat] Got that one.&rdquo;</div>
+        <div class="q">&ldquo;My fantasy team&rsquo;s called &lsquo;I Like When It Hurts.&rsquo; [beat] Jalen, that one&rsquo;s for you.&rdquo;</div>
+        <div class="q">&ldquo;Football season&rsquo;s coming soon &mdash; the girlies are excited. Everyone drops their picks on Fade, so I don&rsquo;t have to ask who they&rsquo;re betting on game day. [beat] It just shows up.&rdquo;</div>
+        <div class="q">&ldquo;And of course I&rsquo;m betting on the World Cup. Biggest stage there is, and it&rsquo;s the first time it&rsquo;s in the States since &rsquo;94 &mdash; that&rsquo;s before I was born. Check my picks on Fade.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Colin Marlit &mdash; The Quant / Team USA <span class="suggest">(deliver as written first &mdash; the jargon races, the P&amp;L lands flat. Dead sincere, never winking. Let the [beat] sit before the number.)</span></h4>
+        <div class="q">&ldquo;Prediction markets are my sport.&rdquo;</div>
+        <div class="q">&ldquo;A generational awakening of truth &mdash; through volume.&rdquo;</div>
+        <div class="q tag">&ldquo;I&rsquo;m down fifty thousand dollars. [beat] The thesis is fine.&rdquo;</div>
+        <div class="q">&ldquo;Fade me? Fade my bot? Either way, the stats prove you&rsquo;ll lose.&rdquo;</div>
+
+        <h4>The market idols</h4>
+        <div class="q">&ldquo;I don&rsquo;t have sports heroes. I have market heroes. Tarek Mansour. Luana Lopes Lara. Shayne Coplan. These are my athletes. That&rsquo;s my Mount Rushmore.&rdquo;</div>
+        <div class="q">&ldquo;Mansour and Lara met at MIT, walked away from Citadel &mdash; quant jobs, real money &mdash; to build Kalshi. That&rsquo;s Jordan leaving baseball to come back to the Bulls. That&rsquo;s the arc.&rdquo;</div>
+        <div class="q">&ldquo;Kalshi versus Polymarket is the only rivalry I respect. Two platforms fighting for the right to price reality. I have a side. Compliance-first. I find that erotic.&rdquo;</div>
+
+        <h4>The bot</h4>
+        <div class="q">&ldquo;I built a bot. It pulls every order book, devigs the line to a true no-vig fair value, and flags the mispricing against my model&rsquo;s implied probability. It backtested beautifully. [beat] That&rsquo;s the problem. Things that backtest beautifully are overfit. I overfit my way into a forty-thousand-dollar drawdown.&rdquo;</div>
+        <div class="q">&ldquo;The bot&rsquo;s calibration is immaculate. Brier score in the low teens. When it says sixty percent, it hits sixty percent. I am, by every forecasting metric, an excellent predictor. [beat] I am also broke. Calibration is not profit. Nobody tells you that.&rdquo;</div>
+        <div class="q">&ldquo;My closing line value is positive. Positive CLV. You understand what that means? I&rsquo;m beating the market price at settlement, which is supposed to predict long-term profit. [beat] It has not. I have positive CLV and negative everything else. I&rsquo;m a paradox.&rdquo;</div>
+
+        <h4>Smarter than the market</h4>
+        <div class="q">&ldquo;My problem isn&rsquo;t the edge. The edge is real. My problem is adverse selection &mdash; every time I get filled, it&rsquo;s because someone with sharper information wanted me to. I&rsquo;m the liquidity. I built a machine to become the liquidity.&rdquo;</div>
+        <div class="q">&ldquo;I run quarter-Kelly. Fractional Kelly sizing, very disciplined, textbook bankroll management. [beat] Quarter of a bad number is still a bad number. The Kelly criterion assumes you have an edge. That&rsquo;s the load-bearing assumption. We&rsquo;re auditing it.&rdquo;</div>
+        <div class="q">&ldquo;My Sharpe ratio is negative. Do you know how hard it is to achieve a negative Sharpe with this much conviction? That&rsquo;s not bad luck. That&rsquo;s a signal. I&rsquo;m choosing to ignore the signal.&rdquo;</div>
+
+        <h4>Why he&rsquo;s on Fade</h4>
+        <div class="q">&ldquo;I got on Fade to benchmark my returns against a real population, not just the market. Now I have an auditable, time-stamped record. Verifiable proof of a negative Sharpe. Most people would hide that. I find the transparency clarifying.&rdquo;</div>
+        <div class="q">&ldquo;Everyone in this space reports returns like it&rsquo;s a pitch deck &mdash; selective, survivorship-biased, no drawdown disclosure. Fade just shows the record. No vig on the truth. Turns out most of these guys are running a story, not a strategy. Myself included. But mine&rsquo;s at least falsifiable.&rdquo;</div>
+        <div class="q">&ldquo;Ever since my predictions synced to Fade, everyone&rsquo;s been going against my picks. [beat] And making money.&rdquo;</div>
+        <div class="q">&ldquo;Apparently I&rsquo;m the most profitable signal on the app. [beat] Inverted. A perfect contrarian indicator is still alpha. It&rsquo;s just&hellip; someone else&rsquo;s.&rdquo;</div>
+
+        <h4>The showcase <span class="suggest">(cold-open clip &mdash; he loses the room in real time)</span></h4>
+        <div class="q">&ldquo;So the thesis is simple. You devig the consensus line, you back out the true implied probability, you compare it to your model&rsquo;s posterior, and anywhere there&rsquo;s a spread wider than your transaction costs, that&rsquo;s free money. Positive EV. You size it fractional Kelly, you let the law of large numbers cook, and the edge compounds. [beat] That&rsquo;s the thesis. [beat] I&rsquo;m down fifty thousand.&rdquo;</div>
+
+        <h4>Team USA + pickups</h4>
+        <div class="q">&ldquo;Stars and stripes on home soil in &rsquo;26 &mdash; underdogs of the soccer world, with a whole tournament to prove a point.&rdquo;</div>
+        <div class="q">&ldquo;Soon as a celebrity posts their lock, I take the other side &mdash; and my receipts say I&rsquo;m right.&rdquo;</div>
+        <div class="q">Glossary run &mdash; quick fast-paced cuts of him frantically defining, in full sincerity: edge / EV &middot; devig / no-vig fair value &middot; implied probability &middot; CLV &middot; Brier score &middot; adverse selection &middot; quarter-Kelly &middot; Sharpe ratio &middot; overfit &middot; regime / mean reversion. Every term is real and used correctly &mdash; say it like you mean it.</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Alvin Curry &mdash; Sports Fan / Group Chat <span class="suggest">(average fan who bets with his friends &middot; keep World Cup lines general &mdash; no specific country)</span></h4>
+        <div class="q">&ldquo;I&rsquo;m just a regular sports fan. I watch the games, I bet with my friends, I talk my trash. That&rsquo;s the routine.&rdquo;</div>
+        <div class="q">&ldquo;My one friend Aaron &mdash; worst bettor in the chat. Kid&rsquo;s 0 and 20. I made a killing off just tapping Fade.&rdquo;</div>
+        <div class="q">&ldquo;I seen everything on Fade. Drake&rsquo;s got one of the worst records out there&hellip; [beat] Iceman is ice cold.&rdquo;</div>
+        <div class="q">&ldquo;The whole world is fading Trent. You can see it on Fade. [beat] Loser.&rdquo;</div>
+        <div class="q">&ldquo;A prediction market&hellip; the fuck is that?&rdquo; <span class="suggest">(say &ldquo;fuck&rdquo; clean &mdash; we&rsquo;ll bleep it in the edit)</span></div>
+        <div class="q">&ldquo;Mannn, I&rsquo;m just ready for it to be football season already. That&rsquo;s where I really cash.&rdquo;</div>
+        <div class="q">&ldquo;Half the fun is the chat sweating picks.&rdquo;</div>
+        <div class="q">&ldquo;Hit +35000 on one ticket. Cashed out and went crazy that night. [beat] Legendary.&rdquo;</div>
+        <div class="q">&ldquo;With Fade, I&rsquo;m never betting alone &mdash; all the information in one place. I check it before I bet, and before I cash out.&rdquo;</div>
+        <div class="q">&ldquo;The World Cup is the biggest sporting event in the world. Period. Nothing else puts every country on one stage.&rdquo;</div>
+        <div class="q">&ldquo;When your country walks out at the World Cup, that&rsquo;s a different kind of pride. You&rsquo;re not just rooting for a team &mdash; you&rsquo;re rooting for your flag.&rdquo;</div>
+        <div class="q">&ldquo;Once every four years the whole planet watches the same game. This time we&rsquo;ve all got picks on it &mdash; the chat is gonna be ridiculous.&rdquo;</div>
+        <div class="q">&ldquo;Download Fade &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;Never cash out.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Miguel Portillo &mdash; LatAm <span class="suggest">(keep World Cup lines general &mdash; pride, not a specific country)</span></h4>
+        <div class="q">&ldquo;Where I&rsquo;m from, soccer isn&rsquo;t a sport &mdash; it&rsquo;s the family business. Everybody&rsquo;s got a team, everybody&rsquo;s got an opinion, and now everybody&rsquo;s got a pick.&rdquo;</div>
+        <div class="q">&ldquo;When your country scores at a World Cup, the whole street shakes &mdash; horns, flags, strangers hugging like family.&rdquo;</div>
+        <div class="q">&ldquo;Having skin in the game turns a match you&rsquo;re watching into a match you&rsquo;re living.&rdquo;</div>
+        <div class="q">&ldquo;Final minutes, bet still alive &mdash; I can hear my own heart over the commentary.&rdquo;</div>
+        <div class="q">&ldquo;Fade made betting social. I get a notification every time my friends make a pick &mdash; and they see every one of mine.&rdquo;</div>
+        <div class="q">&ldquo;Fade &mdash; bet together.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Daisy Tamayo &mdash; Parlay Princess <span class="suggest">(fun, sporty &mdash; keep World Cup lines general, no specific country)</span></h4>
+        <div class="q">&ldquo;I called the Super Bowl halftime show on a prediction market before it was announced. [beat] Easy money.&rdquo;</div>
+        <div class="q">&ldquo;Then I tried to predict the weather&hellip; and lost it all.&rdquo;</div>
+        <div class="q">&ldquo;The Oscars, the Grammys, March Madness &mdash; same energy. Pick your winners, talk your trash, post the receipt.&rdquo;</div>
+        <div class="q">&ldquo;I played sports my whole life &mdash; so when I bet a game, I know exactly what I&rsquo;m watching. The guys at the bar hate that.&rdquo;</div>
+        <div class="q">&ldquo;Game day: jersey on, picks in, phone dead by halftime from checking Fade.&rdquo;</div>
+        <div class="q">&ldquo;I build my parlays like a menu &mdash; a little of everything, and when the last leg cashes, the whole room hears about it.&rdquo;</div>
+        <div class="q">&ldquo;On Fade my picks are public &mdash; so when I hit, everybody knows the princess called it.&rdquo;</div>
+        <div class="q">&ldquo;I downloaded Fade and now I get a notification when my friends make a pick. If it&rsquo;s a bad one? I fade it on the spot.&rdquo;</div>
+        <div class="q">&ldquo;World Cup pride is different. Your colors, your flag, your anthem &mdash; a whole country wearing the same shirt for a month.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Kei Shi &mdash; The Quant <span class="suggest">(deadpan, dead sincere &mdash; keep World Cup lines general, no specific country)</span></h4>
+        <div class="q">&ldquo;Soccer is the world&rsquo;s game &mdash; which makes it the world&rsquo;s biggest market. I run the numbers before I run my mouth.&rdquo;</div>
+        <div class="q">&ldquo;Everyone&rsquo;s got a World Cup opinion. I have a model &mdash; and a verified record.&rdquo;</div>
+        <div class="q">&ldquo;The crowd bets the badge and the flag. I bet the math &mdash; and the math shows up on the receipts.&rdquo;</div>
+        <div class="q">&ldquo;A World Cup match is ninety minutes of pure variance. One bounce, one card, one VAR call. [beat] I love it. It&rsquo;s terrible for me.&rdquo;</div>
+        <div class="q">&ldquo;World Cup pride is the one variable I don&rsquo;t model. When your country walks out, even the math takes the day off.&rdquo;</div>
+        <div class="q">&ldquo;Fade made betting social. I get a notification when my friends make a pick. [beat] I treat it as market data.&rdquo;</div>
+        <div class="q">&ldquo;People ask me what a prediction market is. It&rsquo;s the stock market, except the stock is &lsquo;will this thing happen&rsquo; &mdash; and it always settles at exactly true or false.&rdquo;</div>
+        <div class="q">&ldquo;Prediction markets are the purest market on earth. No earnings calls, no CEOs spinning you &mdash; just a question, a price, and a settlement date. The truth has a closing time.&rdquo;</div>
+        <div class="q">&ldquo;The price <i>is</i> the probability. Sixty-two cents means sixty-two percent. Once you see odds that way, you can&rsquo;t go back.&rdquo;</div>
+        <div class="q">&ldquo;A sportsbook gives you their line. A prediction market gives you everyone&rsquo;s opinion, priced in real time. I trust a crowd with money on the line over any expert on TV.&rdquo;</div>
+        <div class="q">&ldquo;Sports are the perfect prediction market. Liquid, fast settlement, endless data &mdash; and everyone else is betting with their heart. That&rsquo;s my edge. [beat] Allegedly.&rdquo;</div>
+        <div class="q">&ldquo;The World Cup is the biggest liquidity event in sports. For one month, every market on the planet is pricing the same question.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Carlos <span class="suggest">(keep World Cup lines general &mdash; no specific country)</span></h4>
+        <div class="q">&ldquo;Soccer. For ninety minutes, nothing else exists &mdash; just me, the noise, and the ball.&rdquo;</div>
+        <div class="q">&ldquo;Stoppage time, one-goal game, the whole bar holding its breath &mdash; there&rsquo;s nothing like it in sports.&rdquo;</div>
+        <div class="q">&ldquo;The World Cup is the only month the whole planet watches the same game. And this summer, it&rsquo;s here.&rdquo;</div>
+        <div class="q">&ldquo;When my country walks out, the whole bar goes silent, then erupts &mdash; flags everywhere, strangers hugging like family.&rdquo;</div>
+        <div class="q">&ldquo;Every World Cup match, me and my boys have a pick on Fade. Fade made betting social &mdash; bet together.&rdquo;</div>
+        <details class="loc">
+          <summary>Closing questions &mdash; wrap with these</summary>
+          <div class="loc-body">
+            <div class="q">&ldquo;What&rsquo;s a prediction market? In your own words.&rdquo;</div>
+            <div class="q">&ldquo;Do you think prediction markets are the same as gambling?&rdquo;</div>
+            <div class="q">&ldquo;What&rsquo;s your favorite sport &mdash; and why?&rdquo;</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="qgroup">
+        <h4>Must-haves &mdash; every session <span class="suggest">(get clean, full-sentence takes before wrap)</span></h4>
+        <div class="q tag">&ldquo;Fade &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;With Fade, I&rsquo;m never betting alone.&rdquo;</div>
+        <div class="q">&ldquo;I love fading the so-called experts &mdash; soon as a celeb makes their pick, I take the other side.&rdquo;</div>
+        <div class="q">&ldquo;Can&rsquo;t hide from your receipts &mdash; fade them.&rdquo;</div>
+        <div class="q">Home-nation beat: name the nation, drop the nickname, put the World Cup pride into words &mdash; don&rsquo;t wrap a fan without it.</div>
+      </div>
+
+      <div class="qgroup">
+        <h4>Evergreen one-liners &mdash; shoot with everyone <span class="suggest">(short, dateless pulls &mdash; usable all summer and into football season. Get each as a clean, standalone take.)</span></h4>
+        <div class="q tag">&ldquo;Download Fade &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;Never bet alone.&rdquo;</div>
+        <div class="q">&ldquo;Show your receipts.&rdquo;</div>
+        <div class="q">&ldquo;Tail your friends. Fade the losers.&rdquo;</div>
+        <div class="q">&ldquo;Win or lose, it&rsquo;s on the record.&rdquo;</div>
+        <div class="q">&ldquo;If you&rsquo;re hot, prove it.&rdquo;</div>
+        <div class="q">&ldquo;Everybody&rsquo;s got picks. Fade&rsquo;s got proof.&rdquo;</div>
+        <div class="q">&ldquo;One tap. Every pick. One feed.&rdquo;</div>
+        <div class="q">&ldquo;There&rsquo;s always a game. There&rsquo;s always a pick.&rdquo;</div>
+        <div class="q tag">&ldquo;Fade is social media for betting.&rdquo;</div>
+        <div class="q">&ldquo;Receipts or it didn&rsquo;t happen.&rdquo;</div>
+        <div class="q">&ldquo;Talk is cheap. Receipts aren&rsquo;t.&rdquo;</div>
+        <div class="q">&ldquo;Every bet prints a receipt. Every receipt is public.&rdquo;</div>
+        <div class="q">&ldquo;Your sportsbook knows your record. Now your friends do too.&rdquo;</div>
+        <div class="q">&ldquo;Sync your book. Share your picks. Settle the argument.&rdquo;</div>
+        <div class="q">&ldquo;Odds, trends, stats, your friends&rsquo; picks &mdash; one app.&rdquo;</div>
+        <div class="q">&ldquo;An AI betting coach in your pocket. Listen or don&rsquo;t.&rdquo;</div>
+        <div class="q">&ldquo;A feed where every record is real.&rdquo;</div>
+        <div class="q">&ldquo;Instagram&rsquo;s for brunch. Fade&rsquo;s for picks.&rdquo;</div>
+        <div class="q">Kery &mdash; &ldquo;One leg is boring.&rdquo; &middot; &ldquo;Thanks for the picks, losers.&rdquo; &middot; &ldquo;My betting coach told me no. [beat] Anyway.&rdquo;</div>
+        <div class="q">Colin &mdash; &ldquo;Prediction markets are my sport.&rdquo; &middot; &ldquo;The thesis is fine.&rdquo; &middot; &ldquo;I&rsquo;m not down bad. I&rsquo;m early.&rdquo;</div>
+        <div class="q">Alvin &mdash; &ldquo;Never cash out.&rdquo; &middot; &ldquo;I just tap Fade.&rdquo; &middot; &ldquo;The chat IS the sport.&rdquo;</div>
+        <div class="q">Daisy &mdash; &ldquo;Pick your winners. Post the receipt.&rdquo; &middot; &ldquo;I predict things for fun. And profit. [beat] Mostly fun.&rdquo;</div>
+        <div class="q">Miguel &mdash; &ldquo;Skin in the game changes the game.&rdquo; &middot; &ldquo;Watching is good. Sweating is better.&rdquo;</div>
+        <div class="q">Kei &mdash; &ldquo;The price is the probability.&rdquo; &middot; &ldquo;Your picks are my market data.&rdquo;</div>
+        <div class="q">Carlos &mdash; &ldquo;Ninety minutes. One ball. Everything.&rdquo; &middot; &ldquo;Every game&rsquo;s better with the boys on it.&rdquo;</div>
+      </div>
+
+      <div class="qgroup">
+        <h4>General CTAs &mdash; any talent, any sport, any channel <span class="suggest">(grab clean takes from everyone &mdash; these cut into any edit)</span></h4>
+        <div class="q tag">&ldquo;Download Fade &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;Never bet alone.&rdquo;</div>
+        <div class="q">&ldquo;Every pick. Every friend. One feed. Fade.&rdquo;</div>
+        <div class="q">&ldquo;Tail your friends. Fade the experts.&rdquo;</div>
+        <div class="q">&ldquo;Don&rsquo;t just watch the game &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;Win or lose, it&rsquo;s on the record. Fade &mdash; bet together.&rdquo;</div>
+        <div class="q">&ldquo;Your picks. Your people. Fade.&rdquo;</div>
+        <div class="q">&ldquo;Show your receipts. Fade.&rdquo;</div>
+        <div class="q">&ldquo;One tap. Every sportsbook. Everyone&rsquo;s history, one feed.&rdquo;</div>
+      </div>
 
     </div>
   </section>

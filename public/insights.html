@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade — Your Home for Betting Insights</title>
+<meta name="description" content="Fade's online betting insights hub — news, analysis, odds, trends, stats and community picks. All content viewable in your browser, no download required." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.75); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.header { padding: 1.75rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; }
+.header-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; }
+.header-brand:hover { text-decoration: none; }
+.header-tagline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
+
+/* Hero */
+.hero { text-align: center; padding: 4.5rem 1.5rem 3.5rem; position: relative; }
+.hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
+.hero-mark { margin-bottom: 1.75rem; position: relative; }
+.hero-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 1rem; position: relative; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 1.1rem; position: relative; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.0625rem; color: rgba(255,255,255,0.45); max-width: 640px; margin: 0 auto; line-height: 1.7; position: relative; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4ade80; border: 1px solid rgba(74,222,128,0.3); background: rgba(74,222,128,0.06); padding: 0.5rem 1rem; border-radius: 999px; position: relative; }
+
+/* Sections */
+.section { padding: 3.25rem 1.5rem; max-width: 860px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.sec-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.7rem; }
+.section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.12; }
+.section > p { font-size: 1rem; color: rgba(255,255,255,0.48); line-height: 1.75; margin-bottom: 1.5rem; max-width: 680px; }
+.section strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+
+/* Articles */
+.articles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.article { padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; display: flex; flex-direction: column; gap: 0.5rem; }
+.article-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.1); padding: 0.3rem 0.65rem; border-radius: 6px; align-self: flex-start; }
+.article h3 { font-size: 1.05rem; font-weight: 700; color: white; line-height: 1.35; }
+.article p { font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.article-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; color: rgba(255,255,255,0.32); margin-top: auto; padding-top: 0.5rem; }
+
+/* Odds board */
+.mock { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.4rem; max-width: 680px; }
+.mock-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.mock-title { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.mock-live { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4ade80; }
+.mock-live::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; margin-right: 0.4rem; box-shadow: 0 0 8px rgba(74,222,128,0.8); }
+table.odds { width: 100%; border-collapse: collapse; }
+table.odds th { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); text-align: left; padding: 0.5rem 0.6rem; }
+table.odds td { padding: 0.7rem 0.6rem; font-size: 0.88rem; border-top: 1px solid rgba(255,255,255,0.05); }
+table.odds .match { color: white; font-weight: 600; }
+table.odds .num { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+table.odds .trend-up { color: #4ade80; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+table.odds .trend-dn { color: #f87171; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+.stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-top: 0.8rem; max-width: 680px; }
+.stat-cell { padding: 0.9rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; text-align: center; }
+.stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; color: white; }
+.stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-top: 0.25rem; }
+
+/* UGC feed */
+.post { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 0.7rem; }
+.post:last-child { margin-bottom: 0; }
+.avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: white; }
+.av-1 { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.av-2 { background: linear-gradient(135deg, #ec4899, #be185d); }
+.av-3 { background: linear-gradient(135deg, #10b981, #047857); }
+.av-4 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.post-body { flex: 1; min-width: 0; }
+.post-user { font-size: 0.9rem; font-weight: 700; color: white; }
+.post-user .kind { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.1); padding: 0.15rem 0.5rem; border-radius: 5px; margin-left: 0.5rem; }
+.post-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+.post-text b { color: white; font-weight: 600; }
+.post-meta { display: flex; gap: 1.1rem; margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: rgba(255,255,255,0.38); }
+.post-meta .hot { color: #f59e0b; font-weight: 700; }
+
+/* Footer */
+.footer { padding: 2.5rem 1.5rem 3.5rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+.footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.9; max-width: 660px; margin: 0 auto; }
+.footer b { color: rgba(255,255,255,0.6); }
+
+@media (max-width: 640px) {
+  .articles { grid-template-columns: 1fr; }
+  .stat-strip { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="header-brand" href="/">
+    <svg viewBox="80 420 840 170" height="30" fill="white" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="header-tagline">Bet Together</span>
+  </a>
+</header>
+
+<section class="hero">
+  <div class="hero-mark">
+    <svg viewBox="80 420 840 170" height="44" fill="white" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+  </div>
+  <span class="hero-eyebrow">Insights Hub</span>
+  <h1>Your home for<br /><span>betting insights</span></h1>
+  <p>Fade provides online, non-downloadable entertainment and information content for sports fans and bettors — news, analysis, odds, trends, stats, and a community of picks and predictions, all streamed straight to your screen.</p>
+  <span class="hero-badge">✓ Viewable in-browser · no download required</span>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">News &amp; Analysis</div>
+  <h2>Betting news and analysis, daily</h2>
+  <p>Original articles and breakdowns covering the games people are betting — <strong>injury impacts, line movement, market reads and matchup analysis</strong> — published to the hub and readable right here in your browser.</p>
+  <div class="articles">
+    <div class="article"><span class="article-tag">NBA Finals</span><h3>Knicks complete the 0-2 comeback: what the series price says now</h3><p>The market has flipped hard since Game 3. We break down where the value sits heading into a closeout game at the Garden.</p><div class="article-meta">Analysis · 6 min read · Today</div></div>
+    <div class="article"><span class="article-tag">World Cup '26</span><h3>Group-stage futures: five prices worth a look before kickoff</h3><p>The first World Cup on US soil since '94 opens with soft early lines. Here's where the crowd and the sharps disagree.</p><div class="article-meta">Futures · 8 min read · Today</div></div>
+    <div class="article"><span class="article-tag">Market Watch</span><h3>Why everyone's fading the public this week — and when you shouldn't</h3><p>Tail-and-fade data from the Fade community shows contrarian betting works in spots. The spots matter.</p><div class="article-meta">Trends · 5 min read · Yesterday</div></div>
+    <div class="article"><span class="article-tag">Education</span><h3>Prediction markets vs. sportsbooks: what the price really tells you</h3><p>Sixty-two cents means sixty-two percent. A plain-English guide to reading probability straight off the market.</p><div class="article-meta">Explainer · 7 min read · This week</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Analytics</div>
+  <h2>Odds, trends and stats — live</h2>
+  <p>Sports betting analytics streamed to the hub: <strong>current odds, line movement, betting trends and performance stats</strong>, updated as the market moves.</p>
+  <div class="mock">
+    <div class="mock-head"><span class="mock-title">Odds Board · Tonight</span><span class="mock-live">Live</span></div>
+    <table class="odds">
+      <tr><th>Matchup</th><th>Line</th><th>Total</th><th>Move</th><th>Community</th></tr>
+      <tr><td class="match">Knicks @ Thunder</td><td class="num">+3.5</td><td class="num">o/u 219.5</td><td class="trend-up">▲ +1.0</td><td class="num">64% NYK</td></tr>
+      <tr><td class="match">USA vs Ghana</td><td class="num">−145</td><td class="num">o/u 2.5</td><td class="trend-dn">▼ −10</td><td class="num">71% USA</td></tr>
+      <tr><td class="match">Yankees @ Red Sox</td><td class="num">−120</td><td class="num">o/u 8.5</td><td class="trend-up">▲ +5</td><td class="num">58% NYY</td></tr>
+      <tr><td class="match">Brazil vs Morocco</td><td class="num">−190</td><td class="num">o/u 3.5</td><td class="trend-dn">▼ −15</td><td class="num">66% BRA</td></tr>
+    </table>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-cell"><div class="stat-num">2.4M</div><div class="stat-lbl">Lines tracked this month</div></div>
+    <div class="stat-cell"><div class="stat-num">94k</div><div class="stat-lbl">Trend alerts sent</div></div>
+    <div class="stat-cell"><div class="stat-num">130+</div><div class="stat-lbl">Leagues &amp; markets covered</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Community Content</div>
+  <h2>Picks, predictions and discussion — from the users</h2>
+  <p>A user-generated content feed where the community <strong>posts picks, publishes predictions and debates the slate</strong>. Every post is information and entertainment you can read in the browser, no app required.</p>
+  <div class="mock">
+    <div class="mock-head"><span class="mock-title">Community Feed</span><span class="mock-live">Live</span></div>
+    <div class="post">
+      <div class="avatar av-1">BS</div>
+      <div class="post-body">
+        <div class="post-user">@BrooklynSharp <span class="kind">Pick</span></div>
+        <div class="post-text">Knicks ML tonight. The comeback from 0-2 wasn't luck — the rotation change is real. <b>Receipt's on my profile.</b></div>
+        <div class="post-meta"><span class="hot">🔥 Trending</span><span>312 tails</span><span>87 comments</span></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar av-2">DT</div>
+      <div class="post-body">
+        <div class="post-user">@DaisyParlay <span class="kind">Prediction</span></div>
+        <div class="post-text">Calling it now: this World Cup group stage produces more upsets than the last two combined. <b>Five-leg underdog special posted.</b></div>
+        <div class="post-meta"><span>188 tails</span><span>145 fades</span><span>71 comments</span></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar av-3">JD</div>
+      <div class="post-body">
+        <div class="post-user">@JoseFromQueens <span class="kind">Discussion</span></div>
+        <div class="post-text">Serious question: World Cup final ten minutes from my house and you people think I'm watching from a couch? <b>Who's got the bar list?</b></div>
+        <div class="post-meta"><span>54 replies</span><span>NYC community</span></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar av-4">TQ</div>
+      <div class="post-body">
+        <div class="post-user">@TheQuant <span class="kind">Analysis</span></div>
+        <div class="post-text">Posted my full devig methodology with tonight's no-vig fair values. The edge is real. <b>The thesis is fine.</b></div>
+        <div class="post-meta"><span class="hot">🔥 502 fades</span><span>164 comments</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-eyebrow">Social</div>
+  <h2>Where the sweat is shared</h2>
+  <p>The social feed shows <strong>live engagement around sports wagering</strong> — reactions as legs hit, group chats sweating the same slip, communities erupting on a buzzer-beater. The conversation is the content, and it never stops scrolling.</p>
+  <div class="mock">
+    <div class="mock-head"><span class="mock-title">Right Now on Fade</span><span class="mock-live">Live</span></div>
+    <div class="post"><div class="avatar av-2">WC</div><div class="post-body"><div class="post-user">World Cup '26 <span class="kind">Community</span></div><div class="post-text">⚽ <b>9,412 members</b> watching USA vs Ghana — feed moving at 220 posts/min</div></div></div>
+    <div class="post"><div class="avatar av-1">GC</div><div class="post-body"><div class="post-user">The Group Chat <span class="kind">Chat</span></div><div class="post-text">"FOUR LEGS IN. One to go. Nobody breathe." — <b>14 members sweating one parlay</b></div></div></div>
+    <div class="post"><div class="avatar av-3">LB</div><div class="post-body"><div class="post-user">Leaderboard <span class="kind">Update</span></div><div class="post-text">@BrooklynSharp extends the streak to <b>9 straight</b> — 2,100 new followers today</div></div></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p><b>21+</b> &middot; If you or someone you know has a gambling problem, call <b>1-800-GAMBLER</b>.<br />
+  Fade is a <b>social platform, not a sportsbook</b> — it does not accept or place wagers. Content shown is illustrative of platform features.<br />
+  FADE&trade; &middot; Providing online, non-downloadable entertainment and information content in the fields of sports, sports betting news, analysis, odds, trends and statistics &middot; All content viewable in-browser &mdash; no download required.</p>
+</footer>
+
+</body>
+</html>
