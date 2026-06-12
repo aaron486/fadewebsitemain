@@ -357,6 +357,20 @@ html { scroll-behavior: smooth; }
 (function () {
   var SB_URL = 'https://fznaaoiptgpunyxddowd.supabase.co';
   var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6bmFhb2lwdGdwdW55eGRkb3dkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzNzA5NzUsImV4cCI6MjA5NTk0Njk3NX0.lIiX79S3MNSAPxFvlYcDr8Csi7s1ijXLU1hgzP4eXTE';
+  // Google Sheet mirror: paste your deployed Apps Script web-app URL here to enable.
+  // Leave blank to disable (signups still save to Supabase).
+  var SHEET_WEBHOOK_URL = '';
+  function logToSheet(payload) {
+    if (!SHEET_WEBHOOK_URL) return;
+    // Fire-and-forget; text/plain + no-cors avoids an Apps Script CORS preflight.
+    try {
+      fetch(SHEET_WEBHOOK_URL, {
+        method: 'POST', mode: 'no-cors', keepalive: true,
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {}
+  }
   var form = document.getElementById('signForm');
   if (!form) return;
   form.addEventListener('submit', async function (e) {
@@ -368,6 +382,7 @@ html { scroll-behavior: smooth; }
     msg.className = 'sign-msg';
     if (!name || !email || !agree) { msg.textContent = 'Add your name, email, and check the box to sign.'; msg.className = 'sign-msg err'; return; }
     btn.disabled = true; btn.textContent = 'Signing…';
+    logToSheet({ name: name, email: email, campaign: 'fifa-world-cup', ts: new Date().toISOString() });
     try {
       var r = await fetch(SB_URL + '/rest/v1/signatures', {
         method: 'POST',
