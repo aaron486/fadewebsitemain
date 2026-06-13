@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Fade — Font Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Oswald:wght@600;700&family=Rajdhani:wght@600;700&family=Teko:wght@600;700&family=Anton&family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #050507; color: #f0f0f5; font-family: 'Inter', sans-serif; padding: 3rem clamp(1rem,4vw,3rem) 6rem; -webkit-font-smoothing: antialiased; }
+.top { text-align: center; margin-bottom: 3rem; }
+.top svg { height: 46px; width: auto; }
+.top .label { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.25rem; max-width: 1200px; margin: 0 auto; }
+.card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem 1.75rem; background: rgba(255,255,255,0.015); }
+.card .name { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: #3b82f6; margin-bottom: 1.25rem; }
+.card .eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.9); margin-bottom: 0.6rem; }
+.card .headline { font-size: clamp(2.4rem, 4.5vw, 3.4rem); line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.gradient-text { background: linear-gradient(135deg,#3b82f6 0%,#e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.card .sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,0.5); }
+.card .sub strong { font-weight: 700; }
+
+/* ===== candidate display fonts ===== */
+/* 1. Saira Condensed — italic, athletic; matches the logo slant (brand-consistent) */
+.f-saira .eyebrow, .f-saira .headline { font-family: 'Saira Condensed', sans-serif; font-style: italic; font-weight: 800; text-transform: uppercase; }
+.f-saira .headline { font-weight: 900; transform: skewX(-4deg); transform-origin: left; }
+
+/* 2. Chakra Petch — angular cut corners, closest to the FADE geometry */
+.f-chakra .eyebrow, .f-chakra .headline { font-family: 'Chakra Petch', sans-serif; font-weight: 700; }
+.f-chakra .headline { font-style: italic; text-transform: none; }
+
+/* 3. Oswald — clean condensed, sporty/jersey */
+.f-oswald .eyebrow, .f-oswald .headline { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; }
+
+/* 4. Rajdhani — squared-off tech */
+.f-rajdhani .eyebrow, .f-rajdhani .headline { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-transform: uppercase; }
+
+/* 5. Teko — tall ultra-condensed scoreboard */
+.f-teko .eyebrow, .f-teko .headline { font-family: 'Teko', sans-serif; font-weight: 700; text-transform: uppercase; }
+.f-teko .headline { font-size: clamp(3rem, 6vw, 4.6rem); }
+
+/* 6. Anton — ultra-heavy condensed, italic skew */
+.f-anton .eyebrow, .f-anton .headline { font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase; }
+.f-anton .headline { transform: skewX(-6deg); transform-origin: left; }
+
+/* current, for comparison */
+.f-inter .eyebrow { font-family: 'JetBrains Mono', monospace; }
+.f-inter .headline { font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: -0.05em; }
+</style>
+</head>
+<body>
+<div class="top">
+  <svg viewBox="80 420 840 170" fill="#fff" aria-label="FADE">
+    <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/>
+    <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/>
+    <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/>
+    <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/>
+  </svg>
+  <div class="label">Headline font options — pick one</div>
+</div>
+
+<div class="grid">
+  <div class="card f-saira"><div class="name">1 · Saira Condensed (italic)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-chakra"><div class="name">2 · Chakra Petch (angular)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-oswald"><div class="name">3 · Oswald (jersey)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-rajdhani"><div class="name">4 · Rajdhani (squared tech)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-teko"><div class="name">5 · Teko (scoreboard)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-anton"><div class="name">6 · Anton (ultra heavy)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+
+  <div class="card f-inter"><div class="name">0 · Inter (current)</div><div class="eyebrow">Never miss a bet</div><div class="headline">Bet <span class="gradient-text">together.</span></div><div class="sub">Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. <strong>FADE EM</strong></div></div>
+</div>
+</body>
+</html>
