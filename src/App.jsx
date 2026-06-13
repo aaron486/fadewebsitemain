@@ -49,24 +49,40 @@ const Nav = () => null;
 
 // ===== HERO =====
 const Hero = () => {
+  const [p, setP] = useState(0); // 0..1 text reveal progress as you scroll
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const vh = window.innerHeight || 1;
+        setP(Math.max(0, Math.min(1, window.scrollY / (vh * 0.85))));
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
     <section className="hero-section" id="bet-together">
-      <video className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
-      <div className="hero-video-scrim" />
-      <div className="hero-grid" />
-      <div className="hero-glow" />
-      <div className="hero-content">
-        <div className="hero-brand anim-1">
+      <div className="hero-pin">
+        <video className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
+        <div className="hero-video-scrim" style={{ opacity: 0.5 + p * 0.45 }} />
+        <div className="hero-glow" />
+        <div className="hero-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
+        <div className="hero-brand">
           <FadeLogo height={56} />
         </div>
-        <h1 className="hero-headline anim-2">
+        <h1 className="hero-headline">
           Never miss a bet.<br />
           <span className="gradient-text">Tail it. Fade it.</span>
         </h1>
-        <p className="hero-sub anim-3">
+        <p className="hero-sub">
           See what your friends and the biggest names in sports are <strong>actually betting</strong> — in real time. Then tail the hot hand or fade the cold one.
         </p>
-        <div className="hero-actions anim-4">
+        <div className="hero-actions">
           <a href="#" className="store-badge" aria-label="Download on the App Store">
             <svg viewBox="0 0 814 1000" width="20" height="24" fill="white"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.5-81.9-105.6-209.6-105.6-330.8 0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8.6 15.7 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.5-30.4 139.5-71.4z"/></svg>
             <div className="store-badge-text">
@@ -82,10 +98,14 @@ const Hero = () => {
             </div>
           </a>
         </div>
-        <div className="hero-trust anim-5">
+        <div className="hero-trust">
           <span><span className="dot" /> Live in regulated states</span>
           <span><span className="dot" /> FadeSync is read-only</span>
           <span><span className="dot" /> Built for iOS</span>
+        </div>
+        </div>
+        <div className="hero-hint" style={{ opacity: Math.max(0, 1 - p * 2.5) }}>
+          <div className="mouse" />Scroll
         </div>
       </div>
     </section>
@@ -508,10 +528,10 @@ a { color:inherit; }
 .anim-1{animation:fadeUp 0.6s ease both;} .anim-2{animation:fadeUp 0.6s 0.06s ease both;} .anim-3{animation:fadeUp 0.6s 0.12s ease both;} .anim-4{animation:fadeUp 0.6s 0.18s ease both;} .anim-5{animation:fadeUp 0.6s 0.24s ease both;}
 @keyframes fadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
 
-/* ===== HERO REFRESH ===== */
-.hero-section { padding-bottom:clamp(44px,7vh,92px); min-height:clamp(560px,82vh,860px); justify-content:center; }
-.hero-glow { position:absolute; top:-6%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:560px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.22) 0%, rgba(59,130,246,0.06) 38%, transparent 68%); filter:blur(30px); animation:heroGlow 7s ease-in-out infinite; }
-@keyframes heroGlow { 0%,100%{opacity:0.85; transform:translateX(-50%) scale(1);} 50%{opacity:1; transform:translateX(-50%) scale(1.06);} }
+/* ===== HERO REFRESH (scroll-driven: video first, text loads on scroll) ===== */
+.hero-section { padding:0!important; height:220vh; min-height:0; background:#050507; overflow:visible; display:block; }
+.hero-pin { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.hero-glow { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:540px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.05) 40%, transparent 68%); filter:blur(30px); }
 .hero-brand { margin-bottom:1.75rem; }
 .hero-headline { font-size:clamp(2.6rem,6.6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.05em; margin:0 0 1.35rem; }
 .hero-sub { font-size:clamp(0.98rem,1.4vw,1.15rem); color:rgba(255,255,255,0.5); line-height:1.7; max-width:600px; margin:0 auto 2.25rem; }
@@ -520,9 +540,14 @@ a { color:inherit; }
 .hero-trust span { display:inline-flex; align-items:center; gap:0.55rem; }
 .hero-trust .dot { width:5px; height:5px; border-radius:50%; background:#3b82f6; box-shadow:0 0 8px rgba(59,130,246,0.7); }
 @media(max-width:480px){ .hero-trust{gap:0.4rem 0.9rem; font-size:0.62rem;} .hero-section{min-height:auto; padding-top:36px;} }
-.hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:0.5; }
-.hero-video-scrim { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse 72% 62% at 50% 44%, rgba(5,5,7,0.5) 0%, rgba(5,5,7,0.8) 58%, #050507 100%); }
-.hero-content { z-index:3; }
+.hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.hero-video-scrim { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse 75% 65% at 50% 45%, rgba(5,5,7,0.25) 0%, rgba(5,5,7,0.7) 60%, #050507 100%); }
+.hero-content { position:relative; z-index:3; max-width:820px; padding:0 clamp(1.5rem,5vw,4rem); will-change:opacity,transform; }
+.hero-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:4; display:flex; flex-direction:column; align-items:center; gap:0.6rem; color:rgba(255,255,255,0.6); font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; pointer-events:none; }
+.hero-hint .mouse { width:24px; height:38px; border:2px solid rgba(255,255,255,0.4); border-radius:14px; position:relative; }
+.hero-hint .mouse::before { content:''; position:absolute; top:7px; left:50%; transform:translateX(-50%); width:3px; height:7px; background:rgba(255,255,255,0.7); border-radius:2px; animation:heroWheel 1.5s infinite; }
+@keyframes heroWheel { 0%{opacity:0; transform:translate(-50%,0);} 30%{opacity:1;} 100%{opacity:0; transform:translate(-50%,12px);} }
+@media (prefers-reduced-motion: reduce) { .hero-section { height:auto; } .hero-pin { position:relative; } }
 
 .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.75rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:0.9375rem; font-weight:600; cursor:pointer; text-decoration:none; transition:all 0.25s ease; box-shadow:0 2px 16px rgba(59,130,246,0.25); }
 .btn-primary:hover { transform:translateY(-1px); box-shadow:0 6px 28px rgba(59,130,246,0.35); }
