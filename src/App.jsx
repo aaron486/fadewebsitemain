@@ -386,6 +386,7 @@ const Community = () => (
 const WhyFade = () => {
   const [p, setP] = useState(0);
   const ref = useRef(null);
+  const videoRef = useRef(null);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
     let raf = 0;
@@ -404,10 +405,26 @@ const WhyFade = () => {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  // Hold the first frame for 1s before playing (and on every loop) so the
+  // start of the clip never gets cut off.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    let timer = 0;
+    const holdThenPlay = () => {
+      try { v.pause(); v.currentTime = 0; } catch (e) {}
+      v.dataset.holding = "1";
+      clearTimeout(timer);
+      timer = setTimeout(() => { delete v.dataset.holding; v.play().catch(() => {}); }, 1000);
+    };
+    v.addEventListener("ended", holdThenPlay);
+    holdThenPlay();
+    return () => { clearTimeout(timer); v.removeEventListener("ended", holdThenPlay); };
+  }, []);
   return (
     <section className="whyfade-section" ref={ref}>
       <div className="whyfade-pin">
-        <video className="whyfade-video" data-audio-section autoPlay loop muted playsInline src="/assets/why-fade.mp4" />
+        <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade.mp4" />
         <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
         <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
           <span className="section-eyebrow">Why Fade</span>
@@ -537,7 +554,9 @@ export default function FadeWebsite() {
       const allow = started && best > vh * 0.5; // section must own the viewport
       for (const v of vids) {
         if (allow && v === active) {
-          if (v.muted) { v.muted = false; v.volume = 1; const pr = v.play(); if (pr) pr.catch(() => { v.muted = true; }); }
+          if (v.muted) { v.muted = false; v.volume = 1; }
+          // resume if paused, but never override a deliberate 1s start-hold
+          if (v.paused && !v.dataset.holding) { const pr = v.play(); if (pr) pr.catch(() => {}); }
         } else if (!v.muted) {
           v.muted = true;
         }
