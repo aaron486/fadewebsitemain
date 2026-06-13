@@ -513,7 +513,7 @@ export default function FadeWebsite() {
   return (
     <>
       <style>{`
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; font-size:16px; }
@@ -557,8 +557,8 @@ a { color:inherit; }
 .hero-pin { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
 .hero-glow { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:540px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.05) 40%, transparent 68%); filter:blur(30px); }
 .hero-brand { margin-bottom:1.1rem; }
-.hero-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(59,130,246,0.9); margin-bottom:1rem; }
-.hero-headline { font-size:clamp(2.6rem,6.6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.05em; margin:0 0 1.35rem; }
+.hero-eyebrow { font-family:'Oswald',sans-serif; font-size:0.95rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(59,130,246,0.9); margin-bottom:0.9rem; }
+.hero-headline { font-family:'Oswald',sans-serif; font-size:clamp(2.9rem,7.2vw,5.5rem); font-weight:700; line-height:0.98; letter-spacing:0.005em; text-transform:uppercase; margin:0 0 1.35rem; }
 .hero-sub { font-size:clamp(0.98rem,1.4vw,1.15rem); color:rgba(255,255,255,0.5); line-height:1.7; max-width:600px; margin:0 auto 2.25rem; }
 .hero-sub strong { color:rgba(255,255,255,0.92); font-weight:600; }
 .hero-trust { display:flex; gap:0.5rem 1.4rem; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1.75rem; color:rgba(255,255,255,0.4); font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; }
