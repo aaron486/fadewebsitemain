@@ -662,8 +662,8 @@ a { color:inherit; }
 .section-primary { position:relative; padding:80px clamp(1.5rem,5vw,4rem); background:#050507; }
 .section-dark { position:relative; padding:80px clamp(1.5rem,5vw,4rem); background:#08080d; border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
 .section-header { text-align:center; max-width:640px; margin:0 auto 3rem; }
-.section-eyebrow { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:1rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(59,130,246,0.85); margin-bottom:1.125rem; }
-.section-title { font-size:clamp(1.875rem,4vw,2.75rem); font-weight:800; letter-spacing:-0.035em; line-height:1.1; margin-bottom:1rem; }
+.section-eyebrow { display:inline-block; font-family:'Oswald',sans-serif; font-size:1.0625rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(59,130,246,0.85); margin-bottom:1.125rem; }
+.section-title { font-family:'Oswald',sans-serif; font-size:clamp(2rem,4.4vw,3rem); font-weight:700; letter-spacing:0.005em; text-transform:uppercase; line-height:1.05; margin-bottom:1rem; }
 .section-subtitle { font-size:0.9375rem; color:rgba(255,255,255,0.4); line-height:1.65; }
 
 /* ===== SOCIAL ===== */
@@ -775,7 +775,7 @@ a { color:inherit; }
 .cta-section { position:relative; padding:100px clamp(1.5rem,5vw,4rem); text-align:center; overflow:hidden; background:#050507; }
 .cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:400px; background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 60%); filter:blur(80px); pointer-events:none; }
 .cta-content { position:relative; z-index:1; }
-.cta-section h2 { font-size:clamp(2.25rem,4.5vw,3.5rem); font-weight:900; letter-spacing:-0.04em; margin-bottom:1rem; line-height:1.05; }
+.cta-section h2 { font-family:'Oswald',sans-serif; font-size:clamp(2.4rem,5vw,3.75rem); font-weight:700; letter-spacing:0.005em; text-transform:uppercase; margin-bottom:1rem; line-height:1.02; }
 .cta-section p { font-size:1rem; color:rgba(255,255,255,0.4); margin-bottom:2rem; max-width:460px; margin-left:auto; margin-right:auto; line-height:1.6; }
 .cta-actions { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; }
 
