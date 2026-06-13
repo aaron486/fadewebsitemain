@@ -432,8 +432,11 @@ const WhyFade = () => {
           <p className="whyfade-text">
             Your picks live on one app. Your friends&rsquo; picks live in the group chat. The cappers you follow live on X. And every &ldquo;lock of the year&rdquo; lives in a screenshot you&rsquo;re squinting at, trying to punch into your sportsbook before the line moves.
           </p>
-          <p className="whyfade-text" style={{ marginBottom: 0 }}>
+          <p className="whyfade-text">
             Betting&rsquo;s always been social &mdash; the apps just never were.
+          </p>
+          <p className="whyfade-text" style={{ marginBottom: 0 }}>
+            <strong>Until now.</strong> Fade brings the whole betting community into one app &mdash; track picks in real time, get notified when someone places a bet, break down your history and your fantasy team with your own AI assistant, and export straight to your sportsbook. One app for everything betting.
           </p>
         </div>
       </div>
