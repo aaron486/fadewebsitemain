@@ -86,7 +86,7 @@ const Hero = () => {
           Bet <span className="gradient-text">together.</span>
         </h1>
         <p className="hero-sub">
-          Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. Follow what your friends and the biggest names in sports are betting the second they place it.
+          Your group chat, the biggest names in sports, the sharpest cappers — every bet they place, the moment they place it, all in one app.
         </p>
         <div className="hero-actions">
           <a href="#" className="store-badge" aria-label="Download on the App Store">
