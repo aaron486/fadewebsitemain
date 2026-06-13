@@ -252,6 +252,10 @@ const FeatureCarousel = () => {
   return (
     <section id="features" className="carousel-section" style={{background:"#050507"}} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
 
+      <div className="features-intro">
+        <h2 className="features-intro-title">One App.<br />Everything Betting.</h2>
+      </div>
+
       {/* Slide Content */}
       <div className="carousel-viewport" key={active}>
         {/* Tab Pills */}
@@ -691,6 +695,10 @@ a { color:inherit; }
 
 /* Carousel */
 .carousel-section { position:relative; padding:20px clamp(1.5rem,5vw,4rem) 40px; overflow:hidden; }
+.features-intro { text-align:center; max-width:820px; margin:0 auto; padding:8px clamp(1.5rem,5vw,4rem) 0; }
+.features-intro-title { font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.005em; line-height:1.0; font-size:clamp(2.4rem,5.5vw,4rem); color:#fff; }
+/* demote the per-slide title so the section headline leads */
+.carousel-section .section-header .section-title { font-size:clamp(1.4rem,3vw,2rem); }
 .carousel-tabs { display:flex; justify-content:center; gap:0.5rem; margin-bottom:2.5rem; }
 .carousel-tab { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:100px; padding:0.6rem 1.5rem; cursor:pointer; transition:all 0.3s ease; color:rgba(255,255,255,0.45); font-size:0.75rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; }
 .carousel-tab:hover { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.12); }
