@@ -428,12 +428,12 @@ const WhyFade = () => {
         <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
         <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
           <span className="section-eyebrow">Why Fade</span>
-          <h3 className="whyfade-title">Why "Fade"?</h3>
+          <h3 className="whyfade-title">We all bet.<br />We just don&rsquo;t bet together.</h3>
           <p className="whyfade-text">
-            In sports betting, to <span className="accent">fade</span> someone means to bet against them. When you "fade the public" or "fade your friend," you're calling your shot that they're wrong. It's rivalry, accountability, and competition rolled into one word. That's why we chose it.
+            Your picks live on one app. Your friends&rsquo; picks live in the group chat. The cappers you follow live on X. And every &ldquo;lock of the year&rdquo; lives in a screenshot you&rsquo;re squinting at, trying to punch into your sportsbook before the line moves.
           </p>
           <p className="whyfade-text" style={{ marginBottom: 0 }}>
-            Fade turns that idea into a platform — where placing a bet is just the beginning. Because <strong>FADE is betting culture</strong> — and it only exists when there's someone on the other side of the bet.
+            Betting&rsquo;s always been social &mdash; the apps just never were.
           </p>
         </div>
       </div>
