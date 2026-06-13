@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Media — Original Content for the Betting Industry</title>
+<meta name="description" content="Fade Media is a production studio and influencer network for sportsbooks and betting brands — original content, influencer campaigns at scale, and podcast & show sponsorships." />
+<link rel="canonical" href="https://fade.bet/media" />
+<meta name="theme-color" content="#050507" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fade Media — Original Content for the Betting Industry" />
+<meta property="og:description" content="An original production studio for sportsbooks. Content, influencer campaigns at scale, and podcast sponsorships with the biggest names in sports betting." />
+<meta property="og:url" content="https://fade.bet/media" />
+<meta property="og:site_name" content="Fade" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.72); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+h1, h2, h3, .eyebrow { font-family: 'Oswald', sans-serif; }
+
+/* Header */
+.header { padding: 1.6rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.header a { display: inline-flex; align-items: center; gap: 0.75rem; }
+.header svg { height: 30px; width: auto; }
+.header .divider { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+.header .sub { font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+/* Hero */
+.hero { position: relative; text-align: center; padding: 6.5rem 1.5rem 5rem; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 38%; left: 50%; transform: translate(-50%,-50%); width: 820px; height: 540px; max-width: 95vw; background: radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 62%); filter: blur(60px); pointer-events: none; }
+.eyebrow { display: inline-block; font-size: 1rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(59,130,246,0.9); margin-bottom: 1.25rem; position: relative; }
+.hero h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; line-height: 0.98; margin-bottom: 1.5rem; position: relative; }
+.hero h1 .grad { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: rgba(255,255,255,0.55); max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.65; position: relative; }
+.hero-cta { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; position: relative; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 2rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff; border-radius: 10px; font-size: 1.0625rem; font-weight: 700; box-shadow: 0 2px 16px rgba(59,130,246,0.3); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,130,246,0.42); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 1.6rem; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.82); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; font-size: 1.0625rem; font-weight: 600; transition: all 0.2s ease; }
+.btn-ghost:hover { border-color: rgba(59,130,246,0.5); color: #fff; background: rgba(59,130,246,0.06); }
+
+/* What we do */
+.section { max-width: 1080px; margin: 0 auto; padding: 4.5rem 1.5rem; }
+.section-head { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+.section-head .eyebrow { margin-bottom: 0.875rem; }
+.section-head h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; line-height: 1.04; }
+.section-head p { margin-top: 1rem; font-size: 1.05rem; color: rgba(255,255,255,0.5); }
+
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.card { padding: 2.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease; }
+.card:hover { border-color: rgba(59,130,246,0.35); transform: translateY(-3px); background: rgba(59,130,246,0.04); }
+.card .ic { width: 52px; height: 52px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: #3b82f6; margin-bottom: 1.5rem; }
+.card .ic svg { width: 26px; height: 26px; }
+.card .num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; color: rgba(59,130,246,0.7); }
+.card h3 { font-size: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; color: #fff; margin: 0.4rem 0 0.75rem; line-height: 1.1; }
+.card p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+/* Statement strip */
+.statement { border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); background: #08080d; }
+.statement-inner { max-width: 960px; margin: 0 auto; padding: 4.5rem 1.5rem; text-align: center; }
+.statement h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; text-transform: uppercase; color: #fff; line-height: 1.08; letter-spacing: 0.005em; }
+.statement h2 .grad { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.statement p { margin-top: 1.25rem; font-size: 1.1rem; color: rgba(255,255,255,0.55); max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* CTA */
+.cta { text-align: center; padding: 5.5rem 1.5rem 6rem; position: relative; overflow: hidden; }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 640px; height: 420px; max-width: 95vw; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 62%); filter: blur(70px); pointer-events: none; }
+.cta h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 1rem; position: relative; }
+.cta p { color: rgba(255,255,255,0.5); margin-bottom: 2rem; position: relative; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+/* Footer */
+.footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 2.5rem 1.5rem; text-align: center; }
+.footer svg { height: 24px; width: auto; opacity: 0.8; margin-bottom: 1rem; }
+.footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+.footer a { color: rgba(255,255,255,0.5); }
+
+@media (max-width: 760px) {
+  .cards { grid-template-columns: 1fr; }
+  .hero { padding: 4.5rem 1.25rem 3.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" aria-label="Fade home">
+    <svg viewBox="80 420 840 170" fill="#fff" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="divider"></span>
+    <span class="sub">Media</span>
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="eyebrow">Fade Media</div>
+  <h1>Original content for the <span class="grad">betting industry.</span></h1>
+  <p>Fade Media is a production studio and influencer network built for sportsbooks and betting brands — we create the content, run the campaigns, and put you next to the biggest names in sports.</p>
+  <div class="hero-cta">
+    <a href="#contact" class="btn-primary">Work with us &#8594;</a>
+    <a href="#services" class="btn-ghost">What we do</a>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <div class="section-head">
+    <div class="eyebrow">What we do</div>
+    <h2>The studio behind betting's biggest content.</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="M15 10l6-3v10l-6-3"/></svg></div>
+      <div class="num">01</div>
+      <h3>Original Content Production</h3>
+      <p>We create original content for sports betting companies — concept, shoot, and post, built to perform across every platform.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19a6.5 6.5 0 0 1 13 0"/><path d="M16 6a3 3 0 0 1 0 6"/><path d="M18 19a6 6 0 0 0-3-5.2"/></svg></div>
+      <div class="num">02</div>
+      <h3>Influencer Campaigns at Scale</h3>
+      <p>We run influencer campaigns with the top sports bettors, cappers, and celebrities — activated at scale across the Fade network.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21M8.5 21h7"/></svg></div>
+      <div class="num">03</div>
+      <h3>Podcast &amp; Show Sponsorships</h3>
+      <p>We handle sponsorships for the top podcasts and shows in sports — getting your brand into the conversations fans already trust.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l7-4 7 4v12"/><path d="M3 21h18M9 21v-5h4v5"/><path d="M21 21V11l-4-2"/></svg></div>
+      <div class="num">04</div>
+      <h3>In-House Studio for Sportsbooks</h3>
+      <p>An original production studio for sportsbooks — a dedicated team to build and ship your own content engine, end to end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Statement -->
+<div class="statement">
+  <div class="statement-inner">
+    <h2>Betting is culture. <span class="grad">We make the content.</span></h2>
+    <p>From the feed to the podcast to the campaign — Fade Media connects sportsbooks and betting brands to the audience that actually moves the line.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Let's build something.</h2>
+  <p>Tell us what you're trying to do — content, a campaign, or a full content engine — and we'll put a plan together.</p>
+  <a href="mailto:media@fade.bet" class="btn-primary">Get in touch &#8594;</a>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <svg viewBox="80 420 840 170" fill="#fff" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+  <p>&copy; Fade. All rights reserved. &middot; <a href="/">fade.bet</a></p>
+</div>
+
+</body>
+</html>

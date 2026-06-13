@@ -16,6 +16,8 @@
     { "source": "/case-study", "destination": "/kalshi-study.html" },
     { "source": "/casestudy", "destination": "/kalshi-study.html" },
     { "source": "/progress", "destination": "/progress.html" },
+    { "source": "/media", "destination": "/media.html" },
+    { "source": "/fade-media", "destination": "/media.html" },
     { "source": "/worldcup", "destination": "/worldcup.html" },
     { "source": "/world-cup", "destination": "/worldcup.html" },
     { "source": "/fifa", "destination": "/worldcup.html" },
