@@ -33,9 +33,9 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; col
 .store-badge-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
 .store-badge-small { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.02em; color: rgba(255,255,255,0.7); }
 .store-badge-big { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
-.hero-trust { display: flex; gap: 0.5rem 1.4rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
-.hero-trust span { display: inline-flex; align-items: center; gap: 0.55rem; }
-.hero-trust .dot { width: 5px; height: 5px; border-radius: 50%; background: #3b82f6; box-shadow: 0 0 8px rgba(59,130,246,0.7); }
+.hero-sound { position: absolute; bottom: 2rem; right: 2rem; z-index: 5; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; color: rgba(255,255,255,0.75); font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; }
+.hero-sound:hover { color: #fff; border-color: rgba(255,255,255,0.4); background: rgba(0,0,0,0.55); }
+@media (max-width: 480px) { .hero-sound { bottom: 1.2rem; right: 1.2rem; } }
 
 /* scroll hint shown while the video plays first */
 .hero-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.6); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; pointer-events: none; }
@@ -80,12 +80,8 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; col
           <div class="store-badge-text"><span class="store-badge-small">GET IT ON</span><span class="store-badge-big">Google Play</span></div>
         </a>
       </div>
-      <div class="hero-trust">
-        <span><span class="dot"></span> Live in regulated states</span>
-        <span><span class="dot"></span> FadeSync is read-only</span>
-        <span><span class="dot"></span> Built for iOS</span>
-      </div>
     </div>
+    <button class="hero-sound" id="sound" aria-label="Turn sound on">&#128264; Sound on</button>
     <div class="hero-hint" id="hint"><div class="mouse"></div>Scroll</div>
   </div>
 </section>
@@ -100,6 +96,31 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; col
   var content = document.getElementById('content');
   var scrim = document.getElementById('scrim');
   var hint = document.getElementById('hint');
+  var video = document.querySelector('.hero-video');
+  var sound = document.getElementById('sound');
+
+  // Autoplay starts muted; unmute on the first user gesture or via the button.
+  function enableSound() {
+    if (!video) return;
+    video.muted = false; video.volume = 1; video.play().catch(function(){});
+    sound.innerHTML = '🔊 Sound off';
+  }
+  function disableSound() {
+    if (!video) return;
+    video.muted = true;
+    sound.innerHTML = '🔈 Sound on';
+  }
+  sound.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (video.muted) enableSound(); else disableSound();
+  });
+  ['pointerdown','touchstart','keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function once() {
+      if (video && video.muted) enableSound();
+      window.removeEventListener(ev, once);
+    }, { once: true });
+  });
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { content.style.opacity = 1; return; }
   var raf = 0;

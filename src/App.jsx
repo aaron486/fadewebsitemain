@@ -50,6 +50,8 @@ const Nav = () => null;
 // ===== HERO =====
 const Hero = () => {
   const [p, setP] = useState(0); // 0..1 text reveal progress as you scroll
+  const [muted, setMuted] = useState(true);
+  const videoRef = useRef(null);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
     let raf = 0;
@@ -65,10 +67,34 @@ const Hero = () => {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  // Autoplay must start muted; unmute on the first real user gesture.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v) { v.muted = true; v.play().catch(() => {}); }
+    const enable = () => {
+      const vid = videoRef.current;
+      if (vid) { vid.muted = false; vid.volume = 1; vid.play().catch(() => {}); setMuted(false); }
+    };
+    window.addEventListener("pointerdown", enable, { once: true });
+    window.addEventListener("touchstart", enable, { once: true });
+    window.addEventListener("keydown", enable, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", enable);
+      window.removeEventListener("touchstart", enable);
+      window.removeEventListener("keydown", enable);
+    };
+  }, []);
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = !v.muted;
+    v.muted = next; if (!next) { v.volume = 1; v.play().catch(() => {}); }
+    setMuted(next);
+  };
   return (
     <section className="hero-section" id="bet-together">
       <div className="hero-pin">
-        <video className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
+        <video ref={videoRef} className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
         <div className="hero-video-scrim" style={{ opacity: 0.5 + p * 0.45 }} />
         <div className="hero-glow" />
         <div className="hero-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
@@ -98,12 +124,10 @@ const Hero = () => {
             </div>
           </a>
         </div>
-        <div className="hero-trust">
-          <span><span className="dot" /> Live in regulated states</span>
-          <span><span className="dot" /> FadeSync is read-only</span>
-          <span><span className="dot" /> Built for iOS</span>
         </div>
-        </div>
+        <button className="hero-sound" onClick={toggleSound} aria-label={muted ? "Turn sound on" : "Turn sound off"}>
+          {muted ? "🔈" : "🔊"} {muted ? "Sound on" : "Sound off"}
+        </button>
         <div className="hero-hint" style={{ opacity: Math.max(0, 1 - p * 2.5) }}>
           <div className="mouse" />Scroll
         </div>
@@ -547,6 +571,9 @@ a { color:inherit; }
 .hero-hint .mouse { width:24px; height:38px; border:2px solid rgba(255,255,255,0.4); border-radius:14px; position:relative; }
 .hero-hint .mouse::before { content:''; position:absolute; top:7px; left:50%; transform:translateX(-50%); width:3px; height:7px; background:rgba(255,255,255,0.7); border-radius:2px; animation:heroWheel 1.5s infinite; }
 @keyframes heroWheel { 0%{opacity:0; transform:translate(-50%,0);} 30%{opacity:1;} 100%{opacity:0; transform:translate(-50%,12px);} }
+.hero-sound { position:absolute; bottom:2rem; right:2rem; z-index:5; display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1rem; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.18); border-radius:999px; color:rgba(255,255,255,0.75); font-family:'JetBrains Mono',monospace; font-size:0.66rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.25s ease; }
+.hero-sound:hover { color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(0,0,0,0.55); }
+@media (max-width:480px) { .hero-sound { bottom:1.2rem; right:1.2rem; padding:0.5rem 0.8rem; } }
 @media (prefers-reduced-motion: reduce) { .hero-section { height:auto; } .hero-pin { position:relative; } }
 
 .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.75rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:0.9375rem; font-weight:600; cursor:pointer; text-decoration:none; transition:all 0.25s ease; box-shadow:0 2px 16px rgba(59,130,246,0.25); }
