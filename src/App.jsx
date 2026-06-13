@@ -50,7 +50,6 @@ const Nav = () => null;
 // ===== HERO =====
 const Hero = () => {
   const [p, setP] = useState(0); // 0..1 text reveal progress as you scroll
-  const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
@@ -67,34 +66,15 @@ const Hero = () => {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  // Autoplay must start muted; unmute on the first real user gesture.
+  // Autoplay must start muted; the section-audio manager unmutes on scroll.
   useEffect(() => {
     const v = videoRef.current;
     if (v) { v.muted = true; v.play().catch(() => {}); }
-    const enable = () => {
-      const vid = videoRef.current;
-      if (vid) { vid.muted = false; vid.volume = 1; vid.play().catch(() => {}); setMuted(false); }
-    };
-    window.addEventListener("pointerdown", enable, { once: true });
-    window.addEventListener("touchstart", enable, { once: true });
-    window.addEventListener("keydown", enable, { once: true });
-    return () => {
-      window.removeEventListener("pointerdown", enable);
-      window.removeEventListener("touchstart", enable);
-      window.removeEventListener("keydown", enable);
-    };
   }, []);
-  const toggleSound = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    const next = !v.muted;
-    v.muted = next; if (!next) { v.volume = 1; v.play().catch(() => {}); }
-    setMuted(next);
-  };
   return (
     <section className="hero-section" id="bet-together">
       <div className="hero-pin">
-        <video ref={videoRef} className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
+        <video ref={videoRef} className="hero-video" data-audio-section autoPlay loop muted playsInline src="/assets/hero.mp4" />
         <div className="hero-video-scrim" style={{ opacity: 0.5 + p * 0.45 }} />
         <div className="hero-glow" />
         <div className="hero-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
@@ -125,9 +105,6 @@ const Hero = () => {
           </a>
         </div>
         </div>
-        <button className="hero-sound" onClick={toggleSound} aria-label={muted ? "Turn sound on" : "Turn sound off"}>
-          {muted ? "🔈" : "🔊"} {muted ? "Sound on" : "Sound off"}
-        </button>
         <div className="hero-hint" style={{ opacity: Math.max(0, 1 - p * 2.5) }}>
           <div className="mouse" />Scroll
         </div>
@@ -430,7 +407,7 @@ const WhyFade = () => {
   return (
     <section className="whyfade-section" ref={ref}>
       <div className="whyfade-pin">
-        <video className="whyfade-video" autoPlay loop muted playsInline src="/assets/why-fade.mp4" />
+        <video className="whyfade-video" data-audio-section autoPlay loop muted playsInline src="/assets/why-fade.mp4" />
         <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
         <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
           <span className="section-eyebrow">Why Fade</span>
@@ -540,6 +517,51 @@ const Footer = () => (
 
 // ===== MAIN APP =====
 export default function FadeWebsite() {
+  // Section-tied audio: unmute the full-screen video the user is scrolling
+  // through, mute the rest; audio only starts once the user begins scrolling.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const vids = Array.from(document.querySelectorAll("video[data-audio-section]"));
+    if (!vids.length) return;
+    let started = false;
+    let raf = 0;
+    const update = () => {
+      const vh = window.innerHeight || 1;
+      let active = null, best = 0;
+      for (const v of vids) {
+        const sec = v.closest("section") || v.parentElement;
+        const r = sec.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+        if (visible > best) { best = visible; active = v; }
+      }
+      const allow = started && best > vh * 0.5; // section must own the viewport
+      for (const v of vids) {
+        if (allow && v === active) {
+          if (v.muted) { v.muted = false; v.volume = 1; const pr = v.play(); if (pr) pr.catch(() => { v.muted = true; }); }
+        } else if (!v.muted) {
+          v.muted = true;
+        }
+      }
+    };
+    const onScroll = () => {
+      started = true;
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; update(); });
+    };
+    // Some browsers won't unmute on a wheel-scroll alone (needs a gesture);
+    // priming on the first pointer/touch/key makes the scroll-unmute reliable.
+    const prime = () => { started = true; update(); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pointerdown", prime, { once: true });
+    window.addEventListener("touchstart", prime, { once: true });
+    window.addEventListener("keydown", prime, { once: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pointerdown", prime);
+      window.removeEventListener("touchstart", prime);
+      window.removeEventListener("keydown", prime);
+    };
+  }, []);
   return (
     <>
       <style>{`
