@@ -695,7 +695,7 @@ a { color:inherit; }
 
 /* Carousel */
 .carousel-section { position:relative; padding:20px clamp(1.5rem,5vw,4rem) 40px; overflow:hidden; }
-.features-intro { text-align:center; max-width:820px; margin:0 auto; padding:8px clamp(1.5rem,5vw,4rem) 0; }
+.features-intro { text-align:center; max-width:820px; margin:0 auto 2.25rem; padding:8px clamp(1.5rem,5vw,4rem) 0; }
 .features-intro-title { font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.005em; line-height:1.0; font-size:clamp(2.4rem,5.5vw,4rem); color:#fff; }
 /* demote the per-slide title so the section headline leads */
 .carousel-section .section-header .section-title { font-size:clamp(1.4rem,3vw,2rem); }
