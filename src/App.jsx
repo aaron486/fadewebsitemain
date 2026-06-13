@@ -51,11 +51,41 @@ const Nav = () => null;
 const Hero = () => {
   return (
     <section className="hero-section" id="bet-together">
+      <video className="hero-video" autoPlay loop muted playsInline src="/assets/hero.mp4" />
+      <div className="hero-video-scrim" />
       <div className="hero-grid" />
+      <div className="hero-glow" />
       <div className="hero-content">
         <div className="hero-brand anim-1">
-          <FadeLogo height={52} />
-          <div className="section-eyebrow">BET TOGETHER</div>
+          <FadeLogo height={56} />
+        </div>
+        <h1 className="hero-headline anim-2">
+          Never miss a bet.<br />
+          <span className="gradient-text">Tail it. Fade it.</span>
+        </h1>
+        <p className="hero-sub anim-3">
+          See what your friends and the biggest names in sports are <strong>actually betting</strong> — in real time. Then tail the hot hand or fade the cold one.
+        </p>
+        <div className="hero-actions anim-4">
+          <a href="#" className="store-badge" aria-label="Download on the App Store">
+            <svg viewBox="0 0 814 1000" width="20" height="24" fill="white"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.5-81.9-105.6-209.6-105.6-330.8 0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8.6 15.7 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.5-30.4 139.5-71.4z"/></svg>
+            <div className="store-badge-text">
+              <span className="store-badge-small">Download on the</span>
+              <span className="store-badge-big">App Store</span>
+            </div>
+          </a>
+          <a href="#" className="store-badge" aria-label="Get it on Google Play">
+            <svg viewBox="30 336.7 120.9 129.2" width="22" height="22"><path fill="#FFD400" d="M119.2 421.2c15.3-8.4 27-14.8 28-15.3 3.2-1.7 6.5-6.2 0-9.7-2.1-1.2-10.5-6-28-15.5l-20.1 20.3 20.1 20.2z"/><path fill="#FF3333" d="M99.1 401.1l-64.2 64.7c1.8 .6 3.8 .2 6.2-1.1 5.4-3 54.7-30 77.1-42.3l-19.1-21.3z"/><path fill="#48FF48" d="M99.1 401.1l20.1-20.2c-22.4-12.3-71.7-39.2-77.1-42.3-2.4-1.3-4.4-1.7-6.2-1.1l63.2 63.6z"/><path fill="#3BCCFF" d="M99.1 401.1L35.9 337.5c-2.5-.8-5.1-.2-7.7 1.4-1.3.8-2.2 1.5-2.7 2.1l73.6 60.1z"/></svg>
+            <div className="store-badge-text">
+              <span className="store-badge-small">GET IT ON</span>
+              <span className="store-badge-big">Google Play</span>
+            </div>
+          </a>
+        </div>
+        <div className="hero-trust anim-5">
+          <span><span className="dot" /> Live in regulated states</span>
+          <span><span className="dot" /> FadeSync is read-only</span>
+          <span><span className="dot" /> Built for iOS</span>
         </div>
       </div>
     </section>
@@ -477,6 +507,22 @@ a { color:inherit; }
 .hero-actions { display:flex; align-items:center; justify-content:center; gap:0.75rem; margin-bottom:2.5rem; flex-wrap:wrap; }
 .anim-1{animation:fadeUp 0.6s ease both;} .anim-2{animation:fadeUp 0.6s 0.06s ease both;} .anim-3{animation:fadeUp 0.6s 0.12s ease both;} .anim-4{animation:fadeUp 0.6s 0.18s ease both;} .anim-5{animation:fadeUp 0.6s 0.24s ease both;}
 @keyframes fadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
+
+/* ===== HERO REFRESH ===== */
+.hero-section { padding-bottom:clamp(44px,7vh,92px); min-height:clamp(560px,82vh,860px); justify-content:center; }
+.hero-glow { position:absolute; top:-6%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:560px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.22) 0%, rgba(59,130,246,0.06) 38%, transparent 68%); filter:blur(30px); animation:heroGlow 7s ease-in-out infinite; }
+@keyframes heroGlow { 0%,100%{opacity:0.85; transform:translateX(-50%) scale(1);} 50%{opacity:1; transform:translateX(-50%) scale(1.06);} }
+.hero-brand { margin-bottom:1.75rem; }
+.hero-headline { font-size:clamp(2.6rem,6.6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.05em; margin:0 0 1.35rem; }
+.hero-sub { font-size:clamp(0.98rem,1.4vw,1.15rem); color:rgba(255,255,255,0.5); line-height:1.7; max-width:600px; margin:0 auto 2.25rem; }
+.hero-sub strong { color:rgba(255,255,255,0.92); font-weight:600; }
+.hero-trust { display:flex; gap:0.5rem 1.4rem; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:1.75rem; color:rgba(255,255,255,0.4); font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; }
+.hero-trust span { display:inline-flex; align-items:center; gap:0.55rem; }
+.hero-trust .dot { width:5px; height:5px; border-radius:50%; background:#3b82f6; box-shadow:0 0 8px rgba(59,130,246,0.7); }
+@media(max-width:480px){ .hero-trust{gap:0.4rem 0.9rem; font-size:0.62rem;} .hero-section{min-height:auto; padding-top:36px;} }
+.hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:0.5; }
+.hero-video-scrim { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse 72% 62% at 50% 44%, rgba(5,5,7,0.5) 0%, rgba(5,5,7,0.8) 58%, #050507 100%); }
+.hero-content { z-index:3; }
 
 .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.75rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:0.9375rem; font-weight:600; cursor:pointer; text-decoration:none; transition:all 0.25s ease; box-shadow:0 2px 16px rgba(59,130,246,0.25); }
 .btn-primary:hover { transform:translateY(-1px); box-shadow:0 6px 28px rgba(59,130,246,0.35); }
