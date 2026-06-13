@@ -275,12 +275,6 @@ const FeatureCarousel = () => {
   return (
     <section id="features" className="carousel-section" style={{background:"#050507"}} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
 
-      {/* logo3-style backdrop: footage inside the FADE wordmark */}
-      <div className="fade-backdrop" aria-hidden="true">
-        <video className="fade-backdrop-mask" autoPlay loop muted playsInline src="/assets/hero.mp4" />
-        <div className="fade-backdrop-scrim" />
-      </div>
-
       {/* Slide Content */}
       <div className="carousel-viewport" key={active}>
         {/* Tab Pills */}
@@ -407,22 +401,51 @@ const Community = () => (
           </p>
         </div>
       </Reveal>
-
-      <Reveal delay={0.25}>
-        <div className="community-why">
-          <video className="community-why-video" autoPlay loop muted playsInline src="/assets/why-fade.mp4" />
-          <h3 className="community-why-title">Why "Fade"?</h3>
-          <p className="community-text">
-            In sports betting, to <span className="accent">fade</span> someone means to bet against them. When you "fade the public" or "fade your friend," you're calling your shot that they're wrong. It's rivalry, accountability, and competition rolled into one word. That's why we chose it.
-          </p>
-          <p className="community-text" style={{ marginBottom: 0 }}>
-            Fade turns that idea into a platform — where placing a bet is just the beginning. Because <strong>FADE is betting culture</strong> — and it only exists when there's someone on the other side of the bet.
-          </p>
-        </div>
-      </Reveal>
     </div>
   </section>
 );
+
+// ===== WHY FADE — full-screen scroll video (like the hero) =====
+const WhyFade = () => {
+  const [p, setP] = useState(0);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = ref.current;
+        if (!el) return;
+        const vh = window.innerHeight || 1;
+        const top = el.getBoundingClientRect().top;
+        setP(Math.max(0, Math.min(1, (-top) / (vh * 0.85))));
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <section className="whyfade-section" ref={ref}>
+      <div className="whyfade-pin">
+        <video className="whyfade-video" autoPlay loop muted playsInline src="/assets/why-fade.mp4" />
+        <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
+        <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
+          <span className="section-eyebrow">Why Fade</span>
+          <h3 className="whyfade-title">Why "Fade"?</h3>
+          <p className="whyfade-text">
+            In sports betting, to <span className="accent">fade</span> someone means to bet against them. When you "fade the public" or "fade your friend," you're calling your shot that they're wrong. It's rivalry, accountability, and competition rolled into one word. That's why we chose it.
+          </p>
+          <p className="whyfade-text" style={{ marginBottom: 0 }}>
+            Fade turns that idea into a platform — where placing a bet is just the beginning. Because <strong>FADE is betting culture</strong> — and it only exists when there's someone on the other side of the bet.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // ===== COMPATIBILITY =====
 // Sportsbook logos (real app icons)
@@ -624,13 +647,6 @@ a { color:inherit; }
 
 /* Carousel */
 .carousel-section { position:relative; padding:20px clamp(1.5rem,5vw,4rem) 40px; overflow:hidden; }
-/* logo3-style backdrop: hero footage masked to the FADE wordmark */
-.fade-backdrop { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-.fade-backdrop-mask { position:absolute; top:47%; left:50%; transform:translate(-50%,-50%); width:135%; min-width:1100px; aspect-ratio:840/180; object-fit:cover; opacity:0.42; filter:contrast(1.05) saturate(1.05); -webkit-mask:url(/assets/fade-mask.svg) center/contain no-repeat; mask:url(/assets/fade-mask.svg) center/contain no-repeat; }
-.fade-backdrop-scrim { position:absolute; inset:0; background:radial-gradient(ellipse 56% 62% at 50% 48%, rgba(5,5,7,0.42) 0%, rgba(5,5,7,0.82) 62%, #050507 100%); }
-.carousel-viewport { position:relative; z-index:1; }
-@media(max-width:768px) { .fade-backdrop-mask { opacity:0.26; min-width:760px; } }
-@media (prefers-reduced-motion: reduce) { .fade-backdrop-mask { display:none; } }
 .carousel-tabs { display:flex; justify-content:center; gap:0.5rem; margin-bottom:2.5rem; }
 .carousel-tab { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:100px; padding:0.6rem 1.5rem; cursor:pointer; transition:all 0.3s ease; color:rgba(255,255,255,0.45); font-size:0.75rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; }
 .carousel-tab:hover { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.12); }
@@ -761,8 +777,18 @@ a { color:inherit; }
 .community-highlight { font-size:1.125rem; line-height:1.7; color:white; font-weight:600; padding:1.25rem 1.5rem; margin:1.5rem 0; border-left:3px solid #3b82f6; background:rgba(59,130,246,0.06); border-radius:0 10px 10px 0; }
 .community-tagline { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,0.8); font-weight:500; font-style:italic; margin-top:1.5rem; text-align:center; }
 .community-why { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:2rem 2.25rem; margin-bottom:3rem; }
-.community-why-video { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; margin-bottom:1.5rem; background:#000; border:1px solid rgba(255,255,255,0.08); }
 .community-why-title { font-size:1.375rem; font-weight:700; margin-bottom:1rem; color:white; }
+/* Why Fade — full-screen scroll video (mirrors the hero) */
+.whyfade-section { position:relative; height:200vh; background:#050507; }
+.whyfade-pin { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; }
+.whyfade-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.whyfade-scrim { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse 82% 78% at 50% 50%, rgba(5,5,7,0.4) 0%, rgba(5,5,7,0.78) 60%, rgba(5,5,7,0.92) 100%); }
+.whyfade-content { position:relative; z-index:2; max-width:680px; padding:0 clamp(1.5rem,5vw,3rem); will-change:opacity,transform; }
+.whyfade-title { font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.01em; font-size:clamp(2rem,5vw,3.25rem); line-height:1.02; margin:0.5rem 0 1.25rem; color:#fff; }
+.whyfade-text { font-size:clamp(1rem,1.5vw,1.15rem); line-height:1.8; color:rgba(255,255,255,0.82); margin-bottom:1.25rem; }
+.whyfade-text .accent { color:#3b82f6; }
+.whyfade-text strong { color:#fff; font-weight:600; }
+@media (prefers-reduced-motion: reduce) { .whyfade-section { height:auto; } .whyfade-pin { position:relative; } }
 .sb-marquee-container { overflow:hidden; padding:2rem 0; mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
 .marquee-track-wrapper { overflow:hidden; margin-bottom:1rem; }
 .marquee-track { display:flex; gap:1rem; width:max-content; animation:marquee 30s linear infinite; }
@@ -817,6 +843,7 @@ a { color:inherit; }
       <FeatureCarousel />
       <Compatibility />
       <Community />
+      <WhyFade />
       <HowItWorks />
 
       <Footer />

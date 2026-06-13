@@ -4,86 +4,70 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Fade — Section Preview</title>
+<title>Fade — Why Fade Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: #050507; color: #f0f0f5; -webkit-font-smoothing: antialiased; }
-.note { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
-.gradient-text { background: linear-gradient(135deg,#3b82f6 0%,#e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.eyebrow { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
-.title { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.005em; line-height: 1.04; font-size: clamp(2rem,4.4vw,3rem); margin: 0.6rem 0 0.8rem; }
+.note { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); padding: 1.5rem; }
+.spacer { height: 60vh; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.25); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.section-eyebrow { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(59,130,246,0.85); }
 
-/* ===== 1. iPhone section with logo3 backdrop ===== */
-.carousel-section { position: relative; overflow: hidden; padding: 56px clamp(1.5rem,5vw,4rem) 60px; text-align: center; }
-.fade-backdrop { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.fade-backdrop-mask { position: absolute; top: 47%; left: 50%; transform: translate(-50%,-50%); width: 135%; min-width: 1100px; aspect-ratio: 840/180; object-fit: cover; opacity: 0.42; filter: contrast(1.05) saturate(1.05);
-  -webkit-mask: url(assets/fade-mask.svg) center/contain no-repeat; mask: url(assets/fade-mask.svg) center/contain no-repeat; }
-.fade-backdrop-scrim { position: absolute; inset: 0; background: radial-gradient(ellipse 56% 62% at 50% 48%, rgba(5,5,7,0.42) 0%, rgba(5,5,7,0.82) 62%, #050507 100%); }
-.cv { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(1.5rem,3vw,3.5rem); margin-top: 2.5rem; }
-.col { display: flex; flex-direction: column; gap: 0; }
-.col.left { text-align: right; } .col.right { text-align: left; }
-.stat { padding: 1.25rem 0; } .stat + .stat { border-top: 1px solid rgba(255,255,255,0.06); }
-.stat .t { font-size: 1.15rem; font-weight: 600; color: rgba(255,255,255,0.8); } .stat .t .a { color: #3b82f6; }
-.stat .l { font-size: 0.72rem; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
-.phone { position: relative; z-index: 1; width: clamp(280px,26vw,360px); border-radius: 46px; padding: 8px; background: linear-gradient(160deg,#2a2a2e,#141416 50%,#2a2a2e); box-shadow: 0 30px 70px rgba(0,0,0,0.7); justify-self: center; }
-.phone-screen { position: relative; border-radius: 40px; overflow: hidden; background: #000; aspect-ratio: 9/19.5; }
-.phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 96px; height: 28px; background: #000; border-radius: 16px; z-index: 2; }
-
-/* ===== 2. Why Fade card with video ===== */
-.section-dark { background: #08080d; border-top: 1px solid rgba(255,255,255,0.05); padding: 70px clamp(1.5rem,5vw,4rem); }
-.community-content { max-width: 760px; margin: 0 auto; }
-.community-why { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 2rem 2.25rem; }
-.community-why-video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; background: #000; border: 1px solid rgba(255,255,255,0.08); }
-.community-why-title { font-size: 1.375rem; font-weight: 700; margin-bottom: 1rem; color: #fff; }
-.community-text { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 1.25rem; }
-.community-text .accent { color: #3b82f6; }
-@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .col { display: none; } }
+/* Why Fade — full-screen scroll video (mirrors the hero) */
+.whyfade-section { position: relative; height: 200vh; background: #050507; }
+.whyfade-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
+.whyfade-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.whyfade-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 82% 78% at 50% 50%, rgba(5,5,7,0.4) 0%, rgba(5,5,7,0.78) 60%, rgba(5,5,7,0.92) 100%); }
+.whyfade-content { position: relative; z-index: 2; max-width: 680px; padding: 0 clamp(1.5rem,5vw,3rem); will-change: opacity, transform; }
+.whyfade-title { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; font-size: clamp(2rem,5vw,3.25rem); line-height: 1.02; margin: 0.5rem 0 1.25rem; color: #fff; }
+.whyfade-text { font-size: clamp(1rem,1.5vw,1.15rem); line-height: 1.8; color: rgba(255,255,255,0.82); margin-bottom: 1.25rem; }
+.whyfade-text .accent { color: #3b82f6; }
+.whyfade-text strong { color: #fff; font-weight: 600; }
 </style>
 </head>
 <body>
-<div class="note">Preview · iPhone section backdrop (logo3) + Why Fade video · real clips</div>
+<div class="note">Preview · Why Fade full-screen scroll video · scroll down</div>
+<div class="spacer">↓ scroll into the Why Fade section ↓</div>
 
-<!-- 1. iPhone section -->
-<section class="carousel-section">
-  <div class="fade-backdrop" aria-hidden="true">
-    <video class="fade-backdrop-mask" autoplay loop muted playsinline src="assets/hero.mp4"></video>
-    <div class="fade-backdrop-scrim"></div>
-  </div>
-  <div class="cv">
-    <div class="eyebrow">The App</div>
-    <h2 class="title">Bet together.<br />Win together.</h2>
-    <div class="grid">
-      <div class="col left">
-        <div class="stat"><div class="t"><span class="a">Global</span> Betting Community</div><div class="l">Cappers, Influencers, Athletes &amp; Friends</div></div>
-        <div class="stat"><div class="t"><span class="a">Fade</span> Sync</div><div class="l">Link Every Bet From Every Major Sportsbook</div></div>
-        <div class="stat"><div class="t"><span class="a">Fade</span> AI</div><div class="l">Personalized AI Betting Coach</div></div>
-      </div>
-      <div class="phone">
-        <div class="phone-screen"><div class="island"></div><video autoplay loop muted playsinline src="assets/demo-app.mp4"></video></div>
-      </div>
-      <div class="col right">
-        <div class="stat"><div class="t"><span class="a">Follow</span> &amp; Discover</div><div class="l">Friends, Creators &amp; Sharp Bettors</div></div>
-        <div class="stat"><div class="t"><span class="a">Live</span> Discussions</div><div class="l">Game-Day Channels &amp; Strategy Talk</div></div>
-        <div class="stat"><div class="t"><span class="a">Dynamic</span> Bet Cards</div><div class="l">Auto-Generated &amp; Shareable</div></div>
-      </div>
+<section class="whyfade-section" id="wf">
+  <div class="whyfade-pin">
+    <video class="whyfade-video" autoplay loop muted playsinline src="assets/why-fade.mp4"></video>
+    <div class="whyfade-scrim" id="scrim"></div>
+    <div class="whyfade-content" id="content">
+      <span class="section-eyebrow">Why Fade</span>
+      <h3 class="whyfade-title">Why "Fade"?</h3>
+      <p class="whyfade-text">In sports betting, to <span class="accent">fade</span> someone means to bet against them. When you "fade the public" or "fade your friend," you're calling your shot that they're wrong. It's rivalry, accountability, and competition rolled into one word. That's why we chose it.</p>
+      <p class="whyfade-text" style="margin-bottom:0">Fade turns that idea into a platform — where placing a bet is just the beginning. Because <strong>FADE is betting culture</strong> — and it only exists when there's someone on the other side of the bet.</p>
     </div>
   </div>
 </section>
 
-<!-- 2. Why Fade -->
-<section class="section-dark">
-  <div class="community-content">
-    <div class="community-why">
-      <video class="community-why-video" autoplay loop muted playsinline src="assets/why-fade.mp4"></video>
-      <h3 class="community-why-title">Why "Fade"?</h3>
-      <p class="community-text">In sports betting, to <span class="accent">fade</span> someone means to bet against them. When you "fade the public" or "fade your friend," you're calling your shot that they're wrong. It's rivalry, accountability, and competition rolled into one word. That's why we chose it.</p>
-      <p class="community-text" style="margin-bottom:0">Fade turns that idea into a platform — where placing a bet is just the beginning. Because <strong>FADE is betting culture</strong> — and it only exists when there's someone on the other side of the bet.</p>
-    </div>
-  </div>
-</section>
+<div class="spacer">…the rest of the page continues here.</div>
+
+<script>
+(function () {
+  var section = document.getElementById('wf');
+  var content = document.getElementById('content');
+  var scrim = document.getElementById('scrim');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { content.style.opacity = 1; return; }
+  var raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = 0;
+      var vh = window.innerHeight || 1;
+      var top = section.getBoundingClientRect().top;
+      var p = Math.max(0, Math.min(1, (-top) / (vh * 0.85)));
+      content.style.opacity = p;
+      content.style.transform = 'translateY(' + ((1 - p) * 30) + 'px)';
+      scrim.style.opacity = 0.45 + p * 0.4;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
 </body>
 </html>
