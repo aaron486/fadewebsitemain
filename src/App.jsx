@@ -101,12 +101,12 @@ const Hero = () => {
         <div className="hero-brand">
           <FadeLogo height={56} />
         </div>
+        <div className="hero-eyebrow">Never miss a bet</div>
         <h1 className="hero-headline">
-          Never miss a bet.<br />
-          <span className="gradient-text">Tail it. Fade it.</span>
+          Bet <span className="gradient-text">together.</span>
         </h1>
         <p className="hero-sub">
-          See what your friends and the biggest names in sports are <strong>actually betting</strong> — in real time. Then tail the hot hand or fade the cold one.
+          Your group chat, your favorite celebrities, the sharpest cappers — every bet, in one app. Follow what your friends and the biggest names in sports are betting the second they place it. <strong className="gradient-text">FADE EM</strong>
         </p>
         <div className="hero-actions">
           <a href="#" className="store-badge" aria-label="Download on the App Store">
@@ -556,7 +556,8 @@ a { color:inherit; }
 .hero-section { padding:0!important; height:220vh; min-height:0; background:#050507; overflow:visible; display:block; }
 .hero-pin { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
 .hero-glow { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:540px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.05) 40%, transparent 68%); filter:blur(30px); }
-.hero-brand { margin-bottom:1.75rem; }
+.hero-brand { margin-bottom:1.1rem; }
+.hero-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(59,130,246,0.9); margin-bottom:1rem; }
 .hero-headline { font-size:clamp(2.6rem,6.6vw,5rem); font-weight:900; line-height:1.0; letter-spacing:-0.05em; margin:0 0 1.35rem; }
 .hero-sub { font-size:clamp(0.98rem,1.4vw,1.15rem); color:rgba(255,255,255,0.5); line-height:1.7; max-width:600px; margin:0 auto 2.25rem; }
 .hero-sub strong { color:rgba(255,255,255,0.92); font-weight:600; }
