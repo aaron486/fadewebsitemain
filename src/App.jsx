@@ -864,7 +864,6 @@ a { color:inherit; }
       <Hero />
       <FeatureCarousel />
       <Compatibility />
-      <Community />
       <WhyFade />
       <HowItWorks />
 
