@@ -65,16 +65,10 @@ h1, h2, h3, .eyebrow { font-family: 'Oswald', sans-serif; }
 .examples { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.06); display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
 .examples-label { grid-column: 1 / -1; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: -0.25rem; }
 .example { display: flex; flex-direction: column; }
-.example-video { position: relative; display: block; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #0b0b12, #16161f); border: 1px solid rgba(255,255,255,0.08); }
-.example-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.example-video .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.example-video .play span { width: 58px; height: 58px; border-radius: 50%; background: rgba(59,130,246,0.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(59,130,246,0.45); transition: transform 0.2s ease; }
-.example-video:hover .play span { transform: scale(1.08); }
-.example-video .play svg { width: 22px; height: 22px; margin-left: 3px; }
+.example-video { position: relative; display: block; border-radius: 12px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.08); }
+.example-video video { width: 100%; height: auto; display: block; }
 .example-title { font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; font-size: 1.15rem; color: #fff; margin: 1rem 0 0.45rem; }
 .example-desc { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
-.example-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.85rem; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3b82f6; }
-.example-link:hover { color: #93b8ff; }
 
 /* Statement strip */
 .statement { border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); background: #08080d; }
@@ -143,12 +137,19 @@ h1, h2, h3, .eyebrow { font-family: 'Oswald', sans-serif; }
       <div class="examples">
         <div class="examples-label">Featured work</div>
         <article class="example">
-          <a class="example-video" href="#" data-video aria-label="Watch Sal the Bookie — Fade Launch Promo">
-            <div class="play"><span><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span></div>
-          </a>
+          <div class="example-video"><video controls preload="metadata" playsinline src="assets/media-sal-launch-promo.mp4"></video></div>
           <div class="example-title">Sal the Bookie &mdash; Fade Launch Promo</div>
           <p class="example-desc">Concept: a cinematic launch spot starring Sal, the old-school bookie whose back-room empire unravels as Fade drags betting into the open. A tongue-in-cheek brand introduction that sets up the &ldquo;bet together&rdquo; world.</p>
-          <a class="example-link" href="#" target="_blank" rel="noopener">Watch the promo &#8594;</a>
+        </article>
+        <article class="example">
+          <div class="example-video"><video controls preload="metadata" playsinline src="assets/media-example-2.mp4"></video></div>
+          <div class="example-title">Fade Original &mdash; [add title]</div>
+          <p class="example-desc">[Add a one-line concept description for this piece.]</p>
+        </article>
+        <article class="example">
+          <div class="example-video"><video controls preload="metadata" playsinline src="assets/media-example-3.mp4"></video></div>
+          <div class="example-title">Fade Original &mdash; [add title]</div>
+          <p class="example-desc">[Add a one-line concept description for this piece.]</p>
         </article>
       </div>
     </div>
