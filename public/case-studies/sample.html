@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study Title — Fade Case Studies</title>
+<meta name="description" content="A Fade case study — replace with this piece's summary for social/search previews." />
+<link rel="canonical" href="https://fade.bet/case-studies/sample" />
+<meta name="theme-color" content="#050507" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Case Study Title — Fade Case Studies" />
+<meta property="og:description" content="A Fade case study — replace with this piece's summary." />
+<!-- <meta property="og:image" content="https://fade.bet/assets/case-studies/sample/cover.jpg" /> -->
+<meta property="og:url" content="https://fade.bet/case-studies/sample" />
+<meta property="og:site_name" content="Fade" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.78); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: #3b82f6; text-decoration: none; }
+h1, h2, h3, .eyebrow { font-family: 'Oswald', sans-serif; }
+
+/* Reading progress bar */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #3b82f6, #60a5fa); z-index: 30; }
+
+.header { padding: 1.4rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); position: sticky; top: 0; z-index: 20; background: rgba(5,5,7,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.header .brand { display: inline-flex; align-items: center; gap: 0.7rem; }
+.header svg { height: 26px; width: auto; }
+.header .divider { width: 1px; height: 16px; background: rgba(255,255,255,0.18); }
+.header .sub { font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.header .back { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.header .back:hover { color: #fff; }
+
+/* Article shell */
+.article { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+.cs-head { text-align: center; padding: 4rem 0 2.5rem; }
+.cs-head .tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3b82f6; margin-bottom: 1.1rem; }
+.cs-head h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; line-height: 1.0; margin-bottom: 1.25rem; }
+.cs-head .dek { font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: rgba(255,255,255,0.55); max-width: 680px; margin: 0 auto 1.5rem; line-height: 1.55; }
+.cs-byline { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+/* Slides (images). Full-width within the article shell. */
+.cs-slide { margin: 2.5rem 0; }
+.cs-slide .frame { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(150deg, #11131c, #0a0a10); }
+.cs-slide img { width: 100%; height: auto; display: block; }
+.cs-slide .ph { aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.28); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.cs-slide.cover .ph { aspect-ratio: 16/10; }
+.cs-slide figcaption { margin-top: 0.7rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); font-style: italic; }
+
+/* Body copy column — narrower than slides for readability */
+.cs-copy { max-width: 680px; margin: 0 auto; }
+.cs-copy p { font-size: 1.12rem; color: rgba(255,255,255,0.78); line-height: 1.85; margin: 1.5rem 0; }
+.cs-copy h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; margin: 3rem 0 0.5rem; }
+.cs-copy .lede { font-size: 1.3rem; color: #fff; line-height: 1.65; }
+.cs-copy blockquote { margin: 2.5rem 0; padding: 0.5rem 0 0.5rem 1.5rem; border-left: 3px solid #3b82f6; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 1.6rem; line-height: 1.25; color: #fff; text-transform: uppercase; letter-spacing: 0.005em; }
+.cs-copy strong { color: #fff; font-weight: 600; }
+
+/* End / share */
+.cs-end { max-width: 680px; margin: 3.5rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; }
+.cs-end p { font-size: 0.95rem; color: rgba(255,255,255,0.5); }
+.cs-back { display: inline-block; margin: 3rem auto 0; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3b82f6; }
+
+.footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 2.5rem 1.5rem; text-align: center; margin-top: 4rem; }
+.footer svg { height: 22px; opacity: 0.8; margin-bottom: 0.9rem; }
+.footer p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+.footer a { color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="header">
+  <a class="brand" href="/" aria-label="Fade home">
+    <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <span class="divider"></span><span class="sub">Case Studies</span>
+  </a>
+  <a class="back" href="/case-studies">&#8592; All case studies</a>
+</div>
+
+<article class="article">
+
+  <header class="cs-head">
+    <span class="tag">Topic / Category</span>
+    <h1>Case Study Title Goes Here</h1>
+    <p class="dek">The deck — one or two sentences that frame the story and set up what the slides reveal.</p>
+    <div class="cs-byline">Fade Desk &middot; [Month Year]</div>
+  </header>
+
+  <!-- SLIDE 1 — cover -->
+  <figure class="cs-slide cover">
+    <div class="frame">
+      <!-- replace with: <img src="../assets/case-studies/sample/01.jpg" alt="Slide 1" /> -->
+      <div class="ph">Slide 1 — cover</div>
+    </div>
+  </figure>
+
+  <div class="cs-copy">
+    <p class="lede">[Lede paragraph — the hook. Open with the most compelling line of the story, the way you would in the caption.]</p>
+    <p>[Body copy. Walk through the setup of the case study — the topic, the player or celebrity, the bet, the situation. This column stays narrow for easy reading while the slides break wider for impact.]</p>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 2</div></div></figure>
+
+  <div class="cs-copy">
+    <p>[Copy tied to slide 2 — explain what the visual shows and why it matters.]</p>
+    <blockquote>Pull a punchy line from the copy to break up the read.</blockquote>
+    <p>[More body copy leading into the next slide.]</p>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 3</div></div></figure>
+
+  <div class="cs-copy">
+    <h2>A section heading</h2>
+    <p>[Copy for slide 3 / this section.]</p>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 4</div></div></figure>
+  <div class="cs-copy"><p>[Copy for slide 4.]</p></div>
+
+  <!-- SLIDE 5 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 5</div></div></figure>
+  <div class="cs-copy"><p>[Copy for slide 5.]</p></div>
+
+  <!-- SLIDE 6 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 6</div></div></figure>
+  <div class="cs-copy"><p>[Copy for slide 6.]</p></div>
+
+  <!-- SLIDE 7 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 7</div></div></figure>
+  <div class="cs-copy"><p>[Copy for slide 7.]</p></div>
+
+  <!-- SLIDE 8 -->
+  <figure class="cs-slide"><div class="frame"><div class="ph">Slide 8</div></div></figure>
+  <div class="cs-copy"><p>[Closing copy — the takeaway. Land the point and tie it back to Fade.]</p></div>
+
+  <div class="cs-end">
+    <p>Originally shared across Fade's Instagram &amp; TikTok.</p>
+    <a class="cs-back" href="/case-studies">&#8592; Back to all case studies</a>
+  </div>
+
+</article>
+
+<div class="footer">
+  <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+  <p>&copy; Fade. All rights reserved. &middot; <a href="/">fade.bet</a></p>
+</div>
+
+<script>
+(function () {
+  var bar = document.getElementById('progress');
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
