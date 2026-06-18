@@ -68,6 +68,7 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 
 /* feature / pillar grid */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+.pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
 .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.75rem; }
 .card .k { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: rgba(59,130,246,0.8); }
 .card h3 { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; color: #fff; margin: 0.45rem 0 0.6rem; line-height: 1.1; }
@@ -103,7 +104,7 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 
 @media (max-width: 820px) {
   .metrics { grid-template-columns: 1fr 1fr; }
-  .split, .cards, .why, .vids { grid-template-columns: 1fr; }
+  .split, .cards, .pillars, .why, .vids { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -131,6 +132,14 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
     </div>
   </div>
 </header>
+
+<!-- THESIS -->
+<section id="thesis"><div class="wrap">
+  <span class="eyebrow">The Thesis</span>
+  <h2 class="sec">Be where people go <span class="grad">before they bet.</span></h2>
+  <p class="lead">Every bet starts with a decision &mdash; and that decision is made <strong>before</strong> a sportsbook is ever opened. Today it happens scattered across group chats, X, stat sites and screenshots.</p>
+  <p class="lead" style="margin-top:1rem;">Fade is building the single place people go before they bet. <strong>We don't have to be the book.</strong> If we own the pre-bet moment, we own the most valuable real estate in betting &mdash; and we win on <strong>advertising and affiliate</strong>, not on risk.</p>
+</div></section>
 
 <!-- PROBLEM -->
 <section id="problem"><div class="wrap">
@@ -162,15 +171,13 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 <!-- PRODUCT -->
 <section id="product"><div class="wrap">
   <span class="eyebrow">The Product</span>
-  <h2 class="sec">One app. Everything betting.</h2>
-  <p class="lead">Fade is the first platform to connect sports betting, social media, and culture under one roof.</p>
-  <div class="cards">
-    <div class="card"><div class="k">01</div><h3>The Feed</h3><p>Follow friends, creators, athletes and sharp bettors. See every pick that matters the second it's placed &mdash; then tail or fade.</p></div>
-    <div class="card"><div class="k">02</div><h3>FadeSync</h3><p>Link FanDuel, DraftKings, BetMGM, Caesars, Kalshi and more. Bets import automatically into verified, transparent records.</p></div>
-    <div class="card"><div class="k">03</div><h3>Fade IQ</h3><p>An AI betting coach that studies your entire history &mdash; exposes your leaks, calls out tilt, and builds smarter game plans.</p></div>
-    <div class="card"><div class="k">04</div><h3>Dynamic Bet Cards</h3><p>Auto-generated, shareable bet cards built for social &mdash; the unit that turns every bet into content.</p></div>
-    <div class="card"><div class="k">05</div><h3>Records &amp; Leaderboards</h3><p>ROI, streaks and all-time history &mdash; fully transparent, with weekly, monthly and all-time rankings.</p></div>
-    <div class="card"><div class="k">06</div><h3>Live Discussions</h3><p>Game-day channels and strategy talk &mdash; the community layer that keeps users in the app between bets.</p></div>
+  <h2 class="sec">Four reasons people open Fade before they bet.</h2>
+  <p class="lead">Media, social, analytics, and narrative &mdash; the four pulls that make Fade the pre-bet destination, and the surface where we sell advertising and affiliate.</p>
+  <div class="pillars">
+    <div class="card"><div class="k">01 &middot; Media</div><h3>The content they already share</h3><p>Original betting content and an owned media engine reaching the largest community of sports bettors. It's the top of the funnel &mdash; the reason people show up in the first place.</p></div>
+    <div class="card"><div class="k">02 &middot; Social</div><h3>Every pick that matters</h3><p>Follow friends, creators and sharps; see every bet in real time; tail or fade in one tap, exported to your sportsbook via FadeSync. The shared feed betting never had.</p></div>
+    <div class="card"><div class="k">03 &middot; Analytics &amp; Statistics</div><h3>The numbers behind the pick</h3><p>Verified records, ROI, matchup data and trends &mdash; powered by FadeSync and Fade IQ, the AI coach that knows your entire history. The homework, done in-app.</p></div>
+    <div class="card"><div class="k">04 &middot; Narratives &amp; Streaks</div><h3>The storylines that move bets</h3><p>Hot and cold streaks, momentum, and the narratives driving the board &mdash; the context bettors check right before they lock it in.</p></div>
   </div>
 </div></section>
 
@@ -206,12 +213,13 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 <!-- BUSINESS MODEL -->
 <section id="model"><div class="wrap">
   <span class="eyebrow">Business Model</span>
-  <h2 class="sec">Multiple lines, one audience.</h2>
+  <h2 class="sec">We win on advertising &amp; affiliate.</h2>
+  <p class="lead">Own the moment before the bet and you own the highest-intent audience in sports. We monetize that attention &mdash; we don't take risk on the bets themselves.</p>
   <div class="rev">
-    <div class="row"><div class="n">01</div><div><h4>Sportsbook revenue share</h4><p>CPA and revenue share on bets exported to partner sportsbooks via FadeSync. <span class="ph">[$ per user / take rate]</span></p></div></div>
-    <div class="row"><div class="n">02</div><div><h4>Fade Media</h4><p>Original content, influencer campaigns at scale, podcast/show sponsorships, and an in-house studio for sportsbooks &mdash; B2B revenue today. <span class="ph">[$ booked / pipeline]</span></p></div></div>
-    <div class="row"><div class="n">03</div><div><h4>Fade IQ premium</h4><p>Subscription for advanced AI coaching and analytics. <span class="ph">[price / attach rate]</span></p></div></div>
-    <div class="row"><div class="n">04</div><div><h4>Data &amp; insights</h4><p>Aggregated, anonymized betting trends and sentiment. <span class="ph">[future line]</span></p></div></div>
+    <div class="row"><div class="n">01</div><div><h4>Affiliate &amp; revenue share</h4><p>Fade is the top of the funnel. We send high-intent bettors to the sportsbooks via FadeSync &mdash; CPA and revenue share on every handoff. <span class="ph">[$ per user / take rate]</span></p></div></div>
+    <div class="row"><div class="n">02</div><div><h4>Advertising</h4><p>Sportsbooks and brands pay to reach bettors at the exact moment of decision &mdash; the most valuable ad placement in the category. <span class="ph">[CPM / sponsorship $]</span></p></div></div>
+    <div class="row"><div class="n">03</div><div><h4>Fade Media</h4><p>Original content, influencer campaigns at scale, podcast/show sponsorships, and an in-house studio for sportsbooks &mdash; B2B revenue today. <span class="ph">[$ booked / pipeline]</span></p></div></div>
+    <div class="row"><div class="n">04</div><div><h4>Fade IQ premium &amp; data</h4><p>Subscription for advanced AI coaching, plus aggregated, anonymized betting trends. <span class="ph">[price / attach rate]</span></p></div></div>
   </div>
 </div></section>
 
