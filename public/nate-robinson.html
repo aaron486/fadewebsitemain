@@ -30,7 +30,7 @@ h1.title span { color: #3b82f6; }
 .sub { margin-top: 0.6rem; color: rgba(255,255,255,0.55); font-size: 1.05rem; }
 
 /* logistics bar */
-.logi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 1.75rem; }
+.logi { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 1.75rem; }
 .logi .cell { background: #0a0a0f; padding: 1.1rem 1.25rem; }
 .logi .k { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.4rem; }
 .logi .v { font-size: 1rem; color: #fff; font-weight: 600; }
@@ -65,6 +65,9 @@ ul.list li::before { content: '\2192'; position: absolute; left: 0; color: #3b82
 figure.ref { margin: 1.5rem 0; max-width: 360px; }
 figure.ref img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
 figure.ref figcaption { margin-top: 0.55rem; font-size: 0.8rem; color: rgba(255,255,255,0.42); font-style: italic; }
+.loc { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #fff; font-size: 1.15rem; letter-spacing: 0.02em; margin-top: 1.75rem; margin-bottom: 0.25rem; }
+.loc:first-of-type { margin-top: 0.75rem; }
+.loc span { color: rgba(59,130,246,0.85); font-size: 0.7rem; letter-spacing: 0.1em; margin-left: 0.5rem; }
 .footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 0 3rem; color: rgba(255,255,255,0.3); font-size: 0.78rem; }
 
 @media (max-width: 760px) { .logi { grid-template-columns: 1fr 1fr; } .grid { grid-template-columns: 1fr; } }
@@ -85,9 +88,7 @@ figure.ref figcaption { margin-top: 0.55rem; font-size: 0.8rem; color: rgba(255,
 
   <div class="logi">
     <div class="cell"><div class="k">Shoot Date</div><div class="v">Friday, June 20, 2026</div></div>
-    <div class="cell"><div class="k">Call Time</div><div class="v"><span class="ph">[TBD]</span></div></div>
-    <div class="cell"><div class="k">Location</div><div class="v">Trill Burgers &rarr; Barbershop</div></div>
-    <div class="cell"><div class="k">Est. Wrap</div><div class="v"><span class="ph">[TBD]</span></div></div>
+    <div class="cell"><div class="k">Locations</div><div class="v">Trill Burgers &rarr; Barbershop &rarr; Court</div></div>
   </div>
 </div></div>
 
@@ -112,26 +113,50 @@ figure.ref figcaption { margin-top: 0.55rem; font-size: 0.8rem; color: rgba(255,
 <!-- SHOOT PLAN -->
 <section><div class="wrap">
   <span class="eyebrow">Shoot Plan</span>
-  <h2 class="sec">Two stops, one story.</h2>
+  <h2 class="sec">Three stops, one story.</h2>
   <div class="grid">
     <div class="card"><div class="k">Stop 1 &middot; Run-and-gun</div><h3>Trill Burgers Appearance</h3><p>Start at Nate's appearance at Trill Burgers. Capture B-roll &mdash; Nate interacting with fans, signing, crowd energy, candid moments. Documentary feel; grab the real reactions.</p></div>
     <div class="card"><div class="k">Stop 2 &middot; Controlled</div><h3>The Barbershop</h3><p>Move to the barbershop for the hero. Clean, lit shots of Nate getting his cut while he delivers the lines. This is the spine of the spot.</p></div>
+    <div class="card"><div class="k">Stop 3 &middot; Energy</div><h3>Basketball Court</h3><p>Close on the court &mdash; Nate dribbling, shooting, laughing. Doing what he does best. The visual payoff to "too short to last."</p></div>
   </div>
 </div></section>
 
 <!-- SCRIPT -->
 <section><div class="wrap">
-  <span class="eyebrow">Script &mdash; Draft Lines</span>
-  <h2 class="sec">In the chair.</h2>
-  <p class="lead">Nate delivers these getting his fade &mdash; conversational, confident, a little funny. The runner: they always tried to fade him, and he made them pay every time.</p>
+  <span class="eyebrow">Script &amp; Quotes &mdash; Draft</span>
+  <h2 class="sec">What Nate says.</h2>
+  <p class="lead">Lines for each stop, conversational and confident. <strong>If he's having trouble on camera, capture them as voiceover</strong> to lay over the B-roll.</p>
+
+  <h3 class="loc">Trill Burgers <span>on camera / candid</span></h3>
+  <ul class="list">
+    <li>&ldquo;What's up &mdash; Nate Robinson, and I'm with Fade now.&rdquo;</li>
+    <li>&ldquo;Tail me, fade me &mdash; either way, we betting together.&rdquo;</li>
+    <li>&ldquo;They been trying to fade me my whole life. Look where I'm at.&rdquo;</li>
+  </ul>
+
+  <h3 class="loc">Barbershop <span>hero</span></h3>
   <ul class="list">
     <li>&ldquo;They always tried to fade me, man &mdash; my whole life.&rdquo;</li>
     <li>&ldquo;They said I wouldn't win the dunk contest? Faded 'em <b>three times</b>. I know their pockets hurt after that.&rdquo;</li>
     <li>&ldquo;Too short to play a long time in the NBA &mdash; fade 'em there too.&rdquo;</li>
     <li>&ldquo;They even said the Knicks couldn't win it all &mdash; I know y'all faded 'em on the Spurs.&rdquo;</li>
-    <li><span class="ph">[Add closing line + Fade CTA tie-in]</span></li>
   </ul>
-  <p class="note">Each line doubles as a standalone 9:16 cutdown &mdash; shoot alts and a clean sign-off: &ldquo;Can't Fade Nate.&rdquo;</p>
+
+  <h3 class="loc">Basketball Court <span>playful</span></h3>
+  <ul class="list">
+    <li>&ldquo;Too short? I've been hearing that my whole life.&rdquo;</li>
+    <li>&ldquo;Go ahead and fade me out here &mdash; I'll wait.&rdquo;</li>
+    <li>&ldquo;This little fella right here &mdash; three-time dunk champ.&rdquo;</li>
+  </ul>
+
+  <h3 class="loc">End <span>voiceover</span></h3>
+  <ul class="list">
+    <li>&ldquo;You can fade the bet. You can't fade me.&rdquo;</li>
+    <li>&ldquo;Can't Fade Nate.&rdquo;</li>
+    <li>&ldquo;Download Fade. Bet together.&rdquo;</li>
+  </ul>
+
+  <p class="note">Each line doubles as a standalone 9:16 cutdown &mdash; shoot alts and a clean sign-off. Roll VO audio even on the takes that don't make the hero.</p>
 </div></section>
 
 <!-- DELIVERABLES -->
@@ -154,7 +179,7 @@ figure.ref figcaption { margin-top: 0.55rem; font-size: 0.8rem; color: rgba(255,
     <li><b>Trill Burgers B-roll</b> &mdash; fan interactions, signing, candids, crowd energy. Run-and-gun coverage.</li>
     <li><b>Barbershop hero</b> &mdash; Nate in the chair getting a fade; to-camera lines + overheard banter. The spine of the spot.</li>
     <li><b>"They tried to fade me"</b> &mdash; Nate runs the doubts (too short, overlooked) &mdash; each line flipped.</li>
-    <li><b>Dunk-champ callback</b> &mdash; energy beat referencing the 3&times; titles (talk + movement; no archival rights needed).</li>
+    <li><b>Court B-roll</b> &mdash; Nate dribbling, shooting, laughing &mdash; doing what he does best.</li>
     <li><b>Tail or Fade</b> &mdash; Nate reacts to picks on the app: "you can fade the bet &mdash; you can't fade me."</li>
     <li><b>App in hand</b> &mdash; clean inserts of the Fade feed and tail/fade buttons.</li>
     <li><b>Sign-off / CTA</b> &mdash; "Can't Fade Nate. Download Fade. Bet together." Multiple reads.</li>
