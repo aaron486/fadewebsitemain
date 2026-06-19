@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shoot Brief — Nate Robinson × Fade — June 20</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #050507; color: rgba(255,255,255,0.78); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: #3b82f6; text-decoration: none; }
+h1, h2, h3, .eyebrow { font-family: 'Oswald', sans-serif; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+.ph { color: #6ea8ff; border-bottom: 1px dashed rgba(110,168,255,0.6); font-style: italic; }
+strong { color: #fff; }
+
+/* header */
+.top { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 0 1.75rem; }
+.top .bar { display: flex; align-items: center; justify-content: space-between; }
+.top .brand { display: inline-flex; align-items: center; gap: 0.7rem; }
+.top svg { height: 26px; }
+.top .label { font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.top .conf { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.35rem 0.7rem; }
+h1.title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; line-height: 1.02; margin-top: 1.5rem; }
+h1.title span { color: #3b82f6; }
+.sub { margin-top: 0.6rem; color: rgba(255,255,255,0.55); font-size: 1.05rem; }
+
+/* logistics bar */
+.logi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 1.75rem; }
+.logi .cell { background: #0a0a0f; padding: 1.1rem 1.25rem; }
+.logi .k { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(59,130,246,0.85); margin-bottom: 0.4rem; }
+.logi .v { font-size: 1rem; color: #fff; font-weight: 600; }
+
+/* sections */
+section { padding: 2.75rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.eyebrow { display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(59,130,246,0.9); margin-bottom: 1rem; }
+h2.sec { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 0.005em; margin-bottom: 1rem; }
+p.lead { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 760px; }
+
+/* generic list */
+ul.list { list-style: none; margin-top: 1rem; }
+ul.list li { position: relative; padding: 0.55rem 0 0.55rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.98rem; color: rgba(255,255,255,0.72); line-height: 1.55; }
+ul.list li:first-child { border-top: none; }
+ul.list li::before { content: '\2192'; position: absolute; left: 0; color: #3b82f6; }
+
+/* run of show table */
+.ros { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.95rem; }
+.ros th, .ros td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.07); vertical-align: top; }
+.ros th { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.ros td.time { font-family: 'JetBrains Mono', monospace; color: #3b82f6; white-space: nowrap; width: 130px; }
+.ros td b { color: #fff; }
+
+/* cards grid */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
+.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.4rem 1.5rem; }
+.card h3 { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; color: #fff; margin-bottom: 0.5rem; }
+.card p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+.card .k { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(59,130,246,0.8); }
+
+.note { font-size: 0.85rem; color: rgba(255,255,255,0.45); border-left: 3px solid rgba(59,130,246,0.5); padding: 0.4rem 0 0.4rem 1rem; margin-top: 1rem; }
+figure.ref { margin: 1.5rem 0; max-width: 360px; }
+figure.ref img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+figure.ref figcaption { margin-top: 0.55rem; font-size: 0.8rem; color: rgba(255,255,255,0.42); font-style: italic; }
+.footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem 0 3rem; color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+
+@media (max-width: 760px) { .logi { grid-template-columns: 1fr 1fr; } .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="bar">
+    <span class="brand">
+      <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+      <span class="label">Shoot Brief</span>
+    </span>
+    <span class="conf">Confidential &middot; Internal</span>
+  </div>
+  <h1 class="title">Nate Robinson <span>&times; Fade</span></h1>
+  <p class="sub">Concept: <strong>"Can't Fade Nate."</strong> Hero spot + social cutdowns to roll from the World Cup through the 2026 College Football season.</p>
+
+  <div class="logi">
+    <div class="cell"><div class="k">Shoot Date</div><div class="v">Friday, June 20, 2026</div></div>
+    <div class="cell"><div class="k">Call Time</div><div class="v"><span class="ph">[TBD]</span></div></div>
+    <div class="cell"><div class="k">Location</div><div class="v"><span class="ph">[TBD]</span></div></div>
+    <div class="cell"><div class="k">Est. Wrap</div><div class="v"><span class="ph">[TBD]</span></div></div>
+  </div>
+</div></div>
+
+<!-- CONCEPT -->
+<section><div class="wrap">
+  <span class="eyebrow">Concept</span>
+  <h2 class="sec">Can't Fade Nate.</h2>
+  <p class="lead">One word, three meanings. Nate sits in the barber's chair getting a <strong>fade</strong> &mdash; while the story plays on how the world has tried to <strong>fade</strong> him (bet against him) his whole career. Too short. Overlooked. Doubted. And still a <strong>3&times; NBA Slam Dunk champion</strong>. The punchline: <strong>you can't fade Nate</strong> &mdash; and on Fade, every underdog gets their shot.</p>
+  <figure class="ref">
+    <img src="assets/nate/reference-1.jpeg" alt="Nate Robinson holding the NBA Slam Dunk Champion trophy" />
+    <figcaption>Reference &mdash; Nate, 3&times; NBA Slam Dunk Champion.</figcaption>
+  </figure>
+  <div class="grid">
+    <div class="card"><div class="k">Set</div><h3>The Barbershop</h3><p>Nate in the chair getting a fresh fade. Classic shop energy &mdash; banter, clippers, mirror.</p></div>
+    <div class="card"><div class="k">Story</div><h3>"They tried to fade him"</h3><p>At 5'9", they faded him as a dunk champ. He won it three times. The doubt is the setup; the trophy is the payoff.</p></div>
+    <div class="card"><div class="k">Hook</div><h3>Too short. Overlooked.</h3><p>Every line the doubters used &mdash; flipped. The underdog who can't be faded.</p></div>
+    <div class="card"><div class="k">Punchline</div><h3>Can't Fade Nate</h3><p>Fade the haircut, fade the bet, fade the brand &mdash; you still can't fade Nate.</p></div>
+  </div>
+  <p class="note">Brand voice: confident, social, fun. Fade is the pre-bet / social layer &mdash; not a sportsbook.</p>
+</div></section>
+
+<!-- DELIVERABLES -->
+<section><div class="wrap">
+  <span class="eyebrow">Deliverables</span>
+  <h2 class="sec">What we walk away with.</h2>
+  <div class="grid">
+    <div class="card"><div class="k">Hero</div><h3>Brand Spot</h3><p>One 60&ndash;90s hero film (16:9 + 9:16 versions) introducing Fade through Nate.</p></div>
+    <div class="card"><div class="k">Social</div><h3>Vertical Cutdowns</h3><p>6&ndash;8 punchy 9:16 clips (15&ndash;30s) &mdash; hooks, "tail or fade," trash talk, reactions.</p></div>
+    <div class="card"><div class="k">Social</div><h3>Square / Feed</h3><p>2&ndash;3 1:1 edits for feed + paid.</p></div>
+    <div class="card"><div class="k">Extra</div><h3>Teaser + BTS</h3><p>One teaser and a behind-the-scenes reel for launch week.</p></div>
+  </div>
+</div></section>
+
+<!-- SHOT LIST -->
+<section><div class="wrap">
+  <span class="eyebrow">Shot List &mdash; Draft</span>
+  <h2 class="sec">Setups.</h2>
+  <ul class="list">
+    <li><b>Barbershop hero</b> &mdash; Nate in the chair getting a fade; to-camera lines + overheard banter. The spine of the spot.</li>
+    <li><b>"They tried to fade me"</b> &mdash; Nate runs the doubts (too short, overlooked) &mdash; each line flipped.</li>
+    <li><b>Dunk-champ callback</b> &mdash; energy beat referencing the 3&times; titles (talk + movement; no archival rights needed).</li>
+    <li><b>Tail or Fade</b> &mdash; Nate reacts to picks on the app: "you can fade the bet &mdash; you can't fade me."</li>
+    <li><b>App in hand</b> &mdash; clean inserts of the Fade feed and tail/fade buttons.</li>
+    <li><b>Sign-off / CTA</b> &mdash; "Can't Fade Nate. Download Fade. Bet together." Multiple reads.</li>
+    <li><span class="ph">[Lock hero script lines]</span></li>
+  </ul>
+</div></section>
+
+<!-- RUN OF SHOW -->
+<section><div class="wrap">
+  <span class="eyebrow">Run of Show</span>
+  <h2 class="sec">Schedule.</h2>
+  <table class="ros">
+    <thead><tr><th>Time</th><th>Block</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Crew call &amp; setup</b></td><td>Lighting, audio, set dressing. Confirm app demo device.</td></tr>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Talent arrival + HMU</b></td><td>Nate arrival, wardrobe, mic, brief on beats.</td></tr>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Block A &mdash; Hero film</b></td><td>Monologue + sign-off reads, 16:9.</td></tr>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Block B &mdash; Social</b></td><td>9:16 hooks, tail/fade, trash talk &mdash; volume of takes.</td></tr>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Block C &mdash; B-roll + inserts</b></td><td>Athletic energy, app-in-hand inserts.</td></tr>
+      <tr><td class="time"><span class="ph">[TBD]</span></td><td><b>Wrap</b></td><td>Confirm coverage against shot list before talent leaves.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- TALENT / CREW -->
+<section><div class="wrap">
+  <span class="eyebrow">Talent &amp; Crew</span>
+  <h2 class="sec">Who's on set.</h2>
+  <div class="grid">
+    <div class="card"><div class="k">Talent</div><h3>Nate Robinson</h3><p>Rep / contact: <span class="ph">[name &middot; phone &middot; email]</span></p></div>
+    <div class="card"><div class="k">Fade</div><h3>Producer / Lead</h3><p>Aaron Hackett &mdash; <span class="ph">[phone]</span></p></div>
+    <div class="card"><div class="k">Crew</div><h3>Director / DP</h3><p><span class="ph">[name &middot; contact]</span></p></div>
+    <div class="card"><div class="k">Crew</div><h3>Audio / HMU / PA</h3><p><span class="ph">[names &middot; contacts]</span></p></div>
+  </div>
+</div></section>
+
+<!-- WARDROBE / KIT -->
+<section><div class="wrap">
+  <span class="eyebrow">Wardrobe, Props &amp; Kit</span>
+  <h2 class="sec">Bring list.</h2>
+  <ul class="list">
+    <li><b>Wardrobe</b> &mdash; Fade brand kit (built); <span class="ph">[looks / sizes confirmed with talent]</span>.</li>
+    <li><b>Set / Props</b> &mdash; barbershop chair, mirror, clippers &amp; cape; demo phone loaded with the Fade app build.</li>
+    <li><b>Tech</b> &mdash; <span class="ph">[camera package, lenses, lights, audio, monitor]</span>.</li>
+    <li><b>Brand</b> &mdash; logo placements / lower-thirds; ensure app screens are clean and on-brand.</li>
+  </ul>
+</div></section>
+
+<!-- COMPLIANCE -->
+<section><div class="wrap">
+  <span class="eyebrow">Notes &amp; Compliance</span>
+  <h2 class="sec">Don't forget.</h2>
+  <ul class="list">
+    <li>Keep messaging on-brand &mdash; Fade is the social/pre-bet layer, <b>not</b> a sportsbook. No odds guarantees or "sure thing" claims.</li>
+    <li>Include responsible-gambling framing where required &mdash; <b>21+</b>, 1-800-GAMBLER as needed for paid placements.</li>
+    <li>Capture clean plates / alt lines so we can cut platform-specific versions.</li>
+    <li>Get signed talent usage / release for all intended channels and paid use.</li>
+    <li><span class="ph">[Add legal / usage-rights specifics from the Nate deal]</span></li>
+  </ul>
+</div></section>
+
+<div class="footer"><div class="wrap">Fade &middot; Internal shoot brief &middot; Nate Robinson &times; Fade &middot; June 20, 2026</div></div>
+
+</body>
+</html>

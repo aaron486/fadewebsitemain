@@ -21,6 +21,8 @@
     { "source": "/case-studies", "destination": "/case-studies/index.html" },
     { "source": "/casestudies", "destination": "/case-studies/index.html" },
     { "source": "/case-study", "destination": "/case-studies/index.html" },
+    { "source": "/nate", "destination": "/nate-robinson.html" },
+    { "source": "/nate-robinson", "destination": "/nate-robinson.html" },
     { "source": "/worldcup", "destination": "/worldcup.html" },
     { "source": "/world-cup", "destination": "/worldcup.html" },
     { "source": "/fifa", "destination": "/worldcup.html" },
