@@ -76,6 +76,12 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .team-bio li:first-child { border-top: none; }
 .team-bio li::before { content: '\2192'; position: absolute; left: 0; color: #3b82f6; }
 .team-bio strong { color: #fff; font-weight: 600; }
+/* product phones */
+.phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1.75rem; }
+.phone { text-align: center; }
+.phone .scr { aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
+.phone .scr video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.phone figcaption { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.75rem; }
 .card .k { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: rgba(59,130,246,0.8); }
 .card h3 { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; color: #fff; margin: 0.45rem 0 0.6rem; line-height: 1.1; }
@@ -113,6 +119,7 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
   .metrics { grid-template-columns: 1fr 1fr; }
   .split, .cards, .pillars, .why, .vids { grid-template-columns: 1fr; }
   .partners { grid-template-columns: 1fr 1fr; }
+  .phones { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -144,6 +151,18 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
     <div class="card"><div class="k">02 &middot; Narratives &amp; Streaks</div><h3>The story behind the bet</h3><p>Fade brings the qualitative side of betting into the app &mdash; who's on what, why a player's bad on the road, celebrity bets, player quirks and streaks. The stuff sports fans actually care about lives here.</p></div>
     <div class="card"><div class="k">03 &middot; Betting Assistant</div><h3>Real tools &amp; stats</h3><p>The tools and numbers people actually use &mdash; casual research, your full betting history, and Fade IQ, the AI assistant that breaks it all down.</p></div>
     <div class="card"><div class="k">04 &middot; Media &amp; Culture</div><h3>We own sports &amp; culture</h3><p>Partnerships, original media, and culture &mdash; reaching the largest community of sports bettors. This is where Fade dominates and separates.</p></div>
+  </div>
+</div></section>
+
+<!-- PRODUCT SCREENS -->
+<section id="screens"><div class="wrap">
+  <span class="eyebrow">The App</span>
+  <h2 class="sec">Inside Fade.</h2>
+  <div class="phones">
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-app.mp4"></video></div><figcaption>The Feed</figcaption></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-together.mp4"></video></div><figcaption>Bet Together</figcaption></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq.mp4"></video></div><figcaption>Fade IQ</figcaption></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-dashboard.mp4"></video></div><figcaption>Your Dashboard</figcaption></figure>
   </div>
 </div></section>
 
