@@ -91,6 +91,16 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .uof-bar span { display: block; height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 6px; }
 .uof-amt { font-family: 'JetBrains Mono', monospace; font-size: 0.92rem; color: #3b82f6; text-align: right; font-weight: 700; }
 @media (max-width: 680px) { .uof-row { grid-template-columns: 1fr auto; } .uof-bar { display: none; } }
+/* rates table */
+h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #fff; font-size: 1.2rem; letter-spacing: 0.01em; margin-top: 2.25rem; margin-bottom: 0.4rem; }
+.rates-wrap { overflow-x: auto; }
+.rates { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.92rem; min-width: 600px; }
+.rates th, .rates td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+.rates th { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.rates td.book { color: #fff; font-weight: 600; white-space: nowrap; }
+.rates td.cpa { color: #3b82f6; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+.rates td.rev { color: #4ade80; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+.rates td.note { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
 .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.75rem; }
 .card .k { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: rgba(59,130,246,0.8); }
 .card h3 { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; color: #fff; margin: 0.45rem 0 0.6rem; line-height: 1.1; }
@@ -230,6 +240,49 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
     <div class="row"><div class="n">03</div><div><h4>Fade Media</h4><p>Original content, influencer campaigns at scale, podcast/show sponsorships, and an in-house studio for sportsbooks &mdash; B2B revenue today.</p></div></div>
     <div class="row"><div class="n">04</div><div><h4>Fade IQ premium &amp; data</h4><p>Subscription for advanced AI coaching, plus aggregated, anonymized betting trends.</p></div></div>
   </div>
+</div></section>
+
+<!-- REVENUE STREAM 1 -->
+<section id="revenue-affiliate"><div class="wrap">
+  <span class="eyebrow">Revenue &middot; Stream 1</span>
+  <h2 class="sec">Sportsbook affiliate partnerships.</h2>
+  <p class="lead">The primary near-term revenue driver. When a Fade user signs up at a sportsbook through the app, Fade earns a commission &mdash; either <strong>CPA</strong> (a one-time payment per new depositing customer) or <strong>revenue share</strong> (an ongoing percentage of the sportsbook's net revenue from that customer).</p>
+
+  <h3 class="subhead">Current affiliate rates &mdash; Q1 2026</h3>
+  <div class="rates-wrap">
+    <table class="rates">
+      <thead><tr><th>Sportsbook</th><th>CPA Rate</th><th>Rev Share</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="book">FanDuel</td><td class="cpa">$25&ndash;$35</td><td class="rev">35% (730 days)</td><td class="note">44% U.S. market share. Best rev-share terms.</td></tr>
+        <tr><td class="book">DraftKings</td><td class="cpa">Negotiable</td><td class="rev">25&ndash;40% (tiered)</td><td class="note">34% market share. Rev share scales with volume.</td></tr>
+        <tr><td class="book">BetMGM</td><td class="cpa">$50+</td><td class="rev">20&ndash;30%</td><td class="note">14% market share. Higher CPA, lower rev share.</td></tr>
+        <tr><td class="book">Caesars</td><td class="cpa">$30&ndash;$50</td><td class="rev">25&ndash;35%</td><td class="note">Aggressive acquisition spend. Flexible terms.</td></tr>
+        <tr><td class="book">Hard Rock Bet</td><td class="cpa">$25&ndash;$40</td><td class="rev">20&ndash;30%</td><td class="note">Growing brand. Florida home-market advantage.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subhead">Affiliate revenue projections</h3>
+  <p class="lead">Projections assume a blended CPA model: an average of <strong>$35 per referred depositing customer</strong>, with <strong>8&ndash;12%</strong> of app users clicking through to a sportsbook and <strong>20&ndash;30%</strong> of those completing a deposit.</p>
+  <p class="note"><span class="ph">[Projection table &mdash; users &rarr; click-throughs &rarr; referred deposits &rarr; revenue &mdash; to be added.]</span></p>
+</div></section>
+
+<!-- REVENUE STREAM 2 -->
+<section id="revenue-ads"><div class="wrap">
+  <span class="eyebrow">Revenue &middot; Stream 2</span>
+  <h2 class="sec">Advertising &amp; sponsorships.</h2>
+  <p class="lead">Sportsbooks are among the highest-spending digital advertisers in the U.S. Fade offers a highly targeted audience of <strong>active bettors</strong> &mdash; exactly who sportsbooks, DFS platforms, and betting-adjacent brands want to reach. This stream scales with the user base and grows more valuable as engagement climbs.</p>
+
+  <h3 class="subhead">Ad placement opportunities</h3>
+  <div class="pillars">
+    <div class="card"><div class="k">In-feed</div><h3>Sponsored content</h3><p>Sportsbook promos surfaced naturally in the community feed (e.g. &ldquo;DraftKings: $200 bonus for new users&rdquo;). Native feel, strong conversion.</p></div>
+    <div class="card"><div class="k">Display</div><h3>Banner placements</h3><p>Standard display on analytics screens and leaderboards. Sports-betting CPMs run <b>$15&ndash;$40</b> &mdash; well above general display.</p></div>
+    <div class="card"><div class="k">Premium</div><h3>Sponsored tools</h3><p>A sportsbook sponsors a feature (e.g. &ldquo;Odds Comparison powered by FanDuel&rdquo;). Commands <b>$2,000&ndash;$10,000/mo</b> depending on user base.</p></div>
+    <div class="card"><div class="k">Push</div><h3>Notification sponsorship</h3><p>Sponsored alerts for major events (e.g. &ldquo;Super Bowl props are live on BetMGM&rdquo;). High open + conversion, premium pricing.</p></div>
+  </div>
+
+  <h3 class="subhead">Ad revenue projections</h3>
+  <p class="lead">Modest at low user counts, but it scales meaningfully. At <strong>10,000 MAU</strong> with a sports-betting audience, expect <strong>$3&ndash;$5 ARPU</strong> from ads alone. Direct sponsorship deals become viable above <strong>5,000 MAU</strong>.</p>
 </div></section>
 
 <!-- TRACTION -->
