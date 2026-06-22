@@ -82,6 +82,15 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .phone .scr { aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
 .phone .scr video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .phone figcaption { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+/* use of funds */
+.uof { margin-top: 1.5rem; }
+.uof-row { display: grid; grid-template-columns: 230px 1fr 80px; align-items: center; gap: 1.1rem; padding: 0.75rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.uof-row:first-child { border-top: none; }
+.uof-label { font-size: 0.98rem; color: #fff; font-weight: 600; }
+.uof-bar { height: 10px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; }
+.uof-bar span { display: block; height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 6px; }
+.uof-amt { font-family: 'JetBrains Mono', monospace; font-size: 0.92rem; color: #3b82f6; text-align: right; font-weight: 700; }
+@media (max-width: 680px) { .uof-row { grid-template-columns: 1fr auto; } .uof-bar { display: none; } }
 .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.75rem; }
 .card .k { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: rgba(59,130,246,0.8); }
 .card h3 { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; color: #fff; margin: 0.45rem 0 0.6rem; line-height: 1.1; }
@@ -291,6 +300,20 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
     <div class="card"><div class="k">Hire</div><h3>Community Manager</h3><p>Game-day channels, social, and retention.</p></div>
     <div class="card"><div class="k">Support</div><h3>Compliance &amp; Legal</h3><p>Regulated-state coverage and partnership terms.</p></div>
   </div>
+</div></section>
+
+<!-- USE OF FUNDS -->
+<section id="use-of-funds"><div class="wrap">
+  <span class="eyebrow">Use of Funds</span>
+  <h2 class="sec">Where the $500K goes.</h2>
+  <div class="uof">
+    <div class="uof-row"><div class="uof-label">Team &amp; key hires</div><div class="uof-bar"><span style="width:50%"></span></div><div class="uof-amt">$250K</div></div>
+    <div class="uof-row"><div class="uof-label">Product &amp; engineering</div><div class="uof-bar"><span style="width:18%"></span></div><div class="uof-amt">$90K</div></div>
+    <div class="uof-row"><div class="uof-label">Content &amp; media production</div><div class="uof-bar"><span style="width:16%"></span></div><div class="uof-amt">$80K</div></div>
+    <div class="uof-row"><div class="uof-label">Growth, partnerships &amp; launch</div><div class="uof-bar"><span style="width:10%"></span></div><div class="uof-amt">$50K</div></div>
+    <div class="uof-row"><div class="uof-label">Compliance, legal &amp; ops</div><div class="uof-bar"><span style="width:6%"></span></div><div class="uof-amt">$30K</div></div>
+  </div>
+  <p class="note">Draft allocation &mdash; adjust to your plan. Roughly 18 months of runway to a scalable launch for the 2026 College Football season.</p>
 </div></section>
 
 <!-- ASK -->
