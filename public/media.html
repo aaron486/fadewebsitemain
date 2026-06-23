@@ -82,6 +82,7 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .phone .scr { aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
 .phone .scr video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .phone figcaption { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.phone .desc { margin-top: 0.5rem; font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.55); }
 /* use of funds */
 .uof { margin-top: 1.5rem; }
 .uof-row { display: grid; grid-template-columns: 230px 1fr 80px; align-items: center; gap: 1.1rem; padding: 0.75rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
@@ -144,16 +145,57 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   .partners { grid-template-columns: 1fr 1fr; }
   .phones { grid-template-columns: 1fr 1fr; }
 }
+
+/* access gate */
+.gate { position: fixed; inset: 0; z-index: 100; background: #050507; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1.5rem; overflow-y: auto; }
+.gate.hidden { display: none; }
+.gate::before { content: ''; position: absolute; top: 30%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 560px; max-width: 96vw; background: radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 62%); filter: blur(64px); pointer-events: none; }
+.gate-inner { position: relative; width: 100%; max-width: 720px; text-align: center; }
+.gate-logo { height: 30px; width: auto; margin-bottom: 1.5rem; }
+.gate-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(59,130,246,0.9); margin-bottom: 1rem; }
+.gate-video { width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.6); margin-bottom: 1.75rem; }
+.gate-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gate h1 { font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; text-transform: uppercase; color: #fff; line-height: 1.05; margin-bottom: 0.75rem; }
+.gate .sub { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 1.5rem; }
+.gate-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; max-width: 460px; margin: 0 auto; }
+.gate-form input { flex: 1; min-width: 200px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; letter-spacing: 0.06em; color: #fff; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 0.9rem 1.1rem; outline: none; transition: border-color 0.2s ease; }
+.gate-form input:focus { border-color: rgba(59,130,246,0.7); }
+.gate-form input::placeholder { color: rgba(255,255,255,0.35); text-transform: none; letter-spacing: 0.02em; }
+.gate-form button { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; background: linear-gradient(135deg,#3b82f6,#2563eb); border: none; border-radius: 10px; padding: 0.9rem 1.6rem; cursor: pointer; box-shadow: 0 2px 16px rgba(59,130,246,0.3); white-space: nowrap; }
+.gate-form button:hover { filter: brightness(1.08); }
+.gate-error { min-height: 1.2rem; margin-top: 0.9rem; font-size: 0.88rem; color: #f87171; opacity: 0; transition: opacity 0.2s ease; }
+.gate-error.show { opacity: 1; }
+.gate-foot { margin-top: 1.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.gate-foot a { color: rgba(255,255,255,0.55); }
 </style>
 </head>
 <body>
+
+<!-- ACCESS GATE -->
+<div class="gate" id="gate">
+  <div class="gate-inner">
+    <svg class="gate-logo" viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <div class="gate-eyebrow">Investor Overview</div>
+    <div class="gate-video">
+      <video src="/assets/fade-reel.mp4" autoplay muted loop playsinline controls></video>
+    </div>
+    <h1>Enter your access code</h1>
+    <p class="sub">This overview is private. Enter the code you were given to view the full deck.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input type="text" id="gateInput" placeholder="Access code" aria-label="Access code" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <button type="submit">Get access &#8594;</button>
+    </form>
+    <div class="gate-error" id="gateError">That code isn&rsquo;t right. Try again.</div>
+    <div class="gate-foot">Need a code? <a href="mailto:info@fade.bet">info@fade.bet</a></div>
+  </div>
+</div>
 
 <nav class="nav">
   <a class="brand" href="/" aria-label="Fade home">
     <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
     <span class="tag">Investor Overview</span>
   </a>
-  <a class="cta" href="#ask">Get the deck &#8594;</a>
+  <a class="cta" href="mailto:info@fade.bet">Get the deck &#8594;</a>
 </nav>
 
 <!-- THESIS -->
@@ -173,13 +215,13 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <div class="row"><div class="n">01</div><div><h4>&ldquo;I see my friends are betting&rdquo;</h4><p>Their picks land right in your feed &mdash; tail or fade in one tap. No screenshots, no re-typing.</p></div></div>
     <div class="row"><div class="n">02</div><div><h4>&ldquo;I'm at the game or watching&rdquo;</h4><p>Live game-day channels show what your circle &mdash; and the whole network &mdash; is betting in real time.</p></div></div>
     <div class="row"><div class="n">03</div><div><h4>&ldquo;I get a good insight&rdquo;</h4><p>Fade IQ and community analytics surface the angle &mdash; trends, matchups, who's fadeable &mdash; before you bet.</p></div></div>
-    <div class="row"><div class="n">04</div><div><h4>&ldquo;I see a celebrity or someone I follow bet&rdquo;</h4><p>See the biggest names' and creators' real bets the moment they place them.</p></div></div>
-    <div class="row"><div class="n">05</div><div><h4>&ldquo;I hear breaking news&rdquo;</h4><p>Injury and lineup alerts hit Fade first &mdash; with how it moves the play.</p></div></div>
-    <div class="row"><div class="n">06</div><div><h4>&ldquo;I notice the line moving&rdquo;</h4><p>Line-movement alerts show where the money's going before you lock it in.</p></div></div>
-    <div class="row"><div class="n">07</div><div><h4>&ldquo;My friend just cashed&rdquo;</h4><p>Their winning slip hits the feed &mdash; and you're one tap from running it back.</p></div></div>
-    <div class="row"><div class="n">08</div><div><h4>&ldquo;Who you got?&rdquo;</h4><p>The debate and everyone's picks live in one place &mdash; the leaderboard settles it later.</p></div></div>
-    <div class="row"><div class="n">09</div><div><h4>&ldquo;I'm chasing a storyline or streak&rdquo;</h4><p>Narratives &amp; Streaks serve who's hot, who's due, and who's overdue to fall.</p></div></div>
-    <div class="row"><div class="n">10</div><div><h4>&ldquo;I want some action right now&rdquo;</h4><p>The feed always has live games and community picks to jump on &mdash; Fade is the first app you open.</p></div></div>
+    <div class="row"><div class="n">04</div><div><h4>&ldquo;I'm chasing a storyline or streak&rdquo;</h4><p>Bettors want information that keeps them interested and makes them sharper. Narratives &amp; Streaks serve who's hot, who's due, and who's overdue to fall.</p></div></div>
+    <div class="row"><div class="n">05</div><div><h4>&ldquo;I see a celebrity or someone I follow bet&rdquo;</h4><p>See the biggest names' and creators' real bets the moment they place them.</p></div></div>
+    <div class="row"><div class="n">06</div><div><h4>&ldquo;I hear breaking news&rdquo;</h4><p>Injury and lineup alerts hit Fade first &mdash; with how it moves the play.</p></div></div>
+    <div class="row"><div class="n">07</div><div><h4>&ldquo;I notice the line moving&rdquo;</h4><p>Line-movement alerts show where the money's going before you lock it in.</p></div></div>
+    <div class="row"><div class="n">08</div><div><h4>&ldquo;My friend just cashed&rdquo;</h4><p>Their winning slip hits the feed &mdash; and you're one tap from running it back.</p></div></div>
+    <div class="row"><div class="n">09</div><div><h4>&ldquo;Who you got?&rdquo;</h4><p>The debate and everyone's picks live in one place &mdash; the leaderboard settles it later.</p></div></div>
+    <div class="row"><div class="n">10</div><div><h4>&ldquo;I want some action right now&rdquo;</h4><p>The feed always has live games and community picks to jump on &mdash; Fade is the first app you open to figure out what you want to bet on.</p></div></div>
   </div>
 </div></section>
 
@@ -241,10 +283,10 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <span class="eyebrow">The App</span>
   <h2 class="sec">Inside Fade.</h2>
   <div class="phones">
-    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-app.mp4"></video></div><figcaption>The Feed</figcaption></figure>
-    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-together.mp4"></video></div><figcaption>Bet Together</figcaption></figure>
-    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq.mp4"></video></div><figcaption>Fade IQ</figcaption></figure>
-    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-dashboard.mp4"></video></div><figcaption>Your Dashboard</figcaption></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-app.mp4"></video></div><figcaption>The Feed</figcaption><p class="desc">Every pick from your circle and the network, live &mdash; tail or fade in one tap.</p></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-together.mp4"></video></div><figcaption>Bet Together</figcaption><p class="desc">Group chats, shared slips, and game-day channels &mdash; bet with friends, not alone.</p></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq.mp4"></video></div><figcaption>Fade IQ</figcaption><p class="desc">Trends, matchups, and angles that make you sharper before you bet.</p></figure>
+    <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-dashboard.mp4"></video></div><figcaption>Your Dashboard</figcaption><p class="desc">Track every bet, streak, and result in one place &mdash; your record, settled.</p></figure>
   </div>
 </div></section>
 
@@ -271,7 +313,6 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <div class="item"><h4>Betting is already social</h4><p>91% of bettors engage with friends or family when they bet (43% &ldquo;often&rdquo;) &mdash; yet only 5% of sportsbooks offer social betting tools.</p></div>
     <div class="item"><h4>Retention lift</h4><p>Social features improve user retention 25&ndash;40% vs. traditional platforms; real-time notifications drive far higher return rates.</p></div>
     <div class="item"><h4>Undifferentiated content</h4><p>74% of sportsbooks admit their content isn't unique &mdash; a massive opening for social differentiation.</p></div>
-    <div class="item"><h4>NCAA tailwind</h4><p>The NCAA's Oct 2025 rule change lets college athletes &amp; staff bet on pro sports &mdash; ~520K newly-eligible users.</p></div>
   </div>
 </div></section>
 
@@ -284,6 +325,7 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <div class="card"><h3 style="font-size:1.5rem; margin-bottom:0.45rem;">Brand shoot + kit built</h3><p style="font-size:0.95rem; color:rgba(255,255,255,0.6); line-height:1.6;">Fade hero video + social content ready to roll from the World Cup through the 2026 CFB season.</p><a href="https://f.io/xMWJ_AY3" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.75rem; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#3b82f6;">View the content &#8594;</a></div>
     <div class="card"><h3 style="font-size:2.4rem; margin-bottom:0.35rem;">2,500</h3><div class="k">Survey applicants</div></div>
     <div class="card"><h3 style="font-size:2.4rem; margin-bottom:0.35rem;">50</h3><div class="k">World Cup case-study users</div></div>
+    <div class="card"><h3 style="font-size:1.5rem; margin-bottom:0.45rem;">Scalable, affordable partnerships</h3><p style="font-size:0.95rem; color:rgba(255,255,255,0.6); line-height:1.6;">Talent and creator deals structured to grow reach without big upfront spend &mdash; partnerships that scale as Fade does.</p></div>
   </div>
 </div></section>
 
@@ -334,7 +376,6 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 
   <h3 class="subhead">Affiliate revenue projections</h3>
   <p class="lead">Projections assume a blended CPA model: an average of <strong>$35 per referred depositing customer</strong>, with <strong>8&ndash;12%</strong> of app users clicking through to a sportsbook and <strong>20&ndash;30%</strong> of those completing a deposit.</p>
-  <p class="note"><span class="ph">[Projection table &mdash; users &rarr; click-throughs &rarr; referred deposits &rarr; revenue &mdash; to be added.]</span></p>
 </div></section>
 
 <!-- REVENUE STREAM 2 -->
@@ -391,17 +432,6 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   </ul>
 </div></section>
 
-<!-- TRACTION -->
-<section id="traction"><div class="wrap">
-  <span class="eyebrow">Case Studies</span>
-  <h2 class="sec">The content engine, working.</h2>
-  <div class="cards" style="margin-top:1.5rem;">
-    <div class="card"><div class="k">Case study</div><h3>FIFA World Cup study</h3><p>A live research program putting everyday bettors on prediction markets &mdash; <span class="ph">[participants / result]</span>.</p><a href="/worldcup" style="display:inline-block; margin-top:0.7rem; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#3b82f6;">View the study &#8594;</a></div>
-    <div class="card"><div class="k">Case study</div><h3>Kalshi study</h3><p>Can retail bettors do better trading prediction markets than at their sportsbook? <span class="ph">[finding]</span>.</p></div>
-    <div class="card"><div class="k">Media</div><h3>Editorial case studies</h3><p>Breakout pieces (e.g. Mattress Mack) driving reach and brand affinity &mdash; <span class="ph">[views / engagement]</span>.</p></div>
-  </div>
-</div></section>
-
 <!-- COMPS -->
 <section id="comps"><div class="wrap">
   <span class="eyebrow">Comparable Exits</span>
@@ -426,28 +456,15 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   </div>
 </div></section>
 
-<!-- TEAM -->
-<section id="team"><div class="wrap">
-  <span class="eyebrow">Team</span>
-  <h2 class="sec">Who's building it.</h2>
-  <div class="card" style="max-width:780px;">
-    <div class="k">Founder</div>
-    <h3>Aaron Hackett</h3>
-    <ul class="team-bio">
-      <li>1st employee at <strong>Postgame</strong> &mdash; scaled its athlete creator network to <strong>100,000+ athletes</strong>.</li>
-      <li>Signed AOR (agency-of-record) deals with <strong>adidas, Raising Cane's, and CVS</strong>.</li>
-      <li>Postgame approaching <strong>9-figure revenue</strong> four years in.</li>
-      <li>Expansion planned into <strong>player representation</strong> and <strong>sports properties</strong>.</li>
-    </ul>
-  </div>
-</div></section>
-
 <!-- TIMELINE -->
 <section id="timeline"><div class="wrap">
   <span class="eyebrow">Timeline &amp; Roadmap</span>
   <h2 class="sec">What's next.</h2>
   <div class="rev">
-    <div class="row"><div class="n">Now</div><div><h4>World Cup case study live</h4><p>50 users onboarded and trading; partner shoots underway (Nate Robinson, June 20).</p></div></div>
+    <div class="row"><div class="n">Now</div><div><h4>World Cup case study live</h4><p>50 users onboarded and trading; partner shoots underway.</p></div></div>
+    <div class="row"><div class="n">Media</div><div><h4>Build media channels</h4><p>Stand up and grow Fade's owned channels &mdash; Instagram, TikTok, X, and Discord.</p></div></div>
+    <div class="row"><div class="n">Tech</div><div><h4>Strengthen the technical structure</h4><p>Harden Fade's technical foundation so the stack is stable and ready to scale.</p></div></div>
+    <div class="row"><div class="n">Product</div><div><h4>Narratives, streaks &amp; analytics in the feed</h4><p>Add Narratives &amp; Streaks and quantitative insights to the Fade feed.</p></div></div>
     <div class="row"><div class="n">30&ndash;60d</div><div><h4>Raise, build, and roll out</h4><p>Close a $500K raise, structure the technical side, and launch the social roll-out for the 2026 College Football season.</p></div></div>
   </div>
   <h4 style="font-family:'Oswald',sans-serif; text-transform:uppercase; color:#fff; font-size:1.3rem; margin-top:2.5rem; margin-bottom:0.5rem;">To move forward &mdash; a full, scalable launch</h4>
@@ -461,26 +478,12 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   </div>
 </div></section>
 
-<!-- USE OF FUNDS -->
-<section id="use-of-funds"><div class="wrap">
-  <span class="eyebrow">Use of Funds</span>
-  <h2 class="sec">Where the $500K goes.</h2>
-  <div class="uof">
-    <div class="uof-row"><div class="uof-label">Engineering &amp; product</div><div class="uof-bar"><span style="width:48%"></span></div><div class="uof-amt">$240K</div></div>
-    <div class="uof-row"><div class="uof-label">Content, partnerships &amp; launch</div><div class="uof-bar"><span style="width:26%"></span></div><div class="uof-amt">$130K</div></div>
-    <div class="uof-row"><div class="uof-label">Team &amp; key hires</div><div class="uof-bar"><span style="width:20%"></span></div><div class="uof-amt">$100K</div></div>
-    <div class="uof-row"><div class="uof-label">Compliance, legal &amp; ops</div><div class="uof-bar"><span style="width:6%"></span></div><div class="uof-amt">$30K</div></div>
-  </div>
-  <p class="note">Draft allocation &mdash; adjust to your plan. Roughly 18 months of runway to a scalable launch for the 2026 College Football season.</p>
-</div></section>
-
-<!-- ASK -->
-<section id="ask"><div class="wrap">
-  <span class="eyebrow">The Ask</span>
+<!-- REQUEST DECK -->
+<section id="deck"><div class="wrap">
   <div class="ask">
-    <div class="big">Raising $500K on a $20M post-money cap</div>
-    <p>Structured as a <strong>SAFE note</strong> &mdash; approximately <strong>2.5% of the company</strong> at the cap. The round funds engineering, the founding team, and the content engine to take Fade from case study to a full launch for the 2026 College Football season. Full deck and data room available on request.</p>
-    <a class="btn" href="mailto:invest@fade.bet">Request the deck &#8594;</a>
+    <div class="big">Want the full picture?</div>
+    <p>Request the complete investor deck and data room &mdash; financials, projections, and the full roadmap.</p>
+    <a class="btn" href="mailto:info@fade.bet?subject=Fade%20%E2%80%94%20Full%20Investor%20Deck%20Request">Request full investor deck &#8594;</a>
   </div>
 </div></section>
 
@@ -488,6 +491,47 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
   <p>&copy; Fade. Confidential. This page is for discussion purposes only and is not an offer to sell or a solicitation of an investment.<br />Sports betting involves risk. <a href="/">fade.bet</a></p>
 </div>
+
+<script>
+(function () {
+  // Change this to set the access code. Codes are matched case-insensitively.
+  var ACCESS_CODE = 'fade2026';
+  var STORAGE_KEY = 'fade_deck_access';
+
+  var gate = document.getElementById('gate');
+  var form = document.getElementById('gateForm');
+  var input = document.getElementById('gateInput');
+  var error = document.getElementById('gateError');
+
+  function unlock() {
+    gate.classList.add('hidden');
+    document.body.style.overflow = '';
+    var vid = gate.querySelector('video');
+    if (vid) { vid.pause(); }
+  }
+
+  // Already unlocked this browser before?
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === 'ok') { unlock(); }
+    else { document.body.style.overflow = 'hidden'; }
+  } catch (e) { document.body.style.overflow = 'hidden'; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var val = (input.value || '').trim().toLowerCase();
+    if (val === ACCESS_CODE.toLowerCase()) {
+      try { localStorage.setItem(STORAGE_KEY, 'ok'); } catch (e) {}
+      unlock();
+    } else {
+      error.classList.add('show');
+      input.focus();
+      input.select();
+    }
+  });
+
+  input.addEventListener('input', function () { error.classList.remove('show'); });
+})();
+</script>
 
 </body>
 </html>
