@@ -144,9 +144,50 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   .partners { grid-template-columns: 1fr 1fr; }
   .phones { grid-template-columns: 1fr 1fr; }
 }
+
+/* access gate */
+.gate { position: fixed; inset: 0; z-index: 100; background: #050507; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1.5rem; overflow-y: auto; }
+.gate.hidden { display: none; }
+.gate::before { content: ''; position: absolute; top: 30%; left: 50%; transform: translate(-50%,-50%); width: 900px; height: 560px; max-width: 96vw; background: radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 62%); filter: blur(64px); pointer-events: none; }
+.gate-inner { position: relative; width: 100%; max-width: 720px; text-align: center; }
+.gate-logo { height: 30px; width: auto; margin-bottom: 1.5rem; }
+.gate-eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(59,130,246,0.9); margin-bottom: 1rem; }
+.gate-video { width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.6); margin-bottom: 1.75rem; }
+.gate-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gate h1 { font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; text-transform: uppercase; color: #fff; line-height: 1.05; margin-bottom: 0.75rem; }
+.gate .sub { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 1.5rem; }
+.gate-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; max-width: 460px; margin: 0 auto; }
+.gate-form input { flex: 1; min-width: 200px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; letter-spacing: 0.06em; color: #fff; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 0.9rem 1.1rem; outline: none; transition: border-color 0.2s ease; }
+.gate-form input:focus { border-color: rgba(59,130,246,0.7); }
+.gate-form input::placeholder { color: rgba(255,255,255,0.35); text-transform: none; letter-spacing: 0.02em; }
+.gate-form button { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; background: linear-gradient(135deg,#3b82f6,#2563eb); border: none; border-radius: 10px; padding: 0.9rem 1.6rem; cursor: pointer; box-shadow: 0 2px 16px rgba(59,130,246,0.3); white-space: nowrap; }
+.gate-form button:hover { filter: brightness(1.08); }
+.gate-error { min-height: 1.2rem; margin-top: 0.9rem; font-size: 0.88rem; color: #f87171; opacity: 0; transition: opacity 0.2s ease; }
+.gate-error.show { opacity: 1; }
+.gate-foot { margin-top: 1.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.gate-foot a { color: rgba(255,255,255,0.55); }
 </style>
 </head>
 <body>
+
+<!-- ACCESS GATE -->
+<div class="gate" id="gate">
+  <div class="gate-inner">
+    <svg class="gate-logo" viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <div class="gate-eyebrow">Investor Overview</div>
+    <div class="gate-video">
+      <video src="/assets/fade-reel.mp4" autoplay muted loop playsinline controls></video>
+    </div>
+    <h1>Enter your access code</h1>
+    <p class="sub">This overview is private. Enter the code you were given to view the full deck.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input type="text" id="gateInput" placeholder="Access code" aria-label="Access code" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <button type="submit">Get access &#8594;</button>
+    </form>
+    <div class="gate-error" id="gateError">That code isn&rsquo;t right. Try again.</div>
+    <div class="gate-foot">Need a code? <a href="mailto:invest@fade.bet">invest@fade.bet</a></div>
+  </div>
+</div>
 
 <nav class="nav">
   <a class="brand" href="/" aria-label="Fade home">
@@ -488,6 +529,47 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
   <p>&copy; Fade. Confidential. This page is for discussion purposes only and is not an offer to sell or a solicitation of an investment.<br />Sports betting involves risk. <a href="/">fade.bet</a></p>
 </div>
+
+<script>
+(function () {
+  // Change this to set the access code. Codes are matched case-insensitively.
+  var ACCESS_CODE = 'fade2026';
+  var STORAGE_KEY = 'fade_deck_access';
+
+  var gate = document.getElementById('gate');
+  var form = document.getElementById('gateForm');
+  var input = document.getElementById('gateInput');
+  var error = document.getElementById('gateError');
+
+  function unlock() {
+    gate.classList.add('hidden');
+    document.body.style.overflow = '';
+    var vid = gate.querySelector('video');
+    if (vid) { vid.pause(); }
+  }
+
+  // Already unlocked this browser before?
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === 'ok') { unlock(); }
+    else { document.body.style.overflow = 'hidden'; }
+  } catch (e) { document.body.style.overflow = 'hidden'; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var val = (input.value || '').trim().toLowerCase();
+    if (val === ACCESS_CODE.toLowerCase()) {
+      try { localStorage.setItem(STORAGE_KEY, 'ok'); } catch (e) {}
+      unlock();
+    } else {
+      error.classList.add('show');
+      input.focus();
+      input.select();
+    }
+  });
+
+  input.addEventListener('input', function () { error.classList.remove('show'); });
+})();
+</script>
 
 </body>
 </html>
