@@ -209,6 +209,12 @@ a:hover { text-decoration: underline; }
 .au-v.au-hi { color: #5fd35f; font-weight: 700; }
 .au-v.au-ok { color: #5fd35f; }
 @media (max-width: 640px) { .au-cards { grid-template-columns: 1fr; } }
+/* Notes & observations */
+.note-list { list-style: none; margin: 0.85rem 0 0; padding: 0; }
+.note-list li { position: relative; padding: 0.55rem 0 0.55rem 1.4rem; font-size: 0.92rem; line-height: 1.5; color: rgba(255,255,255,0.72); border-top: 1px solid rgba(255,255,255,0.06); }
+.note-list li:first-child { border-top: none; }
+.note-list li::before { content: ""; position: absolute; left: 0.15rem; top: 0.95rem; width: 6px; height: 6px; border-radius: 50%; background: #6ea8ff; }
+.note-list strong { color: #fff; font-weight: 600; }
 .media-panel .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary .cmt-body { color: rgba(255,255,255,0.8); }
