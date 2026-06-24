@@ -178,6 +178,26 @@ a:hover { text-decoration: underline; }
 .gate-panel.active { display: block; }
 .gate-back { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14); padding: 0.55rem 1rem; border-radius: 999px; cursor: pointer; margin-bottom: 1.4rem; transition: color 0.15s, background 0.15s, border-color 0.15s; }
 .gate-back:hover { color: #fff; background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.5); }
+/* Study results: activity chart + cohort table */
+.sa-card, .perf-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.3rem 1.4rem 1.45rem; margin: 1.2rem 0; }
+.sa-title { font-size: 1.12rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+.sa-chart { width: 100%; height: auto; display: block; }
+.sa-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.6rem; padding-left: 0.3rem; }
+.sa-leg { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+.sa-dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.perf-scroll { overflow-x: auto; }
+.perf-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; min-width: 540px; }
+.perf-table th { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.perf-table th.pf-r, .perf-table td.pf-num { text-align: right; }
+.perf-table td { padding: 0.72rem 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: middle; }
+.perf-table tr:last-child td { border-bottom: none; }
+.pf-sport { color: #fff; font-weight: 700; white-space: nowrap; }
+.pf-num { font-family: 'JetBrains Mono', monospace; color: rgba(255,255,255,0.78); white-space: nowrap; }
+.pf-win { white-space: nowrap; }
+.pf-bar { display: inline-block; width: 120px; height: 7px; border-radius: 999px; background: rgba(255,255,255,0.08); vertical-align: middle; overflow: hidden; }
+.pf-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+.pf-pct { margin-left: 0.7rem; font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 0.88rem; }
+@media (max-width: 600px) { .pf-bar { width: 64px; } .sa-title { font-size: 1rem; } }
 .media-panel .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary { margin-bottom: 1.4rem; }
 .cat-summary .cmt-body { color: rgba(255,255,255,0.8); }
