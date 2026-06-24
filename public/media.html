@@ -77,10 +77,10 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .team-bio li::before { content: '\2192'; position: absolute; left: 0; color: #3b82f6; }
 .team-bio strong { color: #fff; font-weight: 600; }
 /* product phones */
-.phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1.75rem; }
+.phones { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 1.75rem; }
 .phone { text-align: center; }
 .phone .scr { aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
-.phone .scr video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.phone .scr video, .phone .scr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .phone figcaption { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 .phone .desc { margin-top: 0.5rem; font-size: 0.82rem; line-height: 1.5; color: rgba(255,255,255,0.55); }
 /* use of funds */
@@ -247,6 +247,7 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-together.mp4"></video></div><figcaption>Bet Together</figcaption><p class="desc">Group chats, shared slips, and game-day channels &mdash; bet with friends, not alone.</p></figure>
     <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq.mp4"></video></div><figcaption>Fade IQ</figcaption><p class="desc">A proprietary AI model that analyzes your bet history and offers betting tips, reminders, and hard coaching.</p></figure>
     <figure class="phone"><div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-dashboard.mp4"></video></div><figcaption>Your Dashboard</figcaption><p class="desc">Track every bet, streak, and result in one place &mdash; your record, settled.</p></figure>
+    <figure class="phone"><div class="scr"><img src="assets/demo-alerts.jpeg" alt="Fade alerts screen — friends' picks, trades, and live narrative streaks" loading="lazy" /></div><figcaption>Alerts &amp; Streaks</figcaption><p class="desc">Real-time notifications &mdash; friends' picks to tail or fade, breaking trades, and live narrative streaks as they hit.</p></figure>
   </div>
 </div></section>
 
