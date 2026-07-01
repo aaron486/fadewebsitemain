@@ -124,6 +124,24 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 .rev .row h4 { font-size: 1.2rem; color: #fff; font-weight: 600; text-transform: uppercase; margin-bottom: 0.3rem; }
 .rev .row p { font-size: 0.95rem; color: rgba(255,255,255,0.6); }
 
+/* brand hero video */
+.brand-hero { position: relative; margin-top: 1.85rem; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 70px rgba(0,0,0,0.55); }
+.brand-hero video { width: 100%; height: auto; display: block; }
+.brand-hero::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 130px rgba(59,130,246,0.14); pointer-events: none; }
+.brand-line { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-align: center; margin-top: 0.9rem; }
+
+/* before / after redesign */
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.85rem; align-items: start; }
+.ba-col { text-align: center; margin: 0; }
+.ba-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.85rem; }
+.ba-col.before .ba-tag { color: rgba(255,255,255,0.42); }
+.ba-col.after .ba-tag { color: #3b82f6; }
+.ba-frame { aspect-ratio: 9 / 19.5; max-width: 300px; margin: 0 auto; border-radius: 26px; overflow: hidden; background: #0b0b0f; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; }
+.ba-col.after .ba-frame { border-color: rgba(59,130,246,0.5); box-shadow: 0 16px 50px rgba(59,130,246,0.18); }
+.ba-frame img, .ba-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-slot { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 1rem; border: 1.5px dashed rgba(255,255,255,0.16); border-radius: 24px; text-align: center; }
+.ba-cap { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.85rem; line-height: 1.5; }
+
 /* media engine videos */
 .vids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
 .vids video { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #000; }
@@ -164,6 +182,44 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <h2 class="sec">Be where people go <span class="grad">before they bet.</span></h2>
   <p class="lead">Every bet starts with a decision &mdash; and that decision is made <strong>before</strong> a sportsbook is ever opened. Today it happens scattered across group chats, X, stat sites and screenshots.</p>
   <p class="lead" style="margin-top:1rem;">Fade is building the single place people go before they bet. <strong>We don't have to be the book.</strong> If we own the pre-bet moment, we own the most valuable real estate in betting &mdash; and we win on <strong>advertising and affiliate</strong>, not on risk.</p>
+</div></section>
+
+<!-- BRAND -->
+<section id="brand"><div class="wrap">
+  <span class="eyebrow">The Brand</span>
+  <h2 class="sec">Fade. <span class="grad">We bring the receipts.</span></h2>
+  <p class="lead">Betting culture runs on credibility &mdash; who called it, who cashed, and who's just talking. Fade is the brand built on proof: real bets, tracked and settled, out in the open. No screenshots after the fact, no stories that don't hold up. <strong>Receipts.</strong></p>
+
+  <div class="brand-hero">
+    <video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero.mp4"></video>
+  </div>
+  <p class="brand-line">Fade brand film &mdash; built to run from the World Cup through the 2026 CFB season.</p>
+
+  <h3 class="subhead">How we launch</h3>
+  <div class="rev">
+    <div class="row"><div class="n">01</div><div><h4>Brand first</h4><p>The hero film and Fade's owned channels &mdash; Instagram, TikTok, X, and Discord &mdash; build the audience before the app scales. Culture leads; the product follows.</p></div></div>
+    <div class="row"><div class="n">02</div><div><h4>Launch on the tentpoles</h4><p>We seed with the World Cup case study now and go wide for the 2026 College Football season &mdash; the biggest betting moments of the year, when attention and intent peak.</p></div></div>
+    <div class="row"><div class="n">03</div><div><h4>Prove it with receipts</h4><p>The 50-user Kalshi &times; Fade study gives us real, settled results to launch on &mdash; the kind of credibility most brands spend years earning.</p></div></div>
+    <div class="row"><div class="n">04</div><div><h4>Scale through creators</h4><p>Affordable, scalable talent and creator deals put the brand in front of the largest community of sports bettors &mdash; reach that compounds as Fade grows.</p></div></div>
+  </div>
+</div></section>
+
+<!-- REDESIGN -->
+<section id="redesign"><div class="wrap">
+  <span class="eyebrow">The Redesign</span>
+  <h2 class="sec">A total revamp.</h2>
+  <p class="lead">We rebuilt Fade from the ground up &mdash; cleaner, faster, and unmistakably a brand. Here's the before and after.</p>
+  <div class="ba">
+    <figure class="ba-col before">
+      <div class="ba-tag">Before</div>
+      <div class="ba-frame"><div class="ba-slot"><span class="ph">&ldquo;Before&rdquo; screen &mdash; drop in</span></div></div>
+    </figure>
+    <figure class="ba-col after">
+      <div class="ba-tag">After &middot; New design</div>
+      <div class="ba-frame"><div class="ba-slot"><span class="ph">&ldquo;After&rdquo; screen &mdash; drop in</span></div></div>
+    </figure>
+  </div>
+  <p class="ba-cap">Same product, rebuilt from the studs &mdash; the redesign the 2026 roll-out ships on.</p>
 </div></section>
 
 <!-- MOMENTS -->
