@@ -124,8 +124,10 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 .rev .row h4 { font-size: 1.2rem; color: #fff; font-weight: 600; text-transform: uppercase; margin-bottom: 0.3rem; }
 .rev .row p { font-size: 0.95rem; color: rgba(255,255,255,0.6); }
 
-/* brand hero video */
-.brand-hero { position: relative; margin-top: 1.85rem; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 70px rgba(0,0,0,0.55); }
+/* brand hero videos */
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.85rem; }
+.hero-grid .brand-hero { margin-top: 0; }
+.brand-hero { position: relative; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 70px rgba(0,0,0,0.55); }
 .brand-hero video { width: 100%; height: auto; display: block; }
 .brand-hero::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 130px rgba(59,130,246,0.14); pointer-events: none; }
 .brand-line { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-align: center; margin-top: 0.9rem; }
@@ -159,7 +161,7 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 
 @media (max-width: 820px) {
   .metrics { grid-template-columns: 1fr 1fr; }
-  .split, .cards, .pillars, .why, .vids { grid-template-columns: 1fr; }
+  .split, .cards, .pillars, .why, .vids, .hero-grid { grid-template-columns: 1fr; }
   .partners { grid-template-columns: 1fr 1fr; }
   .phones { grid-template-columns: 1fr 1fr; }
 }
@@ -190,10 +192,13 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <h2 class="sec">Fade. <span class="grad">We bring the receipts.</span></h2>
   <p class="lead">Betting culture runs on credibility &mdash; who called it, who cashed, and who's just talking. Fade is the brand built on proof: real bets, tracked and settled, out in the open. No screenshots after the fact, no stories that don't hold up. <strong>Receipts.</strong></p>
 
-  <div class="brand-hero">
-    <video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero.mp4"></video>
+  <div class="hero-grid">
+    <div class="brand-hero"><video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero-1.mp4"></video></div>
+    <div class="brand-hero"><video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero-2.mp4"></video></div>
+    <div class="brand-hero"><video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero-3.mp4"></video></div>
+    <div class="brand-hero"><video autoplay loop muted playsinline preload="metadata" src="assets/brand-hero-4.mp4"></video></div>
   </div>
-  <p class="brand-line">Fade brand film &mdash; built to run from the World Cup through the 2026 CFB season.</p>
+  <p class="brand-line">Fade brand films &mdash; built to run from the World Cup through the 2026 CFB season.</p>
 
   <h3 class="subhead">How we launch</h3>
   <div class="rev">
