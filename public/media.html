@@ -144,6 +144,17 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 .ba-slot { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 1rem; border: 1.5px dashed rgba(255,255,255,0.16); border-radius: 24px; text-align: center; }
 .ba-cap { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.85rem; line-height: 1.5; }
 
+/* media reel carousel */
+.reel { display: flex; gap: 1.1rem; margin-top: 1.75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.9rem; -webkit-overflow-scrolling: touch; }
+.reel::-webkit-scrollbar { height: 8px; }
+.reel::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 4px; }
+.reel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.16); border-radius: 4px; }
+.reel figure { flex: 0 0 auto; width: 360px; max-width: 82vw; scroll-snap-align: start; margin: 0; }
+.reel .rv { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 12px 34px rgba(0,0,0,0.45); }
+.reel .rv video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel figcaption { margin-top: 0.7rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.reel-hint { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 0.6rem; text-align: center; }
+
 /* media engine videos */
 .vids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
 .vids video { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #000; }
@@ -225,6 +236,21 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     </figure>
   </div>
   <p class="ba-cap">Same product, rebuilt from the studs &mdash; the redesign the 2026 roll-out ships on.</p>
+</div></section>
+
+<!-- MEDIA REEL -->
+<section id="media-reel"><div class="wrap">
+  <span class="eyebrow">Fade Media</span>
+  <h2 class="sec">The content engine.</h2>
+  <p class="lead">Original brand films, end cards, and social cuts &mdash; the media that puts Fade in front of the largest community of sports bettors. A taste of the reel.</p>
+  <div class="reel">
+    <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-wildwest.mp4"></video></div><figcaption>Wild West &middot; Single Take</figcaption></figure>
+    <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-tvmouth.mp4"></video></div><figcaption>TV Mouth</figcaption></figure>
+    <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-endcard-2.mp4"></video></div><figcaption>End Card II</figcaption></figure>
+    <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-endcard.mp4"></video></div><figcaption>Fade End Card</figcaption></figure>
+    <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-tvoff.mp4"></video></div><figcaption>TV Off</figcaption></figure>
+  </div>
+  <p class="reel-hint">&larr; Scroll for more &rarr;</p>
 </div></section>
 
 <!-- MOMENTS -->
