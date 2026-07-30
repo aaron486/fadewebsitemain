@@ -243,7 +243,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   <h2>Be a Founding Member</h2>
   <p>Fade goes live for college football season — and the first members get the first TestFlight invites, the first campaigns, and the first payouts. Drop your info and claim your spot.</p>
   <form class="join-form" id="joinForm" novalidate>
-    <input class="join-input" id="j-user" type="text" placeholder="@ username" autocomplete="username" maxlength="60" />
+    <input class="join-input" id="j-user" type="text" placeholder="@ Instagram handle" autocomplete="off" maxlength="60" />
     <input class="join-input" id="j-email" type="email" placeholder="Email" autocomplete="email" maxlength="120" />
     <input class="join-input" id="j-phone" type="tel" placeholder="Phone" autocomplete="tel" maxlength="24" />
     <button class="btn-apply" id="joinBtn" type="submit">Claim My Spot &#8594;</button>
@@ -279,7 +279,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
     var msg = document.getElementById('joinMsg');
     var btn = document.getElementById('joinBtn');
     msg.className = 'join-msg';
-    if (!user || !email || !phone) { msg.textContent = 'Add your username, email, and phone to claim your spot.'; msg.className = 'join-msg err'; return; }
+    if (!user || !email || !phone) { msg.textContent = 'Add your Instagram handle, email, and phone to claim your spot.'; msg.className = 'join-msg err'; return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'That email doesn’t look right — double-check it.'; msg.className = 'join-msg err'; return; }
     btn.disabled = true; btn.textContent = 'Claiming…';
     try {
