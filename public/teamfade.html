@@ -61,21 +61,9 @@ a:hover { text-decoration: underline; }
 .sell-highlight p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
 .sell-highlight strong { color: white; }
 
-/* Perks */
-.perks { padding: 4rem 1.5rem; max-width: 960px; margin: 0 auto; }
-.perks h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
-.perks-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.5rem; }
-.perks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.perk-card { padding: 2rem 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; text-align: center; transition: all 0.25s ease; }
-.perk-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(59,130,246,0.15); transform: translateY(-3px); }
-.perk-icon { font-size: 2rem; margin-bottom: 0.875rem; }
-.perk-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
-.perk-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
-
 /* App screenshots */
 .shots { padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
-.shots h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
-.shots-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.25rem; padding: 0 1.5rem; }
+
 .shots-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; max-width: 1100px; margin: 0 auto; padding: 0.5rem 1.5rem 1.25rem; }
 .shots-track::-webkit-scrollbar { height: 6px; }
 .shots-track::-webkit-scrollbar-track { background: transparent; }
@@ -138,11 +126,11 @@ a:hover { text-decoration: underline; }
   .sell { padding: 3rem 1.25rem; }
   .sell h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .sell-text { font-size: 0.9375rem; }
-  .perks-grid { grid-template-columns: 1fr 1fr; }
+
   .timeline::before { left: 21px; }
   .t-step { padding-left: 3.875rem; }
   .t-num { width: 44px; height: 44px; font-size: 0.9375rem; }
-  .perks, .onboard { padding: 3rem 1.25rem; }
+  .onboard { padding: 3rem 1.25rem; }
   .cta { padding: 3rem 1.25rem 4rem; }
   .join-form { grid-template-columns: 1fr 1fr; }
   .join-form .btn-apply { grid-column: 1 / -1; justify-content: center; }
@@ -153,10 +141,9 @@ a:hover { text-decoration: underline; }
   .hero { padding: 2.5rem 1rem 2rem; }
   .hero h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
   .hero p { font-size: 0.875rem; }
-  .perks-grid { grid-template-columns: 1fr; }
-  .perk-card { padding: 1.25rem 1rem; }
+
   .sell { padding: 2rem 1rem; }
-  .perks, .onboard { padding: 2rem 1rem; }
+  .onboard { padding: 2rem 1rem; }
   .cta { padding: 2rem 1rem 3rem; }
   .join-form { grid-template-columns: 1fr; }
   .btn-apply, .btn-secondary { max-width: 100%; }
@@ -206,46 +193,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   </div>
 </div>
 
-<div class="perks">
-  <h2>What We're Looking For</h2>
-  <p class="perks-subtitle">UGC sports betting creators who want to grow their brand and earn through sharing sports betting content on social media.</p>
-  <div class="perks-grid">
-    <div class="perk-card">
-      <div class="perk-icon">&#128176;</div>
-      <h3>Paid Sponsorships</h3>
-      <p>Get paid by sportsbooks, betting brands, and lifestyle companies. We connect you with campaign deals across TikTok, Instagram, X, and YouTube — you create the content, we bring the brands.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#127775;</div>
-      <h3>Event Experiences</h3>
-      <p>VIP access to sports events, watch parties, and industry meetups. Network with top creators and brand partners in person.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#128247;</div>
-      <h3>PR &amp; Branding</h3>
-      <p>Get featured across Fade's channels, media placements, and marketing campaigns. We invest in growing your name and your reach.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#128640;</div>
-      <h3>Grow Your Audience</h3>
-      <p>Featured profile, verified badge, and leaderboard placement on a fast-growing sports betting community. Your brand, amplified.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon">&#127942;</div>
-      <h3>Ambassador Network</h3>
-      <p>Join a private network of top sports betting creators. Share strategies, collaborate on content, and access exclusive resources.</p>
-    </div>
-    <div class="perk-card">
-      <div class="perk-icon"><svg viewBox="80 420 840 170" width="48" fill="white"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg></div>
-      <h3>Exclusive Merch</h3>
-      <p>Custom Fade ambassador gear and limited-edition drops you can't buy. Rep the brand and stand out at events and on content.</p>
-    </div>
-  </div>
-</div>
-
 <div class="shots" id="shots">
-  <h2>Inside the App</h2>
-  <p class="shots-subtitle">A first look at the Fade beta — this is what you'll be testing.</p>
   <div class="shots-track" id="shotsTrack"></div>
 </div>
 
@@ -392,7 +340,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
-  var els = document.querySelectorAll('.t-step, .perk-card, .sell-highlight');
+  var els = document.querySelectorAll('.t-step, .sell-highlight');
   els.forEach(function(el){ el.classList.add('rv'); });
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
