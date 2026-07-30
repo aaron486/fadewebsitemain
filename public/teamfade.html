@@ -72,15 +72,24 @@ a:hover { text-decoration: underline; }
 .perk-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
 .perk-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
 
-/* How It Works */
-.how-it-works { padding: 4rem 1.5rem; max-width: 740px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
-.how-it-works h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 2.5rem; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
-.steps::before { content: ''; position: absolute; top: 28px; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.1), transparent); }
-.step { text-align: center; position: relative; }
-.step-num { width: 52px; height: 52px; border-radius: 50%; background: #0d0d14; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: #3b82f6; position: relative; z-index: 1; }
-.step h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.375rem; }
-.step p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
+/* Onboarding timeline */
+.onboard { padding: 4rem 1.5rem; max-width: 780px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
+.onboard h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.onboard-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 3rem; }
+.timeline { position: relative; }
+.timeline::before { content: ''; position: absolute; left: 26px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(180deg, rgba(59,130,246,0.5), rgba(59,130,246,0.05)); }
+.t-step { position: relative; padding: 0 0 2rem 5rem; }
+.t-step:last-child { padding-bottom: 0; }
+.rv { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.rv.in { opacity: 1; transform: none; }
+.t-num { position: absolute; left: 0; top: 0; width: 52px; height: 52px; border-radius: 50%; background: #0d0d14; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: #3b82f6; z-index: 1; transition: box-shadow 0.6s ease; }
+.t-step.in .t-num { box-shadow: 0 0 0 6px rgba(59,130,246,0.08); }
+.t-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 1.375rem 1.625rem; transition: border-color 0.25s ease, background 0.25s ease; }
+.t-card:hover { border-color: rgba(59,130,246,0.2); background: rgba(59,130,246,0.03); }
+.t-head { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.375rem; }
+.t-card h3 { font-size: 1.0625rem; font-weight: 700; color: white; }
+.t-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); padding: 0.25rem 0.6rem; border-radius: 999px; }
+.t-card p { font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
 /* CTA */
 .cta { text-align: center; padding: 4rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
@@ -104,9 +113,10 @@ a:hover { text-decoration: underline; }
   .sell h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .sell-text { font-size: 0.9375rem; }
   .perks-grid { grid-template-columns: 1fr 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 1.5rem; }
-  .steps::before { display: none; }
-  .perks, .how-it-works { padding: 3rem 1.25rem; }
+  .timeline::before { left: 21px; }
+  .t-step { padding-left: 3.875rem; }
+  .t-num { width: 44px; height: 44px; font-size: 0.9375rem; }
+  .perks, .onboard { padding: 3rem 1.25rem; }
   .cta { padding: 3rem 1.25rem 4rem; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-apply, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
@@ -118,7 +128,7 @@ a:hover { text-decoration: underline; }
   .perks-grid { grid-template-columns: 1fr; }
   .perk-card { padding: 1.25rem 1rem; }
   .sell { padding: 2rem 1rem; }
-  .perks, .how-it-works { padding: 2rem 1rem; }
+  .perks, .onboard { padding: 2rem 1rem; }
   .cta { padding: 2rem 1rem 3rem; }
   .btn-apply, .btn-secondary { max-width: 100%; }
 }
@@ -138,7 +148,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 <div class="hero">
   <div class="hero-eyebrow">TEAM FADE</div>
   <h1>Grow Your Brand.<br />Get Sponsored.<br />Get <span>Paid.</span></h1>
-  <p>Promote Fade and turn your sports betting content into paid sponsorship opportunities.</p>
+  <p>Test the Fade beta before the public, sync your sportsbooks, and turn your betting content into paid sponsorship opportunities.</p>
   <div class="hero-stats">
     <div class="hero-stat">
       <div class="hero-stat-value"><span>Betting</span> Community</div>
@@ -206,28 +216,44 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   </div>
 </div>
 
-<div class="how-it-works">
+<div class="onboard">
   <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>Apply</h3>
-      <p>Takes 2 minutes. We're looking for bettors, creators, and influencers who bring real energy to the community.</p>
+  <p class="onboard-subtitle">Test the app. Build your record. Make content. Get paid.</p>
+  <div class="timeline">
+    <div class="t-step">
+      <div class="t-num">01</div>
+      <div class="t-card">
+        <div class="t-head"><h3>Apply</h3><span class="t-chip">2 min</span></div>
+        <p>Takes 2 minutes. We're looking for bettors, creators, and influencers who bring real energy to the community.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>Test Fade</h3>
-      <p>Become one of the first Fade ambassadors to test the platform and give feedback that shapes the product.</p>
+    <div class="t-step">
+      <div class="t-num">02</div>
+      <div class="t-card">
+        <div class="t-head"><h3>Download the Beta</h3><span class="t-chip">TestFlight</span></div>
+        <p>Get your TestFlight invite and install the Fade beta on your iPhone. You're in before the public — and your feedback shapes the product.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Create</h3>
-      <p>Engage with the community, create content, and build your presence across Fade and social platforms.</p>
+    <div class="t-step">
+      <div class="t-num">03</div>
+      <div class="t-card">
+        <div class="t-head"><h3>Sync Your Sportsbooks</h3><span class="t-chip">One click</span></div>
+        <p>One click connects your books. Your full bet history, record, and stats land on Fade automatically — no screenshots, no spreadsheets.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h3>Earn</h3>
-      <p>Unlock sponsorship deals, event invites, brand partnerships, and ambassador rewards as your brand grows.</p>
+    <div class="t-step">
+      <div class="t-num">04</div>
+      <div class="t-card">
+        <div class="t-head"><h3>Track Your Progress</h3><span class="t-chip">Live stats</span></div>
+        <p>Follow your record, climb the leaderboard, and put your numbers on display. Receipts, not takes.</p>
+      </div>
+    </div>
+    <div class="t-step">
+      <div class="t-num">05</div>
+      <div class="t-card">
+        <div class="t-head"><h3>Create &amp; Get Paid</h3><span class="t-chip">Earn</span></div>
+        <p>Turn your testing and your record into content across TikTok, Instagram, X, and YouTube. We connect you to sponsorships and brand deals.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -242,6 +268,24 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   General Inquiries: <a href="mailto:info@fade.bet">info@fade.bet</a><br /><br />
   &#169; 2026 Fade Social LLC. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
 </div>
+
+<script>
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var els = document.querySelectorAll('.t-step, .perk-card, .sell-highlight');
+  els.forEach(function(el){ el.classList.add('rv'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function(el, i){
+    el.style.transitionDelay = (i % 3) * 90 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
 
 </body>
 </html>
