@@ -57,7 +57,15 @@ a:hover { text-decoration: underline; }
 /* App screenshots */
 .shots { padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
 .shots-video { max-width: 900px; margin: 0 auto 2rem; padding: 0 1.5rem; }
-.shots-video video { width: 100%; display: block; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+.shots-video-frame { position: relative; cursor: pointer; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.25s ease; }
+.shots-video-frame:hover { border-color: rgba(59,130,246,0.35); }
+.shots-video video { width: 100%; display: block; }
+.video-hint { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: white; background: rgba(5,5,7,0.72); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 0.4rem 0.85rem; pointer-events: none; }
+.video-modal { position: fixed; inset: 0; z-index: 100; background: rgba(5,5,7,0.94); display: none; align-items: center; justify-content: center; padding: 1.25rem; }
+.video-modal.open { display: flex; }
+.video-modal video { max-width: 100%; max-height: 88vh; border-radius: 12px; display: block; }
+.video-modal-close { position: absolute; top: 16px; right: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: white; width: 42px; height: 42px; border-radius: 50%; font-size: 1.25rem; line-height: 1; cursor: pointer; transition: background 0.2s ease; }
+.video-modal-close:hover { background: rgba(255,255,255,0.16); }
 
 .shots-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; max-width: 1100px; margin: 0 auto; padding: 0.5rem 1.5rem 1.25rem; }
 .shots-track::-webkit-scrollbar { height: 6px; }
@@ -133,7 +141,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 <div class="hero">
   <div class="hero-eyebrow">TEAM FADE</div>
   <h1>Grow Your Brand.<br />Get Sponsored.<br />Get <span>Paid.</span></h1>
-  <p>Be one of the first users to test Fade — download the beta, create a social media post, and earn $100.</p>
+  <p>Be one of the first users to test Fade — download the beta, create a social media post, and earn $50.</p>
 </div>
 
 <div class="sell">
@@ -147,7 +155,10 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 
 <div class="shots" id="shots">
   <div class="shots-video">
-    <video autoplay loop muted playsinline preload="metadata" src="/assets/hero.mp4"></video>
+    <div class="shots-video-frame" id="heroFrame">
+      <video id="heroPreview" autoplay loop muted playsinline preload="metadata" src="/assets/hero.mp4"></video>
+      <span class="video-hint">&#128266; Tap to expand</span>
+    </div>
   </div>
   <div class="shots-track" id="shotsTrack"></div>
 </div>
@@ -200,7 +211,39 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   &#169; 2026 Fade Social LLC. All rights reserved. &#183; <a href="https://www.fade.bet/privacy">Privacy</a> &#183; <a href="https://www.fade.bet/terms">Terms</a> &#183; <a href="https://www.fade.bet/support">Support</a>
 </div>
 
+<div class="video-modal" id="videoModal" role="dialog" aria-label="Fade video">
+  <button class="video-modal-close" id="videoModalClose" aria-label="Close">&#10005;</button>
+  <video id="heroFull" controls playsinline preload="none" src="/assets/hero.mp4"></video>
+</div>
+
 <script>
+(function () {
+  var frame = document.getElementById('heroFrame');
+  var preview = document.getElementById('heroPreview');
+  var modal = document.getElementById('videoModal');
+  var full = document.getElementById('heroFull');
+  var closeBtn = document.getElementById('videoModalClose');
+  if (!frame || !modal) return;
+  function open() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    preview.pause();
+    full.currentTime = 0;
+    full.muted = false;
+    full.volume = 1;
+    full.play();
+  }
+  function close() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    full.pause();
+    preview.play();
+  }
+  frame.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+})();
 (function () {
   var track = document.getElementById('shotsTrack');
   if (!track) return;
