@@ -248,19 +248,31 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
     msg.className = 'join-msg';
     if (!user) { msg.textContent = 'Add your Instagram handle to claim your spot.'; msg.className = 'join-msg err'; return; }
     btn.disabled = true; btn.textContent = 'Claiming…';
+    // Placeholder email keeps schemas with NOT NULL / format / unique email constraints happy
+    var placeholderEmail = user.toLowerCase().replace(/[^a-z0-9._-]/g, '') + '@ig.fade.bet';
+    var attempts = [
+      { name: '@' + user, email: placeholderEmail, username: user, campaign: CAMPAIGN },
+      { name: '@' + user, email: placeholderEmail, campaign: CAMPAIGN }
+    ];
+    var lastErr = '';
     try {
-      var r = await post({ name: '@' + user, email: '', username: user, campaign: CAMPAIGN });
-      if (!r.ok) {
-        // Fallback for older table schema without a username column
-        r = await post({ name: '@' + user, email: '', campaign: CAMPAIGN });
+      var ok = false;
+      for (var i = 0; i < attempts.length && !ok; i++) {
+        var r = await post(attempts[i]);
+        if (r.ok) { ok = true; break; }
+        try { lastErr = await r.text(); } catch (e2) { lastErr = 'HTTP ' + r.status; }
+        console.error('Fade signup attempt ' + (i + 1) + ' failed:', r.status, lastErr);
+        // Duplicate row = this handle already claimed a spot; treat as success
+        if (r.status === 409) { ok = true; break; }
       }
-      if (!r.ok) throw new Error('post');
-      form.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
+      if (!ok) throw new Error(lastErr || 'post');
+      form.querySelectorAll('input').forEach(function (i2) { i2.disabled = true; });
       btn.style.display = 'none';
       msg.textContent = '✓ Spot claimed — watch your Instagram DMs for your invite.';
       msg.className = 'join-msg ok';
     } catch (err) {
-      msg.textContent = 'Couldn’t submit — please try again in a moment.';
+      var detail = (err && err.message ? String(err.message) : '').slice(0, 140);
+      msg.textContent = 'Couldn’t submit' + (detail && detail !== 'post' ? ' — ' + detail : ' — please try again in a moment.');
       msg.className = 'join-msg err';
       btn.disabled = false; btn.textContent = 'Claim My Spot →';
     }
