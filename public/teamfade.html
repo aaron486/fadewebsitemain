@@ -72,6 +72,20 @@ a:hover { text-decoration: underline; }
 .perk-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
 .perk-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
 
+/* App screenshots */
+.shots { padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
+.shots h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+.shots-subtitle { text-align: center; font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 2.25rem; padding: 0 1.5rem; }
+.shots-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; max-width: 1100px; margin: 0 auto; padding: 0.5rem 1.5rem 1.25rem; }
+.shots-track::-webkit-scrollbar { height: 6px; }
+.shots-track::-webkit-scrollbar-track { background: transparent; }
+.shots-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+.shot { flex: 0 0 auto; width: 232px; aspect-ratio: 1320 / 2168; border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0d0d14; scroll-snap-align: center; transition: transform 0.25s ease, border-color 0.25s ease; display: none; }
+.shot.has { display: block; }
+.shot:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.35); }
+.shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 768px) { .shot { width: 200px; } .shots { padding: 3rem 0; } }
+
 /* Onboarding timeline */
 .onboard { padding: 4rem 1.5rem; max-width: 780px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.04); }
 .onboard h2 { text-align: center; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
@@ -229,6 +243,12 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   </div>
 </div>
 
+<div class="shots" id="shots">
+  <h2>Inside the App</h2>
+  <p class="shots-subtitle">A first look at the Fade beta — this is what you'll be testing.</p>
+  <div class="shots-track" id="shotsTrack"></div>
+</div>
+
 <div class="onboard">
   <h2>How It Works</h2>
   <p class="onboard-subtitle">Test the app. Build your record. Make content. Get paid.</p>
@@ -332,6 +352,42 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
       btn.disabled = false; btn.textContent = 'Claim My Spot →';
     }
   });
+})();
+(function () {
+  var track = document.getElementById('shotsTrack');
+  if (!track) return;
+  var BASE = '/assets/teamfade/screenshot-';
+  var EXTS = ['png', 'jpg', 'jpeg'];
+  var MAX = 16;
+  var pending = MAX, shown = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function done() {
+    pending--;
+    if (!pending && !shown) document.getElementById('shots').style.display = 'none';
+  }
+  function tryLoad(n, extIdx, slot) {
+    if (extIdx >= EXTS.length) { slot.remove(); done(); return; }
+    var img = new Image();
+    img.onload = function () {
+      slot.appendChild(img);
+      slot.classList.add('has');
+      if (!reduce) {
+        slot.classList.add('rv');
+        setTimeout(function () { slot.classList.add('in'); }, 60 + (shown % 4) * 80);
+      }
+      shown++; done();
+    };
+    img.onerror = function () { tryLoad(n, extIdx + 1, slot); };
+    img.alt = 'Fade app screenshot ' + n;
+    img.loading = 'lazy';
+    img.src = BASE + n + '.' + EXTS[extIdx];
+  }
+  for (var n = 1; n <= MAX; n++) {
+    var slot = document.createElement('div');
+    slot.className = 'shot';
+    track.appendChild(slot);
+  }
+  Array.prototype.forEach.call(track.children, function (slot, i) { tryLoad(i + 1, 0, slot); });
 })();
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
