@@ -94,7 +94,7 @@ a:hover { text-decoration: underline; }
 .launch-badge { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.25); border-radius: 999px; padding: 0.5rem 1.1rem; margin-bottom: 1.5rem; position: relative; }
 .launch-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #3b82f6; animation: pulseDot 2s ease-out infinite; }
 @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); } 70% { box-shadow: 0 0 0 8px rgba(59,130,246,0); } 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); } }
-.join-form { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0.625rem; max-width: 860px; margin: 0 auto; position: relative; text-align: left; }
+.join-form { display: grid; grid-template-columns: 1fr auto; gap: 0.625rem; max-width: 520px; margin: 0 auto; position: relative; text-align: left; }
 .join-input { width: 100%; padding: 0.95rem 1.05rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-size: 0.9375rem; transition: border-color 0.2s ease, background 0.2s ease; }
 .join-input::placeholder { color: rgba(255,255,255,0.3); }
 .join-input:focus { outline: none; border-color: rgba(59,130,246,0.55); background: rgba(59,130,246,0.05); }
@@ -122,8 +122,6 @@ a:hover { text-decoration: underline; }
   .t-num { width: 44px; height: 44px; font-size: 0.9375rem; }
   .onboard { padding: 3rem 1.25rem; }
   .cta { padding: 3rem 1.25rem 4rem; }
-  .join-form { grid-template-columns: 1fr 1fr; }
-  .join-form .btn-apply { grid-column: 1 / -1; justify-content: center; }
   .btn-apply, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
 }
 @media (max-width: 480px) {
@@ -211,11 +209,9 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 <div class="cta" id="join">
   <div><span class="launch-badge">Founding Class &middot; Now Open</span></div>
   <h2>Be a Founding Member</h2>
-  <p>Fade goes live for college football season — and the first members get the first TestFlight invites, the first campaigns, and the first payouts. Drop your info and claim your spot.</p>
+  <p>Fade goes live for college football season — and the first members get the first TestFlight invites, the first campaigns, and the first payouts. Drop your Instagram handle and claim your spot.</p>
   <form class="join-form" id="joinForm" novalidate>
     <input class="join-input" id="j-user" type="text" placeholder="@ Instagram handle" autocomplete="off" maxlength="60" />
-    <input class="join-input" id="j-email" type="email" placeholder="Email" autocomplete="email" maxlength="120" />
-    <input class="join-input" id="j-phone" type="tel" placeholder="Phone" autocomplete="tel" maxlength="24" />
     <button class="btn-apply" id="joinBtn" type="submit">Claim My Spot &#8594;</button>
   </form>
   <div class="join-msg" id="joinMsg"></div>
@@ -243,25 +239,22 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   if (!form) return;
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    var user = document.getElementById('j-user').value.trim();
-    var email = document.getElementById('j-email').value.trim();
-    var phone = document.getElementById('j-phone').value.trim();
+    var user = document.getElementById('j-user').value.trim().replace(/^@+/, '');
     var msg = document.getElementById('joinMsg');
     var btn = document.getElementById('joinBtn');
     msg.className = 'join-msg';
-    if (!user || !email || !phone) { msg.textContent = 'Add your Instagram handle, email, and phone to claim your spot.'; msg.className = 'join-msg err'; return; }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'That email doesn’t look right — double-check it.'; msg.className = 'join-msg err'; return; }
+    if (!user) { msg.textContent = 'Add your Instagram handle to claim your spot.'; msg.className = 'join-msg err'; return; }
     btn.disabled = true; btn.textContent = 'Claiming…';
     try {
-      var r = await post({ name: user, email: email, phone: phone, username: user, campaign: CAMPAIGN });
+      var r = await post({ name: '@' + user, email: '', username: user, campaign: CAMPAIGN });
       if (!r.ok) {
-        // Fallback for older table schema without phone/username columns
-        r = await post({ name: user + ' · ' + phone, email: email, campaign: CAMPAIGN });
+        // Fallback for older table schema without a username column
+        r = await post({ name: '@' + user, email: '', campaign: CAMPAIGN });
       }
       if (!r.ok) throw new Error('post');
       form.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
       btn.style.display = 'none';
-      msg.textContent = '✓ Spot claimed — watch your email and texts for your TestFlight invite.';
+      msg.textContent = '✓ Spot claimed — watch your Instagram DMs for your invite.';
       msg.className = 'join-msg ok';
     } catch (err) {
       msg.textContent = 'Couldn’t submit — please try again in a moment.';
