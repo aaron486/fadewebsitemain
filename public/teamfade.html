@@ -56,6 +56,8 @@ a:hover { text-decoration: underline; }
 
 /* App screenshots */
 .shots { padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
+.shots-video { max-width: 900px; margin: 0 auto 2rem; padding: 0 1.5rem; }
+.shots-video video { width: 100%; display: block; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
 
 .shots-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; max-width: 1100px; margin: 0 auto; padding: 0.5rem 1.5rem 1.25rem; }
 .shots-track::-webkit-scrollbar { height: 6px; }
@@ -144,6 +146,9 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 </div>
 
 <div class="shots" id="shots">
+  <div class="shots-video">
+    <video autoplay loop muted playsinline preload="metadata" src="/assets/hero.mp4"></video>
+  </div>
   <div class="shots-track" id="shotsTrack"></div>
 </div>
 
@@ -206,7 +211,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function done() {
     pending--;
-    if (!pending && !shown) document.getElementById('shots').style.display = 'none';
+    if (!pending && !shown) track.style.display = 'none';
   }
   function tryLoad(n, extIdx, slot) {
     if (extIdx >= EXTS.length) { slot.remove(); done(); return; }
