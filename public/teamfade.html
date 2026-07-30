@@ -91,11 +91,23 @@ a:hover { text-decoration: underline; }
 .t-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); padding: 0.25rem 0.6rem; border-radius: 999px; }
 .t-card p { font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
-/* CTA */
+/* CTA / Join */
 .cta { text-align: center; padding: 4rem 1.5rem 5rem; position: relative; border-top: 1px solid rgba(255,255,255,0.04); }
 .cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%); filter: blur(80px); pointer-events: none; }
 .cta h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white; letter-spacing: -0.03em; margin-bottom: 0.75rem; position: relative; }
 .cta p { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+.launch-badge { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3b82f6; background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.25); border-radius: 999px; padding: 0.5rem 1.1rem; margin-bottom: 1.5rem; position: relative; }
+.launch-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #3b82f6; animation: pulseDot 2s ease-out infinite; }
+@keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); } 70% { box-shadow: 0 0 0 8px rgba(59,130,246,0); } 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); } }
+.join-form { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0.625rem; max-width: 860px; margin: 0 auto; position: relative; text-align: left; }
+.join-input { width: 100%; padding: 0.95rem 1.05rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: 'Inter', sans-serif; font-size: 0.9375rem; transition: border-color 0.2s ease, background 0.2s ease; }
+.join-input::placeholder { color: rgba(255,255,255,0.3); }
+.join-input:focus { outline: none; border-color: rgba(59,130,246,0.55); background: rgba(59,130,246,0.05); }
+.join-form .btn-apply { padding: 0.95rem 1.75rem; font-size: 0.9375rem; white-space: nowrap; }
+.join-msg { min-height: 1.4rem; font-size: 0.9rem; margin-top: 0.9rem; position: relative; }
+.join-msg.ok { color: #4ade80; }
+.join-msg.err { color: #f87171; }
+.join-alt { font-size: 0.8125rem !important; color: rgba(255,255,255,0.3) !important; margin: 1rem auto 0 !important; }
 
 /* Footer */
 .footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); font-size: 0.8125rem; }
@@ -118,6 +130,8 @@ a:hover { text-decoration: underline; }
   .t-num { width: 44px; height: 44px; font-size: 0.9375rem; }
   .perks, .onboard { padding: 3rem 1.25rem; }
   .cta { padding: 3rem 1.25rem 4rem; }
+  .join-form { grid-template-columns: 1fr 1fr; }
+  .join-form .btn-apply { grid-column: 1 / -1; justify-content: center; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-apply, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
 }
@@ -130,6 +144,7 @@ a:hover { text-decoration: underline; }
   .sell { padding: 2rem 1rem; }
   .perks, .onboard { padding: 2rem 1rem; }
   .cta { padding: 2rem 1rem 3rem; }
+  .join-form { grid-template-columns: 1fr; }
   .btn-apply, .btn-secondary { max-width: 100%; }
 }
 
@@ -147,6 +162,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 
 <div class="hero">
   <div class="hero-eyebrow">TEAM FADE</div>
+  <div><span class="launch-badge">Launching for College Football Season</span></div>
   <h1>Grow Your Brand.<br />Get Sponsored.<br />Get <span>Paid.</span></h1>
   <p>Test the Fade beta before the public, sync your sportsbooks, and turn your betting content into paid sponsorship opportunities.</p>
   <div class="hero-stats">
@@ -166,7 +182,7 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
     </div>
   </div>
   <div class="hero-actions">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIn5YDufkCB-nL1oEEgqCUjMGVzz34wo5UeGUuioCikX6R_A/viewform?usp=header" target="_blank" rel="noopener" class="btn-apply">Become an Ambassador &#8594;</a>
+    <a href="#join" class="btn-apply">Become an Ambassador &#8594;</a>
   </div>
 </div>
 
@@ -223,8 +239,8 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
     <div class="t-step">
       <div class="t-num">01</div>
       <div class="t-card">
-        <div class="t-head"><h3>Apply</h3><span class="t-chip">2 min</span></div>
-        <p>Takes 2 minutes. We're looking for bettors, creators, and influencers who bring real energy to the community.</p>
+        <div class="t-head"><h3>Claim Your Spot</h3><span class="t-chip">30 sec</span></div>
+        <p>Drop your username, email, and phone <a href="#join">below</a>. We're looking for bettors, creators, and influencers who bring real energy to the community.</p>
       </div>
     </div>
     <div class="t-step">
@@ -258,10 +274,18 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   </div>
 </div>
 
-<div class="cta">
-  <h2>The Founding Class<br />Is Almost Full</h2>
-  <p>We're handpicking a limited number of ambassadors for our launch. Join our community, provide feedback, promote and earn.</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIn5YDufkCB-nL1oEEgqCUjMGVzz34wo5UeGUuioCikX6R_A/viewform?usp=header" target="_blank" rel="noopener" class="btn-apply">Apply Now &#8594;</a>
+<div class="cta" id="join">
+  <div><span class="launch-badge">Founding Class &middot; Now Open</span></div>
+  <h2>Be a Founding Member</h2>
+  <p>Fade goes live for college football season — and the first members get the first TestFlight invites, the first campaigns, and the first payouts. Drop your info and claim your spot.</p>
+  <form class="join-form" id="joinForm" novalidate>
+    <input class="join-input" id="j-user" type="text" placeholder="@ username" autocomplete="username" maxlength="60" />
+    <input class="join-input" id="j-email" type="email" placeholder="Email" autocomplete="email" maxlength="120" />
+    <input class="join-input" id="j-phone" type="tel" placeholder="Phone" autocomplete="tel" maxlength="24" />
+    <button class="btn-apply" id="joinBtn" type="submit">Claim My Spot &#8594;</button>
+  </form>
+  <div class="join-msg" id="joinMsg"></div>
+  <p class="join-alt">Want to tell us more about your content? <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIn5YDufkCB-nL1oEEgqCUjMGVzz34wo5UeGUuioCikX6R_A/viewform?usp=header" target="_blank" rel="noopener">Fill out the full application &#8594;</a></p>
 </div>
 
 <div class="footer">
@@ -270,6 +294,48 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
 </div>
 
 <script>
+(function () {
+  var SB_URL = 'https://fznaaoiptgpunyxddowd.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6bmFhb2lwdGdwdW55eGRkb3dkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzNzA5NzUsImV4cCI6MjA5NTk0Njk3NX0.lIiX79S3MNSAPxFvlYcDr8Csi7s1ijXLU1hgzP4eXTE';
+  var CAMPAIGN = 'teamfade-founding';
+  function post(body) {
+    return fetch(SB_URL + '/rest/v1/signatures', {
+      method: 'POST',
+      headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify(body)
+    });
+  }
+  var form = document.getElementById('joinForm');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var user = document.getElementById('j-user').value.trim();
+    var email = document.getElementById('j-email').value.trim();
+    var phone = document.getElementById('j-phone').value.trim();
+    var msg = document.getElementById('joinMsg');
+    var btn = document.getElementById('joinBtn');
+    msg.className = 'join-msg';
+    if (!user || !email || !phone) { msg.textContent = 'Add your username, email, and phone to claim your spot.'; msg.className = 'join-msg err'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'That email doesn’t look right — double-check it.'; msg.className = 'join-msg err'; return; }
+    btn.disabled = true; btn.textContent = 'Claiming…';
+    try {
+      var r = await post({ name: user, email: email, phone: phone, username: user, campaign: CAMPAIGN });
+      if (!r.ok) {
+        // Fallback for older table schema without phone/username columns
+        r = await post({ name: user + ' · ' + phone, email: email, campaign: CAMPAIGN });
+      }
+      if (!r.ok) throw new Error('post');
+      form.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
+      btn.style.display = 'none';
+      msg.textContent = '✓ Spot claimed — watch your email and texts for your TestFlight invite.';
+      msg.className = 'join-msg ok';
+    } catch (err) {
+      msg.textContent = 'Couldn’t submit — please try again in a moment.';
+      msg.className = 'join-msg err';
+      btn.disabled = false; btn.textContent = 'Claim My Spot →';
+    }
+  });
+})();
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
