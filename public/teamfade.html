@@ -40,17 +40,10 @@ a:hover { text-decoration: underline; }
 .hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 900; color: white; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; position: relative; }
 .hero h1 span { background: linear-gradient(135deg, #3b82f6 0%, #e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero p { font-size: 1.125rem; color: rgba(255,255,255,0.5); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
-.hero-stats { display: flex; align-items: center; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; position: relative; flex-wrap: wrap; }
-.hero-stat { text-align: center; }
-.hero-stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 800; color: white; }
-.hero-stat-value span { color: #3b82f6; }
-.hero-stat-label { font-size: 0.6875rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-top: 0.2rem; }
-.hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.08); }
 .btn-apply { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.25s ease; box-shadow: 0 2px 16px rgba(59,130,246,0.25); position: relative; }
 .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.35); text-decoration: none; }
 .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1.0625rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.25s ease; position: relative; }
 .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: white; text-decoration: none; }
-.hero-actions { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
 
 /* Sell Section */
 .sell { padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
@@ -120,9 +113,6 @@ a:hover { text-decoration: underline; }
   .hero { padding: 3.5rem 1.25rem 2.5rem; }
   .hero h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
   .hero p { font-size: 0.9375rem; }
-  .hero-stats { gap: 1.5rem; }
-  .hero-stat-value { font-size: 1.25rem; }
-  .hero-stat-divider { display: none; }
   .sell { padding: 3rem 1.25rem; }
   .sell h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .sell-text { font-size: 0.9375rem; }
@@ -134,7 +124,6 @@ a:hover { text-decoration: underline; }
   .cta { padding: 3rem 1.25rem 4rem; }
   .join-form { grid-template-columns: 1fr 1fr; }
   .join-form .btn-apply { grid-column: 1 / -1; justify-content: center; }
-  .hero-actions { flex-direction: column; align-items: center; }
   .btn-apply, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
 }
 @media (max-width: 480px) {
@@ -165,25 +154,6 @@ h1, h2, h3.section-title, .section-title, .hero-eyebrow, .section-eyebrow, .head
   <div class="hero-eyebrow">TEAM FADE</div>
   <h1>Grow Your Brand.<br />Get Sponsored.<br />Get <span>Paid.</span></h1>
   <p>Test the Fade beta before the public, sync your sportsbooks, and turn your betting content into paid sponsorship opportunities.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-value"><span>Betting</span> Community</div>
-      <div class="hero-stat-label">Sportsbooks, Bettors, Athletes &amp; Celebrities</div>
-    </div>
-    <div class="hero-stat-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-value"><span>VIP</span> Events</div>
-      <div class="hero-stat-label">Exclusive Access</div>
-    </div>
-    <div class="hero-stat-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-value"><span>Paid</span> Sponsorships</div>
-      <div class="hero-stat-label">From Top Brands</div>
-    </div>
-  </div>
-  <div class="hero-actions">
-    <a href="#join" class="btn-apply">Become an Ambassador &#8594;</a>
-  </div>
 </div>
 
 <div class="sell">
