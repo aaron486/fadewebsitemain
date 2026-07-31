@@ -38,6 +38,15 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .lead { font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 760px; line-height: 1.7; }
 .lead strong { color: #fff; font-weight: 600; }
 .grad { background: linear-gradient(135deg,#3b82f6 0%,#e0eaff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* collapsible sections */
+h2.sec.sec-toggle { cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+h2.sec.sec-toggle:hover { color: #60a5fa; }
+.sec-chev { flex: 0 0 auto; font-size: 1rem; color: rgba(255,255,255,0.4); transition: transform 0.2s ease; }
+section.collapsed .sec-chev { transform: rotate(-90deg); }
+section.collapsed .sec-body { display: none; }
+section.collapsed { padding: 2rem 0; }
+section.collapsed h2.sec { margin-bottom: 0; }
 .ph { color: #6ea8ff; border-bottom: 1px dashed rgba(110,168,255,0.6); font-style: italic; }
 
 /* hero */
@@ -734,6 +743,50 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <video class="lb-video" controls playsinline></video>
 </div>
 <script>
+(function () {
+  var KEY = 'fade_media_collapsed';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  document.querySelectorAll('section[id]').forEach(function (sec) {
+    if (sec.id === 'deck' || sec.id === 'betcard') return;
+    var wrap = sec.firstElementChild;
+    if (!wrap || !wrap.classList.contains('wrap')) return;
+    var h2 = null;
+    Array.prototype.slice.call(wrap.children).forEach(function (ch) {
+      if (!h2 && ch.matches && ch.matches('h2.sec')) h2 = ch;
+    });
+    if (!h2) return;
+    var body = document.createElement('div');
+    body.className = 'sec-body';
+    var moving = [], started = false;
+    Array.prototype.slice.call(wrap.children).forEach(function (ch) {
+      if (started) moving.push(ch);
+      if (ch === h2) started = true;
+    });
+    moving.forEach(function (ch) { body.appendChild(ch); });
+    wrap.appendChild(body);
+    var chev = document.createElement('span');
+    chev.className = 'sec-chev';
+    chev.textContent = '▾';
+    h2.appendChild(chev);
+    h2.classList.add('sec-toggle');
+    h2.setAttribute('role', 'button');
+    h2.setAttribute('tabindex', '0');
+    function set(c) {
+      sec.classList.toggle('collapsed', c);
+      h2.setAttribute('aria-expanded', String(!c));
+    }
+    set(!!state[sec.id]);
+    function toggle() {
+      var c = !sec.classList.contains('collapsed');
+      set(c);
+      state[sec.id] = c;
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    }
+    h2.addEventListener('click', toggle);
+    h2.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+})();
 (function () {
   document.querySelectorAll('#solutionPhones .sol-scr video').forEach(function (v) {
     var scr = v.parentElement;
