@@ -80,6 +80,12 @@ section.collapsed h2.sec { margin-bottom: 0; }
 .sol-phone .scr.empty::after { content: 'Demo coming'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
 /* metric strip */
+details.metric summary { list-style: none; cursor: pointer; }
+details.metric summary::-webkit-details-marker { display: none; }
+details.metric summary:hover .v { color: #60a5fa; }
+.metric-chev { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: rgba(59,130,246,0.9); margin-left: 0.4rem; }
+details.metric[open] .metric-chev-plus, details.metric[open] .metric-chev { visibility: hidden; }
+
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
 .metric { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 1.6rem 1.25rem; text-align: center; }
 .metric .v { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
@@ -338,11 +344,12 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <div class="metric"><div class="v">$8.9B</div><div class="l">Online sports gaming &mdash; the largest segment</div></div>
     <div class="metric"><div class="v">$31.4B</div><div class="l">Projected by 2030 &middot; 9.4% CAGR</div></div>
     <div class="metric"><div class="v">48%</div><div class="l">Of U.S. men 18&ndash;49 hold active betting accounts</div></div>
-  </div>
-  <div class="sol-acc" style="max-width: none; margin-top: 1rem;">
-    <details class="sol-item">
-      <summary><span><strong>Men 18&ndash;49: the largest demographic</strong> &mdash; seeking community</span></summary>
-      <div class="why" style="margin: 0.25rem 0 1.5rem;">
+    <details class="metric" style="grid-column: 1 / -1;">
+      <summary>
+        <div class="v">Men 18&ndash;49</div>
+        <div class="l">The largest demographic &mdash; seeking community <span class="metric-chev">+</span></div>
+      </summary>
+      <div class="why" style="text-align:left; margin-top:1.25rem;">
         <div class="item"><h4>Sports is the social glue</h4><p>Sports have long been central to how men connect &mdash; watched, played, discussed, and bet on together.</p></div>
         <div class="item"><h4>More disconnected than ever</h4><p>Nearly 15% of U.S. men report few or no close friends &mdash; a fivefold increase since 1990 &mdash; and average time alone keeps climbing, from ~4.6 to ~5.4 hours a day since 2003.</p></div>
         <div class="item"><h4>Isolation is accelerating</h4><p>Remote work, virtual education, and declining attendance at venues like sports bars have deepened the drift.</p></div>
