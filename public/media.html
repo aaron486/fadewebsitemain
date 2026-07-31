@@ -234,6 +234,41 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 </head>
 <body>
 
+<!-- password gate -->
+<div id="gate" style="position:fixed; inset:0; z-index:200; background:#050507; display:flex; align-items:center; justify-content:center; padding:1.5rem;">
+  <div style="text-align:center; max-width:360px; width:100%;">
+    <svg viewBox="80 420 840 170" fill="#fff" style="width:180px; height:auto;" role="img" aria-label="FADE"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin:1.1rem 0 1.75rem;">Confidential &middot; Investor Overview</div>
+    <form id="gateForm">
+      <input id="gatePw" type="password" placeholder="Password" autocomplete="off" style="width:100%; padding:0.9rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.14); border-radius:10px; color:#fff; font-family:'Inter',sans-serif; font-size:1rem; text-align:center;" />
+      <button type="submit" style="width:100%; margin-top:0.75rem; padding:0.9rem 1rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:#fff; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:1rem; font-weight:600; cursor:pointer;">Enter &#8594;</button>
+    </form>
+    <div id="gateMsg" style="min-height:1.2rem; font-size:0.85rem; color:#f87171; margin-top:0.75rem;"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var HASH = '2382a55ce81dd32e1678f66a6aa954217bdf27d2d5fe68e231a465d0209c50a2';
+  var gate = document.getElementById('gate');
+  if (sessionStorage.getItem('fade_media_auth') === HASH) { gate.remove(); return; }
+  document.documentElement.style.overflow = 'hidden';
+  function unlock() {
+    sessionStorage.setItem('fade_media_auth', HASH);
+    gate.remove();
+    document.documentElement.style.overflow = '';
+  }
+  document.getElementById('gateForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var pw = document.getElementById('gatePw').value;
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function (buf) {
+      var hex = Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+      if (hex === HASH) { unlock(); }
+      else { document.getElementById('gateMsg').textContent = 'Incorrect password.'; }
+    });
+  });
+})();
+</script>
+
 <nav class="nav">
   <a class="brand" href="/" aria-label="Fade home">
     <svg viewBox="80 420 840 170" fill="#fff"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></svg>
