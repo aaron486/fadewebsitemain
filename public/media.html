@@ -651,6 +651,10 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     });
     moving.forEach(function (ch) { body.appendChild(ch); });
     wrap.appendChild(body);
+    var titleWrap = document.createElement('span');
+    titleWrap.className = 'sec-title';
+    while (h2.firstChild) titleWrap.appendChild(h2.firstChild);
+    h2.appendChild(titleWrap);
     var chev = document.createElement('span');
     chev.className = 'sec-chev';
     chev.textContent = '▾';
