@@ -3,7 +3,7 @@
 Videos shown under each bullet in the "The Solution" section on /media.
 
 Slots (H.264 MP4, portrait):
-  solution-1.mp4  See their friends' picks & share wins
+  slot 1 uses assets/betcard-demo.mp4 (shareable bet card) — See their friends' picks & share wins
   solution-2.mp4  Analyze their bet history
   solution-3.mp4  Use AI to bet better
   solution-4.mp4  Access stats and research before placing a pick
