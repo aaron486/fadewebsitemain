@@ -3,11 +3,10 @@
 Videos shown under each bullet in the "The Solution" section on /media.
 
 Slots (H.264 MP4, portrait):
-  solution-1.mp4  See their friends' picks
-  solution-2.mp4  Share wins
-  solution-3.mp4  Analyze their bet history
-  solution-4.mp4  Use AI to bet better
-  solution-5.mp4  Access stats and research before placing a pick
+  solution-1.mp4  See their friends' picks & share wins
+  solution-2.mp4  Analyze their bet history
+  solution-3.mp4  Use AI to bet better
+  solution-4.mp4  Access stats and research before placing a pick
 
 A slot whose file is missing shows a dashed "demo coming" placeholder.
 iPhone screen recordings are HEVC (.mov) — transcode before adding:
