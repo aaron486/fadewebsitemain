@@ -55,6 +55,12 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 .bc-scr:hover .bc-play { background: rgba(0,0,0,0.75); transform: scale(1.06); }
 .bc-scr.playing .bc-play { opacity: 0; pointer-events: none; }
 
+/* solution phone slots */
+.sol-scr { position: relative; }
+.sol-scr.empty video { display: none; }
+.sol-scr.empty { border: 1.5px dashed rgba(255,255,255,0.16); background: #0b0b0f; box-shadow: none; }
+.sol-scr.empty::after { content: 'Demo coming'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
 /* metric strip */
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
 .metric { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 1.6rem 1.25rem; text-align: center; }
@@ -265,13 +271,28 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 <section id="solution"><div class="wrap">
   <span class="eyebrow">The Solution</span>
   <h2 class="sec">One app that provides everything bettors want to use.</h2>
-  <ul class="team-bio" style="max-width:640px;">
-    <li><strong>See their friends' picks</strong></li>
-    <li><strong>Share wins</strong></li>
-    <li><strong>Analyze their bet history</strong></li>
-    <li><strong>Use AI to bet better</strong></li>
-    <li><strong>Access stats and research before placing a pick</strong></li>
-  </ul>
+  <div class="phones" id="solutionPhones">
+    <figure class="phone">
+      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-1.mp4"></video></div>
+      <figcaption>See their friends' picks</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-2.mp4"></video></div>
+      <figcaption>Share wins</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-3.mp4"></video></div>
+      <figcaption>Analyze their bet history</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-4.mp4"></video></div>
+      <figcaption>Use AI to bet better</figcaption>
+    </figure>
+    <figure class="phone">
+      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-5.mp4"></video></div>
+      <figcaption>Access stats &amp; research before placing a pick</figcaption>
+    </figure>
+  </div>
 </div></section>
 
 <!-- BET CARD DEMO -->
@@ -715,6 +736,15 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <video class="lb-video" controls playsinline></video>
 </div>
 <script>
+(function () {
+  document.querySelectorAll('#solutionPhones .sol-scr video').forEach(function (v) {
+    var scr = v.parentElement;
+    v.addEventListener('loadedmetadata', function () { scr.classList.remove('empty'); var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+    v.addEventListener('error', function () { scr.classList.add('empty'); });
+    scr.classList.add('empty');
+    v.load();
+  });
+})();
 (function () {
   var scr = document.getElementById('betcardScr');
   var vid = document.getElementById('betcardVideo');
