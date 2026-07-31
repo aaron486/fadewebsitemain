@@ -56,13 +56,9 @@ section.collapsed h2.sec { margin-bottom: 0; }
 .hero p { font-size: clamp(1.1rem, 1.7vw, 1.4rem); color: rgba(255,255,255,0.6); max-width: 720px; margin: 0 auto 2.25rem; position: relative; }
 .hero .confidential { position: relative; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.4rem 0.9rem; }
 
-/* solution phone slots */
-#solutionPhones { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 820px) { #solutionPhones { grid-template-columns: 1fr 1fr; } }
-.sol-scr { position: relative; }
-.sol-scr.empty video { display: none; }
-.sol-scr.empty { border: 1.5px dashed rgba(255,255,255,0.16); background: #0b0b0f; box-shadow: none; }
-.sol-scr.empty::after { content: 'Demo coming'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+/* solution standalone video + list */
+.sol-grid { display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; align-items: center; margin-top: 1.75rem; }
+@media (max-width: 820px) { .sol-grid { grid-template-columns: 1fr; } .sol-grid .phone { max-width: 260px; } }
 
 /* metric strip */
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
@@ -271,26 +267,23 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 </div></section>
 
 <!-- SOLUTION -->
-<section id="solution"><div class="wrap">
+<section id="solution"><div class="wrap" style="max-width:920px;">
   <span class="eyebrow">The Solution</span>
   <h2 class="sec">One app that provides everything bettors want to use.</h2>
-  <div class="phones" id="solutionPhones">
-    <figure class="phone">
-      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/betcard-demo.mp4"></video></div>
-      <figcaption>See their friends' picks &amp; share wins</figcaption>
+  <div class="sol-grid">
+    <figure class="phone" style="max-width:300px; margin:0 auto; width:100%;">
+      <div class="scr"><video autoplay muted playsinline loop preload="metadata" src="assets/betcard-demo.mp4"></video></div>
+      <figcaption>The shareable bet card &middot; live in the app</figcaption>
     </figure>
-    <figure class="phone">
-      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-2.mp4"></video></div>
-      <figcaption>Analyze their bet history</figcaption>
-    </figure>
-    <figure class="phone">
-      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-3.mp4"></video></div>
-      <figcaption>Use AI to bet better</figcaption>
-    </figure>
-    <figure class="phone">
-      <div class="scr sol-scr"><video muted playsinline loop preload="metadata" src="assets/solution/solution-4.mp4"></video></div>
-      <figcaption>Access stats &amp; research before placing a pick</figcaption>
-    </figure>
+    <div>
+      <ul class="team-bio">
+        <li><strong>See their friends' picks</strong> &mdash; every pick from your circle, the moment it's placed.</li>
+        <li><strong>Share wins</strong> &mdash; bet cards built for the group chat: who's sending it, their record, and the full stats behind the pick.</li>
+        <li><strong>Analyze their bet history</strong> &mdash; every bet synced, tracked, and settled in one record.</li>
+        <li><strong>Use AI to bet better</strong> &mdash; Fade IQ reads your history and the live lines, then coaches you.</li>
+        <li><strong>Access stats &amp; research before placing a pick</strong> &mdash; the numbers and narratives, before the bet.</li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
@@ -763,15 +756,6 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     }
     h2.addEventListener('click', toggle);
     h2.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-  });
-})();
-(function () {
-  document.querySelectorAll('#solutionPhones .sol-scr video').forEach(function (v) {
-    var scr = v.parentElement;
-    v.addEventListener('loadedmetadata', function () { scr.classList.remove('empty'); var p = v.play(); if (p && p.catch) p.catch(function () {}); });
-    v.addEventListener('error', function () { scr.classList.add('empty'); });
-    scr.classList.add('empty');
-    v.load();
   });
 })();
 (function () {
