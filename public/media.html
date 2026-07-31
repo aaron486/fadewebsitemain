@@ -244,6 +244,11 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
       <button type="submit" style="width:100%; margin-top:0.75rem; padding:0.9rem 1rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:#fff; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:1rem; font-weight:600; cursor:pointer;">Enter &#8594;</button>
     </form>
     <div id="gateMsg" style="min-height:1.2rem; font-size:0.85rem; color:#f87171; margin-top:0.75rem;"></div>
+    <div id="gateNda" style="display:none; text-align:left; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.4rem;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#3b82f6; margin-bottom:0.75rem;">Confidentiality Acknowledgment</div>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.65;">This Investor Overview contains confidential and proprietary information of Fade Social LLC. By clicking &ldquo;I Agree &amp; Enter,&rdquo; you acknowledge and agree that: (1)&nbsp;these materials are provided solely for your evaluation of a potential investment; (2)&nbsp;you will hold their contents in strict confidence and will not copy, distribute, or disclose them to any third party without prior written consent; and (3)&nbsp;nothing on this page constitutes an offer to sell or a solicitation of an offer to buy securities.</p>
+      <button id="gateAgree" type="button" style="width:100%; margin-top:1.1rem; padding:0.9rem 1rem; background:linear-gradient(135deg,#3b82f6,#2563eb); color:#fff; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:1rem; font-weight:600; cursor:pointer;">I Agree &amp; Enter &#8594;</button>
+    </div>
   </div>
 </div>
 <script>
@@ -262,9 +267,17 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     var pw = document.getElementById('gatePw').value;
     crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function (buf) {
       var hex = Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
-      if (hex === HASH) { unlock(); }
+      if (hex === HASH) {
+        document.getElementById('gateForm').style.display = 'none';
+        document.getElementById('gateMsg').style.display = 'none';
+        document.getElementById('gateNda').style.display = 'block';
+      }
       else { document.getElementById('gateMsg').textContent = 'Incorrect password.'; }
     });
+  });
+  document.getElementById('gateAgree').addEventListener('click', function () {
+    try { sessionStorage.setItem('fade_media_nda', new Date().toISOString()); } catch (e) {}
+    unlock();
   });
 })();
 </script>
