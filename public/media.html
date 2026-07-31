@@ -50,6 +50,10 @@ h2.sec { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; text-transform: 
 /* bet card demo */
 .betcard-grid { display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; align-items: center; }
 @media (max-width: 820px) { .betcard-grid { grid-template-columns: 1fr; } .betcard-grid .phone { max-width: 260px; } }
+.bc-scr { position: relative; cursor: pointer; }
+.bc-play { position: absolute; inset: 0; margin: auto; width: 62px; height: 62px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.6); color: #fff; font-size: 1.15rem; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 5px; z-index: 2; transition: transform 0.2s ease, background 0.2s ease; }
+.bc-scr:hover .bc-play { background: rgba(0,0,0,0.75); transform: scale(1.06); }
+.bc-scr.playing .bc-play { opacity: 0; pointer-events: none; }
 
 /* metric strip */
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
@@ -219,7 +223,7 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 <section id="betcard" style="border-top:none; padding-top:1rem;"><div class="wrap" style="max-width:920px;">
   <div class="betcard-grid">
     <figure class="phone" style="max-width:300px; margin:0 auto; width:100%;">
-      <div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/betcard-demo.mp4"></video></div>
+      <div class="scr bc-scr" id="betcardScr"><video id="betcardVideo" loop muted playsinline preload="metadata" src="assets/betcard-demo.mp4"></video><button class="bc-play" type="button" aria-label="Play bet card demo">&#9654;</button></div>
     </figure>
     <div>
       <span class="eyebrow">Live in the app</span>
@@ -270,38 +274,6 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     <figure><div class="rv"><video autoplay loop muted playsinline preload="metadata" src="assets/media-tvoff.mp4"></video></div><figcaption>TV Off</figcaption></figure>
   </div>
   <p class="reel-hint">&larr; Scroll for more &rarr;</p>
-</div></section>
-
-<!-- HOW WE LAUNCH -->
-<section id="launch"><div class="wrap">
-  <span class="eyebrow">The Plan</span>
-  <h2 class="sec">How we launch.</h2>
-  <p class="lead">Over the next two weeks, Fade is going through a major UX design upgrade. The core product is built &mdash; now we inject the betting culture.</p>
-  <div class="rev">
-    <div class="row"><div class="n">01</div><div><h4>We bring the receipts</h4><p>A brand film for when betting was cool &mdash; the old-school bookie who used to get the call. Same process, now it's just digital.</p></div></div>
-    <div class="row"><div class="n">02</div><div><h4>The Fade UX rebrand</h4><p>The OG bookie slip mixed with analytics and editorial &mdash; where people go before they bet. Their friends, their picks, the stats, and the story, all in one place. <a href="/fade-app-demo.html" target="_blank" rel="noopener">See the live demo &#8594;</a></p></div></div>
-    <div class="row"><div class="n">03</div><div><h4>Fundraise</h4><p>Structure the entity and the legal, and close the raise.</p></div></div>
-    <div class="row"><div class="n">04</div><div><h4>2026 CFB &amp; NFL takeover</h4><p>Launch to the public two weeks before football season, build people's betting habits through the College Football season, then quickly flood the airwaves with Fade-branded content.</p></div></div>
-  </div>
-</div></section>
-
-<!-- MOMENTS -->
-<section id="moments"><div class="wrap">
-  <span class="eyebrow">Owning the moment</span>
-  <h2 class="sec">10 moments that make people bet.</h2>
-  <p class="lead">Every bet is triggered by a moment &mdash; and almost all of them happen <strong>before</strong> a sportsbook is ever opened. Here are ten, and how Fade owns each one.</p>
-  <div class="rev">
-    <div class="row"><div class="n">01</div><div><h4>&ldquo;I see my friends are betting&rdquo;</h4><p>I get a notification the moment my friends place a bet. Tail or fade in one tap; no screenshots, no re-typing.</p></div></div>
-    <div class="row"><div class="n">02</div><div><h4>&ldquo;I'm at the game or watching&rdquo;</h4><p>Live game-day channels show what your circle &mdash; and the whole network &mdash; is betting in real time.</p></div></div>
-    <div class="row"><div class="n">03</div><div><h4>&ldquo;I get a good insight&rdquo;</h4><p>Fade IQ and community analytics surface the angle &mdash; trends, matchups, who's fadeable &mdash; before you bet.</p></div></div>
-    <div class="row"><div class="n">04</div><div><h4>&ldquo;I'm chasing a storyline or streak&rdquo;</h4><p>Bettors want information that keeps them interested and makes them sharper. Narratives &amp; Streaks serve who's hot, who's due, and who's overdue to fall.</p></div></div>
-    <div class="row"><div class="n">05</div><div><h4>&ldquo;I see a celebrity or someone I follow bet&rdquo;</h4><p>See the biggest names' and creators' real bets the moment they place them.</p></div></div>
-    <div class="row"><div class="n">06</div><div><h4>&ldquo;I hear breaking news&rdquo;</h4><p>Injury and lineup alerts hit Fade first &mdash; with how it moves the play.</p></div></div>
-    <div class="row"><div class="n">07</div><div><h4>&ldquo;I notice the line moving&rdquo;</h4><p>Line-movement alerts show where the money's going before you lock it in.</p></div></div>
-    <div class="row"><div class="n">08</div><div><h4>&ldquo;My friend just cashed&rdquo;</h4><p>Their winning slip hits the feed &mdash; and you're one tap from running it back.</p></div></div>
-    <div class="row"><div class="n">09</div><div><h4>&ldquo;Who you got?&rdquo;</h4><p>The debate and everyone's picks live in one place &mdash; the leaderboard settles it later.</p></div></div>
-    <div class="row"><div class="n">10</div><div><h4>&ldquo;I want some action right now&rdquo;</h4><p>The feed always has live games and community picks to jump on &mdash; Fade is the first app you open to figure out what you want to bet on.</p></div></div>
-  </div>
 </div></section>
 
 <!-- POSITIONING / VENN -->
@@ -729,6 +701,16 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <video class="lb-video" controls playsinline></video>
 </div>
 <script>
+(function () {
+  var scr = document.getElementById('betcardScr');
+  var vid = document.getElementById('betcardVideo');
+  if (!scr || !vid) return;
+  scr.addEventListener('click', function () {
+    if (vid.paused) { vid.play(); scr.classList.add('playing'); }
+    else { vid.pause(); scr.classList.remove('playing'); }
+  });
+  vid.addEventListener('ended', function () { scr.classList.remove('playing'); });
+})();
 (function () {
   var lb = document.getElementById('lightbox');
   var lv = lb.querySelector('.lb-video');
