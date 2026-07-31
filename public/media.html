@@ -67,6 +67,10 @@ section.collapsed h2.sec { margin-bottom: 0; }
 .sol-item summary::after { content: '+'; margin-left: auto; flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: rgba(255,255,255,0.45); }
 .sol-item[open] summary::after { content: '\2013'; }
 .sol-phone { max-width: 270px; margin: 0.5rem auto 1.75rem; }
+.sol-duo { display: grid; grid-template-columns: repeat(2, 270px); gap: 1.5rem; justify-content: center; align-items: start; }
+@media (max-width: 680px) { .sol-duo { grid-template-columns: 1fr; } }
+.sol-duo .sol-phone { margin: 0.5rem 0 1.25rem; }
+.sol-phone > img { width: 100%; display: block; border-radius: 26px; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
 .sol-cards { max-width: 560px; margin: 0.75rem auto 1.75rem; display: grid; gap: 1rem; }
 .sol-cards img { width: 100%; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
 .sol-cards figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-align: center; }
@@ -317,7 +321,10 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
     </details>
     <details class="sol-item">
       <summary><span><strong>Access stats &amp; research before placing a pick</strong> &mdash; the numbers and narratives, before the bet.</span></summary>
-      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-5.mp4"></video></div><figcaption>Demo</figcaption></figure>
+      <div class="sol-duo">
+        <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-5.mp4"></video></div><figcaption>Bet tools &middot; CLV, EV, Kelly &amp; hedge</figcaption></figure>
+        <figure class="phone sol-phone"><img src="assets/solution/liveboard.jpeg" alt="Fade live board — live games with FadeIQ snapshot and market lines" loading="lazy" /><figcaption>Live board &middot; FadeIQ snapshot on every game</figcaption></figure>
+      </div>
     </details>
   </div>
 </div></section>
