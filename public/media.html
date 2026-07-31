@@ -67,6 +67,9 @@ section.collapsed h2.sec { margin-bottom: 0; }
 .sol-item summary::after { content: '+'; margin-left: auto; flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: rgba(255,255,255,0.45); }
 .sol-item[open] summary::after { content: '\2013'; }
 .sol-phone { max-width: 270px; margin: 0.5rem auto 1.75rem; }
+.sol-cards { max-width: 560px; margin: 0.75rem auto 1.75rem; display: grid; gap: 1rem; }
+.sol-cards img { width: 100%; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+.sol-cards figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-align: center; }
 .sol-phone .scr { position: relative; }
 .sol-phone .scr.empty video { display: none; }
 .sol-phone .scr.empty { border: 1.5px dashed rgba(255,255,255,0.16); background: #0b0b0f; box-shadow: none; }
@@ -288,8 +291,12 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
       <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-1.mp4"></video></div><figcaption>Bet slip &rarr; shareable bet card &middot; live in the group chat</figcaption></figure>
     </details>
     <details class="sol-item">
-      <summary><span><strong>Share wins</strong> &mdash; bet cards built for the group chat: who's sending it, their record, and the full stats behind the pick.</span></summary>
-      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-2.mp4"></video></div><figcaption>Demo</figcaption></figure>
+      <summary><span><strong>Share wins</strong> &mdash; the receipt: every card links back to a live page with full analysis of the bet.</span></summary>
+      <figure class="sol-cards">
+        <img src="assets/solution/receipt-won.jpeg" alt="Fade bet card — won 5-leg parlay, +3128, stamped PAID" loading="lazy" />
+        <img src="assets/solution/receipt-lost.jpeg" alt="Fade bet card — lost pick, stamped LOSER" loading="lazy" />
+        <figcaption>Win or lose, the receipt drops in the chat &mdash; and links to the live analysis at share.fade.bet</figcaption>
+      </figure>
     </details>
     <details class="sol-item">
       <summary><span><strong>Analyze their bet history</strong> &mdash; every bet synced, tracked, and settled in one record.</span></summary>
