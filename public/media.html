@@ -56,9 +56,21 @@ section.collapsed h2.sec { margin-bottom: 0; }
 .hero p { font-size: clamp(1.1rem, 1.7vw, 1.4rem); color: rgba(255,255,255,0.6); max-width: 720px; margin: 0 auto 2.25rem; position: relative; }
 .hero .confidential { position: relative; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.4rem 0.9rem; }
 
-/* solution standalone video + list */
-.sol-grid { display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; align-items: center; margin-top: 1.75rem; }
-@media (max-width: 820px) { .sol-grid { grid-template-columns: 1fr; } .sol-grid .phone { max-width: 260px; } }
+/* solution expandable points */
+.sol-acc { margin-top: 1.5rem; max-width: 780px; }
+.sol-item { border-top: 1px solid rgba(255,255,255,0.08); }
+.sol-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.sol-item summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 1rem; padding: 1.05rem 0; font-size: 1rem; color: rgba(255,255,255,0.62); line-height: 1.55; }
+.sol-item summary::-webkit-details-marker { display: none; }
+.sol-item summary strong { color: #fff; font-weight: 600; }
+.sol-item summary:hover strong { color: #60a5fa; }
+.sol-item summary::after { content: '+'; margin-left: auto; flex: 0 0 auto; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: rgba(255,255,255,0.45); }
+.sol-item[open] summary::after { content: '\2013'; }
+.sol-phone { max-width: 270px; margin: 0.5rem auto 1.75rem; }
+.sol-phone .scr { position: relative; }
+.sol-phone .scr.empty video { display: none; }
+.sol-phone .scr.empty { border: 1.5px dashed rgba(255,255,255,0.16); background: #0b0b0f; box-shadow: none; }
+.sol-phone .scr.empty::after { content: 'Demo coming'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
 /* metric strip */
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
@@ -270,20 +282,27 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
 <section id="solution"><div class="wrap" style="max-width:920px;">
   <span class="eyebrow">The Solution</span>
   <h2 class="sec">One app that provides everything bettors want to use.</h2>
-  <div class="sol-grid">
-    <figure class="phone" style="max-width:300px; margin:0 auto; width:100%;">
-      <div class="scr"><video autoplay muted playsinline loop preload="metadata" src="assets/betcard-demo.mp4"></video></div>
-      <figcaption>The shareable bet card &middot; live in the app</figcaption>
-    </figure>
-    <div>
-      <ul class="team-bio">
-        <li><strong>See their friends' picks</strong> &mdash; every pick from your circle, the moment it's placed.</li>
-        <li><strong>Share wins</strong> &mdash; bet cards built for the group chat: who's sending it, their record, and the full stats behind the pick.</li>
-        <li><strong>Analyze their bet history</strong> &mdash; every bet synced, tracked, and settled in one record.</li>
-        <li><strong>Use AI to bet better</strong> &mdash; Fade IQ reads your history and the live lines, then coaches you.</li>
-        <li><strong>Access stats &amp; research before placing a pick</strong> &mdash; the numbers and narratives, before the bet.</li>
-      </ul>
-    </div>
+  <div class="sol-acc">
+    <details class="sol-item">
+      <summary><span><strong>See their friends' picks</strong> &mdash; every pick from your circle, the moment it's placed.</span></summary>
+      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/betcard-demo.mp4"></video></div><figcaption>The shareable bet card &middot; live in the app</figcaption></figure>
+    </details>
+    <details class="sol-item">
+      <summary><span><strong>Share wins</strong> &mdash; bet cards built for the group chat: who's sending it, their record, and the full stats behind the pick.</span></summary>
+      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-2.mp4"></video></div><figcaption>Demo</figcaption></figure>
+    </details>
+    <details class="sol-item">
+      <summary><span><strong>Analyze their bet history</strong> &mdash; every bet synced, tracked, and settled in one record.</span></summary>
+      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-3.mp4"></video></div><figcaption>Demo</figcaption></figure>
+    </details>
+    <details class="sol-item">
+      <summary><span><strong>Use AI to bet better</strong> &mdash; Fade IQ reads your history and the live lines, then coaches you.</span></summary>
+      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-4.mp4"></video></div><figcaption>Demo</figcaption></figure>
+    </details>
+    <details class="sol-item">
+      <summary><span><strong>Access stats &amp; research before placing a pick</strong> &mdash; the numbers and narratives, before the bet.</span></summary>
+      <figure class="phone sol-phone"><div class="scr"><video muted playsinline loop preload="none" src="assets/solution/solution-5.mp4"></video></div><figcaption>Demo</figcaption></figure>
+    </details>
   </div>
 </div></section>
 
@@ -714,6 +733,22 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   <video class="lb-video" controls playsinline></video>
 </div>
 <script>
+(function () {
+  document.querySelectorAll('.sol-item').forEach(function (d) {
+    var vid = d.querySelector('video');
+    if (!vid) return;
+    var scr = vid.parentElement;
+    vid.addEventListener('error', function () { scr.classList.add('empty'); });
+    d.addEventListener('toggle', function () {
+      if (d.open) {
+        if (!vid.dataset.loaded) { vid.dataset.loaded = '1'; vid.load(); }
+        var p = vid.play(); if (p && p.catch) p.catch(function () {});
+      } else {
+        vid.pause();
+      }
+    });
+  });
+})();
 (function () {
   var KEY = 'fade_media_collapsed';
   var state = {};
