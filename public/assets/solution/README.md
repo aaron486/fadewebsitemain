@@ -2,7 +2,7 @@
 
 Videos revealed by the expandable points in "The Solution" on /media.
 
-  bullet 1  See their friends' picks      -> assets/betcard-demo.mp4 (live)
+  bullet 1  See your friends picks        -> solution-1.mp4 (live)
   bullet 2  Share wins                    -> solution-2.mp4
   bullet 3  Analyze their bet history     -> solution-3.mp4
   bullet 4  Use AI to bet better          -> solution-4.mp4
