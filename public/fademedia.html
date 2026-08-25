@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Media — The Front Page of Sports Betting</title>
+<meta name="description" content="Fade Media — the pre-bet desk. Desk reports, the slate, verified bettors, and original films. Read the slate. Then make the call." />
+<link rel="canonical" href="https://fade.bet/fade-media" />
+<meta name="theme-color" content="#F4F2EA" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fade Media — The Front Page of Sports Betting" />
+<meta property="og:description" content="The pre-bet desk: desk reports, the slate, verified bettors, and original films." />
+<meta property="og:url" content="https://fade.bet/fade-media" />
+<meta property="og:site_name" content="Fade" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --paper:#F4F2EA; --paper-hi:#FBFAF5; --carbon:#141412; --soft:#6E6B60;
+  --line:rgba(20,20,18,0.16); --line-hard:rgba(20,20,18,0.85);
+  --tail:#2F52E0; --fade:#D92D20; --cash:#2E9E44;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--paper); color:var(--carbon); font-family:'IBM Plex Mono',monospace; line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+.wrap { max-width:1180px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
+.anton { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
+
+/* masthead */
+.topline { border-bottom:1.5px solid var(--carbon); }
+.topline-in { display:flex; justify-content:space-between; align-items:center; padding:0.55rem 0; font-size:0.66rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); gap:1rem; }
+.topline-in .live-dot { color:var(--fade); }
+.masthead { text-align:center; padding:2.4rem 0 1.6rem; border-bottom:1.5px solid var(--carbon); position:relative; }
+.masthead .eyebrow { font-size:0.7rem; font-weight:700; letter-spacing:0.34em; text-transform:uppercase; color:var(--soft); margin-bottom:0.6rem; }
+.masthead h1 { font-size:clamp(3.2rem,10vw,6.5rem); line-height:0.95; }
+.masthead .tag { display:inline-block; margin-top:0.9rem; font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--carbon); border-top:1px solid var(--carbon); border-bottom:1px solid var(--carbon); padding:0.35rem 1.1rem; }
+/* section tabs */
+.cats { position:sticky; top:0; z-index:20; background:var(--paper); border-bottom:1.5px solid var(--carbon); }
+.cats-in { display:flex; justify-content:center; gap:0.4rem; padding:0.6rem 0; flex-wrap:wrap; }
+.cat-tab { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.45rem 1.1rem; cursor:pointer; transition:all 0.15s ease; }
+.cat-tab:hover { color:var(--carbon); border-color:var(--carbon); }
+.cat-tab.active { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+
+/* front grid */
+.front { display:grid; grid-template-columns:2fr 1fr; gap:0; padding:2rem 0 0; }
+.lead { padding-right:2rem; }
+.kicker { font-size:0.66rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.6rem; }
+.kicker.desk { color:var(--carbon); } .kicker.games { color:var(--tail); } .kicker.bettors { color:var(--cash); } .kicker.cases { color:var(--fade); } .kicker.film { color:var(--soft); }
+.lead h2 { font-size:clamp(1.9rem,4.2vw,3.1rem); line-height:1.04; margin-bottom:1rem; }
+.lead .dek { font-size:0.92rem; color:var(--soft); max-width:56ch; margin-bottom:1rem; }
+.byline { font-size:0.64rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); }
+.byline b { color:var(--carbon); }
+.readlink { display:inline-block; margin-top:0.9rem; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--tail); }
+.readlink:hover { text-decoration:underline; }
+.lead-receipt { margin-top:1.5rem; border:1.5px solid var(--carbon); border-radius:6px; overflow:hidden; max-width:560px; }
+.lead-receipt img { width:100%; display:block; }
+.lead-receipt figcaption { font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); padding:0.5rem 0.8rem; border-top:1px dashed var(--line); }
+
+/* slate rail */
+.rail { border-left:1.5px solid var(--carbon); padding-left:2rem; }
+.rail-head { font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding-bottom:0.5rem; border-bottom:1.5px solid var(--carbon); margin-bottom:0.4rem; display:flex; justify-content:space-between; align-items:baseline; }
+.rail-head span { color:var(--soft); font-weight:600; font-size:0.62rem; letter-spacing:0.1em; }
+.slate-game { padding:0.85rem 0; border-bottom:1px dashed var(--line); }
+.slate-teams { font-size:0.82rem; font-weight:700; }
+.slate-line { display:flex; justify-content:space-between; font-size:0.7rem; color:var(--soft); margin-top:0.2rem; }
+.slate-line .odds { color:var(--tail); font-weight:700; }
+.slate-note { font-size:0.66rem; color:var(--soft); margin-top:0.35rem; line-height:1.5; }
+.slate-note b { color:var(--carbon); }
+.rail-cta { display:block; text-align:center; margin-top:1rem; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border:2px solid var(--carbon); border-radius:4px; padding:0.7rem 1rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
+.rail-cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
+
+/* story grid */
+.rule-double { border-top:1.5px solid var(--carbon); border-bottom:4px double var(--carbon); height:8px; margin:2rem 0 0; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); padding:0; }
+.story { padding:1.6rem 1.6rem 1.8rem; border-bottom:1px solid var(--line); }
+.story:nth-child(3n+2), .story:nth-child(3n) { border-left:1px solid var(--line); }
+.story h3 { font-size:1.25rem; line-height:1.12; margin-bottom:0.6rem; }
+.story .dek { font-size:0.78rem; color:var(--soft); margin-bottom:0.7rem; }
+.story.hidden { display:none; }
+
+/* watch strip */
+.watch { border-top:1.5px solid var(--carbon); padding:1.8rem 0 2.2rem; }
+.watch-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.2rem; }
+.watch-head h2 { font-size:1.6rem; }
+.watch-head span { font-size:0.64rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.films { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+.film { cursor:pointer; }
+.film .fr { position:relative; aspect-ratio:16/9; border:1.5px solid var(--carbon); border-radius:6px; overflow:hidden; background:#050507; }
+.film video { width:100%; height:100%; object-fit:cover; display:block; }
+.film .fr::after { content:'\25B6'; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:52px; height:52px; display:flex; align-items:center; justify-content:center; padding-left:4px; border-radius:50%; background:rgba(244,242,234,0.92); color:var(--carbon); font-size:0.95rem; border:1.5px solid var(--carbon); opacity:0; transition:opacity 0.2s; }
+.film:hover .fr::after { opacity:1; }
+.film figcaption { margin-top:0.55rem; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
+.film figcaption span { display:block; color:var(--soft); font-weight:600; letter-spacing:0.08em; margin-top:0.15rem; text-transform:none; }
+
+/* app cta */
+.appcta { border-top:1.5px solid var(--carbon); text-align:center; padding:2.6rem 0 3rem; }
+.appcta h2 { font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:0.5rem; }
+.appcta p { font-size:0.8rem; color:var(--soft); margin-bottom:1.4rem; }
+.stamp-row { display:flex; justify-content:center; gap:0.9rem; flex-wrap:wrap; }
+.stamp { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:6px; padding:0.85rem 1.9rem; border:2px solid var(--carbon); transition:all 0.15s ease; }
+.stamp.fill { background:var(--carbon); color:var(--paper); box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
+.stamp.line { background:transparent; color:var(--carbon); box-shadow:3px 3px 0 rgba(20,20,18,0.15); }
+.stamp:hover { transform:translate(-1px,-1px); }
+
+/* footer */
+.foot { border-top:1.5px solid var(--carbon); padding:1.4rem 0 2.4rem; }
+.foot-in { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); }
+.foot-in b { color:var(--carbon); }
+
+/* lightbox */
+.lb { position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; background:rgba(10,10,9,0.93); padding:1.5rem; }
+.lb.open { display:flex; }
+.lb video { max-width:94vw; max-height:86vh; border-radius:8px; background:#000; }
+.lb-close { position:absolute; top:14px; right:18px; width:44px; height:44px; border-radius:50%; border:1.5px solid var(--paper); background:transparent; color:var(--paper); font-size:1.4rem; cursor:pointer; }
+
+@media (max-width:860px) {
+  .front { grid-template-columns:1fr; }
+  .lead { padding-right:0; }
+  .rail { border-left:none; border-top:1.5px solid var(--carbon); padding-left:0; margin-top:1.8rem; padding-top:1.4rem; }
+  .grid { grid-template-columns:1fr; }
+  .story { padding:1.4rem 0; }
+  .story:nth-child(3n+2), .story:nth-child(3n) { border-left:none; }
+  .films { grid-template-columns:1fr; }
+  .topline-in { justify-content:center; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="topline"><div class="wrap"><div class="topline-in">
+  <span id="dateline">The Pre-Bet Desk</span>
+  <span><span class="live-dot">&#9679;</span>&nbsp;Live from the Fade app</span>
+  <span>21+ &middot; Please play responsibly</span>
+</div></div></div>
+
+<header class="masthead"><div class="wrap">
+  <div class="eyebrow">The Pre-Bet Desk</div>
+  <h1 class="anton">Fade Media</h1>
+  <div class="tag">The Front Page of Sports Betting</div>
+</div></header>
+
+<nav class="cats"><div class="wrap"><div class="cats-in" id="catTabs">
+  <button class="cat-tab active" data-cat="all">All</button>
+  <button class="cat-tab" data-cat="desk">Desk</button>
+  <button class="cat-tab" data-cat="games">Games</button>
+  <button class="cat-tab" data-cat="bettors">Bettors</button>
+  <button class="cat-tab" data-cat="cases">Cases</button>
+</div></div></nav>
+
+<main class="wrap">
+
+  <!-- lead + slate -->
+  <section class="front">
+    <article class="lead">
+      <div class="kicker desk">Desk Report</div>
+      <h2 class="anton">Read the slate. Then make the call.</h2>
+      <p class="dek">Upcoming games, tracked records, and the bets behind the conversation &mdash; the desk publishes what moves the play: injuries and lineup news with the number they move, line watches from FadeIQ, and the receipts behind every hot streak on the app.</p>
+      <div class="byline"><b>Fade Desk</b> &middot; updated daily &middot; in the app</div>
+      <figure class="lead-receipt">
+        <img src="assets/solution/receipt-won.jpeg" alt="Fade bet card — 2mazz's 5-leg parlay, +3128, stamped PAID" loading="lazy" />
+        <figcaption>Receipt of the day &mdash; @2mazz&rsquo;s 5-leg parlay &middot; +3128 &middot; paid &middot; share.fade.bet</figcaption>
+      </figure>
+    </article>
+    <aside class="rail">
+      <div class="rail-head">The Slate <span>FadeIQ snapshot</span></div>
+      <div class="slate-game">
+        <div class="slate-teams">Nationals @ Braves</div>
+        <div class="slate-line"><span>MLB &middot; Moneyline</span><span class="odds">WSH +800 / ATL -500</span></div>
+        <div class="slate-note"><b>FadeIQ:</b> Braves lead 5&ndash;4; live spread still prices ATL -1.5. Pace is 9 total points vs a live total of 10.5.</div>
+      </div>
+      <div class="slate-game">
+        <div class="slate-teams">Rays @ Tigers</div>
+        <div class="slate-line"><span>MLB &middot; Number watch</span><span class="odds">TB -1.5</span></div>
+        <div class="slate-note"><b>Watchlist:</b> the pitching gap is driving the number &mdash; watch the first inning.</div>
+      </div>
+      <div class="slate-game">
+        <div class="slate-teams">Phillies @ Mariners</div>
+        <div class="slate-line"><span>MLB &middot; Moneyline</span><span class="odds">PHI -115</span></div>
+        <div class="slate-note"><b>Board:</b> live on the feed &mdash; tail or fade in one tap.</div>
+      </div>
+      <a class="rail-cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Open the full slate in Fade &rarr;</a>
+    </aside>
+  </section>
+
+  <div class="rule-double"></div>
+
+  <!-- story grid -->
+  <section class="grid" id="storyGrid">
+    <article class="story" data-cat="desk">
+      <div class="kicker desk">Desk Report</div>
+      <h3 class="anton">49ers reunite with Deebo Samuel as Pearsall's knee injury forces receiver shuffle</h3>
+      <p class="dek">The one-year deal, the receiver room after it, and where the numbers moved when the news hit.</p>
+      <div class="byline"><b>Fade Desk</b></div>
+      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
+    </article>
+    <article class="story" data-cat="games">
+      <div class="kicker games">Games</div>
+      <h3 class="anton">The number watch: what a -1.5 that won't move is telling you</h3>
+      <p class="dek">FadeIQ tracks the line from open to first pitch &mdash; when money comes in and the number holds, that's the story.</p>
+      <div class="byline"><b>FadeIQ</b> &middot; analysis</div>
+      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
+    </article>
+    <article class="story" data-cat="bettors">
+      <div class="kicker bettors">Bettors</div>
+      <h3 class="anton">The receipt: a +3128 five-leg parlay, verified end to end</h3>
+      <p class="dek">$25 to $807 through Holloway&ndash;McGregor and four more legs &mdash; synced from the book, settled in public, stamped paid.</p>
+      <div class="byline"><b>@2mazz</b> &middot; 276&ndash;717 &middot; Fade Score 7.7</div>
+      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">See the record &rarr;</a>
+    </article>
+    <article class="story" data-cat="desk">
+      <div class="kicker desk">Desk Report</div>
+      <h3 class="anton">Tail the sharps, fade the Tonys: how the Fade Score reads a bettor</h3>
+      <p class="dek">Record, ROI, recency, and market mix &mdash; what the score rewards, what it punishes, and why hot is not the same as good.</p>
+      <div class="byline"><b>Fade Desk</b> &middot; explainer</div>
+      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
+    </article>
+    <article class="story" data-cat="cases">
+      <div class="kicker cases">Cases</div>
+      <h3 class="anton">Inside the World Cup case study: 50 bettors, every trade verified</h3>
+      <p class="dek">Sportsbook history and Kalshi trades connected end to end &mdash; what a verified study record actually looks like.</p>
+      <div class="byline"><b>Fade Cases</b></div>
+      <a class="readlink" href="/worldcup">The case file &rarr;</a>
+    </article>
+    <article class="story" data-cat="bettors">
+      <div class="kicker bettors">Bettors</div>
+      <h3 class="anton">Celebrity money: when a founder puts 10k on a season opener</h3>
+      <p class="dek">Real bets from the biggest names, the moment they place them &mdash; on your lock screen with a tail and a fade button.</p>
+      <div class="byline"><b>Fade Alerts</b></div>
+      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Get the alerts &rarr;</a>
+    </article>
+  </section>
+
+  <!-- watch -->
+  <section class="watch">
+    <div class="watch-head">
+      <h2 class="anton">Watch</h2>
+      <span>Original films &middot; Fade Studios</span>
+    </div>
+    <div class="films">
+      <figure class="film" data-src="assets/why-fade-2.mp4">
+        <div class="fr"><video muted playsinline preload="metadata" src="assets/why-fade-2.mp4"></video></div>
+        <figcaption>Me, The Bookie<span>The old-school book meets the new world &middot; 0:29</span></figcaption>
+      </figure>
+      <figure class="film" data-src="assets/media-wildwest.mp4">
+        <div class="fr"><video muted playsinline preload="metadata" src="assets/media-wildwest.mp4"></video></div>
+        <figcaption>Wild West<span>A single take &middot; Fade brand film</span></figcaption>
+      </figure>
+      <figure class="film" data-src="assets/media-sal-launch-promo.mp4">
+        <div class="fr"><video muted playsinline preload="metadata" src="assets/media-sal-launch-promo.mp4"></video></div>
+        <figcaption>The Launch<span>Sal &middot; Fade brand film</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- app cta -->
+  <section class="appcta">
+    <h2 class="anton">Never miss a bet.</h2>
+    <p>The desk, the slate, and every receipt &mdash; live in the Fade app.</p>
+    <div class="stamp-row">
+      <a class="stamp fill" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Join the beta &rarr;</a>
+      <a class="stamp line" href="/">fade.bet &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot"><div class="wrap"><div class="foot-in">
+  <span><b>Fade</b> &middot; Verified exchange</span>
+  <span>21+ &middot; Gambling problem? Call <b>1-800-GAMBLER</b></span>
+  <span>Fade is a social platform, not a sportsbook</span>
+</div></div></footer>
+
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="Close">&#10005;</button>
+  <video id="lbVideo" controls playsinline preload="none"></video>
+</div>
+
+<script>
+(function () {
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('dateline').textContent = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  var tabs = document.querySelectorAll('.cat-tab');
+  var stories = document.querySelectorAll('#storyGrid .story');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('active'); });
+      t.classList.add('active');
+      var cat = t.dataset.cat;
+      stories.forEach(function (s) {
+        s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
+      });
+    });
+  });
+
+  var lb = document.getElementById('lb');
+  var lv = document.getElementById('lbVideo');
+  function close() { lv.pause(); lv.removeAttribute('src'); lv.load(); lb.classList.remove('open'); }
+  document.querySelectorAll('.film').forEach(function (f) {
+    f.addEventListener('click', function () {
+      lv.src = f.dataset.src; lv.muted = false; lb.classList.add('open');
+      var p = lv.play(); if (p && p.catch) p.catch(function () {});
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
+
+</body>
+</html>
