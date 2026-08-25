@@ -109,7 +109,7 @@ const Hero = ({ onExplore }) => {
 const videoMap = {
   overview: "/assets/demo-feed.mp4",
   features: "/assets/demo-sync.mp4",
-  fadeai: "/assets/demo-fadeiq.mp4",
+  fadeai: "/assets/demo-fadeiq-2.mp4",
   dashboard: "/assets/demo-dashboard.mp4",
 };
 
