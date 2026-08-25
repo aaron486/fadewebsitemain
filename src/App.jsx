@@ -420,7 +420,7 @@ const WhyFade = () => {
   return (
     <section className="whyfade-section" ref={ref}>
       <div className="whyfade-pin">
-        <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade.mp4" />
+        <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade-2.mp4" />
         <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
         <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
           <span className="section-eyebrow">Why Fade</span>
