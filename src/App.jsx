@@ -581,7 +581,7 @@ export default function FadeWebsite() {
   return (
     <>
       <style>{`
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; font-size:16px; }
@@ -888,6 +888,32 @@ a { color:inherit; }
 .glass-arrow { opacity:0.7; transition:transform 0.25s ease; }
 .glass-tab:hover .glass-arrow { transform:translateX(3px); }
 @media(max-width:480px) { .hero-tabs{flex-direction:column; width:100%; max-width:320px; margin-left:auto; margin-right:auto;} .glass-tab{justify-content:center;} }
+
+/* ===== Carbon slip tokens (source: shared/design-tokens.json · colors.slip) ===== */
+:root {
+  --slip-paper:#F4F2EA;
+  --slip-paper-hi:#FBFAF5;
+  --slip-carbon:#141412;
+  --slip-soft:#6E6B60;
+  --slip-line:rgba(20,20,18,0.16);
+  --slip-tail:#2F52E0;
+  --slip-fade:#D92D20;
+  --slip-cash:#2E9E44;
+}
+
+/* Carbon hero: printed-slip UI over the brand video */
+.hero-eyebrow { font-family:'IBM Plex Mono',monospace !important; font-weight:600; color:var(--slip-paper) !important; opacity:0.8; letter-spacing:0.32em !important; }
+.hero-headline { font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:0.015em !important; color:var(--slip-paper); }
+.hero-headline .gradient-text { background:none !important; -webkit-background-clip:initial !important; background-clip:initial !important; -webkit-text-fill-color:var(--slip-paper) !important; color:var(--slip-paper); border-bottom:6px solid var(--slip-tail); }
+.hero-sub { font-family:'IBM Plex Mono',monospace !important; font-size:0.95rem !important; line-height:1.75 !important; color:rgba(244,242,234,0.75) !important; }
+.store-badge { background:var(--slip-carbon) !important; border:1.5px solid var(--slip-paper) !important; border-radius:6px !important; box-shadow:3px 3px 0 rgba(0,0,0,0.4); }
+.store-badge:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.4); }
+.store-badge-small, .store-badge-big { font-family:'IBM Plex Mono',monospace !important; }
+.hero-tabs .glass-tab { font-family:'IBM Plex Mono',monospace; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; font-size:0.9rem; border-radius:6px; backdrop-filter:none; -webkit-backdrop-filter:none; }
+.hero-tabs button.glass-tab { background:var(--slip-paper); color:var(--slip-carbon); border:2px solid var(--slip-carbon); box-shadow:3px 3px 0 rgba(0,0,0,0.4); }
+.hero-tabs button.glass-tab:hover { background:var(--slip-paper-hi); transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.45); }
+.hero-tabs a.glass-tab { background:transparent; color:var(--slip-paper); border:2px solid var(--slip-paper); box-shadow:3px 3px 0 rgba(0,0,0,0.3); }
+.hero-tabs a.glass-tab:hover { background:rgba(244,242,234,0.12); transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.35); }
       `}</style>
 
       <Nav />
