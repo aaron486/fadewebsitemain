@@ -108,7 +108,7 @@ const Hero = ({ onExplore }) => {
 // ===== PHONE VIDEO SCREEN =====
 const videoMap = {
   overview: "/assets/demo-feed.mp4",
-  features: "/assets/demo-together.mp4",
+  features: "/assets/demo-sync.mp4",
   fadeai: "/assets/demo-fadeiq.mp4",
   dashboard: "/assets/demo-dashboard.mp4",
 };
@@ -163,7 +163,7 @@ const carouselSlides = [
     id: "features",
     eyebrow: "BET TOGETHER",
     title: "Your Betting\nCommunity",
-    subtitle: "From sportsbook sync to AI coaching — tools that bring the betting community together.",
+    subtitle: "All your sports bets in one place — sportsbooks, prediction markets, and fantasy lineups.",
     screen: "alerts",
     left: [
       { accent: "Fade", rest: "Alerts", label: "Never Miss a Bet Again. Get Notified When Friends & Celebrities Bet" },
