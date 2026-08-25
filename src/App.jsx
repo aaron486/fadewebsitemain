@@ -50,6 +50,13 @@ const Nav = () => null;
 // ===== HERO =====
 const Hero = ({ onExplore }) => {
   const videoRef = useRef(null);
+  // Let the film play alone for a beat before any UI appears.
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const t = setTimeout(() => setShow(true), reduce ? 0 : 3000);
+    return () => clearTimeout(t);
+  }, []);
   // Autoplay must start muted; the section-audio manager unmutes on scroll.
   useEffect(() => {
     const v = videoRef.current;
@@ -59,9 +66,9 @@ const Hero = ({ onExplore }) => {
     <section className="hero-section" id="bet-together">
       <div className="hero-pin">
         <video ref={videoRef} className="hero-video" data-audio-section autoPlay loop muted playsInline src="/assets/hero.mp4" />
-        <div className="hero-video-scrim" style={{ opacity: 0.72 }} />
+        <div className="hero-video-scrim" style={{ opacity: show ? 0.72 : 0.18 }} />
         <div className="hero-glow" />
-        <div className="hero-content hero-content-in">
+        <div className={"hero-content " + (show ? "hero-content-in" : "hero-content-wait")}>
         <div className="hero-brand">
           <FadeLogo height={56} />
         </div>
@@ -880,9 +887,12 @@ a { color:inherit; }
 @media(max-width:480px) { .footer-content{grid-template-columns:1fr;} }
 
 /* hero landing: content fade-in + glass tabs */
-.hero-content-in { opacity:1 !important; transform:none !important; animation:heroIn 1s ease 0.15s both; }
+.hero-video-scrim { transition:opacity 1.4s ease; }
+.hero-content-wait { opacity:0 !important; pointer-events:none; }
+.hero-content-wait .hero-tabs { animation:none; opacity:0; }
+.hero-content-in { opacity:1 !important; transform:none !important; animation:heroIn 1.1s ease 0.05s both; }
 @keyframes heroIn { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:none; } }
-.hero-tabs { display:flex; gap:1rem; margin-top:1.9rem; justify-content:center; flex-wrap:wrap; animation:heroIn 0.9s ease 0.75s both; }
+.hero-tabs { display:flex; gap:1rem; margin-top:1.9rem; justify-content:center; flex-wrap:wrap; animation:heroIn 0.9s ease 0.7s both; }
 .glass-tab { display:inline-flex; align-items:center; gap:0.6rem; padding:1.05rem 2.3rem; border-radius:16px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); color:#fff; font-family:'Inter',sans-serif; font-size:1.05rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background 0.25s ease, transform 0.25s ease, border-color 0.25s ease; }
 .glass-tab:hover { background:rgba(255,255,255,0.17); border-color:rgba(255,255,255,0.42); transform:translateY(-2px); }
 .glass-arrow { opacity:0.7; transition:transform 0.25s ease; }
