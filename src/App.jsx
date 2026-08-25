@@ -838,6 +838,8 @@ a { color:inherit; }
 .whyfade-text .accent { color:#3b82f6; }
 .whyfade-text strong { color:#fff; font-weight:600; }
 @media (prefers-reduced-motion: reduce) { .whyfade-section { height:auto; } .whyfade-pin { position:relative; } }
+/* 16:9 film: show the full frame on portrait screens instead of cropping */
+@media (max-aspect-ratio: 1/1) { .whyfade-video { object-fit:contain; background:#050507; } }
 .sb-marquee-container { overflow:hidden; padding:2rem 0; mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
 .marquee-track-wrapper { overflow:hidden; margin-bottom:1rem; }
 .marquee-track { display:flex; gap:1rem; width:max-content; animation:marquee 30s linear infinite; }
