@@ -110,7 +110,7 @@ const videoMap = {
   overview: "/assets/demo-feed.mp4",
   features: "/assets/demo-sync.mp4",
   fadeai: "/assets/demo-fadeiq-2.mp4",
-  dashboard: "/assets/demo-dashboard.mp4",
+  dashboard: "/assets/demo-profile-2.mp4",
 };
 
 const PhoneVideoScreen = ({ slideId = "overview" }) => {
