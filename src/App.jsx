@@ -48,24 +48,8 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
 const Nav = () => null;
 
 // ===== HERO =====
-const Hero = () => {
-  const [p, setP] = useState(0); // 0..1 text reveal progress as you scroll
+const Hero = ({ onExplore }) => {
   const videoRef = useRef(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const vh = window.innerHeight || 1;
-        setP(Math.max(0, Math.min(1, window.scrollY / (vh * 0.85))));
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   // Autoplay must start muted; the section-audio manager unmutes on scroll.
   useEffect(() => {
     const v = videoRef.current;
@@ -75,9 +59,9 @@ const Hero = () => {
     <section className="hero-section" id="bet-together">
       <div className="hero-pin">
         <video ref={videoRef} className="hero-video" data-audio-section autoPlay loop muted playsInline src="/assets/hero.mp4" />
-        <div className="hero-video-scrim" style={{ opacity: 0.5 + p * 0.45 }} />
+        <div className="hero-video-scrim" style={{ opacity: 0.72 }} />
         <div className="hero-glow" />
-        <div className="hero-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
+        <div className="hero-content hero-content-in">
         <div className="hero-brand">
           <FadeLogo height={56} />
         </div>
@@ -104,9 +88,10 @@ const Hero = () => {
             </div>
           </a>
         </div>
+        <div className="hero-tabs">
+          <button type="button" className="glass-tab" onClick={onExplore}>Explore the App <span className="glass-arrow">&rarr;</span></button>
+          <a className="glass-tab" href="/fade-media">Fade Media <span className="glass-arrow">&rarr;</span></a>
         </div>
-        <div className="hero-hint" style={{ opacity: Math.max(0, 1 - p * 2.5) }}>
-          <div className="mouse" />Scroll
         </div>
       </div>
     </section>
@@ -538,6 +523,14 @@ const Footer = () => (
 
 // ===== MAIN APP =====
 export default function FadeWebsite() {
+  const [explored, setExplored] = useState(false);
+  const handleExplore = () => {
+    setExplored(true);
+    setTimeout(() => {
+      const el = document.getElementById("explore-start");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 80);
+  };
   // Section-tied audio: unmute the full-screen video the user is scrolling
   // through, mute the rest; audio only starts once the user begins scrolling.
   useEffect(() => {
@@ -584,7 +577,7 @@ export default function FadeWebsite() {
       window.removeEventListener("touchstart", prime);
       window.removeEventListener("keydown", prime);
     };
-  }, []);
+  }, [explored]);
   return (
     <>
       <style>{`
@@ -628,8 +621,8 @@ a { color:inherit; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
 
 /* ===== HERO REFRESH (scroll-driven: video first, text loads on scroll) ===== */
-.hero-section { padding:0!important; height:220vh; min-height:0; background:#050507; overflow:visible; display:block; }
-.hero-pin { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.hero-section { padding:0!important; height:100vh; min-height:0; background:#050507; overflow:visible; display:block; }
+.hero-pin { position:relative; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
 .hero-glow { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:min(920px,94vw); height:540px; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, rgba(59,130,246,0.2) 0%, rgba(59,130,246,0.05) 40%, transparent 68%); filter:blur(30px); }
 .hero-brand { margin-bottom:1.1rem; }
 .hero-eyebrow { font-family:'Oswald',sans-serif; font-size:0.95rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(59,130,246,0.9); margin-bottom:0.9rem; }
@@ -885,16 +878,30 @@ a { color:inherit; }
 .disclaimer { text-align:center; padding:1.25rem 0; font-size:0.625rem; color:rgba(255,255,255,0.18); border-top:1px solid rgba(255,255,255,0.04); margin-top:1.5rem; line-height:1.6; }
 @media(max-width:768px) { .footer-content{grid-template-columns:1fr 1fr;} }
 @media(max-width:480px) { .footer-content{grid-template-columns:1fr;} }
+
+/* hero landing: content fade-in + glass tabs */
+.hero-content-in { opacity:1 !important; transform:none !important; animation:heroIn 1s ease 0.15s both; }
+@keyframes heroIn { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:none; } }
+.hero-tabs { display:flex; gap:1rem; margin-top:1.9rem; justify-content:center; flex-wrap:wrap; animation:heroIn 0.9s ease 0.75s both; }
+.glass-tab { display:inline-flex; align-items:center; gap:0.6rem; padding:1.05rem 2.3rem; border-radius:16px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); color:#fff; font-family:'Inter',sans-serif; font-size:1.05rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background 0.25s ease, transform 0.25s ease, border-color 0.25s ease; }
+.glass-tab:hover { background:rgba(255,255,255,0.17); border-color:rgba(255,255,255,0.42); transform:translateY(-2px); }
+.glass-arrow { opacity:0.7; transition:transform 0.25s ease; }
+.glass-tab:hover .glass-arrow { transform:translateX(3px); }
+@media(max-width:480px) { .hero-tabs{flex-direction:column; width:100%; max-width:320px; margin-left:auto; margin-right:auto;} .glass-tab{justify-content:center;} }
       `}</style>
 
       <Nav />
-      <Hero />
-      <FeatureCarousel />
-      <Compatibility />
-      <WhyFade />
-      <HowItWorks />
+      <Hero onExplore={handleExplore} />
+      {explored && (
+        <div id="explore-start">
+          <FeatureCarousel />
+          <Compatibility />
+          <WhyFade />
+          <HowItWorks />
 
-      <Footer />
+          <Footer />
+        </div>
+      )}
     </>
   );
 }
