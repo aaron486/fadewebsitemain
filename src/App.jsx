@@ -107,7 +107,7 @@ const Hero = ({ onExplore }) => {
 
 // ===== PHONE VIDEO SCREEN =====
 const videoMap = {
-  overview: "/assets/demo-app.mp4",
+  overview: "/assets/demo-feed.mp4",
   features: "/assets/demo-together.mp4",
   fadeai: "/assets/demo-fadeiq.mp4",
   dashboard: "/assets/demo-dashboard.mp4",
