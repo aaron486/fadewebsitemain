@@ -924,6 +924,51 @@ a { color:inherit; }
 .hero-tabs button.glass-tab:hover { background:var(--slip-paper-hi); transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.45); }
 .hero-tabs a.glass-tab { background:transparent; color:var(--slip-paper); border:2px solid var(--slip-paper); box-shadow:3px 3px 0 rgba(0,0,0,0.3); }
 .hero-tabs a.glass-tab:hover { background:rgba(244,242,234,0.12); transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.35); }
+
+/* ===== Carbon package: explored content prints on paper ===== */
+.explore-intro { background:var(--slip-paper); text-align:center; padding:72px clamp(1.5rem,5vw,4rem) 40px; border-bottom:2px dashed var(--slip-line); }
+.explore-intro-eyebrow { font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--slip-tail); margin-bottom:0.9rem; }
+.explore-intro-title { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(2.4rem,6vw,4.2rem); line-height:1.02; color:var(--slip-carbon); letter-spacing:0.01em; }
+
+#explore-start { background:var(--slip-paper); color:var(--slip-carbon); font-family:'IBM Plex Mono',monospace; }
+#explore-start .carousel-section, #explore-start .phone-showcase-section, #explore-start .section-primary, #explore-start .section-dark { background:var(--slip-paper) !important; border-color:var(--slip-line) !important; }
+#explore-start .features-intro-title, #explore-start .section-title, #explore-start .community-why-title { font-family:'Anton',sans-serif !important; font-weight:400 !important; color:var(--slip-carbon) !important; }
+#explore-start .section-eyebrow, #explore-start .carousel-tab-eyebrow, #explore-start .fade-origin-label { font-family:'IBM Plex Mono',monospace !important; color:var(--slip-tail) !important; }
+#explore-start .section-subtitle, #explore-start .big-text, #explore-start .step-card p, #explore-start .feature-card p, #explore-start .community-text { color:var(--slip-soft) !important; }
+#explore-start .big-text strong, #explore-start .big-text.highlight, #explore-start .community-highlight { color:var(--slip-carbon) !important; }
+#explore-start h3, #explore-start h4, #explore-start h5 { color:var(--slip-carbon); }
+#explore-start .accent { color:var(--slip-tail) !important; }
+#explore-start .feature-card, #explore-start .fadeai-feature, #explore-start .fade-origin, #explore-start .feature-visual, #explore-start .community-why, #explore-start .sb-card { background:var(--slip-paper-hi) !important; border:1.5px solid var(--slip-line) !important; border-radius:6px !important; box-shadow:none !important; }
+#explore-start .mock-bet-card { background:var(--slip-paper) !important; border:1px solid var(--slip-line) !important; border-radius:4px !important; }
+#explore-start .mock-name { color:var(--slip-carbon); }
+#explore-start .carousel-tab { background:var(--slip-paper-hi); border:1.5px solid var(--slip-line); border-radius:4px; color:var(--slip-soft); font-family:'IBM Plex Mono',monospace; }
+#explore-start .carousel-tab.active, #explore-start .carousel-tab[aria-selected="true"] { background:var(--slip-carbon) !important; color:var(--slip-paper) !important; border-color:var(--slip-carbon) !important; }
+#explore-start .phone-feature-stat-title { color:var(--slip-carbon) !important; }
+#explore-start .pf-primary-title { color:var(--slip-carbon) !important; }
+#explore-start .phone-feature-stat-label, #explore-start .social-stat-label { color:var(--slip-soft) !important; font-family:'IBM Plex Mono',monospace; }
+#explore-start .phone-feature-stat + .phone-feature-stat { border-top-color:var(--slip-line) !important; }
+#explore-start .social-stat-divider { background:var(--slip-line) !important; }
+#explore-start .social-stat-title { color:var(--slip-carbon); }
+#explore-start .phone-showcase-section { background:var(--slip-paper) !important; }
+#explore-start .phone-showcase-center::before { display:none; }
+#explore-start .community-highlight { border-left:3px solid var(--slip-tail); background:var(--slip-paper-hi); }
+#explore-start .steps-container::before { background:var(--slip-line); }
+#explore-start .step-number { background:var(--slip-paper-hi); border:2px solid var(--slip-carbon); color:var(--slip-carbon); }
+#explore-start .btn-primary { background:var(--slip-carbon); color:var(--slip-paper); border:2px solid var(--slip-carbon); border-radius:6px; font-family:'IBM Plex Mono',monospace; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
+#explore-start .btn-primary:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
+#explore-start .btn-secondary { background:transparent; color:var(--slip-carbon); border:2px solid var(--slip-carbon); border-radius:6px; font-family:'IBM Plex Mono',monospace; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; }
+#explore-start .sb-name { color:var(--slip-carbon); }
+/* the Why Fade film stays carbon-dark like the hero */
+#explore-start .whyfade-section { background:#050507 !important; }
+#explore-start .whyfade-title { color:#fff !important; font-family:'Anton',sans-serif !important; font-weight:400 !important; }
+#explore-start .whyfade-text { color:rgba(255,255,255,0.82) !important; font-family:'IBM Plex Mono',monospace; }
+#explore-start .whyfade-text strong { color:#fff !important; }
+/* footer prints */
+#explore-start .footer { background:var(--slip-paper-hi) !important; border-top:2px solid var(--slip-carbon) !important; color:var(--slip-carbon); }
+#explore-start .footer a { color:var(--slip-soft); }
+#explore-start .footer h5 { color:var(--slip-carbon); }
+#explore-start .footer svg { fill:var(--slip-carbon); }
+#explore-start .footer-bottom, #explore-start .disclaimer { color:var(--slip-soft) !important; border-color:var(--slip-line) !important; }
       `}</style>
 
       <Nav />
