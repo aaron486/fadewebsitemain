@@ -904,7 +904,7 @@ a { color:inherit; }
 /* Carbon hero: printed-slip UI over the brand video */
 .hero-eyebrow { font-family:'IBM Plex Mono',monospace !important; font-weight:600; color:var(--slip-paper) !important; opacity:0.8; letter-spacing:0.32em !important; }
 .hero-headline { font-family:'Anton',sans-serif !important; font-weight:400 !important; text-transform:uppercase; letter-spacing:0.015em !important; color:var(--slip-paper); }
-.hero-headline .gradient-text { background:none !important; -webkit-background-clip:initial !important; background-clip:initial !important; -webkit-text-fill-color:var(--slip-paper) !important; color:var(--slip-paper); border-bottom:6px solid var(--slip-tail); }
+.hero-headline .gradient-text { background:none !important; -webkit-background-clip:initial !important; background-clip:initial !important; -webkit-text-fill-color:var(--slip-paper) !important; color:var(--slip-paper); }
 .hero-sub { font-family:'IBM Plex Mono',monospace !important; font-size:0.95rem !important; line-height:1.75 !important; color:rgba(244,242,234,0.75) !important; }
 .store-badge { background:var(--slip-carbon) !important; border:1.5px solid var(--slip-paper) !important; border-radius:6px !important; box-shadow:3px 3px 0 rgba(0,0,0,0.4); }
 .store-badge:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(0,0,0,0.4); }
