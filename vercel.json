@@ -1,56 +1,213 @@
 {
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/support", "destination": "/support.html" },
-    { "source": "/teamfade", "destination": "/teamfade.html" },
-    { "source": "/influencers", "destination": "/teamfade.html" },
-    { "source": "/influencer", "destination": "/teamfade.html" },
-    { "source": "/creators", "destination": "/creators.html" },
-    { "source": "/community", "destination": "/community.html" },
-    { "source": "/insights", "destination": "/insights.html" },
-    { "source": "/sportsbooks", "destination": "/sportsbooks.html" },
-    { "source": "/fade-survey", "destination": "/fade-survey.html" },
-    { "source": "/survey", "destination": "/fade-survey.html" },
-    { "source": "/kalshi-study", "destination": "/kalshi-study.html" },
-    { "source": "/kalshi", "destination": "/kalshi-study.html" },
-    { "source": "/case-study", "destination": "/kalshi-study.html" },
-    { "source": "/casestudy", "destination": "/kalshi-study.html" },
-    { "source": "/progress", "destination": "/progress.html" },
-    { "source": "/media", "destination": "/media.html" },
-    { "source": "/fade-media", "destination": "/fademedia.html" },
-    { "source": "/fademedia", "destination": "/fademedia.html" },
-    { "source": "/case-studies", "destination": "/case-studies/index.html" },
-    { "source": "/casestudies", "destination": "/case-studies/index.html" },
-    { "source": "/case-study", "destination": "/case-studies/index.html" },
-    { "source": "/nate", "destination": "/nate-robinson.html" },
-    { "source": "/nate-robinson", "destination": "/nate-robinson.html" },
-    { "source": "/worldcup", "destination": "/worldcup.html" },
-    { "source": "/world-cup", "destination": "/worldcup.html" },
-    { "source": "/fifa", "destination": "/worldcup.html" },
-    { "source": "/worldcup-terms", "destination": "/worldcup-terms.html" },
-    { "source": "/world-cup-terms", "destination": "/worldcup-terms.html" },
-    { "source": "/casting", "destination": "/casting.html" },
-    { "source": "/logo", "destination": "/logo.html" },
-    { "source": "/logo-animation", "destination": "/logo.html" },
-    { "source": "/logo1", "destination": "/logo1.html" },
-    { "source": "/logo2", "destination": "/logo2.html" },
-    { "source": "/logo3", "destination": "/logo3.html" },
-    { "source": "/logo4", "destination": "/logo4.html" },
-    { "source": "/logo5", "destination": "/logo5.html" },
-    { "source": "/logo6", "destination": "/logo6.html" },
-    { "source": "/logo7", "destination": "/logo7.html" },
-    { "source": "/logo8", "destination": "/logo8.html" },
-    { "source": "/logo9", "destination": "/logo9.html" },
-    { "source": "/bookie", "destination": "/bookie.html" },
-    { "source": "/the-bookie-casting-brief", "destination": "/the-bookie-casting-brief.html" },
-    { "source": "/the-bookie-shotboard", "destination": "/the-bookie-shotboard.html" },
-    { "source": "/the-bookie-storyboard", "destination": "/the-bookie-storyboard.html" },
-    { "source": "/the-bookie-receipts", "destination": "/the-bookie-receipts.html" },
-    { "source": "/ros", "destination": "/ros.html" },
-    { "source": "/callsheet", "destination": "/ros.html" },
-    { "source": "/run-of-show", "destination": "/ros.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support.html"
+    },
+    {
+      "source": "/teamfade",
+      "destination": "/teamfade.html"
+    },
+    {
+      "source": "/influencers",
+      "destination": "/teamfade.html"
+    },
+    {
+      "source": "/influencer",
+      "destination": "/teamfade.html"
+    },
+    {
+      "source": "/creators",
+      "destination": "/creators.html"
+    },
+    {
+      "source": "/community",
+      "destination": "/community.html"
+    },
+    {
+      "source": "/insights",
+      "destination": "/insights.html"
+    },
+    {
+      "source": "/sportsbooks",
+      "destination": "/sportsbooks.html"
+    },
+    {
+      "source": "/fade-survey",
+      "destination": "/fade-survey.html"
+    },
+    {
+      "source": "/survey",
+      "destination": "/fade-survey.html"
+    },
+    {
+      "source": "/kalshi-study",
+      "destination": "/kalshi-study.html"
+    },
+    {
+      "source": "/kalshi",
+      "destination": "/kalshi-study.html"
+    },
+    {
+      "source": "/case-study",
+      "destination": "/kalshi-study.html"
+    },
+    {
+      "source": "/casestudy",
+      "destination": "/kalshi-study.html"
+    },
+    {
+      "source": "/progress",
+      "destination": "/progress.html"
+    },
+    {
+      "source": "/media",
+      "destination": "/media.html"
+    },
+    {
+      "source": "/fade-media",
+      "destination": "/fademedia.html"
+    },
+    {
+      "source": "/fademedia",
+      "destination": "/fademedia.html"
+    },
+    {
+      "source": "/case-studies",
+      "destination": "/case-studies/index.html"
+    },
+    {
+      "source": "/casestudies",
+      "destination": "/case-studies/index.html"
+    },
+    {
+      "source": "/case-study",
+      "destination": "/case-studies/index.html"
+    },
+    {
+      "source": "/nate",
+      "destination": "/nate-robinson.html"
+    },
+    {
+      "source": "/nate-robinson",
+      "destination": "/nate-robinson.html"
+    },
+    {
+      "source": "/worldcup",
+      "destination": "/worldcup.html"
+    },
+    {
+      "source": "/world-cup",
+      "destination": "/worldcup.html"
+    },
+    {
+      "source": "/fifa",
+      "destination": "/worldcup.html"
+    },
+    {
+      "source": "/worldcup-terms",
+      "destination": "/worldcup-terms.html"
+    },
+    {
+      "source": "/world-cup-terms",
+      "destination": "/worldcup-terms.html"
+    },
+    {
+      "source": "/casting",
+      "destination": "/casting.html"
+    },
+    {
+      "source": "/logo",
+      "destination": "/logo.html"
+    },
+    {
+      "source": "/logo-animation",
+      "destination": "/logo.html"
+    },
+    {
+      "source": "/logo1",
+      "destination": "/logo1.html"
+    },
+    {
+      "source": "/logo2",
+      "destination": "/logo2.html"
+    },
+    {
+      "source": "/logo3",
+      "destination": "/logo3.html"
+    },
+    {
+      "source": "/logo4",
+      "destination": "/logo4.html"
+    },
+    {
+      "source": "/logo5",
+      "destination": "/logo5.html"
+    },
+    {
+      "source": "/logo6",
+      "destination": "/logo6.html"
+    },
+    {
+      "source": "/logo7",
+      "destination": "/logo7.html"
+    },
+    {
+      "source": "/logo8",
+      "destination": "/logo8.html"
+    },
+    {
+      "source": "/logo9",
+      "destination": "/logo9.html"
+    },
+    {
+      "source": "/bookie",
+      "destination": "/bookie.html"
+    },
+    {
+      "source": "/the-bookie-casting-brief",
+      "destination": "/the-bookie-casting-brief.html"
+    },
+    {
+      "source": "/the-bookie-shotboard",
+      "destination": "/the-bookie-shotboard.html"
+    },
+    {
+      "source": "/the-bookie-storyboard",
+      "destination": "/the-bookie-storyboard.html"
+    },
+    {
+      "source": "/the-bookie-receipts",
+      "destination": "/the-bookie-receipts.html"
+    },
+    {
+      "source": "/ros",
+      "destination": "/ros.html"
+    },
+    {
+      "source": "/callsheet",
+      "destination": "/ros.html"
+    },
+    {
+      "source": "/run-of-show",
+      "destination": "/ros.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
