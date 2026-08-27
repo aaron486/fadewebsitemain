@@ -380,27 +380,8 @@ const Community = () => (
 
 // ===== WHY FADE — full-screen scroll video (like the hero) =====
 const WhyFade = () => {
-  const [p, setP] = useState(0);
   const ref = useRef(null);
   const videoRef = useRef(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setP(1); return; }
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const el = ref.current;
-        if (!el) return;
-        const vh = window.innerHeight || 1;
-        const top = el.getBoundingClientRect().top;
-        setP(Math.max(0, Math.min(1, (-top) / (vh * 0.85))));
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   // Hold the first frame for 1s before playing (and on every loop) so the
   // start of the clip never gets cut off.
   useEffect(() => {
@@ -418,22 +399,26 @@ const WhyFade = () => {
     return () => { clearTimeout(timer); v.removeEventListener("ended", holdThenPlay); };
   }, []);
   return (
-    <section className="whyfade-section" ref={ref}>
-      <div className="whyfade-pin">
-        <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade-2.mp4" />
-        <div className="whyfade-scrim" style={{ opacity: 0.45 + p * 0.4 }} />
-        <div className="whyfade-content" style={{ opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
-          <span className="section-eyebrow">Why Fade</span>
-          <h3 className="whyfade-title">Betting&rsquo;s always been social.<br />The apps never were.</h3>
-          <p className="whyfade-text">
+    <>
+      <section className="whyfade-section" ref={ref}>
+        <div className="whyfade-pin">
+          <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade-2.mp4" />
+          <div className="whyfade-scrim" style={{ opacity: 0.15 }} />
+        </div>
+      </section>
+      <section className="whyfade-after">
+        <div className="wf-after-in">
+          <span className="wf-after-eyebrow">Why Fade</span>
+          <h3 className="wf-after-title">Betting&rsquo;s always been social.<br />The apps never were.</h3>
+          <p className="wf-after-text">
             Your picks live on one app. Your friends&rsquo; picks live in the group chat. The cappers you follow live on X. And every &ldquo;lock of the year&rdquo; lives in a screenshot you&rsquo;re squinting at, trying to punch into your sportsbook before the line moves.
           </p>
-          <p className="whyfade-text" style={{ marginBottom: 0 }}>
+          <p className="wf-after-text" style={{ marginBottom: 0 }}>
             <strong>Until now.</strong> Fade brings the whole betting community into one app &mdash; track picks in real time, get notified when someone places a bet, break down your history and your fantasy team with your own AI assistant, and export straight to your sportsbook. One app for everything betting.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
@@ -965,6 +950,14 @@ a { color:inherit; }
 #explore-start .whyfade-title { color:#fff !important; font-family:'Anton',sans-serif !important; font-weight:400 !important; }
 #explore-start .whyfade-text { color:rgba(255,255,255,0.82) !important; font-family:'IBM Plex Mono',monospace; }
 #explore-start .whyfade-text strong { color:#fff !important; }
+/* why-fade text prints after the film */
+.whyfade-after { background:var(--slip-paper); border-top:1.5px solid var(--slip-carbon); padding:72px clamp(1.5rem,5vw,4rem); text-align:center; }
+.wf-after-in { max-width:720px; margin:0 auto; }
+.wf-after-eyebrow { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--slip-tail); }
+.wf-after-title { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,4.6vw,3rem); line-height:1.05; color:var(--slip-carbon); margin:0.7rem 0 1.25rem; }
+.wf-after-text { font-family:'IBM Plex Mono',monospace; font-size:0.92rem; line-height:1.8; color:var(--slip-soft); margin-bottom:1.1rem; }
+.wf-after-text strong { color:var(--slip-carbon); }
+
 /* footer prints */
 #explore-start .footer { background:var(--slip-paper-hi) !important; border-top:2px solid var(--slip-carbon) !important; color:var(--slip-carbon); }
 #explore-start .footer a { color:var(--slip-soft); }
