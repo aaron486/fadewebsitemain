@@ -97,7 +97,7 @@ const Hero = ({ onExplore }) => {
         </div>
         <div className="hero-tabs">
           <button type="button" className="glass-tab" onClick={onExplore}>Explore the App <span className="glass-arrow">&rarr;</span></button>
-          <a className="glass-tab" href="/media">Fade Media <span className="glass-arrow">&rarr;</span></a>
+          <a className="glass-tab" href="/fademedia">Fade Media <span className="glass-arrow">&rarr;</span></a>
         </div>
         </div>
       </div>
