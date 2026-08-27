@@ -74,8 +74,8 @@
       "destination": "/progress.html"
     },
     {
-      "source": "/media",
-      "destination": "/media.html"
+      "source": "/growth",
+      "destination": "/growth.html"
     },
     {
       "source": "/fade-media",
