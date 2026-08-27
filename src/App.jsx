@@ -97,7 +97,7 @@ const Hero = ({ onExplore }) => {
         </div>
         <div className="hero-tabs">
           <button type="button" className="glass-tab" onClick={onExplore}>Explore the App <span className="glass-arrow">&rarr;</span></button>
-          <a className="glass-tab" href="/fade-media">Fade Media <span className="glass-arrow">&rarr;</span></a>
+          <a className="glass-tab" href="/media">Fade Media <span className="glass-arrow">&rarr;</span></a>
         </div>
         </div>
       </div>
@@ -330,31 +330,6 @@ const FeatureCarousel = () => {
     </section>
   );
 };
-const steps = [
-  { num: "01", title: "Download FADE", desc: "Available on iOS. Create your account with Apple, Google, or email in seconds." },
-  { num: "02", title: "Follow Your Circle", desc: "Find friends, creators, and top bettors. Build a feed of picks from people you actually trust." },
-  { num: "03", title: "Sync Sportsbooks", desc: "Link FanDuel, DraftKings, BetMGM, Caesars, and more via FadeSync. Bets import automatically." },
-  { num: "04", title: "Bet Smarter", desc: "Use Fade IQ insights, community picks, and data to make better decisions every day." },
-];
-
-const HowItWorks = () => (
-  <section id="how-it-works" className="section-primary">
-    <Reveal className="section-header">
-      <span className="section-eyebrow">HOW IT WORKS</span>
-      <h2 className="section-title">Up and Running<br />in 60 Seconds</h2>
-    </Reveal>
-    <Reveal className="steps-container">
-      {steps.map((s, i) => (
-        <div key={i} className="step-card">
-          <div className="step-number">{s.num}</div>
-          <h4>{s.title}</h4>
-          <p>{s.desc}</p>
-        </div>
-      ))}
-    </Reveal>
-  </section>
-);
-
 // ===== COMMUNITY SECTION =====
 const Community = () => (
   <section className="section-dark" style={{ paddingBottom: "0" }}>
@@ -382,11 +357,13 @@ const Community = () => (
 const WhyFade = () => {
   const ref = useRef(null);
   const videoRef = useRef(null);
-  // Hold the first frame for 1s before playing (and on every loop) so the
-  // start of the clip never gets cut off.
+  // The film waits until the user scrolls it into view, then plays from the
+  // top — holding the first frame for 1s (and on every loop) so the start of
+  // the clip never gets cut off.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    const sec = ref.current;
+    if (!v || !sec) return;
     let timer = 0;
     const holdThenPlay = () => {
       try { v.pause(); v.currentTime = 0; } catch (e) {}
@@ -395,8 +372,16 @@ const WhyFade = () => {
       timer = setTimeout(() => { delete v.dataset.holding; v.play().catch(() => {}); }, 1000);
     };
     v.addEventListener("ended", holdThenPlay);
-    holdThenPlay();
-    return () => { clearTimeout(timer); v.removeEventListener("ended", holdThenPlay); };
+    // Keep the first frame parked until the section is actually on screen.
+    v.dataset.holding = "1";
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        holdThenPlay();
+      }
+    }, { threshold: 0.4 });
+    io.observe(sec);
+    return () => { clearTimeout(timer); io.disconnect(); v.removeEventListener("ended", holdThenPlay); };
   }, []);
   return (
     <>
@@ -404,18 +389,6 @@ const WhyFade = () => {
         <div className="whyfade-pin">
           <video ref={videoRef} className="whyfade-video" data-audio-section muted playsInline preload="auto" src="/assets/why-fade-2.mp4" />
           <div className="whyfade-scrim" style={{ opacity: 0.15 }} />
-        </div>
-      </section>
-      <section className="whyfade-after">
-        <div className="wf-after-in">
-          <span className="wf-after-eyebrow">Why Fade</span>
-          <h3 className="wf-after-title">Betting&rsquo;s always been social.<br />The apps never were.</h3>
-          <p className="wf-after-text">
-            Your picks live on one app. Your friends&rsquo; picks live in the group chat. The cappers you follow live on X. And every &ldquo;lock of the year&rdquo; lives in a screenshot you&rsquo;re squinting at, trying to punch into your sportsbook before the line moves.
-          </p>
-          <p className="wf-after-text" style={{ marginBottom: 0 }}>
-            <strong>Until now.</strong> Fade brings the whole betting community into one app &mdash; track picks in real time, get notified when someone places a bet, break down your history and your fantasy team with your own AI assistant, and export straight to your sportsbook. One app for everything betting.
-          </p>
         </div>
       </section>
     </>
@@ -973,7 +946,6 @@ a { color:inherit; }
           <FeatureCarousel />
           <Compatibility />
           <WhyFade />
-          <HowItWorks />
 
           <Footer />
         </div>
