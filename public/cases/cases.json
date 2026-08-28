@@ -8,24 +8,117 @@
       "status": "open",
       "verdict": "FADE",
       "tagline": "The most famous fade in sports betting.",
-      "summary": "The biggest artist in the world is also the most public bettor alive — eight-figure stakes, posted slips, and a curse so consistent it has its own website. Teams he backs crumble. Fighters he walks out lose. The internet keeps the receipts.",
+      "summary": "The biggest artist in the world is also the most public bettor alive \u2014 eight-figure stakes, posted slips, and a curse so consistent it has its own website. Teams he backs crumble. Fighters he walks out lose. The internet keeps the receipts.",
       "stats": [
-        { "label": "Signature move", "value": "Seven-figure public slips" },
-        { "label": "Curse origin", "value": "UFC 229 walkout · 2018" },
-        { "label": "Status", "value": "Active" }
+        {
+          "label": "Signature move",
+          "value": "Seven-figure public slips"
+        },
+        {
+          "label": "Curse origin",
+          "value": "UFC 229 walkout \u00b7 2018"
+        },
+        {
+          "label": "Status",
+          "value": "Active"
+        }
       ],
       "timeline": [
-        { "date": "OCT 2018", "text": "Walks Conor McGregor to the cage at UFC 229. McGregor loses to Khabib. The curse is named.", "result": "L" },
-        { "date": "DEC 2022", "text": "Reported $1M on Argentina to win the World Cup final in regulation. Argentina wins the Cup — on penalties. Bet loses anyway.", "result": "L" },
-        { "date": "NOV 2022", "text": "Reported seven-figure stake on Israel Adesanya at UFC 281. Pereira stops Izzy in the fifth.", "result": "L" },
-        { "date": "FEB 2023", "text": "Reported $400K on Jake Paul against Tommy Fury. Fury by decision.", "result": "L" },
-        { "date": "FEB 2023", "text": "Reported ~$700K on the Chiefs in Super Bowl LVII. Kansas City covers. The curse takes a week off.", "result": "W" },
-        { "date": "AUG 2024", "text": "Reported $450K on Adesanya against Du Plessis at UFC 305. Submitted in the fourth.", "result": "L" },
-        { "date": "NOV 2024", "text": "Reported $355K on Mike Tyson against Jake Paul. Paul wins by decision.", "result": "L" }
+        {
+          "date": "OCT 2018",
+          "text": "Walks Conor McGregor to the cage at UFC 229. McGregor loses to Khabib. The curse is named.",
+          "result": "L"
+        },
+        {
+          "date": "DEC 2022",
+          "text": "Reported $1M on Argentina to win the World Cup final in regulation. Argentina wins the Cup \u2014 on penalties. Bet loses anyway.",
+          "result": "L"
+        },
+        {
+          "date": "NOV 2022",
+          "text": "Reported seven-figure stake on Israel Adesanya at UFC 281. Pereira stops Izzy in the fifth.",
+          "result": "L"
+        },
+        {
+          "date": "FEB 2023",
+          "text": "Reported $400K on Jake Paul against Tommy Fury. Fury by decision.",
+          "result": "L"
+        },
+        {
+          "date": "FEB 2023",
+          "text": "Reported ~$700K on the Chiefs in Super Bowl LVII. Kansas City covers. The curse takes a week off.",
+          "result": "W"
+        },
+        {
+          "date": "AUG 2024",
+          "text": "Reported $450K on Adesanya against Du Plessis at UFC 305. Submitted in the fourth.",
+          "result": "L"
+        },
+        {
+          "date": "NOV 2024",
+          "text": "Reported $355K on Mike Tyson against Jake Paul. Paul wins by decision.",
+          "result": "L"
+        }
       ],
       "sources": [
-        { "label": "thedrakecurse.com", "url": "https://thedrakecurse.com" },
-        { "label": "Covers — Drake betting history", "url": "https://www.covers.com/industry/drake-sports-betting-history-curse-fact-or-fiction" }
+        {
+          "label": "thedrakecurse.com",
+          "url": "https://thedrakecurse.com"
+        },
+        {
+          "label": "Covers \u2014 Drake betting history",
+          "url": "https://www.covers.com/industry/drake-sports-betting-history-curse-fact-or-fiction"
+        }
+      ],
+      "visuals": [
+        {
+          "name": "cover",
+          "drive": "1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g"
+        },
+        {
+          "name": "2",
+          "drive": "1fGWdXsiAEh3L3vuiPx6jXk4M26r6NgPV"
+        },
+        {
+          "name": "3",
+          "drive": "1CKY2IvYrj-ZLptMfI1x3CO3HCbDOn73r"
+        },
+        {
+          "name": "4",
+          "drive": "1q-GPDm0KZ9bOPaTvIS1vdWgThqNfUJDP"
+        },
+        {
+          "name": "5",
+          "drive": "1dyd-uHLypOUjWdKm1tsv855aDwH0lbwN"
+        },
+        {
+          "name": "6",
+          "drive": "12dksz4HtVG9yQnp4lKNbeGdxZEy98xx1"
+        },
+        {
+          "name": "7",
+          "drive": "1BN6XDgjQojPVEsh6SaFIdoYviSTKDRSg"
+        },
+        {
+          "name": "8",
+          "drive": "1Q-yL4VwRba-sTTZBz9s6h-AgjAqmhIL7"
+        },
+        {
+          "name": "9",
+          "drive": "1Cn6m96WXt5S4TItcA7Hdun5k-WxK-IFz"
+        },
+        {
+          "name": "10",
+          "drive": "1gglTqc8Zs2b-0c-qovRiTgGrwqQh_M2C"
+        },
+        {
+          "name": "11",
+          "drive": "1fJDYZVPvvU0Q92C0XItHDBwyZcsErlj7"
+        },
+        {
+          "name": "cta",
+          "drive": "1ItMVOXFZzPqWbjXhopwNVw3WB0NNvY8j"
+        }
       ]
     },
     {
@@ -36,7 +129,7 @@
       "status": "opening",
       "verdict": "FADE",
       "tagline": "The people's champ of the public sweat.",
-      "summary": "Case file in preparation — the gambling record America watches live, one pizza review at a time.",
+      "summary": "Case file in preparation \u2014 the gambling record America watches live, one pizza review at a time.",
       "stats": [],
       "timeline": [],
       "sources": []
