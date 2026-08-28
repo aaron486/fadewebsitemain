@@ -27,6 +27,24 @@ a { color:inherit; text-decoration:none; }
 .wrap { max-width:1180px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
 .anton { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
 
+/* live odds ticker */
+.ticker { display:flex; align-items:stretch; border-bottom:1.5px solid var(--carbon); background:var(--paper-hi); overflow:hidden; }
+.ticker[hidden] { display:none; }
+.ticker-label { flex:0 0 auto; display:flex; align-items:center; gap:0.5rem; font-size:0.6rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; background:var(--carbon); color:var(--paper); padding:0.55rem 1rem; }
+.ticker-label .dot { width:7px; height:7px; border-radius:50%; background:var(--fade); animation:tickpulse 1.6s ease-in-out infinite; }
+@keyframes tickpulse { 50% { opacity:0.3; } }
+.ticker-view { overflow:hidden; flex:1; }
+.ticker-track { display:flex; width:max-content; animation:tickscroll var(--tick-dur,60s) linear infinite; }
+.ticker:hover .ticker-track { animation-play-state:paused; }
+@keyframes tickscroll { to { transform:translateX(-50%); } }
+.tick-item { display:inline-flex; align-items:baseline; gap:0.5rem; padding:0.55rem 1.3rem; border-right:1px solid var(--line); font-size:0.7rem; white-space:nowrap; }
+.tick-sport { color:var(--soft); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; font-size:0.58rem; }
+.tick-team { font-weight:700; }
+.tick-odds { color:var(--tail); font-weight:700; }
+.tick-at { color:var(--soft); }
+.tick-live { color:var(--fade); font-weight:700; font-size:0.56rem; letter-spacing:0.14em; }
+.tick-time { color:var(--soft); font-size:0.6rem; }
+
 /* masthead */
 .topline { border-bottom:1.5px solid var(--carbon); }
 .topline-in { display:flex; justify-content:space-between; align-items:center; padding:0.55rem 0; font-size:0.66rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); gap:1rem; }
@@ -133,6 +151,11 @@ a { color:inherit; text-decoration:none; }
   <span><span class="live-dot">&#9679;</span>&nbsp;Live from the Fade app</span>
   <span>21+ &middot; Please play responsibly</span>
 </div></div></div>
+
+<div class="ticker" id="ticker" hidden>
+  <div class="ticker-label"><span class="dot"></span>Live Odds</div>
+  <div class="ticker-view"><div class="ticker-track" id="tickerTrack"></div></div>
+</div>
 
 <header class="masthead"><div class="wrap">
   <div class="eyebrow">The Pre-Bet Desk</div>
@@ -308,6 +331,37 @@ a { color:inherit; text-decoration:none; }
   document.getElementById('lbClose').addEventListener('click', close);
   lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+})();
+(function () {
+  var box = document.getElementById('ticker');
+  var track = document.getElementById('tickerTrack');
+  function fmt(p) { return p > 0 ? '+' + p : String(p); }
+  function timeOf(iso) {
+    try {
+      return new Date(iso).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    } catch (e) { return ''; }
+  }
+  fetch('/api/odds')
+    .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+    .then(function (d) {
+      var evs = (d && d.events) || [];
+      if (!evs.length) return;
+      var html = evs.map(function (ev) {
+        var away = fmt(ev.prices[ev.away]);
+        var home = fmt(ev.prices[ev.home]);
+        var when = ev.live
+          ? '<span class="tick-live">&#9679; LIVE</span>'
+          : '<span class="tick-time">' + timeOf(ev.start) + '</span>';
+        return '<span class="tick-item"><span class="tick-sport">' + ev.sport + '</span>' + when +
+          '<span class="tick-team">' + ev.away + '</span><span class="tick-odds">' + away + '</span>' +
+          '<span class="tick-at">@</span>' +
+          '<span class="tick-team">' + ev.home + '</span><span class="tick-odds">' + home + '</span></span>';
+      }).join('');
+      track.innerHTML = html + html; // duplicate for a seamless loop
+      track.style.setProperty('--tick-dur', Math.max(40, evs.length * 7) + 's');
+      box.hidden = false;
+    })
+    .catch(function () { /* no odds, no ticker */ });
 })();
 </script>
 
