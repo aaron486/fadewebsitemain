@@ -117,7 +117,10 @@ a { color:inherit; text-decoration:none; }
 .sb-skel { height:118px; border:1.5px solid var(--line); border-radius:6px; background:linear-gradient(100deg, var(--paper-hi) 40%, #efede2 50%, var(--paper-hi) 60%); background-size:200% 100%; animation:skel 1.2s linear infinite; }
 @keyframes skel { to { background-position:-200% 0; } }
 .gamecard.is-live { border-left:4px solid var(--fade); }
-.gc-team .win-mark { color:var(--carbon); font-size:0.7rem; margin-left:0.3rem; }
+.gc-team .win-mark { color:var(--carbon); font-size:0.7rem; }
+.gc-right { margin-left:auto; display:inline-flex; align-items:baseline; gap:0.5rem; }
+.gc-ml { font-size:0.64rem; font-weight:700; color:var(--tail); min-width:2.8rem; text-align:right; }
+.gc-foot .live-ml { color:var(--fade); font-weight:700; }
 .sb-league { margin-top:1.4rem; }
 .sb-league-head { font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; border-bottom:1.5px solid var(--carbon); padding-bottom:0.4rem; margin-bottom:0.9rem; display:flex; justify-content:space-between; }
 .sb-league-head span { color:var(--soft); font-weight:600; letter-spacing:0.1em; font-size:0.62rem; }
@@ -134,7 +137,7 @@ a { color:inherit; text-decoration:none; }
 .gc-logo-fallback { width:26px; height:26px; border-radius:50%; background:var(--paper); border:1px solid var(--line); display:inline-flex; align-items:center; justify-content:center; font-size:0.5rem; font-weight:700; flex:0 0 auto; }
 .gc-name { font-size:0.8rem; font-weight:700; line-height:1.2; }
 .gc-rec { font-size:0.6rem; color:var(--soft); margin-left:0.15rem; }
-.gc-score { margin-left:auto; font-family:'Anton',sans-serif; font-size:1.15rem; line-height:1; }
+.gc-score { font-family:'Anton',sans-serif; font-size:1.15rem; line-height:1; }
 .gc-team.loser .gc-score, .gc-team.loser .gc-name { color:var(--soft); }
 .gc-foot { display:flex; justify-content:space-between; border-top:1px dashed var(--line); margin-top:0.5rem; padding-top:0.45rem; font-size:0.6rem; color:var(--soft); letter-spacing:0.08em; text-transform:uppercase; }
 .gc-foot .odds { color:var(--tail); font-weight:700; }
@@ -387,15 +390,20 @@ a { color:inherit; text-decoration:none; }
     });
   });
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function teamRow(t, other, state) {
+  function fmtMl(p) { return p == null ? '' : (p > 0 ? '+' + p : String(p)); }
+  function teamRow(t, other, state, ml) {
     var loser = state === 'post' && !t.winner && other.winner;
     var logo = t.logo
       ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<span class=&quot;gc-logo-fallback&quot;>\'+ \'' + esc(t.abbr) + '\' +\'</span>\'" />'
       : '<span class="gc-logo-fallback">' + esc(t.abbr) + '</span>';
+    var right = '<span class="gc-right">' +
+      (state === 'post' && t.winner ? '<span class="win-mark">&#9664;</span>' : '') +
+      (t.score !== '' && state !== 'pre' ? '<span class="gc-score">' + esc(t.score) + '</span>' : '') +
+      (state !== 'post' && ml != null ? '<span class="gc-ml">' + esc(fmtMl(ml)) + '</span>' : '') +
+      '</span>';
     return '<div class="gc-team' + (loser ? ' loser' : '') + '">' + logo +
       '<span class="gc-name">' + esc(t.name) + (t.record ? '<span class="gc-rec">(' + esc(t.record) + ')</span>' : '') + '</span>' +
-      (state === 'post' && t.winner ? '<span class="win-mark">&#9664;</span>' : '') +
-      (t.score !== '' && state !== 'pre' ? '<span class="gc-score">' + esc(t.score) + '</span>' : '') + '</div>';
+      right + '</div>';
   }
   // ----- The Board: data + filters + refresh -----
   var sbData = [];
@@ -408,10 +416,25 @@ a { color:inherit; text-decoration:none; }
     sbBody.innerHTML = '<div class="sb-grid">' + new Array(6).fill('<div class="sb-skel"></div>').join('') + '</div>';
   }
 
+  function matchOdds(g) {
+    var a = (g.teams[0] || {}), hteam = (g.teams[1] || {});
+    for (var i = 0; i < oddsEvents.length; i++) {
+      var ev = oddsEvents[i];
+      var H = (ev.home || '').toLowerCase(), A = (ev.away || '').toLowerCase();
+      var hf = (hteam.full || hteam.name || '').toLowerCase(), af = (a.full || a.name || '').toLowerCase();
+      var hn = (hteam.name || '').toLowerCase(), an = (a.name || '').toLowerCase();
+      if ((H === hf || (hn && H.indexOf(hn) !== -1)) && (A === af || (an && A.indexOf(an) !== -1))) {
+        return { away: ev.prices[ev.away], home: ev.prices[ev.home] };
+      }
+    }
+    return null;
+  }
   function gameCard(g, label) {
     var stCls = 'st-' + g.state;
+    var ml = g.state === 'post' ? null : matchOdds(g);
     var foot = '';
     var bits = [];
+    if (ml && g.state === 'in') bits.push('<span class="live-ml">&#9679; Live odds</span>');
     if (g.odds) bits.push('<span class="odds">' + esc(g.odds) + '</span>');
     if (g.ou) bits.push('<span>O/U ' + esc(g.ou) + '</span>');
     if (g.tv) bits.push('<span>' + esc(g.tv) + '</span>');
@@ -419,8 +442,8 @@ a { color:inherit; text-decoration:none; }
     return '<div class="gamecard' + (g.state === 'in' ? ' is-live' : '') + '">' +
       '<div class="gc-status"><span class="' + stCls + '">' + esc(g.detail) + '</span>' +
       '<span class="gc-league">' + esc(label) + '</span></div>' +
-      teamRow(g.teams[0] || {}, g.teams[1] || {}, g.state) +
-      teamRow(g.teams[1] || {}, g.teams[0] || {}, g.state) + foot + '</div>';
+      teamRow(g.teams[0] || {}, g.teams[1] || {}, g.state, ml && ml.away) +
+      teamRow(g.teams[1] || {}, g.teams[0] || {}, g.state, ml && ml.home) + foot + '</div>';
   }
 
   function orderGames(games) {
@@ -477,11 +500,18 @@ a { color:inherit; text-decoration:none; }
     });
   });
 
+  var oddsEvents = [];
   function fetchBoard(initial) {
     if (initial) skel();
-    fetch('/api/scoreboard')
-      .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
-      .then(function (d) {
+    var oddsReq = fetch('/api/odds')
+      .then(function (r) { return r.ok ? r.json() : { events: [] }; })
+      .catch(function () { return { events: [] }; });
+    var boardReq = fetch('/api/scoreboard')
+      .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); });
+    Promise.all([boardReq, oddsReq])
+      .then(function (both) {
+        var d = both[0];
+        oddsEvents = (both[1] && both[1].events) || [];
         sbData = (d && d.leagues) || [];
         var stamp = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
         document.getElementById('sbUpdated').textContent = sbData.length ? 'Updated ' + stamp : 'Live scores & upcoming';

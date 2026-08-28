@@ -32,7 +32,7 @@ export default async function handler(req, res) {
         };
       })
       .filter((ev) => Object.keys(ev.prices).length > 0);
-    res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate=1800");
+    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=900");
     res.status(200).json({ events });
   } catch (e) {
     res.status(502).json({ error: "odds fetch failed" });

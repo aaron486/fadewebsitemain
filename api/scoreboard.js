@@ -26,6 +26,7 @@ export default async function handler(req, res) {
             .sort((a) => (a.homeAway === "away" ? -1 : 1))
             .map((c) => ({
               name: c.team?.shortDisplayName || c.team?.displayName || "",
+              full: c.team?.displayName || "",
               abbr: c.team?.abbreviation || "",
               logo: c.team?.logo || "",
               score: c.score || "",
