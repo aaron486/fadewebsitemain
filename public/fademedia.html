@@ -98,8 +98,11 @@ a { color:inherit; text-decoration:none; }
 .story.hidden { display:none; }
 
 /* scoreboard */
-.scoreboard { padding:1.8rem 0 2.4rem; }
-.sb-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem; }
+.sb-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem; cursor:pointer; }
+.sb-head:hover h2 { color:var(--tail); }
+.sb-toggle { font-family:'IBM Plex Mono',monospace; font-size:1.1rem; font-weight:700; color:var(--tail); margin-left:0.4rem; }
+.scoreboard { padding:1.4rem 0 1.2rem; }
+.scoreboard.open { padding:1.8rem 0 2.4rem; }
 .sb-head h2 { font-size:1.7rem; }
 .sb-head span { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
 .sb-loading { font-size:0.75rem; color:var(--soft); letter-spacing:0.1em; text-transform:uppercase; padding:2rem 0; text-align:center; }
@@ -222,10 +225,11 @@ a { color:inherit; text-decoration:none; }
 
   <!-- the board -->
   <section class="scoreboard" id="scoreboard">
-    <div class="sb-head">
-      <h2 class="anton">The Board</h2>
-      <span id="sbUpdated">Live scores &amp; upcoming</span>
+    <div class="sb-head" id="sbHead" role="button" tabindex="0" aria-expanded="false">
+      <h2 class="anton">The Board <span class="sb-toggle" id="sbToggle">+</span></h2>
+      <span id="sbUpdated">Live scores &amp; odds</span>
     </div>
+    <div id="sbPanel" hidden>
     <div class="sb-filters">
       <div class="sb-chips" id="sbLeagues"></div>
       <div class="sb-seg" id="sbStatus">
@@ -236,6 +240,7 @@ a { color:inherit; text-decoration:none; }
       </div>
     </div>
     <div id="sbBody"></div>
+    </div>
   </section>
   <div class="rule-double" style="margin-top:0.6rem;"></div>
 
@@ -500,6 +505,36 @@ a { color:inherit; text-decoration:none; }
     });
   });
 
+  // collapsed by default so the board doesn't own the front page
+  var sbPanel = document.getElementById('sbPanel');
+  var sbHead = document.getElementById('sbHead');
+  var sbOpen = false;
+  try { sbOpen = localStorage.getItem('fm_board_open') === '1'; } catch (e) {}
+  function summaryLine() {
+    var total = 0, live = 0;
+    sbData.forEach(function (lg) {
+      total += lg.games.length;
+      live += lg.games.filter(function (g) { return g.state === 'in'; }).length;
+    });
+    if (!total) return 'Live scores & odds';
+    return (live ? live + ' live \u00b7 ' : '') + total + ' games \u00b7 tap to expand';
+  }
+  function applyOpen() {
+    sbPanel.hidden = !sbOpen;
+    sb.classList.toggle('open', sbOpen);
+    document.getElementById('sbToggle').textContent = sbOpen ? '\u2013' : '+';
+    sbHead.setAttribute('aria-expanded', String(sbOpen));
+    if (!sbOpen) document.getElementById('sbUpdated').textContent = summaryLine();
+  }
+  function toggleBoard() {
+    sbOpen = !sbOpen;
+    try { localStorage.setItem('fm_board_open', sbOpen ? '1' : '0'); } catch (e) {}
+    applyOpen();
+    if (sbOpen) fetchBoard(false);
+  }
+  sbHead.addEventListener('click', toggleBoard);
+  sbHead.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBoard(); } });
+
   var oddsEvents = [];
   function fetchBoard(initial) {
     if (initial) skel();
@@ -514,15 +549,18 @@ a { color:inherit; text-decoration:none; }
         oddsEvents = (both[1] && both[1].events) || [];
         sbData = (d && d.leagues) || [];
         var stamp = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-        document.getElementById('sbUpdated').textContent = sbData.length ? 'Updated ' + stamp : 'Live scores & upcoming';
+        document.getElementById('sbUpdated').textContent = sbOpen
+          ? (sbData.length ? 'Updated ' + stamp : 'Live scores & odds')
+          : summaryLine();
         renderBoard();
       })
       .catch(function () {
         if (initial) sbBody.innerHTML = '<div class="sb-loading">Scoreboard unavailable &mdash; check back soon.</div>';
       });
   }
-  fetchBoard(true);
-  setInterval(function () { if (!document.hidden && sb.style.display !== 'none') fetchBoard(false); }, 60000);
+  applyOpen();
+  fetchBoard(sbOpen);
+  setInterval(function () { if (!document.hidden && sb.style.display !== 'none' && sbOpen) fetchBoard(false); }, 60000);
 })();
 (function () {
   var box = document.getElementById('ticker');
