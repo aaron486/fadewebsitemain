@@ -430,7 +430,8 @@ a { color:inherit; text-decoration:none; }
   }
   // ----- The Board: data + filters + refresh -----
   var sbData = [];
-  var sbLeague = 'all';
+  var sbLeague = null;
+  var sbFull = false;
   var sbState = 'all';
   var sbBody = document.getElementById('sbBody');
   var sbLeaguesEl = document.getElementById('sbLeagues');
@@ -479,55 +480,55 @@ a { color:inherit; text-decoration:none; }
   }
 
   function renderChips() {
-    var total = 0, liveTotal = 0;
-    var chips = sbData.map(function (lg) {
+    sbLeaguesEl.innerHTML = sbData.map(function (lg) {
       var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
-      total += lg.games.length; liveTotal += live;
       return '<button class="sb-chip' + (sbLeague === lg.key ? ' active' : '') + '" data-lg="' + esc(lg.key) + '">' +
         esc(lg.label) + (live ? ' <span class="live-n">&#9679;' + live + '</span>' : '') + '</button>';
     }).join('');
-    sbLeaguesEl.innerHTML = '<button class="sb-chip' + (sbLeague === 'all' ? ' active' : '') + '" data-lg="all">All ' +
-      (liveTotal ? '<span class="live-n">&#9679;' + liveTotal + '</span>' : '') + '</button>' + chips;
     Array.prototype.forEach.call(sbLeaguesEl.querySelectorAll('.sb-chip'), function (c) {
-      c.addEventListener('click', function () { sbLeague = c.dataset.lg; renderBoard(); });
+      c.addEventListener('click', function () { sbLeague = c.dataset.lg; sbFull = false; renderBoard(); });
     });
   }
 
+  function pickLeague() {
+    if (sbLeague && sbData.some(function (lg) { return lg.key === sbLeague; })) return;
+    var best = sbData[0];
+    sbData.forEach(function (lg) {
+      var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
+      var bestLive = best ? best.games.filter(function (g) { return g.state === 'in'; }).length : 0;
+      if (live > bestLive) best = lg;
+    });
+    sbLeague = best ? best.key : null;
+  }
   function renderBoard() {
+    pickLeague();
     renderChips();
-    var leagues = sbData
-      .filter(function (lg) { return sbLeague === 'all' || lg.key === sbLeague; })
-      .map(function (lg) {
-        return { key: lg.key, label: lg.label, games: orderGames(lg.games).filter(function (g) { return sbState === 'all' || g.state === sbState; }) };
-      })
-      .filter(function (lg) { return lg.games.length; });
-    if (!leagues.length) {
+    var lg = null;
+    sbData.forEach(function (l) { if (l.key === sbLeague) lg = l; });
+    if (!lg) { sbBody.innerHTML = '<div class="sb-loading">No games on the board right now.</div>'; return; }
+    var games = orderGames(lg.games).filter(function (g) { return sbState === 'all' || g.state === sbState; });
+    if (!games.length) {
       var msg = { in: 'No live games right now.', pre: 'No upcoming games on the board.', post: 'No finals yet.', all: 'No games on the board right now.' }[sbState];
       sbBody.innerHTML = '<div class="sb-loading">' + msg + '</div>';
       return;
     }
-    // keep the all-leagues view short: one row per league, drill in for the rest
-    var cap = sbLeague === 'all' ? 3 : Infinity;
-    sbBody.innerHTML = leagues.map(function (lg) {
-      var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
-      var shown = lg.games.slice(0, cap);
-      var more = lg.games.length > shown.length
-        ? '<button class="sb-more" data-lg="' + esc(lg.key) + '">All ' + lg.games.length + ' ' + esc(lg.label) + ' games &rarr;</button>'
-        : '';
-      return '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
-        '<span>' + (live ? live + ' live &middot; ' : '') + lg.games.length + (lg.games.length === 1 ? ' game' : ' games') + '</span></div>' +
-        '<div class="sb-grid">' + shown.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div>' + more + '</div>';
-    }).join('');
-    Array.prototype.forEach.call(sbBody.querySelectorAll('.sb-more'), function (b) {
-      b.addEventListener('click', function () { sbLeague = b.dataset.lg; renderBoard(); });
-    });
+    var live = games.filter(function (g) { return g.state === 'in'; }).length;
+    var shown = sbFull ? games : games.slice(0, 6);
+    var more = games.length > shown.length
+      ? '<button class="sb-more" id="sbMore">All ' + games.length + ' ' + esc(lg.label) + ' games &rarr;</button>'
+      : (sbFull && games.length > 6 ? '<button class="sb-more" id="sbMore">Show fewer &uarr;</button>' : '');
+    sbBody.innerHTML = '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
+      '<span>' + (live ? live + ' live &middot; ' : '') + games.length + (games.length === 1 ? ' game' : ' games') + '</span></div>' +
+      '<div class="sb-grid">' + shown.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div>' + more + '</div>';
+    var mb = document.getElementById('sbMore');
+    if (mb) mb.addEventListener('click', function () { sbFull = !sbFull; renderBoard(); });
   }
-
   Array.prototype.forEach.call(document.querySelectorAll('.sb-seg-btn'), function (b) {
     b.addEventListener('click', function () {
       Array.prototype.forEach.call(document.querySelectorAll('.sb-seg-btn'), function (x) { x.classList.remove('active'); });
       b.classList.add('active');
       sbState = b.dataset.st;
+      sbFull = false;
       renderBoard();
     });
   });
