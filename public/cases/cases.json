@@ -119,7 +119,11 @@
           "name": "cta",
           "drive": "1ItMVOXFZzPqWbjXhopwNVw3WB0NNvY8j"
         }
-      ]
+      ],
+      "image": {
+        "drive": "1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g"
+      },
+      "appUrl": "https://testflight.apple.com/join/scH3svgB"
     },
     {
       "slug": "portnoy",
@@ -132,7 +136,8 @@
       "summary": "Case file in preparation \u2014 the gambling record America watches live, one pizza review at a time.",
       "stats": [],
       "timeline": [],
-      "sources": []
+      "sources": [],
+      "appUrl": "https://testflight.apple.com/join/scH3svgB"
     }
   ]
 }
