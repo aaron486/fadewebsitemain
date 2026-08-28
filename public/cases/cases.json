@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "slug": "drake",
+      "no": "001",
+      "name": "Drake",
+      "title": "The Drake Curse",
+      "status": "open",
+      "verdict": "FADE",
+      "tagline": "The most famous fade in sports betting.",
+      "summary": "The biggest artist in the world is also the most public bettor alive — eight-figure stakes, posted slips, and a curse so consistent it has its own website. Teams he backs crumble. Fighters he walks out lose. The internet keeps the receipts.",
+      "stats": [
+        { "label": "Signature move", "value": "Seven-figure public slips" },
+        { "label": "Curse origin", "value": "UFC 229 walkout · 2018" },
+        { "label": "Status", "value": "Active" }
+      ],
+      "timeline": [
+        { "date": "OCT 2018", "text": "Walks Conor McGregor to the cage at UFC 229. McGregor loses to Khabib. The curse is named.", "result": "L" },
+        { "date": "DEC 2022", "text": "Reported $1M on Argentina to win the World Cup final in regulation. Argentina wins the Cup — on penalties. Bet loses anyway.", "result": "L" },
+        { "date": "NOV 2022", "text": "Reported seven-figure stake on Israel Adesanya at UFC 281. Pereira stops Izzy in the fifth.", "result": "L" },
+        { "date": "FEB 2023", "text": "Reported $400K on Jake Paul against Tommy Fury. Fury by decision.", "result": "L" },
+        { "date": "FEB 2023", "text": "Reported ~$700K on the Chiefs in Super Bowl LVII. Kansas City covers. The curse takes a week off.", "result": "W" },
+        { "date": "AUG 2024", "text": "Reported $450K on Adesanya against Du Plessis at UFC 305. Submitted in the fourth.", "result": "L" },
+        { "date": "NOV 2024", "text": "Reported $355K on Mike Tyson against Jake Paul. Paul wins by decision.", "result": "L" }
+      ],
+      "sources": [
+        { "label": "thedrakecurse.com", "url": "https://thedrakecurse.com" },
+        { "label": "Covers — Drake betting history", "url": "https://www.covers.com/industry/drake-sports-betting-history-curse-fact-or-fiction" }
+      ]
+    },
+    {
+      "slug": "portnoy",
+      "no": "002",
+      "name": "Dave Portnoy",
+      "title": "El Presidente",
+      "status": "opening",
+      "verdict": "FADE",
+      "tagline": "The people's champ of the public sweat.",
+      "summary": "Case file in preparation — the gambling record America watches live, one pizza review at a time.",
+      "stats": [],
+      "timeline": [],
+      "sources": []
+    }
+  ]
+}

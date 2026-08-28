@@ -164,6 +164,38 @@ a { color:inherit; text-decoration:none; }
 @media (max-width:980px) { .sb-grid { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:640px) { .sb-grid { grid-template-columns:1fr; } }
 
+/* case files */
+.casefiles { padding:2rem 0 2.4rem; }
+.cf-intro { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.4rem; border-bottom:1.5px solid var(--carbon); padding-bottom:0.5rem; }
+.cf-intro h2 { font-size:1.7rem; }
+.cf-intro span { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.dossier { position:relative; background:var(--paper-hi); border:1.5px solid var(--carbon); border-radius:6px; padding:1.6rem 1.8rem 1.5rem; margin-bottom:1.6rem; }
+.dossier-top { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); border-bottom:1px dashed var(--line); padding-bottom:0.6rem; }
+.dossier h3 { font-size:clamp(2rem,4.5vw,3rem); line-height:1; margin:0.8rem 0 0.1rem; }
+.dossier .cf-title { font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--tail); }
+.cf-stamp { flex:0 0 auto; font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:0.85rem; letter-spacing:0.18em; padding:0.4rem 1rem; border:2.5px solid; border-radius:4px; transform:rotate(6deg); }
+.cf-stamp.fade { color:var(--fade); border-color:var(--fade); background:rgba(217,45,32,0.05); }
+.cf-stamp.tail { color:var(--tail); border-color:var(--tail); background:rgba(47,82,224,0.05); }
+.cf-stamp.push { color:var(--soft); border-color:var(--soft); }
+.cf-tagline { font-size:0.8rem; color:var(--soft); margin:0.35rem 0 0.9rem; font-style:italic; }
+.cf-summary { font-size:0.9rem; color:var(--carbon); max-width:70ch; margin-bottom:1rem; }
+.cf-stats { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1.1rem; }
+.cf-stat { border:1.5px solid var(--line); border-radius:4px; background:var(--paper); padding:0.4rem 0.8rem; font-size:0.64rem; }
+.cf-stat b { display:block; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); font-weight:600; }
+.cf-tl-head { font-size:0.62rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; border-bottom:1.5px solid var(--carbon); padding-bottom:0.35rem; margin-bottom:0.2rem; }
+.cf-row { display:flex; gap:0.9rem; align-items:baseline; padding:0.55rem 0; border-bottom:1px dashed var(--line); font-size:0.78rem; }
+.cf-date { flex:0 0 5.4rem; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:var(--soft); }
+.cf-res { flex:0 0 1.4rem; font-weight:700; text-align:center; border-radius:3px; font-size:0.66rem; }
+.cf-res.L { color:var(--fade); border:1.5px solid var(--fade); }
+.cf-res.W { color:var(--cash); border:1.5px solid var(--cash); }
+.cf-sources { margin-top:0.9rem; font-size:0.64rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); }
+.cf-sources a { color:var(--tail); font-weight:700; margin-right:1rem; }
+.cf-sources a:hover { text-decoration:underline; }
+.dossier.opening { display:flex; justify-content:space-between; align-items:center; gap:1rem; opacity:0.85; }
+.dossier.opening h3 { margin:0.2rem 0; font-size:1.6rem; }
+.dossier.opening .cf-open-tag { font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); border:1.5px dashed var(--soft); border-radius:4px; padding:0.4rem 0.9rem; }
+@media (max-width:640px) { .dossier { padding:1.2rem 1.1rem; } .cf-row { flex-wrap:wrap; } }
+
 /* watch strip */
 .watch { border-top:1.5px solid var(--carbon); padding:1.8rem 0 2.2rem; }
 .watch-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.2rem; }
@@ -308,6 +340,15 @@ a { color:inherit; text-decoration:none; }
     </article>
   </section>
 
+  <!-- case files (Cases tab) -->
+  <section class="casefiles" id="caseFiles" hidden>
+    <div class="cf-intro">
+      <h2 class="anton">Case Files</h2>
+      <span>Celebrity betting records &middot; documented &middot; receipts attached</span>
+    </div>
+    <div id="cfBody"></div>
+  </section>
+
   <!-- watch -->
   <section class="watch">
     <div class="watch-head">
@@ -372,6 +413,15 @@ a { color:inherit; text-decoration:none; }
       // the board lives on the All screen
       sb.style.display = cat === 'all' ? '' : 'none';
       if (sbRule) sbRule.style.display = cat === 'all' ? '' : 'none';
+      // the Cases tab shows the case files instead of the story grid
+      var cf = document.getElementById('caseFiles');
+      var grid = document.getElementById('storyGrid');
+      if (cat === 'cases') {
+        cf.hidden = false; grid.style.display = 'none';
+        loadCases();
+      } else {
+        cf.hidden = true; grid.style.display = '';
+      }
       stories.forEach(function (s) {
         s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
       });
@@ -590,6 +640,66 @@ a { color:inherit; text-decoration:none; }
   applyOpen();
   fetchBoard(sbOpen);
   setInterval(function () { if (!document.hidden && sb.style.display !== 'none') fetchBoard(false); }, 60000);
+
+  // ----- Watch: film lightbox -----
+  var lb = document.getElementById('lb');
+  var lv = document.getElementById('lbVideo');
+  function lbClose() { lv.pause(); lv.removeAttribute('src'); lv.load(); lb.classList.remove('open'); }
+  Array.prototype.forEach.call(document.querySelectorAll('.film'), function (f) {
+    f.addEventListener('click', function () {
+      lv.src = f.dataset.src; lv.muted = false; lb.classList.add('open');
+      var pr = lv.play(); if (pr && pr.catch) pr.catch(function () {});
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', lbClose);
+  lb.addEventListener('click', function (e) { if (e.target === lb) lbClose(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) lbClose(); });
+
+  // ----- Case files -----
+  var casesLoaded = false;
+  function loadCases() {
+    if (casesLoaded) return;
+    casesLoaded = true;
+    var body = document.getElementById('cfBody');
+    body.innerHTML = '<div class="sb-loading">Opening the files&hellip;</div>';
+    fetch('/cases/cases.json')
+      .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+      .then(function (d) {
+        var cases = (d && d.cases) || [];
+        if (!cases.length) { body.innerHTML = '<div class="sb-loading">No case files yet.</div>'; return; }
+        body.innerHTML = cases.map(function (c) {
+          if (c.status === 'opening') {
+            return '<div class="dossier opening"><div>' +
+              '<div class="dossier-top" style="border:none; padding:0;">Case File No. ' + esc(c.no) + '</div>' +
+              '<h3 class="anton">' + esc(c.name) + '</h3>' +
+              '<div class="cf-tagline">' + esc(c.tagline || '') + '</div></div>' +
+              '<span class="cf-open-tag">Opening soon</span></div>';
+          }
+          var stamp = '<span class="cf-stamp ' + esc((c.verdict || 'FADE').toLowerCase()) + '">' + esc(c.verdict || 'FADE') + '</span>';
+          var stats = (c.stats || []).map(function (s) {
+            return '<span class="cf-stat"><b>' + esc(s.label) + '</b>' + esc(s.value) + '</span>';
+          }).join('');
+          var tl = (c.timeline || []).map(function (t) {
+            var res = t.result ? '<span class="cf-res ' + esc(t.result) + '">' + esc(t.result) + '</span>' : '<span class="cf-res" style="border:none;"></span>';
+            return '<div class="cf-row"><span class="cf-date">' + esc(t.date) + '</span>' + res + '<span>' + esc(t.text) + '</span></div>';
+          }).join('');
+          var sources = (c.sources || []).map(function (s) {
+            return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + ' &rarr;</a>';
+          }).join('');
+          return '<article class="dossier">' +
+            '<div class="dossier-top"><span>Case File No. ' + esc(c.no) + ' &middot; Status: ' + esc(c.status) + '</span>' + stamp + '</div>' +
+            '<div class="cf-title">' + esc(c.title || '') + '</div>' +
+            '<h3 class="anton">' + esc(c.name) + '</h3>' +
+            '<div class="cf-tagline">' + esc(c.tagline || '') + '</div>' +
+            '<p class="cf-summary">' + esc(c.summary || '') + '</p>' +
+            (stats ? '<div class="cf-stats">' + stats + '</div>' : '') +
+            (tl ? '<div class="cf-tl-head">The record</div>' + tl : '') +
+            (sources ? '<div class="cf-sources">Sources: ' + sources + '</div>' : '') +
+            '</article>';
+        }).join('');
+      })
+      .catch(function () { body.innerHTML = '<div class="sb-loading">Case files unavailable.</div>'; });
+  }
 })();
 (function () {
   var box = document.getElementById('ticker');
