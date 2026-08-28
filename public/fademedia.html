@@ -97,6 +97,35 @@ a { color:inherit; text-decoration:none; }
 .story .dek { font-size:0.78rem; color:var(--soft); margin-bottom:0.7rem; }
 .story.hidden { display:none; }
 
+/* scoreboard */
+.scoreboard { padding:1.8rem 0 2.4rem; }
+.sb-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem; }
+.sb-head h2 { font-size:1.7rem; }
+.sb-head span { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.sb-loading { font-size:0.75rem; color:var(--soft); letter-spacing:0.1em; text-transform:uppercase; padding:2rem 0; text-align:center; }
+.sb-league { margin-top:1.4rem; }
+.sb-league-head { font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; border-bottom:1.5px solid var(--carbon); padding-bottom:0.4rem; margin-bottom:0.9rem; display:flex; justify-content:space-between; }
+.sb-league-head span { color:var(--soft); font-weight:600; letter-spacing:0.1em; font-size:0.62rem; }
+.sb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; }
+.gamecard { background:var(--paper-hi); border:1.5px solid var(--carbon); border-radius:6px; padding:0.85rem 1rem 0.75rem; }
+.gc-status { display:flex; justify-content:space-between; font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.6rem; }
+.gc-status .st-pre { color:var(--tail); }
+.gc-status .st-in { color:var(--fade); }
+.gc-status .st-in::before { content:'\25CF '; animation:tickpulse 1.4s infinite; }
+.gc-status .st-post { color:var(--soft); }
+.gc-status .gc-league { color:var(--soft); font-weight:600; }
+.gc-team { display:flex; align-items:center; gap:0.6rem; padding:0.3rem 0; }
+.gc-team img { width:26px; height:26px; object-fit:contain; flex:0 0 auto; }
+.gc-logo-fallback { width:26px; height:26px; border-radius:50%; background:var(--paper); border:1px solid var(--line); display:inline-flex; align-items:center; justify-content:center; font-size:0.5rem; font-weight:700; flex:0 0 auto; }
+.gc-name { font-size:0.8rem; font-weight:700; line-height:1.2; }
+.gc-rec { font-size:0.6rem; color:var(--soft); margin-left:0.15rem; }
+.gc-score { margin-left:auto; font-family:'Anton',sans-serif; font-size:1.15rem; line-height:1; }
+.gc-team.loser .gc-score, .gc-team.loser .gc-name { color:var(--soft); }
+.gc-foot { display:flex; justify-content:space-between; border-top:1px dashed var(--line); margin-top:0.5rem; padding-top:0.45rem; font-size:0.6rem; color:var(--soft); letter-spacing:0.08em; text-transform:uppercase; }
+.gc-foot .odds { color:var(--tail); font-weight:700; }
+@media (max-width:980px) { .sb-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px) { .sb-grid { grid-template-columns:1fr; } }
+
 /* watch strip */
 .watch { border-top:1.5px solid var(--carbon); padding:1.8rem 0 2.2rem; }
 .watch-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.2rem; }
@@ -169,9 +198,19 @@ a { color:inherit; text-decoration:none; }
   <button class="cat-tab" data-cat="games">Games</button>
   <button class="cat-tab" data-cat="bettors">Bettors</button>
   <button class="cat-tab" data-cat="cases">Cases</button>
+  <button class="cat-tab" data-cat="scores" id="scoresTab">Scores</button>
 </div></div></nav>
 
 <main class="wrap">
+
+  <!-- scoreboard (Scores tab) -->
+  <section class="scoreboard" id="scoreboard" hidden>
+    <div class="sb-head">
+      <h2 class="anton">Today&rsquo;s Games</h2>
+      <span id="sbUpdated">Live scores &amp; upcoming</span>
+    </div>
+    <div id="sbBody"><div class="sb-loading">Loading the board&hellip;</div></div>
+  </section>
 
   <!-- lead + slate -->
   <section class="front">
@@ -308,16 +347,64 @@ a { color:inherit; text-decoration:none; }
 
   var tabs = document.querySelectorAll('.cat-tab');
   var stories = document.querySelectorAll('#storyGrid .story');
+  var frontSections = ['.front', '.rule-double', '#storyGrid', '.watch', '.appcta'].map(function (s) { return document.querySelector(s); });
+  var sb = document.getElementById('scoreboard');
+  var sbLoaded = false;
+  function showScores(on) {
+    frontSections.forEach(function (el) { if (el) el.style.display = on ? 'none' : ''; });
+    sb.hidden = !on;
+    if (on && !sbLoaded) { sbLoaded = true; loadScoreboard(); }
+  }
   tabs.forEach(function (t) {
     t.addEventListener('click', function () {
       tabs.forEach(function (x) { x.classList.remove('active'); });
       t.classList.add('active');
       var cat = t.dataset.cat;
+      if (cat === 'scores') { showScores(true); return; }
+      showScores(false);
       stories.forEach(function (s) {
         s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
       });
     });
   });
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function teamRow(t, other, state) {
+    var loser = state === 'post' && !t.winner && other.winner;
+    var logo = t.logo
+      ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy" onerror="this.outerHTML=\'<span class=&quot;gc-logo-fallback&quot;>\'+ \'' + esc(t.abbr) + '\' +\'</span>\'" />'
+      : '<span class="gc-logo-fallback">' + esc(t.abbr) + '</span>';
+    return '<div class="gc-team' + (loser ? ' loser' : '') + '">' + logo +
+      '<span class="gc-name">' + esc(t.name) + (t.record ? '<span class="gc-rec">(' + esc(t.record) + ')</span>' : '') + '</span>' +
+      (t.score !== '' && state !== 'pre' ? '<span class="gc-score">' + esc(t.score) + '</span>' : '') + '</div>';
+  }
+  function loadScoreboard() {
+    var body = document.getElementById('sbBody');
+    fetch('/api/scoreboard')
+      .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+      .then(function (d) {
+        var leagues = (d && d.leagues) || [];
+        if (!leagues.length) { body.innerHTML = '<div class="sb-loading">No games on the board right now.</div>'; return; }
+        body.innerHTML = leagues.map(function (lg) {
+          var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
+          var cards = lg.games.map(function (g) {
+            var stCls = 'st-' + g.state;
+            var foot = '';
+            if (g.odds || g.ou) {
+              foot = '<div class="gc-foot"><span class="odds">' + esc(g.odds || '') + '</span>' +
+                (g.ou ? '<span>O/U ' + esc(g.ou) + '</span>' : '') + '</div>';
+            }
+            return '<div class="gamecard"><div class="gc-status"><span class="' + stCls + '">' + esc(g.detail) + '</span>' +
+              '<span class="gc-league">' + esc(lg.label) + '</span></div>' +
+              teamRow(g.teams[0] || {}, g.teams[1] || {}, g.state) +
+              teamRow(g.teams[1] || {}, g.teams[0] || {}, g.state) + foot + '</div>';
+          }).join('');
+          return '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
+            '<span>' + (live ? live + ' live' : lg.games.length + ' games') + '</span></div>' +
+            '<div class="sb-grid">' + cards + '</div></div>';
+        }).join('');
+      })
+      .catch(function () { body.innerHTML = '<div class="sb-loading">Scoreboard unavailable &mdash; check back soon.</div>'; });
+  }
 
   var lb = document.getElementById('lb');
   var lv = document.getElementById('lbVideo');
