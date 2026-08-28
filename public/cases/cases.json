@@ -197,6 +197,135 @@
         }
       ],
       "appUrl": "https://testflight.apple.com/join/scH3svgB"
+    },
+    {
+      "slug": "mattress-mack",
+      "no": "003",
+      "name": "Mattress Mack",
+      "title": "The Houston Hedge",
+      "status": "open",
+      "verdict": "TAIL",
+      "tagline": "3\u201317 \u2014 and still up $23 million.",
+      "summary": "Jim \u201cMattress Mack\u201d McIngvale bets like nobody else on earth: nine-figure furniture promotions hedged with the biggest sportsbook wagers ever written. The tracked record is 3\u201317 across $86M in reported stakes \u2014 and he's up $23.5M anyway, headlined by the $72.6M Astros cash, the largest payout in U.S. legal betting history. When Mack bets, the whole city sweats with him.",
+      "stats": [
+        {
+          "label": "Tracked record",
+          "value": "3\u201317 (15%)"
+        },
+        {
+          "label": "Reported wagered",
+          "value": "$86.3M"
+        },
+        {
+          "label": "Net P&L",
+          "value": "+$23.5M \u00b7 +27% ROI"
+        },
+        {
+          "label": "Biggest cash",
+          "value": "+$72.6M \u00b7 U.S. record"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "OCT 2019",
+          "text": "$13M across books on the Astros to win the World Series. Nationals in seven. \u2212$13M \u2014 his largest loss.",
+          "result": "L"
+        },
+        {
+          "date": "FEB 2021",
+          "text": "$3.46M on the Bucs +3.5 in Super Bowl LV at DraftKings. Tampa rolls. +$2.72M.",
+          "result": "W"
+        },
+        {
+          "date": "FEB 2022",
+          "text": "$9.5M on the Bengals moneyline in Super Bowl LVI. Rams by three. \u2212$9.5M.",
+          "result": "L"
+        },
+        {
+          "date": "APR 2022",
+          "text": "$8.8M on Kansas to win the NCAA title. Jayhawks cut down the nets. +$12.2M.",
+          "result": "W"
+        },
+        {
+          "date": "NOV 2022",
+          "text": "$10M across five books on the Astros to win the World Series. Houston does it \u2014 +$72.6M, the largest payout in U.S. legal betting history.",
+          "result": "W"
+        },
+        {
+          "date": "SEP 2023",
+          "text": "$8M in futures on the Astros to run it back. Rangers end it in the ALCS. \u2212$8M.",
+          "result": "L"
+        },
+        {
+          "date": "JAN 2026",
+          "text": "$3.3M on the Patriots in Super Bowl LX, including the largest reported single at Caesars. Seattle spoils it. \u2212$3.3M.",
+          "result": "L"
+        }
+      ],
+      "sources": [
+        {
+          "label": "The ledger \u2014 20 reported bets (xlsx)",
+          "url": "/cases/mattress-mack-betting-ledger.xlsx"
+        }
+      ],
+      "visuals": [
+        {
+          "name": "1",
+          "drive": "1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_"
+        },
+        {
+          "name": "2",
+          "drive": "14fB-MpDOZ-73Dc4q-3mNBIovL1Q94-CT"
+        },
+        {
+          "name": "3",
+          "drive": "13eMym_EKdDuI2gaEWJrkeEWmKdureHYu"
+        },
+        {
+          "name": "4",
+          "drive": "1qhMYw6GbmKAwyWnx6FczJ69lRtOlXkQ2"
+        },
+        {
+          "name": "5",
+          "drive": "1t6BRFLIMWI8HrdR9resnQkrFiUNmt00Z"
+        },
+        {
+          "name": "6",
+          "drive": "1WJW6KsRV53lXQH1hUKgWmWazoNzP0WWg"
+        },
+        {
+          "name": "7",
+          "drive": "13K-vwmdcDhH4wfQE_I00irCAeeAApJXN"
+        },
+        {
+          "name": "8",
+          "drive": "1hiVlC0DeSBEQiddR4v2aCtFoRBT8mDEb"
+        },
+        {
+          "name": "9",
+          "drive": "1ROawS3EkF6ihj5zG-NX4ILrsp0IQdIUS"
+        },
+        {
+          "name": "10",
+          "drive": "1LXr9XhBeSuLX2wWJ7xuEAGC3_7fvoWYB"
+        },
+        {
+          "name": "11",
+          "drive": "1n-3ocX28FmCTb59rUmL2eRZI916TvsFk"
+        },
+        {
+          "name": "12",
+          "drive": "1Mi_0u51bQeONVwOlSNG08nzNJ-wZ9Y9l"
+        },
+        {
+          "name": "cta",
+          "drive": "1_OaeR06zO9e62i9OkNBlhrHTs4C0AI7H"
+        }
+      ],
+      "image": {
+        "drive": "1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_"
+      },
+      "appUrl": "https://testflight.apple.com/join/scH3svgB"
     }
   ]
 }
