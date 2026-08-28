@@ -106,6 +106,21 @@ a { color:inherit; text-decoration:none; }
 .sb-head h2 { font-size:1.7rem; }
 .sb-head span { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
 .sb-loading { font-size:0.75rem; color:var(--soft); letter-spacing:0.1em; text-transform:uppercase; padding:2rem 0; text-align:center; }
+.sb-preview { display:flex; gap:0.6rem; overflow-x:auto; padding:0.15rem 0 0.5rem; scrollbar-width:thin; }
+.sb-preview::-webkit-scrollbar { height:5px; }
+.sb-preview::-webkit-scrollbar-thumb { background:var(--line); border-radius:3px; }
+.sb-preview[hidden] { display:none; }
+.mini { flex:0 0 auto; min-width:128px; background:var(--paper-hi); border:1.5px solid var(--line); border-radius:6px; padding:0.4rem 0.65rem; cursor:pointer; transition:border-color 0.15s ease; }
+.mini:hover { border-color:var(--carbon); }
+.mini.is-live { border-left:3px solid var(--fade); }
+.mini-st { font-size:0.54rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; display:flex; justify-content:space-between; gap:0.6rem; }
+.mini-st .lg { color:var(--soft); font-weight:600; }
+.mini-row { display:flex; align-items:center; justify-content:space-between; gap:0.6rem; font-size:0.68rem; font-weight:700; line-height:1.5; }
+.mini-row .t { display:inline-flex; align-items:center; gap:0.35rem; }
+.mini-row img { width:14px; height:14px; object-fit:contain; }
+.mini-row .v { color:var(--carbon); }
+.mini-row .v.ml { color:var(--tail); font-size:0.6rem; }
+.mini-row.loser, .mini-row.loser .v { color:var(--soft); }
 .sb-filters { display:flex; justify-content:space-between; align-items:center; gap:0.8rem; flex-wrap:wrap; border-top:1.5px solid var(--carbon); padding-top:0.75rem; margin-top:0.4rem; }
 .sb-chips { display:flex; gap:0.4rem; flex-wrap:wrap; }
 .sb-chip { font-family:'IBM Plex Mono',monospace; font-size:0.64rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.38rem 0.8rem; cursor:pointer; transition:all 0.15s ease; }
@@ -229,6 +244,7 @@ a { color:inherit; text-decoration:none; }
       <h2 class="anton">The Board <span class="sb-toggle" id="sbToggle">+</span></h2>
       <span id="sbUpdated">Live scores &amp; odds</span>
     </div>
+    <div class="sb-preview" id="sbPreview"></div>
     <div id="sbPanel" hidden>
     <div class="sb-filters">
       <div class="sb-chips" id="sbLeagues"></div>
@@ -519,8 +535,42 @@ a { color:inherit; text-decoration:none; }
     if (!total) return 'Live scores & odds';
     return (live ? live + ' live \u00b7 ' : '') + total + ' games \u00b7 tap to expand';
   }
+  var sbPreview = document.getElementById('sbPreview');
+  function miniRow(t, other, state, ml) {
+    var loser = state === 'post' && !t.winner && other.winner;
+    var logo = t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy" />' : '';
+    var val = state === 'pre'
+      ? (ml != null ? '<span class="v ml">' + esc(fmtMl(ml)) + '</span>' : '')
+      : '<span class="v">' + esc(t.score || '') + '</span>';
+    return '<div class="mini-row' + (loser ? ' loser' : '') + '"><span class="t">' + logo + esc(t.abbr || t.name) + '</span>' + val + '</div>';
+  }
+  function renderPreview() {
+    if (!sbData.length) { sbPreview.innerHTML = ''; return; }
+    var rank = { in: 0, pre: 1, post: 2 };
+    var flat = [];
+    sbData.forEach(function (lg) {
+      lg.games.forEach(function (g) { flat.push({ g: g, label: lg.label }); });
+    });
+    flat.sort(function (a, b) {
+      var r = rank[a.g.state] - rank[b.g.state];
+      if (r) return r;
+      return new Date(a.g.date) - new Date(b.g.date);
+    });
+    sbPreview.innerHTML = flat.slice(0, 10).map(function (x) {
+      var g = x.g;
+      var ml = g.state === 'pre' ? matchOdds(g) : null;
+      var st = g.state === 'in' ? '<span class="st-in">' + esc(g.detail) + '</span>'
+        : g.state === 'post' ? '<span class="st-post">Final</span>'
+        : '<span class="st-pre">' + esc(g.detail) + '</span>';
+      return '<div class="mini' + (g.state === 'in' ? ' is-live' : '') + '">' +
+        '<div class="mini-st">' + st + '<span class="lg">' + esc(x.label) + '</span></div>' +
+        miniRow(g.teams[0] || {}, g.teams[1] || {}, g.state, ml && ml.away) +
+        miniRow(g.teams[1] || {}, g.teams[0] || {}, g.state, ml && ml.home) + '</div>';
+    }).join('');
+  }
   function applyOpen() {
     sbPanel.hidden = !sbOpen;
+    sbPreview.hidden = sbOpen;
     sb.classList.toggle('open', sbOpen);
     document.getElementById('sbToggle').textContent = sbOpen ? '\u2013' : '+';
     sbHead.setAttribute('aria-expanded', String(sbOpen));
@@ -533,6 +583,7 @@ a { color:inherit; text-decoration:none; }
     if (sbOpen) fetchBoard(false);
   }
   sbHead.addEventListener('click', toggleBoard);
+  document.getElementById('sbPreview').addEventListener('click', function () { if (!sbOpen) toggleBoard(); });
   sbHead.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBoard(); } });
 
   var oddsEvents = [];
@@ -553,6 +604,7 @@ a { color:inherit; text-decoration:none; }
           ? (sbData.length ? 'Updated ' + stamp : 'Live scores & odds')
           : summaryLine();
         renderBoard();
+        renderPreview();
       })
       .catch(function () {
         if (initial) sbBody.innerHTML = '<div class="sb-loading">Scoreboard unavailable &mdash; check back soon.</div>';
@@ -560,7 +612,7 @@ a { color:inherit; text-decoration:none; }
   }
   applyOpen();
   fetchBoard(sbOpen);
-  setInterval(function () { if (!document.hidden && sb.style.display !== 'none' && sbOpen) fetchBoard(false); }, 60000);
+  setInterval(function () { if (!document.hidden && sb.style.display !== 'none') fetchBoard(false); }, 60000);
 })();
 (function () {
   var box = document.getElementById('ticker');
