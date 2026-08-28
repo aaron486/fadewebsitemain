@@ -103,6 +103,21 @@ a { color:inherit; text-decoration:none; }
 .sb-head h2 { font-size:1.7rem; }
 .sb-head span { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
 .sb-loading { font-size:0.75rem; color:var(--soft); letter-spacing:0.1em; text-transform:uppercase; padding:2rem 0; text-align:center; }
+.sb-filters { display:flex; justify-content:space-between; align-items:center; gap:0.8rem; flex-wrap:wrap; border-top:1.5px solid var(--carbon); padding-top:0.75rem; margin-top:0.4rem; }
+.sb-chips { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.sb-chip { font-family:'IBM Plex Mono',monospace; font-size:0.64rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.38rem 0.8rem; cursor:pointer; transition:all 0.15s ease; }
+.sb-chip:hover { color:var(--carbon); border-color:var(--carbon); }
+.sb-chip.active { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+.sb-chip .live-n { color:var(--fade); }
+.sb-chip.active .live-n { color:#ff9d94; }
+.sb-seg { display:flex; border:1.5px solid var(--carbon); border-radius:4px; overflow:hidden; }
+.sb-seg-btn { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:none; border-left:1px solid var(--line); padding:0.42rem 0.9rem; cursor:pointer; }
+.sb-seg-btn:first-child { border-left:none; }
+.sb-seg-btn.active { background:var(--carbon); color:var(--paper); }
+.sb-skel { height:118px; border:1.5px solid var(--line); border-radius:6px; background:linear-gradient(100deg, var(--paper-hi) 40%, #efede2 50%, var(--paper-hi) 60%); background-size:200% 100%; animation:skel 1.2s linear infinite; }
+@keyframes skel { to { background-position:-200% 0; } }
+.gamecard.is-live { border-left:4px solid var(--fade); }
+.gc-team .win-mark { color:var(--carbon); font-size:0.7rem; margin-left:0.3rem; }
 .sb-league { margin-top:1.4rem; }
 .sb-league-head { font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; border-bottom:1.5px solid var(--carbon); padding-bottom:0.4rem; margin-bottom:0.9rem; display:flex; justify-content:space-between; }
 .sb-league-head span { color:var(--soft); font-weight:600; letter-spacing:0.1em; font-size:0.62rem; }
@@ -198,19 +213,28 @@ a { color:inherit; text-decoration:none; }
   <button class="cat-tab" data-cat="games">Games</button>
   <button class="cat-tab" data-cat="bettors">Bettors</button>
   <button class="cat-tab" data-cat="cases">Cases</button>
-  <button class="cat-tab" data-cat="scores" id="scoresTab">Scores</button>
 </div></div></nav>
 
 <main class="wrap">
 
-  <!-- scoreboard (Scores tab) -->
-  <section class="scoreboard" id="scoreboard" hidden>
+  <!-- the board -->
+  <section class="scoreboard" id="scoreboard">
     <div class="sb-head">
-      <h2 class="anton">Today&rsquo;s Games</h2>
+      <h2 class="anton">The Board</h2>
       <span id="sbUpdated">Live scores &amp; upcoming</span>
     </div>
-    <div id="sbBody"><div class="sb-loading">Loading the board&hellip;</div></div>
+    <div class="sb-filters">
+      <div class="sb-chips" id="sbLeagues"></div>
+      <div class="sb-seg" id="sbStatus">
+        <button class="sb-seg-btn active" data-st="all">All</button>
+        <button class="sb-seg-btn" data-st="in">Live</button>
+        <button class="sb-seg-btn" data-st="pre">Upcoming</button>
+        <button class="sb-seg-btn" data-st="post">Finals</button>
+      </div>
+    </div>
+    <div id="sbBody"></div>
   </section>
+  <div class="rule-double" style="margin-top:0.6rem;"></div>
 
   <!-- lead + slate -->
   <section class="front">
@@ -347,21 +371,16 @@ a { color:inherit; text-decoration:none; }
 
   var tabs = document.querySelectorAll('.cat-tab');
   var stories = document.querySelectorAll('#storyGrid .story');
-  var frontSections = ['.front', '.rule-double', '#storyGrid', '.watch', '.appcta'].map(function (s) { return document.querySelector(s); });
   var sb = document.getElementById('scoreboard');
-  var sbLoaded = false;
-  function showScores(on) {
-    frontSections.forEach(function (el) { if (el) el.style.display = on ? 'none' : ''; });
-    sb.hidden = !on;
-    if (on && !sbLoaded) { sbLoaded = true; loadScoreboard(); }
-  }
+  var sbRule = sb.nextElementSibling;
   tabs.forEach(function (t) {
     t.addEventListener('click', function () {
       tabs.forEach(function (x) { x.classList.remove('active'); });
       t.classList.add('active');
       var cat = t.dataset.cat;
-      if (cat === 'scores') { showScores(true); return; }
-      showScores(false);
+      // the board lives on the All screen
+      sb.style.display = cat === 'all' ? '' : 'none';
+      if (sbRule) sbRule.style.display = cat === 'all' ? '' : 'none';
       stories.forEach(function (s) {
         s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
       });
@@ -375,49 +394,105 @@ a { color:inherit; text-decoration:none; }
       : '<span class="gc-logo-fallback">' + esc(t.abbr) + '</span>';
     return '<div class="gc-team' + (loser ? ' loser' : '') + '">' + logo +
       '<span class="gc-name">' + esc(t.name) + (t.record ? '<span class="gc-rec">(' + esc(t.record) + ')</span>' : '') + '</span>' +
+      (state === 'post' && t.winner ? '<span class="win-mark">&#9664;</span>' : '') +
       (t.score !== '' && state !== 'pre' ? '<span class="gc-score">' + esc(t.score) + '</span>' : '') + '</div>';
   }
-  function loadScoreboard() {
-    var body = document.getElementById('sbBody');
+  // ----- The Board: data + filters + refresh -----
+  var sbData = [];
+  var sbLeague = 'all';
+  var sbState = 'all';
+  var sbBody = document.getElementById('sbBody');
+  var sbLeaguesEl = document.getElementById('sbLeagues');
+
+  function skel() {
+    sbBody.innerHTML = '<div class="sb-grid">' + new Array(6).fill('<div class="sb-skel"></div>').join('') + '</div>';
+  }
+
+  function gameCard(g, label) {
+    var stCls = 'st-' + g.state;
+    var foot = '';
+    var bits = [];
+    if (g.odds) bits.push('<span class="odds">' + esc(g.odds) + '</span>');
+    if (g.ou) bits.push('<span>O/U ' + esc(g.ou) + '</span>');
+    if (g.tv) bits.push('<span>' + esc(g.tv) + '</span>');
+    if (bits.length) foot = '<div class="gc-foot">' + bits.join('') + '</div>';
+    return '<div class="gamecard' + (g.state === 'in' ? ' is-live' : '') + '">' +
+      '<div class="gc-status"><span class="' + stCls + '">' + esc(g.detail) + '</span>' +
+      '<span class="gc-league">' + esc(label) + '</span></div>' +
+      teamRow(g.teams[0] || {}, g.teams[1] || {}, g.state) +
+      teamRow(g.teams[1] || {}, g.teams[0] || {}, g.state) + foot + '</div>';
+  }
+
+  function orderGames(games) {
+    var rank = { in: 0, pre: 1, post: 2 };
+    return games.slice().sort(function (a, b) {
+      var r = rank[a.state] - rank[b.state];
+      if (r) return r;
+      return new Date(a.date) - new Date(b.date);
+    });
+  }
+
+  function renderChips() {
+    var total = 0, liveTotal = 0;
+    var chips = sbData.map(function (lg) {
+      var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
+      total += lg.games.length; liveTotal += live;
+      return '<button class="sb-chip' + (sbLeague === lg.key ? ' active' : '') + '" data-lg="' + esc(lg.key) + '">' +
+        esc(lg.label) + (live ? ' <span class="live-n">&#9679;' + live + '</span>' : '') + '</button>';
+    }).join('');
+    sbLeaguesEl.innerHTML = '<button class="sb-chip' + (sbLeague === 'all' ? ' active' : '') + '" data-lg="all">All ' +
+      (liveTotal ? '<span class="live-n">&#9679;' + liveTotal + '</span>' : '') + '</button>' + chips;
+    Array.prototype.forEach.call(sbLeaguesEl.querySelectorAll('.sb-chip'), function (c) {
+      c.addEventListener('click', function () { sbLeague = c.dataset.lg; renderBoard(); });
+    });
+  }
+
+  function renderBoard() {
+    renderChips();
+    var leagues = sbData
+      .filter(function (lg) { return sbLeague === 'all' || lg.key === sbLeague; })
+      .map(function (lg) {
+        return { label: lg.label, games: orderGames(lg.games).filter(function (g) { return sbState === 'all' || g.state === sbState; }) };
+      })
+      .filter(function (lg) { return lg.games.length; });
+    if (!leagues.length) {
+      var msg = { in: 'No live games right now.', pre: 'No upcoming games on the board.', post: 'No finals yet.', all: 'No games on the board right now.' }[sbState];
+      sbBody.innerHTML = '<div class="sb-loading">' + msg + '</div>';
+      return;
+    }
+    sbBody.innerHTML = leagues.map(function (lg) {
+      var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
+      return '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
+        '<span>' + (live ? live + ' live &middot; ' : '') + lg.games.length + (lg.games.length === 1 ? ' game' : ' games') + '</span></div>' +
+        '<div class="sb-grid">' + lg.games.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div></div>';
+    }).join('');
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.sb-seg-btn'), function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.sb-seg-btn'), function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      sbState = b.dataset.st;
+      renderBoard();
+    });
+  });
+
+  function fetchBoard(initial) {
+    if (initial) skel();
     fetch('/api/scoreboard')
       .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
       .then(function (d) {
-        var leagues = (d && d.leagues) || [];
-        if (!leagues.length) { body.innerHTML = '<div class="sb-loading">No games on the board right now.</div>'; return; }
-        body.innerHTML = leagues.map(function (lg) {
-          var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
-          var cards = lg.games.map(function (g) {
-            var stCls = 'st-' + g.state;
-            var foot = '';
-            if (g.odds || g.ou) {
-              foot = '<div class="gc-foot"><span class="odds">' + esc(g.odds || '') + '</span>' +
-                (g.ou ? '<span>O/U ' + esc(g.ou) + '</span>' : '') + '</div>';
-            }
-            return '<div class="gamecard"><div class="gc-status"><span class="' + stCls + '">' + esc(g.detail) + '</span>' +
-              '<span class="gc-league">' + esc(lg.label) + '</span></div>' +
-              teamRow(g.teams[0] || {}, g.teams[1] || {}, g.state) +
-              teamRow(g.teams[1] || {}, g.teams[0] || {}, g.state) + foot + '</div>';
-          }).join('');
-          return '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
-            '<span>' + (live ? live + ' live' : lg.games.length + ' games') + '</span></div>' +
-            '<div class="sb-grid">' + cards + '</div></div>';
-        }).join('');
+        sbData = (d && d.leagues) || [];
+        var stamp = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        document.getElementById('sbUpdated').textContent = sbData.length ? 'Updated ' + stamp : 'Live scores & upcoming';
+        renderBoard();
       })
-      .catch(function () { body.innerHTML = '<div class="sb-loading">Scoreboard unavailable &mdash; check back soon.</div>'; });
+      .catch(function () {
+        if (initial) sbBody.innerHTML = '<div class="sb-loading">Scoreboard unavailable &mdash; check back soon.</div>';
+      });
   }
-
-  var lb = document.getElementById('lb');
-  var lv = document.getElementById('lbVideo');
-  function close() { lv.pause(); lv.removeAttribute('src'); lv.load(); lb.classList.remove('open'); }
-  document.querySelectorAll('.film').forEach(function (f) {
-    f.addEventListener('click', function () {
-      lv.src = f.dataset.src; lv.muted = false; lb.classList.add('open');
-      var p = lv.play(); if (p && p.catch) p.catch(function () {});
-    });
-  });
-  document.getElementById('lbClose').addEventListener('click', close);
-  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  fetchBoard(true);
+  setInterval(function () { if (!document.hidden && sb.style.display !== 'none') fetchBoard(false); }, 60000);
 })();
 (function () {
   var box = document.getElementById('ticker');

@@ -40,6 +40,7 @@ export default async function handler(req, res) {
             detail: ev.status?.type?.shortDetail || "",
             odds: odds?.details || "",
             ou: odds?.overUnder || null,
+            tv: comp.broadcasts?.[0]?.names?.[0] || "",
             teams,
           };
         });
