@@ -937,6 +937,37 @@ a { color:inherit; }
 #explore-start .footer h5 { color:var(--slip-carbon); }
 #explore-start .footer svg { fill:var(--slip-carbon); }
 #explore-start .footer-bottom, #explore-start .disclaimer { color:var(--slip-soft) !important; border-color:var(--slip-line) !important; }
+
+/* ===== Desktop type scale: browser text was too small ===== */
+@media (min-width: 900px) {
+  .hero-sub { font-size:1.2rem !important; max-width:640px; }
+  .hero-eyebrow { font-size:1.05rem; }
+  .hero-tabs .glass-tab { font-size:1.02rem; padding:1.15rem 2.6rem; }
+  .store-badge-big { font-size:1.2rem; }
+  .store-badge-small { font-size:0.68rem; }
+  .features-intro + .carousel-tabs .carousel-tab, .carousel-tab { font-size:0.85rem !important; padding:0.7rem 1.7rem; }
+  .carousel-tab-eyebrow { font-size:0.8rem; }
+  .section-subtitle { font-size:1.08rem !important; }
+  .big-text { font-size:1.25rem !important; }
+  .phone-feature-stat-title { font-size:1.35rem !important; }
+  .pf-primary-title { font-size:2.1rem !important; }
+  .phone-feature-stat-label { font-size:0.82rem !important; }
+  .social-stat-title { font-size:1.8rem; }
+  .social-stat-label { font-size:0.85rem; }
+  .feature-card h3 { font-size:1.3rem; }
+  .feature-card p { font-size:1rem; }
+  .fadeai-feature h4 { font-size:1.1rem; }
+  .fadeai-feature p { font-size:0.95rem; }
+  .community-text { font-size:1.15rem; }
+  .community-highlight { font-size:1.3rem; }
+  .wf-after-text { font-size:1.1rem; }
+  .step-card h4 { font-size:1.25rem; }
+  .step-card p { font-size:0.98rem !important; }
+  .step-number { width:60px; height:60px; font-size:1.3rem; }
+  .btn-primary, .btn-secondary { font-size:1.05rem; padding:0.9rem 2.1rem; }
+  .footer-col a, .footer-col h5, .footer-bottom, .disclaimer { font-size:0.9rem !important; }
+  .sb-name { font-size:1rem; }
+}
       `}</style>
 
       <Nav />
