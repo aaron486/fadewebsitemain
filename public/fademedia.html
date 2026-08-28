@@ -132,6 +132,8 @@ a { color:inherit; text-decoration:none; }
 .sb-seg-btn { font-family:'IBM Plex Mono',monospace; font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:none; border-left:1px solid var(--line); padding:0.42rem 0.9rem; cursor:pointer; }
 .sb-seg-btn:first-child { border-left:none; }
 .sb-seg-btn.active { background:var(--carbon); color:var(--paper); }
+.sb-more { display:block; margin:0.6rem 0 0; background:none; border:none; font-family:'IBM Plex Mono',monospace; font-size:0.64rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--tail); cursor:pointer; padding:0; }
+.sb-more:hover { text-decoration:underline; }
 .sb-skel { height:118px; border:1.5px solid var(--line); border-radius:6px; background:linear-gradient(100deg, var(--paper-hi) 40%, #efede2 50%, var(--paper-hi) 60%); background-size:200% 100%; animation:skel 1.2s linear infinite; }
 @keyframes skel { to { background-position:-200% 0; } }
 .gamecard.is-live { border-left:4px solid var(--fade); }
@@ -496,7 +498,7 @@ a { color:inherit; text-decoration:none; }
     var leagues = sbData
       .filter(function (lg) { return sbLeague === 'all' || lg.key === sbLeague; })
       .map(function (lg) {
-        return { label: lg.label, games: orderGames(lg.games).filter(function (g) { return sbState === 'all' || g.state === sbState; }) };
+        return { key: lg.key, label: lg.label, games: orderGames(lg.games).filter(function (g) { return sbState === 'all' || g.state === sbState; }) };
       })
       .filter(function (lg) { return lg.games.length; });
     if (!leagues.length) {
@@ -504,12 +506,21 @@ a { color:inherit; text-decoration:none; }
       sbBody.innerHTML = '<div class="sb-loading">' + msg + '</div>';
       return;
     }
+    // keep the all-leagues view short: one row per league, drill in for the rest
+    var cap = sbLeague === 'all' ? 3 : Infinity;
     sbBody.innerHTML = leagues.map(function (lg) {
       var live = lg.games.filter(function (g) { return g.state === 'in'; }).length;
+      var shown = lg.games.slice(0, cap);
+      var more = lg.games.length > shown.length
+        ? '<button class="sb-more" data-lg="' + esc(lg.key) + '">All ' + lg.games.length + ' ' + esc(lg.label) + ' games &rarr;</button>'
+        : '';
       return '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
         '<span>' + (live ? live + ' live &middot; ' : '') + lg.games.length + (lg.games.length === 1 ? ' game' : ' games') + '</span></div>' +
-        '<div class="sb-grid">' + lg.games.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div></div>';
+        '<div class="sb-grid">' + shown.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div>' + more + '</div>';
     }).join('');
+    Array.prototype.forEach.call(sbBody.querySelectorAll('.sb-more'), function (b) {
+      b.addEventListener('click', function () { sbLeague = b.dataset.lg; renderBoard(); });
+    });
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.sb-seg-btn'), function (b) {
