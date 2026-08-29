@@ -211,6 +211,12 @@ a { color:inherit; text-decoration:none; }
 .cf-mug figcaption { font-size:0.56rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); padding:0.35rem 0.55rem; border-top:1px dashed var(--line); text-align:center; }
 .cf-more { display:block; padding:0.6rem 0 0.2rem; font-size:0.66rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--tail); }
 .cf-more:hover { text-decoration:underline; }
+.cf-lock-head { font-size:0.62rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; border-bottom:1.5px solid var(--carbon); padding-bottom:0.35rem; margin-top:1.2rem; }
+.cf-lock { position:relative; margin-top:0.8rem; border:1.5px solid var(--carbon); border-radius:6px; overflow:hidden; max-height:320px; background:var(--paper); }
+.cf-lock img { width:100%; height:320px; display:block; filter:blur(9px) saturate(0.85); transform:scale(1.06); object-fit:cover; object-position:50% 24%; }
+.cf-lock-ov { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(244,242,234,0.1), rgba(244,242,234,0.55)); }
+.cf-unlock { display:inline-flex; align-items:center; gap:0.55rem; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; background:var(--carbon); color:var(--paper); border:2px solid var(--carbon); border-radius:4px; padding:0.85rem 1.6rem; box-shadow:3px 3px 0 rgba(20,20,18,0.3); transition:all 0.15s ease; }
+.cf-unlock:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.35); }
 .cf-cta { display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.2rem; border-top:1.5px solid var(--carbon); padding-top:1.1rem; }
 .cf-cta a { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border-radius:4px; padding:0.75rem 1.4rem; border:2px solid var(--carbon); transition:all 0.15s ease; }
 .cf-cta a.fill { background:var(--carbon); color:var(--paper); box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
@@ -779,9 +785,12 @@ a { color:inherit; text-decoration:none; }
               : esc(v.src || '');
           });
           caseGalleries[c.slug || c.no] = visSrcs;
+          var firstName = esc(c.name.split(' ')[0]);
+          var lock = '<div class="cf-lock-head">Portfolio overview &middot; FadeIQ analytics</div>' +
+            '<div class="cf-lock"><img src="assets/cases/portfolio-locked.jpg" alt="Blurred Fade portfolio overview" loading="lazy" />' +
+            '<div class="cf-lock-ov"><a class="cf-unlock" href="' + esc(appUrl) + '" target="_blank" rel="noopener">&#128274; Unlock the full portfolio on Fade &rarr;</a></div></div>';
           var cta = '<div class="cf-cta">' +
-            '<a class="fill" href="' + esc(appUrl) + '" target="_blank" rel="noopener">See the full W/L &amp; P&amp;L &rarr;</a>' +
-            '<a class="line" href="' + esc(appUrl) + '" target="_blank" rel="noopener">&#128276; Get notified when ' + esc(c.name.split(' ')[0]) + ' bets</a>' +
+            '<a class="line" href="' + esc(appUrl) + '" target="_blank" rel="noopener">&#128276; Get notified when ' + firstName + ' bets</a>' +
             '</div>';
           var titleBlock = '<div class="cf-head-txt"><div class="cf-title">' + esc(c.title || '') + '</div>' +
             '<h3 class="anton">' + esc(c.name) + '</h3>' +
@@ -796,6 +805,7 @@ a { color:inherit; text-decoration:none; }
             '<div class="dossier-top"><span>Case File No. ' + esc(c.no) + ' &middot; Status: ' + esc(c.status) + '</span>' + stamp + '</div>' +
             body +
             (tl ? '<div class="cf-tl-head">The record</div>' + tl : '') +
+            lock +
             (sources ? '<div class="cf-sources">Sources: ' + sources + '</div>' : '') +
             cta +
             '</article>';
