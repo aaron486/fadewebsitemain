@@ -731,6 +731,7 @@ a { color:inherit; text-decoration:none; }
 
   // ----- Case files -----
   var casesLoaded = false;
+  var caseGalleries = {};
   function loadCases() {
     if (casesLoaded) return;
     casesLoaded = true;
@@ -772,12 +773,12 @@ a { color:inherit; text-decoration:none; }
               ? 'https://drive.google.com/thumbnail?id=' + esc(c.image.drive) + '&sz=w1000'
               : esc(c.image.src || c.image || '');
           }
-          var vis = (c.visuals || []).map(function (v) {
-            var src = v.drive
+          var visSrcs = (c.visuals || []).map(function (v) {
+            return v.drive
               ? 'https://drive.google.com/thumbnail?id=' + esc(v.drive) + '&sz=w1600'
               : esc(v.src || '');
-            return '<div class="cf-visual" data-full="' + src + '"><img src="' + src + '" alt="' + esc(c.name) + ' case visual" loading="lazy" /></div>';
-          }).join('');
+          });
+          caseGalleries[c.slug || c.no] = visSrcs;
           var cta = '<div class="cf-cta">' +
             '<a class="fill" href="' + esc(appUrl) + '" target="_blank" rel="noopener">See the full W/L &amp; P&amp;L &rarr;</a>' +
             '<a class="line" href="' + esc(appUrl) + '" target="_blank" rel="noopener">&#128276; Get notified when ' + esc(c.name.split(' ')[0]) + ' bets</a>' +
@@ -786,7 +787,7 @@ a { color:inherit; text-decoration:none; }
             '<h3 class="anton">' + esc(c.name) + '</h3>' +
             '<div class="cf-tagline">' + esc(c.tagline || '') + '</div></div>';
           var head = heroSrc
-            ? '<div class="cf-head"><figure class="cf-mug"><img src="' + heroSrc + '" alt="' + esc(c.name) + '" loading="lazy" /><figcaption>Exhibit A</figcaption></figure>' + titleBlock + '</div>'
+            ? '<div class="cf-head"><figure class="cf-mug"><img src="' + heroSrc + '" alt="' + esc(c.name) + '" loading="lazy" /><figcaption>' + (visSrcs.length ? 'Exhibit A &middot; view all ' + visSrcs.length : 'Exhibit A') + '</figcaption></figure>' + titleBlock + '</div>'
             : titleBlock;
           var body = head +
             '<p class="cf-summary" style="margin-top:0.9rem;">' + esc(c.summary || '') + '</p>' +
@@ -794,7 +795,6 @@ a { color:inherit; text-decoration:none; }
           return '<article class="dossier" data-slug="' + esc(c.slug || c.no) + '">' +
             '<div class="dossier-top"><span>Case File No. ' + esc(c.no) + ' &middot; Status: ' + esc(c.status) + '</span>' + stamp + '</div>' +
             body +
-            (vis ? '<div class="cf-vis-head">The evidence</div><div class="cf-visuals">' + vis + '</div>' : '') +
             (tl ? '<div class="cf-tl-head">The record</div>' + tl : '') +
             (sources ? '<div class="cf-sources">Sources: ' + sources + '</div>' : '') +
             cta +
@@ -803,19 +803,14 @@ a { color:inherit; text-decoration:none; }
       })
       .then(function () {
         Array.prototype.forEach.call(document.querySelectorAll('.dossier[data-slug]'), function (card) {
-          var list = [];
-          Array.prototype.forEach.call(card.querySelectorAll('.cf-visual'), function (v, i) {
-            list.push(v.dataset.full);
-            v.addEventListener('click', function () { openGallery(list, i); });
-          });
           var mug = card.querySelector('.cf-mug');
-          if (mug) {
-            var mugSrc = mug.querySelector('img') ? mug.querySelector('img').src : null;
-            mug.addEventListener('click', function () {
-              if (list.length) openGallery(list, 0);
-              else if (mugSrc) openGallery([mugSrc], 0);
-            });
-          }
+          if (!mug) return;
+          var list = caseGalleries[card.dataset.slug] || [];
+          var mugSrc = mug.querySelector('img') ? mug.querySelector('img').src : null;
+          mug.addEventListener('click', function () {
+            if (list.length) openGallery(list, 0);
+            else if (mugSrc) openGallery([mugSrc], 0);
+          });
         });
       })
       .catch(function () { body.innerHTML = '<div class="sb-loading">Case files unavailable.</div>'; });
