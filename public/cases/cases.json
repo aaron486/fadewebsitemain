@@ -239,6 +239,62 @@
       "appUrl": "https://testflight.apple.com/join/scH3svgB"
     },
     {
+      "slug": "trent",
+      "no": "004",
+      "name": "Trent Attyah",
+      "title": "Book It With Trent",
+      "status": "open",
+      "verdict": "FADE",
+      "tagline": "The self-made Fade God.",
+      "summary": "Trent Attyah did what no bettor had done before: turned getting faded into a career. A losing run so famous the internet started betting the opposite of every pick, 260K+ followers watching every slip, and surgical streams where the community builds the day's parlay live on air. Founder of BookIt Sports \u2014 and the most profitable man in betting to do the exact opposite of.",
+      "stats": [
+        {
+          "label": "Known as",
+          "value": "The Fade God"
+        },
+        {
+          "label": "Following",
+          "value": "260K+ on TikTok"
+        },
+        {
+          "label": "Signature",
+          "value": "The surgical stream"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2020",
+          "text": "Founds BookIt Sports \u2014 a social platform and handicapper marketplace for the betting community.",
+          "result": null
+        },
+        {
+          "date": "2021",
+          "text": "A losing streak goes viral. The community starts betting the opposite of every pick \u2014 and The Fade God is born.",
+          "result": "L"
+        },
+        {
+          "date": "NOV 2021",
+          "text": "Launches the surgical streams: followers submit picks live on air, and Trent builds the day's parlay from the best of them.",
+          "result": null
+        },
+        {
+          "date": "TODAY",
+          "text": "One of the most-faded \u2014 and most-watched \u2014 bettors on the internet. Every slip is content. Every fade cashes twice.",
+          "result": null
+        }
+      ],
+      "visuals": [
+        {
+          "name": "1",
+          "drive": "14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx"
+        }
+      ],
+      "image": {
+        "drive": "14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx"
+      },
+      "appUrl": "https://testflight.apple.com/join/scH3svgB"
+    },
+    {
       "slug": "portnoy",
       "no": "002",
       "name": "Dave Portnoy",
