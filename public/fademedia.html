@@ -767,9 +767,6 @@ a { color:inherit; text-decoration:none; }
             var res = t.result ? '<span class="cf-res ' + esc(t.result) + '">' + esc(t.result) + '</span>' : '<span class="cf-res" style="border:none;"></span>';
             return '<div class="cf-row"><span class="cf-date">' + esc(t.date) + '</span>' + res + '<span>' + esc(t.text) + '</span></div>';
           }).join('');
-          var sources = (c.sources || []).map(function (s) {
-            return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + ' &rarr;</a>';
-          }).join('');
           var heroSrc = '';
           if (c.image) {
             heroSrc = c.image.drive

@@ -60,7 +60,6 @@
           "result": "L"
         }
       ],
-      "sources": [],
       "visuals": [
         {
           "name": "cover",
@@ -178,12 +177,6 @@
           "date": "JAN 2026",
           "text": "$3.3M on the Patriots in Super Bowl LX, including the largest reported single at Caesars. Seattle spoils it. \u2212$3.3M.",
           "result": "L"
-        }
-      ],
-      "sources": [
-        {
-          "label": "The ledger \u2014 20 reported bets (xlsx)",
-          "url": "/cases/mattress-mack-betting-ledger.xlsx"
         }
       ],
       "visuals": [
@@ -308,12 +301,6 @@
           "date": "NOV 2025",
           "text": "$1,000 side bet with Urban Meyer on Michigan. Even that one loses.",
           "result": "L"
-        }
-      ],
-      "sources": [
-        {
-          "label": "The ledger \u2014 30 reported bets (xlsx)",
-          "url": "/cases/portnoy-betting-ledger.xlsx"
         }
       ],
       "appUrl": "https://testflight.apple.com/join/scH3svgB"
