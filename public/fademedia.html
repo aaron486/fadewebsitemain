@@ -852,6 +852,11 @@ a { color:inherit; text-decoration:none; }
         return ev.prices && ev.prices[ev.away] != null && ev.prices[ev.home] != null;
       });
       if (!evs.length) return;
+      // US sports own the banner — soccer and the rest only fill in when
+      // there's nothing on the American slate
+      var US = { CFB: 1, NFL: 1, MLB: 1, NBA: 1, WNBA: 1, NHL: 1 };
+      var us = evs.filter(function (ev) { return US[ev.sport]; });
+      if (us.length) evs = us;
       // live games lead, then the next tips — the full feed is far too long to scroll
       evs.sort(function (a, b) {
         return (b.live ? 1 : 0) - (a.live ? 1 : 0) || (new Date(a.start) - new Date(b.start));
