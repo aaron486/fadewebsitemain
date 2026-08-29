@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         );
         if (!r.ok) throw new Error(String(r.status));
         const data = await r.json();
-        const games = (data.events || []).slice(0, 100).map((ev) => {
+        const games = (data.events || []).slice(0, 300).map((ev) => {
           const comp = ev.competitions?.[0] || {};
           const odds = comp.odds?.[0];
           const teams = (comp.competitors || [])

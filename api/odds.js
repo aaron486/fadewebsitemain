@@ -64,7 +64,7 @@ export default async function handler(req, res) {
       .flatMap((r) => r.value)
       .filter((ev) => Object.keys(ev.prices).length > 0 || Object.keys(ev.spreads).length > 0)
       .sort((a, b) => new Date(a.start) - new Date(b.start))
-      .slice(0, 400);
+      .slice(0, 800);
     if (!events.length && settled.every((r) => r.status === "rejected")) {
       res.status(502).json({ error: "odds upstream failed" });
       return;

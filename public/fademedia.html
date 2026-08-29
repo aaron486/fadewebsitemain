@@ -856,12 +856,12 @@ a { color:inherit; text-decoration:none; }
       // there's nothing on the American slate
       var US = { CFB: 1, NFL: 1, MLB: 1, NBA: 1, WNBA: 1, NHL: 1 };
       var us = evs.filter(function (ev) { return US[ev.sport]; });
-      if (us.length) evs = us;
-      // live games lead, then the next tips — the full feed is far too long to scroll
+      // every US-league game rides the banner; the fallback stays capped
+      evs = us.length ? us : evs.slice(0, 30);
+      // live games lead, then the next tips
       evs.sort(function (a, b) {
         return (b.live ? 1 : 0) - (a.live ? 1 : 0) || (new Date(a.start) - new Date(b.start));
       });
-      evs = evs.slice(0, 30);
       var html = evs.map(function (ev) {
         var away = fmt(ev.prices[ev.away]);
         var home = fmt(ev.prices[ev.home]);
