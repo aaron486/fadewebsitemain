@@ -491,27 +491,44 @@ a { color:inherit; text-decoration:none; }
     sbBody.innerHTML = '<div class="sb-grid">' + new Array(6).fill('<div class="sb-skel"></div>').join('') + '</div>';
   }
 
-  function matchOdds(g) {
+  function matchOdds(g, label) {
     var a = (g.teams[0] || {}), hteam = (g.teams[1] || {});
     for (var i = 0; i < oddsEvents.length; i++) {
       var ev = oddsEvents[i];
+      if (label && ev.sport && ev.sport !== label) continue;
       var H = (ev.home || '').toLowerCase(), A = (ev.away || '').toLowerCase();
       var hf = (hteam.full || hteam.name || '').toLowerCase(), af = (a.full || a.name || '').toLowerCase();
       var hn = (hteam.name || '').toLowerCase(), an = (a.name || '').toLowerCase();
-      if ((H === hf || (hn && H.indexOf(hn) !== -1)) && (A === af || (an && A.indexOf(an) !== -1))) {
-        return { away: ev.prices[ev.away], home: ev.prices[ev.home] };
-      }
+      if ((H === hf || (hn && H.indexOf(hn) !== -1)) && (A === af || (an && A.indexOf(an) !== -1))) return ev;
     }
     return null;
   }
+  function mlOf(ev) {
+    if (!ev || !ev.prices) return null;
+    var aw = ev.prices[ev.away], hm = ev.prices[ev.home];
+    return aw != null || hm != null ? { away: aw, home: hm } : null;
+  }
+  function fmtSpread(p) { return p === 0 ? 'PK' : (p > 0 ? '+' + p : String(p)); }
   function gameCard(g, label) {
     var stCls = 'st-' + g.state;
-    var ml = g.state === 'post' ? null : matchOdds(g);
+    var oe = g.state === 'post' ? null : matchOdds(g, label);
+    var ml = mlOf(oe);
     var foot = '';
     var bits = [];
     if (ml && g.state === 'in') bits.push('<span class="live-ml">&#9679; Live odds</span>');
-    if (g.odds) bits.push('<span class="odds">' + esc(g.odds) + '</span>');
-    if (g.ou) bits.push('<span>O/U ' + esc(g.ou) + '</span>');
+    // betting line: prefer the odds feed's spread, fall back to ESPN's
+    var away = g.teams[0] || {}, home = g.teams[1] || {};
+    if (oe && oe.spreads && (oe.spreads[oe.home] != null || oe.spreads[oe.away] != null)) {
+      var sh = oe.spreads[oe.home], sa = oe.spreads[oe.away];
+      var fav = (sh != null && (sa == null || sh <= sa))
+        ? { abbr: home.abbr || home.name, pt: sh }
+        : { abbr: away.abbr || away.name, pt: sa };
+      bits.push('<span class="odds">' + esc(fav.abbr) + ' ' + esc(fmtSpread(fav.pt)) + '</span>');
+    } else if (g.odds) {
+      bits.push('<span class="odds">' + esc(g.odds) + '</span>');
+    }
+    var tot = oe && oe.total != null ? oe.total : g.ou;
+    if (tot) bits.push('<span>O/U ' + esc(tot) + '</span>');
     if (g.tv) bits.push('<span>' + esc(g.tv) + '</span>');
     if (bits.length) foot = '<div class="gc-foot">' + bits.join('') + '</div>';
     return '<div class="gamecard' + (g.state === 'in' ? ' is-live' : '') + '">' +
@@ -621,7 +638,7 @@ a { color:inherit; text-decoration:none; }
     });
     sbPreview.innerHTML = flat.slice(0, 10).map(function (x) {
       var g = x.g;
-      var ml = g.state === 'pre' ? matchOdds(g) : null;
+      var ml = g.state === 'pre' ? mlOf(matchOdds(g, x.label)) : null;
       var st = g.state === 'in' ? '<span class="st-in">' + esc(g.detail) + '</span>'
         : g.state === 'post' ? '<span class="st-post">Final</span>'
         : '<span class="st-pre">' + esc(g.detail) + '</span>';
@@ -831,8 +848,15 @@ a { color:inherit; text-decoration:none; }
   fetch('/api/odds')
     .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
     .then(function (d) {
-      var evs = (d && d.events) || [];
+      var evs = ((d && d.events) || []).filter(function (ev) {
+        return ev.prices && ev.prices[ev.away] != null && ev.prices[ev.home] != null;
+      });
       if (!evs.length) return;
+      // live games lead, then the next tips — the full feed is far too long to scroll
+      evs.sort(function (a, b) {
+        return (b.live ? 1 : 0) - (a.live ? 1 : 0) || (new Date(a.start) - new Date(b.start));
+      });
+      evs = evs.slice(0, 30);
       var html = evs.map(function (ev) {
         var away = fmt(ev.prices[ev.away]);
         var home = fmt(ev.prices[ev.home]);

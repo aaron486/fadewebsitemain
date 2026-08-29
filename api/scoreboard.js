@@ -1,25 +1,26 @@
 // Aggregates ESPN's public scoreboard feeds (logos, records, live scores)
 // across the major leagues, slimmed and edge-cached for the Games tab.
+// CFB needs groups=80 — ESPN's default scoreboard only carries Top-25 games
 const LEAGUES = [
-  ["football", "nfl", "NFL"],
-  ["football", "college-football", "CFB"],
-  ["baseball", "mlb", "MLB"],
-  ["basketball", "nba", "NBA"],
-  ["basketball", "wnba", "WNBA"],
-  ["hockey", "nhl", "NHL"],
-  ["soccer", "usa.1", "MLS"],
+  ["football", "nfl", "NFL", ""],
+  ["football", "college-football", "CFB", "?groups=80&limit=300"],
+  ["baseball", "mlb", "MLB", ""],
+  ["basketball", "nba", "NBA", ""],
+  ["basketball", "wnba", "WNBA", ""],
+  ["hockey", "nhl", "NHL", ""],
+  ["soccer", "usa.1", "MLS", ""],
 ];
 
 export default async function handler(req, res) {
   try {
     const results = await Promise.allSettled(
-      LEAGUES.map(async ([sport, league, label]) => {
+      LEAGUES.map(async ([sport, league, label, extra]) => {
         const r = await fetch(
-          `https://site.api.espn.com/apis/site/v2/sports/${sport}/${league}/scoreboard`
+          `https://site.api.espn.com/apis/site/v2/sports/${sport}/${league}/scoreboard${extra}`
         );
         if (!r.ok) throw new Error(String(r.status));
         const data = await r.json();
-        const games = (data.events || []).slice(0, 16).map((ev) => {
+        const games = (data.events || []).slice(0, 100).map((ev) => {
           const comp = ev.competitions?.[0] || {};
           const odds = comp.odds?.[0];
           const teams = (comp.competitors || [])
