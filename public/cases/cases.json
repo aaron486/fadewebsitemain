@@ -117,79 +117,6 @@
       "appUrl": "https://testflight.apple.com/join/scH3svgB"
     },
     {
-      "slug": "portnoy",
-      "no": "002",
-      "name": "Dave Portnoy",
-      "title": "El Presidente",
-      "status": "open",
-      "verdict": "FADE",
-      "tagline": "A 30% hit rate that's somehow up $2.7 million.",
-      "summary": "Dave Portnoy bets the way he runs Barstool \u2014 loudly, publicly, and in seven figures. Across 30 publicly reported wagers the record is 9\u201321. The P&L is +$2.7M anyway, carried by three all-time futures cashes. Both facts are why America watches every slip he posts.",
-      "stats": [
-        {
-          "label": "Tracked record",
-          "value": "9\u201321 (30%)"
-        },
-        {
-          "label": "Reported wagered",
-          "value": "$5.05M"
-        },
-        {
-          "label": "Net P&L",
-          "value": "+$2.74M \u00b7 +54% ROI"
-        }
-      ],
-      "timeline": [
-        {
-          "date": "NOV 2021",
-          "text": "$500K on Virginia Tech +220 against Miami. Hokies lose. \u2212$500K.",
-          "result": "L"
-        },
-        {
-          "date": "JAN 2024",
-          "text": "$1M on Michigan in the Rose Bowl CFP semi. Wolverines win it. +$847K.",
-          "result": "W"
-        },
-        {
-          "date": "MAR 2024",
-          "text": "$600K on UConn to win the NCAA Tournament at +360, DraftKings-confirmed. The Huskies run it back. +$2.16M.",
-          "result": "W"
-        },
-        {
-          "date": "APR 2024",
-          "text": "$300K on Scottie Scheffler to win the Masters at +450. Green jacket. +$1.35M.",
-          "result": "W"
-        },
-        {
-          "date": "JAN 2025",
-          "text": "$1M on the Bills to win Super Bowl LIX. Buffalo falls short. \u2212$1M.",
-          "result": "L"
-        },
-        {
-          "date": "MAY 2025",
-          "text": "$25K on a Caitlin Clark triple-double at +1300. She does it. +$325K.",
-          "result": "W"
-        },
-        {
-          "date": "SEP 2024",
-          "text": "$300K on the Ravens in the season opener. \u2212$300K.",
-          "result": "L"
-        },
-        {
-          "date": "NOV 2025",
-          "text": "$1,000 side bet with Urban Meyer on Michigan. Even that one loses.",
-          "result": "L"
-        }
-      ],
-      "sources": [
-        {
-          "label": "The ledger \u2014 30 reported bets (xlsx)",
-          "url": "/cases/portnoy-betting-ledger.xlsx"
-        }
-      ],
-      "appUrl": "https://testflight.apple.com/join/scH3svgB"
-    },
-    {
       "slug": "mattress-mack",
       "no": "003",
       "name": "Mattress Mack",
@@ -316,6 +243,79 @@
       "image": {
         "drive": "1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_"
       },
+      "appUrl": "https://testflight.apple.com/join/scH3svgB"
+    },
+    {
+      "slug": "portnoy",
+      "no": "002",
+      "name": "Dave Portnoy",
+      "title": "El Presidente",
+      "status": "open",
+      "verdict": "FADE",
+      "tagline": "A 30% hit rate that's somehow up $2.7 million.",
+      "summary": "Dave Portnoy bets the way he runs Barstool \u2014 loudly, publicly, and in seven figures. Across 30 publicly reported wagers the record is 9\u201321. The P&L is +$2.7M anyway, carried by three all-time futures cashes. Both facts are why America watches every slip he posts.",
+      "stats": [
+        {
+          "label": "Tracked record",
+          "value": "9\u201321 (30%)"
+        },
+        {
+          "label": "Reported wagered",
+          "value": "$5.05M"
+        },
+        {
+          "label": "Net P&L",
+          "value": "+$2.74M \u00b7 +54% ROI"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "NOV 2021",
+          "text": "$500K on Virginia Tech +220 against Miami. Hokies lose. \u2212$500K.",
+          "result": "L"
+        },
+        {
+          "date": "JAN 2024",
+          "text": "$1M on Michigan in the Rose Bowl CFP semi. Wolverines win it. +$847K.",
+          "result": "W"
+        },
+        {
+          "date": "MAR 2024",
+          "text": "$600K on UConn to win the NCAA Tournament at +360, DraftKings-confirmed. The Huskies run it back. +$2.16M.",
+          "result": "W"
+        },
+        {
+          "date": "APR 2024",
+          "text": "$300K on Scottie Scheffler to win the Masters at +450. Green jacket. +$1.35M.",
+          "result": "W"
+        },
+        {
+          "date": "JAN 2025",
+          "text": "$1M on the Bills to win Super Bowl LIX. Buffalo falls short. \u2212$1M.",
+          "result": "L"
+        },
+        {
+          "date": "MAY 2025",
+          "text": "$25K on a Caitlin Clark triple-double at +1300. She does it. +$325K.",
+          "result": "W"
+        },
+        {
+          "date": "SEP 2024",
+          "text": "$300K on the Ravens in the season opener. \u2212$300K.",
+          "result": "L"
+        },
+        {
+          "date": "NOV 2025",
+          "text": "$1,000 side bet with Urban Meyer on Michigan. Even that one loses.",
+          "result": "L"
+        }
+      ],
+      "sources": [
+        {
+          "label": "The ledger \u2014 30 reported bets (xlsx)",
+          "url": "/cases/portnoy-betting-ledger.xlsx"
+        }
+      ],
       "appUrl": "https://testflight.apple.com/join/scH3svgB"
     }
   ]
