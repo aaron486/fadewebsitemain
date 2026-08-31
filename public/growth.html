@@ -116,6 +116,7 @@ details.metric[open] .metric-chev-plus, details.metric[open] .metric-chev { visi
 .team-bio strong { color: #fff; font-weight: 600; }
 /* product phones */
 .phones { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 1.75rem; }
+.phones.explore-phones { grid-template-columns: repeat(4, 1fr); max-width: 980px; margin-left: auto; margin-right: auto; }
 .phone { text-align: center; }
 .phone .scr { aspect-ratio: 9 / 19.5; border-radius: 26px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 16px 44px rgba(0,0,0,0.5); }
 .phone .scr video, .phone .scr img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -227,7 +228,7 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
   .metrics { grid-template-columns: 1fr 1fr; }
   .split, .cards, .pillars, .why, .vids, .hero-grid { grid-template-columns: 1fr; }
   .partners { grid-template-columns: 1fr 1fr; }
-  .phones { grid-template-columns: 1fr 1fr; }
+  .phones, .phones.explore-phones { grid-template-columns: 1fr 1fr; }
 }
 
 </style>
@@ -617,6 +618,35 @@ h3.subhead { font-family: 'Oswald', sans-serif; text-transform: uppercase; color
       <div class="k">Why it matters</div>
       <p style="margin-top:0.6rem;">Fade's entity, SAFE documents, and deal terms are built with counsel that lives at the intersection of <strong style="color:#fff;">early-stage venture and gaming law</strong> &mdash; the two worlds this company operates in.</p>
     </div>
+  </div>
+</div></section>
+
+<!-- EXPLORE THE APP -->
+<section id="explore"><div class="wrap">
+  <span class="eyebrow">Explore the App</span>
+  <h2 class="sec">Fade, in your hands.</h2>
+  <p class="lead">Live from the beta &mdash; the same demos on the front page of <a href="https://fade.bet" target="_blank" rel="noopener" style="color:#fff;">fade.bet</a>.</p>
+  <div class="phones explore-phones">
+    <figure class="phone">
+      <div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-feed.mp4"></video></div>
+      <figcaption>The App</figcaption>
+      <p class="desc">Bet together. Win together &mdash; sports betting, social, and culture under one roof.</p>
+    </figure>
+    <figure class="phone">
+      <div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-sync.mp4"></video></div>
+      <figcaption>Bet Together</figcaption>
+      <p class="desc">Fade Sync links every bet from every major sportsbook &mdash; one place, fully verified.</p>
+    </figure>
+    <figure class="phone">
+      <div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq-2.mp4"></video></div>
+      <figcaption>Fade IQ</figcaption>
+      <p class="desc">Your AI betting coach &mdash; knows your history, calls out your habits, builds your game plan.</p>
+    </figure>
+    <figure class="phone">
+      <div class="scr"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-profile-2.mp4"></video></div>
+      <figcaption>Your Profile</figcaption>
+      <p class="desc">Every bet you've ever made &mdash; synced, analyzed, and shareable. Verified records, ROI &amp; streaks.</p>
+    </figure>
   </div>
 </div></section>
 
