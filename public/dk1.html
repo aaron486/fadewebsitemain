@@ -168,8 +168,6 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   <h2 class="sec">Owned influence. Direct lines.</h2>
   <p class="lead">Fade Media is our <b>owned influencer and podcast series</b>. Centered in sport and culture, it gives sportsbooks a direct line to the most influential names and voices in sports. <b>Season 1: The Pop Out Tour</b> &mdash; featuring Lil Baby and Darien Rencher.</p>
 
-  <div id="mediaTalent" class="talent" style="margin-top:1.6rem;"></div>
-
   <div class="deck">
     <div class="ratio"><iframe src="https://docs.google.com/presentation/d/1m4NOveL7fn_r3xjhamFftI5HdcykAZcTfpQibK16wu8/embed?start=false&loop=false" allowfullscreen loading="lazy" title="The Pop Out Tour — Season 1 deck"></iframe></div>
   </div>
@@ -252,14 +250,6 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 
 // ---- talent data: edit here (or send Claude a list) ----
 // Each card: name, role, initials, dk (green tile), stats: [label, value] pairs.
-var MEDIA_TALENT = [
-  { name: 'Lil Baby', role: 'The Pop Out Tour · Season 1', initials: 'LB', dk: false, stats: [
-    ['Instagram', '33M+'], ['Audience', 'Music × sports culture'], ['Engagement', 'On request']
-  ]},
-  { name: 'Darien Rencher', role: 'The Pop Out Tour · Season 1', initials: 'DR', dk: false, stats: [
-    ['Platform', 'IG · X · podcast'], ['Audience', 'CFB · athlete community'], ['Engagement', 'On request']
-  ]}
-];
 var CITY_TALENT = [
   { city: 'Los Angeles', tag: 'Hotlist 01', talent: [
     { name: 'Talent slot 1', role: 'Betting creator', initials: 'LA', dk: true, stats: [['Followers', 'TBD'], ['Engagement', 'TBD'], ['Audience', 'TBD']] },
@@ -291,7 +281,6 @@ var CITY_TALENT = [
       t.stats.map(function (s) { return '<div class="stat"><span>' + esc(s[0]) + '</span><b>' + esc(s[1]) + '</b></div>'; }).join('') +
       '</div></div>';
   }
-  document.getElementById('mediaTalent').innerHTML = MEDIA_TALENT.map(talCard).join('');
   document.getElementById('cityTalent').innerHTML = CITY_TALENT.map(function (c) {
     return '<div class="city">' + esc(c.city) + '<span>' + esc(c.tag) + '</span></div>' +
       '<div class="talent">' + c.talent.map(talCard).join('') + '</div>';
