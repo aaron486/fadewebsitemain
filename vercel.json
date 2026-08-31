@@ -86,6 +86,10 @@
       "destination": "/growth.html"
     },
     {
+      "source": "/dk1",
+      "destination": "/dk1.html"
+    },
+    {
       "source": "/fade-media",
       "destination": "/fademedia.html"
     },
