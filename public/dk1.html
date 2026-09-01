@@ -115,6 +115,12 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 .netgrid img { width:100%; aspect-ratio:4/5; object-fit:cover; display:block; border:1.5px solid var(--carbon); border-radius:6px; box-shadow:3px 3px 0 rgba(20,20,18,0.12); }
 @media (max-width:820px) { .netgrid { grid-template-columns:repeat(2,1fr); } .netgrid img:last-child { grid-column:1/-1; aspect-ratio:16/10; } }
 
+/* ---- demo dropdown ---- */
+.demo-drop { margin-top:0.9rem; }
+.demo-drop summary { cursor:pointer; list-style:none; display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--tail); border-bottom:1.5px solid var(--tail); padding-bottom:0.15rem; }
+.demo-drop summary::-webkit-details-marker { display:none; }
+.demo-drop[open] summary { color:var(--carbon); border-color:var(--carbon); }
+
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
 @media (max-width:820px) { .creatives { grid-template-columns:1fr; } }
@@ -222,7 +228,12 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   <div class="cards">
     <div class="card"><div class="k dk">The audience</div><h3 style="font-size:2rem;">Males 21&ndash;30</h3><p>Fade's core user &mdash; the demographic every sportsbook is bidding for.</p></div>
     <div class="card"><div class="k dk">The profile</div><h3>Retail sports bettors</h3><p>They bet <b>socially and competitively</b> &mdash; picks are shared, records are public, and every sweat happens with friends.</p></div>
-    <div class="card" style="grid-column:1/-1;"><div class="k dk">Affiliate driven</div><h3>See the bet. Tail or fade it.</h3><p>Fade's primary action is seeing a friend's bet and tailing or fading it &mdash; <b>every tap is an affiliate click headed to the book</b>.</p></div>
+    <div class="card" style="grid-column:1/-1;"><div class="k dk">Affiliate driven</div><h3>See the bet. Tail or fade it.</h3><p>Fade's primary action is seeing a friend's bet and tailing or fading it &mdash; <b>every tap is an affiliate click headed to the book</b>.</p>
+      <details class="demo-drop">
+        <summary>Watch it in the app &darr;</summary>
+        <div class="q-vid" style="max-width:280px; margin-top:0.9rem;"><video loop muted playsinline preload="none" src="assets/dk-tailfade-demo.mp4"></video></div>
+      </details>
+    </div>
   </div>
 </div></section>
 
@@ -372,6 +383,20 @@ var CITY_TALENT = [
     { name: 'Talent slot 2', role: 'Sports personality', initials: 'DET', dk: false, stats: [['Followers', 'TBD'], ['Engagement', 'TBD'], ['Audience', 'TBD']] }
   ]}
 ];
+
+// ---- demo dropdowns: load + play on open ----
+(function () {
+  document.querySelectorAll('.demo-drop').forEach(function (d) {
+    var vid = d.querySelector('video');
+    if (!vid) return;
+    d.addEventListener('toggle', function () {
+      if (d.open) {
+        if (!vid.dataset.loaded) { vid.dataset.loaded = '1'; vid.load(); }
+        var p = vid.play(); if (p && p.catch) p.catch(function () {});
+      } else { vid.pause(); }
+    });
+  });
+})();
 
 (function () {
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
