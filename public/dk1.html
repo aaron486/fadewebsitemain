@@ -141,6 +141,14 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 .footer svg { width:110px; margin:0 auto 0.8rem; display:block; }
 .footer p { font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); }
 
+/* ---- brand carousel ---- */
+.brandcar { display:flex; align-items:center; gap:0.6rem; margin-top:1.6rem; }
+.brandtrack { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; flex:1; padding:4px; scroll-behavior:smooth; }
+.brandtrack::-webkit-scrollbar { display:none; }
+.brand { flex:0 0 min(230px,68vw); scroll-snap-align:center; border:1.5px solid var(--carbon); border-radius:6px; background:#fff; box-shadow:3px 3px 0 rgba(20,20,18,0.12); aspect-ratio:5/3; display:flex; align-items:center; justify-content:center; padding:1.5rem; }
+.brand img { max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
+.brand-note { margin-top:0.9rem; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); text-align:center; }
+
 /* ---- section accordions ---- */
 .sec-drop > summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:1.2rem; }
 .sec-drop > summary::-webkit-details-marker { display:none; }
@@ -283,6 +291,19 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   </summary>
   <div class="sec-body">
   <p class="lead">With nearly a decade in brand marketing, Fade's team has extensive industry ties &mdash; allowing us to bring partnerships to <b>influential celebrities, athletes, and other sports personalities</b>.</p>
+  <div class="brandcar">
+    <button class="qnav" type="button" data-brand-nav="-1" aria-label="Previous brands">&larr;</button>
+    <div class="brandtrack" id="brandTrack">
+      <div class="brand"><img src="assets/brands/adidas.png" alt="adidas" loading="lazy" /></div>
+      <div class="brand"><img src="assets/brands/raising-canes.png" alt="Raising Cane's" loading="lazy" /></div>
+      <div class="brand"><img src="assets/brands/hollister.png" alt="Hollister" loading="lazy" /></div>
+      <div class="brand"><img src="assets/brands/cvs.png" alt="CVS Pharmacy" loading="lazy" /></div>
+      <div class="brand"><img src="assets/brands/c4.png" alt="C4 Energy" loading="lazy" /></div>
+    </div>
+    <button class="qnav" type="button" data-brand-nav="1" aria-label="Next brands">&rarr;</button>
+  </div>
+  <div class="qdots" id="brandDots"></div>
+  <p class="brand-note">Selected brands we&rsquo;ve worked with</p>
   </div>
   </details>
 </div></section>
@@ -385,6 +406,36 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
       }
     });
   });
+})();
+
+// ---- brand carousel ----
+(function () {
+  var track = document.getElementById('brandTrack');
+  var dots = document.getElementById('brandDots');
+  if (!track || !dots) return;
+  var slides = track.querySelectorAll('.brand');
+  var i;
+  for (i = 0; i < slides.length; i++) dots.appendChild(document.createElement('span'));
+  function step() {
+    return slides.length ? slides[0].getBoundingClientRect().width + 16 : 0;
+  }
+  function paint() {
+    var w = step();
+    var idx = w ? Math.round(track.scrollLeft / w) : 0;
+    idx = Math.max(0, Math.min(slides.length - 1, idx));
+    for (var j = 0; j < dots.children.length; j++) {
+      dots.children[j].className = j === idx ? 'on' : '';
+    }
+  }
+  track.addEventListener('scroll', paint, { passive: true });
+  var btns = document.querySelectorAll('[data-brand-nav]');
+  for (i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var d = Number(this.getAttribute('data-brand-nav'));
+      track.scrollBy({ left: step() * d, behavior: 'smooth' });
+    });
+  }
+  paint();
 })();
 
 </script>
