@@ -154,22 +154,7 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 <section><div class="wrap">
   <span class="eyebrow">01 &middot; Who We Are</span>
   <h2 class="sec">Fade is a social sports-bet sharing platform.</h2>
-  <p class="lead">Fade connects the betting community and lets users bet together &mdash; every pick, every friend, every sweat in one place.</p>
-  <div class="qcar">
-    <button class="qnav" id="qPrev" type="button" aria-label="Previous">&larr;</button>
-    <div class="qtrack" id="qTrack">
-      <div class="q slide"><b>Welcome to Fade.</b>The front door: share your picks, tail or fade your friends.
-        <div class="q-vid"><img src="assets/dk-welcome.jpg" alt="Fade welcome screen" loading="lazy" /></div></div>
-      <div class="q slide"><b>Who's actually good?</b>Ever wonder which friend is actually good at betting? Fade keeps the verified record.
-        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-profile-2.mp4"></video></div></div>
-      <div class="q slide"><b>No more screenshots.</b>Tired of manually punching in picks from a screenshot? BetSync pulls them in automatically.
-        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-sync.mp4"></video></div></div>
-      <div class="q slide"><b>Deep dives, pre-bet.</b>Want a full stat dive before sending a pick? The research lives next to the bet.
-        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq-2.mp4"></video></div></div>
-    </div>
-    <button class="qnav" id="qNext" type="button" aria-label="Next">&rarr;</button>
-  </div>
-  <div class="qdots" id="qDots"></div>
+  <p class="lead">Fade is helping sports bettors <b>bet together</b> &mdash; connecting sports media, info, and picks all in one platform.</p>
 </div></section>
 
 <!-- 02 FADE AFFILIATE -->
@@ -300,25 +285,6 @@ var CITY_TALENT = [
     { name: 'Talent slot 2', role: 'Sports personality', initials: 'DET', dk: false, stats: [['Followers', 'TBD'], ['Engagement', 'TBD'], ['Audience', 'TBD']] }
   ]}
 ];
-
-// ---- who-we-are carousel ----
-(function () {
-  var track = document.getElementById('qTrack');
-  var slides = track.querySelectorAll('.slide');
-  var dots = document.getElementById('qDots');
-  dots.innerHTML = Array.prototype.map.call(slides, function () { return '<span></span>'; }).join('');
-  var dotEls = dots.querySelectorAll('span');
-  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : slides[0].offsetWidth; }
-  function update() {
-    var i = Math.round(track.scrollLeft / step());
-    i = Math.max(0, Math.min(slides.length - 1, i));
-    dotEls.forEach(function (d, j) { d.classList.toggle('on', j === i); });
-  }
-  track.addEventListener('scroll', function () { requestAnimationFrame(update); });
-  document.getElementById('qPrev').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-  document.getElementById('qNext').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
-  update();
-})();
 
 (function () {
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
