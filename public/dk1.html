@@ -56,6 +56,8 @@ section { padding:3rem 0 3.2rem; border-bottom:1.5px solid var(--carbon); }
 h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,5vw,3.2rem); line-height:1.04; margin-bottom:1rem; }
 .lead { font-size:0.95rem; color:var(--soft); max-width:64ch; }
 .lead b, .lead strong { color:var(--carbon); }
+.qs { display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; margin-top:1.6rem; max-width:760px; }
+@media (max-width:680px) { .qs { grid-template-columns:1fr; } }
 .q { border:1.5px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1.1rem 1.2rem; font-size:0.82rem; box-shadow:3px 3px 0 rgba(20,20,18,0.12); }
 /* who-we-are swipeable carousel */
 .qcar { display:flex; align-items:center; gap:0.6rem; margin-top:1.6rem; }
@@ -155,6 +157,17 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   <span class="eyebrow">01 &middot; Who We Are</span>
   <h2 class="sec">Fade is a social sports-bet sharing platform.</h2>
   <p class="lead">Fade is helping sports bettors <b>bet together</b> &mdash; connecting sports media, info, and picks all in one platform.</p>
+  <p class="lead" style="margin-top:0.9rem;"><b>Fade Media</b> is our owned-and-operated original content arm &mdash; helping sportsbooks advertise through <b>original content</b> and <b>celebrity &amp; influencer partnerships</b>.</p>
+  <div class="qs">
+    <div class="q"><b>Welcome to Fade.</b>The front door: share your picks, tail or fade your friends.
+      <div class="q-vid"><img src="assets/dk-welcome.jpg" alt="Fade welcome screen" loading="lazy" /></div></div>
+    <div class="q"><b>Who's actually good?</b>Ever wonder which friend is actually good at betting? Fade keeps the verified record.
+      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-profile-2.mp4"></video></div></div>
+    <div class="q"><b>No more screenshots.</b>Tired of manually punching in picks from a screenshot? BetSync pulls them in automatically.
+      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-sync.mp4"></video></div></div>
+    <div class="q"><b>Deep dives, pre-bet.</b>Want a full stat dive before sending a pick? The research lives next to the bet.
+      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq-2.mp4"></video></div></div>
+  </div>
 </div></section>
 
 <!-- 02 FADE AFFILIATE -->
