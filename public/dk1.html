@@ -139,9 +139,10 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 @media (prefers-reduced-motion:reduce) { .offer-body { animation:none; } .offer .chev::after { transition:none; } }
 
 /* ---- framing examples ---- */
-.framing { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.9rem; max-width:600px; }
+.framing { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:0.9rem; max-width:860px; }
 .framing img { width:100%; display:block; aspect-ratio:132/251; object-fit:cover; object-position:bottom; border:1.5px solid var(--carbon); border-radius:8px; box-shadow:3px 3px 0 rgba(20,20,18,0.12); }
 .framing figcaption { font-size:0.72rem; line-height:1.5; color:var(--soft); margin-top:0.5rem; }
+@media (max-width:820px) { .framing { grid-template-columns:1fr 1fr; max-width:600px; } }
 @media (max-width:680px) { .framing { grid-template-columns:1fr; max-width:320px; } }
 
 /* ---- creative samples ---- */
@@ -460,6 +461,10 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           <figure>
             <img src="assets/framing-example-2.jpg" alt="Paid partnership post where the disclosure is printed over the platform's own caption text and runs off both edges" loading="lazy" />
             <figcaption>Disclosure prints over the platform's own caption text and runs off both edges &mdash; neither line is readable.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/framing-example-3.jpg" alt="Sponsored post where the brand end-card, disclosure, account name and caption all overlap in the same band" loading="lazy" />
+            <figcaption>Brand end-card, disclosure, account name and caption all land in one band &mdash; four layers of text, none of them legible.</figcaption>
           </figure>
         </div>
         <p style="font-size:0.8rem; color:var(--soft); margin-top:0.7rem;">Fade builds to each platform's safe areas from the storyboard on, so the disclosure never lands under the CTA.</p>
