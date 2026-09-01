@@ -120,16 +120,23 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .demo-drop summary::-webkit-details-marker { display:none; }
 .demo-drop[open] summary { color:var(--carbon); border-color:var(--carbon); }
 
-/* ---- offerings tabs: one card at a time ---- */
-.otabs { display:flex; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; margin-top:1.6rem; }
-.otab { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.45rem 0.9rem; cursor:pointer; transition:all .15s ease; }
-.otab:hover { color:var(--carbon); border-color:var(--carbon); }
-.otab.active { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
-.otab .no { opacity:0.55; margin-right:0.4em; }
-.otab.active .no { opacity:0.6; }
-.cards.solo { display:block; margin-top:1.1rem; }
-.cards.solo > .card { display:none; }
-.cards.solo > .card.on { display:block; }
+/* ---- offerings: accordion subheads under the section head ---- */
+.offers { margin-top:1.6rem; display:flex; flex-direction:column; gap:0.7rem; }
+.card.offer { padding:0; }
+.offer > summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:0.9rem; padding:1rem 1.25rem; }
+.offer > summary::-webkit-details-marker { display:none; }
+.offer > summary::marker { content:''; }
+.offer > summary:focus-visible { outline:2px solid var(--tail); outline-offset:3px; border-radius:6px; }
+.offer > summary .k { margin-bottom:0; flex:0 0 auto; }
+.offer > summary h3 { margin-bottom:0; font-size:1.15rem; flex:1; min-width:0; }
+.offer .chev { flex:0 0 auto; position:relative; width:30px; height:30px; border:1.5px solid var(--carbon); border-radius:50%; background:var(--paper); }
+.offer .chev::before, .offer .chev::after { content:''; position:absolute; top:50%; left:50%; background:var(--carbon); border-radius:2px; transform:translate(-50%,-50%); }
+.offer .chev::before { width:12px; height:2px; }
+.offer .chev::after { width:2px; height:12px; transition:transform .18s ease, opacity .18s ease; }
+.offer[open] .chev::after { transform:translate(-50%,-50%) scaleY(0); opacity:0; }
+.offer[open] > summary { border-bottom:1px dashed var(--line); }
+.offer-body { padding:1.1rem 1.25rem 1.25rem; animation:secIn .2s ease both; }
+@media (prefers-reduced-motion:reduce) { .offer-body { animation:none; } .offer .chev::after { transition:none; } }
 
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
@@ -171,16 +178,16 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .sec-drop > summary .sum-txt { min-width:0; }
 .sec-drop > summary .eyebrow { margin-bottom:0.8rem; }
 .sec-drop > summary h2.sec { margin-bottom:0; }
-.sec-drop .chev { flex:0 0 auto; position:relative; width:46px; height:46px; border:2px solid var(--carbon); border-radius:50%; background:var(--paper-hi); box-shadow:3px 3px 0 rgba(20,20,18,0.15); transition:transform .18s ease, box-shadow .18s ease; }
-.sec-drop .chev::before, .sec-drop .chev::after { content:''; position:absolute; top:50%; left:50%; background:var(--carbon); border-radius:2px; transform:translate(-50%,-50%); }
-.sec-drop .chev::before { width:17px; height:2.5px; }
-.sec-drop .chev::after { width:2.5px; height:17px; transition:transform .18s ease, opacity .18s ease; }
-.sec-drop[open] .chev::after { transform:translate(-50%,-50%) scaleY(0); opacity:0; }
+.sec-drop > summary .chev { flex:0 0 auto; position:relative; width:46px; height:46px; border:2px solid var(--carbon); border-radius:50%; background:var(--paper-hi); box-shadow:3px 3px 0 rgba(20,20,18,0.15); transition:transform .18s ease, box-shadow .18s ease; }
+.sec-drop > summary .chev::before, .sec-drop > summary .chev::after { content:''; position:absolute; top:50%; left:50%; background:var(--carbon); border-radius:2px; transform:translate(-50%,-50%); }
+.sec-drop > summary .chev::before { width:17px; height:2.5px; }
+.sec-drop > summary .chev::after { width:2.5px; height:17px; transition:transform .18s ease, opacity .18s ease; }
+.sec-drop[open] > summary .chev::after { transform:translate(-50%,-50%) scaleY(0); opacity:0; }
 .sec-drop > summary:hover .chev { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.22); }
 .sec-body { margin-top:1.5rem; animation:secIn .22s ease both; }
 @keyframes secIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
-@media (max-width:680px) { .sec-drop .chev { width:36px; height:36px; } .sec-drop .chev::before { width:14px; } .sec-drop .chev::after { height:14px; } }
-@media (prefers-reduced-motion:reduce) { .sec-body { animation:none; } .sec-drop .chev, .sec-drop .chev::after { transition:none; } }
+@media (max-width:680px) { .sec-drop > summary .chev { width:36px; height:36px; } .sec-drop > summary .chev::before { width:14px; } .sec-drop > summary .chev::after { height:14px; } }
+@media (prefers-reduced-motion:reduce) { .sec-body { animation:none; } .sec-drop > summary .chev, .sec-drop > summary .chev::after { transition:none; } }
 
 @media (max-width:820px) {
   .cards { grid-template-columns:1fr !important; }
@@ -333,17 +340,10 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
     <span class="chev" aria-hidden="true"></span>
   </summary>
   <div class="sec-body">
-  <div class="otabs" id="offerTabs">
-    <button class="otab" type="button" data-offer-go="0"><span class="no">01</span>Affiliate</button>
-    <button class="otab" type="button" data-offer-go="1"><span class="no">02</span>Talent</button>
-    <button class="otab" type="button" data-offer-go="2"><span class="no">03</span>UGC</button>
-    <button class="otab" type="button" data-offer-go="3"><span class="no">04</span>Owned content</button>
-    <button class="otab" type="button" data-offer-go="4"><span class="no">05</span>Experiential</button>
-    <button class="otab" type="button" data-offer-go="5"><span class="no">06</span>Creative testing</button>
-    <button class="otab" type="button" data-offer-go="6"><span class="no">07</span>Brand protection</button>
-  </div>
-  <div class="cards solo" id="offerCards">
-    <div class="card"><div class="k dk">01</div><h3>Affiliate partners at scale</h3><p>Fade turns its entire user base into an affiliate network &mdash; two revenue lines off one audience. <b>Fade drives new users</b> &mdash; CPA. <b>Fade drives bets</b> &mdash; NGR.</p>
+  <div class="offers">
+    <details class="card offer">
+      <summary><span class="k dk">01</span><h3>Affiliate partners at scale</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Fade turns its entire user base into an affiliate network &mdash; two revenue lines off one audience. <b>Fade drives new users</b> &mdash; CPA. <b>Fade drives bets</b> &mdash; NGR.</p>
       <details class="demo-drop">
         <summary>How the affiliate model works &darr;</summary>
         <div class="rows" style="margin-top:0.3rem;">
@@ -352,15 +352,21 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           <div class="row"><span class="n">PROMOS</span><p><b>In-app promos and bonuses.</b> Fade surfaces DraftKings deals, promos and free bets natively in the app &mdash; putting your offers in front of bettors at the moment they are deciding where to place the bet.</p></div>
         </div>
       </details>
-    </div>
-    <div class="card"><div class="k dk">02</div><h3>Talent curation &amp; brand partnerships</h3><p>Fade's deep partnership background lets sportsbooks activate with any influential voice in sports and media &mdash; from the world's biggest celebrities to micro betting influencers.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">02</span><h3>Talent curation &amp; brand partnerships</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Fade's deep partnership background lets sportsbooks activate with any influential voice in sports and media &mdash; from the world's biggest celebrities to micro betting influencers.</p>
       <details class="demo-drop">
         <summary>How our talent model works &darr;</summary>
         <p style="font-size:0.84rem; color:var(--soft); margin-top:0.9rem;"><b style="color:var(--carbon);">Fade does not sign or manage talent.</b> We sit over the ecosystem rather than inside it &mdash; no roster to sell through, no exclusivities to work around.</p>
         <p style="font-size:0.84rem; color:var(--soft); margin-top:0.7rem;">That means we cast for the campaign, not for our own books. Fade brings partnerships to <b style="color:var(--carbon);">any agency, celebrity or brand</b>, curated to what the activation actually needs.</p>
       </details>
-    </div>
-    <div class="card"><div class="k dk">03</div><h3>UGC at scale</h3><p>An army of <b>100&ndash;150 micro betting influencers</b> floods the timeline with reaction content and UGC &mdash; every post driving back to CPA.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">03</span><h3>UGC at scale</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>An army of <b>100&ndash;150 micro betting influencers</b> floods the timeline with reaction content and UGC &mdash; every post driving back to CPA.</p>
       <details class="demo-drop">
         <summary>How it works &darr;</summary>
         <div class="rows" style="margin-top:0.3rem;">
@@ -380,8 +386,11 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           </div></div>
         </div>
       </details>
-    </div>
-    <div class="card"><div class="k dk">04</div><h3>Original owned content</h3><p>Fade owns its own slate of sports and betting podcasts plus individual influencer shows &mdash; ready-made channels brands can activate across.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">04</span><h3>Original owned content</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Fade owns its own slate of sports and betting podcasts plus individual influencer shows &mdash; ready-made channels brands can activate across.</p>
       <details class="demo-drop">
         <summary>The Pop Out Tour &middot; long-form episodic &darr;</summary>
         <p style="font-size:0.84rem; color:var(--soft); margin-top:0.9rem;"><b style="color:var(--carbon);">Long-form, episodic content.</b> Centered in sport and culture, Fade Media gives sportsbooks a direct line to the most influential names and voices in sports. <b style="color:var(--carbon);">Season 1: The Pop Out Tour</b> &mdash; featuring Lil Baby and Darien Rencher.</p>
@@ -399,8 +408,11 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
         </div>
         <a class="deck-link" href="/the-bookie-storyboard" target="_blank" rel="noopener">See the full storyboard &rarr;</a>
       </details>
-    </div>
-    <div class="card"><div class="k dk">05</div><h3>Experiential campaigns</h3><p>Fade's vendor support allows us to activate quickly &mdash; standing up everything from simple meet-and-greets to complex hospitality buildouts.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">05</span><h3>Experiential campaigns</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Fade's vendor support allows us to activate quickly &mdash; standing up everything from simple meet-and-greets to complex hospitality buildouts.</p>
       <details class="demo-drop">
         <summary>See a tailgate buildout concept &darr;</summary>
         <div class="creative" style="margin-top:0.9rem;">
@@ -408,8 +420,11 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/hf_20260901_012407_2987a1a0-2c44-4681-b31e-44e142ec5e6b.png" alt="DraftKings tailgate buildout concept render" loading="lazy" style="width:100%; display:block;" />
         </div>
       </details>
-    </div>
-    <div class="card" style="grid-column:1/-1;"><div class="k dk">06</div><h3>Diversified content to test creative on</h3><p>Full-service production that differentiates and converts. We create content built specifically for each channel &mdash; Instagram, TikTok, X, YouTube, IRL and streaming.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">06</span><h3>Diversified content to test creative on</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Full-service production that differentiates and converts. We create content built specifically for each channel &mdash; Instagram, TikTok, X, YouTube, IRL and streaming.</p>
       <details class="demo-drop">
         <summary>Watch the samples &darr;</summary>
         <div class="creatives">
@@ -423,8 +438,11 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           </div>
         </div>
       </details>
-    </div>
-    <div class="card" style="grid-column:1/-1;"><div class="k dk">07</div><h3>Brand protection &amp; IP</h3><p>Fade is built gambling-first. Everything we deliver is produced against <b>CFTC and state gambling regulations</b> &mdash; and against each platform's own digital guidelines, so framing, safe areas and mandatory disclosures survive the cut.</p>
+      </div>
+    </details>
+    <details class="card offer">
+      <summary><span class="k dk">07</span><h3>Brand protection &amp; IP</h3><span class="chev" aria-hidden="true"></span></summary>
+      <div class="offer-body"><p>Fade is built gambling-first. Everything we deliver is produced against <b>CFTC and state gambling regulations</b> &mdash; and against each platform's own digital guidelines, so framing, safe areas and mandatory disclosures survive the cut.</p>
       <details class="demo-drop">
         <summary>When framing guidelines are missed &darr;</summary>
         <p style="font-size:0.84rem; color:var(--soft); margin-top:0.9rem;">Creative cut for one aspect ratio and posted to another loses its edges to the platform's own UI. Here the burned-in caption clips at the right frame edge, and the <b style="color:var(--carbon);">responsible-gambling disclosure</b> sits in the zone TikTok covers with the ad unit and action rail &mdash; the copy that has to stay legible is the copy competing with the chrome.</p>
@@ -433,7 +451,8 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
         </div>
         <p style="font-size:0.8rem; color:var(--soft); margin-top:0.7rem;">Fade builds to each platform's safe areas from the storyboard on, so the disclosure never lands under the CTA.</p>
       </details>
-    </div>
+      </div>
+    </details>
   </div>
   </div>
   </details>
@@ -567,35 +586,13 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
   paint();
 })();
 
-// ---- offerings tabs ----
-(function () {
-  var grid = document.getElementById('offerCards');
-  var tabs = document.getElementById('offerTabs');
-  if (!grid || !tabs) return;
-  var cards = [], k;
-  for (k = 0; k < grid.children.length; k++) {
-    if (grid.children[k].classList.contains('card')) cards.push(grid.children[k]);
-  }
-  var btns = tabs.querySelectorAll('.otab');
-  if (!cards.length || btns.length !== cards.length) return;
-  var i = 0;
-  function show(next) {
-    var leaving = cards[i].querySelectorAll('video');
-    for (var v = 0; v < leaving.length; v++) leaving[v].pause();
-    i = next;
-    for (var c = 0; c < cards.length; c++) {
-      cards[c].classList.toggle('on', c === i);
-      btns[c].classList.toggle('active', c === i);
-      btns[c].setAttribute('aria-selected', c === i ? 'true' : 'false');
-    }
-  }
-  for (k = 0; k < btns.length; k++) {
-    btns[k].addEventListener('click', function () {
-      show(Number(this.getAttribute('data-offer-go')));
-    });
-  }
-  show(0);
-})();
+// ---- closing any dropdown stops video playing inside it ----
+document.addEventListener('toggle', function (e) {
+  var d = e.target;
+  if (!d || d.tagName !== 'DETAILS' || d.open) return;
+  var vids = d.querySelectorAll('video');
+  for (var i = 0; i < vids.length; i++) vids[i].pause();
+}, true);
 
 </script>
 
