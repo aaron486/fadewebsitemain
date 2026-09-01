@@ -120,16 +120,16 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .demo-drop summary::-webkit-details-marker { display:none; }
 .demo-drop[open] summary { color:var(--carbon); border-color:var(--carbon); }
 
-/* ---- offerings stepper: one card at a time ---- */
-.cards.solo { display:block; }
+/* ---- offerings tabs: one card at a time ---- */
+.otabs { display:flex; justify-content:flex-start; gap:0.4rem; flex-wrap:wrap; margin-top:1.6rem; }
+.otab { font-family:'IBM Plex Mono',monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.45rem 0.9rem; cursor:pointer; transition:all .15s ease; }
+.otab:hover { color:var(--carbon); border-color:var(--carbon); }
+.otab.active { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+.otab .no { opacity:0.55; margin-right:0.4em; }
+.otab.active .no { opacity:0.6; }
+.cards.solo { display:block; margin-top:1.1rem; }
 .cards.solo > .card { display:none; }
 .cards.solo > .card.on { display:block; }
-.offer-nav { display:flex; align-items:center; justify-content:center; gap:1.1rem; margin-top:1.4rem; }
-/* beats the .qnav mobile hide used by the brand carousel: arrows are the only way through here */
-.offer-nav .qnav { display:block; }
-.offer-count { font-size:0.7rem; font-weight:700; letter-spacing:0.18em; color:var(--soft); white-space:nowrap; }
-.offer-count b { color:var(--carbon); }
-#offerDots span { cursor:pointer; }
 
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
@@ -333,6 +333,15 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
     <span class="chev" aria-hidden="true"></span>
   </summary>
   <div class="sec-body">
+  <div class="otabs" id="offerTabs">
+    <button class="otab" type="button" data-offer-go="0"><span class="no">01</span>Affiliate</button>
+    <button class="otab" type="button" data-offer-go="1"><span class="no">02</span>Talent</button>
+    <button class="otab" type="button" data-offer-go="2"><span class="no">03</span>UGC</button>
+    <button class="otab" type="button" data-offer-go="3"><span class="no">04</span>Owned content</button>
+    <button class="otab" type="button" data-offer-go="4"><span class="no">05</span>Experiential</button>
+    <button class="otab" type="button" data-offer-go="5"><span class="no">06</span>Creative testing</button>
+    <button class="otab" type="button" data-offer-go="6"><span class="no">07</span>Brand protection</button>
+  </div>
   <div class="cards solo" id="offerCards">
     <div class="card"><div class="k dk">01</div><h3>Affiliate partners at scale</h3><p>Fade turns its entire user base into an affiliate network &mdash; two revenue lines off one audience. <b>Fade drives new users</b> &mdash; CPA. <b>Fade drives bets</b> &mdash; NGR.</p>
       <details class="demo-drop">
@@ -426,12 +435,6 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
       </details>
     </div>
   </div>
-  <div class="offer-nav">
-    <button class="qnav" type="button" data-offer-nav="-1" aria-label="Previous offering">&larr;</button>
-    <span class="offer-count"><b id="offerNow">01</b> / 07</span>
-    <button class="qnav" type="button" data-offer-nav="1" aria-label="Next offering">&rarr;</button>
-  </div>
-  <div class="qdots" id="offerDots"></div>
   </div>
   </details>
 </div></section>
@@ -564,50 +567,33 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
   paint();
 })();
 
-// ---- offerings stepper ----
+// ---- offerings tabs ----
 (function () {
   var grid = document.getElementById('offerCards');
-  var dots = document.getElementById('offerDots');
-  var now = document.getElementById('offerNow');
-  if (!grid || !dots || !now) return;
+  var tabs = document.getElementById('offerTabs');
+  if (!grid || !tabs) return;
   var cards = [], k;
   for (k = 0; k < grid.children.length; k++) {
     if (grid.children[k].classList.contains('card')) cards.push(grid.children[k]);
   }
-  if (!cards.length) return;
+  var btns = tabs.querySelectorAll('.otab');
+  if (!cards.length || btns.length !== cards.length) return;
   var i = 0;
-  for (k = 0; k < cards.length; k++) {
-    var d = document.createElement('span');
-    d.setAttribute('data-offer-go', k);
-    d.setAttribute('role', 'button');
-    d.setAttribute('tabindex', '0');
-    d.setAttribute('aria-label', 'Offering ' + (k + 1));
-    dots.appendChild(d);
-  }
   function show(next) {
     var leaving = cards[i].querySelectorAll('video');
     for (var v = 0; v < leaving.length; v++) leaving[v].pause();
-    i = (next + cards.length) % cards.length;
+    i = next;
     for (var c = 0; c < cards.length; c++) {
       cards[c].classList.toggle('on', c === i);
-      dots.children[c].className = c === i ? 'on' : '';
+      btns[c].classList.toggle('active', c === i);
+      btns[c].setAttribute('aria-selected', c === i ? 'true' : 'false');
     }
-    now.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
   }
-  var btns = document.querySelectorAll('[data-offer-nav]');
   for (k = 0; k < btns.length; k++) {
     btns[k].addEventListener('click', function () {
-      show(i + Number(this.getAttribute('data-offer-nav')));
+      show(Number(this.getAttribute('data-offer-go')));
     });
   }
-  dots.addEventListener('click', function (e) {
-    var t = e.target.getAttribute('data-offer-go');
-    if (t !== null) show(Number(t));
-  });
-  dots.addEventListener('keydown', function (e) {
-    var t = e.target.getAttribute('data-offer-go');
-    if (t !== null && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); show(Number(t)); }
-  });
   show(0);
 })();
 
