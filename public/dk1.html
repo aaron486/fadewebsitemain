@@ -125,6 +125,9 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .scenes img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; border:1.5px solid var(--carbon); border-radius:4px; }
 @media (max-width:680px) { .scenes { grid-template-columns:repeat(2,1fr); } }
 
+.ugc-posts { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-top:0.9rem; }
+.ugc-posts img { width:100%; aspect-ratio:9/16; object-fit:cover; display:block; border:1.5px solid var(--carbon); border-radius:4px; }
+
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
 @media (max-width:820px) { .creatives { grid-template-columns:1fr; } }
@@ -381,7 +384,14 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
               <img src="assets/dk-celebrity-bet.jpg" alt="DraftKings Sportsbook post featuring Dave Portnoy's parlay" loading="lazy" style="width:100%; display:block;" />
             </div>
           </div></div>
-          <div class="row"><span class="n">02</span><p><b>The Fade community responds.</b> <b>100&ndash;150</b> micro betting influencers tail or fade that same pick, each in their own voice &mdash; one post becomes a wave of reaction content, every piece driving back to CPA.</p></div>
+          <div class="row"><span class="n">02</span><div style="flex:1; min-width:0;">
+            <p><b>The Fade community responds.</b> <b>100&ndash;150</b> micro betting influencers tail or fade that same pick, each in their own voice &mdash; one post becomes a wave of reaction content, every piece driving back to CPA.</p>
+            <div class="ugc-posts">
+              <img src="assets/ugc/post-1.jpg" alt="Creator reaction post 1" loading="lazy" />
+              <img src="assets/ugc/post-2.jpg" alt="Creator reaction post 2" loading="lazy" />
+              <img src="assets/ugc/post-3.jpg" alt="Creator reaction post 3" loading="lazy" />
+            </div>
+          </div></div>
         </div>
       </details>
     </div>
