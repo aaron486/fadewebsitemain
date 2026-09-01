@@ -93,6 +93,8 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 .tal .mono { height:110px; background:var(--carbon); color:var(--paper); display:flex; align-items:center; justify-content:center; font-family:'Anton',sans-serif; font-size:2.6rem; letter-spacing:0.04em; }
 .tal .mono.dk { background:var(--dk-dark); color:var(--dk); }
 .tal .mono img { width:82px; height:82px; border-radius:50%; display:block; }
+a.tal { display:block; text-decoration:none; color:inherit; transition:transform .15s ease, box-shadow .15s ease; }
+a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18,0.2); }
 .tal .body { padding:0.9rem 1rem 1rem; }
 .tal h4 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:1.05rem; line-height:1.1; }
 .tal .role { font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--tail); margin:0.2rem 0 0.6rem; }
@@ -387,11 +389,12 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   <div class="rows">
     <div class="row"><span class="n">A</span><p><b>Experiential</b> &mdash; DraftKings tailgates for NFL and CFB games.</p></div>
     <div class="row"><span class="n">B</span><p><b>Streams</b> &mdash; live streams with top influencers and athletes.</p></div>
-    <div class="row"><span class="n">C</span><p><b>Distribution</b> &mdash; Fade's CFB and NFL distribution network.</p></div>
-  </div>
-  <div class="city">Distribution network <span>1.68M combined followers</span></div>
-  <div class="talent">
-    <div class="tal">
+    <div class="row"><span class="n">C</span><div style="flex:1; min-width:0;">
+      <p><b>Distribution</b> &mdash; Fade's CFB and NFL distribution network.</p>
+      <details class="demo-drop">
+        <summary>See the accounts &darr;</summary>
+        <div class="talent" style="margin-top:0.9rem;">
+    <a class="tal" href="https://www.instagram.com/allcfb/" target="_blank" rel="noopener">
       <div class="mono"><img src="assets/network/allcfb.png" alt="All College Football" loading="lazy" /></div>
       <div class="body">
         <h4>All College Football</h4>
@@ -399,8 +402,8 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
         <div class="stat"><span>Followers</span><b>611K</b></div>
         <div class="stat"><span>Focus</span><b>College football</b></div>
       </div>
-    </div>
-    <div class="tal">
+    </a>
+    <a class="tal" href="https://www.instagram.com/cfbalerts/" target="_blank" rel="noopener">
       <div class="mono"><img src="assets/network/cfbalerts.png" alt="College Football" loading="lazy" /></div>
       <div class="body">
         <h4>College Football</h4>
@@ -408,8 +411,8 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
         <div class="stat"><span>Followers</span><b>598K</b></div>
         <div class="stat"><span>Focus</span><b>College football</b></div>
       </div>
-    </div>
-    <div class="tal">
+    </a>
+    <a class="tal" href="https://www.instagram.com/305sportss/" target="_blank" rel="noopener">
       <div class="mono"><img src="assets/network/305sports.png" alt="305 Sports" loading="lazy" /></div>
       <div class="body">
         <h4>305 Sports</h4>
@@ -417,8 +420,8 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
         <div class="stat"><span>Followers</span><b>408K</b></div>
         <div class="stat"><span>Focus</span><b>Miami sports</b></div>
       </div>
-    </div>
-    <div class="tal">
+    </a>
+    <a class="tal" href="https://www.instagram.com/falconsrepublic/" target="_blank" rel="noopener">
       <div class="mono"><img src="assets/network/falconsrepublic.png" alt="Falcons Republic" loading="lazy" /></div>
       <div class="body">
         <h4>Falcons Republic</h4>
@@ -426,8 +429,8 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
         <div class="stat"><span>Followers</span><b>41.1K</b></div>
         <div class="stat"><span>Focus</span><b>NFL &middot; Falcons</b></div>
       </div>
-    </div>
-    <div class="tal">
+    </a>
+    <a class="tal" href="https://www.instagram.com/thecoltstalks/" target="_blank" rel="noopener">
       <div class="mono"><img src="assets/network/coltstalks.png" alt="TheColtsTalks" loading="lazy" /></div>
       <div class="body">
         <h4>TheColtsTalks</h4>
@@ -435,7 +438,10 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
         <div class="stat"><span>Followers</span><b>23.6K</b></div>
         <div class="stat"><span>Focus</span><b>NFL &middot; Colts</b></div>
       </div>
-    </div>
+    </a>
+        </div>
+      </details>
+    </div></div>
   </div>
   </div>
   </details>
