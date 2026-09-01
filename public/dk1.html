@@ -138,6 +138,24 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .offer-body { padding:1.1rem 1.25rem 1.25rem; animation:secIn .2s ease both; }
 @media (prefers-reduced-motion:reduce) { .offer-body { animation:none; } .offer .chev::after { transition:none; } }
 
+/* ---- season timeline ---- */
+.tl { position:relative; display:grid; grid-template-columns:repeat(5,1fr); gap:0.8rem; margin-top:1.6rem; }
+.tl::before { content:''; position:absolute; left:9px; right:9px; top:9px; height:1.5px; background:var(--carbon); opacity:0.22; }
+.tl-item { position:relative; }
+.tl-dot { width:18px; height:18px; border-radius:50%; border:2px solid var(--carbon); background:var(--paper); position:relative; z-index:1; }
+.tl-item.key .tl-dot { background:var(--carbon); }
+.tl-date { font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--dk-dark); margin:0.75rem 0 0.3rem; }
+.tl-label { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:0.95rem; line-height:1.12; margin-bottom:0.35rem; }
+.tl-note { font-size:0.72rem; line-height:1.5; color:var(--soft); }
+@media (max-width:880px) {
+  .tl { grid-template-columns:1fr; gap:0; padding-left:2rem; }
+  .tl::before { left:8px; right:auto; top:6px; bottom:6px; width:1.5px; height:auto; }
+  .tl-item { padding-bottom:1.3rem; }
+  .tl-item:last-child { padding-bottom:0; }
+  .tl-dot { position:absolute; left:-2rem; top:1px; }
+  .tl-date { margin-top:0; }
+}
+
 /* ---- affiliate tiers: stacked, label over headline ---- */
 .tiers { margin-top:1.3rem; display:flex; flex-direction:column; gap:1.2rem; }
 .tier { border-top:1px dashed var(--line); padding-top:1.2rem; }
@@ -505,7 +523,39 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
     <span class="chev" aria-hidden="true"></span>
   </summary>
   <div class="sec-body">
-  <div class="rows">
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Aug 29</div>
+      <div class="tl-label">CFB Week 1</div>
+      <div class="tl-note">College football opens &mdash; the first full Saturday slate of the season.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Sept 10</div>
+      <div class="tl-label">NFL Kickoff</div>
+      <div class="tl-note">Opening Thursday night, then Week 1 Sunday.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Dec &ndash; Jan</div>
+      <div class="tl-label">College Football Playoff</div>
+      <div class="tl-note">First round through the national championship.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Jan</div>
+      <div class="tl-label">NFL Playoffs</div>
+      <div class="tl-note">Wild card weekend through the conference championships.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Feb</div>
+      <div class="tl-label">Super Bowl LXI</div>
+      <div class="tl-note">The last and biggest gameday of the season.</div>
+    </div>
+  </div>
+  <div class="rows" style="margin-top:2.2rem;">
     <div class="row"><span class="n">A</span><p><b>Experiential</b> &mdash; DraftKings tailgates for NFL and CFB games.</p></div>
     <div class="row"><span class="n">B</span><p><b>Streams</b> &mdash; live streams with top influencers and athletes.</p></div>
     <div class="row"><span class="n">C</span><div style="flex:1; min-width:0;">
