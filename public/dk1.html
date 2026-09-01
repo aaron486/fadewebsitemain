@@ -120,6 +120,11 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .demo-drop summary::-webkit-details-marker { display:none; }
 .demo-drop[open] summary { color:var(--carbon); border-color:var(--carbon); }
 
+/* ---- bookie scene strip ---- */
+.scenes { display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; margin-top:0.9rem; }
+.scenes img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; border:1.5px solid var(--carbon); border-radius:4px; }
+@media (max-width:680px) { .scenes { grid-template-columns:repeat(2,1fr); } }
+
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
 @media (max-width:820px) { .creatives { grid-template-columns:1fr; } }
@@ -348,6 +353,17 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
           <div class="ratio"><iframe src="https://docs.google.com/presentation/d/1m4NOveL7fn_r3xjhamFftI5HdcykAZcTfpQibK16wu8/embed?start=false&loop=false" allowfullscreen loading="lazy" title="The Pop Out Tour — Season 1 deck"></iframe></div>
         </div>
         <a class="deck-link" href="https://docs.google.com/presentation/d/1m4NOveL7fn_r3xjhamFftI5HdcykAZcTfpQibK16wu8/edit?usp=sharing" target="_blank" rel="noopener">Open the Pop Out Tour deck &rarr;</a>
+      </details>
+      <details class="demo-drop" style="margin-top:0.7rem;">
+        <summary>The Bookie &middot; original production &darr;</summary>
+        <p style="font-size:0.84rem; color:var(--soft); margin-top:0.9rem;">Fade is a <b style="color:var(--carbon);">full production agency</b> &mdash; brand strategy and execution in house, from concept through to delivery. <b style="color:var(--carbon);">The Bookie</b> is one of our own originals: written, cast, shot and cut by Fade.</p>
+        <div class="scenes">
+          <img src="assets/bookie/scene-1.jpg" alt="The Bookie &mdash; scene 1" loading="lazy" />
+          <img src="assets/bookie/scene-2.jpg" alt="The Bookie &mdash; scene 2" loading="lazy" />
+          <img src="assets/bookie/scene-3.jpg" alt="The Bookie &mdash; scene 3" loading="lazy" />
+          <img src="assets/bookie/scene-4.jpg" alt="The Bookie &mdash; scene 4" loading="lazy" />
+        </div>
+        <a class="deck-link" href="/the-bookie-storyboard" target="_blank" rel="noopener">See the full storyboard &rarr;</a>
       </details>
     </div>
     <div class="card"><div class="k dk">04</div><h3>UGC at scale</h3><p>An army of <b>100&ndash;150 micro betting influencers</b> floods the timeline with reaction content and UGC &mdash; every post driving back to CPA.</p></div>
