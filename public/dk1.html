@@ -56,11 +56,21 @@ section { padding:3rem 0 3.2rem; border-bottom:1.5px solid var(--carbon); }
 h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,5vw,3.2rem); line-height:1.04; margin-bottom:1rem; }
 .lead { font-size:0.95rem; color:var(--soft); max-width:64ch; }
 .lead b, .lead strong { color:var(--carbon); }
-.qs { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem; }
 .q { border:1.5px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1.1rem 1.2rem; font-size:0.82rem; box-shadow:3px 3px 0 rgba(20,20,18,0.12); }
+/* who-we-are swipeable carousel */
+.qcar { display:flex; align-items:center; gap:0.6rem; margin-top:1.6rem; }
+.qtrack { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; flex:1; padding:4px; }
+.qtrack::-webkit-scrollbar { display:none; }
+.q.slide { flex:0 0 min(300px, 78vw); scroll-snap-align:center; }
+.qnav { flex:0 0 auto; width:40px; height:40px; border:2px solid var(--carbon); border-radius:50%; background:var(--paper-hi); color:var(--carbon); font-family:'IBM Plex Mono',monospace; font-size:1rem; font-weight:700; cursor:pointer; box-shadow:2px 2px 0 rgba(20,20,18,0.2); }
+.qnav:hover { transform:translate(-1px,-1px); box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
+.qdots { display:flex; justify-content:center; gap:0.45rem; margin-top:0.9rem; }
+.qdots span { width:8px; height:8px; border-radius:50%; border:1.5px solid var(--carbon); background:transparent; }
+.qdots span.on { background:var(--carbon); }
+@media (max-width:680px) { .qnav { display:none; } }
 .q b { display:block; font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:1.05rem; letter-spacing:0.02em; margin-bottom:0.4rem; }
 .q-vid { margin-top:0.9rem; border:1.5px solid var(--carbon); border-radius:10px; overflow:hidden; background:#000; aspect-ratio:9/16; }
-.q-vid video { width:100%; height:100%; object-fit:cover; display:block; }
+.q-vid video, .q-vid img { width:100%; height:100%; object-fit:cover; display:block; }
 
 .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; margin-top:1.6rem; }
 .card { border:1.5px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1.3rem 1.4rem; box-shadow:3px 3px 0 rgba(20,20,18,0.12); }
@@ -110,7 +120,7 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
 .footer p { font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); }
 
 @media (max-width:820px) {
-  .qs, .cards { grid-template-columns:1fr; }
+  .cards { grid-template-columns:1fr !important; }
 }
 </style>
 </head>
@@ -145,14 +155,21 @@ h2.sec { font-family:'Anton',sans-serif; font-weight:400; text-transform:upperca
   <span class="eyebrow">01 &middot; Who We Are</span>
   <h2 class="sec">Fade is a social sports-bet sharing platform.</h2>
   <p class="lead">Fade connects the betting community and lets users bet together &mdash; every pick, every friend, every sweat in one place.</p>
-  <div class="qs">
-    <div class="q"><b>Who's actually good?</b>Ever wonder which friend is actually good at betting? Fade keeps the verified record.
-      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-profile-2.mp4"></video></div></div>
-    <div class="q"><b>No more screenshots.</b>Tired of manually punching in picks from a screenshot? BetSync pulls them in automatically.
-      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-sync.mp4"></video></div></div>
-    <div class="q"><b>Deep dives, pre-bet.</b>Want a full stat dive before sending a pick? The research lives next to the bet.
-      <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq-2.mp4"></video></div></div>
+  <div class="qcar">
+    <button class="qnav" id="qPrev" type="button" aria-label="Previous">&larr;</button>
+    <div class="qtrack" id="qTrack">
+      <div class="q slide"><b>Welcome to Fade.</b>The front door: share your picks, tail or fade your friends.
+        <div class="q-vid"><img src="assets/dk-welcome.jpg" alt="Fade welcome screen" loading="lazy" /></div></div>
+      <div class="q slide"><b>Who's actually good?</b>Ever wonder which friend is actually good at betting? Fade keeps the verified record.
+        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-profile-2.mp4"></video></div></div>
+      <div class="q slide"><b>No more screenshots.</b>Tired of manually punching in picks from a screenshot? BetSync pulls them in automatically.
+        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-sync.mp4"></video></div></div>
+      <div class="q slide"><b>Deep dives, pre-bet.</b>Want a full stat dive before sending a pick? The research lives next to the bet.
+        <div class="q-vid"><video autoplay loop muted playsinline preload="metadata" src="assets/demo-fadeiq-2.mp4"></video></div></div>
+    </div>
+    <button class="qnav" id="qNext" type="button" aria-label="Next">&rarr;</button>
   </div>
+  <div class="qdots" id="qDots"></div>
 </div></section>
 
 <!-- 02 FADE AFFILIATE -->
@@ -278,6 +295,25 @@ var CITY_TALENT = [
     { name: 'Talent slot 2', role: 'Sports personality', initials: 'DET', dk: false, stats: [['Followers', 'TBD'], ['Engagement', 'TBD'], ['Audience', 'TBD']] }
   ]}
 ];
+
+// ---- who-we-are carousel ----
+(function () {
+  var track = document.getElementById('qTrack');
+  var slides = track.querySelectorAll('.slide');
+  var dots = document.getElementById('qDots');
+  dots.innerHTML = Array.prototype.map.call(slides, function () { return '<span></span>'; }).join('');
+  var dotEls = dots.querySelectorAll('span');
+  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : slides[0].offsetWidth; }
+  function update() {
+    var i = Math.round(track.scrollLeft / step());
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    dotEls.forEach(function (d, j) { d.classList.toggle('on', j === i); });
+  }
+  track.addEventListener('scroll', function () { requestAnimationFrame(update); });
+  document.getElementById('qPrev').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  document.getElementById('qNext').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  update();
+})();
 
 (function () {
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
