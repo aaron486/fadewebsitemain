@@ -120,6 +120,17 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
 .demo-drop summary::-webkit-details-marker { display:none; }
 .demo-drop[open] summary { color:var(--carbon); border-color:var(--carbon); }
 
+/* ---- offerings stepper: one card at a time ---- */
+.cards.solo { display:block; }
+.cards.solo > .card { display:none; }
+.cards.solo > .card.on { display:block; }
+.offer-nav { display:flex; align-items:center; justify-content:center; gap:1.1rem; margin-top:1.4rem; }
+/* beats the .qnav mobile hide used by the brand carousel: arrows are the only way through here */
+.offer-nav .qnav { display:block; }
+.offer-count { font-size:0.7rem; font-weight:700; letter-spacing:0.18em; color:var(--soft); white-space:nowrap; }
+.offer-count b { color:var(--carbon); }
+#offerDots span { cursor:pointer; }
+
 /* ---- creative samples ---- */
 .creatives { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:1.6rem; align-items:start; }
 @media (max-width:820px) { .creatives { grid-template-columns:1fr; } }
@@ -322,7 +333,7 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
     <span class="chev" aria-hidden="true"></span>
   </summary>
   <div class="sec-body">
-  <div class="cards">
+  <div class="cards solo" id="offerCards">
     <div class="card"><div class="k dk">01</div><h3>Affiliate partners at scale</h3><p>Fade turns its entire user base into an affiliate network &mdash; two revenue lines off one audience. <b>Fade drives new users</b> &mdash; CPA. <b>Fade drives bets</b> &mdash; NGR.</p>
       <details class="demo-drop">
         <summary>How the affiliate model works &darr;</summary>
@@ -415,6 +426,12 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
       </details>
     </div>
   </div>
+  <div class="offer-nav">
+    <button class="qnav" type="button" data-offer-nav="-1" aria-label="Previous offering">&larr;</button>
+    <span class="offer-count"><b id="offerNow">01</b> / 07</span>
+    <button class="qnav" type="button" data-offer-nav="1" aria-label="Next offering">&rarr;</button>
+  </div>
+  <div class="qdots" id="offerDots"></div>
   </div>
   </details>
 </div></section>
@@ -545,6 +562,53 @@ a.tal:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18
     });
   }
   paint();
+})();
+
+// ---- offerings stepper ----
+(function () {
+  var grid = document.getElementById('offerCards');
+  var dots = document.getElementById('offerDots');
+  var now = document.getElementById('offerNow');
+  if (!grid || !dots || !now) return;
+  var cards = [], k;
+  for (k = 0; k < grid.children.length; k++) {
+    if (grid.children[k].classList.contains('card')) cards.push(grid.children[k]);
+  }
+  if (!cards.length) return;
+  var i = 0;
+  for (k = 0; k < cards.length; k++) {
+    var d = document.createElement('span');
+    d.setAttribute('data-offer-go', k);
+    d.setAttribute('role', 'button');
+    d.setAttribute('tabindex', '0');
+    d.setAttribute('aria-label', 'Offering ' + (k + 1));
+    dots.appendChild(d);
+  }
+  function show(next) {
+    var leaving = cards[i].querySelectorAll('video');
+    for (var v = 0; v < leaving.length; v++) leaving[v].pause();
+    i = (next + cards.length) % cards.length;
+    for (var c = 0; c < cards.length; c++) {
+      cards[c].classList.toggle('on', c === i);
+      dots.children[c].className = c === i ? 'on' : '';
+    }
+    now.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+  }
+  var btns = document.querySelectorAll('[data-offer-nav]');
+  for (k = 0; k < btns.length; k++) {
+    btns[k].addEventListener('click', function () {
+      show(i + Number(this.getAttribute('data-offer-nav')));
+    });
+  }
+  dots.addEventListener('click', function (e) {
+    var t = e.target.getAttribute('data-offer-go');
+    if (t !== null) show(Number(t));
+  });
+  dots.addEventListener('keydown', function (e) {
+    var t = e.target.getAttribute('data-offer-go');
+    if (t !== null && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); show(Number(t)); }
+  });
+  show(0);
 })();
 
 </script>
