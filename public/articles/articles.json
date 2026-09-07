@@ -604,99 +604,230 @@
       "slug": "case-001-drake-curse",
       "league": "CASES",
       "title": "The Drake Curse",
-      "dek": "The biggest artist in the world is also the most public bettor alive — eight-figure stakes, posted slips, and a pattern so consistent it has its own website.",
+      "dek": "Eighty-eight bets. Forty million dollars staked. Three million down. The most public betting ledger on earth, graded — Case File No. 001 reopens with the full record.",
       "author": "Fade Cases",
-      "published": "2026-09-06T12:00:00Z",
+      "published": "2026-09-07T21:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
       "featured": false,
       "caseNo": "001",
-      "sources": "Publicly reported wagers; thedrakecurse.com; Covers. Amounts as reported.",
+      "sources": "The ledger via thedrakecurse.com, an independent tracker of Drake's publicly posted bets (figures as of July 19, 2026; Bitcoin and CAD stakes converted to USD at bet date). Individual bets and quotes as reported by Rolling Stone, UPI, CBS Sports, ESPN, Billboard, Complex, Fox, RTÉ and others. Stake deal value per Financial Times reporting, unconfirmed by either party. Lawsuit details per Forbes and Legal Sports Report; the allegations are allegations, and Stake disputes them.",
       "mag": {
         "volume": "Case File No. 001",
         "issueLine": "September 2026",
         "edition": "An edition on getting it wrong in public",
         "coverKicker": "The Fade Index",
         "coverLine": "The most public bettor alive.",
-        "coverSub": "Eight-figure stakes. Posted slips. One reported winner.",
+        "coverSub": "Eighty-eight posted slips, graded. The folklore has a bankroll now.",
         "coverStat": {
-          "label": "Reported slips",
-          "value": "1–6",
-          "sub": "The graded record"
+          "label": "The Ledger",
+          "value": "−$3.06M",
+          "sub": "All-time · 32–56"
         },
         "quote": {
-          "text": "They won the Cup. The bet lost anyway.",
-          "attr": "Argentina, in regulation — the curse at work"
+          "text": "I am a flawed sports better. I will not deny that. That's not my gift.",
+          "attr": "Drake, May 2025"
         },
         "sections": [
           {
             "title": "The Curse",
-            "headline": "Teams He Backs Crumble",
-            "sub": "How a superstition became a data set",
+            "headline": "First, the Folklore",
+            "sub": "A decade of losses he never bet on",
             "paras": [
-              "Teams he backs crumble. Fighters he walks to the cage lose. The internet keeps the receipts, and there are a great many receipts.",
-              "The phenomenon earned its name at UFC 229, when Drake walked Conor McGregor to the octagon and Khabib Nurmagomedov mauled him. Since then the pattern has been documented in eight figures. A reported million dollars on Argentina to win the World Cup final in regulation: Argentina won the Cup, on penalties, and the bet lost anyway — the curse's masterpiece. Seven figures on Israel Adesanya, stopped in the fifth round. Four hundred thousand on Jake Paul against Tommy Fury, gone. Three hundred fifty-five thousand on a fifty-eight-year-old Mike Tyson, gone.",
-              "The one week the curse took off: roughly seven hundred thousand dollars on the Chiefs in Super Bowl LVII, which cashed. One reported winner. Six reported losers. A body of work so consistent that thedrakecurse.com exists."
+              "Before there was a ledger, there was a superstition. It grew up around Kentucky basketball in 2013, when Drake attached himself to a Calipari program that kept reaching Final Fours and never winning one. It went mainstream at the 2015 US Open, when he sat courtside as Serena Williams — two wins from the calendar Grand Slam — lost to Roberta Vinci in the semifinal. Serena, asked about it the next year, refused the premise: 'I'm the one who's playing, who's making mistakes or making winners. I'm not one to blame anyone else for anything.'",
+              "The internet was less rigorous. By 2019 the curse was a beat of its own: a PSG defender posted a photo with him and lost 5–1 the next day; AS Roma's official account jokingly banned its players from pictures with him until season's end; Anthony Joshua tweeted a photo captioned 'Bout to break the curse' and promptly suffered the biggest upset in modern heavyweight history. The night he walked Conor McGregor to the cage at UFC 229 — no bet, just an Irish flag — Khabib mauled him. The Raptors' 2019 title, with Drake courtside in a Dell Curry jersey, was supposed to be the exorcism.",
+              "Then, in February 2022, the folklore got a bankroll. He signed with the crypto sportsbook Stake and started posting the slips."
+            ]
+          },
+          {
+            "title": "The Ledger",
+            "headline": "Forty Million Dollars, Graded",
+            "sub": "Every posted slip since February 2022",
+            "paras": [
+              "The independent tracker thedrakecurse.com has collected every publicly posted or reported bet since his first — $1.26 million in Bitcoin on Super Bowl LVI, February 13, 2022 — converting the crypto to dollars at the day of the wager. The file, as of its July update: 88 bets, $40.2 million staked, $37.2 million returned. Thirty-two wins, fifty-six losses. A 36.4 percent strike rate at an average stake of four hundred fifty-seven thousand dollars.",
+              "The arc is the story. He survived a seven-bet, $3.8 million losing streak in the fall of 2022 and still closed the year up $307,000. Then came 2023 — Jon Jones by submission at +580, Adesanya by knockout at +360, a million on Gervonta Davis — and by July he sat at plus $4.58 million, the high-water mark. He has been giving it back ever since: down $1.59 million in 2024, down $1.78 million in 2025, and down $3.27 million through July of this year, when the file hit its all-time low.",
+              "Here is the part the memes get wrong: the curse is mostly a myth. Of his fifty-six losses, the tracker counts only eleven 'actual curses' — favorites he backed that fell. Israel Adesanya accounts for three of them by himself. The rest of the file is something more ordinary and more expensive: long-odds moneylines at enormous stakes. The favorites don't die because he bets them. The dogs just don't come in."
+            ],
+            "figures": [
+              {
+                "type": "line",
+                "label": "The running total",
+                "points": [
+                  {
+                    "l": "First bet — Feb 2022",
+                    "v": 0,
+                    "d": "open"
+                  },
+                  {
+                    "l": "End of 2022: +$307K",
+                    "v": 0.31
+                  },
+                  {
+                    "l": "Peak — July 2023: +$4.58M",
+                    "v": 4.58,
+                    "d": "+$4.58M"
+                  },
+                  {
+                    "l": "End of 2023: +$3.58M",
+                    "v": 3.58
+                  },
+                  {
+                    "l": "End of 2024: +$1.99M",
+                    "v": 1.99
+                  },
+                  {
+                    "l": "End of 2025: +$214K",
+                    "v": 0.21
+                  },
+                  {
+                    "l": "July 19, 2026: −$3.06M",
+                    "v": -3.06,
+                    "d": "−$3.06M"
+                  }
+                ],
+                "baseline": {
+                  "v": 0,
+                  "label": "Even"
+                },
+                "caption": "Cumulative profit and loss on publicly posted bets, in millions, February 2022 through July 19, 2026, per thedrakecurse.com. The peak came on July 8, 2023; the all-time low arrived with the World Cup final."
+              },
+              {
+                "type": "table",
+                "label": "The file, by sport",
+                "rows": [
+                  {
+                    "sel": "Cricket",
+                    "num": "3–0 · +$997K · 60% ROI",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Basketball",
+                    "num": "7–10 · +$989K",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "NFL",
+                    "num": "6–14 · +$680K",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "UFC — his most-bet sport, $14.45M",
+                    "num": "11–16 · +$29K",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Boxing",
+                    "num": "2–9 · −$1.55M",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "Soccer",
+                    "num": "2–5 · −$3.17M",
+                    "res": "Lost"
+                  }
+                ],
+                "record": "32–56",
+                "recordLabel": "$40.2M staked",
+                "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
+                "note": "His best sport, by return, is cricket — three bets, three wins. His worst is the one he keeps betting the World Cup on."
+              }
+            ]
+          },
+          {
+            "title": "The Exhibits",
+            "headline": "The Canon",
+            "sub": "The slips the file will be remembered for",
+            "paras": [
+              "The wins are real, and they are spectacular: a three-hundred-nine-thousand-dollar, three-leg Game 7 parlay in May 2022 that returned $2.67 million; Jon Jones by submission at nearly six to one; $1.15 million on the Chiefs in Super Bowl LVIII, posted with the caption \"I can't bet against the Swifties,\" which cashed for $1.2 million.",
+              "The losses are the genre's masterpieces. He bet $1 million on Argentina to win the 2022 World Cup final in ninety minutes; Argentina won the World Cup, on penalties, and the ticket died at 3–3. Four years later he bet $1.5 million on Argentina to win the 2026 final inside ninety — it was 0–0 at the whistle, and Spain won in extra time. The same bet, the same beat, two World Cups apart. In between: $1.6 million on Adesanya the night Pereira took his belt, a million on the Maple Leafs in a Game 7 they lost by five, and a million on Conor McGregor's comeback, which lasted sixty-nine seconds.",
+              "This summer, for balance, he also bet one dollar on Morocco. It won him forty-one cents."
             ],
             "figure": {
               "type": "table",
-              "label": "The exhibits · reported slips",
+              "label": "Exhibits · from the ledger",
               "rows": [
                 {
-                  "sel": "Walks McGregor out at UFC 229",
-                  "num": "Khabib wins",
+                  "sel": "Rams + Beckham props, Super Bowl LVI — the first slips, in Bitcoin",
+                  "num": "Feb 2022",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Mavericks · Rangers · Flames, three-leg Game 7 parlay",
+                  "num": "$309K → $2.67M",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Jon Jones by submission, UFC 285",
+                  "num": "+580 · won $1.45M",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Israel Adesanya, UFC 281",
+                  "num": "$1,595,467",
                   "res": "Lost"
                 },
                 {
-                  "sel": "Argentina in regulation, World Cup final",
+                  "sel": "Argentina in ninety minutes, 2022 World Cup final",
                   "num": "$1,000,000",
                   "res": "Lost"
                 },
                 {
-                  "sel": "Adesanya at UFC 281",
-                  "num": "seven figures",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "Jake Paul vs. Tommy Fury",
-                  "num": "$400,000",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "Chiefs, Super Bowl LVII",
-                  "num": "≈$700,000",
+                  "sel": "Chiefs moneyline, Super Bowl LVIII — 'the Swifties' bet",
+                  "num": "$1.15M · won $1.2M",
                   "res": "Won"
                 },
                 {
-                  "sel": "Adesanya at UFC 305",
-                  "num": "$450,000",
+                  "sel": "Maple Leafs, Game 7 vs. Florida",
+                  "num": "$1,000,000",
                   "res": "Lost"
                 },
                 {
-                  "sel": "Tyson vs. Jake Paul",
-                  "num": "$355,000",
+                  "sel": "Patriots moneyline, Super Bowl LX",
+                  "num": "$1,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Conor McGregor, UFC 329 — sixty-nine seconds",
+                  "num": "$1,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Argentina in ninety minutes, again — 2026 World Cup final",
+                  "num": "$1,500,000",
                   "res": "Lost"
                 }
               ],
-              "record": "1–6",
-              "recordLabel": "As reported",
+              "record": "11",
+              "recordLabel": "Actual curses",
               "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
-              "note": "Amounts as publicly reported. The record does not improve on inspection."
+              "note": "Only eleven of the fifty-six losses were favorites — the 'actual curses.' The rest were just bad bets."
             }
           },
           {
-            "title": "The Verdict",
-            "headline": "What a Case File Is For",
-            "sub": "Graded, timestamped, attached to alerts",
+            "title": "Not Like Us",
+            "headline": "The Kendrick Chapter",
+            "sub": "April 30, 2024, and everything after",
             "paras": [
-              "This is what a case file is for. On Fade, a record like this is not a vibe — it is graded, timestamped and attached to alerts. The next time the biggest artist in the world places a bet, you will know. What you do about it is the whole game."
+              "On April 30, 2024, Kendrick Lamar released 'Euphoria,' and the most famous feud in rap history began grading Drake's slips in real time. On 'Meet the Grahams' the accusation was explicit: 'You got gamblin' problems, drinkin' problems, pill-poppin' and spendin' problems.' Drake's response was sarcasm — but the tracker's response was arithmetic: since the day 'Euphoria' dropped, it counts $7.2 million in betting losses.",
+              "The era produced the file's cruelest footnote. In July 2024 he put $300,000 on Canada to upset Argentina in the Copa América semifinal. Argentina won 2–0, and the Argentine national team's official account posted four words: 'Not like us, not with us.'",
+              "By June 2025 he was publishing the damage himself — an Instagram story showing $124.5 million wagered and $8.2 million lost in a single month, captioned 'Gotta share the other side of gambling.' Whatever the beef settled, the ledger's verdict arrived on its own schedule."
+            ]
+          },
+          {
+            "title": "The House",
+            "headline": "The Slips Are the Ad",
+            "sub": "What the bets are for",
+            "paras": [
+              "Every one of those posted slips is a screenshot from Stake, the crypto casino that signed him in 2022 in a deal the Financial Times has reported at roughly $100 million a year — a figure neither side has ever confirmed. The bets are content; the content is marketing. When he swore off sports betting after February's million-dollar Patriots loss — 'sticking to what I know' — he was back with three more seven-figure wagers by July.",
+              "The relationship is stormier than the feed suggests. In August 2025 he announced a gambling break, accused Stake of blocking his withdrawals and called its co-founder a snake on a livestream; by October he was betting there again. And in October 2025 a Missouri class action named Drake, Adin Ross and Stake, alleging among other things that the company fronts its stars house money — that the famous losses are, in effect, advertising. Stake disputes the suits, and called a Bloomberg analysis of its streamers' unusual slot luck 'categorically incorrect.' The courts will grade those claims; this desk only grades the slips.",
+              "Either way, the conclusion is the same one printed on the cover: whether the money is his or the house's, the record is public, and the record is 32–56."
             ]
           }
         ],
         "call": {
           "kicker": "Case File No. 001",
           "title": "Fade him.",
-          "big": "1–6",
-          "note": "One reported winner. Six reported losers. The internet reached its verdict years ago; the file merely keeps it current.",
+          "big": "32–56",
+          "note": "Down $3.06 million all-time, $7.2 million since 'Euphoria.' By his own testimony: 'My slips do not cash out. But one day I'm gonna have a parlay that's insane.' Until that day, the file stays open.",
           "tag": "Get notified when he bets",
           "end": "End of Case File No. 001",
           "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000"
@@ -706,44 +837,44 @@
         "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000",
         "caption": "Drake · Exhibit A",
         "stamp": "FADE",
-        "slipTitle": "The record · reported slips",
-        "record": "Verdict: Fade",
+        "slipTitle": "The ledger · via thedrakecurse.com",
+        "record": "32–56 · down $3.06M all-time",
         "picks": [
           {
-            "t": "UFC 229: walks McGregor out. Khabib wins",
-            "r": "L"
-          },
-          {
-            "t": "$1M — Argentina in regulation, WC final",
-            "r": "L"
-          },
-          {
-            "t": "Seven figures — Adesanya at UFC 281",
-            "r": "L"
-          },
-          {
-            "t": "$400K — Jake Paul vs Tommy Fury",
-            "r": "L"
-          },
-          {
-            "t": "~$700K — Chiefs, Super Bowl LVII",
+            "t": "$309K → $2.67M — three-leg Game 7 parlay",
             "r": "W"
           },
           {
-            "t": "$450K — Adesanya at UFC 305",
+            "t": "$1.6M — Adesanya at UFC 281",
             "r": "L"
           },
           {
-            "t": "$355K — Tyson vs Jake Paul",
+            "t": "$1M — Argentina in 90, 2022 WC final",
+            "r": "L"
+          },
+          {
+            "t": "$1.15M — Chiefs, SB LVIII, 'the Swifties' bet (+$1.2M)",
+            "r": "W"
+          },
+          {
+            "t": "$1M — McGregor at UFC 329. 69 seconds",
+            "r": "L"
+          },
+          {
+            "t": "$1.5M — Argentina in 90, again — 2026 final",
+            "r": "L"
+          },
+          {
+            "t": "Since 'Euphoria' dropped: −$7.2M",
             "r": "L"
           }
         ]
       },
       "body": [
-        "Teams he backs crumble. Fighters he walks to the cage lose. The internet keeps the receipts — and there are a great many receipts.",
-        "It earned its name at UFC 229, when Drake walked Conor McGregor out and Khabib mauled him. Since then: a reported million on Argentina to win the World Cup final in regulation — they won the Cup, on penalties, and the bet lost anyway. Seven figures on Israel Adesanya, stopped in the fifth. $400K on Jake Paul against Tommy Fury, gone. $355K on a 58-year-old Mike Tyson, gone.",
-        "The one week the curse took off: roughly $700K on the Chiefs in Super Bowl LVII, which cashed. One reported winner, six reported losers — a body of work so consistent that thedrakecurse.com exists.",
-        "On Fade, records like this are graded, timestamped and attached to alerts. Get notified the next time Drake places a bet, and do the profitable thing."
+        "Before the bets, there was folklore: Serena at the 2015 US Open, McGregor at UFC 229, a Roma squad jokingly banned from photos with him. Then, in February 2022, the folklore got a bankroll.",
+        "The independent tracker thedrakecurse.com has graded every publicly posted bet since: 88 bets, $40.2 million staked, a 32–56 record, down $3.06 million all-time — including a peak of +$4.58 million in July 2023 that took three years to give back.",
+        "Since Kendrick Lamar's 'Euphoria' dropped in April 2024, the tracker counts $7.2 million in losses. After the Copa América, Argentina's own team account posted: 'Not like us, not with us.'",
+        "His own verdict, from a mock press conference in May 2025: 'I am a flawed sports better. I will not deny that. That's not my gift.'"
       ]
     },
     {
