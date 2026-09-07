@@ -166,6 +166,25 @@ a { color:inherit; text-decoration:none; }
   .fw-photo img { min-height:300px; }
 }
 
+/* app promo band */
+.appband { display:grid; grid-template-columns:1.15fr 1fr 200px; gap:2.2rem; align-items:center; background:var(--carbon); color:var(--paper); border-radius:8px; padding:1.8rem 2.2rem; margin:2rem 0 0.6rem; }
+.appband .pk { font-size:0.6rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(244,242,234,0.6); margin-bottom:0.5rem; }
+.appband h3 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.5rem,3.2vw,2.2rem); line-height:1.05; margin-bottom:0.7rem; }
+.appband .ab-copy p { font-size:0.8rem; color:rgba(244,242,234,0.85); line-height:1.6; max-width:34ch; }
+.ab-list div { position:relative; padding:0.4rem 0 0.4rem 1.2rem; font-size:0.7rem; line-height:1.45; color:rgba(244,242,234,0.72); border-bottom:1px dashed rgba(244,242,234,0.14); }
+.ab-list div::before { content:'\2713'; position:absolute; left:0; color:var(--cash); font-weight:700; }
+.ab-go { display:inline-block; margin-top:0.9rem; font-size:0.64rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--carbon); background:var(--paper); border-radius:4px; padding:0.6rem 1.2rem; }
+.ab-go:hover { background:#fff; }
+.ab-phone .rot { width:100%; max-width:180px; margin:0 auto; }
+.ab-phone img, .ab-phone video { width:100%; border-radius:14px; border:1px solid rgba(244,242,234,0.25); display:block; }
+.ab-phone .rot [hidden] { display:none !important; }
+@media (max-width:880px) { .appband { grid-template-columns:1fr; gap:1.3rem; padding:1.5rem 1.4rem; } .ab-phone .rot { max-width:200px; } }
+
+/* even article cards */
+.story h3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.story .dek { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.case-tile h3, .case-tile .dek { display:block; -webkit-line-clamp:unset; overflow:visible; }
+
 /* cases: owned editorial tiles */
 .grid.cases-mode { grid-template-columns:1fr 1fr; gap:1.6rem; padding-top:1.8rem; }
 .case-tile { border:2px solid var(--carbon) !important; border-radius:8px; overflow:hidden; background:var(--paper-hi); box-shadow:6px 6px 0 rgba(20,20,18,0.16); padding:0 !important; transition:transform 0.15s ease, box-shadow 0.15s ease; }
@@ -435,6 +454,28 @@ a { color:inherit; text-decoration:none; }
 
   <!-- photo story grid -->
   <section class="grid" id="storyGrid"></section>
+
+  <!-- app promo band -->
+  <section class="appband" id="appBand">
+    <div class="ab-copy">
+      <div class="pk">Fade &middot; the app</div>
+      <h3>Everything betting. One app.</h3>
+      <p>Fade is the social side of sports betting &mdash; your books, your people, and every pick in one feed.</p>
+    </div>
+    <div class="ab-list">
+      <div>Sync every sportsbook &mdash; all your bets in one place</div>
+      <div>See friends&rsquo; and celebrities&rsquo; picks the moment they bet</div>
+      <div>Tail or fade any pick in one tap</div>
+      <div>Verified records, ROI &amp; alerts</div>
+      <a class="ab-go" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Get Fade &rarr;</a>
+    </div>
+    <div class="ab-phone">
+      <div class="rot">
+        <img src="assets/dk-welcome.jpg" alt="The Fade app" loading="lazy" />
+        <video muted playsinline preload="none" hidden></video>
+      </div>
+    </div>
+  </section>
 
   <!-- more headlines -->
   <section class="more-wrap" id="moreWrap" hidden>
@@ -948,35 +989,15 @@ a { color:inherit; text-decoration:none; }
       (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
       '<span class="ct-open">Open the file &rarr;</span></div></a></article>';
   }
-  function promoTile() {
-    return '<article class="story promo">' +
-      '<div class="pk">Fade &middot; the app</div>' +
-      '<h3>Everything betting. One app.</h3>' +
-      '<p class="pd">Fade is the social side of sports betting &mdash; your books, your people, and every pick in one feed.</p>' +
-      '<div class="pl">' +
-        '<div>Sync every sportsbook &mdash; all your bets in one place</div>' +
-        '<div>See friends&rsquo; and celebrities&rsquo; picks the moment they bet</div>' +
-        '<div>Tail or fade any pick in one tap</div>' +
-        '<div>Verified records, ROI &amp; alerts</div>' +
-      '</div>' +
-      '<div class="rot">' +
-        '<img src="assets/dk-welcome.jpg" alt="The Fade app" loading="lazy" />' +
-        '<video muted playsinline preload="none" hidden></video>' +
-      '</div>' +
-      '<a class="go" href="' + APP + '" target="_blank" rel="noopener">Get Fade &rarr;</a>' +
-      '</article>';
-  }
   var promoTimer = null;
   var PROMO_VIDS = ['assets/demo-feed.mp4', 'assets/demo-sync.mp4', 'assets/demo-fadeiq-2.mp4', 'assets/demo-profile-2.mp4'];
-  function initPromo() {
-    var box = document.querySelector('.story.promo .rot');
-    if (promoTimer) { clearTimeout(promoTimer); promoTimer = null; }
+  (function initPromo() {
+    var box = document.querySelector('.appband .rot');
     if (!box) return;
     var img = box.querySelector('img');
     var vid = box.querySelector('video');
     var i = -1;
     function next() {
-      if (!document.body.contains(box)) { clearTimeout(promoTimer); return; }
       i = (i + 1) % PROMO_VIDS.length;
       img.hidden = true; vid.hidden = false;
       vid.src = PROMO_VIDS[i]; vid.load();
@@ -985,9 +1006,8 @@ a { color:inherit; text-decoration:none; }
       promoTimer = setTimeout(next, 14000);
     }
     vid.addEventListener('ended', function () { clearTimeout(promoTimer); next(); });
-    img.hidden = false; vid.hidden = true;
     promoTimer = setTimeout(next, 3000);
-  }
+  })();
   window.renderNews = function (cat) {
     if (!articles.length) return;
     if (cat === 'all') {
@@ -1014,10 +1034,7 @@ a { color:inherit; text-decoration:none; }
           '<div><h4>' + link(a, esc(a.title)) + '</h4>' +
           '<div class="meta">' + meta(a) + '</div></div></div>';
       }).join('');
-      var cells = gridItems.map(card);
-      cells.splice(Math.min(2, cells.length), 0, promoTile());
-      grid.innerHTML = cells.join('');
-      initPromo();
+      grid.innerHTML = gridItems.map(card).join('');
       if (more.length) {
         moreWrap.hidden = false;
         moreList.innerHTML = more.map(function (a) {
@@ -1036,9 +1053,8 @@ a { color:inherit; text-decoration:none; }
           : '<div class="nf-loading">The case files are being prepared.</div>';
       } else {
         grid.innerHTML = filtered.length
-          ? filtered.slice(0, 18).map(card).join('') + promoTile()
+          ? filtered.slice(0, 18).map(card).join('')
           : '<div class="nf-loading">No ' + esc(cat.toUpperCase()) + ' headlines right now.</div>';
-        initPromo();
       }
     }
   };
