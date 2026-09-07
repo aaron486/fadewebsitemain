@@ -35,6 +35,20 @@ h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; 
 .cta { display:inline-block; margin-top:0.8rem; font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border-radius:4px; padding:0.75rem 1.4rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
 .cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
 .missing { padding:4rem 0; text-align:center; font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.fw-card { display:grid; grid-template-columns:1.3fr 1fr; gap:1.1rem; margin-bottom:1.8rem; align-items:stretch; }
+.fw-photo { position:relative; border:2px solid var(--carbon); border-radius:6px; overflow:hidden; background:var(--paper-hi); box-shadow:5px 5px 0 rgba(20,20,18,0.18); }
+.fw-photo img { width:100%; height:100%; min-height:340px; object-fit:cover; object-position:50% 15%; display:block; }
+.fw-stamp { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) rotate(-13deg); font-family:'Anton',sans-serif; font-size:clamp(2.6rem,6vw,4.4rem); color:rgba(217,45,32,0.9); border:5px solid rgba(217,45,32,0.9); border-radius:10px; padding:0 0.5em; letter-spacing:0.05em; pointer-events:none; }
+.fw-cap { position:absolute; left:0; right:0; bottom:0; background:var(--carbon); color:var(--paper); font-size:0.64rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; text-align:center; padding:0.45rem 0.8rem; }
+.fw-slip { border:2px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1rem 1.1rem; box-shadow:5px 5px 0 rgba(20,20,18,0.18); display:flex; flex-direction:column; }
+.fw-sh { font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; border-bottom:2px dashed rgba(20,20,18,0.3); padding-bottom:0.5rem; margin-bottom:0.35rem; display:flex; justify-content:space-between; gap:0.6rem; }
+.fw-sh span { color:var(--soft); }
+.fw-pick { display:flex; align-items:center; gap:0.55rem; font-size:0.74rem; font-weight:600; padding:0.26rem 0; border-bottom:1px dashed var(--line); }
+.fw-pick .m { font-weight:700; width:1rem; text-align:center; }
+.fw-pick .m.x { color:var(--fade); } .fw-pick .m.w { color:var(--cash); } .fw-pick .m.pnd { color:var(--soft); }
+.fw-pending { margin-left:auto; font-size:0.54rem; font-weight:700; letter-spacing:0.12em; color:var(--soft); }
+.fw-rec { margin-top:auto; padding-top:0.7rem; font-family:'Anton',sans-serif; font-size:1.1rem; text-transform:uppercase; color:var(--fade); }
+@media (max-width:640px) { .fw-card { grid-template-columns:1fr; } .fw-photo img { min-height:280px; } }
 </style>
 </head>
 <body>
@@ -50,6 +64,20 @@ h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; 
 <script>
 (function () {
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fwCard(fc) {
+    var picks = (fc.picks || []).map(function (p) {
+      var m = p.r === 'W' ? '<span class="m w">&#10003;</span>'
+        : p.r === 'L' ? '<span class="m x">&#10007;</span>'
+        : '<span class="m pnd">&bull;</span>';
+      return '<div class="fw-pick">' + m + esc(p.t) +
+        (p.r === 'P' ? '<span class="fw-pending">PENDING</span>' : '') + '</div>';
+    }).join('');
+    return '<div class="fw-card">' +
+      '<div class="fw-photo"><img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp">FADE</span>' +
+      (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') + '</div>' +
+      '<div class="fw-slip"><div class="fw-sh">' + esc(fc.slipTitle || 'The card') + '<span>OFFICIAL SLIP</span></div>' +
+      picks + (fc.record ? '<div class="fw-rec">' + esc(fc.record) + '</div>' : '') + '</div></div>';
+  }
   var slug = new URLSearchParams(location.search).get('s');
   var el = document.getElementById('art');
   fetch('/articles/articles.json')
@@ -64,7 +92,7 @@ h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; 
         '<h1>' + esc(a.title) + '</h1>' +
         (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
         '<div class="byline">By <b>' + esc(a.author || 'Fade Desk') + '</b> &middot; ' + esc(date) + '</div>' +
-        (a.image ? '<img class="hero" src="' + esc(a.image) + '" alt="" />' : '') +
+        (a.fadeCard ? fwCard(a.fadeCard) : a.image ? '<img class="hero" src="' + esc(a.image) + '" alt="" />' : '') +
         '<div class="body">' + (a.body || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' +
         '<a class="cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>';
     })
