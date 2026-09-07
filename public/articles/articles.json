@@ -3,7 +3,7 @@
     {
       "slug": "stanford-steve-gameday-best-picker",
       "league": "CASES",
-      "title": "Case File No. 005 \u2014 Stanford Steve: GameDay's best picker",
+      "title": "Stanford Steve: GameDay's best picker",
       "dek": "Twelve years of tracked picks. 648\u2013529 against the spread. Plus 60 units. The numbers say the guy next to the headgear is the sharpest voice on the set \u2014 with one glaring exception.",
       "author": "Fade Cases",
       "published": "2026-09-07T19:00:00Z",
@@ -50,7 +50,8 @@
         "Now the asterisk, because the receipts cut both ways: on NFL Sundays, Stanford Steve is mortal. His tracked pro record is 166\u2013162\u20137 \u2014 under 51%, eleven units in the red. The same man who prints money on college football gives it back on the NFL. If ever a bettor was built for a Tail button on Saturdays and a Fade button on Sundays, it's him.",
         "That's the whole thesis of Fade in one human being: records are real, context is everything, and knowing who is actually good \u2014 on which sport, in which spot \u2014 is the edge. When GameDay's board drops on Saturday, you'll know exactly what his number is worth.",
         "Source: Cole's Gameday Blog (gamedaycole.com) \u2014 tracked pick data for Steve Coughlin, 2014\u20132026. Records reflect publicly posted picks at standard -110 pricing unless noted."
-      ]
+      ],
+      "caseNo": "005"
     },
     {
       "slug": "lsu-betting-on-themselves-kalshi-kiffin",
@@ -172,24 +173,9 @@
       }
     },
     {
-      "slug": "welcome-to-the-desk",
-      "league": "DESK",
-      "title": "Welcome to the Fade desk: the front page of sports betting",
-      "dek": "Original reporting, verified bettors, celebrity case files, and the day's slate \u2014 written by the desk, read before you bet.",
-      "author": "Fade Desk",
-      "published": "2026-09-07T14:00:00Z",
-      "image": "assets/cases/portfolio-locked.jpg",
-      "featured": false,
-      "body": [
-        "This is the Fade desk \u2014 the newsroom side of the app. Every day we publish what actually matters before the games start: where the numbers moved, who's betting what, and which records are real.",
-        "Wire headlines from around sports run alongside our own reporting, always credited and linked to the source. The original work \u2014 case files, verified bettor stories, and desk reports \u2014 lives here and in the app.",
-        "Want it on your phone? The full desk, with alerts when your friends and the biggest names in sports place a bet, is live in the Fade app."
-      ]
-    },
-    {
       "slug": "case-001-drake-curse",
       "league": "CASES",
-      "title": "Case File No. 001 \u2014 The Drake Curse",
+      "title": "The Drake Curse",
       "dek": "The biggest artist in the world is also the most public bettor alive \u2014 eight-figure stakes, posted slips, and a curse so consistent it has its own website.",
       "author": "Fade Cases",
       "published": "2026-09-06T12:00:00Z",
@@ -238,12 +224,13 @@
         "The one week the curse took off: roughly $700K on the Chiefs in Super Bowl LVII, which cashed. One reported winner. Six reported losers. A body of work so consistent that thedrakecurse.com exists.",
         "This is what a case file is for. On Fade, records like this aren't vibes \u2014 they're graded, timestamped, and attached to alerts. Get notified the next time Drake places a bet, and do the profitable thing.",
         "Sources: publicly reported wagers, thedrakecurse.com, Covers. Amounts as reported."
-      ]
+      ],
+      "caseNo": "001"
     },
     {
       "slug": "case-002-portnoy",
       "league": "CASES",
-      "title": "Case File No. 002 \u2014 El Presidente",
+      "title": "El Presidente",
       "dek": "Dave Portnoy bets the way he runs Barstool \u2014 loudly, publicly, and in seven figures. A 30% hit rate that's somehow up $2.7 million.",
       "author": "Fade Cases",
       "published": "2026-09-06T11:00:00Z",
@@ -292,12 +279,13 @@
         "That's the Portnoy paradox: fade the volume, respect the futures. A record this loud deserves to be graded live, not argued about on Twitter.",
         "Get notified when El Presidente fires next \u2014 tail the future, fade the dog, your call.",
         "Sources: publicly reported and DraftKings-confirmed wagers, 2021\u20132025. The full 30-bet ledger is graded in Fade."
-      ]
+      ],
+      "caseNo": "002"
     },
     {
       "slug": "case-003-mattress-mack",
       "league": "CASES",
-      "title": "Case File No. 003 \u2014 The Houston Hedge",
+      "title": "The Houston Hedge",
       "dek": "Jim 'Mattress Mack' McIngvale is 3\u201317 across $86 million in reported stakes \u2014 and up $23.5 million anyway, including the largest payout in U.S. betting history.",
       "author": "Fade Cases",
       "published": "2026-09-06T10:00:00Z",
@@ -346,12 +334,13 @@
         "The crown jewel: $10 million across five books on the 2022 Astros at long prices. Houston won the World Series and the tickets paid $72.6 million \u2014 the largest payout in U.S. legal betting history. The scar tissue: $13M gone on the 2019 Astros, $9.5M on the Bengals, $8M on the 2023 runback, $3.3M on the Patriots in Super Bowl LX.",
         "He's the rare case file stamped TAIL: not because the record is pretty, but because the structure wins. Know the difference \u2014 that's the whole game.",
         "Sources: publicly reported wagers, 2019\u20132026. The full 20-bet ledger is graded in Fade."
-      ]
+      ],
+      "caseNo": "003"
     },
     {
       "slug": "case-004-trent-attyah",
       "league": "CASES",
-      "title": "Case File No. 004 \u2014 Book It With Trent",
+      "title": "Book It With Trent",
       "dek": "Trent Attyah did what no bettor had done before: turned getting faded into a career. The self-made Fade God.",
       "author": "Fade Cases",
       "published": "2026-09-06T09:00:00Z",
@@ -392,7 +381,8 @@
         "The surgical streams are the masterpiece \u2014 followers submit picks live on air and Trent assembles the day's parlay from the best of them, 260,000-plus people watching every slip. Every pick is content. Every fade cashes twice: once at the book, once in the culture.",
         "He's the patron saint of this entire app. Get notified when Trent posts, and do what the internet taught us all to do.",
         "Source: the public record, extensively. Founder of BookIt Sports."
-      ]
+      ],
+      "caseNo": "004"
     }
   ]
 }

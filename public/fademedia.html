@@ -138,6 +138,7 @@ a { color:inherit; text-decoration:none; }
 .fw-photo a { display:block; height:100%; }
 .fw-photo img { width:100%; height:100%; min-height:380px; object-fit:cover; object-position:50% 15%; display:block; }
 .fw-stamp { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) rotate(-13deg); font-family:'Anton',sans-serif; font-size:clamp(3rem,7vw,5.2rem); color:rgba(217,45,32,0.9); border:6px solid rgba(217,45,32,0.9); border-radius:10px; padding:0 0.5em; letter-spacing:0.05em; text-shadow:0 0 1px rgba(217,45,32,0.4); pointer-events:none; }
+.fw-stamp.none { display:none; }
 .fw-stamp.tail { color:rgba(46,158,68,0.92); border-color:rgba(46,158,68,0.92); }
 .fw-cap { position:absolute; left:0; right:0; bottom:0; background:var(--carbon); color:var(--paper); font-size:0.66rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; text-align:center; padding:0.5rem 0.8rem; }
 .fw-slip { border:2px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1rem 1.2rem 1.1rem; box-shadow:5px 5px 0 rgba(20,20,18,0.18); display:flex; flex-direction:column; }
@@ -918,7 +919,7 @@ a { color:inherit; text-decoration:none; }
     }).join('');
     var photo = fc.photo
       ? '<div class="fw-photo">' + link(a,
-          '<img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp' + (fc.stamp === 'TAIL' ? ' tail' : '') + '">' + esc(fc.stamp || 'FADE') + '</span>') +
+          '<img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp' + (fc.stamp === 'TAIL' ? ' tail' : '') + (fc.stamp === 'NONE' ? ' none' : '') + '">' + esc(fc.stamp === 'NONE' ? '' : (fc.stamp || 'FADE')) + '</span>') +
           (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') +
         '</div>'
       : '';
@@ -930,10 +931,8 @@ a { color:inherit; text-decoration:none; }
       '</div></div>';
   }
   function caseTile(a) {
-    var m = /No\.\s*(\d+)/.exec(a.title || '');
-    var no = m ? m[1] : '';
-    var parts = (a.title || '').split('\u2014');
-    var name = parts.length > 1 ? parts.slice(1).join('\u2014').trim() : a.title;
+    var no = a.caseNo || '';
+    var name = a.title;
     var stamp = (a.fadeCard && a.fadeCard.stamp) || 'FADE';
     var initials = name.split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join('');
     var photo = a.img
@@ -950,9 +949,9 @@ a { color:inherit; text-decoration:none; }
   }
   function promoTile() {
     return '<article class="story promo">' +
-      '<div class="pk">Fade Media &middot; in the app</div>' +
-      '<h3>The desk, live in your pocket</h3>' +
-      '<img src="assets/explore-fademedia.jpg" alt="Fade Media in the app" loading="lazy" />' +
+      '<div class="pk">Fade &middot; the app</div>' +
+      '<h3>Everything betting. One app.</h3>' +
+      '<img src="assets/dk-welcome.jpg" alt="The Fade app" loading="lazy" />' +
       '<a class="go" href="' + APP + '" target="_blank" rel="noopener">Get Fade &rarr;</a>' +
       '</article>';
   }
@@ -1019,7 +1018,7 @@ a { color:inherit; text-decoration:none; }
         league: a.league || 'DESK', title: a.title || '', dek: a.dek || '',
         img: a.image || '', url: '/article?s=' + encodeURIComponent(a.slug || ''),
         published: a.published || '', author: a.author || 'Fade Desk',
-        featured: !!a.featured, custom: true, fadeCard: a.fadeCard || null
+        featured: !!a.featured, custom: true, fadeCard: a.fadeCard || null, caseNo: a.caseNo || ''
       };
     }) : [];
     articles = custom.concat(wire).sort(function (a, b) { return new Date(b.published) - new Date(a.published); });
