@@ -385,14 +385,7 @@ a { color:inherit; text-decoration:none; }
   <div class="tag">The Front Page of Sports Betting</div>
 </div></header>
 
-<nav class="cats"><div class="wrap"><div class="cats-in" id="catTabs">
-  <button class="cat-tab active" data-cat="all">All</button>
-  <button class="cat-tab" data-cat="nfl">NFL</button>
-  <button class="cat-tab" data-cat="cfb">CFB</button>
-  <button class="cat-tab" data-cat="mlb">MLB</button>
-  <button class="cat-tab" data-cat="nba">NBA</button>
-  <button class="cat-tab" data-cat="cases">Cases</button>
-</div></div></nav>
+
 
 <main class="wrap">
 
@@ -427,7 +420,15 @@ a { color:inherit; text-decoration:none; }
       <a class="rail-cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>
     </aside>
   </section>
-  <div class="rule-double"></div>
+
+<nav class="cats"><div class="wrap"><div class="cats-in" id="catTabs">
+  <button class="cat-tab active" data-cat="all">All</button>
+  <button class="cat-tab" data-cat="nfl">NFL</button>
+  <button class="cat-tab" data-cat="cfb">CFB</button>
+  <button class="cat-tab" data-cat="mlb">MLB</button>
+  <button class="cat-tab" data-cat="nba">NBA</button>
+  <button class="cat-tab" data-cat="cases">Cases</button>
+</div></div></nav>
 
   <!-- photo story grid -->
   <section class="grid" id="storyGrid"></section>
@@ -991,7 +992,7 @@ a { color:inherit; text-decoration:none; }
         }).join('');
       } else { moreWrap.hidden = true; }
     } else {
-      nf.style.display = 'none';
+      nf.style.display = '';
       moreWrap.hidden = true;
       var filtered = articles.filter(function (a) { return a.league.toLowerCase() === cat; });
       grid.classList.toggle('cases-mode', cat === 'cases');
