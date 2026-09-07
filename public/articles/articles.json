@@ -18,8 +18,15 @@
         "coverKicker": "The Fade Index",
         "coverLine": "The sharpest voice on the set.",
         "coverSub": "Twelve years tracked. Fifty-five percent against the spread.",
-        "coverStat": { "label": "The Ledger", "value": "+60.1", "sub": "Units since 2014" },
-        "quote": { "text": "Break-even at the standard price is .524. He has lived above it for twelve years.", "attr": "The Fade Desk" },
+        "coverStat": {
+          "label": "The Ledger",
+          "value": "+60.1",
+          "sub": "Units since 2014"
+        },
+        "quote": {
+          "text": "Break-even at the standard price is .524. He has lived above it for twelve years.",
+          "attr": "The Fade Desk"
+        },
         "sections": [
           {
             "title": "The Ledger",
@@ -34,12 +41,36 @@
               "type": "table",
               "label": "The tracked record · via Cole's Gameday Blog",
               "rows": [
-                { "sel": "All-time college football, against the spread", "num": "648–529–24", "res": "Won" },
-                { "sel": "Units banked across 1,201 tracked picks", "num": "+60.1", "res": "Won" },
-                { "sel": "Best season — 2018", "num": "57–29, +22.9 units", "res": "Won" },
-                { "sel": "Debut season — 2014", "num": "53–30", "res": "Won" },
-                { "sel": "This season, and counting", "num": "63–50, +7.4 units", "res": "Won" },
-                { "sel": "The catch: NFL, against the spread", "num": "166–162–7, −11.1 units", "res": "Lost" }
+                {
+                  "sel": "All-time college football, against the spread",
+                  "num": "648–529–24",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Units banked across 1,201 tracked picks",
+                  "num": "+60.1",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Best season — 2018",
+                  "num": "57–29, +22.9 units",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Debut season — 2014",
+                  "num": "53–30",
+                  "res": "Won"
+                },
+                {
+                  "sel": "This season, and counting",
+                  "num": "63–50, +7.4 units",
+                  "res": "Won"
+                },
+                {
+                  "sel": "The catch: NFL, against the spread",
+                  "num": "166–162–7, −11.1 units",
+                  "res": "Lost"
+                }
               ],
               "record": "55.1%",
               "recordLabel": "College, all-time",
@@ -59,8 +90,16 @@
               "type": "bars",
               "label": "Two sports, one picker",
               "rows": [
-                { "l": "CFB", "v": 0.551, "note": "648–529–24" },
-                { "l": "NFL", "v": 0.506, "note": "166–162–7" }
+                {
+                  "l": "CFB",
+                  "v": 0.551,
+                  "note": "648–529–24"
+                },
+                {
+                  "l": "NFL",
+                  "v": 0.506,
+                  "note": "166–162–7"
+                }
               ],
               "max": 0.7,
               "ruleAt": 0.524,
@@ -93,12 +132,30 @@
         "slipTitle": "The tracked record · via Cole's Gameday Blog",
         "record": "Verdict: Tail the college card",
         "picks": [
-          { "t": "All-time CFB ATS: 648–529–24 — 55.1%", "r": "W" },
-          { "t": "+60.1 units across 1,201 tracked picks since 2014", "r": "W" },
-          { "t": "Highest win rate of any 1,000-pick analyst tracked", "r": "W" },
-          { "t": "Best season: 2018 — 57–29, +22.9 units", "r": "W" },
-          { "t": "This season: 63–50, +7.4 units and counting", "r": "W" },
-          { "t": "The catch: NFL ATS 166–162–7, −11.1 units", "r": "L" }
+          {
+            "t": "All-time CFB ATS: 648–529–24 — 55.1%",
+            "r": "W"
+          },
+          {
+            "t": "+60.1 units across 1,201 tracked picks since 2014",
+            "r": "W"
+          },
+          {
+            "t": "Highest win rate of any 1,000-pick analyst tracked",
+            "r": "W"
+          },
+          {
+            "t": "Best season: 2018 — 57–29, +22.9 units",
+            "r": "W"
+          },
+          {
+            "t": "This season: 63–50, +7.4 units and counting",
+            "r": "W"
+          },
+          {
+            "t": "The catch: NFL ATS 166–162–7, −11.1 units",
+            "r": "L"
+          }
         ],
         "stamp": "TAIL"
       },
@@ -126,8 +183,15 @@
         "coverKicker": "Markets",
         "coverLine": "The school is holding tickets on its own season.",
         "coverSub": "Five block trades, priced to the dollar of the coach's bonus ladder.",
-        "coverStat": { "label": "Max payout", "value": "$3M", "sub": "If LSU wins it all" },
-        "quote": { "text": "Heads, LSU wins. Tails, the market pays.", "attr": "The Fade Desk" },
+        "coverStat": {
+          "label": "Max payout",
+          "value": "$3M",
+          "sub": "If LSU wins it all"
+        },
+        "quote": {
+          "text": "Heads, LSU wins. Tails, the market pays.",
+          "attr": "The Fade Desk"
+        },
         "sections": [
           {
             "title": "The Bonus",
@@ -151,11 +215,31 @@
               "type": "table",
               "label": "The position · five Kalshi block trades",
               "rows": [
-                { "sel": "LSU makes the College Football Playoff", "num": "pays $837,500", "res": "Pending" },
-                { "sel": "LSU reaches the quarterfinal", "num": "", "res": "Pending" },
-                { "sel": "LSU reaches the semifinal", "num": "", "res": "Pending" },
-                { "sel": "LSU reaches the national title game", "num": "", "res": "Pending" },
-                { "sel": "LSU wins the national championship", "num": "total pays $3,000,000", "res": "Pending" }
+                {
+                  "sel": "LSU makes the College Football Playoff",
+                  "num": "pays $837,500",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "LSU reaches the quarterfinal",
+                  "num": "",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "LSU reaches the semifinal",
+                  "num": "",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "LSU reaches the national title game",
+                  "num": "",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "LSU wins the national championship",
+                  "num": "total pays $3,000,000",
+                  "res": "Pending"
+                }
               ],
               "record": "$662,050",
               "recordLabel": "The stake",
@@ -188,11 +272,26 @@
         "slipTitle": "The hedge · five Kalshi block trades",
         "record": "Cost: $662,050 · Max payout: $3,000,000",
         "picks": [
-          { "t": "LSU makes the College Football Playoff — pays $837,500", "r": "P" },
-          { "t": "LSU reaches the CFP quarterfinal", "r": "P" },
-          { "t": "LSU reaches the CFP semifinal", "r": "P" },
-          { "t": "LSU reaches the national title game", "r": "P" },
-          { "t": "LSU wins the national championship — total pays $3M", "r": "P" }
+          {
+            "t": "LSU makes the College Football Playoff — pays $837,500",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the CFP quarterfinal",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the CFP semifinal",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the national title game",
+            "r": "P"
+          },
+          {
+            "t": "LSU wins the national championship — total pays $3M",
+            "r": "P"
+          }
         ],
         "stamp": "NONE"
       },
@@ -207,12 +306,12 @@
       "slug": "clay-travis-week-1-card",
       "league": "CFB",
       "title": "College football's biggest loser: Clay Travis opens the season 2–8",
-      "dek": "Eleven public picks, two winners, six and two-tenths units gone — and one bet still alive. The most fadeable card in sports media is back.",
+      "dek": "Eleven public picks. Two winners. A half-point bad beat. Six units gone, one bet still alive tonight — and fifteen seasons of receipts saying none of this is new.",
       "author": "Fade Desk",
       "published": "2026-09-07T16:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
       "featured": true,
-      "sources": "Picks and records via @ExposingClay on X; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published.",
+      "sources": "Game results via ESPN box scores and team sites. The Week 1 card as published by Hard Rock Bet ('11 Winners Starting Thursday Night') and tracked by @ExposingClay on X. Season records as stated in Travis's own OutKick columns; fade ledgers via Eleven Warriors ('Slay Travis,' 2017) and The Daily Gopher ('Fade Clay Travis,' 2024–25); the 2019 streak via TheLines. Quotes verbatim from his posts on X, dated.",
       "mag": {
         "volume": "Volume One",
         "issueLine": "September 2026",
@@ -220,87 +319,214 @@
         "coverKicker": "The Fade Index",
         "coverLine": "College football's biggest loser.",
         "coverSub": "Clay Travis opened the season 2–8 against the number.",
-        "coverStat": { "label": "The Cost", "value": "−6.2", "sub": "Units, one week" },
-        "quote": { "text": "Seventy-four and ninety.", "attr": "His own accounting of the 2024 season" },
+        "coverStat": {
+          "label": "The Cost",
+          "value": "−6.2",
+          "sub": "Units, one week"
+        },
+        "quote": {
+          "text": "I've dug myself an early hole, but as every gambler knows, the only way out of a hole is to keep digging.",
+          "attr": "Clay Travis, September 2024"
+        },
         "sections": [
           {
             "title": "The Collapse",
             "headline": "A Week in Free Fall",
             "sub": "He posts the card himself. Graded, it only goes one way.",
             "paras": [
-              "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. The first week of the 2026 season will not slow the tradition.",
-              "Eleven picks went up before kickoff. By Sunday morning, eight had lost. Georgia Tech laying six and a half, gone. Stanford, Texas State, Furman and Northern Illinois — four heavy underdogs asked only to keep it respectable — none did. The Baylor–Auburn over fell short. Clemson, catching ten and a half, could not stay inside it. Wisconsin, catching twenty and a half, could not either.",
-              "Two picks survived: UCLA laying a point and a half, and the Louisville–Ole Miss over. Graded at one unit per play, the week closed at minus six and two-tenths units. None of this is new — the account @ExposingClay has documented the run for years, and by Travis's own accounting his 2024 season finished seventy-four wins against ninety losses. There are bad weeks, and then there are bodies of work."
+              "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. This is, by his own count, his fifteenth consecutive season of public picks, a run that began in 2011. The first week of the 2026 edition will enter the canon.",
+              "Eleven picks went up before Thursday's kickoff — eleven 'winners,' as the column that carries them promised. By Sunday night, eight had lost, and mostly not narrowly. The four long underdogs he asked only to keep things respectable — Stanford, Texas State, Furman, Northern Illinois — lost their games by 39, 52, 47 and 40 points. Clemson, catching ten and a half at LSU, lost Lane Kiffin's debut by 41. The Baylor–Auburn over needed 59 points; the teams produced 33.",
+              "Two picks survived: UCLA laying a point and a half at California, which won by three touchdowns, and the Louisville–Ole Miss over, which cashed on a 48-yard field goal as time expired. Graded at one unit per play, the week closed at minus six and two-tenths units — with one bet, Florida State catching three, still alive on Monday night."
             ],
-            "figures": [
-              {
-                "type": "line",
-                "label": "The week, in units",
-                "points": [
-                  { "l": "Open", "v": 0, "d": "even" },
-                  { "l": "Georgia Tech −6.5, lost", "v": -1 },
-                  { "l": "Stanford +24.5, lost", "v": -2 },
-                  { "l": "Texas State +29.5, lost", "v": -3 },
-                  { "l": "Baylor/Auburn o58.5, lost", "v": -4 },
-                  { "l": "Furman +46.5, lost", "v": -5 },
-                  { "l": "N. Illinois +31.5, lost", "v": -6 },
-                  { "l": "Clemson +10.5, lost", "v": -7 },
-                  { "l": "UCLA −1.5, won", "v": -6.09 },
-                  { "l": "Wisconsin +20.5, lost", "v": -7.09 },
-                  { "l": "Louisville/Ole Miss o55.5, won", "v": -6.18, "d": "−6.2" }
-                ],
-                "baseline": { "v": 0, "label": "Even" },
-                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
+            "figure": {
+              "type": "line",
+              "label": "The week, in units",
+              "points": [
+                {
+                  "l": "Open",
+                  "v": 0,
+                  "d": "even"
+                },
+                {
+                  "l": "Georgia Tech −6.5, lost",
+                  "v": -1
+                },
+                {
+                  "l": "Stanford +24.5, lost",
+                  "v": -2
+                },
+                {
+                  "l": "Texas State +29.5, lost",
+                  "v": -3
+                },
+                {
+                  "l": "Baylor/Auburn o58.5, lost",
+                  "v": -4
+                },
+                {
+                  "l": "Furman +46.5, lost",
+                  "v": -5
+                },
+                {
+                  "l": "N. Illinois +31.5, lost",
+                  "v": -6
+                },
+                {
+                  "l": "Clemson +10.5, lost",
+                  "v": -7
+                },
+                {
+                  "l": "UCLA −1.5, won",
+                  "v": -6.09
+                },
+                {
+                  "l": "Wisconsin +20.5, lost",
+                  "v": -7.09
+                },
+                {
+                  "l": "Louisville/Ole Miss o55.5, won",
+                  "v": -6.18,
+                  "d": "−6.2"
+                }
+              ],
+              "baseline": {
+                "v": 0,
+                "label": "Even"
               },
-              {
-                "type": "bars",
-                "label": "And it was not the first",
-                "rows": [
-                  { "l": "2024", "v": 0.451, "note": "74–90, his own accounting" },
-                  { "l": "2026", "v": 0.2, "note": "2–8, week one" }
-                ],
-                "max": 0.7,
-                "ruleAt": 0.5,
-                "caption": "Win percentage on publicly posted picks. The rule marks .500 — break-even before the price."
-              }
-            ]
+              "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
+            }
           },
           {
             "title": "The Card",
             "headline": "Eleven Picks, Two Winners",
             "sub": "Week one, 2026 · As published before kickoff",
             "paras": [
-              "The full card, graded at the numbers he posted. Read it top to bottom and the shape of the week is unmistakable: seven straight losses before the first winner, and a card built almost entirely on long underdogs and high totals — the kinds of bets that look brave on Thursday and expensive by Saturday night."
+              "The card, as published in his Week 1 column and graded at the posted numbers. Read it top to bottom and the shape of the week is unmistakable: seven straight losses before the first winner, and a slate built on long underdogs and high totals — bets that look brave on Thursday and expensive by Saturday night.",
+              "The cruelty is in the margins. Georgia Tech, laying six and a half against Colorado, lost outright — a touchdown pass with forty-two seconds left, then a blocked field goal on the final play. And Furman, catching forty-six and a half at Tennessee, lost 56–9: a forty-seven-point margin. The cover died by half a point. It was the closest he came to a third winner all week."
             ],
             "figure": {
               "type": "table",
               "label": "The official card",
               "rows": [
-                { "sel": "Georgia Tech", "num": "−6.5", "res": "Lost" },
-                { "sel": "Stanford", "num": "+24.5", "res": "Lost" },
-                { "sel": "Texas State", "num": "+29.5", "res": "Lost" },
-                { "sel": "Baylor / Auburn", "num": "over 58.5", "res": "Lost" },
-                { "sel": "Furman", "num": "+46.5", "res": "Lost" },
-                { "sel": "Northern Illinois", "num": "+31.5", "res": "Lost" },
-                { "sel": "Clemson", "num": "+10.5", "res": "Lost" },
-                { "sel": "UCLA", "num": "−1.5", "res": "Won" },
-                { "sel": "Wisconsin", "num": "+20.5", "res": "Lost" },
-                { "sel": "Louisville / Ole Miss", "num": "over 55.5", "res": "Won" },
-                { "sel": "Florida State", "num": "+3", "res": "Pending" }
+                {
+                  "sel": "Georgia Tech",
+                  "num": "−6.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Stanford",
+                  "num": "+24.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Texas State",
+                  "num": "+29.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Baylor / Auburn",
+                  "num": "over 58.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Furman",
+                  "num": "+46.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Northern Illinois",
+                  "num": "+31.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Clemson",
+                  "num": "+10.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "UCLA",
+                  "num": "−1.5",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Wisconsin",
+                  "num": "+20.5",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Louisville / Ole Miss",
+                  "num": "over 55.5",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Florida State",
+                  "num": "+3",
+                  "res": "Pending"
+                }
               ],
               "record": "2–8",
               "recordLabel": "Graded",
               "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
-              "note": "As published on his public card before kickoff, graded at the posted numbers."
+              "note": "He lost Furman +46.5 by a single half point — Tennessee won by forty-seven. It was the closest he came to a third winner all week."
             }
+          },
+          {
+            "title": "The Body of Work",
+            "headline": "It Was Not the First",
+            "sub": "Fifteen seasons of receipts",
+            "paras": [
+              "The record has a literature. In 2017, the Ohio State site Eleven Warriors spent a full season betting ten dollars against every pick he published and finished 83–67 on the fade — a fourteen percent profit, chronicled week by week and toasted by Deadspin. In 2024 and again in 2025, the Minnesota blog The Daily Gopher ran the same experiment, finished 96–80 and then 94–87 betting the opposite, and donated the winnings to charity. Three season-long fades, three profits.",
+              "His own columns tell the same story in the first person. The 2024 season, by his own running count, went from 'a disastrous first two months' at 54–71, to 74–90 at Thanksgiving, to 92–111 by the night of the title game. Last season he stood 82–82 in late November before a three-and-nine week erased the year's work. And in 2019, on Fox's own daily gambling show, he opened with thirteen consecutive losing picks.",
+              "He knows. 'My college football picks have been such a disaster this year, you may be better off fading all my picks this week,' he posted in November 2024 — and three weeks later captioned a card, 'So feel free to take the opposite.' At OutKick, his betting show with the Vegas handicapper Kelly Stewart was titled, with no apparent irony, The Fade.",
+              "Against all of this stands his own assessment: a claim, made on air, of winning sixty percent of his college bets across a three-year stretch. The handicapper-watchdog site CapperReviews noted that no documented professional has held sixty percent over any three-year period, and publicly challenged him to produce the ledger. The ledger has not appeared."
+            ],
+            "figure": {
+              "type": "bars",
+              "label": "And it was not the first",
+              "rows": [
+                {
+                  "l": "2017",
+                  "v": 0.447,
+                  "note": "67–83 · via the season-long fade ledger"
+                },
+                {
+                  "l": "2024",
+                  "v": 0.453,
+                  "note": "92–111 · his own count"
+                },
+                {
+                  "l": "2025",
+                  "v": 0.5,
+                  "note": "82–82 · through Week 13"
+                },
+                {
+                  "l": "2026",
+                  "v": 0.2,
+                  "note": "2–8 · Week 1"
+                }
+              ],
+              "max": 0.7,
+              "ruleAt": 0.5,
+              "caption": "Win percentage on publicly posted college football picks. 2017 inverted from Eleven Warriors' fade record; 2024–25 as stated in Travis's own columns. The rule marks .500 — break-even before the price."
+            }
+          },
+          {
+            "title": "The House",
+            "headline": "The House Publishes His Picks",
+            "sub": "The business of being wrong",
+            "paras": [
+              "None of this has been bad for business. Travis left OutKick in June and launched a new media company, Sport & State, in August — with Hard Rock Bet as an equity investor and its exclusive sportsbook partner. His Week 1 card ran on the sportsbook's own site, under the headline '11 Winners Starting Thursday Night.'",
+              "Sit with the mechanics of that: a sportsbook part-owns the company whose founder publishes picks, and hosts the picks itself. Whatever the record does, the action arrives. There has never been a cleaner illustration of the first rule of betting media — the picks are not the product. The handle is.",
+              "Which is the argument for keeping the receipts somewhere the house doesn't own."
+            ]
           },
           {
             "title": "The Call",
             "headline": "One Bet Left",
             "sub": "Monday night decides the volume",
             "paras": [
-              "The card is not finished. The last entry — Florida State, catching three — kicks off Monday night, the only pick still live and the only chance to close the week above two wins. A fade of a man having this kind of week is not analysis; it is arithmetic. Then again, so was Furman plus forty-six and a half.",
-              "That strategy has a name, and it is the reason this desk exists. When the next card drops, it will be in Fade the moment it is posted — with a Tail button for the brave and a Fade button for the rest of us."
+              "The card is not finished. Florida State, catching three against SMU, kicks off Monday night in Tallahassee — the only pick still live and the only chance to close the week above two wins. The market, for what it is worth, has drifted toward SMU by two and a half.",
+              "A fade of a man having this kind of week is not analysis; it is arithmetic. Then again, so was Furman plus forty-six and a half. That tension has a name, and it is the reason this desk exists. The Week 2 card is already up — he likes Texas over Ohio State, Oklahoma over Michigan, Clemson big over Troy — and when the next one drops it will be in Fade the moment it is posted, with a Tail button for the brave and a Fade button for the rest of us."
             ]
           }
         ],
@@ -308,17 +534,17 @@
           "kicker": "One pick remains",
           "title": "Florida State",
           "big": "+3",
-          "note": "He is 2–8 on the week and down 6.2 units. Monday night is the last entry on the card — the only one still live, and the only chance to close Volume One above water.",
+          "note": "He is 2–8 on the week and down 6.2 units. Monday night in Tallahassee is the last entry on the card — the only one still live, and the only chance to close Volume One above water.",
           "tag": "Tail it or fade it",
           "end": "End of Volume One",
           "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000"
         }
       },
       "body": [
-        "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite.",
-        "Week 1 of 2026: eleven picks went up, eight lost. Georgia Tech −6.5, Stanford +24.5, Texas State +29.5, the Baylor–Auburn over, Furman +46.5, Northern Illinois +31.5, Clemson +10.5, Wisconsin +20.5 — all missed. UCLA −1.5 and the Louisville–Ole Miss over survived. At one unit per play, the week closed 6.2 units underwater.",
-        "The card is not finished. Florida State, catching three, kicks off Monday night — the only pick still live.",
-        "None of this is new. @ExposingClay has documented the run for years; by Travis's own accounting, his 2024 season finished 74–90. There are bad weeks, and then there are bodies of work."
+        "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. This is his fifteenth consecutive season of public picks. Week 1 of 2026: eleven picks, eight losses, a card 6.2 units underwater with only Florida State +3 still alive Monday night.",
+        "The margins were not close. His four long underdogs lost by 39, 52, 47 and 40 points. Furman +46.5 lost by exactly forty-seven — a cover dead by half a point. Georgia Tech, laying 6.5, lost outright on a touchdown with 42 seconds left and a blocked field goal at the gun.",
+        "None of this is new. By his own running count, 2024 went from 54–71 to 92–111 by title night. In 2017 and again in 2024 and 2025, fan blogs spent entire seasons mechanically betting the opposite of every pick he posted. All three fades finished profitable.",
+        "He said it himself, in November 2024: 'My college football picks have been such a disaster this year, you may be better off fading all my picks this week. But here they are.'"
       ],
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000",
@@ -326,17 +552,50 @@
         "record": "Week 1: 2–8",
         "slipTitle": "Clay's Week 1 card",
         "picks": [
-          { "t": "Georgia Tech -6.5", "r": "L" },
-          { "t": "Stanford +24.5", "r": "L" },
-          { "t": "Texas State +29.5", "r": "L" },
-          { "t": "Baylor/Auburn O58.5", "r": "L" },
-          { "t": "Furman +46.5", "r": "L" },
-          { "t": "N. Illinois +31.5", "r": "L" },
-          { "t": "Clemson +10.5", "r": "L" },
-          { "t": "UCLA -1.5", "r": "W" },
-          { "t": "Wisconsin +20.5", "r": "L" },
-          { "t": "Lou/Ole Miss O55.5", "r": "W" },
-          { "t": "Florida State +3", "r": "T" }
+          {
+            "t": "Georgia Tech -6.5",
+            "r": "L"
+          },
+          {
+            "t": "Stanford +24.5",
+            "r": "L"
+          },
+          {
+            "t": "Texas State +29.5",
+            "r": "L"
+          },
+          {
+            "t": "Baylor/Auburn O58.5",
+            "r": "L"
+          },
+          {
+            "t": "Furman +46.5",
+            "r": "L"
+          },
+          {
+            "t": "N. Illinois +31.5",
+            "r": "L"
+          },
+          {
+            "t": "Clemson +10.5",
+            "r": "L"
+          },
+          {
+            "t": "UCLA -1.5",
+            "r": "W"
+          },
+          {
+            "t": "Wisconsin +20.5",
+            "r": "L"
+          },
+          {
+            "t": "Lou/Ole Miss O55.5",
+            "r": "W"
+          },
+          {
+            "t": "Florida State +3",
+            "r": "T"
+          }
         ],
         "tonight": "He's on Florida State +3"
       }
@@ -359,8 +618,15 @@
         "coverKicker": "The Fade Index",
         "coverLine": "The most public bettor alive.",
         "coverSub": "Eight-figure stakes. Posted slips. One reported winner.",
-        "coverStat": { "label": "Reported slips", "value": "1–6", "sub": "The graded record" },
-        "quote": { "text": "They won the Cup. The bet lost anyway.", "attr": "Argentina, in regulation — the curse at work" },
+        "coverStat": {
+          "label": "Reported slips",
+          "value": "1–6",
+          "sub": "The graded record"
+        },
+        "quote": {
+          "text": "They won the Cup. The bet lost anyway.",
+          "attr": "Argentina, in regulation — the curse at work"
+        },
         "sections": [
           {
             "title": "The Curse",
@@ -375,13 +641,41 @@
               "type": "table",
               "label": "The exhibits · reported slips",
               "rows": [
-                { "sel": "Walks McGregor out at UFC 229", "num": "Khabib wins", "res": "Lost" },
-                { "sel": "Argentina in regulation, World Cup final", "num": "$1,000,000", "res": "Lost" },
-                { "sel": "Adesanya at UFC 281", "num": "seven figures", "res": "Lost" },
-                { "sel": "Jake Paul vs. Tommy Fury", "num": "$400,000", "res": "Lost" },
-                { "sel": "Chiefs, Super Bowl LVII", "num": "≈$700,000", "res": "Won" },
-                { "sel": "Adesanya at UFC 305", "num": "$450,000", "res": "Lost" },
-                { "sel": "Tyson vs. Jake Paul", "num": "$355,000", "res": "Lost" }
+                {
+                  "sel": "Walks McGregor out at UFC 229",
+                  "num": "Khabib wins",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Argentina in regulation, World Cup final",
+                  "num": "$1,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Adesanya at UFC 281",
+                  "num": "seven figures",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Jake Paul vs. Tommy Fury",
+                  "num": "$400,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Chiefs, Super Bowl LVII",
+                  "num": "≈$700,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Adesanya at UFC 305",
+                  "num": "$450,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Tyson vs. Jake Paul",
+                  "num": "$355,000",
+                  "res": "Lost"
+                }
               ],
               "record": "1–6",
               "recordLabel": "As reported",
@@ -415,13 +709,34 @@
         "slipTitle": "The record · reported slips",
         "record": "Verdict: Fade",
         "picks": [
-          { "t": "UFC 229: walks McGregor out. Khabib wins", "r": "L" },
-          { "t": "$1M — Argentina in regulation, WC final", "r": "L" },
-          { "t": "Seven figures — Adesanya at UFC 281", "r": "L" },
-          { "t": "$400K — Jake Paul vs Tommy Fury", "r": "L" },
-          { "t": "~$700K — Chiefs, Super Bowl LVII", "r": "W" },
-          { "t": "$450K — Adesanya at UFC 305", "r": "L" },
-          { "t": "$355K — Tyson vs Jake Paul", "r": "L" }
+          {
+            "t": "UFC 229: walks McGregor out. Khabib wins",
+            "r": "L"
+          },
+          {
+            "t": "$1M — Argentina in regulation, WC final",
+            "r": "L"
+          },
+          {
+            "t": "Seven figures — Adesanya at UFC 281",
+            "r": "L"
+          },
+          {
+            "t": "$400K — Jake Paul vs Tommy Fury",
+            "r": "L"
+          },
+          {
+            "t": "~$700K — Chiefs, Super Bowl LVII",
+            "r": "W"
+          },
+          {
+            "t": "$450K — Adesanya at UFC 305",
+            "r": "L"
+          },
+          {
+            "t": "$355K — Tyson vs Jake Paul",
+            "r": "L"
+          }
         ]
       },
       "body": [
@@ -449,8 +764,15 @@
         "coverKicker": "The Fade Index",
         "coverLine": "Loudly, publicly, in seven figures.",
         "coverSub": "Thirty reported wagers. Nine winners. A profit anyway.",
-        "coverStat": { "label": "The paradox", "value": "+$2.7M", "sub": "At a 30% hit rate" },
-        "quote": { "text": "Fade the volume. Respect the futures.", "attr": "The Portnoy paradox, resolved" },
+        "coverStat": {
+          "label": "The paradox",
+          "value": "+$2.7M",
+          "sub": "At a 30% hit rate"
+        },
+        "quote": {
+          "text": "Fade the volume. Respect the futures.",
+          "attr": "The Portnoy paradox, resolved"
+        },
         "sections": [
           {
             "title": "The Record",
@@ -464,13 +786,41 @@
               "type": "table",
               "label": "The exhibits · reported wagers",
               "rows": [
-                { "sel": "Virginia Tech +220 vs. Miami", "num": "$500,000", "res": "Lost" },
-                { "sel": "Michigan, Rose Bowl CFP semifinal", "num": "$1,000,000 · won $847,000", "res": "Won" },
-                { "sel": "UConn +360, national championship", "num": "$600,000 · won $2,160,000", "res": "Won" },
-                { "sel": "Scheffler +450, the Masters", "num": "$300,000 · won $1,350,000", "res": "Won" },
-                { "sel": "Bills to win Super Bowl LIX", "num": "$1,000,000", "res": "Lost" },
-                { "sel": "Caitlin Clark triple-double +1300", "num": "$25,000 · won $325,000", "res": "Won" },
-                { "sel": "Side bet with Urban Meyer on Michigan", "num": "$1,000", "res": "Lost" }
+                {
+                  "sel": "Virginia Tech +220 vs. Miami",
+                  "num": "$500,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Michigan, Rose Bowl CFP semifinal",
+                  "num": "$1,000,000 · won $847,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "UConn +360, national championship",
+                  "num": "$600,000 · won $2,160,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Scheffler +450, the Masters",
+                  "num": "$300,000 · won $1,350,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Bills to win Super Bowl LIX",
+                  "num": "$1,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Caitlin Clark triple-double +1300",
+                  "num": "$25,000 · won $325,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Side bet with Urban Meyer on Michigan",
+                  "num": "$1,000",
+                  "res": "Lost"
+                }
               ],
               "record": "9–21",
               "recordLabel": "Thirty wagers",
@@ -504,13 +854,34 @@
         "slipTitle": "The record · 30 reported wagers",
         "record": "9–21 · +$2.7M anyway",
         "picks": [
-          { "t": "$500K — Virginia Tech +220 vs Miami", "r": "L" },
-          { "t": "$1M — Michigan, Rose Bowl CFP semi (+$847K)", "r": "W" },
-          { "t": "$600K — UConn +360 to win the natty (+$2.16M)", "r": "W" },
-          { "t": "$300K — Scheffler +450, the Masters (+$1.35M)", "r": "W" },
-          { "t": "$1M — Bills to win Super Bowl LIX", "r": "L" },
-          { "t": "$25K — Caitlin Clark triple-double +1300 (+$325K)", "r": "W" },
-          { "t": "$1,000 side bet with Urban Meyer on Michigan", "r": "L" }
+          {
+            "t": "$500K — Virginia Tech +220 vs Miami",
+            "r": "L"
+          },
+          {
+            "t": "$1M — Michigan, Rose Bowl CFP semi (+$847K)",
+            "r": "W"
+          },
+          {
+            "t": "$600K — UConn +360 to win the natty (+$2.16M)",
+            "r": "W"
+          },
+          {
+            "t": "$300K — Scheffler +450, the Masters (+$1.35M)",
+            "r": "W"
+          },
+          {
+            "t": "$1M — Bills to win Super Bowl LIX",
+            "r": "L"
+          },
+          {
+            "t": "$25K — Caitlin Clark triple-double +1300 (+$325K)",
+            "r": "W"
+          },
+          {
+            "t": "$1,000 side bet with Urban Meyer on Michigan",
+            "r": "L"
+          }
         ]
       },
       "body": [
@@ -537,8 +908,15 @@
         "coverKicker": "The Fade Index",
         "coverLine": "The record is ugly. The structure wins.",
         "coverSub": "Eighty-six million in stakes. Three winners. A profit.",
-        "coverStat": { "label": "The result", "value": "+$23.5M", "sub": "On a 3–17 record" },
-        "quote": { "text": "When Mack bets, the whole city of Houston sweats with him.", "attr": "The Fade Desk" },
+        "coverStat": {
+          "label": "The result",
+          "value": "+$23.5M",
+          "sub": "On a 3–17 record"
+        },
+        "quote": {
+          "text": "When Mack bets, the whole city of Houston sweats with him.",
+          "attr": "The Fade Desk"
+        },
         "sections": [
           {
             "title": "The Hedge",
@@ -552,13 +930,41 @@
               "type": "table",
               "label": "The exhibits · reported wagers",
               "rows": [
-                { "sel": "Astros, World Series 2019", "num": "$13,000,000", "res": "Lost" },
-                { "sel": "Buccaneers +3.5, Super Bowl LV", "num": "$3,460,000 · won $2,720,000", "res": "Won" },
-                { "sel": "Bengals moneyline, Super Bowl LVI", "num": "$9,500,000", "res": "Lost" },
-                { "sel": "Kansas, NCAA title", "num": "$8,800,000 · won $12,200,000", "res": "Won" },
-                { "sel": "Astros, World Series 2022", "num": "$10,000,000 · won $72,600,000", "res": "Won" },
-                { "sel": "Astros futures, 2023", "num": "$8,000,000", "res": "Lost" },
-                { "sel": "Patriots, Super Bowl LX", "num": "$3,300,000", "res": "Lost" }
+                {
+                  "sel": "Astros, World Series 2019",
+                  "num": "$13,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Buccaneers +3.5, Super Bowl LV",
+                  "num": "$3,460,000 · won $2,720,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Bengals moneyline, Super Bowl LVI",
+                  "num": "$9,500,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Kansas, NCAA title",
+                  "num": "$8,800,000 · won $12,200,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Astros, World Series 2022",
+                  "num": "$10,000,000 · won $72,600,000",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Astros futures, 2023",
+                  "num": "$8,000,000",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Patriots, Super Bowl LX",
+                  "num": "$3,300,000",
+                  "res": "Lost"
+                }
               ],
               "record": "3–17",
               "recordLabel": "$86M staked",
@@ -593,13 +999,34 @@
         "slipTitle": "The record · $86M reported",
         "record": "3–17 · up $23.5M anyway",
         "picks": [
-          { "t": "$13M — Astros WS 2019. Nats in seven", "r": "L" },
-          { "t": "$3.46M — Bucs +3.5, Super Bowl LV (+$2.72M)", "r": "W" },
-          { "t": "$9.5M — Bengals ML, Super Bowl LVI", "r": "L" },
-          { "t": "$8.8M — Kansas, NCAA title (+$12.2M)", "r": "W" },
-          { "t": "$10M — Astros WS 2022 (+$72.6M, U.S. record)", "r": "W" },
-          { "t": "$8M — Astros futures 2023. ALCS exit", "r": "L" },
-          { "t": "$3.3M — Patriots, Super Bowl LX", "r": "L" }
+          {
+            "t": "$13M — Astros WS 2019. Nats in seven",
+            "r": "L"
+          },
+          {
+            "t": "$3.46M — Bucs +3.5, Super Bowl LV (+$2.72M)",
+            "r": "W"
+          },
+          {
+            "t": "$9.5M — Bengals ML, Super Bowl LVI",
+            "r": "L"
+          },
+          {
+            "t": "$8.8M — Kansas, NCAA title (+$12.2M)",
+            "r": "W"
+          },
+          {
+            "t": "$10M — Astros WS 2022 (+$72.6M, U.S. record)",
+            "r": "W"
+          },
+          {
+            "t": "$8M — Astros futures 2023. ALCS exit",
+            "r": "L"
+          },
+          {
+            "t": "$3.3M — Patriots, Super Bowl LX",
+            "r": "L"
+          }
         ]
       },
       "body": [
@@ -627,8 +1054,15 @@
         "coverKicker": "The Fade Index",
         "coverLine": "He turned getting faded into a career.",
         "coverSub": "The first bettor to see a losing streak and build a business on it.",
-        "coverStat": { "label": "The audience", "value": "260K+", "sub": "Watching every slip" },
-        "quote": { "text": "Every fade cashes twice — once at the book, once in the culture.", "attr": "The BookIt model, in one sentence" },
+        "coverStat": {
+          "label": "The audience",
+          "value": "260K+",
+          "sub": "Watching every slip"
+        },
+        "quote": {
+          "text": "Every fade cashes twice — once at the book, once in the culture.",
+          "attr": "The BookIt model, in one sentence"
+        },
         "sections": [
           {
             "title": "The Fade God",
@@ -643,11 +1077,31 @@
               "type": "table",
               "label": "The file",
               "rows": [
-                { "sel": "Founds BookIt Sports", "num": "2020", "res": "Pending" },
-                { "sel": "The losing streak goes viral", "num": "2021", "res": "Lost" },
-                { "sel": "The community starts betting the opposite", "num": "", "res": "Won" },
-                { "sel": "Surgical streams: the parlay built live on air", "num": "", "res": "Won" },
-                { "sel": "Today — an audience on every slip", "num": "260,000+", "res": "Pending" }
+                {
+                  "sel": "Founds BookIt Sports",
+                  "num": "2020",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "The losing streak goes viral",
+                  "num": "2021",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "The community starts betting the opposite",
+                  "num": "",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Surgical streams: the parlay built live on air",
+                  "num": "",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Today — an audience on every slip",
+                  "num": "260,000+",
+                  "res": "Pending"
+                }
               ],
               "record": "∞",
               "recordLabel": "Fades generated",
@@ -672,11 +1126,26 @@
         "slipTitle": "The file",
         "record": "Every fade cashes twice",
         "picks": [
-          { "t": "2020 — founds BookIt Sports", "r": "P" },
-          { "t": "2021 — the losing streak goes viral", "r": "L" },
-          { "t": "The community starts betting the opposite", "r": "P" },
-          { "t": "Surgical streams: the parlay built live on air", "r": "P" },
-          { "t": "Today — 260K+ watching every slip", "r": "P" }
+          {
+            "t": "2020 — founds BookIt Sports",
+            "r": "P"
+          },
+          {
+            "t": "2021 — the losing streak goes viral",
+            "r": "L"
+          },
+          {
+            "t": "The community starts betting the opposite",
+            "r": "P"
+          },
+          {
+            "t": "Surgical streams: the parlay built live on air",
+            "r": "P"
+          },
+          {
+            "t": "Today — 260K+ watching every slip",
+            "r": "P"
+          }
         ]
       },
       "body": [
