@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<style>
+@font-face { font-family:'Anton'; src:url('anton-latin-400-normal.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'IBM Plex Mono'; src:url('ibm-plex-mono-latin-400-normal.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'IBM Plex Mono'; src:url('ibm-plex-mono-latin-600-normal.woff2') format('woff2'); font-weight:600; }
+@font-face { font-family:'IBM Plex Mono'; src:url('ibm-plex-mono-latin-700-normal.woff2') format('woff2'); font-weight:700; }
+</style>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1600px; height:900px; background:#F4F2EA; font-family:'IBM Plex Mono',monospace; color:#141412; overflow:hidden; position:relative; }
+body::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(20,20,18,0.025) 0 1px, transparent 1px 4px); }
+.rule { position:absolute; left:70px; right:70px; }
+.rule.top { top:52px; border-top:3px solid #141412; }
+.rule.top2 { top:60px; border-top:1px solid #141412; }
+.mast { position:absolute; top:74px; left:70px; font-size:20px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#6E6B60; }
+.mast b { color:#141412; }
+.date { position:absolute; top:74px; right:70px; font-size:18px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#6E6B60; }
+
+.left { position:absolute; top:140px; left:70px; width:660px; }
+.kick { font-size:22px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#D92D20; margin-bottom:18px; }
+h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:97px; line-height:0.97; letter-spacing:0.01em; max-width:640px; }
+h1 .red { color:#D92D20; }
+.sub { margin-top:22px; font-size:22px; line-height:1.5; color:#6E6B60; max-width:620px; }
+.sub b { color:#141412; }
+.rec { margin-top:24px; display:inline-block; border:3px solid #141412; padding:14px 26px; font-family:'Anton',sans-serif; font-size:38px; text-transform:uppercase; background:#FBFAF5; box-shadow:6px 6px 0 rgba(20,20,18,0.25); }
+.rec .l { color:#D92D20; }
+
+.slip { position:absolute; top:105px; right:70px; width:445px; background:#FBFAF5; border:3px solid #141412; border-radius:8px; transform:rotate(-2deg); box-shadow:10px 12px 0 rgba(20,20,18,0.22); padding:26px 30px 30px; }
+.slip .sh { font-size:19px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; border-bottom:2px dashed rgba(20,20,18,0.3); padding-bottom:12px; margin-bottom:10px; display:flex; justify-content:space-between; }
+.slip .sh span { color:#6E6B60; }
+.pick { display:flex; align-items:center; gap:12px; font-size:21px; font-weight:600; padding:7.5px 0; border-bottom:1px dashed rgba(20,20,18,0.15); }
+.pick .m { font-weight:700; width:26px; text-align:center; }
+.pick .m.x { color:#D92D20; } .pick .m.w { color:#2E9E44; } .pick .m.p { color:#6E6B60; font-size:16px; }
+.stamp { position:absolute; top:290px; right:95px; transform:rotate(-14deg); font-family:'Anton',sans-serif; font-size:130px; color:rgba(217,45,32,0.82); border:10px solid rgba(217,45,32,0.82); border-radius:14px; padding:0 34px; letter-spacing:0.05em; text-transform:uppercase; mix-blend-mode:multiply; }
+
+.photo { position:absolute; top:596px; right:445px; width:280px; transform:rotate(2.5deg); background:#fff; border:3px solid #141412; padding:12px 12px 16px; box-shadow:8px 8px 0 rgba(20,20,18,0.22); }
+.photo .ph { width:100%; height:190px; background:#DDD8C8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; letter-spacing:0.2em; color:#6E6B60; text-transform:uppercase; overflow:hidden; }
+.photo .ph img { width:100%; height:100%; object-fit:cover; }
+.photo .cap { margin-top:10px; font-size:14.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; text-align:center; }
+.photo .cap span { color:#D92D20; }
+
+.foot { position:absolute; bottom:44px; left:70px; right:70px; border-top:3px solid #141412; padding-top:14px; display:flex; justify-content:space-between; font-size:17px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#6E6B60; }
+.foot b { color:#141412; }
+</style></head>
+<body>
+  <div class="rule top"></div><div class="rule top2"></div>
+  <div class="mast"><b>FADE MEDIA</b> &nbsp;·&nbsp; FADE WATCH</div>
+  <div class="date">CFB · WEEK 1 · 2026</div>
+
+  <div class="left">
+    <div class="kick">The most fadeable card in sports media</div>
+    <h1>College football's biggest <span class="red">loser.</span></h1>
+    <p class="sub"><b>Clay Travis</b> posted his Week 1 card for the world to see. The fade army said thank you.</p>
+    <div class="rec">WEEK 1: <span class="l">2&ndash;8</span> &middot; 1 PENDING</div>
+  </div>
+
+  <div class="slip">
+    <div class="sh">CLAY'S WEEK 1 CARD <span>OFFICIAL SLIP</span></div>
+    <div class="pick"><span class="m x">✗</span> Georgia Tech -6.5</div>
+    <div class="pick"><span class="m x">✗</span> Stanford +24.5</div>
+    <div class="pick"><span class="m x">✗</span> Texas State +29.5</div>
+    <div class="pick"><span class="m x">✗</span> Baylor/Auburn O58.5</div>
+    <div class="pick"><span class="m x">✗</span> Furman +46.5</div>
+    <div class="pick"><span class="m x">✗</span> N. Illinois +31.5</div>
+    <div class="pick"><span class="m x">✗</span> Clemson +10</div>
+    <div class="pick"><span class="m w">✓</span> UCLA -1.5</div>
+    <div class="pick"><span class="m x">✗</span> Wisconsin +20.5</div>
+    <div class="pick"><span class="m w">✓</span> Lou/Ole Miss O55.5</div>
+    <div class="pick"><span class="m p">&bull;</span> Florida State +3 <span style="margin-left:auto; font-size:15px; color:#6E6B60;">PENDING</span></div>
+  </div>
+  <div class="stamp">FADE</div>
+
+  <div class="photo">
+    <div class="ph" id="phSlot">PHOTO SLOT</div>
+    <div class="cap">CLAY TRAVIS · <span>FADE HIM</span></div>
+  </div>
+
+  <div class="foot">
+    <span><b>FADE.BET/FADE-MEDIA</b> · THE PRE-BET DESK</span>
+    <span>TAIL OR FADE IT IN THE APP</span>
+  </div>
+</body></html>
