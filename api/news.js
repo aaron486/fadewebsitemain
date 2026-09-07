@@ -87,7 +87,7 @@ export default async function handler(req, res) {
     });
     const settled = await Promise.allSettled([...espn, ...rss]);
     const seen = new Set();
-    const articles = settled
+    const all = settled
       .filter((r) => r.status === "fulfilled")
       .flatMap((r) => r.value)
       .filter((a) => {
@@ -95,8 +95,13 @@ export default async function handler(req, res) {
         seen.add(a.title);
         return true;
       })
-      .sort((a, b) => new Date(b.published) - new Date(a.published))
-      .slice(0, 60);
+      .sort((a, b) => new Date(b.published) - new Date(a.published));
+    // League wires post far more often than the betting outlets — cap each
+    // bucket separately so betting stories never get pushed out of the feed.
+    const betting = all.filter((a) => a.league === "BETTING").slice(0, 28);
+    const leagues = all.filter((a) => a.league !== "BETTING").slice(0, 52);
+    const articles = betting.concat(leagues)
+      .sort((a, b) => new Date(b.published) - new Date(a.published));
     if (!articles.length) {
       res.status(502).json({ error: "news upstream failed" });
       return;

@@ -1021,7 +1021,17 @@ a { color:inherit; text-decoration:none; }
       used = used.concat(side);
       var rest = articles.filter(function (a) { return used.indexOf(a) === -1; });
       var gridItems = rest.slice(0, 8);
-      var more = rest.slice(8, 22);
+      // Keep the grid from being wall-to-wall league wire: guarantee up to
+      // three betting-outlet stories a slot, swapping out the oldest wire items.
+      rest.filter(function (a) { return a.league === 'BETTING'; }).slice(0, 3).forEach(function (b) {
+        if (gridItems.indexOf(b) !== -1) return;
+        for (var j = gridItems.length - 1; j >= 0; j--) {
+          if (gridItems[j].league !== 'BETTING') { gridItems.splice(j, 1); break; }
+        }
+        gridItems.push(b);
+      });
+      gridItems.sort(function (a, b) { return new Date(b.published) - new Date(a.published); });
+      var more = rest.filter(function (a) { return gridItems.indexOf(a) === -1; }).slice(0, 14);
       nfLead.innerHTML =
         (lead.fadeCard ? fadeCardHero(lead)
           : lead.img ? link(lead, '<img class="photo" src="' + esc(lead.img) + '" alt="" />') : '') +
