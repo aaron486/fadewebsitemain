@@ -117,7 +117,7 @@ a { color:inherit; text-decoration:none; }
 .story.promo { background:var(--carbon); color:var(--paper); border-radius:6px; margin:0.8rem; padding:1.3rem 1.3rem 1.5rem; display:flex; flex-direction:column; border-left:none !important; border-bottom:none; }
 .story.promo .pk { font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(244,242,234,0.6); margin-bottom:0.6rem; }
 .story.promo h3 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:1.35rem; line-height:1.08; margin-bottom:0.8rem; }
-.story.promo img { width:100%; max-width:190px; margin:0 auto 0.9rem; border-radius:12px; border:1px solid rgba(244,242,234,0.25); display:block; }
+.story.promo img, .story.promo video { width:100%; max-width:190px; margin:0 auto 0.9rem; border-radius:12px; border:1px solid rgba(244,242,234,0.25); display:block; }
 .story.promo .go { margin-top:auto; text-align:center; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--carbon); background:var(--paper); border-radius:4px; padding:0.65rem 1rem; }
 .story.promo .go:hover { background:#fff; }
 
@@ -951,7 +951,7 @@ a { color:inherit; text-decoration:none; }
     return '<article class="story promo">' +
       '<div class="pk">Fade &middot; the app</div>' +
       '<h3>Everything betting. One app.</h3>' +
-      '<img src="assets/dk-welcome.jpg" alt="The Fade app" loading="lazy" />' +
+      '<video src="assets/demo-feed.mp4" autoplay loop muted playsinline preload="metadata"></video>' +
       '<a class="go" href="' + APP + '" target="_blank" rel="noopener">Get Fade &rarr;</a>' +
       '</article>';
   }

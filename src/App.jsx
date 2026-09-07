@@ -245,7 +245,7 @@ const FeatureCarousel = () => {
     <section id="features" className="carousel-section" style={{background:"#050507"}} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
 
       <div className="features-intro">
-        <h2 className="features-intro-title">One App.<br />Everything Betting.</h2>
+        <h2 className="features-intro-title">Everything Betting.<br />One App.</h2>
       </div>
 
       {/* Slide Content */}
