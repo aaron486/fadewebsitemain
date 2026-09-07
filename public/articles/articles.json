@@ -184,6 +184,214 @@
         "Wire headlines from around sports run alongside our own reporting, always credited and linked to the source. The original work \u2014 case files, verified bettor stories, and desk reports \u2014 lives here and in the app.",
         "Want it on your phone? The full desk, with alerts when your friends and the biggest names in sports place a bet, is live in the Fade app."
       ]
+    },
+    {
+      "slug": "case-001-drake-curse",
+      "league": "CASES",
+      "title": "Case File No. 001 \u2014 The Drake Curse",
+      "dek": "The biggest artist in the world is also the most public bettor alive \u2014 eight-figure stakes, posted slips, and a curse so consistent it has its own website.",
+      "author": "Fade Cases",
+      "published": "2026-09-06T12:00:00Z",
+      "image": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
+      "featured": false,
+      "fadeCard": {
+        "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000",
+        "caption": "Drake \u00b7 Exhibit A",
+        "stamp": "FADE",
+        "slipTitle": "The record \u00b7 reported slips",
+        "record": "Verdict: Fade",
+        "picks": [
+          {
+            "t": "UFC 229: walks McGregor out. Khabib wins",
+            "r": "L"
+          },
+          {
+            "t": "$1M \u2014 Argentina in regulation, WC final",
+            "r": "L"
+          },
+          {
+            "t": "Seven figures \u2014 Adesanya at UFC 281",
+            "r": "L"
+          },
+          {
+            "t": "$400K \u2014 Jake Paul vs Tommy Fury",
+            "r": "L"
+          },
+          {
+            "t": "~$700K \u2014 Chiefs, Super Bowl LVII",
+            "r": "W"
+          },
+          {
+            "t": "$450K \u2014 Adesanya at UFC 305",
+            "r": "L"
+          },
+          {
+            "t": "$355K \u2014 Tyson vs Jake Paul",
+            "r": "L"
+          }
+        ]
+      },
+      "body": [
+        "Teams he backs crumble. Fighters he walks out lose. The internet keeps the receipts \u2014 and there are a lot of receipts.",
+        "It got its name at UFC 229, when Drake walked Conor McGregor to the cage and Khabib mauled him. Since then the pattern has been documented in eight figures: a reported million on Argentina to win the World Cup final in regulation \u2014 they won the Cup, on penalties, and the bet lost anyway. Seven figures on Israel Adesanya, stopped in the fifth. $400K on Jake Paul against Tommy Fury, gone. $355K on a 58-year-old Mike Tyson, gone.",
+        "The one week the curse took off: roughly $700K on the Chiefs in Super Bowl LVII, which cashed. One reported winner. Six reported losers. A body of work so consistent that thedrakecurse.com exists.",
+        "This is what a case file is for. On Fade, records like this aren't vibes \u2014 they're graded, timestamped, and attached to alerts. Get notified the next time Drake places a bet, and do the profitable thing.",
+        "Sources: publicly reported wagers, thedrakecurse.com, Covers. Amounts as reported."
+      ]
+    },
+    {
+      "slug": "case-002-portnoy",
+      "league": "CASES",
+      "title": "Case File No. 002 \u2014 El Presidente",
+      "dek": "Dave Portnoy bets the way he runs Barstool \u2014 loudly, publicly, and in seven figures. A 30% hit rate that's somehow up $2.7 million.",
+      "author": "Fade Cases",
+      "published": "2026-09-06T11:00:00Z",
+      "image": "",
+      "featured": false,
+      "fadeCard": {
+        "photo": "",
+        "caption": "Dave Portnoy \u00b7 Exhibit A",
+        "stamp": "FADE",
+        "slipTitle": "The record \u00b7 30 reported wagers",
+        "record": "9\u201321 \u00b7 +$2.7M anyway",
+        "picks": [
+          {
+            "t": "$500K \u2014 Virginia Tech +220 vs Miami",
+            "r": "L"
+          },
+          {
+            "t": "$1M \u2014 Michigan, Rose Bowl CFP semi (+$847K)",
+            "r": "W"
+          },
+          {
+            "t": "$600K \u2014 UConn +360 to win the natty (+$2.16M)",
+            "r": "W"
+          },
+          {
+            "t": "$300K \u2014 Scheffler +450, the Masters (+$1.35M)",
+            "r": "W"
+          },
+          {
+            "t": "$1M \u2014 Bills to win Super Bowl LIX",
+            "r": "L"
+          },
+          {
+            "t": "$25K \u2014 Caitlin Clark triple-double +1300 (+$325K)",
+            "r": "W"
+          },
+          {
+            "t": "$1,000 side bet with Urban Meyer on Michigan",
+            "r": "L"
+          }
+        ]
+      },
+      "body": [
+        "Across 30 publicly reported wagers, Dave Portnoy's record is 9\u201321. That's a 30% hit rate. He is also up $2.7 million. Both facts are true, and both facts are why America watches every slip he posts.",
+        "The losses are operatic \u2014 $500K on Virginia Tech as a +220 dog, a million on the Bills' Super Bowl that never came, even a $1,000 side bet with Urban Meyer that found a way to lose. But the wins are all-timers: $600K on UConn at +360 to run back the national title, $300K on Scottie Scheffler at +450 the week he put on the green jacket, a Caitlin Clark triple-double at 13-to-1.",
+        "That's the Portnoy paradox: fade the volume, respect the futures. A record this loud deserves to be graded live, not argued about on Twitter.",
+        "Get notified when El Presidente fires next \u2014 tail the future, fade the dog, your call.",
+        "Sources: publicly reported and DraftKings-confirmed wagers, 2021\u20132025. The full 30-bet ledger is graded in Fade."
+      ]
+    },
+    {
+      "slug": "case-003-mattress-mack",
+      "league": "CASES",
+      "title": "Case File No. 003 \u2014 The Houston Hedge",
+      "dek": "Jim 'Mattress Mack' McIngvale is 3\u201317 across $86 million in reported stakes \u2014 and up $23.5 million anyway, including the largest payout in U.S. betting history.",
+      "author": "Fade Cases",
+      "published": "2026-09-06T10:00:00Z",
+      "image": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w600",
+      "featured": false,
+      "fadeCard": {
+        "photo": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w1000",
+        "caption": "Mattress Mack \u00b7 Exhibit A",
+        "stamp": "TAIL",
+        "slipTitle": "The record \u00b7 $86M reported",
+        "record": "3\u201317 \u00b7 up $23.5M anyway",
+        "picks": [
+          {
+            "t": "$13M \u2014 Astros WS 2019. Nats in seven",
+            "r": "L"
+          },
+          {
+            "t": "$3.46M \u2014 Bucs +3.5, Super Bowl LV (+$2.72M)",
+            "r": "W"
+          },
+          {
+            "t": "$9.5M \u2014 Bengals ML, Super Bowl LVI",
+            "r": "L"
+          },
+          {
+            "t": "$8.8M \u2014 Kansas, NCAA title (+$12.2M)",
+            "r": "W"
+          },
+          {
+            "t": "$10M \u2014 Astros WS 2022 (+$72.6M, U.S. record)",
+            "r": "W"
+          },
+          {
+            "t": "$8M \u2014 Astros futures 2023. ALCS exit",
+            "r": "L"
+          },
+          {
+            "t": "$3.3M \u2014 Patriots, Super Bowl LX",
+            "r": "L"
+          }
+        ]
+      },
+      "body": [
+        "Jim McIngvale bets like nobody else on earth: nine-figure furniture promotions hedged with the biggest sportsbook wagers ever written. When Mack bets, the whole city of Houston sweats with him.",
+        "The tracked record reads 3\u201317 across roughly $86 million in reported stakes \u2014 and he's up $23.5 million. That's not a typo; it's a hedge. Every giant ticket backs a 'win your mattress free' promotion, so the sportsbook money and the store money are two sides of one trade.",
+        "The crown jewel: $10 million across five books on the 2022 Astros at long prices. Houston won the World Series and the tickets paid $72.6 million \u2014 the largest payout in U.S. legal betting history. The scar tissue: $13M gone on the 2019 Astros, $9.5M on the Bengals, $8M on the 2023 runback, $3.3M on the Patriots in Super Bowl LX.",
+        "He's the rare case file stamped TAIL: not because the record is pretty, but because the structure wins. Know the difference \u2014 that's the whole game.",
+        "Sources: publicly reported wagers, 2019\u20132026. The full 20-bet ledger is graded in Fade."
+      ]
+    },
+    {
+      "slug": "case-004-trent-attyah",
+      "league": "CASES",
+      "title": "Case File No. 004 \u2014 Book It With Trent",
+      "dek": "Trent Attyah did what no bettor had done before: turned getting faded into a career. The self-made Fade God.",
+      "author": "Fade Cases",
+      "published": "2026-09-06T09:00:00Z",
+      "image": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w600",
+      "featured": false,
+      "fadeCard": {
+        "photo": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w1000",
+        "caption": "Trent Attyah \u00b7 The Fade God",
+        "stamp": "FADE",
+        "slipTitle": "The file",
+        "record": "Every fade cashes twice",
+        "picks": [
+          {
+            "t": "2020 \u2014 founds BookIt Sports",
+            "r": "P"
+          },
+          {
+            "t": "2021 \u2014 the losing streak goes viral",
+            "r": "L"
+          },
+          {
+            "t": "The community starts betting the opposite",
+            "r": "P"
+          },
+          {
+            "t": "Surgical streams: the parlay built live on air",
+            "r": "P"
+          },
+          {
+            "t": "Today \u2014 260K+ watching every slip",
+            "r": "P"
+          }
+        ]
+      },
+      "body": [
+        "There are bad bettors, and then there is Trent Attyah \u2014 the first man to look at a losing streak and see a business model.",
+        "It started in 2021, when a run of losses went so viral that the internet began betting the opposite of every pick he posted. Most people would log off. Trent leaned in: he named it, branded it, and built BookIt Sports around it. The Fade God was born.",
+        "The surgical streams are the masterpiece \u2014 followers submit picks live on air and Trent assembles the day's parlay from the best of them, 260,000-plus people watching every slip. Every pick is content. Every fade cashes twice: once at the book, once in the culture.",
+        "He's the patron saint of this entire app. Get notified when Trent posts, and do what the internet taught us all to do.",
+        "Source: the public record, extensively. Founder of BookIt Sports."
+      ]
     }
   ]
 }

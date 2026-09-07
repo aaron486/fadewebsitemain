@@ -474,19 +474,7 @@ a { color:inherit; text-decoration:none; }
       // the board lives on the All screen
       sb.style.display = cat === 'all' ? '' : 'none';
       if (sbRule) sbRule.style.display = cat === 'all' ? '' : 'none';
-      // the Cases tab shows the case files instead of the newsroom
-      var cf = document.getElementById('caseFiles');
-      var grid = document.getElementById('storyGrid');
-      var nf = document.getElementById('newsFront');
-      var mw = document.getElementById('moreWrap');
-      if (cat === 'cases') {
-        cf.hidden = false; grid.style.display = 'none';
-        nf.style.display = 'none'; mw.hidden = true;
-        loadCases();
-      } else {
-        cf.hidden = true; grid.style.display = '';
-        if (window.renderNews) window.renderNews(cat);
-      }
+      if (window.renderNews) window.renderNews(cat);
     });
   });
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
