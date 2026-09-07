@@ -88,6 +88,47 @@ a { color:inherit; text-decoration:none; }
 .rail-cta { display:block; text-align:center; margin-top:1rem; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border:2px solid var(--carbon); border-radius:4px; padding:0.7rem 1rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
 .rail-cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
 
+/* newsroom front */
+.nf { display:grid; grid-template-columns:2.1fr 1fr; gap:2rem; padding:2rem 0 2.2rem; }
+.nf[hidden] { display:none; }
+.nf-lead a { display:block; }
+.nf-lead .photo { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border:1.5px solid var(--carbon); border-radius:6px; background:var(--paper-hi); }
+.nf-lead .kicker { margin-top:1rem; }
+.nf-lead h2 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,4.4vw,3.2rem); line-height:1.03; margin:0.3rem 0 0.7rem; }
+.nf-lead h2 a:hover { text-decoration:underline; text-decoration-thickness:3px; }
+.nf-lead .dek { font-size:0.92rem; color:var(--soft); max-width:62ch; }
+.nf-side { border-left:1.5px solid var(--carbon); padding-left:1.6rem; display:flex; flex-direction:column; }
+.nf-side-head { font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding-bottom:0.5rem; border-bottom:1.5px solid var(--carbon); display:flex; justify-content:space-between; align-items:baseline; }
+.nf-side-head span { color:var(--soft); font-weight:600; font-size:0.62rem; letter-spacing:0.1em; }
+.nf-item { display:flex; gap:0.9rem; padding:0.95rem 0; border-bottom:1px dashed var(--line); align-items:flex-start; }
+.nf-item img { width:92px; height:66px; object-fit:cover; flex:0 0 auto; border:1px solid var(--line-hard); border-radius:4px; background:var(--paper-hi); }
+.nf-item h4 { font-size:0.8rem; line-height:1.4; font-weight:700; }
+.nf-item h4 a:hover { text-decoration:underline; }
+.nf-item .meta { font-size:0.58rem; font-weight:700; color:var(--soft); text-transform:uppercase; letter-spacing:0.12em; margin-top:0.3rem; }
+.nf-item .meta b { color:var(--tail); }
+
+/* photo cards + app promo tile */
+.story .thumb { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border:1px solid var(--line-hard); border-radius:4px; margin-bottom:0.85rem; background:var(--paper-hi); }
+.story .meta { font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); margin-bottom:0.45rem; }
+.story .meta b { color:var(--tail); }
+.story h3 a:hover { text-decoration:underline; }
+.story.promo { background:var(--carbon); color:var(--paper); border-radius:6px; margin:0.8rem; padding:1.3rem 1.3rem 1.5rem; display:flex; flex-direction:column; border-left:none !important; border-bottom:none; }
+.story.promo .pk { font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(244,242,234,0.6); margin-bottom:0.6rem; }
+.story.promo h3 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:1.35rem; line-height:1.08; margin-bottom:0.8rem; }
+.story.promo img { width:100%; max-width:190px; margin:0 auto 0.9rem; border-radius:12px; border:1px solid rgba(244,242,234,0.25); display:block; }
+.story.promo .go { margin-top:auto; text-align:center; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--carbon); background:var(--paper); border-radius:4px; padding:0.65rem 1rem; }
+.story.promo .go:hover { background:#fff; }
+
+/* more headlines */
+.more-wrap { padding:1.8rem 0 0.5rem; }
+.more-head { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:1.3rem; padding-bottom:0.5rem; border-bottom:1.5px solid var(--carbon); margin-bottom:0.4rem; }
+.more-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 2.5rem; }
+.more-item { display:flex; gap:0.7rem; align-items:baseline; padding:0.6rem 0; border-bottom:1px dashed var(--line); font-size:0.78rem; font-weight:700; line-height:1.4; }
+.more-item .lg { flex:0 0 auto; font-size:0.58rem; letter-spacing:0.12em; color:var(--tail); }
+.more-item a:hover { text-decoration:underline; }
+.more-item .ago { margin-left:auto; flex:0 0 auto; font-weight:600; font-size:0.6rem; color:var(--soft); }
+.nf-loading { padding:3rem 0; text-align:center; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); grid-column:1/-1; }
+
 /* story grid */
 .rule-double { border-top:1.5px solid var(--carbon); border-bottom:4px double var(--carbon); height:8px; margin:2rem 0 0; }
 .grid { display:grid; grid-template-columns:repeat(3,1fr); padding:0; }
@@ -265,6 +306,10 @@ a { color:inherit; text-decoration:none; }
 
 @media (max-width:860px) {
   .front { grid-template-columns:1fr; }
+  .nf { grid-template-columns:1fr; gap:1.4rem; }
+  .nf-side { border-left:none; border-top:1.5px solid var(--carbon); padding-left:0; padding-top:1.2rem; }
+  .more-grid { grid-template-columns:1fr; }
+  .story.promo { margin:0.8rem 0; }
   .lead { padding-right:0; }
   .rail { border-left:none; border-top:1.5px solid var(--carbon); padding-left:0; margin-top:1.8rem; padding-top:1.4rem; }
   .grid { grid-template-columns:1fr; }
@@ -296,9 +341,10 @@ a { color:inherit; text-decoration:none; }
 
 <nav class="cats"><div class="wrap"><div class="cats-in" id="catTabs">
   <button class="cat-tab active" data-cat="all">All</button>
-  <button class="cat-tab" data-cat="desk">Desk</button>
-  <button class="cat-tab" data-cat="games">Games</button>
-  <button class="cat-tab" data-cat="bettors">Bettors</button>
+  <button class="cat-tab" data-cat="nfl">NFL</button>
+  <button class="cat-tab" data-cat="cfb">CFB</button>
+  <button class="cat-tab" data-cat="mlb">MLB</button>
+  <button class="cat-tab" data-cat="nba">NBA</button>
   <button class="cat-tab" data-cat="cases">Cases</button>
 </div></div></nav>
 
@@ -326,50 +372,24 @@ a { color:inherit; text-decoration:none; }
   </section>
   <div class="rule-double" style="margin-top:0.6rem;"></div>
 
-  <!-- story grid -->
-  <section class="grid" id="storyGrid">
-    <article class="story" data-cat="desk">
-      <div class="kicker desk">Desk Report</div>
-      <h3 class="anton">49ers reunite with Deebo Samuel as Pearsall's knee injury forces receiver shuffle</h3>
-      <p class="dek">The one-year deal, the receiver room after it, and where the numbers moved when the news hit.</p>
-      <div class="byline"><b>Fade Desk</b></div>
-      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
-    </article>
-    <article class="story" data-cat="games">
-      <div class="kicker games">Games</div>
-      <h3 class="anton">The number watch: what a -1.5 that won't move is telling you</h3>
-      <p class="dek">FadeIQ tracks the line from open to first pitch &mdash; when money comes in and the number holds, that's the story.</p>
-      <div class="byline"><b>FadeIQ</b> &middot; analysis</div>
-      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
-    </article>
-    <article class="story" data-cat="bettors">
-      <div class="kicker bettors">Bettors</div>
-      <h3 class="anton">The receipt: a +3128 five-leg parlay, verified end to end</h3>
-      <p class="dek">$25 to $807 through Holloway&ndash;McGregor and four more legs &mdash; synced from the book, settled in public, stamped paid.</p>
-      <div class="byline"><b>@2mazz</b> &middot; 276&ndash;717 &middot; Fade Score 7.7</div>
-      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">See the record &rarr;</a>
-    </article>
-    <article class="story" data-cat="desk">
-      <div class="kicker desk">Desk Report</div>
-      <h3 class="anton">Tail the sharps, fade the Tonys: how the Fade Score reads a bettor</h3>
-      <p class="dek">Record, ROI, recency, and market mix &mdash; what the score rewards, what it punishes, and why hot is not the same as good.</p>
-      <div class="byline"><b>Fade Desk</b> &middot; explainer</div>
-      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read in the app &rarr;</a>
-    </article>
-    <article class="story" data-cat="cases">
-      <div class="kicker cases">Cases</div>
-      <h3 class="anton">Inside the World Cup case study: 50 bettors, every trade verified</h3>
-      <p class="dek">Sportsbook history and Kalshi trades connected end to end &mdash; what a verified study record actually looks like.</p>
-      <div class="byline"><b>Fade Cases</b></div>
-      <a class="readlink" href="/worldcup">The case file &rarr;</a>
-    </article>
-    <article class="story" data-cat="bettors">
-      <div class="kicker bettors">Bettors</div>
-      <h3 class="anton">Celebrity money: when a founder puts 10k on a season opener</h3>
-      <p class="dek">Real bets from the biggest names, the moment they place them &mdash; on your lock screen with a tail and a fade button.</p>
-      <div class="byline"><b>Fade Alerts</b></div>
-      <a class="readlink" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Get the alerts &rarr;</a>
-    </article>
+  <!-- newsroom: live front page -->
+  <section class="nf" id="newsFront">
+    <div class="nf-lead" id="nfLead"></div>
+    <aside class="nf-side">
+      <div class="nf-side-head">Latest<span>The wire</span></div>
+      <div id="nfSide"></div>
+      <a class="rail-cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>
+    </aside>
+  </section>
+  <div class="rule-double"></div>
+
+  <!-- photo story grid -->
+  <section class="grid" id="storyGrid"></section>
+
+  <!-- more headlines -->
+  <section class="more-wrap" id="moreWrap" hidden>
+    <div class="more-head">More headlines</div>
+    <div class="more-grid" id="moreList"></div>
   </section>
 
   <!-- case files (Cases tab) -->
@@ -438,7 +458,6 @@ a { color:inherit; text-decoration:none; }
   document.getElementById('dateline').textContent = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
   var tabs = document.querySelectorAll('.cat-tab');
-  var stories = document.querySelectorAll('#storyGrid .story');
   var sb = document.getElementById('scoreboard');
   var sbRule = sb.nextElementSibling;
   tabs.forEach(function (t) {
@@ -449,18 +468,19 @@ a { color:inherit; text-decoration:none; }
       // the board lives on the All screen
       sb.style.display = cat === 'all' ? '' : 'none';
       if (sbRule) sbRule.style.display = cat === 'all' ? '' : 'none';
-      // the Cases tab shows the case files instead of the story grid
+      // the Cases tab shows the case files instead of the newsroom
       var cf = document.getElementById('caseFiles');
       var grid = document.getElementById('storyGrid');
+      var nf = document.getElementById('newsFront');
+      var mw = document.getElementById('moreWrap');
       if (cat === 'cases') {
         cf.hidden = false; grid.style.display = 'none';
+        nf.style.display = 'none'; mw.hidden = true;
         loadCases();
       } else {
         cf.hidden = true; grid.style.display = '';
+        if (window.renderNews) window.renderNews(cat);
       }
-      stories.forEach(function (s) {
-        s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
-      });
     });
   });
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -835,6 +855,100 @@ a { color:inherit; text-decoration:none; }
       })
       .catch(function () { body.innerHTML = '<div class="sb-loading">Case files unavailable.</div>'; });
   }
+})();
+// ----- Newsroom: live front page from /api/news -----
+(function () {
+  var articles = [];
+  var APP = 'https://testflight.apple.com/join/scH3svgB';
+  var nf = document.getElementById('newsFront');
+  var nfLead = document.getElementById('nfLead');
+  var nfSide = document.getElementById('nfSide');
+  var grid = document.getElementById('storyGrid');
+  var moreWrap = document.getElementById('moreWrap');
+  var moreList = document.getElementById('moreList');
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ago(iso) {
+    var m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (!isFinite(m) || m < 0) return '';
+    if (m < 60) return m + 'm ago';
+    var h = Math.round(m / 60);
+    if (h < 24) return h + 'h ago';
+    return Math.round(h / 24) + 'd ago';
+  }
+  function link(a, inner) {
+    return a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + inner + '</a>' : inner;
+  }
+  function card(a) {
+    return '<article class="story" data-cat="' + esc(a.league.toLowerCase()) + '">' +
+      (a.img ? link(a, '<img class="thumb" src="' + esc(a.img) + '" alt="" loading="lazy" />') : '') +
+      '<div class="meta"><b>' + esc(a.league) + '</b> &middot; ' + ago(a.published) + '</div>' +
+      '<h3 class="anton">' + link(a, esc(a.title)) + '</h3>' +
+      (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
+      '</article>';
+  }
+  function promoTile() {
+    return '<article class="story promo">' +
+      '<div class="pk">Fade Media &middot; in the app</div>' +
+      '<h3>The desk, live in your pocket</h3>' +
+      '<img src="assets/explore-fademedia.jpg" alt="Fade Media in the app" loading="lazy" />' +
+      '<a class="go" href="' + APP + '" target="_blank" rel="noopener">Get Fade &rarr;</a>' +
+      '</article>';
+  }
+  window.renderNews = function (cat) {
+    if (!articles.length) return;
+    if (cat === 'all') {
+      nf.style.display = '';
+      var withImg = articles.filter(function (a) { return a.img; });
+      var lead = withImg[0] || articles[0];
+      var used = [lead];
+      var side = articles.filter(function (a) { return used.indexOf(a) === -1; }).slice(0, 4);
+      used = used.concat(side);
+      var rest = articles.filter(function (a) { return used.indexOf(a) === -1; });
+      var gridItems = rest.slice(0, 8);
+      var more = rest.slice(8, 22);
+      nfLead.innerHTML =
+        (lead.img ? link(lead, '<img class="photo" src="' + esc(lead.img) + '" alt="" />') : '') +
+        '<div class="kicker games">' + esc(lead.league) + ' &middot; ' + ago(lead.published) + '</div>' +
+        '<h2>' + link(lead, esc(lead.title)) + '</h2>' +
+        (lead.dek ? '<p class="dek">' + esc(lead.dek) + '</p>' : '');
+      nfSide.innerHTML = side.map(function (a) {
+        return '<div class="nf-item">' +
+          (a.img ? link(a, '<img src="' + esc(a.img) + '" alt="" loading="lazy" />') : '') +
+          '<div><h4>' + link(a, esc(a.title)) + '</h4>' +
+          '<div class="meta"><b>' + esc(a.league) + '</b> &middot; ' + ago(a.published) + '</div></div></div>';
+      }).join('');
+      var cells = gridItems.map(card);
+      cells.splice(Math.min(2, cells.length), 0, promoTile());
+      grid.innerHTML = cells.join('');
+      if (more.length) {
+        moreWrap.hidden = false;
+        moreList.innerHTML = more.map(function (a) {
+          return '<div class="more-item"><span class="lg">' + esc(a.league) + '</span>' +
+            link(a, esc(a.title)) + '<span class="ago">' + ago(a.published) + '</span></div>';
+        }).join('');
+      } else { moreWrap.hidden = true; }
+    } else {
+      nf.style.display = 'none';
+      moreWrap.hidden = true;
+      var filtered = articles.filter(function (a) { return a.league.toLowerCase() === cat; });
+      grid.innerHTML = filtered.length
+        ? filtered.slice(0, 18).map(card).join('') + promoTile()
+        : '<div class="nf-loading">No ' + esc(cat.toUpperCase()) + ' headlines right now.</div>';
+    }
+  };
+  grid.innerHTML = '<div class="nf-loading">Loading the desk&hellip;</div>';
+  fetch('/api/news')
+    .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+    .then(function (d) {
+      articles = (d && d.articles) || [];
+      var active = document.querySelector('.cat-tab.active');
+      var cat = active ? active.dataset.cat : 'all';
+      if (cat !== 'cases') window.renderNews(cat);
+    })
+    .catch(function () {
+      nf.style.display = 'none';
+      grid.innerHTML = '<div class="nf-loading">The newsroom is warming up &mdash; check back in a minute.</div>';
+    });
 })();
 (function () {
   var box = document.getElementById('ticker');
