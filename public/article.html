@@ -40,6 +40,7 @@ h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; 
 .fw-photo { position:relative; border:2px solid var(--carbon); border-radius:6px; overflow:hidden; background:var(--paper-hi); box-shadow:5px 5px 0 rgba(20,20,18,0.18); }
 .fw-photo img { width:100%; height:100%; min-height:340px; object-fit:cover; object-position:50% 15%; display:block; }
 .fw-stamp { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) rotate(-13deg); font-family:'Anton',sans-serif; font-size:clamp(2.6rem,6vw,4.4rem); color:rgba(217,45,32,0.9); border:5px solid rgba(217,45,32,0.9); border-radius:10px; padding:0 0.5em; letter-spacing:0.05em; pointer-events:none; }
+.fw-stamp.tail { color:rgba(46,158,68,0.92); border-color:rgba(46,158,68,0.92); }
 .fw-cap { position:absolute; left:0; right:0; bottom:0; background:var(--carbon); color:var(--paper); font-size:0.64rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; text-align:center; padding:0.45rem 0.8rem; }
 .fw-slip { border:2px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1rem 1.1rem; box-shadow:5px 5px 0 rgba(20,20,18,0.18); display:flex; flex-direction:column; }
 .fw-sh { font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; border-bottom:2px dashed rgba(20,20,18,0.3); padding-bottom:0.5rem; margin-bottom:0.35rem; display:flex; justify-content:space-between; gap:0.6rem; }
@@ -81,7 +82,7 @@ h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; 
         (p.r === 'T' ? '<span class="fw-tag">TONIGHT</span>' : p.r === 'P' ? '<span class="fw-pending">PENDING</span>' : '') + '</div>';
     }).join('');
     var photo = fc.photo
-      ? '<div class="fw-photo"><img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp">FADE</span>' +
+      ? '<div class="fw-photo"><img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp' + (fc.stamp === 'TAIL' ? ' tail' : '') + '">' + esc(fc.stamp || 'FADE') + '</span>' +
         (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') + '</div>'
       : '';
     return '<div class="fw-card' + (fc.photo ? '' : ' noimg') + '">' + photo +
