@@ -34,24 +34,23 @@ img { max-width:100%; }
 .cover { background:var(--wine); color:#F1EEE5; padding:clamp(1.4rem,3vw,2.4rem) 0 0; overflow:hidden; }
 .cover .caps { color:rgba(241,238,229,0.85); }
 .cover-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:1rem; border-bottom:1px solid rgba(241,238,229,0.35); }
-.cover-logo { display:block; width:100%; margin:clamp(1.2rem,4vw,2.6rem) auto 0; }
+.cover-logo { display:block; width:100%; margin:clamp(1.2rem,4vw,2.6rem) auto clamp(1.4rem,3.5vw,2.4rem); }
 .cover-logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
-.cover-grid { display:grid; grid-template-columns:1fr minmax(230px,340px) 1fr; gap:clamp(1rem,3vw,2.5rem); align-items:center; margin-top:clamp(-1rem,-2vw,-2rem); }
-.cover-photo { position:relative; z-index:1; }
-.cover-photo img { display:block; width:100%; filter:grayscale(1) contrast(1.06); }
-.cover-left { text-align:left; padding-bottom:2rem; }
+.cover-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(1.4rem,4vw,3rem); align-items:end; }
+.cover-left { text-align:left; padding-bottom:0.4rem; }
 .cover-left .caps { display:block; margin-bottom:0.8rem; }
-.cover-line { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.25rem,2.4vw,1.7rem); line-height:1.2; }
-.cover-sub { margin-top:0.7rem; font-style:italic; font-size:0.92rem; color:rgba(241,238,229,0.8); max-width:22ch; }
-.cover-right { text-align:right; padding-bottom:2rem; }
+.cover-line { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.35rem,2.8vw,2rem); line-height:1.2; max-width:26ch; }
+.cover-sub { margin-top:0.7rem; font-style:italic; font-size:0.92rem; color:rgba(241,238,229,0.8); max-width:38ch; }
+.cover-right { text-align:right; padding-bottom:0.4rem; }
 .cover-right .caps { display:block; margin-bottom:0.6rem; }
 .cover-stat { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.2rem,4.5vw,3.2rem); line-height:1; }
 .cover-stat-sub { margin-top:0.6rem; }
-.cover-edition { text-align:center; padding:1.1rem 0 1.3rem; font-style:italic; letter-spacing:0.3em; text-transform:uppercase; font-size:0.66rem; color:rgba(241,238,229,0.75); }
+.cover-edition { text-align:center; padding:clamp(1.4rem,3.5vw,2.2rem) 0 1.3rem; font-style:italic; letter-spacing:0.3em; text-transform:uppercase; font-size:0.66rem; color:rgba(241,238,229,0.75); }
+.cover-photo-band { background:var(--wine); }
+.cover-photo-band img { display:block; width:100%; max-height:64vh; object-fit:cover; object-position:50% 18%; filter:grayscale(1) contrast(1.06); }
 @media (max-width:700px) {
-  .cover-grid { grid-template-columns:1fr; margin-top:0.5rem; }
-  .cover-photo { order:-1; width:min(300px,72%); margin:0 auto; }
-  .cover-left, .cover-right { text-align:center; padding-bottom:0.6rem; }
+  .cover-grid { grid-template-columns:1fr; }
+  .cover-left, .cover-right { text-align:center; padding-bottom:0.2rem; }
   .cover-sub { margin-left:auto; margin-right:auto; }
 }
 
@@ -264,13 +263,13 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
           '<div class="cover-line">' + esc(m.coverLine || a.title) + '</div>' +
           (m.coverSub ? '<div class="cover-sub">' + esc(m.coverSub) + '</div>' : '') +
         '</div>' +
-        '<div class="cover-photo">' + (a.image || m.coverPhoto ? '<img src="' + esc(m.coverPhoto || a.image) + '" alt="" />' : '') + '</div>' +
         '<div class="cover-right">' +
           (m.coverStat ? '<span class="caps">' + esc(m.coverStat.label) + '</span><div class="cover-stat">' + esc(m.coverStat.value) + '</div><div class="caps cover-stat-sub">' + esc(m.coverStat.sub || '') + '</div>' : '') +
         '</div>' +
       '</div></div>' +
       (m.edition ? '<div class="cover-edition">' + esc(m.edition) + '</div>' : '') +
-      '</header>';
+      '</header>' +
+      (m.coverPhoto || a.image ? '<div class="cover-photo-band"><img src="' + esc((m.coverPhoto || a.image).replace('sz=w600','sz=w1200')) + '" alt="" /></div>' : '');
   }
   function contentsHtml(m) {
     var s = '<section class="epigraph wrap">';
