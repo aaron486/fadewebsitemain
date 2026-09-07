@@ -1083,6 +1083,7 @@ a { color:inherit; text-decoration:none; }
       if (lead.custom && lead.mag) {
         nfLead.innerHTML = heroCover(lead) +
           '<div class="kicker games" style="margin-top:1rem;">' + meta(lead) + '</div>' +
+          '<h2>' + link(lead, esc(lead.title)) + '</h2>' +
           (lead.dek ? '<p class="dek">' + esc(lead.dek) + '</p>' : '') +
           '<a class="readlink" href="' + esc(lead.url) + '">Read the issue &rarr;</a>';
       } else {
