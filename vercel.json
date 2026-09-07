@@ -90,6 +90,10 @@
       "destination": "/dk1.html"
     },
     {
+      "source": "/article",
+      "destination": "/article.html"
+    },
+    {
       "source": "/fade-media",
       "destination": "/fademedia.html"
     },

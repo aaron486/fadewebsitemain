@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Media</title>
+<meta name="theme-color" content="#F4F2EA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --paper:#F4F2EA; --paper-hi:#FBFAF5; --carbon:#141412; --soft:#6E6B60;
+  --line:rgba(20,20,18,0.16); --line-hard:rgba(20,20,18,0.85);
+  --tail:#2F52E0; --fade:#D92D20; --cash:#2E9E44;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--paper); color:var(--carbon); font-family:'IBM Plex Mono',monospace; line-height:1.65; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+.anton { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
+.wrap { max-width:760px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
+.topline { border-bottom:1.5px solid var(--carbon); }
+.topline-in { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; font-size:0.64rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.topline-in a:hover { color:var(--carbon); }
+.mast { text-align:center; padding:1.4rem 0 1.2rem; border-bottom:1.5px solid var(--carbon); }
+.mast a { font-family:'Anton',sans-serif; font-size:1.8rem; letter-spacing:0.02em; text-transform:uppercase; }
+article { padding:2.4rem 0 3rem; }
+.kicker { font-size:0.66rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--tail); margin-bottom:0.7rem; }
+h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,5.5vw,3.4rem); line-height:1.05; margin-bottom:0.9rem; }
+.dek { font-size:0.95rem; color:var(--soft); margin-bottom:1.1rem; }
+.byline { font-size:0.64rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); padding-bottom:1.3rem; border-bottom:1.5px solid var(--carbon); margin-bottom:1.6rem; }
+.byline b { color:var(--carbon); }
+.hero { width:100%; border:1.5px solid var(--carbon); border-radius:6px; display:block; margin-bottom:1.8rem; }
+.body p { font-size:0.95rem; margin-bottom:1.2rem; max-width:66ch; }
+.cta { display:inline-block; margin-top:0.8rem; font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border-radius:4px; padding:0.75rem 1.4rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
+.cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
+.missing { padding:4rem 0; text-align:center; font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+</style>
+</head>
+<body>
+
+<div class="topline"><div class="wrap"><div class="topline-in">
+  <a href="/fade-media">&larr; Fade Media</a>
+  <span>The pre-bet desk</span>
+</div></div></div>
+<div class="mast"><a href="/fade-media">Fade Media</a></div>
+
+<div class="wrap"><article id="art"><div class="missing">Loading&hellip;</div></article></div>
+
+<script>
+(function () {
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var slug = new URLSearchParams(location.search).get('s');
+  var el = document.getElementById('art');
+  fetch('/articles/articles.json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var a = (d.articles || []).find(function (x) { return x.slug === slug; });
+      if (!a) { el.innerHTML = '<div class="missing">Article not found. <a href="/fade-media" style="text-decoration:underline;">Back to the desk &rarr;</a></div>'; return; }
+      document.title = a.title + ' — Fade Media';
+      var date = new Date(a.published).toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' });
+      el.innerHTML =
+        '<div class="kicker">' + esc(a.league || 'Desk') + '</div>' +
+        '<h1>' + esc(a.title) + '</h1>' +
+        (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
+        '<div class="byline">By <b>' + esc(a.author || 'Fade Desk') + '</b> &middot; ' + esc(date) + '</div>' +
+        (a.image ? '<img class="hero" src="' + esc(a.image) + '" alt="" />' : '') +
+        '<div class="body">' + (a.body || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' +
+        '<a class="cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>';
+    })
+    .catch(function () { el.innerHTML = '<div class="missing">Could not load this article.</div>'; });
+})();
+</script>
+
+</body>
+</html>

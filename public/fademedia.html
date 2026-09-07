@@ -401,28 +401,6 @@ a { color:inherit; text-decoration:none; }
     <div id="cfBody"></div>
   </section>
 
-  <!-- watch -->
-  <section class="watch">
-    <div class="watch-head">
-      <h2 class="anton">Watch</h2>
-      <span>Original films &middot; Fade Studios</span>
-    </div>
-    <div class="films">
-      <figure class="film" data-src="assets/why-fade-2.mp4">
-        <div class="fr"><video muted playsinline preload="metadata" src="assets/why-fade-2.mp4"></video></div>
-        <figcaption>Me, The Bookie<span>The old-school book meets the new world &middot; 0:29</span></figcaption>
-      </figure>
-      <figure class="film" data-src="assets/media-wildwest.mp4">
-        <div class="fr"><video muted playsinline preload="metadata" src="assets/media-wildwest.mp4"></video></div>
-        <figcaption>Wild West<span>A single take &middot; Fade brand film</span></figcaption>
-      </figure>
-      <figure class="film" data-src="assets/media-sal-launch-promo.mp4">
-        <div class="fr"><video muted playsinline preload="metadata" src="assets/media-sal-launch-promo.mp4"></video></div>
-        <figcaption>The Launch<span>Sal &middot; Fade brand film</span></figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- app cta -->
   <section class="appcta">
     <h2 class="anton">Never miss a bet.</h2>
@@ -876,12 +854,19 @@ a { color:inherit; text-decoration:none; }
     return Math.round(h / 24) + 'd ago';
   }
   function link(a, inner) {
-    return a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + inner + '</a>' : inner;
+    if (!a.url) return inner;
+    var ext = a.custom ? '' : ' target="_blank" rel="noopener"';
+    return '<a href="' + esc(a.url) + '"' + ext + '>' + inner + '</a>';
+  }
+  function meta(a) {
+    return a.custom
+      ? '<b>' + esc(a.league) + '</b> &middot; by ' + esc(a.author || 'Fade Desk') + ' &middot; ' + ago(a.published)
+      : '<b>' + esc(a.league) + '</b> &middot; via ESPN &middot; ' + ago(a.published);
   }
   function card(a) {
     return '<article class="story" data-cat="' + esc(a.league.toLowerCase()) + '">' +
       (a.img ? link(a, '<img class="thumb" src="' + esc(a.img) + '" alt="" loading="lazy" />') : '') +
-      '<div class="meta"><b>' + esc(a.league) + '</b> &middot; ' + ago(a.published) + '</div>' +
+      '<div class="meta">' + meta(a) + '</div>' +
       '<h3 class="anton">' + link(a, esc(a.title)) + '</h3>' +
       (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
       '</article>';
@@ -899,7 +884,8 @@ a { color:inherit; text-decoration:none; }
     if (cat === 'all') {
       nf.style.display = '';
       var withImg = articles.filter(function (a) { return a.img; });
-      var lead = withImg[0] || articles[0];
+      var feat = articles.filter(function (a) { return a.custom && a.featured; })[0];
+      var lead = feat || withImg[0] || articles[0];
       var used = [lead];
       var side = articles.filter(function (a) { return used.indexOf(a) === -1; }).slice(0, 4);
       used = used.concat(side);
@@ -908,14 +894,14 @@ a { color:inherit; text-decoration:none; }
       var more = rest.slice(8, 22);
       nfLead.innerHTML =
         (lead.img ? link(lead, '<img class="photo" src="' + esc(lead.img) + '" alt="" />') : '') +
-        '<div class="kicker games">' + esc(lead.league) + ' &middot; ' + ago(lead.published) + '</div>' +
+        '<div class="kicker games">' + meta(lead) + '</div>' +
         '<h2>' + link(lead, esc(lead.title)) + '</h2>' +
         (lead.dek ? '<p class="dek">' + esc(lead.dek) + '</p>' : '');
       nfSide.innerHTML = side.map(function (a) {
         return '<div class="nf-item">' +
           (a.img ? link(a, '<img src="' + esc(a.img) + '" alt="" loading="lazy" />') : '') +
           '<div><h4>' + link(a, esc(a.title)) + '</h4>' +
-          '<div class="meta"><b>' + esc(a.league) + '</b> &middot; ' + ago(a.published) + '</div></div></div>';
+          '<div class="meta">' + meta(a) + '</div></div></div>';
       }).join('');
       var cells = gridItems.map(card);
       cells.splice(Math.min(2, cells.length), 0, promoTile());
@@ -937,18 +923,29 @@ a { color:inherit; text-decoration:none; }
     }
   };
   grid.innerHTML = '<div class="nf-loading">Loading the desk&hellip;</div>';
-  fetch('/api/news')
-    .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
-    .then(function (d) {
-      articles = (d && d.articles) || [];
-      var active = document.querySelector('.cat-tab.active');
-      var cat = active ? active.dataset.cat : 'all';
-      if (cat !== 'cases') window.renderNews(cat);
-    })
-    .catch(function () {
+  Promise.allSettled([
+    fetch('/api/news').then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); }),
+    fetch('/articles/articles.json').then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+  ]).then(function (res) {
+    var wire = res[0].status === 'fulfilled' ? ((res[0].value && res[0].value.articles) || []) : [];
+    var custom = res[1].status === 'fulfilled' ? ((res[1].value && res[1].value.articles) || []).map(function (a) {
+      return {
+        league: a.league || 'DESK', title: a.title || '', dek: a.dek || '',
+        img: a.image || '', url: '/article?s=' + encodeURIComponent(a.slug || ''),
+        published: a.published || '', author: a.author || 'Fade Desk',
+        featured: !!a.featured, custom: true
+      };
+    }) : [];
+    articles = custom.concat(wire).sort(function (a, b) { return new Date(b.published) - new Date(a.published); });
+    if (!articles.length) {
       nf.style.display = 'none';
       grid.innerHTML = '<div class="nf-loading">The newsroom is warming up &mdash; check back in a minute.</div>';
-    });
+      return;
+    }
+    var active = document.querySelector('.cat-tab.active');
+    var cat = active ? active.dataset.cat : 'all';
+    if (cat !== 'cases') window.renderNews(cat);
+  });
 })();
 (function () {
   var box = document.getElementById('ticker');

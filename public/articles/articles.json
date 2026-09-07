@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "slug": "welcome-to-the-desk",
+      "league": "DESK",
+      "title": "Welcome to the Fade desk: the front page of sports betting",
+      "dek": "Original reporting, verified bettors, celebrity case files, and the day's slate — written by the desk, read before you bet.",
+      "author": "Fade Desk",
+      "published": "2026-09-07T14:00:00Z",
+      "image": "assets/cases/portfolio-locked.jpg",
+      "featured": true,
+      "body": [
+        "This is the Fade desk — the newsroom side of the app. Every day we publish what actually matters before the games start: where the numbers moved, who's betting what, and which records are real.",
+        "Wire headlines from around sports run alongside our own reporting, always credited and linked to the source. The original work — case files, verified bettor stories, and desk reports — lives here and in the app.",
+        "Want it on your phone? The full desk, with alerts when your friends and the biggest names in sports place a bet, is live in the Fade app."
+      ]
+    }
+  ]
+}
