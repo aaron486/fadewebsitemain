@@ -131,6 +131,7 @@ a { color:inherit; text-decoration:none; }
 
 /* fade-watch designed hero */
 .fw-card { display:grid; grid-template-columns:1.4fr 1fr; gap:1.2rem; margin-bottom:1.2rem; align-items:stretch; }
+.fw-card.noimg { grid-template-columns:1fr; }
 .fw-photo { position:relative; border:2px solid var(--carbon); border-radius:6px; overflow:hidden; background:var(--paper-hi); box-shadow:5px 5px 0 rgba(20,20,18,0.18); }
 .fw-photo a { display:block; height:100%; }
 .fw-photo img { width:100%; height:100%; min-height:380px; object-fit:cover; object-position:50% 15%; display:block; }
@@ -907,11 +908,13 @@ a { color:inherit; text-decoration:none; }
       return '<div class="' + cls + '">' + m + esc(p.t) +
         (p.r === 'T' ? '<span class="fw-tag">TONIGHT</span>' : p.r === 'P' ? '<span class="fw-pending">PENDING</span>' : '') + '</div>';
     }).join('');
-    return '<div class="fw-card">' +
-      '<div class="fw-photo">' + link(a,
-        '<img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp">FADE</span>') +
-        (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') +
-      '</div>' +
+    var photo = fc.photo
+      ? '<div class="fw-photo">' + link(a,
+          '<img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp">FADE</span>') +
+          (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') +
+        '</div>'
+      : '';
+    return '<div class="fw-card' + (fc.photo ? '' : ' noimg') + '">' + photo +
       '<div class="fw-slip">' +
         '<div class="fw-sh">' + esc(fc.slipTitle || 'The card') + '<span>OFFICIAL SLIP</span></div>' +
         picks +

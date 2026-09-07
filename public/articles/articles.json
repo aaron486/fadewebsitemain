@@ -1,6 +1,53 @@
 {
   "articles": [
     {
+      "slug": "lsu-betting-on-themselves-kalshi-kiffin",
+      "league": "CFB",
+      "title": "LSU is betting on themselves \u2014 literally",
+      "dek": "Five Kalshi block trades, $662,050 down, up to $3 million back \u2014 rung for rung, the exact shape of Lane Kiffin's playoff bonus ladder. Welcome to the era where the school's insurer is holding tickets on the season.",
+      "author": "Fade Desk",
+      "published": "2026-09-07T18:00:00Z",
+      "image": "assets/sportsbooks/kalshi.png",
+      "featured": false,
+      "fadeCard": {
+        "photo": "",
+        "caption": "",
+        "slipTitle": "The hedge \u00b7 five Kalshi block trades",
+        "record": "Cost: $662,050 \u00b7 Max payout: $3,000,000",
+        "picks": [
+          {
+            "t": "LSU makes the College Football Playoff \u2014 pays $837,500",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the CFP quarterfinal",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the CFP semifinal",
+            "r": "P"
+          },
+          {
+            "t": "LSU reaches the national title game",
+            "r": "P"
+          },
+          {
+            "t": "LSU wins the national championship \u2014 total pays $3M",
+            "r": "P"
+          }
+        ]
+      },
+      "body": [
+        "Lane Kiffin's LSU contract pays him bonuses that climb with every step of a playoff run \u2014 $750,000 just for getting the Tigers in, scaling to $3 million if he wins the whole thing. Someone is on the hook for that money. And that someone just went to the window.",
+        "Two weeks before the reports surfaced, five block trades \u2014 large positions negotiated off-exchange \u2014 hit the prediction market Kalshi, all on LSU's season: make the College Football Playoff, reach the quarterfinal, reach the semifinal, reach the title game, win the national championship. Cost of the position: $662,050. Maximum payout if the Tigers run the table: $3 million. That is not a round number by accident \u2014 it is, to the dollar, Kiffin's championship bonus.",
+        "The trades trace to Game Point Capital, a sports insurance firm whose entire business is insuring schools against the happy disaster of their coach hitting his bonuses. Kalshi's CEO announced a partnership with the firm back in February; before that, Game Point laid off this kind of risk through specialist reinsurance at places like Lloyd's of London. Now the hedge just lives on a public exchange where anyone can see it. Similar third-party trades showed up on South Carolina's season a month earlier.",
+        "Do the math on the first rung and the machinery is beautiful: if LSU makes the playoff, the position pays $837,500 \u2014 more than covering the $750,000 bonus check the school owes its coach for getting there. Every deeper run pays more, exactly as the bonus obligation grows. If Kiffin celebrates, the tickets cash. Heads, LSU wins; tails, the market pays.",
+        "This is the part of the story the pre-bet desk exists for: betting markets aren't just where fans sweat anymore \u2014 they're infrastructure. A university's insurance company is functionally long LSU football, in public, at prices you can look up. The same markets you can trade are now settling coach bonuses.",
+        "So when you watch LSU this season, know that you're not the only one with a position. The school's own hedge is riding every snap \u2014 and on Fade, you can see which way the money leans before you make your own call.",
+        "Sources: The Athletic (NYT), CBS Sports, InGame \u2014 reporting on Game Point Capital's Kalshi block trades tied to Lane Kiffin's LSU bonuses, September 2026."
+      ]
+    },
+    {
       "slug": "clay-travis-week-1-card",
       "league": "CFB",
       "title": "College football's biggest loser: Clay Travis opens the season 2\u20138",
