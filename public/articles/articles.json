@@ -1,6 +1,57 @@
 {
   "articles": [
     {
+      "slug": "stanford-steve-gameday-best-picker",
+      "league": "CFB",
+      "title": "Stanford Steve: a deep dive into College GameDay's best picker",
+      "dek": "Twelve years of tracked picks. 648\u2013529 against the spread. Plus 60 units. The numbers say the guy next to the headgear is the sharpest voice on the set \u2014 with one glaring exception.",
+      "author": "Fade Desk",
+      "published": "2026-09-07T19:00:00Z",
+      "image": "",
+      "featured": false,
+      "fadeCard": {
+        "photo": "",
+        "caption": "",
+        "slipTitle": "The tracked record \u00b7 via Cole's Gameday Blog",
+        "record": "Verdict: Tail the college card",
+        "picks": [
+          {
+            "t": "All-time CFB ATS: 648\u2013529\u201324 \u2014 55.1%",
+            "r": "W"
+          },
+          {
+            "t": "+60.1 units across 1,201 tracked picks since 2014",
+            "r": "W"
+          },
+          {
+            "t": "Highest win rate of any 1,000-pick analyst tracked",
+            "r": "W"
+          },
+          {
+            "t": "Best season: 2018 \u2014 57\u201329, +22.9 units",
+            "r": "W"
+          },
+          {
+            "t": "This season: 63\u201350, +7.4 units and counting",
+            "r": "W"
+          },
+          {
+            "t": "The catch: NFL ATS 166\u2013162\u20137, \u221211.1 units",
+            "r": "L"
+          }
+        ]
+      },
+      "body": [
+        "Every Saturday morning, Steve Coughlin \u2014 Stanford Steve to anyone with a TV \u2014 sits at the College GameDay desk and gives out numbers. Unlike most people who do that for a living, his have been written down. All of them. For twelve years.",
+        "Cole's Gameday Blog has tracked every public pick Coughlin has made since 2014 \u2014 GameDay, ESPN's betting shows, SportsCenter, all of it. The ledger: 648 wins, 529 losses, 24 pushes against the spread. That's 55.1% over 1,201 picks \u2014 and at standard juice it works out to more than 60 units of profit. For context, the break-even line for a bettor paying -110 is 52.4%. Holding three points above that for over a decade is not luck. It's a career.",
+        "The comparison table is where it gets impressive. Among every analyst the site has tracked to 1,000-plus picks, nobody matches his win rate \u2014 not the touts, not the sharps-on-TV, nobody. Only one picker on the entire board has banked more total units, and it took him three times the volume to do it.",
+        "The peaks are real too: a 57\u201329 season in 2018 worth almost 23 units, a 53\u201330 debut year in 2014, and this season he's already 63\u201350 and up 7.4 units through the first stretch \u2014 including eating a loss on Clemson +10 against LSU in Week 1 like everyone else who trusted the Tigers' opponent.",
+        "Now the asterisk, because the receipts cut both ways: on NFL Sundays, Stanford Steve is mortal. His tracked pro record is 166\u2013162\u20137 \u2014 under 51%, eleven units in the red. The same man who prints money on college football gives it back on the NFL. If ever a bettor was built for a Tail button on Saturdays and a Fade button on Sundays, it's him.",
+        "That's the whole thesis of Fade in one human being: records are real, context is everything, and knowing who is actually good \u2014 on which sport, in which spot \u2014 is the edge. When GameDay's board drops on Saturday, you'll know exactly what his number is worth.",
+        "Source: Cole's Gameday Blog (gamedaycole.com) \u2014 tracked pick data for Steve Coughlin, 2014\u20132026. Records reflect publicly posted picks at standard -110 pricing unless noted."
+      ]
+    },
+    {
       "slug": "lsu-betting-on-themselves-kalshi-kiffin",
       "league": "CFB",
       "title": "LSU is betting on themselves \u2014 literally",

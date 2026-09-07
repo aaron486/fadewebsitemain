@@ -606,10 +606,10 @@ a { color:inherit; text-decoration:none; }
       return;
     }
     var live = games.filter(function (g) { return g.state === 'in'; }).length;
-    var shown = sbFull ? games : games.slice(0, 6);
+    var shown = sbFull ? games : games.slice(0, 3);
     var more = games.length > shown.length
       ? '<button class="sb-more" id="sbMore">All ' + games.length + ' ' + esc(lg.label) + ' games &rarr;</button>'
-      : (sbFull && games.length > 6 ? '<button class="sb-more" id="sbMore">Show fewer &uarr;</button>' : '');
+      : (sbFull && games.length > 3 ? '<button class="sb-more" id="sbMore">Show fewer &uarr;</button>' : '');
     sbBody.innerHTML = '<div class="sb-league"><div class="sb-league-head">' + esc(lg.label) +
       '<span>' + (live ? live + ' live &middot; ' : '') + games.length + (games.length === 1 ? ' game' : ' games') + '</span></div>' +
       '<div class="sb-grid">' + shown.map(function (g) { return gameCard(g, lg.label); }).join('') + '</div>' + more + '</div>';
@@ -629,8 +629,7 @@ a { color:inherit; text-decoration:none; }
   // collapsed by default so the board doesn't own the front page
   var sbPanel = document.getElementById('sbPanel');
   var sbHead = document.getElementById('sbHead');
-  var sbOpen = false;
-  try { sbOpen = localStorage.getItem('fm_board_open') === '1'; } catch (e) {}
+  var sbOpen = false; // always collapsed on load — the preview strip carries the front page
   function summaryLine() {
     var total = 0, live = 0;
     sbData.forEach(function (lg) {
@@ -661,7 +660,7 @@ a { color:inherit; text-decoration:none; }
       if (r) return r;
       return new Date(a.g.date) - new Date(b.g.date);
     });
-    sbPreview.innerHTML = flat.slice(0, 10).map(function (x) {
+    sbPreview.innerHTML = flat.slice(0, 8).map(function (x) {
       var g = x.g;
       var ml = g.state === 'pre' ? mlOf(matchOdds(g, x.label)) : null;
       var st = g.state === 'in' ? '<span class="st-in">' + esc(g.detail) + '</span>'
