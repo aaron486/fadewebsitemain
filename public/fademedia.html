@@ -56,10 +56,11 @@ a { color:inherit; text-decoration:none; }
 .masthead .tag { display:inline-block; margin-top:0.9rem; font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--carbon); border-top:1px solid var(--carbon); border-bottom:1px solid var(--carbon); padding:0.35rem 1.1rem; }
 /* section tabs */
 .cats { position:sticky; top:0; z-index:20; background:var(--paper); border-bottom:1.5px solid var(--carbon); }
-.cats-in { display:flex; justify-content:center; gap:0.4rem; padding:0.6rem 0; flex-wrap:wrap; }
-.cat-tab { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); background:var(--paper-hi); border:1.5px solid var(--line); border-radius:4px; padding:0.45rem 1.1rem; cursor:pointer; transition:all 0.15s ease; }
-.cat-tab:hover { color:var(--carbon); border-color:var(--carbon); }
-.cat-tab.active { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+.cats-in { display:flex; justify-content:center; gap:clamp(1.2rem,4.5vw,2.8rem); padding:0.9rem 0 0.95rem; flex-wrap:wrap; }
+.cat-tab { font-family:'IBM Plex Mono',monospace; font-size:0.76rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); background:none; border:none; padding:0.1rem 0; cursor:pointer; position:relative; transition:color 0.15s ease; }
+.cat-tab:hover { color:var(--carbon); }
+.cat-tab.active { color:var(--carbon); }
+.cat-tab.active::after { content:''; position:absolute; left:-2px; right:-2px; bottom:-0.55rem; height:3px; background:var(--carbon); }
 
 /* front grid */
 .front { display:grid; grid-template-columns:2fr 1fr; gap:0; padding:2rem 0 0; }
@@ -415,7 +416,7 @@ a { color:inherit; text-decoration:none; }
   <section class="nf" id="newsFront">
     <div class="nf-lead" id="nfLead"></div>
     <aside class="nf-side">
-      <div class="nf-side-head">Latest<span>The wire</span></div>
+      <div class="nf-side-head">Latest<span>From the desk</span></div>
       <div id="nfSide"></div>
       <a class="rail-cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>
     </aside>
@@ -964,7 +965,7 @@ a { color:inherit; text-decoration:none; }
       var feat = articles.filter(function (a) { return a.custom && a.featured; })[0];
       var lead = feat || withImg[0] || articles[0];
       var used = [lead];
-      var side = articles.filter(function (a) { return used.indexOf(a) === -1; }).slice(0, 4);
+      var side = articles.filter(function (a) { return a.custom && used.indexOf(a) === -1; }).slice(0, 4);
       used = used.concat(side);
       var rest = articles.filter(function (a) { return used.indexOf(a) === -1; });
       var gridItems = rest.slice(0, 8);
