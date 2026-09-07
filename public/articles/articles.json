@@ -4,170 +4,339 @@
       "slug": "stanford-steve-gameday-best-picker",
       "league": "CASES",
       "title": "Stanford Steve: GameDay's best picker",
-      "dek": "Twelve years of tracked picks. 648\u2013529 against the spread. Plus 60 units. The numbers say the guy next to the headgear is the sharpest voice on the set \u2014 with one glaring exception.",
+      "dek": "Twelve years of tracked picks. 648–529 against the spread. Plus 60 units. The numbers say the man beside the headgear is the sharpest voice on the set — with one glaring exception.",
       "author": "Fade Cases",
       "published": "2026-09-07T19:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w600",
       "featured": false,
+      "caseNo": "005",
+      "sources": "Cole's Gameday Blog (gamedaycole.com) — tracked pick data for Steve Coughlin, 2014–2026. Records reflect publicly posted picks at standard −110 pricing unless noted.",
+      "mag": {
+        "volume": "Case File No. 005",
+        "issueLine": "September 2026",
+        "edition": "An edition on the rare ones who are actually good",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The sharpest voice on the set.",
+        "coverSub": "Twelve years tracked. Fifty-five percent against the spread.",
+        "coverStat": { "label": "The Ledger", "value": "+60.1", "sub": "Units since 2014" },
+        "quote": { "text": "Break-even at the standard price is .524. He has lived above it for twelve years.", "attr": "The Fade Desk" },
+        "sections": [
+          {
+            "title": "The Ledger",
+            "headline": "A Career, Written Down",
+            "sub": "Every public pick since 2014, graded",
+            "paras": [
+              "Every Saturday morning, Steve Coughlin — Stanford Steve to anyone with a television — sits at the College GameDay desk and gives out numbers. Unlike most people who do that for a living, his have been written down. All of them, for twelve years.",
+              "Cole's Gameday Blog has tracked every public pick Coughlin has made since 2014 — GameDay, ESPN's betting shows, SportsCenter, all of it. The ledger reads 648 wins, 529 losses and 24 pushes against the spread: 55.1 percent over 1,201 picks, which at standard pricing works out to more than 60 units of profit. The break-even line for a bettor paying −110 is 52.4 percent. Holding three points above it for over a decade is not variance. It is a career.",
+              "Among every analyst the site has tracked to a thousand or more picks, no one matches his win rate. Only one picker on the entire board has banked more total units, and it took him three times the volume to do it. The peaks are real, too: a 57–29 season in 2018 worth nearly 23 units, a 53–30 debut in 2014, and a 63–50 start to the current season that already sits 7.4 units in the black."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The tracked record · via Cole's Gameday Blog",
+              "rows": [
+                { "sel": "All-time college football, against the spread", "num": "648–529–24", "res": "Won" },
+                { "sel": "Units banked across 1,201 tracked picks", "num": "+60.1", "res": "Won" },
+                { "sel": "Best season — 2018", "num": "57–29, +22.9 units", "res": "Won" },
+                { "sel": "Debut season — 2014", "num": "53–30", "res": "Won" },
+                { "sel": "This season, and counting", "num": "63–50, +7.4 units", "res": "Won" },
+                { "sel": "The catch: NFL, against the spread", "num": "166–162–7, −11.1 units", "res": "Lost" }
+              ],
+              "record": "55.1%",
+              "recordLabel": "College, all-time",
+              "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w600",
+              "note": "The highest win rate of any analyst tracked to a thousand or more picks."
+            }
+          },
+          {
+            "title": "The Asterisk",
+            "headline": "Mortal on Sundays",
+            "sub": "The same ledger, the other sport",
+            "paras": [
+              "The receipts cut both ways, and this is where they cut. On NFL Sundays, Stanford Steve is mortal: 166 wins, 162 losses, seven pushes — under 51 percent, eleven units in the red. The same man who prints money on college football gives a share of it back on the professional game.",
+              "The gap is the story. Nothing about his process changes between Saturday and Sunday; the market does. College football still leaves room for a person who watches everything to beat the number. The NFL, the most efficient betting market on earth, mostly does not — even for the best picker on the set."
+            ],
+            "figure": {
+              "type": "bars",
+              "label": "Two sports, one picker",
+              "rows": [
+                { "l": "CFB", "v": 0.551, "note": "648–529–24" },
+                { "l": "NFL", "v": 0.506, "note": "166–162–7" }
+              ],
+              "max": 0.7,
+              "ruleAt": 0.524,
+              "caption": "Win percentage against the spread, 2014–2026, as tracked by Cole's Gameday Blog. The rule marks break-even at standard −110 pricing."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Context Is the Edge",
+            "sub": "What the file is for",
+            "paras": [
+              "This is the thesis of Fade in one human being. Records are real. Context is everything. Knowing who is actually good — on which sport, in which spot — is the entire edge, and it only exists because somebody wrote the picks down.",
+              "When the GameDay board drops on Saturday, you will know exactly what his number is worth. On Sunday, you will know that too."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "The verdict",
+          "title": "Tail him.",
+          "big": "Saturdays only",
+          "note": "Fifty-five percent for twelve years on the college game; under fifty-one on the pro one. The record earns the tail — the calendar decides when.",
+          "tag": "Tail it or fade it",
+          "end": "End of Case File No. 005",
+          "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w1000"
+        }
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w1000",
-        "caption": "Stanford Steve \u00b7 Tail him (on Saturdays)",
-        "slipTitle": "The tracked record \u00b7 via Cole's Gameday Blog",
+        "caption": "Stanford Steve · Tail him (on Saturdays)",
+        "slipTitle": "The tracked record · via Cole's Gameday Blog",
         "record": "Verdict: Tail the college card",
         "picks": [
-          {
-            "t": "All-time CFB ATS: 648\u2013529\u201324 \u2014 55.1%",
-            "r": "W"
-          },
-          {
-            "t": "+60.1 units across 1,201 tracked picks since 2014",
-            "r": "W"
-          },
-          {
-            "t": "Highest win rate of any 1,000-pick analyst tracked",
-            "r": "W"
-          },
-          {
-            "t": "Best season: 2018 \u2014 57\u201329, +22.9 units",
-            "r": "W"
-          },
-          {
-            "t": "This season: 63\u201350, +7.4 units and counting",
-            "r": "W"
-          },
-          {
-            "t": "The catch: NFL ATS 166\u2013162\u20137, \u221211.1 units",
-            "r": "L"
-          }
+          { "t": "All-time CFB ATS: 648–529–24 — 55.1%", "r": "W" },
+          { "t": "+60.1 units across 1,201 tracked picks since 2014", "r": "W" },
+          { "t": "Highest win rate of any 1,000-pick analyst tracked", "r": "W" },
+          { "t": "Best season: 2018 — 57–29, +22.9 units", "r": "W" },
+          { "t": "This season: 63–50, +7.4 units and counting", "r": "W" },
+          { "t": "The catch: NFL ATS 166–162–7, −11.1 units", "r": "L" }
         ],
         "stamp": "TAIL"
       },
       "body": [
-        "Every Saturday morning, Steve Coughlin \u2014 Stanford Steve to anyone with a TV \u2014 sits at the College GameDay desk and gives out numbers. Unlike most people who do that for a living, his have been written down. All of them. For twelve years.",
-        "Cole's Gameday Blog has tracked every public pick Coughlin has made since 2014 \u2014 GameDay, ESPN's betting shows, SportsCenter, all of it. The ledger: 648 wins, 529 losses, 24 pushes against the spread. That's 55.1% over 1,201 picks \u2014 and at standard juice it works out to more than 60 units of profit. For context, the break-even line for a bettor paying -110 is 52.4%. Holding three points above that for over a decade is not luck. It's a career.",
-        "The comparison table is where it gets impressive. Among every analyst the site has tracked to 1,000-plus picks, nobody matches his win rate \u2014 not the touts, not the sharps-on-TV, nobody. Only one picker on the entire board has banked more total units, and it took him three times the volume to do it.",
-        "The peaks are real too: a 57\u201329 season in 2018 worth almost 23 units, a 53\u201330 debut year in 2014, and this season he's already 63\u201350 and up 7.4 units through the first stretch \u2014 including eating a loss on Clemson +10 against LSU in Week 1 like everyone else who trusted the Tigers' opponent.",
-        "Now the asterisk, because the receipts cut both ways: on NFL Sundays, Stanford Steve is mortal. His tracked pro record is 166\u2013162\u20137 \u2014 under 51%, eleven units in the red. The same man who prints money on college football gives it back on the NFL. If ever a bettor was built for a Tail button on Saturdays and a Fade button on Sundays, it's him.",
-        "That's the whole thesis of Fade in one human being: records are real, context is everything, and knowing who is actually good \u2014 on which sport, in which spot \u2014 is the edge. When GameDay's board drops on Saturday, you'll know exactly what his number is worth.",
-        "Source: Cole's Gameday Blog (gamedaycole.com) \u2014 tracked pick data for Steve Coughlin, 2014\u20132026. Records reflect publicly posted picks at standard -110 pricing unless noted."
-      ],
-      "caseNo": "005"
+        "Every Saturday morning, Steve Coughlin — Stanford Steve to anyone with a television — sits at the College GameDay desk and gives out numbers. Unlike most people who do that for a living, his have been written down. All of them, for twelve years.",
+        "Cole's Gameday Blog has tracked every public pick Coughlin has made since 2014. The ledger reads 648 wins, 529 losses and 24 pushes against the spread: 55.1 percent over 1,201 picks, more than 60 units of profit at standard pricing. Break-even is 52.4 percent. Holding three points above it for a decade is not variance. It is a career.",
+        "The asterisk: on NFL Sundays he is mortal — 166–162–7, eleven units in the red. The same man who prints money on college football gives it back on the professional game.",
+        "That is the thesis of Fade in one human being: records are real, context is everything, and knowing who is actually good — on which sport, in which spot — is the entire edge."
+      ]
     },
     {
       "slug": "lsu-betting-on-themselves-kalshi-kiffin",
       "league": "CFB",
-      "title": "LSU is betting on themselves \u2014 literally",
-      "dek": "Five Kalshi block trades, $662,050 down, up to $3 million back \u2014 rung for rung, the exact shape of Lane Kiffin's playoff bonus ladder. Welcome to the era where the school's insurer is holding tickets on the season.",
+      "title": "LSU is betting on themselves — literally",
+      "dek": "Five Kalshi block trades, $662,050 down, up to $3 million back — rung for rung, the exact shape of Lane Kiffin's playoff bonus ladder. The school's insurer is holding tickets on the season.",
       "author": "Fade Desk",
       "published": "2026-09-07T18:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1gfOCfhhtlvbaJj9Zyu6iOaYhd96xl4gS&sz=w600",
       "featured": false,
+      "sources": "The Athletic (The New York Times), CBS Sports and InGame — reporting on Game Point Capital's Kalshi block trades tied to Lane Kiffin's LSU bonuses, September 2026.",
+      "mag": {
+        "volume": "The Money Desk",
+        "issueLine": "September 2026",
+        "edition": "An edition on the business of the game",
+        "coverKicker": "Markets",
+        "coverLine": "The school is holding tickets on its own season.",
+        "coverSub": "Five block trades, priced to the dollar of the coach's bonus ladder.",
+        "coverStat": { "label": "Max payout", "value": "$3M", "sub": "If LSU wins it all" },
+        "quote": { "text": "Heads, LSU wins. Tails, the market pays.", "attr": "The Fade Desk" },
+        "sections": [
+          {
+            "title": "The Bonus",
+            "headline": "A Ladder Worth Three Million",
+            "sub": "What LSU owes Lane Kiffin for winning",
+            "paras": [
+              "Lane Kiffin's LSU contract pays him bonuses that climb with every step of a playoff run — $750,000 for getting the Tigers into the College Football Playoff, scaling to $3 million if he wins the national championship. Somebody is on the hook for that money the moment the confetti falls.",
+              "Historically, that somebody buys insurance. Schools lay off the risk of their coach's success the way airlines lay off fuel prices — through specialist underwriters, most famously at Lloyd's of London. What changed this month is where the hedge showed up: in public, on an exchange, at prices anyone can look up."
+            ]
+          },
+          {
+            "title": "The Trade",
+            "headline": "Five Rungs, One Position",
+            "sub": "The block trades, as reported",
+            "paras": [
+              "Two weeks before the reports surfaced, five block trades — large positions negotiated off-exchange — hit the prediction market Kalshi, every one of them on LSU's season. The cost of the position was $662,050. The maximum payout, if the Tigers run the table, is $3 million. That is not a round number by accident; it is, to the dollar, Kiffin's championship bonus.",
+              "The trades trace to Game Point Capital, a sports insurance firm whose business is protecting schools from the happy disaster of a coach hitting his incentives. Kalshi's chief executive announced a partnership with the firm in February. Similar third-party positions appeared on South Carolina's season a month earlier.",
+              "The arithmetic on the first rung shows the machinery plainly: if LSU makes the playoff, the position pays $837,500 — more than covering the $750,000 check the school owes its coach for getting there. Every deeper run pays more, exactly as the obligation grows."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The position · five Kalshi block trades",
+              "rows": [
+                { "sel": "LSU makes the College Football Playoff", "num": "pays $837,500", "res": "Pending" },
+                { "sel": "LSU reaches the quarterfinal", "num": "", "res": "Pending" },
+                { "sel": "LSU reaches the semifinal", "num": "", "res": "Pending" },
+                { "sel": "LSU reaches the national title game", "num": "", "res": "Pending" },
+                { "sel": "LSU wins the national championship", "num": "total pays $3,000,000", "res": "Pending" }
+              ],
+              "record": "$662,050",
+              "recordLabel": "The stake",
+              "note": "Five block trades negotiated off-exchange, reported to trace to Game Point Capital, LSU's bonus insurer."
+            }
+          },
+          {
+            "title": "The Machine",
+            "headline": "Infrastructure, Not a Sweat",
+            "sub": "Why the desk cares",
+            "paras": [
+              "This is the part of the story a pre-bet desk exists for. Betting markets are no longer just where fans sweat — they are infrastructure. A university's insurance company is functionally long LSU football, in public, at prices you can check between classes. The same markets you can trade are now settling coach bonuses.",
+              "So when you watch LSU this season, know that you are not the only one with a position. The school's own hedge is riding every snap — and the money's lean is visible before you make your own call."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "The hedge is live",
+          "title": "LSU",
+          "big": "$3,000,000",
+          "note": "If Kiffin celebrates, the tickets cash. Every rung of the run is priced, posted and public.",
+          "tag": "See which way the money leans",
+          "end": "End of the file",
+          "photo": "https://drive.google.com/thumbnail?id=1gfOCfhhtlvbaJj9Zyu6iOaYhd96xl4gS&sz=w1000"
+        }
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1gfOCfhhtlvbaJj9Zyu6iOaYhd96xl4gS&sz=w1000",
-        "caption": "LSU \u00d7 Kalshi \u00b7 The hedge is live",
-        "slipTitle": "The hedge \u00b7 five Kalshi block trades",
-        "record": "Cost: $662,050 \u00b7 Max payout: $3,000,000",
+        "caption": "LSU × Kalshi · The hedge is live",
+        "slipTitle": "The hedge · five Kalshi block trades",
+        "record": "Cost: $662,050 · Max payout: $3,000,000",
         "picks": [
-          {
-            "t": "LSU makes the College Football Playoff \u2014 pays $837,500",
-            "r": "P"
-          },
-          {
-            "t": "LSU reaches the CFP quarterfinal",
-            "r": "P"
-          },
-          {
-            "t": "LSU reaches the CFP semifinal",
-            "r": "P"
-          },
-          {
-            "t": "LSU reaches the national title game",
-            "r": "P"
-          },
-          {
-            "t": "LSU wins the national championship \u2014 total pays $3M",
-            "r": "P"
-          }
+          { "t": "LSU makes the College Football Playoff — pays $837,500", "r": "P" },
+          { "t": "LSU reaches the CFP quarterfinal", "r": "P" },
+          { "t": "LSU reaches the CFP semifinal", "r": "P" },
+          { "t": "LSU reaches the national title game", "r": "P" },
+          { "t": "LSU wins the national championship — total pays $3M", "r": "P" }
         ],
         "stamp": "NONE"
       },
       "body": [
-        "Lane Kiffin's LSU contract pays him bonuses that climb with every step of a playoff run \u2014 $750,000 just for getting the Tigers in, scaling to $3 million if he wins the whole thing. Someone is on the hook for that money. And that someone just went to the window.",
-        "Two weeks before the reports surfaced, five block trades \u2014 large positions negotiated off-exchange \u2014 hit the prediction market Kalshi, all on LSU's season: make the College Football Playoff, reach the quarterfinal, reach the semifinal, reach the title game, win the national championship. Cost of the position: $662,050. Maximum payout if the Tigers run the table: $3 million. That is not a round number by accident \u2014 it is, to the dollar, Kiffin's championship bonus.",
-        "The trades trace to Game Point Capital, a sports insurance firm whose entire business is insuring schools against the happy disaster of their coach hitting his bonuses. Kalshi's CEO announced a partnership with the firm back in February; before that, Game Point laid off this kind of risk through specialist reinsurance at places like Lloyd's of London. Now the hedge just lives on a public exchange where anyone can see it. Similar third-party trades showed up on South Carolina's season a month earlier.",
-        "Do the math on the first rung and the machinery is beautiful: if LSU makes the playoff, the position pays $837,500 \u2014 more than covering the $750,000 bonus check the school owes its coach for getting there. Every deeper run pays more, exactly as the bonus obligation grows. If Kiffin celebrates, the tickets cash. Heads, LSU wins; tails, the market pays.",
-        "This is the part of the story the pre-bet desk exists for: betting markets aren't just where fans sweat anymore \u2014 they're infrastructure. A university's insurance company is functionally long LSU football, in public, at prices you can look up. The same markets you can trade are now settling coach bonuses.",
-        "So when you watch LSU this season, know that you're not the only one with a position. The school's own hedge is riding every snap \u2014 and on Fade, you can see which way the money leans before you make your own call.",
-        "Sources: The Athletic (NYT), CBS Sports, InGame \u2014 reporting on Game Point Capital's Kalshi block trades tied to Lane Kiffin's LSU bonuses, September 2026."
+        "Lane Kiffin's LSU contract pays him bonuses that climb with every step of a playoff run — $750,000 for making the College Football Playoff, scaling to $3 million for winning it all. Somebody is on the hook for that money, and that somebody just went to the window.",
+        "Five block trades hit the prediction market Kalshi, all on LSU's season: playoff, quarterfinal, semifinal, title game, championship. Cost: $662,050. Maximum payout: $3 million — to the dollar, Kiffin's championship bonus.",
+        "The trades trace to Game Point Capital, a sports insurance firm that protects schools from the happy disaster of a coach hitting his incentives. If LSU makes the playoff, the first rung pays $837,500 — more than covering the $750,000 the school owes its coach for getting there.",
+        "Betting markets are not just where fans sweat anymore; they are infrastructure. When you watch LSU this season, you are not the only one with a position."
       ]
     },
     {
       "slug": "clay-travis-week-1-card",
       "league": "CFB",
-      "title": "College football's biggest loser: Clay Travis opens the season 2\u20138",
-      "dek": "Eleven public picks, two winners \u2014 and tonight he's doubling down on Florida State +3. The most fadeable card in sports media is back, and the fade army is already counting its money.",
+      "title": "College football's biggest loser: Clay Travis opens the season 2–8",
+      "dek": "Eleven public picks, two winners, six and two-tenths units gone — and one bet still alive. The most fadeable card in sports media is back.",
       "author": "Fade Desk",
       "published": "2026-09-07T16:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
       "featured": true,
+      "sources": "Picks and records via @ExposingClay on X; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published.",
+      "mag": {
+        "volume": "Volume One",
+        "issueLine": "September 2026",
+        "edition": "An edition on getting it wrong in public",
+        "coverKicker": "The Fade Index",
+        "coverLine": "College football's biggest loser.",
+        "coverSub": "Clay Travis opened the season 2–8 against the number.",
+        "coverStat": { "label": "The Cost", "value": "−6.2", "sub": "Units, one week" },
+        "quote": { "text": "Seventy-four and ninety.", "attr": "His own accounting of the 2024 season" },
+        "sections": [
+          {
+            "title": "The Collapse",
+            "headline": "A Week in Free Fall",
+            "sub": "He posts the card himself. Graded, it only goes one way.",
+            "paras": [
+              "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. The first week of the 2026 season will not slow the tradition.",
+              "Eleven picks went up before kickoff. By Sunday morning, eight had lost. Georgia Tech laying six and a half, gone. Stanford, Texas State, Furman and Northern Illinois — four heavy underdogs asked only to keep it respectable — none did. The Baylor–Auburn over fell short. Clemson, catching ten and a half, could not stay inside it. Wisconsin, catching twenty and a half, could not either.",
+              "Two picks survived: UCLA laying a point and a half, and the Louisville–Ole Miss over. Graded at one unit per play, the week closed at minus six and two-tenths units. None of this is new — the account @ExposingClay has documented the run for years, and by Travis's own accounting his 2024 season finished seventy-four wins against ninety losses. There are bad weeks, and then there are bodies of work."
+            ],
+            "figures": [
+              {
+                "type": "line",
+                "label": "The week, in units",
+                "points": [
+                  { "l": "Open", "v": 0, "d": "even" },
+                  { "l": "Georgia Tech −6.5, lost", "v": -1 },
+                  { "l": "Stanford +24.5, lost", "v": -2 },
+                  { "l": "Texas State +29.5, lost", "v": -3 },
+                  { "l": "Baylor/Auburn o58.5, lost", "v": -4 },
+                  { "l": "Furman +46.5, lost", "v": -5 },
+                  { "l": "N. Illinois +31.5, lost", "v": -6 },
+                  { "l": "Clemson +10.5, lost", "v": -7 },
+                  { "l": "UCLA −1.5, won", "v": -6.09 },
+                  { "l": "Wisconsin +20.5, lost", "v": -7.09 },
+                  { "l": "Louisville/Ole Miss o55.5, won", "v": -6.18, "d": "−6.2" }
+                ],
+                "baseline": { "v": 0, "label": "Even" },
+                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
+              },
+              {
+                "type": "bars",
+                "label": "And it was not the first",
+                "rows": [
+                  { "l": "2024", "v": 0.451, "note": "74–90, his own accounting" },
+                  { "l": "2026", "v": 0.2, "note": "2–8, week one" }
+                ],
+                "max": 0.7,
+                "ruleAt": 0.5,
+                "caption": "Win percentage on publicly posted picks. The rule marks .500 — break-even before the price."
+              }
+            ]
+          },
+          {
+            "title": "The Card",
+            "headline": "Eleven Picks, Two Winners",
+            "sub": "Week one, 2026 · As published before kickoff",
+            "paras": [
+              "The full card, graded at the numbers he posted. Read it top to bottom and the shape of the week is unmistakable: seven straight losses before the first winner, and a card built almost entirely on long underdogs and high totals — the kinds of bets that look brave on Thursday and expensive by Saturday night."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The official card",
+              "rows": [
+                { "sel": "Georgia Tech", "num": "−6.5", "res": "Lost" },
+                { "sel": "Stanford", "num": "+24.5", "res": "Lost" },
+                { "sel": "Texas State", "num": "+29.5", "res": "Lost" },
+                { "sel": "Baylor / Auburn", "num": "over 58.5", "res": "Lost" },
+                { "sel": "Furman", "num": "+46.5", "res": "Lost" },
+                { "sel": "Northern Illinois", "num": "+31.5", "res": "Lost" },
+                { "sel": "Clemson", "num": "+10.5", "res": "Lost" },
+                { "sel": "UCLA", "num": "−1.5", "res": "Won" },
+                { "sel": "Wisconsin", "num": "+20.5", "res": "Lost" },
+                { "sel": "Louisville / Ole Miss", "num": "over 55.5", "res": "Won" },
+                { "sel": "Florida State", "num": "+3", "res": "Pending" }
+              ],
+              "record": "2–8",
+              "recordLabel": "Graded",
+              "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
+              "note": "As published on his public card before kickoff, graded at the posted numbers."
+            }
+          },
+          {
+            "title": "The Call",
+            "headline": "One Bet Left",
+            "sub": "Monday night decides the volume",
+            "paras": [
+              "The card is not finished. The last entry — Florida State, catching three — kicks off Monday night, the only pick still live and the only chance to close the week above two wins. A fade of a man having this kind of week is not analysis; it is arithmetic. Then again, so was Furman plus forty-six and a half.",
+              "That strategy has a name, and it is the reason this desk exists. When the next card drops, it will be in Fade the moment it is posted — with a Tail button for the brave and a Fade button for the rest of us."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "One pick remains",
+          "title": "Florida State",
+          "big": "+3",
+          "note": "He is 2–8 on the week and down 6.2 units. Monday night is the last entry on the card — the only one still live, and the only chance to close Volume One above water.",
+          "tag": "Tail it or fade it",
+          "end": "End of Volume One",
+          "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000"
+        }
+      },
       "body": [
-        "Every fall it happens on schedule: Clay Travis posts his college football card for the world to see, and the internet does the profitable thing \u2014 the exact opposite.",
-        "Week 1 of 2026 was a masterpiece of the genre. Eleven picks went up. Georgia Tech -6.5, missed. Stanford +24.5, missed. Texas State +29.5, missed. Baylor/Auburn over 58.5, missed. Furman +46.5, missed. Northern Illinois +31.5, missed. Clemson +10, missed. Wisconsin +20.5, missed.",
-        "The survivors: UCLA -1.5 cashed, and the Louisville/Ole Miss over 55.5 snuck through. And the card isn't done \u2014 tonight, Clay is on Florida State +3. Same season, same energy, one more chance to do the profitable thing.",
-        "None of this is new. The receipts account @ExposingClay has been documenting the run for years, and by Clay's own admission his 2024 season closed at 74\u201390. There are bad bettors, and then there are bettors so reliably wrong that betting against them becomes its own strategy.",
-        "That strategy has a name. It's the whole reason this app exists. When the next card drops, you'll see it in Fade the moment it's posted \u2014 with a Tail button for the brave and a Fade button for the rest of us.",
-        "Source: @ExposingClay on X \u2014 x.com/ExposingClay/status/2096936385051517169. Records reflect publicly posted picks."
+        "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite.",
+        "Week 1 of 2026: eleven picks went up, eight lost. Georgia Tech −6.5, Stanford +24.5, Texas State +29.5, the Baylor–Auburn over, Furman +46.5, Northern Illinois +31.5, Clemson +10.5, Wisconsin +20.5 — all missed. UCLA −1.5 and the Louisville–Ole Miss over survived. At one unit per play, the week closed 6.2 units underwater.",
+        "The card is not finished. Florida State, catching three, kicks off Monday night — the only pick still live.",
+        "None of this is new. @ExposingClay has documented the run for years; by Travis's own accounting, his 2024 season finished 74–90. There are bad weeks, and then there are bodies of work."
       ],
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000",
-        "caption": "Clay Travis \u00b7 Fade him",
-        "record": "Week 1: 2\u20138",
+        "caption": "Clay Travis · Fade him",
+        "record": "Week 1: 2–8",
         "slipTitle": "Clay's Week 1 card",
         "picks": [
-          {
-            "t": "Georgia Tech -6.5",
-            "r": "L"
-          },
-          {
-            "t": "Stanford +24.5",
-            "r": "L"
-          },
-          {
-            "t": "Texas State +29.5",
-            "r": "L"
-          },
-          {
-            "t": "Baylor/Auburn O58.5",
-            "r": "L"
-          },
-          {
-            "t": "Furman +46.5",
-            "r": "L"
-          },
-          {
-            "t": "N. Illinois +31.5",
-            "r": "L"
-          },
-          {
-            "t": "Clemson +10",
-            "r": "L"
-          },
-          {
-            "t": "UCLA -1.5",
-            "r": "W"
-          },
-          {
-            "t": "Wisconsin +20.5",
-            "r": "L"
-          },
-          {
-            "t": "Lou/Ole Miss O55.5",
-            "r": "W"
-          },
-          {
-            "t": "Florida State +3",
-            "r": "T"
-          }
+          { "t": "Georgia Tech -6.5", "r": "L" },
+          { "t": "Stanford +24.5", "r": "L" },
+          { "t": "Texas State +29.5", "r": "L" },
+          { "t": "Baylor/Auburn O58.5", "r": "L" },
+          { "t": "Furman +46.5", "r": "L" },
+          { "t": "N. Illinois +31.5", "r": "L" },
+          { "t": "Clemson +10.5", "r": "L" },
+          { "t": "UCLA -1.5", "r": "W" },
+          { "t": "Wisconsin +20.5", "r": "L" },
+          { "t": "Lou/Ole Miss O55.5", "r": "W" },
+          { "t": "Florida State +3", "r": "T" }
         ],
         "tonight": "He's on Florida State +3"
       }
@@ -176,166 +345,269 @@
       "slug": "case-001-drake-curse",
       "league": "CASES",
       "title": "The Drake Curse",
-      "dek": "The biggest artist in the world is also the most public bettor alive \u2014 eight-figure stakes, posted slips, and a curse so consistent it has its own website.",
+      "dek": "The biggest artist in the world is also the most public bettor alive — eight-figure stakes, posted slips, and a pattern so consistent it has its own website.",
       "author": "Fade Cases",
       "published": "2026-09-06T12:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
       "featured": false,
+      "caseNo": "001",
+      "sources": "Publicly reported wagers; thedrakecurse.com; Covers. Amounts as reported.",
+      "mag": {
+        "volume": "Case File No. 001",
+        "issueLine": "September 2026",
+        "edition": "An edition on getting it wrong in public",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The most public bettor alive.",
+        "coverSub": "Eight-figure stakes. Posted slips. One reported winner.",
+        "coverStat": { "label": "Reported slips", "value": "1–6", "sub": "The graded record" },
+        "quote": { "text": "They won the Cup. The bet lost anyway.", "attr": "Argentina, in regulation — the curse at work" },
+        "sections": [
+          {
+            "title": "The Curse",
+            "headline": "Teams He Backs Crumble",
+            "sub": "How a superstition became a data set",
+            "paras": [
+              "Teams he backs crumble. Fighters he walks to the cage lose. The internet keeps the receipts, and there are a great many receipts.",
+              "The phenomenon earned its name at UFC 229, when Drake walked Conor McGregor to the octagon and Khabib Nurmagomedov mauled him. Since then the pattern has been documented in eight figures. A reported million dollars on Argentina to win the World Cup final in regulation: Argentina won the Cup, on penalties, and the bet lost anyway — the curse's masterpiece. Seven figures on Israel Adesanya, stopped in the fifth round. Four hundred thousand on Jake Paul against Tommy Fury, gone. Three hundred fifty-five thousand on a fifty-eight-year-old Mike Tyson, gone.",
+              "The one week the curse took off: roughly seven hundred thousand dollars on the Chiefs in Super Bowl LVII, which cashed. One reported winner. Six reported losers. A body of work so consistent that thedrakecurse.com exists."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The exhibits · reported slips",
+              "rows": [
+                { "sel": "Walks McGregor out at UFC 229", "num": "Khabib wins", "res": "Lost" },
+                { "sel": "Argentina in regulation, World Cup final", "num": "$1,000,000", "res": "Lost" },
+                { "sel": "Adesanya at UFC 281", "num": "seven figures", "res": "Lost" },
+                { "sel": "Jake Paul vs. Tommy Fury", "num": "$400,000", "res": "Lost" },
+                { "sel": "Chiefs, Super Bowl LVII", "num": "≈$700,000", "res": "Won" },
+                { "sel": "Adesanya at UFC 305", "num": "$450,000", "res": "Lost" },
+                { "sel": "Tyson vs. Jake Paul", "num": "$355,000", "res": "Lost" }
+              ],
+              "record": "1–6",
+              "recordLabel": "As reported",
+              "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
+              "note": "Amounts as publicly reported. The record does not improve on inspection."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "What a Case File Is For",
+            "sub": "Graded, timestamped, attached to alerts",
+            "paras": [
+              "This is what a case file is for. On Fade, a record like this is not a vibe — it is graded, timestamped and attached to alerts. The next time the biggest artist in the world places a bet, you will know. What you do about it is the whole game."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Case File No. 001",
+          "title": "Fade him.",
+          "big": "1–6",
+          "note": "One reported winner. Six reported losers. The internet reached its verdict years ago; the file merely keeps it current.",
+          "tag": "Get notified when he bets",
+          "end": "End of Case File No. 001",
+          "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000"
+        }
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000",
-        "caption": "Drake \u00b7 Exhibit A",
+        "caption": "Drake · Exhibit A",
         "stamp": "FADE",
-        "slipTitle": "The record \u00b7 reported slips",
+        "slipTitle": "The record · reported slips",
         "record": "Verdict: Fade",
         "picks": [
-          {
-            "t": "UFC 229: walks McGregor out. Khabib wins",
-            "r": "L"
-          },
-          {
-            "t": "$1M \u2014 Argentina in regulation, WC final",
-            "r": "L"
-          },
-          {
-            "t": "Seven figures \u2014 Adesanya at UFC 281",
-            "r": "L"
-          },
-          {
-            "t": "$400K \u2014 Jake Paul vs Tommy Fury",
-            "r": "L"
-          },
-          {
-            "t": "~$700K \u2014 Chiefs, Super Bowl LVII",
-            "r": "W"
-          },
-          {
-            "t": "$450K \u2014 Adesanya at UFC 305",
-            "r": "L"
-          },
-          {
-            "t": "$355K \u2014 Tyson vs Jake Paul",
-            "r": "L"
-          }
+          { "t": "UFC 229: walks McGregor out. Khabib wins", "r": "L" },
+          { "t": "$1M — Argentina in regulation, WC final", "r": "L" },
+          { "t": "Seven figures — Adesanya at UFC 281", "r": "L" },
+          { "t": "$400K — Jake Paul vs Tommy Fury", "r": "L" },
+          { "t": "~$700K — Chiefs, Super Bowl LVII", "r": "W" },
+          { "t": "$450K — Adesanya at UFC 305", "r": "L" },
+          { "t": "$355K — Tyson vs Jake Paul", "r": "L" }
         ]
       },
       "body": [
-        "Teams he backs crumble. Fighters he walks out lose. The internet keeps the receipts \u2014 and there are a lot of receipts.",
-        "It got its name at UFC 229, when Drake walked Conor McGregor to the cage and Khabib mauled him. Since then the pattern has been documented in eight figures: a reported million on Argentina to win the World Cup final in regulation \u2014 they won the Cup, on penalties, and the bet lost anyway. Seven figures on Israel Adesanya, stopped in the fifth. $400K on Jake Paul against Tommy Fury, gone. $355K on a 58-year-old Mike Tyson, gone.",
-        "The one week the curse took off: roughly $700K on the Chiefs in Super Bowl LVII, which cashed. One reported winner. Six reported losers. A body of work so consistent that thedrakecurse.com exists.",
-        "This is what a case file is for. On Fade, records like this aren't vibes \u2014 they're graded, timestamped, and attached to alerts. Get notified the next time Drake places a bet, and do the profitable thing.",
-        "Sources: publicly reported wagers, thedrakecurse.com, Covers. Amounts as reported."
-      ],
-      "caseNo": "001"
+        "Teams he backs crumble. Fighters he walks to the cage lose. The internet keeps the receipts — and there are a great many receipts.",
+        "It earned its name at UFC 229, when Drake walked Conor McGregor out and Khabib mauled him. Since then: a reported million on Argentina to win the World Cup final in regulation — they won the Cup, on penalties, and the bet lost anyway. Seven figures on Israel Adesanya, stopped in the fifth. $400K on Jake Paul against Tommy Fury, gone. $355K on a 58-year-old Mike Tyson, gone.",
+        "The one week the curse took off: roughly $700K on the Chiefs in Super Bowl LVII, which cashed. One reported winner, six reported losers — a body of work so consistent that thedrakecurse.com exists.",
+        "On Fade, records like this are graded, timestamped and attached to alerts. Get notified the next time Drake places a bet, and do the profitable thing."
+      ]
     },
     {
       "slug": "case-002-portnoy",
       "league": "CASES",
       "title": "El Presidente",
-      "dek": "Dave Portnoy bets the way he runs Barstool \u2014 loudly, publicly, and in seven figures. A 30% hit rate that's somehow up $2.7 million.",
+      "dek": "Dave Portnoy bets the way he runs Barstool — loudly, publicly, and in seven figures. A 30 percent hit rate that is somehow up $2.7 million.",
       "author": "Fade Cases",
       "published": "2026-09-06T11:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w600",
       "featured": false,
+      "caseNo": "002",
+      "sources": "Publicly reported and DraftKings-confirmed wagers, 2021–2025. The full 30-bet ledger is graded in Fade.",
+      "mag": {
+        "volume": "Case File No. 002",
+        "issueLine": "September 2026",
+        "edition": "An edition on getting it wrong in public",
+        "coverKicker": "The Fade Index",
+        "coverLine": "Loudly, publicly, in seven figures.",
+        "coverSub": "Thirty reported wagers. Nine winners. A profit anyway.",
+        "coverStat": { "label": "The paradox", "value": "+$2.7M", "sub": "At a 30% hit rate" },
+        "quote": { "text": "Fade the volume. Respect the futures.", "attr": "The Portnoy paradox, resolved" },
+        "sections": [
+          {
+            "title": "The Record",
+            "headline": "Nine and Twenty-One",
+            "sub": "Both facts are true",
+            "paras": [
+              "Across thirty publicly reported wagers, Dave Portnoy's record is nine wins and twenty-one losses — a thirty percent hit rate. He is also up two million seven hundred thousand dollars. Both facts are true, and both facts are why America watches every slip he posts.",
+              "The losses are operatic. Half a million on Virginia Tech as a plus-220 underdog. A million on a Bills Super Bowl that never came. A thousand-dollar side bet with Urban Meyer that found a way to lose. But the wins are all-timers: six hundred thousand on Connecticut at 4-to-1 to repeat as national champion, three hundred thousand on Scottie Scheffler at 9-to-2 the week he won the Masters, a Caitlin Clark triple-double at 13-to-1."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The exhibits · reported wagers",
+              "rows": [
+                { "sel": "Virginia Tech +220 vs. Miami", "num": "$500,000", "res": "Lost" },
+                { "sel": "Michigan, Rose Bowl CFP semifinal", "num": "$1,000,000 · won $847,000", "res": "Won" },
+                { "sel": "UConn +360, national championship", "num": "$600,000 · won $2,160,000", "res": "Won" },
+                { "sel": "Scheffler +450, the Masters", "num": "$300,000 · won $1,350,000", "res": "Won" },
+                { "sel": "Bills to win Super Bowl LIX", "num": "$1,000,000", "res": "Lost" },
+                { "sel": "Caitlin Clark triple-double +1300", "num": "$25,000 · won $325,000", "res": "Won" },
+                { "sel": "Side bet with Urban Meyer on Michigan", "num": "$1,000", "res": "Lost" }
+              ],
+              "record": "9–21",
+              "recordLabel": "Thirty wagers",
+              "photo": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w600",
+              "note": "The volume loses. The futures, priced long and sized large, have paid for all of it."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "The Paradox, Graded",
+            "sub": "Two records in one man",
+            "paras": [
+              "That is the Portnoy paradox: fade the volume, respect the futures. A record this loud deserves to be graded live, not argued about on the timeline. The next time El Presidente fires, the file will already be open — tail the future, fade the dog, your call."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Case File No. 002",
+          "title": "Split the verdict.",
+          "big": "9–21",
+          "note": "Fade the volume; respect the futures. Both halves of the record are real, and only one of them is profitable to follow.",
+          "tag": "Get notified when he fires",
+          "end": "End of Case File No. 002",
+          "photo": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w1000"
+        }
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w1000",
-        "caption": "Dave Portnoy \u00b7 Exhibit A",
+        "caption": "Dave Portnoy · Exhibit A",
         "stamp": "FADE",
-        "slipTitle": "The record \u00b7 30 reported wagers",
-        "record": "9\u201321 \u00b7 +$2.7M anyway",
+        "slipTitle": "The record · 30 reported wagers",
+        "record": "9–21 · +$2.7M anyway",
         "picks": [
-          {
-            "t": "$500K \u2014 Virginia Tech +220 vs Miami",
-            "r": "L"
-          },
-          {
-            "t": "$1M \u2014 Michigan, Rose Bowl CFP semi (+$847K)",
-            "r": "W"
-          },
-          {
-            "t": "$600K \u2014 UConn +360 to win the natty (+$2.16M)",
-            "r": "W"
-          },
-          {
-            "t": "$300K \u2014 Scheffler +450, the Masters (+$1.35M)",
-            "r": "W"
-          },
-          {
-            "t": "$1M \u2014 Bills to win Super Bowl LIX",
-            "r": "L"
-          },
-          {
-            "t": "$25K \u2014 Caitlin Clark triple-double +1300 (+$325K)",
-            "r": "W"
-          },
-          {
-            "t": "$1,000 side bet with Urban Meyer on Michigan",
-            "r": "L"
-          }
+          { "t": "$500K — Virginia Tech +220 vs Miami", "r": "L" },
+          { "t": "$1M — Michigan, Rose Bowl CFP semi (+$847K)", "r": "W" },
+          { "t": "$600K — UConn +360 to win the natty (+$2.16M)", "r": "W" },
+          { "t": "$300K — Scheffler +450, the Masters (+$1.35M)", "r": "W" },
+          { "t": "$1M — Bills to win Super Bowl LIX", "r": "L" },
+          { "t": "$25K — Caitlin Clark triple-double +1300 (+$325K)", "r": "W" },
+          { "t": "$1,000 side bet with Urban Meyer on Michigan", "r": "L" }
         ]
       },
       "body": [
-        "Across 30 publicly reported wagers, Dave Portnoy's record is 9\u201321. That's a 30% hit rate. He is also up $2.7 million. Both facts are true, and both facts are why America watches every slip he posts.",
-        "The losses are operatic \u2014 $500K on Virginia Tech as a +220 dog, a million on the Bills' Super Bowl that never came, even a $1,000 side bet with Urban Meyer that found a way to lose. But the wins are all-timers: $600K on UConn at +360 to run back the national title, $300K on Scottie Scheffler at +450 the week he put on the green jacket, a Caitlin Clark triple-double at 13-to-1.",
-        "That's the Portnoy paradox: fade the volume, respect the futures. A record this loud deserves to be graded live, not argued about on Twitter.",
-        "Get notified when El Presidente fires next \u2014 tail the future, fade the dog, your call.",
-        "Sources: publicly reported and DraftKings-confirmed wagers, 2021\u20132025. The full 30-bet ledger is graded in Fade."
-      ],
-      "caseNo": "002"
+        "Across thirty publicly reported wagers, Dave Portnoy's record is 9–21 — a thirty percent hit rate. He is also up $2.7 million. Both facts are true, and both facts are why America watches every slip he posts.",
+        "The losses are operatic: $500K on Virginia Tech as a +220 dog, a million on a Bills Super Bowl that never came, a $1,000 side bet with Urban Meyer that found a way to lose. The wins are all-timers: $600K on UConn at +360, $300K on Scheffler at +450 the week of the green jacket, a Caitlin Clark triple-double at 13-to-1.",
+        "That is the Portnoy paradox: fade the volume, respect the futures. A record this loud deserves to be graded live, not argued about on the timeline."
+      ]
     },
     {
       "slug": "case-003-mattress-mack",
       "league": "CASES",
       "title": "The Houston Hedge",
-      "dek": "Jim 'Mattress Mack' McIngvale is 3\u201317 across $86 million in reported stakes \u2014 and up $23.5 million anyway, including the largest payout in U.S. betting history.",
+      "dek": "Jim 'Mattress Mack' McIngvale is 3–17 across $86 million in reported stakes — and up $23.5 million anyway, including the largest payout in U.S. betting history.",
       "author": "Fade Cases",
       "published": "2026-09-06T10:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w600",
       "featured": false,
+      "caseNo": "003",
+      "sources": "Publicly reported wagers, 2019–2026. The full 20-bet ledger is graded in Fade.",
+      "mag": {
+        "volume": "Case File No. 003",
+        "issueLine": "September 2026",
+        "edition": "An edition on the structure of the bet",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The record is ugly. The structure wins.",
+        "coverSub": "Eighty-six million in stakes. Three winners. A profit.",
+        "coverStat": { "label": "The result", "value": "+$23.5M", "sub": "On a 3–17 record" },
+        "quote": { "text": "When Mack bets, the whole city of Houston sweats with him.", "attr": "The Fade Desk" },
+        "sections": [
+          {
+            "title": "The Hedge",
+            "headline": "Two Sides of One Trade",
+            "sub": "Why the losses do not matter",
+            "paras": [
+              "Jim McIngvale bets like nobody else on earth: nine-figure furniture promotions hedged with the largest sportsbook wagers ever written. The tracked record reads three wins and seventeen losses across roughly eighty-six million dollars in reported stakes — and he is up twenty-three and a half million. That is not a typo. It is a hedge.",
+              "Every giant ticket backs a 'win your mattress free' promotion at his Gallery Furniture stores. If the team loses, the promotion money stays home and the ticket is the cost of the marketing. If the team wins, the sportsbooks fund the refunds. The sportsbook money and the store money are two sides of one trade — which is why a 3–17 record can be a triumph."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The exhibits · reported wagers",
+              "rows": [
+                { "sel": "Astros, World Series 2019", "num": "$13,000,000", "res": "Lost" },
+                { "sel": "Buccaneers +3.5, Super Bowl LV", "num": "$3,460,000 · won $2,720,000", "res": "Won" },
+                { "sel": "Bengals moneyline, Super Bowl LVI", "num": "$9,500,000", "res": "Lost" },
+                { "sel": "Kansas, NCAA title", "num": "$8,800,000 · won $12,200,000", "res": "Won" },
+                { "sel": "Astros, World Series 2022", "num": "$10,000,000 · won $72,600,000", "res": "Won" },
+                { "sel": "Astros futures, 2023", "num": "$8,000,000", "res": "Lost" },
+                { "sel": "Patriots, Super Bowl LX", "num": "$3,300,000", "res": "Lost" }
+              ],
+              "record": "3–17",
+              "recordLabel": "$86M staked",
+              "photo": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w600",
+              "note": "The 2022 Astros ticket paid $72.6 million — the largest payout in U.S. legal betting history."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Stamped Tail, on Structure",
+            "sub": "The rare file where the record misleads",
+            "paras": [
+              "He is the rare case stamped TAIL — not because the record is pretty, but because the structure wins regardless of it. The crown jewel: ten million dollars across five books on the 2022 Astros at long prices, paid out at seventy-two million six hundred thousand when Houston won the World Series. The scar tissue is real too — thirteen million gone on the 2019 Astros, nine and a half on the Bengals, three point three on the Patriots in Super Bowl LX.",
+              "Knowing the difference between a bad record and a bad bet is the whole game. This file is the proof."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Case File No. 003",
+          "title": "Tail the structure.",
+          "big": "$72.6M",
+          "note": "The largest payout in American betting history belonged to a man who is 3–17. The record is not the trade.",
+          "tag": "Know the difference",
+          "end": "End of Case File No. 003",
+          "photo": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w1000"
+        }
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w1000",
-        "caption": "Mattress Mack \u00b7 Exhibit A",
+        "caption": "Mattress Mack · Exhibit A",
         "stamp": "TAIL",
-        "slipTitle": "The record \u00b7 $86M reported",
-        "record": "3\u201317 \u00b7 up $23.5M anyway",
+        "slipTitle": "The record · $86M reported",
+        "record": "3–17 · up $23.5M anyway",
         "picks": [
-          {
-            "t": "$13M \u2014 Astros WS 2019. Nats in seven",
-            "r": "L"
-          },
-          {
-            "t": "$3.46M \u2014 Bucs +3.5, Super Bowl LV (+$2.72M)",
-            "r": "W"
-          },
-          {
-            "t": "$9.5M \u2014 Bengals ML, Super Bowl LVI",
-            "r": "L"
-          },
-          {
-            "t": "$8.8M \u2014 Kansas, NCAA title (+$12.2M)",
-            "r": "W"
-          },
-          {
-            "t": "$10M \u2014 Astros WS 2022 (+$72.6M, U.S. record)",
-            "r": "W"
-          },
-          {
-            "t": "$8M \u2014 Astros futures 2023. ALCS exit",
-            "r": "L"
-          },
-          {
-            "t": "$3.3M \u2014 Patriots, Super Bowl LX",
-            "r": "L"
-          }
+          { "t": "$13M — Astros WS 2019. Nats in seven", "r": "L" },
+          { "t": "$3.46M — Bucs +3.5, Super Bowl LV (+$2.72M)", "r": "W" },
+          { "t": "$9.5M — Bengals ML, Super Bowl LVI", "r": "L" },
+          { "t": "$8.8M — Kansas, NCAA title (+$12.2M)", "r": "W" },
+          { "t": "$10M — Astros WS 2022 (+$72.6M, U.S. record)", "r": "W" },
+          { "t": "$8M — Astros futures 2023. ALCS exit", "r": "L" },
+          { "t": "$3.3M — Patriots, Super Bowl LX", "r": "L" }
         ]
       },
       "body": [
-        "Jim McIngvale bets like nobody else on earth: nine-figure furniture promotions hedged with the biggest sportsbook wagers ever written. When Mack bets, the whole city of Houston sweats with him.",
-        "The tracked record reads 3\u201317 across roughly $86 million in reported stakes \u2014 and he's up $23.5 million. That's not a typo; it's a hedge. Every giant ticket backs a 'win your mattress free' promotion, so the sportsbook money and the store money are two sides of one trade.",
-        "The crown jewel: $10 million across five books on the 2022 Astros at long prices. Houston won the World Series and the tickets paid $72.6 million \u2014 the largest payout in U.S. legal betting history. The scar tissue: $13M gone on the 2019 Astros, $9.5M on the Bengals, $8M on the 2023 runback, $3.3M on the Patriots in Super Bowl LX.",
-        "He's the rare case file stamped TAIL: not because the record is pretty, but because the structure wins. Know the difference \u2014 that's the whole game.",
-        "Sources: publicly reported wagers, 2019\u20132026. The full 20-bet ledger is graded in Fade."
-      ],
-      "caseNo": "003"
+        "Jim McIngvale bets like nobody else on earth: nine-figure furniture promotions hedged with the largest sportsbook wagers ever written. When Mack bets, the whole city of Houston sweats with him.",
+        "The tracked record reads 3–17 across roughly $86 million in reported stakes — and he is up $23.5 million. That is not a typo; it is a hedge. Every giant ticket backs a 'win your mattress free' promotion, so the sportsbook money and the store money are two sides of one trade.",
+        "The crown jewel: $10 million across five books on the 2022 Astros at long prices. Houston won the World Series and the tickets paid $72.6 million — the largest payout in U.S. legal betting history.",
+        "He is the rare file stamped TAIL: not because the record is pretty, but because the structure wins. Knowing the difference is the whole game."
+      ]
     },
     {
       "slug": "case-004-trent-attyah",
@@ -346,43 +618,73 @@
       "published": "2026-09-06T09:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w600",
       "featured": false,
+      "caseNo": "004",
+      "sources": "The public record, extensively. Founder of BookIt Sports.",
+      "mag": {
+        "volume": "Case File No. 004",
+        "issueLine": "September 2026",
+        "edition": "An edition on getting it wrong in public",
+        "coverKicker": "The Fade Index",
+        "coverLine": "He turned getting faded into a career.",
+        "coverSub": "The first bettor to see a losing streak and build a business on it.",
+        "coverStat": { "label": "The audience", "value": "260K+", "sub": "Watching every slip" },
+        "quote": { "text": "Every fade cashes twice — once at the book, once in the culture.", "attr": "The BookIt model, in one sentence" },
+        "sections": [
+          {
+            "title": "The Fade God",
+            "headline": "A Losing Streak, Monetized",
+            "sub": "From punchline to platform",
+            "paras": [
+              "There are bad bettors, and then there is Trent Attyah — the first man to look at a losing streak and see a business model.",
+              "It began in 2021, when a run of losses went so publicly, spectacularly wrong that the internet started betting the opposite of everything he posted. Most people would have logged off. Attyah leaned in. He named the phenomenon, branded it, and built BookIt Sports around it. The Fade God was born — a career constructed entirely out of being wrong where everyone could see it.",
+              "The surgical streams are the masterpiece: followers submit picks live on air and Attyah assembles the day's parlay from the best of them, more than two hundred sixty thousand people watching every slip. Every pick is content. Every fade cashes twice — once at the book, once in the culture."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The file",
+              "rows": [
+                { "sel": "Founds BookIt Sports", "num": "2020", "res": "Pending" },
+                { "sel": "The losing streak goes viral", "num": "2021", "res": "Lost" },
+                { "sel": "The community starts betting the opposite", "num": "", "res": "Won" },
+                { "sel": "Surgical streams: the parlay built live on air", "num": "", "res": "Won" },
+                { "sel": "Today — an audience on every slip", "num": "260,000+", "res": "Pending" }
+              ],
+              "record": "∞",
+              "recordLabel": "Fades generated",
+              "photo": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w600",
+              "note": "The patron saint of this entire application."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "The Patron Saint",
+            "sub": "What the rest of us learned",
+            "paras": [
+              "He is the proof of the premise: a public record is worth money to somebody, even — especially — when it is bad. Get notified when Trent posts, and do what the internet taught us all to do."
+            ]
+          }
+        ]
+      },
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w1000",
-        "caption": "Trent Attyah \u00b7 The Fade God",
+        "caption": "Trent Attyah · The Fade God",
         "stamp": "FADE",
         "slipTitle": "The file",
         "record": "Every fade cashes twice",
         "picks": [
-          {
-            "t": "2020 \u2014 founds BookIt Sports",
-            "r": "P"
-          },
-          {
-            "t": "2021 \u2014 the losing streak goes viral",
-            "r": "L"
-          },
-          {
-            "t": "The community starts betting the opposite",
-            "r": "P"
-          },
-          {
-            "t": "Surgical streams: the parlay built live on air",
-            "r": "P"
-          },
-          {
-            "t": "Today \u2014 260K+ watching every slip",
-            "r": "P"
-          }
+          { "t": "2020 — founds BookIt Sports", "r": "P" },
+          { "t": "2021 — the losing streak goes viral", "r": "L" },
+          { "t": "The community starts betting the opposite", "r": "P" },
+          { "t": "Surgical streams: the parlay built live on air", "r": "P" },
+          { "t": "Today — 260K+ watching every slip", "r": "P" }
         ]
       },
       "body": [
-        "There are bad bettors, and then there is Trent Attyah \u2014 the first man to look at a losing streak and see a business model.",
-        "It started in 2021, when a run of losses went so viral that the internet began betting the opposite of every pick he posted. Most people would log off. Trent leaned in: he named it, branded it, and built BookIt Sports around it. The Fade God was born.",
-        "The surgical streams are the masterpiece \u2014 followers submit picks live on air and Trent assembles the day's parlay from the best of them, 260,000-plus people watching every slip. Every pick is content. Every fade cashes twice: once at the book, once in the culture.",
-        "He's the patron saint of this entire app. Get notified when Trent posts, and do what the internet taught us all to do.",
-        "Source: the public record, extensively. Founder of BookIt Sports."
-      ],
-      "caseNo": "004"
+        "There are bad bettors, and then there is Trent Attyah — the first man to look at a losing streak and see a business model.",
+        "It began in 2021, when a run of losses went so viral that the internet started betting the opposite of everything he posted. Most people would have logged off. Attyah leaned in: he named it, branded it, and built BookIt Sports around it. The Fade God was born.",
+        "The surgical streams are the masterpiece — followers submit picks live on air and Attyah assembles the day's parlay from the best of them, 260,000-plus people watching every slip. Every pick is content. Every fade cashes twice: once at the book, once in the culture.",
+        "He is the patron saint of this entire app. Get notified when Trent posts, and do what the internet taught us all to do."
+      ]
     }
   ]
 }

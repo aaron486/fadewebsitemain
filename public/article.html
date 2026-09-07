@@ -4,109 +4,370 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fade Media</title>
-<meta name="theme-color" content="#F4F2EA" />
+<meta name="theme-color" content="#9E1B1E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --paper:#F4F2EA; --paper-hi:#FBFAF5; --carbon:#141412; --soft:#6E6B60;
-  --line:rgba(20,20,18,0.16); --line-hard:rgba(20,20,18,0.85);
-  --tail:#2F52E0; --fade:#D92D20; --cash:#2E9E44;
+  --paper:#F1EEE5; --paper-hi:#F7F5EE; --ink:#1A1815; --soft:#8A867C;
+  --line:rgba(26,24,21,0.14); --hair:rgba(26,24,21,0.28);
+  --wine:#9E1B1E; --cash:#2E7D3A;
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--paper); color:var(--carbon); font-family:'IBM Plex Mono',monospace; line-height:1.65; -webkit-font-smoothing:antialiased; }
+html { scroll-behavior:smooth; }
+body { background:var(--paper); color:var(--ink); font-family:'Newsreader',Georgia,serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
 a { color:inherit; text-decoration:none; }
-.anton { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
-.wrap { max-width:760px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
-.topline { border-bottom:1.5px solid var(--carbon); }
-.topline-in { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; font-size:0.64rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
-.topline-in a:hover { color:var(--carbon); }
-.mast { text-align:center; padding:1.4rem 0 1.2rem; border-bottom:1.5px solid var(--carbon); }
-.mast a { font-family:'Anton',sans-serif; font-size:1.8rem; letter-spacing:0.02em; text-transform:uppercase; }
-article { padding:2.4rem 0 3rem; }
-.kicker { font-size:0.66rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--tail); margin-bottom:0.7rem; }
-h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,5.5vw,3.4rem); line-height:1.05; margin-bottom:0.9rem; }
-.dek { font-size:0.95rem; color:var(--soft); margin-bottom:1.1rem; }
-.byline { font-size:0.64rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); padding-bottom:1.3rem; border-bottom:1.5px solid var(--carbon); margin-bottom:1.6rem; }
-.byline b { color:var(--carbon); }
-.hero { width:100%; border:1.5px solid var(--carbon); border-radius:6px; display:block; margin-bottom:1.8rem; }
-.body p { font-size:0.95rem; margin-bottom:1.2rem; max-width:66ch; }
-.cta { display:inline-block; margin-top:0.8rem; font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border-radius:4px; padding:0.75rem 1.4rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
-.cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
-.missing { padding:4rem 0; text-align:center; font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
-.fw-card { display:grid; grid-template-columns:1.3fr 1fr; gap:1.1rem; margin-bottom:1.8rem; align-items:stretch; }
-.fw-card.noimg { grid-template-columns:1fr; }
-.fw-photo { position:relative; border:2px solid var(--carbon); border-radius:6px; overflow:hidden; background:var(--paper-hi); box-shadow:5px 5px 0 rgba(20,20,18,0.18); }
-.fw-photo img { width:100%; height:100%; min-height:340px; object-fit:cover; object-position:50% 15%; display:block; }
-.fw-stamp { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) rotate(-13deg); font-family:'Anton',sans-serif; font-size:clamp(2.6rem,6vw,4.4rem); color:rgba(217,45,32,0.9); border:5px solid rgba(217,45,32,0.9); border-radius:10px; padding:0 0.5em; letter-spacing:0.05em; pointer-events:none; }
-.fw-stamp.none { display:none; }
-.fw-stamp.tail { color:rgba(46,158,68,0.92); border-color:rgba(46,158,68,0.92); }
-.fw-cap { position:absolute; left:0; right:0; bottom:0; background:var(--carbon); color:var(--paper); font-size:0.64rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; text-align:center; padding:0.45rem 0.8rem; }
-.fw-slip { border:2px solid var(--carbon); border-radius:6px; background:var(--paper-hi); padding:1rem 1.1rem; box-shadow:5px 5px 0 rgba(20,20,18,0.18); display:flex; flex-direction:column; }
-.fw-sh { font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; border-bottom:2px dashed rgba(20,20,18,0.3); padding-bottom:0.5rem; margin-bottom:0.35rem; display:flex; justify-content:space-between; gap:0.6rem; }
-.fw-sh span { color:var(--soft); }
-.fw-pick { display:flex; align-items:center; gap:0.55rem; font-size:0.74rem; font-weight:600; padding:0.26rem 0; border-bottom:1px dashed var(--line); }
-.fw-pick .m { font-weight:700; width:1rem; text-align:center; }
-.fw-pick .m.x { color:var(--fade); } .fw-pick .m.w { color:var(--cash); } .fw-pick .m.pnd { color:var(--soft); }
-.fw-pending { margin-left:auto; font-size:0.54rem; font-weight:700; letter-spacing:0.12em; color:var(--soft); }
-.fw-pick.fw-live { background:var(--carbon); color:var(--paper); border-bottom:none; border-radius:4px; padding:0.42rem 0.5rem; margin-top:0.35rem; font-weight:700; }
-.fw-pick.fw-live .m.pnd { color:var(--fade); }
-.fw-tag { margin-left:auto; font-size:0.56rem; font-weight:700; letter-spacing:0.14em; color:var(--fade); background:var(--paper); border-radius:3px; padding:0.1rem 0.4rem; }
-.fw-tonight { margin-top:0.6rem; display:flex; align-items:center; gap:0.5rem; background:var(--fade); color:#fff; border-radius:4px; padding:0.55rem 0.7rem; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
-.fw-tonight .dot { width:8px; height:8px; border-radius:50%; background:#fff; animation:fwpulse 1.4s ease-in-out infinite; }
-@keyframes fwpulse { 50% { opacity:0.3; } }
-.fw-rec { margin-top:auto; padding-top:0.7rem; font-family:'Anton',sans-serif; font-size:1.1rem; text-transform:uppercase; color:var(--fade); }
-@media (max-width:640px) { .fw-card { grid-template-columns:1fr; } .fw-photo img { min-height:280px; } }
+img { max-width:100%; }
+.pf { font-family:'Playfair Display',Georgia,serif; }
+.caps { font-size:0.66rem; font-weight:500; letter-spacing:0.34em; text-transform:uppercase; }
+.wrap { max-width:920px; margin:0 auto; padding:0 clamp(1.1rem,4vw,2.4rem); }
+.narrow { max-width:700px; margin:0 auto; }
+
+/* ---- running head ---- */
+.runhead { border-bottom:1px solid var(--hair); background:var(--paper); }
+.runhead-in { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 0; }
+.runhead .caps { color:var(--soft); }
+.runhead a.caps:hover { color:var(--ink); }
+
+/* ---- cover ---- */
+.cover { background:var(--wine); color:#F1EEE5; padding:clamp(1.4rem,3vw,2.4rem) 0 0; overflow:hidden; }
+.cover .caps { color:rgba(241,238,229,0.85); }
+.cover-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:1rem; border-bottom:1px solid rgba(241,238,229,0.35); }
+.cover-logo { display:block; width:100%; margin:clamp(1.2rem,4vw,2.6rem) auto 0; }
+.cover-logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
+.cover-grid { display:grid; grid-template-columns:1fr minmax(230px,340px) 1fr; gap:clamp(1rem,3vw,2.5rem); align-items:center; margin-top:clamp(-1rem,-2vw,-2rem); }
+.cover-photo { position:relative; z-index:1; }
+.cover-photo img { display:block; width:100%; filter:grayscale(1) contrast(1.06); }
+.cover-left { text-align:left; padding-bottom:2rem; }
+.cover-left .caps { display:block; margin-bottom:0.8rem; }
+.cover-line { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.25rem,2.4vw,1.7rem); line-height:1.2; }
+.cover-sub { margin-top:0.7rem; font-style:italic; font-size:0.92rem; color:rgba(241,238,229,0.8); max-width:22ch; }
+.cover-right { text-align:right; padding-bottom:2rem; }
+.cover-right .caps { display:block; margin-bottom:0.6rem; }
+.cover-stat { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.2rem,4.5vw,3.2rem); line-height:1; }
+.cover-stat-sub { margin-top:0.6rem; }
+.cover-edition { text-align:center; padding:1.1rem 0 1.3rem; font-style:italic; letter-spacing:0.3em; text-transform:uppercase; font-size:0.66rem; color:rgba(241,238,229,0.75); }
+@media (max-width:700px) {
+  .cover-grid { grid-template-columns:1fr; margin-top:0.5rem; }
+  .cover-photo { order:-1; max-width:300px; margin:0 auto; }
+  .cover-left, .cover-right { text-align:center; padding-bottom:0.6rem; }
+  .cover-sub { margin-left:auto; margin-right:auto; }
+}
+
+/* ---- plain header (no cover) ---- */
+.plainhead { text-align:center; padding:clamp(2.4rem,6vw,4rem) 0 0; }
+.plainhead .kick { color:var(--wine); display:block; margin-bottom:1.1rem; }
+.plainhead h1 { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(2rem,5.4vw,3.6rem); line-height:1.08; margin:0 auto 1rem; max-width:18ch; }
+.plainhead .dek { font-style:italic; font-size:1.05rem; color:var(--soft); max-width:52ch; margin:0 auto; }
+
+/* ---- byline rule ---- */
+.byrule { display:flex; justify-content:center; gap:1.6rem; align-items:center; padding:1.4rem 0; margin:1.4rem 0 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--soft); }
+
+/* ---- epigraph / contents ---- */
+.epigraph { text-align:center; padding:clamp(3rem,7vw,5rem) 0 clamp(2rem,5vw,3rem); }
+.epigraph .q { font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:clamp(1.6rem,4vw,2.6rem); line-height:1.3; max-width:24ch; margin:0 auto; }
+.epigraph .attr { margin-top:1.6rem; color:var(--soft); }
+.contents { padding-bottom:clamp(2rem,5vw,3.5rem); }
+.contents-rule { width:70px; border-top:1px solid var(--ink); margin:0 auto clamp(2rem,5vw,3rem); }
+.toc-row { display:grid; grid-template-columns:3rem 1fr auto; gap:1.2rem; align-items:baseline; padding:1.15rem 0; border-bottom:1px solid var(--line); }
+.toc-row:first-of-type { border-top:1px solid var(--line); }
+.toc-num { color:var(--wine); font-size:0.72rem; letter-spacing:0.2em; }
+.toc-title { font-family:'Playfair Display',serif; font-weight:600; font-size:1.35rem; }
+.toc-sub { display:block; font-family:'Newsreader',serif; font-style:italic; font-weight:400; font-size:0.86rem; color:var(--soft); margin-top:0.15rem; }
+.toc-pg { color:var(--soft); font-size:0.72rem; letter-spacing:0.2em; }
+.toc-row:hover .toc-title { color:var(--wine); }
+
+/* ---- sections ---- */
+.section { padding:clamp(2.6rem,6vw,4.2rem) 0 0; }
+.sec-run { display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--hair); padding-top:0.9rem; }
+.sec-run .l { color:var(--wine); }
+.sec-run .r { color:var(--soft); }
+.sec-head { text-align:center; padding:clamp(1.6rem,4vw,2.6rem) 0 0; }
+.sec-head h2 { font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(1.9rem,5vw,3.1rem); line-height:1.1; }
+.sec-head .sub { margin-top:0.9rem; font-style:italic; letter-spacing:0.26em; text-transform:uppercase; font-size:0.64rem; color:var(--soft); }
+.sec-head .shortrule { width:120px; border-top:1px solid var(--hair); margin:1.4rem auto 0; }
+.sec-body { padding-top:clamp(1.6rem,4vw,2.4rem); font-size:1.02rem; }
+.sec-body p { margin-bottom:1.15rem; break-inside:avoid-column; }
+.sec-body p:last-child { margin-bottom:0; }
+@media (min-width:760px) { .sec-body.cols { columns:2; column-gap:3rem; } }
+.sec-body.dropcap > p:first-child::first-letter {
+  font-family:'Playfair Display',serif; font-weight:600; color:var(--wine);
+  float:left; font-size:3.9em; line-height:0.82; padding:0.06em 0.12em 0 0;
+}
+.single .sec-body { max-width:640px; margin:0 auto; }
+
+/* ---- figures ---- */
+.figure { padding:clamp(2rem,5vw,3rem) 0 0; }
+.fig-cap { border-top:1px solid var(--line); margin-top:1.2rem; padding-top:0.8rem; font-style:italic; font-size:0.82rem; color:var(--soft); }
+.fig-label { color:var(--wine); border-bottom:1px solid var(--ink); padding-bottom:0.55rem; margin-bottom:1.2rem; }
+svg.chart { display:block; width:100%; height:auto; }
+svg.chart text { font-family:'Newsreader',Georgia,serif; }
+.barrow { display:grid; grid-template-columns:4.2rem 1fr auto; gap:1.4rem; align-items:center; padding:0.55rem 0; }
+.barrow .yr { font-family:'Playfair Display',serif; font-weight:600; font-size:1.15rem; }
+.barrow .track { position:relative; height:14px; }
+.barrow .bar { position:absolute; left:0; top:0; bottom:0; background:var(--wine); }
+.barrow .val { color:var(--soft); font-size:0.72rem; letter-spacing:0.2em; }
+.barrow .rulemark { position:absolute; top:-6px; bottom:-6px; width:1px; background:var(--ink); }
+
+/* ---- table card ---- */
+.tcard { }
+.trow { display:grid; grid-template-columns:1fr auto 6.2rem; gap:1rem; align-items:baseline; padding:0.85rem 0; border-bottom:1px solid var(--line); }
+.trow.thead { border-bottom:1px solid var(--hair); padding-bottom:0.6rem; }
+.trow.thead span { font-size:0.6rem; font-weight:500; letter-spacing:0.3em; text-transform:uppercase; color:var(--soft); }
+.trow.thead span:last-child { text-align:right; }
+.t-sel { font-family:'Playfair Display',serif; font-weight:500; font-size:1.12rem; }
+.t-num { font-style:italic; color:var(--soft); }
+.t-res { text-align:right; font-size:0.64rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; }
+.t-res.lost { color:var(--wine); } .t-res.won { color:var(--ink); } .t-res.pend { color:var(--soft); font-weight:500; }
+.tfoot { display:flex; align-items:center; gap:1.6rem; padding-top:1.5rem; flex-wrap:wrap; }
+.tfoot .rec { font-family:'Playfair Display',serif; font-weight:700; font-size:2.6rem; line-height:1; }
+.tfoot .rec small { font-family:'Newsreader',serif; font-weight:500; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--soft); margin-left:0.7rem; vertical-align:0.5em; }
+.tfoot .headshot { width:64px; height:64px; border-radius:50%; object-fit:cover; filter:grayscale(1); border:1px solid var(--hair); flex:none; }
+.tfoot .note { font-style:italic; font-size:0.9rem; color:var(--soft); max-width:42ch; flex:1; min-width:220px; }
+
+/* ---- photo figure ---- */
+.photofig img { display:block; width:100%; filter:grayscale(1) contrast(1.05); }
+
+/* ---- call (closing plate) ---- */
+.call { position:relative; margin-top:clamp(3rem,7vw,5rem); background:var(--wine); color:#F1EEE5; overflow:hidden; }
+.call .bg { position:absolute; inset:0; }
+.call .bg img { width:100%; height:100%; object-fit:cover; filter:grayscale(1); opacity:0.34; }
+.call .bg::after { content:''; position:absolute; inset:0; background:rgba(158,27,30,0.55); }
+.call-in { position:relative; text-align:center; padding:clamp(3.5rem,9vw,6.5rem) clamp(1.2rem,4vw,2.5rem); }
+.call .caps { color:rgba(241,238,229,0.85); }
+.call h2 { font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.05; margin:1.4rem 0 0; }
+.call .big { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(3.4rem,9vw,6rem); line-height:1; margin-top:0.6rem; }
+.call .rule { width:90px; border-top:1px solid rgba(241,238,229,0.5); margin:2rem auto; }
+.call .note { font-style:italic; font-size:0.98rem; max-width:52ch; margin:0 auto; color:rgba(241,238,229,0.92); }
+.call .tag { margin-top:2.4rem; }
+.call .logo { width:min(220px,55%); margin:1.4rem auto 0; }
+.call .logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
+.call .cta { display:inline-block; margin-top:2rem; border:1px solid rgba(241,238,229,0.7); padding:0.85rem 2rem; font-size:0.64rem; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; }
+.call .cta:hover { background:#F1EEE5; color:var(--wine); }
+.call .fine { margin-top:2.6rem; font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(241,238,229,0.65); }
+
+/* ---- end matter ---- */
+.endmatter { text-align:center; padding:clamp(2.6rem,6vw,4rem) 0; }
+.endmatter .rule { width:70px; border-top:1px solid var(--ink); margin:0 auto 1.6rem; }
+.endmatter .logo { width:130px; margin:0 auto; }
+.endmatter .logo svg { display:block; width:100%; height:auto; fill:var(--soft); }
+.endmatter .tag { margin-top:1rem; color:var(--soft); }
+.endmatter .cta { display:inline-block; margin-top:1.4rem; border:1px solid var(--ink); padding:0.8rem 1.9rem; font-size:0.62rem; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; }
+.endmatter .cta:hover { background:var(--ink); color:var(--paper); }
+.endmatter .fine { margin-top:2rem; font-size:0.58rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--soft); }
+.src { padding:2rem 0 3rem; font-style:italic; font-size:0.8rem; color:var(--soft); text-align:center; max-width:60ch; margin:0 auto; }
+.runfoot { border-top:1px solid var(--hair); }
+.runfoot-in { display:flex; justify-content:space-between; padding:1rem 0 1.6rem; color:var(--soft); }
+.missing { padding:5rem 0; text-align:center; letter-spacing:0.2em; text-transform:uppercase; font-size:0.72rem; color:var(--soft); }
 </style>
 </head>
 <body>
 
-<div class="topline"><div class="wrap"><div class="topline-in">
-  <a href="/fade-media">&larr; Fade Media</a>
-  <span>The pre-bet desk</span>
+<div class="runhead"><div class="wrap"><div class="runhead-in">
+  <a class="caps" href="/fade-media">&larr; Fade Media</a>
+  <span class="caps">The Front Page of Sports Betting</span>
 </div></div></div>
-<div class="mast"><a href="/fade-media">Fade Media</a></div>
 
-<div class="wrap"><article id="art"><div class="missing">Loading&hellip;</div></article></div>
+<main id="art"><div class="missing">Loading&hellip;</div></main>
 
 <script>
 (function () {
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function fwCard(fc) {
-    var picks = (fc.picks || []).map(function (p) {
-      var m = p.r === 'W' ? '<span class="m w">&#10003;</span>'
-        : p.r === 'L' ? '<span class="m x">&#10007;</span>'
-        : '<span class="m pnd">&#9679;</span>';
-      var cls = p.r === 'T' ? 'fw-pick fw-live' : 'fw-pick';
-      return '<div class="' + cls + '">' + m + esc(p.t) +
-        (p.r === 'T' ? '<span class="fw-tag">TONIGHT</span>' : p.r === 'P' ? '<span class="fw-pending">PENDING</span>' : '') + '</div>';
-    }).join('');
-    var photo = fc.photo
-      ? '<div class="fw-photo"><img src="' + esc(fc.photo) + '" alt="" /><span class="fw-stamp' + (fc.stamp === 'TAIL' ? ' tail' : '') + (fc.stamp === 'NONE' ? ' none' : '') + '">' + esc(fc.stamp === 'NONE' ? '' : (fc.stamp || 'FADE')) + '</span>' +
-        (fc.caption ? '<div class="fw-cap">' + esc(fc.caption) + '</div>' : '') + '</div>'
-      : '';
-    return '<div class="fw-card' + (fc.photo ? '' : ' noimg') + '">' + photo +
-      '<div class="fw-slip"><div class="fw-sh">' + esc(fc.slipTitle || 'The card') + '<span>OFFICIAL SLIP</span></div>' +
-      picks + (fc.record ? '<div class="fw-rec">' + esc(fc.record) + '</div>' : '') + (fc.tonight ? '<div class="fw-tonight"><span class="dot"></span>TONIGHT: ' + esc(fc.tonight) + '</div>' : '') + '</div></div>';
+  var LOGO = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 158" role="img" aria-label="FADE"><g transform="translate(-80,-416)"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g></svg>';
+  var APP = 'https://testflight.apple.com/join/scH3svgB';
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function romans(i) { return ['I','II','III','IV','V','VI','VII','VIII'][i] || String(i + 1); }
+
+  /* ---------- figures ---------- */
+  function figLine(f) {
+    var pts = f.points || [];
+    var W = 720, H = 280, padL = 24, padR = 60, padT = 44, padB = 34;
+    var vals = pts.map(function (p) { return p.v; });
+    var lo = Math.min.apply(null, vals.concat(f.baseline ? [f.baseline.v] : []));
+    var hi = Math.max.apply(null, vals.concat(f.baseline ? [f.baseline.v] : []));
+    var span = (hi - lo) || 1; lo -= span * 0.08; hi += span * 0.08; span = hi - lo;
+    function X(i) { return padL + (W - padL - padR) * (pts.length > 1 ? i / (pts.length - 1) : 0.5); }
+    function Y(v) { return padT + (H - padT - padB) * (1 - (v - lo) / span); }
+    var path = pts.map(function (p, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(p.v).toFixed(1); }).join(' ');
+    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '">';
+    if (f.baseline) {
+      var by = Y(f.baseline.v);
+      s += '<line x1="' + padL + '" y1="' + by + '" x2="' + (W - padR + 40) + '" y2="' + by + '" stroke="#8A867C" stroke-width="1" stroke-dasharray="3 4"/>';
+      s += '<text x="' + padL + '" y="' + (by - 8) + '" font-size="11" letter-spacing="2.5" fill="#8A867C">' + esc((f.baseline.label || '').toUpperCase()) + '</text>';
+    }
+    s += '<path d="' + path + '" fill="none" stroke="#1A1815" stroke-width="1.6"/>';
+    pts.forEach(function (p, i) {
+      var last = i === pts.length - 1;
+      s += '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(p.v).toFixed(1) + '" r="' + (last ? 5.5 : 3.4) + '" fill="' + (last ? '#9E1B1E' : '#1A1815') + '"><title>' + esc(p.l || '') + ': ' + esc(String(p.d != null ? p.d : p.v)) + '</title></circle>';
+    });
+    var p0 = pts[0], pn = pts[pts.length - 1];
+    if (p0 && p0.d != null) s += '<text x="' + X(0) + '" y="' + (Y(p0.v) - 14) + '" font-size="19" font-weight="600" fill="#1A1815">' + esc(String(p0.d)) + '</text>';
+    if (pn && pn.d != null) s += '<text x="' + (X(pts.length - 1) + 2) + '" y="' + (Y(pn.v) + 28) + '" font-size="19" font-weight="600" fill="#9E1B1E" text-anchor="end">' + esc(String(pn.d)) + '</text>';
+    s += '</svg>';
+    return s;
   }
+  function figBars(f) {
+    var rows = f.rows || [];
+    var max = f.max || Math.max.apply(null, rows.map(function (r) { return r.v; }));
+    var rule = f.ruleAt != null ? '<span class="rulemark" style="left:' + ((f.ruleAt / max) * 100).toFixed(2) + '%"></span>' : '';
+    return rows.map(function (r) {
+      return '<div class="barrow"><span class="yr pf">' + esc(r.l) + '</span>' +
+        '<span class="track"><span class="bar" style="width:' + Math.max(2, (r.v / max) * 100).toFixed(1) + '%"></span>' + rule + '</span>' +
+        '<span class="val">' + esc(r.note || '') + '</span></div>';
+    }).join('');
+  }
+  function figTable(f) {
+    var hasNum = (f.rows || []).some(function (r) { return r.num != null; });
+    var s = '<div class="tcard">';
+    s += '<div class="trow thead"><span>Selection</span><span>' + (hasNum ? 'Number' : '') + '</span><span>Result</span></div>';
+    (f.rows || []).forEach(function (r) {
+      var res = String(r.res || '').toLowerCase();
+      var cls = res === 'lost' || res === 'l' ? 'lost' : res === 'won' || res === 'w' ? 'won' : 'pend';
+      var lab = cls === 'lost' ? 'Lost' : cls === 'won' ? 'Won' : (r.res && r.res.length > 2 ? r.res : 'Pending');
+      s += '<div class="trow"><span class="t-sel">' + esc(r.sel) + '</span><span class="t-num">' + esc(r.num || '') + '</span><span class="t-res ' + cls + '">' + esc(lab) + '</span></div>';
+    });
+    if (f.record || f.note || f.photo) {
+      s += '<div class="tfoot">';
+      if (f.record) s += '<span class="rec">' + esc(f.record) + (f.recordLabel ? '<small>' + esc(f.recordLabel) + '</small>' : '') + '</span>';
+      if (f.photo) s += '<img class="headshot" src="' + esc(f.photo) + '" alt="" />';
+      if (f.note) s += '<span class="note">' + esc(f.note) + '</span>';
+      s += '</div>';
+    }
+    s += '</div>';
+    return s;
+  }
+  function figure(f) {
+    var inner =
+      f.type === 'line' ? figLine(f)
+      : f.type === 'bars' ? figBars(f)
+      : f.type === 'table' ? figTable(f)
+      : f.type === 'photo' && f.src ? '<div class="photofig"><img src="' + esc(f.src) + '" alt="" /></div>'
+      : '';
+    if (!inner) return '';
+    return '<div class="figure narrow">' +
+      (f.label ? '<div class="caps fig-label">' + esc(f.label) + '</div>' : '') +
+      inner +
+      (f.caption ? '<div class="fig-cap">' + esc(f.caption) + '</div>' : '') +
+      '</div>';
+  }
+
+  /* ---------- page assembly ---------- */
+  function coverHtml(a, m) {
+    var pub = new Date(a.published);
+    var issue = m.issueLine || pub.toLocaleDateString([], { month: 'long', year: 'numeric' });
+    return '<header class="cover"><div class="wrap">' +
+      '<div class="cover-top"><span class="caps">' + esc(issue) + '</span><span class="caps">' + esc(m.volume || 'Fade Media') + '</span></div>' +
+      '<div class="cover-logo">' + LOGO + '</div>' +
+      '<div class="cover-grid">' +
+        '<div class="cover-left">' +
+          (m.coverKicker ? '<span class="caps">' + esc(m.coverKicker) + '</span>' : '') +
+          '<div class="cover-line">' + esc(m.coverLine || a.title) + '</div>' +
+          (m.coverSub ? '<div class="cover-sub">' + esc(m.coverSub) + '</div>' : '') +
+        '</div>' +
+        '<div class="cover-photo">' + (a.image || m.coverPhoto ? '<img src="' + esc(m.coverPhoto || a.image) + '" alt="" />' : '') + '</div>' +
+        '<div class="cover-right">' +
+          (m.coverStat ? '<span class="caps">' + esc(m.coverStat.label) + '</span><div class="cover-stat">' + esc(m.coverStat.value) + '</div><div class="caps cover-stat-sub">' + esc(m.coverStat.sub || '') + '</div>' : '') +
+        '</div>' +
+      '</div></div>' +
+      (m.edition ? '<div class="cover-edition">' + esc(m.edition) + '</div>' : '') +
+      '</header>';
+  }
+  function contentsHtml(m) {
+    var s = '<section class="epigraph wrap">';
+    if (m.quote) s += '<div class="q pf">&ldquo;' + esc(m.quote.text) + '&rdquo;</div><div class="attr caps">' + esc(m.quote.attr || '') + '</div>';
+    s += '</section>';
+    if ((m.sections || []).length > 1) {
+      s += '<section class="contents wrap"><div class="narrow"><div class="contents-rule"></div>';
+      m.sections.forEach(function (sec, i) {
+        s += '<a class="toc-row" href="#sec-' + i + '"><span class="toc-num">' + romans(i) + '</span>' +
+          '<span><span class="toc-title pf">' + esc(sec.title) + '</span>' +
+          (sec.sub ? '<span class="toc-sub">' + esc(sec.sub) + '</span>' : '') + '</span>' +
+          '<span class="toc-pg">' + romans(i + 2) + '</span></a>';
+      });
+      s += '</div></section>';
+    }
+    return s;
+  }
+  function sectionHtml(sec, i, single) {
+    var paras = (sec.paras || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var cols = !single && (sec.paras || []).join(' ').length > 500 ? ' cols' : '';
+    var s = '<section class="section' + (single ? ' single' : '') + '" id="sec-' + i + '"><div class="wrap">';
+    s += '<div class="sec-run"><span class="caps l">' + romans(i) + ' &middot; ' + esc(sec.title) + '</span><span class="caps r">' + romans(i + 2) + '</span></div>';
+    s += '<div class="sec-head"><h2>' + esc(sec.headline || sec.title) + '</h2>' +
+      (sec.sub ? '<div class="sub">' + esc(sec.sub) + '</div>' : '') + '<div class="shortrule"></div></div>';
+    if (paras) s += '<div class="sec-body dropcap' + cols + '">' + paras + '</div>';
+    (sec.figures || (sec.figure ? [sec.figure] : [])).forEach(function (f) { s += figure(f); });
+    s += '</div></section>';
+    return s;
+  }
+  function callHtml(m, a) {
+    var c = m.call;
+    return '<section class="call">' +
+      (c.photo ? '<div class="bg"><img src="' + esc(c.photo) + '" alt="" /></div>' : '') +
+      '<div class="call-in">' +
+      (c.kicker ? '<span class="caps">' + esc(c.kicker) + '</span>' : '') +
+      (c.title ? '<h2>' + esc(c.title) + '</h2>' : '') +
+      (c.big ? '<div class="big">' + esc(c.big) + '</div>' : '') +
+      '<div class="rule"></div>' +
+      (c.note ? '<p class="note">' + esc(c.note) + '</p>' : '') +
+      '<div class="caps tag">' + esc(c.tag || 'Tail it or fade it') + '</div>' +
+      '<div class="logo">' + LOGO + '</div>' +
+      '<div class="caps" style="margin-top:1rem;">Every pick tracked &middot; Every record kept</div>' +
+      '<a class="cta" href="' + APP + '" target="_blank" rel="noopener">Get the app</a>' +
+      '<div class="fine">' + esc(c.end || 'End of volume') + ' &nbsp;&middot;&nbsp; 21+ &middot; Please play responsibly &middot; 1-800-GAMBLER</div>' +
+      '</div></section>';
+  }
+  function endMatterHtml() {
+    return '<section class="endmatter wrap"><div class="rule"></div>' +
+      '<div class="logo">' + LOGO + '</div>' +
+      '<div class="caps tag">Tail or fade every pick</div>' +
+      '<a class="cta" href="' + APP + '" target="_blank" rel="noopener">Get the app</a>' +
+      '<div class="fine">21+ &middot; Please play responsibly &middot; 1-800-GAMBLER</div></section>';
+  }
+
+  function render(a) {
+    document.title = a.title + ' — Fade Media';
+    var m = a.mag || null;
+    var pub = new Date(a.published);
+    var date = pub.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' });
+    var byline = '<div class="byrule wrap"><span class="caps">By ' + esc(a.author || 'The Fade Desk') + '</span><span class="caps">' + esc(date) + '</span></div>';
+    var html = '';
+
+    if (m) {
+      html += coverHtml(a, m);
+      html += contentsHtml(m);
+      var single = (m.sections || []).length === 1;
+      (m.sections || []).forEach(function (sec, i) { html += sectionHtml(sec, i, single); });
+      if (a.sources) html += '<div class="src wrap">' + esc(a.sources) + '</div>';
+      if (m.call) html += callHtml(m, a);
+      else html += endMatterHtml();
+      html += '<div class="runfoot"><div class="wrap"><div class="runfoot-in"><span class="caps">Fade</span><span class="caps">' + esc(m.volume || 'Fade Media') + '</span></div></div></div>';
+    } else {
+      /* legacy article: elevated single-column treatment */
+      html += '<header class="plainhead wrap"><span class="caps kick">' + esc(a.league || 'The Desk') + '</span>' +
+        '<h1>' + esc(a.title) + '</h1>' +
+        (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') + '</header>' + byline;
+      if (a.image) html += '<div class="figure narrow wrap"><div class="photofig"><img src="' + esc(a.image) + '" alt="" /></div></div>';
+      html += '<section class="section single"><div class="wrap"><div class="sec-body dropcap">' +
+        (a.body || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div></div></section>';
+      if (a.fadeCard && a.fadeCard.picks) {
+        html += figure({ type: 'table', label: a.fadeCard.slipTitle || 'The card',
+          rows: a.fadeCard.picks.map(function (p) { return { sel: p.t, res: p.r === 'W' ? 'Won' : p.r === 'L' ? 'Lost' : 'Pending' }; }),
+          record: a.fadeCard.record || '', photo: a.fadeCard.photo || '' });
+      }
+      html += endMatterHtml();
+    }
+    document.getElementById('art').innerHTML = html;
+  }
+
   var slug = new URLSearchParams(location.search).get('s');
   var el = document.getElementById('art');
   fetch('/articles/articles.json')
     .then(function (r) { return r.json(); })
     .then(function (d) {
       var a = (d.articles || []).find(function (x) { return x.slug === slug; });
-      if (!a) { el.innerHTML = '<div class="missing">Article not found. <a href="/fade-media" style="text-decoration:underline;">Back to the desk &rarr;</a></div>'; return; }
-      document.title = a.title + ' — Fade Media';
-      var date = new Date(a.published).toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' });
-      el.innerHTML =
-        '<div class="kicker">' + esc(a.league || 'Desk') + '</div>' +
-        '<h1>' + esc(a.title) + '</h1>' +
-        (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
-        '<div class="byline">By <b>' + esc(a.author || 'Fade Desk') + '</b> &middot; ' + esc(date) + '</div>' +
-        (a.fadeCard ? fwCard(a.fadeCard) : a.image ? '<img class="hero" src="' + esc(a.image) + '" alt="" />' : '') +
-        '<div class="body">' + (a.body || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' +
-        '<a class="cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Read the desk in the app &rarr;</a>';
+      if (!a) { el.innerHTML = '<div class="missing">Article not found &mdash; <a href="/fade-media" style="text-decoration:underline;">back to the desk</a></div>'; return; }
+      render(a);
     })
     .catch(function () { el.innerHTML = '<div class="missing">Could not load this article.</div>'; });
 })();
