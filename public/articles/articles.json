@@ -4,7 +4,7 @@
       "slug": "clay-travis-week-1-card",
       "league": "CFB",
       "title": "College football's biggest loser: Clay Travis opens the season 2\u20138",
-      "dek": "Eleven public picks, two winners, one still breathing. The most fadeable card in sports media is back, and the fade army is already counting its money.",
+      "dek": "Eleven public picks, two winners \u2014 and tonight he's doubling down on Florida State +3. The most fadeable card in sports media is back, and the fade army is already counting its money.",
       "author": "Fade Desk",
       "published": "2026-09-07T16:00:00Z",
       "image": "assets/articles/clay-week1.jpg",
@@ -12,7 +12,7 @@
       "body": [
         "Every fall it happens on schedule: Clay Travis posts his college football card for the world to see, and the internet does the profitable thing \u2014 the exact opposite.",
         "Week 1 of 2026 was a masterpiece of the genre. Eleven picks went up. Georgia Tech -6.5, missed. Stanford +24.5, missed. Texas State +29.5, missed. Baylor/Auburn over 58.5, missed. Furman +46.5, missed. Northern Illinois +31.5, missed. Clemson +10, missed. Wisconsin +20.5, missed.",
-        "The survivors: UCLA -1.5 cashed, and the Louisville/Ole Miss over 55.5 snuck through. Florida State +3 is still pending \u2014 the last flicker of hope on a 2\u20138 card.",
+        "The survivors: UCLA -1.5 cashed, and the Louisville/Ole Miss over 55.5 snuck through. And the card isn't done \u2014 tonight, Clay is on Florida State +3. Same season, same energy, one more chance to do the profitable thing.",
         "None of this is new. The receipts account @ExposingClay has been documenting the run for years, and by Clay's own admission his 2024 season closed at 74\u201390. There are bad bettors, and then there are bettors so reliably wrong that betting against them becomes its own strategy.",
         "That strategy has a name. It's the whole reason this app exists. When the next card drops, you'll see it in Fade the moment it's posted \u2014 with a Tail button for the brave and a Fade button for the rest of us.",
         "Source: @ExposingClay on X \u2014 x.com/ExposingClay/status/2096936385051517169. Records reflect publicly posted picks."
@@ -20,7 +20,7 @@
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000",
         "caption": "Clay Travis \u00b7 Fade him",
-        "record": "Week 1: 2\u20138 \u00b7 1 pending",
+        "record": "Week 1: 2\u20138",
         "slipTitle": "Clay's Week 1 card",
         "picks": [
           {
@@ -65,9 +65,10 @@
           },
           {
             "t": "Florida State +3",
-            "r": "P"
+            "r": "T"
           }
-        ]
+        ],
+        "tonight": "He's on Florida State +3"
       }
     },
     {
