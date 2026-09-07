@@ -963,9 +963,34 @@ a { color:inherit; text-decoration:none; }
         '<div>Tail or fade any pick in one tap</div>' +
         '<div>Verified records, ROI &amp; alerts</div>' +
       '</div>' +
-      '<video src="assets/demo-feed.mp4" autoplay loop muted playsinline preload="metadata"></video>' +
+      '<div class="rot">' +
+        '<img src="assets/dk-welcome.jpg" alt="The Fade app" loading="lazy" />' +
+        '<video muted playsinline preload="none" hidden></video>' +
+      '</div>' +
       '<a class="go" href="' + APP + '" target="_blank" rel="noopener">Get Fade &rarr;</a>' +
       '</article>';
+  }
+  var promoTimer = null;
+  var PROMO_VIDS = ['assets/demo-feed.mp4', 'assets/demo-sync.mp4', 'assets/demo-fadeiq-2.mp4', 'assets/demo-profile-2.mp4'];
+  function initPromo() {
+    var box = document.querySelector('.story.promo .rot');
+    if (promoTimer) { clearTimeout(promoTimer); promoTimer = null; }
+    if (!box) return;
+    var img = box.querySelector('img');
+    var vid = box.querySelector('video');
+    var i = -1;
+    function next() {
+      if (!document.body.contains(box)) { clearTimeout(promoTimer); return; }
+      i = (i + 1) % PROMO_VIDS.length;
+      img.hidden = true; vid.hidden = false;
+      vid.src = PROMO_VIDS[i]; vid.load();
+      var p = vid.play(); if (p && p.catch) p.catch(function () {});
+      clearTimeout(promoTimer);
+      promoTimer = setTimeout(next, 14000);
+    }
+    vid.addEventListener('ended', function () { clearTimeout(promoTimer); next(); });
+    img.hidden = false; vid.hidden = true;
+    promoTimer = setTimeout(next, 3000);
   }
   window.renderNews = function (cat) {
     if (!articles.length) return;
@@ -996,6 +1021,7 @@ a { color:inherit; text-decoration:none; }
       var cells = gridItems.map(card);
       cells.splice(Math.min(2, cells.length), 0, promoTile());
       grid.innerHTML = cells.join('');
+      initPromo();
       if (more.length) {
         moreWrap.hidden = false;
         moreList.innerHTML = more.map(function (a) {
@@ -1016,6 +1042,7 @@ a { color:inherit; text-decoration:none; }
         grid.innerHTML = filtered.length
           ? filtered.slice(0, 18).map(card).join('') + promoTile()
           : '<div class="nf-loading">No ' + esc(cat.toUpperCase()) + ' headlines right now.</div>';
+        initPromo();
       }
     }
   };
