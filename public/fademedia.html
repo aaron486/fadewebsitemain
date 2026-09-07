@@ -939,7 +939,7 @@ a { color:inherit; text-decoration:none; }
   function meta(a) {
     return a.custom
       ? '<b>' + esc(a.league) + '</b> &middot; by ' + esc(a.author || 'Fade Desk') + ' &middot; ' + ago(a.published)
-      : '<b>' + esc(a.league) + '</b> &middot; via ESPN &middot; ' + ago(a.published);
+      : '<b>' + esc(a.league) + '</b> &middot; via ' + esc(a.src || 'ESPN') + ' &middot; ' + ago(a.published);
   }
   function card(a) {
     return '<article class="story" data-cat="' + esc(a.league.toLowerCase()) + '">' +
