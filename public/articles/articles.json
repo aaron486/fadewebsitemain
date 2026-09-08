@@ -1,6 +1,179 @@
 {
   "articles": [
     {
+      "slug": "everyone-is-on-the-bears",
+      "league": "NFL",
+      "title": "Everyone in America is on the Bears",
+      "dek": "Ninety-three percent of the tickets. Ninety-one percent of the money. The most lopsided side of NFL Week 1 is a road favorite laying the most important number in football — for a franchise that is 3–7 in its last ten openers.",
+      "author": "Fade Desk",
+      "published": "2026-09-07T23:00:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Splits via BetMGM's public-betting report (Sept 4) and SportsBettingDime's trends page; DraftKings and BetRivers figures as reported by betting-splits accounts, not independently confirmed. Game facts and lines via ESPN, DraftKings Network and SI; the Avello quote via SI's Sportsbook Insiders. Opener results verified against ESPN box scores; opener lines via Action Network, Rotowire, Covers and TeamRankings archives. Panthers Week 1 record via Heavy; Week 1 underdog trends via FanDuel Research; fade-the-public backtests via Sports Insights (2003–15 data); key-number data via Action Network. The public's 3–13 Week 1 last season via SportsBettingDime.",
+      "body": [
+        "The most lopsided side of NFL Week 1 is not a juggernaut at home. It is the Chicago Bears, laying three on the road in Charlotte — 93 percent of tickets and 91 percent of the money at one book, with similar numbers everywhere.",
+        "The case is real: Ben Johnson's second year, an 11–6 division title, a franchise-record season from Caleb Williams — much of it built from the trade Carolina made to draft the quarterback standing on the other sideline.",
+        "The history is less kind. The Bears are 3–7 in their last ten openers, and the last time they laid exactly three in one, they scored three points. Carolina, the worst Week 1 franchise in football, was 6–2 against the spread as a home underdog last season. Sunday grades it."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 2",
+        "issueLine": "September 2026",
+        "edition": "An edition on consensus",
+        "coverKicker": "The Fade Index",
+        "coverLine": "Everyone is on the Bears.",
+        "coverSub": "The most lopsided ticket of NFL Week 1, graded before kickoff.",
+        "coverStat": {
+          "label": "At BetMGM",
+          "value": "93%",
+          "sub": "Of tickets · Bears −3"
+        },
+        "quote": {
+          "text": "3–13.",
+          "attr": "The public's Week 1 record against the spread, one season ago"
+        },
+        "sections": [
+          {
+            "title": "The Consensus",
+            "headline": "Ninety Percent of Everything",
+            "sub": "The splits, as the week opened",
+            "paras": [
+              "Sunday afternoon in Charlotte, the Chicago Bears open their season as three-point road favorites, and America has already voted. At BetMGM — by the book's own accounting — Bears spread bets were running at 93 percent, the most lopsided game of the entire Week 1 board. Splits reports put the money at 91 percent there, with DraftKings at 83 percent of tickets and 94 percent of dollars, and BetRivers at 75 and 91. However you count it, this is the most public side of opening week.",
+              "It is not alone — the whole board leans one way. The Cowboys are drawing 95 percent of spread money against the Giants; the Rams are a 79 percent side in the league's first game in Australia; the Jaguars have been called the clearest public team on the board. But nothing matches the Bears, whose over has moved three full points on its own — 44.5 to 47.5 — as bettors, in the words of DraftKings' Johnny Avello, chase an offense that scored twenty-five a game with a plus-22 turnover ratio a year ago."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "Bears −3 at Panthers · the splits",
+              "rows": [
+                {
+                  "sel": "BetMGM",
+                  "num": "93% of bets · 91% of money",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "DraftKings",
+                  "num": "83% of bets · 94% of money",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "BetRivers",
+                  "num": "75% of bets · 91% of money",
+                  "res": "Pending"
+                }
+              ],
+              "record": "93%",
+              "recordLabel": "The consensus",
+              "note": "BetMGM's ticket figure is from the book's own Week 1 report; the money splits as circulated by splits accounts. Graded Sunday."
+            }
+          },
+          {
+            "title": "The Case",
+            "headline": "Why They Believe",
+            "sub": "The best story in football, one year in",
+            "paras": [
+              "The confidence is not irrational. Ben Johnson's first season in Chicago produced an 11–6 record, the NFC North, and the franchise's first playoff win since 2010 — a wild-card comeback from 21–3 down against Green Bay. Caleb Williams set the franchise single-season passing record and led the league with seven fourth-quarter comebacks. The market has followed: Chicago opened this season with its shortest Super Bowl price since 2019.",
+              "And there is poetry in the matchup. A meaningful share of this Bears roster exists because of Carolina — the 2023 trade in which the Panthers surrendered the picks and players that became Chicago's core, to draft Bryce Young. Young, whose career year in 2025 won a soft NFC South at 8–9, is the quarterback standing across from the franchise his old team accidentally built.",
+              "The bear case, so to speak, exists too: Bill Barnwell made Chicago his top regression candidate for 2026, and the team the public remembers from November is not the one that showed up in last year's opener — more on that presently."
+            ]
+          },
+          {
+            "title": "The Openers",
+            "headline": "The Bears in September",
+            "sub": "A decade of first Sundays",
+            "paras": [
+              "Here is the franchise the public is laying three with: 3–7 straight-up in its last ten season openers. Six consecutive opener losses from 2014 through 2019. No back-to-back opener wins since 2012 and 2013. Last September, in Ben Johnson's debut, the Bears led Minnesota by eleven in the fourth quarter of the opener and lost on twenty-one unanswered points, with twelve penalties for 127 yards. The opener they won the year before, the offense scored no touchdowns at all — a blocked punt and a pick-six did it.",
+              "The sharper cut: in the last decade the Bears have been favored in an opener three times, and lost two of them outright — at home. In 2019, as champions of the division and favored by exactly three — the number the public is laying now — they scored three points, total, against Green Bay. And in all that time they have never once been what they are on Sunday: a road favorite in Week 1. By the findable lines, it has not happened in at least sixteen years."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The last ten openers",
+              "rows": [
+                {
+                  "sel": "2025 — Vikings, home",
+                  "num": "24–27 · blew an 11-point 4Q lead",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2024 — Titans, home",
+                  "num": "24–17 · zero offensive TDs",
+                  "res": "Won"
+                },
+                {
+                  "sel": "2023 — Packers, home, favored",
+                  "num": "20–38",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2022 — 49ers, home",
+                  "num": "19–10 · the flooded field",
+                  "res": "Won"
+                },
+                {
+                  "sel": "2021 — at Rams",
+                  "num": "14–34",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2020 — at Lions",
+                  "num": "27–23 · down 17 entering the 4th",
+                  "res": "Won"
+                },
+                {
+                  "sel": "2019 — Packers, home, −3",
+                  "num": "3–10 · three points as champions",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2018 — at Packers",
+                  "num": "23–24 · blew a 20–3 lead",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2017 — Falcons, home",
+                  "num": "17–23",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2016 — at Texans",
+                  "num": "14–23",
+                  "res": "Lost"
+                }
+              ],
+              "record": "3–7",
+              "recordLabel": "Last ten openers",
+              "note": "Results verified against box scores. Sunday is their first Week 1 road game since 2021 — and their first as a road favorite in at least sixteen years."
+            }
+          },
+          {
+            "title": "The Other Side",
+            "headline": "The Worst Week 1 Team in Football",
+            "sub": "Which is not the same as a bad bet",
+            "paras": [
+              "The team catching the points is, by the record, the worst opening-day franchise in the league: eleven wins against twenty losses in Week 1, and none at all since 2021. That is the stat the 93 percent are betting on. The stats they are betting against: Carolina went 6–2 against the spread as a home underdog last season, won the NFC South, and exercised the fifth-year option on a quarterback coming off a career year.",
+              "The situational math leans the same way. Week 1 underdogs have covered at 53 percent since 2000, and since 2019 the sharpest slice of that edge is exactly this spot — home dogs of three points or fewer, covering at 57.6 percent. Offseason narratives are at their loudest in Week 1 and their least tested; last September the public went 3–13 against the spread in the opening week before recovering to roughly break even on the year. The prediction markets are quietly less sure than the sportsbook lobbies: Kalshi has priced Carolina's chances near 41 percent, better than the moneyline implies."
+            ]
+          },
+          {
+            "title": "The Number",
+            "headline": "Held at Three",
+            "sub": "What the price is telling you",
+            "paras": [
+              "Roughly fifteen percent of NFL games land on exactly three — the most common final margin in football, nearly double the next number. It is the one line bookmakers hate to cross: move to three and a half with this much one-way money and a Bears field-goal win sides or middles the book on the most-landed number in the sport. So the books have mostly held — the market has straddled two and a half and three all week, taxing the juice instead of moving — which means somebody is willingly carrying a nine-figure-percentage position against the most popular bet in America rather than pay to get off the number.",
+              "What does the fade math say? The canonical backtests — fading sides with 80-plus percent of tickets — showed 54 to 57 percent, on data that mostly predates 2016; the edge has compressed since. And this game has the wrinkle the studies never resolved: tickets and money agree here, which the folk wisdom calls a weaker fade than a divergence. The two most famous 90/90 games in recent memory split the argument — Kansas City covered one in a walk in 2018, then lost one outright as a bigger consensus in 2021.",
+              "So the desk will not pretend the arithmetic settles it. The public has the best team. The fade has the number, the venue, the situational record, and a decade of Bears Septembers. That is what makes it the bet of the week — and either way, it gets graded Sunday night, in public, like everything else in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Sunday · 1 p.m. · Charlotte",
+          "title": "Bears −3",
+          "big": "93%",
+          "note": "The most lopsided ticket of Week 1, on the most landed number in football, laid by a team that is 3–7 in its last ten openers — against the worst Week 1 franchise in history. Pick a side.",
+          "tag": "Tail it or fade it",
+          "end": "Graded Sunday night"
+        }
+      }
+    },
+    {
       "slug": "public-killed-week-1",
       "league": "CFB",
       "title": "The public absolutely killed it in Week 1",
