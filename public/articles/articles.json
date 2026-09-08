@@ -1,6 +1,165 @@
 {
   "articles": [
     {
+      "slug": "public-killed-week-1",
+      "league": "CFB",
+      "title": "The public absolutely killed it in Week 1",
+      "dek": "The most-bet sides by money went five for five. Fading the public has been dead for a while — and the receipts from opening weekend explain why people can't stop trying anyway.",
+      "author": "Fade Desk",
+      "published": "2026-09-07T22:00:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Game results via ESPN box scores and team sites. Splits and trader quotes via FOX Sports' Week 1 betting recap and pre-game report, CBS Sports' Week 1 betting guide, Yahoo Sports, VSiN and BetMGM News; the composite most-bet lists as circulated in sportsbook splits reports, with individual entries corroborated by BetMGM, DraftKings and Caesars data. The fade-the-public record via Levitt (The Economic Journal, 2004), the Las Vegas Review-Journal's 2022 bookmaker survey, Flutter and DraftKings earnings disclosures, Nevada Gaming Control Board figures as reported by ESPN, and Sports Insights' published backtests.",
+      "body": [
+        "Twenty of the twenty-four games involving Top 25 programs closed with spreads of twenty points or more — and the big favorites delivered. The most-bet sides by tickets went 3–2. The most-bet sides by money went 5–0.",
+        "The fade-the-public gospel says this cannot keep happening. The receipts say otherwise: bookmakers themselves call the balanced-book theory 'an urban legend,' and the 2024 NFL season — 'the most customer friendly since the launch of online sports betting,' by FanDuel's own accounting — cost the industry hundreds of millions.",
+        "The real signal this weekend was not the tickets. It was the money — and the prices that moved with it."
+      ],
+      "mag": {
+        "volume": "The Splits",
+        "issueLine": "September 2026",
+        "edition": "An edition on the myth of the square",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The public absolutely killed it.",
+        "coverSub": "Opening weekend belonged to the chalk — and the money went undefeated.",
+        "coverStat": {
+          "label": "The money's card",
+          "value": "5–0",
+          "sub": "Most-bet by handle, Week 1"
+        },
+        "quote": {
+          "text": "That extra play and successful Hail Mary was a massive swing for the book. We went from a big winner to a loser.",
+          "attr": "Adair Horne, BetMGM trading manager, on Michigan's 13–12 escape"
+        },
+        "sections": [
+          {
+            "title": "The Card",
+            "headline": "Two Lists, One Lesson",
+            "sub": "The most-bet sides of opening weekend, graded",
+            "paras": [
+              "Every splits report tells two stories: what the crowd bet (tickets) and what the crowd staked (money). In Week 1 they disagreed — and the money was right everywhere. The most-popular sides by ticket count went three-and-two, sunk by Indiana laying forty and a half and an Oregon team that let Boise State hang around. The most-bet sides by dollars went five for five, and the fifth entry was not chalk at all: North Texas, catching that same forty and a half in Bloomington, covered by four and a half points.",
+              "The lists are not folklore. At BetMGM, LSU was the most-bet team of the entire Saturday slate by both tickets and money, and cashed by forty-one. At DraftKings, Alabama drew ninety percent of the tickets and ninety-two percent of the handle and covered by ten and a half. Notre Dame, laying twenty and a half at Lambeau, was the most popular bet on the Sunday board and won the second half 28–3 to cover by a touchdown."
+            ],
+            "figures": [
+              {
+                "type": "table",
+                "label": "Most-bet by tickets",
+                "rows": [
+                  {
+                    "sel": "LSU vs. Clemson",
+                    "num": "−10",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Alabama vs. East Carolina",
+                    "num": "−28",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Indiana vs. North Texas",
+                    "num": "−40.5",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "Oregon vs. Boise State",
+                    "num": "−24.5",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "Notre Dame vs. Wisconsin",
+                    "num": "−20.5",
+                    "res": "Won"
+                  }
+                ],
+                "record": "3–2",
+                "recordLabel": "The crowd",
+                "note": "Won by 41, 38 and 28; Indiana won by 36 and missed, Oregon won by 7 and missed."
+              },
+              {
+                "type": "table",
+                "label": "Most-bet by money",
+                "rows": [
+                  {
+                    "sel": "LSU vs. Clemson",
+                    "num": "−10",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Notre Dame vs. Wisconsin",
+                    "num": "−20.5",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Alabama vs. East Carolina",
+                    "num": "−28",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "Texas vs. Texas State",
+                    "num": "−29.5",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "North Texas at Indiana",
+                    "num": "+40.5",
+                    "res": "Won"
+                  }
+                ],
+                "record": "5–0",
+                "recordLabel": "The handle",
+                "note": "Texas covered by 22 and a half. And the one underdog on the list — North Texas, against the ticket-list favorite — covered too."
+              }
+            ]
+          },
+          {
+            "title": "The Weekend",
+            "headline": "Chalk, Delivered",
+            "sub": "How the books actually lost it",
+            "paras": [
+              "The slate was built for it: twenty of the twenty-four games involving Top 25 programs closed with spreads of twenty points or more, eleven of them thirty or more. The big brands delivered in big ways — LSU by forty-one in Lane Kiffin's debut, Texas by fifty-two, Alabama by thirty-eight — and, in the words of FOX's weekend recap, customers found success with \"pretty much every other big favorite easily covering.\"",
+              "Then there was Michigan. A twenty-seven-and-a-half-point favorite over Western Michigan, trailing 12–6 in the final second, granted a do-over when officials put one second back on the clock — and Bryce Underwood threw a Hail Mary touchdown to win 13–12. Nobody near the spread cared; the moneyline parlays did. BetMGM had taken six times more moneyline bets on Michigan than its opponent, most of them parlay legs, and the replayed snap flipped the book's result on the game. One bettor at Fanatics had put ten thousand dollars on Michigan live at 28-to-1 when the loss looked sealed; the do-over paid $290,000. At Hard Rock, a $1.06 twenty-leg parlay cashed for $130,000.",
+              "For balance, the books took Thursday: Washington, Georgia Tech and Auburn — the most public sides of the opening slate — all failed to cover, Georgia Tech losing outright on a last-minute touchdown and a blocked field goal. Readers of this desk will recognize that side. It headlined a certain 2–8 card."
+            ]
+          },
+          {
+            "title": "The Myth",
+            "headline": "Nobody Is Balancing the Book",
+            "sub": "Where fade-the-public came from, and why it died",
+            "paras": [
+              "The fade rests on a folk model: books balance action, shade lines toward the crowd, and profit on the vig — so the other side holds value. The first half is simply false, and bookmakers say so themselves. Asked in 2022 whether books balance bets to lock in profit, the Westgate's Jay Kornegay called the idea \"an urban legend.\" Red Rock's Chuck Esposito: \"somewhat of a myth.\" The South Point's Chris Andrews: \"rarely the reality.\"",
+              "The respectable core of the fade was real once. The economist Steven Levitt showed in 2004 that books deliberately carry lopsided positions and price against bettor biases, boosting profits an estimated twenty to thirty percent over a balanced book — and in that era, extreme contrarian positions backtested profitably. But the edge assumed slow, soft lines. Modern prices are set by market-makers and moved by sharp money, not ticket counts; the crowd's tickets barely bend the number. What is left to fade is mostly nothing: over the long run the public wins roughly forty-eight percent of its spread bets — a coin flip minus the price, not an ATM."
+            ]
+          },
+          {
+            "title": "The Precedent",
+            "headline": "The Public Has Done This Before",
+            "sub": "When the crowd breaks the industry",
+            "paras": [
+              "A public weekend is not even unusual anymore. In October 2021, NFL favorites ran the table on an early slate and Caesars' head of trading described it in two words: \"a bloodbath.\" The 2024 NFL season went further — FanDuel's parent called it \"the most customer friendly since the launch of online sports betting, with the highest rate of favourites winning in nearly 20 years,\" and warned of a $370 million revenue hit. DraftKings cut guidance by a quarter-billion. Nevada's books lost money on football in December 2024 — the first losing football month in twelve years.",
+              "And here is the other half of the ledger, the reason the books keep the lights on: even in that disaster year, the American industry held 9.3 percent of everything wagered, on record revenue of $13.7 billion. The public wins weekends. The hold wins years. Both of those facts were on display this weekend, and neither one is a betting strategy."
+            ]
+          },
+          {
+            "title": "The Signal",
+            "headline": "Watch the Money, Not the Crowd",
+            "sub": "What Week 1 actually taught",
+            "paras": [
+              "The week's real tell was the divergence. Indiana drew one-way ticket action at forty and a half — \"They're laying the 40 points,\" Caesars' football trader said — yet the price got bought back toward thirty-nine and a half. The line moved against the tickets, and the tickets lost. In Buffalo's opener, sixty-nine percent of tickets took the Bulldogs while eighty-two percent of the money took Albany; the spread collapsed from twenty-four and a half to eighteen and a half. When tickets and dollars disagree, the dollars are usually somebody who knows something.",
+              "Even that is not a system. The only published backtest of fading heavy money in college football found an edge — fifty-five percent — but only in the games where the line moved with the money; where the price stood still, the signal vanished. The splits themselves come from a single recreational book's customers, a keyhole view of a market whose sharpest money never appears in them. The lesson of Week 1 is not that the public is sharp now, or that the fade is back. It is older and simpler: crowds are noise, prices are information, and people are records. The desk grades the people."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "The verdict",
+          "title": "The fade is dead.",
+          "big": "5–0",
+          "note": "Long live the fade — of the right people. The public is not an ATM, and never was. Records are. That is what the case files are for.",
+          "tag": "Tail it or fade it",
+          "end": "End of the file"
+        }
+      }
+    },
+    {
       "slug": "stanford-steve-gameday-best-picker",
       "league": "CASES",
       "title": "Stanford Steve: GameDay's best picker",
