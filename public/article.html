@@ -160,6 +160,18 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .runfoot { border-top:1px solid var(--hair); }
 .runfoot-in { display:flex; justify-content:space-between; padding:1rem 0 1.6rem; color:var(--soft); }
 .missing { padding:5rem 0; text-align:center; letter-spacing:0.2em; text-transform:uppercase; font-size:0.72rem; color:var(--soft); }
+
+/* ---- access gate ---- */
+.gate { min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:3rem 1.2rem; }
+.gate-in { max-width:360px; width:100%; }
+.gate .caps { color:var(--wine); display:block; margin-bottom:1rem; }
+.gate h1 { font-family:'Playfair Display',serif; font-weight:600; font-size:1.9rem; line-height:1.15; margin-bottom:0.8rem; }
+.gate p { font-style:italic; font-size:0.92rem; color:var(--soft); margin-bottom:1.8rem; }
+.gate input { width:100%; background:var(--paper-hi); border:1px solid var(--hair); border-radius:4px; padding:0.9rem 1rem; font-family:'Newsreader',Georgia,serif; font-size:1rem; letter-spacing:0.18em; text-align:center; color:var(--ink); outline:none; }
+.gate input:focus { border-color:var(--ink); }
+.gate button { margin-top:1rem; width:100%; background:var(--wine); color:#F1EEE5; border:none; border-radius:4px; padding:0.9rem 1rem; font-family:'Newsreader',Georgia,serif; font-size:0.68rem; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; cursor:pointer; }
+.gate button:hover { background:#7E1517; }
+.gate .err { margin-top:0.9rem; font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--wine); min-height:1em; }
 </style>
 </head>
 <body>
@@ -360,6 +372,34 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     document.getElementById('art').innerHTML = html;
   }
 
+  function gate(a) {
+    document.title = 'Fade Media';
+    var el = document.getElementById('art');
+    el.innerHTML = '<div class="gate"><div class="gate-in">' +
+      '<span class="caps">Restricted file</span>' +
+      '<h1 class="pf">This issue requires a code.</h1>' +
+      '<p>Enter the access code to open the file.</p>' +
+      '<input id="gateCode" type="password" autocomplete="off" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
+      '<button id="gateGo">Open the file</button>' +
+      '<div class="err" id="gateErr"></div>' +
+      '</div></div>';
+    var input = document.getElementById('gateCode');
+    function attempt() {
+      if (input.value.trim().toLowerCase() === String(a.gate).toLowerCase()) {
+        try { sessionStorage.setItem('fm-gate-' + a.slug, 'ok'); } catch (e) {}
+        render(a);
+        window.scrollTo(0, 0);
+      } else {
+        document.getElementById('gateErr').textContent = 'Wrong code';
+        input.value = '';
+        input.focus();
+      }
+    }
+    document.getElementById('gateGo').addEventListener('click', attempt);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') attempt(); });
+    input.focus();
+  }
+
   var slug = new URLSearchParams(location.search).get('s');
   var el = document.getElementById('art');
   fetch('/articles/articles.json')
@@ -367,6 +407,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     .then(function (d) {
       var a = (d.articles || []).find(function (x) { return x.slug === slug; });
       if (!a) { el.innerHTML = '<div class="missing">Article not found &mdash; <a href="/fademedia" style="text-decoration:underline;">back to the desk</a></div>'; return; }
+      if (a.gate && sessionStorage.getItem('fm-gate-' + a.slug) !== 'ok') { gate(a); return; }
       render(a);
     })
     .catch(function () { el.innerHTML = '<div class="missing">Could not load this article.</div>'; });
