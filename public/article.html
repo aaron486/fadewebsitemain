@@ -48,6 +48,7 @@ img { max-width:100%; }
 .cover-edition { text-align:center; padding:clamp(1.4rem,3.5vw,2.2rem) 0 1.3rem; font-style:italic; letter-spacing:0.3em; text-transform:uppercase; font-size:0.66rem; color:rgba(241,238,229,0.75); }
 .cover-photo-band { background:var(--wine); }
 .cover-photo-band img { display:block; width:100%; max-height:64vh; object-fit:cover; object-position:50% 0%; filter:grayscale(1) contrast(1.06); }
+.cover-photo-band.color img { filter:none; }
 @media (max-width:700px) {
   .cover-grid { grid-template-columns:1fr; }
   .cover-left, .cover-right { text-align:center; padding-bottom:0.2rem; }
@@ -269,7 +270,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       '</div></div>' +
       (m.edition ? '<div class="cover-edition">' + esc(m.edition) + '</div>' : '') +
       '</header>' +
-      (m.coverPhoto || a.image ? '<div class="cover-photo-band"><img src="' + esc((m.coverPhoto || a.image).replace('sz=w600','sz=w1200')) + '" alt="" /></div>' : '');
+      (m.coverPhoto || a.image ? '<div class="cover-photo-band' + (m.coverColor ? ' color' : '') + '"><img src="' + esc((m.coverPhoto || a.image).replace('sz=w600','sz=w1200')) + '" alt="" /></div>' : '');
   }
   function contentsHtml(m) {
     var s = '<section class="epigraph wrap">';

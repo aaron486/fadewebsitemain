@@ -7,7 +7,7 @@
       "dek": "Ninety-three percent of the tickets. Ninety-one percent of the money. The most lopsided side of NFL Week 1 is a road favorite laying the most important number in football — for a franchise that is 3–7 in its last ten openers.",
       "author": "Fade Desk",
       "published": "2026-09-07T23:00:00Z",
-      "image": "",
+      "image": "/assets/bears-week1-cover.jpg",
       "featured": false,
       "sources": "Splits via BetMGM's public-betting report (Sept 4) and SportsBettingDime's trends page; DraftKings and BetRivers figures as reported by betting-splits accounts, not independently confirmed. Game facts and lines via ESPN, DraftKings Network and SI; the Avello quote via SI's Sportsbook Insiders. Opener results verified against ESPN box scores; opener lines via Action Network, Rotowire, Covers and TeamRankings archives. Panthers Week 1 record via Heavy; Week 1 underdog trends via FanDuel Research; fade-the-public backtests via Sports Insights (2003–15 data); key-number data via Action Network. The public's 3–13 Week 1 last season via SportsBettingDime.",
       "body": [
@@ -169,8 +169,11 @@
           "big": "93%",
           "note": "The most lopsided ticket of Week 1, on the most landed number in football, laid by a team that is 3–7 in its last ten openers — against the worst Week 1 franchise in history. Pick a side.",
           "tag": "Tail it or fade it",
-          "end": "Graded Sunday night"
-        }
+          "end": "Graded Sunday night",
+          "photo": "/assets/bears-week1-cover.jpg"
+        },
+        "coverPhoto": "/assets/bears-week1-cover.jpg",
+        "coverColor": true
       }
     },
     {
