@@ -164,7 +164,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 <body>
 
 <div class="runhead"><div class="wrap"><div class="runhead-in">
-  <a class="caps" href="/fade-media">&larr; Fade Media</a>
+  <a class="caps" href="/fademedia">&larr; Fade Media</a>
   <span class="caps">The Front Page of Sports Betting</span>
 </div></div></div>
 
@@ -365,7 +365,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     .then(function (r) { return r.json(); })
     .then(function (d) {
       var a = (d.articles || []).find(function (x) { return x.slug === slug; });
-      if (!a) { el.innerHTML = '<div class="missing">Article not found &mdash; <a href="/fade-media" style="text-decoration:underline;">back to the desk</a></div>'; return; }
+      if (!a) { el.innerHTML = '<div class="missing">Article not found &mdash; <a href="/fademedia" style="text-decoration:underline;">back to the desk</a></div>'; return; }
       render(a);
     })
     .catch(function () { el.innerHTML = '<div class="missing">Could not load this article.</div>'; });
