@@ -106,7 +106,7 @@ a { color:inherit; text-decoration:none; }
 .ch-right { text-align:right; padding-bottom:0.2rem; }
 .ch-right .ch-caps { display:block; margin-bottom:0.45rem; }
 .ch-stat { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(1.7rem,3vw,2.4rem); line-height:1; }
-.ch-stat .mns { font-size:0.58em; vertical-align:0.18em; margin-right:0.04em; }
+.ch-stat + .ch-caps { margin-top:0.5rem; margin-bottom:0; }
 .ch-ed { text-align:center; padding:1rem 0 1rem; font-family:'Newsreader',Georgia,serif; font-style:italic; letter-spacing:0.28em; text-transform:uppercase; font-size:0.56rem; color:rgba(241,238,229,0.75); }
 .ch-photo img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 0%; filter:grayscale(1) contrast(1.06); }
 @media (max-width:640px) {
@@ -1000,7 +1000,7 @@ a { color:inherit; text-decoration:none; }
             (m.coverSub ? '<div class="ch-sub">' + esc(m.coverSub) + '</div>' : '') +
           '</div>' +
           '<div class="ch-right">' +
-            (m.coverStat ? '<span class="ch-caps">' + esc(m.coverStat.label) + '</span><div class="ch-stat">' + (function (v) { v = String(v); return (v.charAt(0) === '\u2212' || v.charAt(0) === '-') ? '<span class="mns">\u2212</span>' + esc(v.slice(1)) : esc(v); })(m.coverStat.value) + '</div><span class="ch-caps">' + esc(m.coverStat.sub || '') + '</span>' : '') +
+            (m.coverStat ? '<span class="ch-caps">' + esc(m.coverStat.label) + '</span><div class="ch-stat">' + esc(String(m.coverStat.value).replace(/^\u2212/, '-')) + '</div><span class="ch-caps">' + esc(m.coverStat.sub || '') + '</span>' : '') +
           '</div>' +
         '</div>' +
         (m.edition ? '<div class="ch-ed">' + esc(m.edition) + '</div>' : '') +
