@@ -1,6 +1,240 @@
 {
   "articles": [
     {
+      "slug": "super-bowl-losers-week-1",
+      "league": "NFL",
+      "title": "The runner-up hangover: Super Bowl losers are 6–20 in Week 1",
+      "dek": "Six covers, twenty misses since 2000 — including a perfect 0–12 to open the century. Tonight the reigning runner-up opens the season against the team that beat them, and every trend in the file points at the same number.",
+      "author": "Fade Desk",
+      "published": "2026-09-09T14:30:00Z",
+      "image": "/assets/sb-loser-cover.jpg",
+      "featured": false,
+      "sources": "Trend records as published by National Football Post (6–19 over 25 seasons), BetMGM (5–19), Boyd's Bets (4–19), Covers and BetIQ/TeamRankings — counts differ by how pushes and book-dependent results are graded; the 6–20 figure adds the Chiefs' 2025 no-cover to NFP's count. Game results verified against ESPN box scores; season-after data via NBC Sports, FiveThirtyEight and BetIQ; champions' kickoff records via VegasInsider and Men's Journal. Tonight's game facts via NFL.com, Covers and Fox Sports; Drake's Super Bowl bet via Rolling Stone and Bleacher Report.",
+      "body": [
+        "Super Bowl losers are roughly 6–20 against the spread in their next season opener — and from 2000 through 2011 they went 0–12. The famous entries: Brady's knee in 2008 as a 16.5-point favorite, the Steelers losing 35–7 in Baltimore, the Panthers blowing the Super Bowl 50 rematch on a missed kick.",
+        "Tonight the trend kicks off the season itself: the Patriots, fresh off losing Super Bowl LX by sixteen, open at the Seahawks — only the third Week 1 Super Bowl rematch ever — as three-point underdogs on banner night.",
+        "The wrinkle: the mirror trend says champions win these openers but don't cover them, which is exactly how the last kickoff rematch went in 2016 — Denver by one, Carolina covers. Two dead trends walk into Seattle; one cashes by midnight."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 3",
+        "issueLine": "September 2026",
+        "edition": "An edition on the morning after",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The runner-up hangover.",
+        "coverSub": "Super Bowl losers do not cover their next opener. Tonight, the trend kicks off the season.",
+        "coverStat": {
+          "label": "SB losers, Week 1",
+          "value": "6–20",
+          "sub": "ATS since 2000"
+        },
+        "quote": {
+          "text": "0–12.",
+          "attr": "Super Bowl losers against the spread in Week 1, 2000 through 2011"
+        },
+        "sections": [
+          {
+            "title": "The Trend",
+            "headline": "Nobody Covers the Morning After",
+            "sub": "Twenty-six Septembers of runners-up",
+            "stats": [
+              {
+                "v": "6–20",
+                "l": "ATS since 2000, common count",
+                "tone": "wine"
+              },
+              {
+                "v": "0–12",
+                "l": "2000 through 2011",
+                "tone": "wine"
+              },
+              {
+                "v": "23%",
+                "l": "Cover rate",
+                "tone": "wine"
+              }
+            ],
+            "paras": [
+              "The team that loses the Super Bowl spends seven months hearing how close it came — and then, in its first game back, fails to cover the spread. It is one of the most published trends in football betting: by the most common accounting, Super Bowl losers are six covers against twenty misses in Week 1 since 2000. Different books grade the pushes differently — published versions run from 4–19 to 7–19 — but every version agrees on the shape.",
+              "And the shape is the real story. From 2000 through 2011 the runner-up went 0–12 against the number — not a single cover in twelve years, a run that ended entire theories about market efficiency. Since 2012 the record is roughly a coin flip, because bookmakers read the same trend pages bettors do and started pricing the hangover in. The zombie version of the stat still walks — but the number it built now lives inside the line.",
+              "The straight-up record is hardly better: the runner-up has lost its opener outright more often than not since 2000, and the two most recent losers — the 2024 49ers and 2025 Chiefs — each followed the opener to a 6–11 season and a missed postseason."
+            ],
+            "figure": {
+              "type": "seq",
+              "label": "The last fifteen, against the spread",
+              "items": [
+                {
+                  "l": "2011",
+                  "r": "L"
+                },
+                {
+                  "l": "2012",
+                  "r": "W"
+                },
+                {
+                  "l": "2013",
+                  "r": "W"
+                },
+                {
+                  "l": "2014",
+                  "r": "L"
+                },
+                {
+                  "l": "2015",
+                  "r": "L"
+                },
+                {
+                  "l": "2016",
+                  "r": "L"
+                },
+                {
+                  "l": "2017",
+                  "r": "P"
+                },
+                {
+                  "l": "2018",
+                  "r": "W"
+                },
+                {
+                  "l": "2019",
+                  "r": "P"
+                },
+                {
+                  "l": "2020",
+                  "r": "L"
+                },
+                {
+                  "l": "2021",
+                  "r": "L"
+                },
+                {
+                  "l": "2022",
+                  "r": "L"
+                },
+                {
+                  "l": "2023",
+                  "r": "W"
+                },
+                {
+                  "l": "2024",
+                  "r": "W"
+                },
+                {
+                  "l": "2025",
+                  "r": "L"
+                }
+              ],
+              "caption": "Reigning Super Bowl losers against the spread in their next opener, 2011–2025, graded at widely posted closing numbers. The 2017 and 2019 games landed on or near the line and grade differently by book. The eleven openers before this strip need none: no loser covered."
+            }
+          },
+          {
+            "title": "The Wreckage",
+            "headline": "How They Lose",
+            "sub": "The canon of the hangover",
+            "paras": [
+              "The genre has classics. In 2008 the Patriots, a 16.5-point favorite over Kansas City seven months after their perfect season died, lost Tom Brady's knee fifteen minutes into the opener and won by seven — the most catastrophic no-cover in the file. In 2011 the Steelers walked into Baltimore and lost 35–7. In 2015 the Seahawks lost in overtime to a Rams team bound for 7–9, complete with a failed short-yardage run that made every viewer think of the goal line in Glendale.",
+              "The sharpest precedent for tonight is 2016: the NFL opened the season with the Super Bowl 50 rematch, Carolina at Denver. The Panthers led by ten in the fourth quarter, gave it all back, and lost 21–20 when Graham Gano missed from fifty with four seconds left — the champion won the game and the runner-up, laying three, covered nothing. And last season the trend collected again in São Paulo: the Chiefs, three-point favorites over the Chargers, lost the opener — the first tremor of a 6–11 collapse."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "Exhibits · from the file",
+              "cols": [
+                "Opener",
+                "The damage",
+                "ATS"
+              ],
+              "rows": [
+                {
+                  "sel": "2008 Patriots — Brady's knee, fifteen minutes in",
+                  "num": "−16.5 · won by 7",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2011 Steelers, at Baltimore",
+                  "num": "7–35",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2015 Seahawks, at St. Louis",
+                  "num": "lost in overtime",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2016 Panthers — the rematch in Denver",
+                  "num": "−3 · lost 20–21",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2025 Chiefs, in São Paulo",
+                  "num": "−3 · lost 21–27",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "2024 49ers — the exception",
+                  "num": "−3.5 · won 32–19",
+                  "res": "Won"
+                }
+              ],
+              "record": "6",
+              "recordLabel": "Covers in 26 years",
+              "photo": "/assets/sb-loser-cover.jpg",
+              "note": "Two of the six covers belong to the Patriots alone — the franchise that opens the season tonight."
+            }
+          },
+          {
+            "title": "The Why",
+            "headline": "The Shortest Summer",
+            "sub": "What actually causes it",
+            "paras": [
+              "The explanations are mundane, which is why they persist. The Super Bowl loser gets the shortest offseason in the sport with none of the consolation. Its coordinators get hired away, its veterans get poached, and its market price stays inflated by the fact that everyone watched it play in February — the public overrates the runner-up, so the number does too. The quantified version: Super Bowl losers underperform their preseason win totals by about a full win on average, and when the quarterback misses time, by nearly four.",
+              "The honest counterweight: the season-long 'curse' is softer than the Week 1 stat. About two-thirds of Super Bowl losers still make the playoffs the next year, and one — the 2018 Patriots — turned the hangover into a title. But the modern run is grim: the last seven runners-up beat their win total once, and the last two finished 6–11. Week 1 is where the season after starts telling you which kind it will be."
+            ]
+          },
+          {
+            "title": "The Test",
+            "headline": "Tonight, in Seattle",
+            "sub": "The trend kicks off the season",
+            "stats": [
+              {
+                "v": "+3",
+                "l": "The Patriots, tonight"
+              },
+              {
+                "v": "17–4",
+                "l": "Champs, straight-up, in kickoff games"
+              },
+              {
+                "v": "3rd",
+                "l": "Week 1 Super Bowl rematch ever"
+              }
+            ],
+            "paras": [
+              "Tonight the trend is not a footnote to the schedule — it is the schedule. The Patriots, who lost Super Bowl LX to Seattle 29–13, open the season at Lumen Field on banner night, in only the third Week 1 Super Bowl rematch in league history (the 1970 Vikings avenged theirs; the 2016 Panthers did not). The line opened Seattle −4.5 in May and has been bet down to −3 — barely a point off the Super Bowl closing number, as if the market never left Santa Clara.",
+              "The case for the runner-up is real: a 14–3 team that added A.J. Brown to an MVP runner-up quarterback, coached by the reigning Coach of the Year — against a champion raising its banner without its Super Bowl MVP, Kenneth Walker III having taken Kansas City's money and skipped the ring ceremony. The case against is this entire file, plus a schedule that turns first-place hard after an easy 2025.",
+              "Here is what makes tonight the perfect laboratory: the mirror trend points the same way. Defending champions are 17–4 straight-up in kickoff games — and cover almost none of them, roughly one in five in recent years. The books, reportedly heavy with Patriots moneyline action, need the middle: Seattle by one or two. That is precisely how the 2016 rematch settled. If it happens again, the champion wins, the runner-up covers, and both trends limp on — which is the most on-brand possible result for a stat the market already ate."
+            ]
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Trends Are for Reading, Not Betting",
+            "sub": "What the desk does with a famous number",
+            "paras": [
+              "A 23 percent cover rate over a quarter century is a fact. It is also, mostly, a fact about the years 2000 through 2011, when the market hadn't caught up. The desk's read is the same one this section always lands on: the number tonight already contains the hangover — what it may not contain is a banner-night champion that never covers these games, and a runner-up built more like an heir than a hangover.",
+              "One postscript from our own case files: the last time the Patriots played a game this big, Drake had a million dollars on them, lost it, and announced he was off sports betting. He is 4–8 lifetime on Super Bowl wagers, and as of press time has not been sighted on this one. Make of that omen what you will — it gets graded by midnight, like everything else in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Tonight · 8:20 ET · Lumen Field",
+          "title": "Patriots +3",
+          "big": "6–20",
+          "note": "The runner-up hangover opens the season against the champion who never covers the banner game. Two tired trends walk into Seattle; one cashes by midnight.",
+          "tag": "Tail it or fade it",
+          "end": "Graded tonight",
+          "photo": "/assets/sb-loser-cover.jpg"
+        }
+      }
+    },
+    {
       "slug": "everyone-is-on-the-bears",
       "league": "NFL",
       "title": "Everyone in America is on the Bears",
