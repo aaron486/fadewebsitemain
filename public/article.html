@@ -517,8 +517,10 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       '<span class="caps">Restricted desk</span>' +
       '<h1 class="pf">Fade Media requires a code.</h1>' +
       '<p>Enter the access code to open the desk.</p>' +
-      '<input id="gateCode" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
-      '<button id="gateGo">Open the file</button>' +
+      '<form id="gateForm" action="" method="get" onsubmit="return false;">' +
+      '<input id="gateCode" name="code" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
+      '<button id="gateGo" type="submit">Open the file</button>' +
+      '</form>' +
       '<div class="err" id="gateErr"></div>' +
       '</div></div>';
     var input = document.getElementById('gateCode');
@@ -533,8 +535,9 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
         input.focus();
       }
     }
-    document.getElementById('gateGo').addEventListener('click', attempt);
-    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') attempt(); });
+    document.getElementById('gateForm').addEventListener('submit', function (e) { e.preventDefault(); attempt(); return false; });
+    document.getElementById('gateGo').addEventListener('click', function (e) { e.preventDefault(); attempt(); });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); attempt(); } });
     input.focus();
   }
 
