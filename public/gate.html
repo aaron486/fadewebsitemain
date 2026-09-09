@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Media</title>
+<meta name="theme-color" content="#9E1B1E" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { min-height:100vh; background:#F1EEE5; color:#1A1815; font-family:'Newsreader',Georgia,serif; display:flex; align-items:center; justify-content:center; padding:2rem 1.2rem; }
+.in { max-width:360px; width:100%; text-align:center; }
+.kick { font-size:0.66rem; font-weight:500; letter-spacing:0.34em; text-transform:uppercase; color:#9E1B1E; margin-bottom:1rem; }
+h1 { font-family:'Playfair Display',Georgia,serif; font-weight:600; font-size:1.9rem; line-height:1.15; margin-bottom:0.8rem; }
+p { font-style:italic; font-size:0.92rem; color:#8A867C; margin-bottom:1.8rem; }
+input[type=text] { width:100%; background:#F7F5EE; border:1px solid rgba(26,24,21,0.35); border-radius:4px; padding:0.9rem 1rem; font-family:'Newsreader',Georgia,serif; font-size:1rem; letter-spacing:0.18em; text-align:center; color:#1A1815; outline:none; }
+input[type=text]:focus { border-color:#1A1815; }
+button { margin-top:1rem; width:100%; background:#9E1B1E; color:#F1EEE5; border:none; border-radius:4px; padding:0.9rem 1rem; font-family:'Newsreader',Georgia,serif; font-size:0.68rem; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; cursor:pointer; }
+button:hover { background:#7E1517; }
+.err { margin-top:0.9rem; font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:#9E1B1E; min-height:1em; }
+</style>
+</head>
+<body>
+  <div class="in">
+    <div class="kick">Restricted desk</div>
+    <h1>Fade Media requires a code.</h1>
+    <p>Enter the access code to open the desk.</p>
+    <form action="/api/gate" method="POST">
+      <input type="text" name="code" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autofocus />
+      <input type="hidden" name="next" id="nextField" value="/fademedia" />
+      <button type="submit">Open the desk</button>
+    </form>
+    <div class="err" id="err"></div>
+  </div>
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var next = q.get('next');
+    if (next && next.charAt(0) === '/' && next.charAt(1) !== '/') document.getElementById('nextField').value = next;
+    if (q.get('err')) document.getElementById('err').textContent = 'Wrong code — try again';
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

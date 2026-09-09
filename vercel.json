@@ -90,6 +90,10 @@
       "destination": "/dk1.html"
     },
     {
+      "source": "/gate",
+      "destination": "/gate.html"
+    },
+    {
       "source": "/article",
       "destination": "/article.html"
     },
