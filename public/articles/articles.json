@@ -7,7 +7,7 @@
       "dek": "Adrian Hill — NASA engineer turned NFL referee — works the kickoff game tonight, and his games lean under: 62–50–1 career, a league-best 7–2 last season. About that 12–5 primetime number going around: the desk graded it.",
       "author": "Fade Desk",
       "published": "2026-09-09T17:30:00Z",
-      "image": "",
+      "image": "/assets/adrian-hill-cover.webp",
       "featured": false,
       "sources": "Assignment via Football Zebras' Week 1 crew list and Bolavip's game-day crew report. Hill's under records via Rotowire's referee page and Sharp Football Analysis (62–50–1 career) and the officiating-stats account @nflrefstats1 (7–2 in 2025); the 12–5 primetime figure as circulated on betting social media, untraceable to any published source at press time. Biography via Wikipedia and Football Zebras; the Patriots–Saints controversy via CBS Boston, SI and the Patriots.com pool report; 2025 crew flag data via Yahoo Sports and NFLPenalties.com. Genre records per Action Network / Bet Labs (Corrente), Covers (Cheffers) and Rotowire (Smith), attributed as published; skeptic case via ESPN's officiating-data analysis and the Harvard Sports Analysis Collective; Donaghy history via ESPN and the Pedowitz Report. Market data via FOX Sports and CBS Sports.",
       "body": [
@@ -141,8 +141,10 @@
           "big": "62–50–1",
           "note": "The league’s best under referee of 2025 opens the season with a total that has not moved since it was posted. The circulating 12–5 is ungradeable; the lean is real; the feather goes on the under.",
           "tag": "Tail it or fade it",
-          "end": "Graded tonight"
-        }
+          "end": "Graded tonight",
+          "photo": "/assets/adrian-hill-cover.webp"
+        },
+        "coverPhoto": "/assets/adrian-hill-cover.webp"
       }
     },
     {
