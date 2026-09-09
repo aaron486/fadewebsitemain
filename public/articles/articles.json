@@ -1,6 +1,151 @@
 {
   "articles": [
     {
+      "slug": "adrian-hill-under",
+      "league": "NFL",
+      "title": "The rocket scientist calling tonight’s total",
+      "dek": "Adrian Hill — NASA engineer turned NFL referee — works the kickoff game tonight, and his games lean under: 62–50–1 career, a league-best 7–2 last season. About that 12–5 primetime number going around: the desk graded it.",
+      "author": "Fade Desk",
+      "published": "2026-09-09T17:30:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Assignment via Football Zebras' Week 1 crew list and Bolavip's game-day crew report. Hill's under records via Rotowire's referee page and Sharp Football Analysis (62–50–1 career) and the officiating-stats account @nflrefstats1 (7–2 in 2025); the 12–5 primetime figure as circulated on betting social media, untraceable to any published source at press time. Biography via Wikipedia and Football Zebras; the Patriots–Saints controversy via CBS Boston, SI and the Patriots.com pool report; 2025 crew flag data via Yahoo Sports and NFLPenalties.com. Genre records per Action Network / Bet Labs (Corrente), Covers (Cheffers) and Rotowire (Smith), attributed as published; skeptic case via ESPN's officiating-data analysis and the Harvard Sports Analysis Collective; Donaghy history via ESPN and the Pedowitz Report. Market data via FOX Sports and CBS Sports.",
+      "body": [
+        "The referee for tonight's Super Bowl rematch is Adrian Hill — a former NASA spacecraft software engineer who answered a newspaper ad to officiate $13 youth games. His NFL games lean under: 62–50–1 career, a league-leading 7–2 to the under in 2025.",
+        "A number circulating on betting social media has him 12–5 to the under in primetime. The desk could not trace it to any published source — the citable version of the lean is strong enough without it.",
+        "The last time his crew called a Patriots game, Mike Vrabel called the officiating 'comical' after a 61-yard touchdown was wiped off the board. Tonight: same crew, same coach, banner night, total 44.5 — unmoved since it opened."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 4",
+        "issueLine": "September 2026",
+        "edition": "An edition on the man in the middle",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The referee is the angle.",
+        "coverSub": "A NASA engineer in a white hat, a league-best under lean, and a stat nobody can source.",
+        "coverStat": {
+          "label": "Hill games, career",
+          "value": "62–50–1",
+          "sub": "To the under"
+        },
+        "quote": {
+          "text": "Comical.",
+          "attr": "Mike Vrabel, on the last game Adrian Hill's crew called for the Patriots"
+        },
+        "sections": [
+          {
+            "title": "The Assignment",
+            "headline": "The Man in the Middle",
+            "sub": "Who holds the whistle tonight, and what his games do",
+            "stats": [
+              {
+                "v": "7–2",
+                "l": "To the under in 2025 — best in the league",
+                "tone": "cash"
+              },
+              {
+                "v": "62–50–1",
+                "l": "Career, to the under"
+              },
+              {
+                "v": "17.9",
+                "l": "Flags per game in 2025 — second-most",
+                "tone": "wine"
+              }
+            ],
+            "paras": [
+              "Tonight's kickoff game has three teams on the field: the champions, the runners-up, and Adrian Hill's crew — confirmed by Football Zebras for the opener, with four officials working their 24th NFL season behind him. And Hill is the kind of referee the betting internet notices. His games lean under: 62 wins, 50 losses and a push for under bettors across his career as a white hat, and a league-best 7–2 to the under last season.",
+              "Now, the number making the rounds — 12–5 to the under in primetime, 71 percent. The desk went looking for its source and found none: no stats site, no book, no outlet publishes it. That does not make it false; primetime splits live in databases the public reads secondhand. It makes it ungradeable — and this desk grades. So here is what is actually citable: the career lean above, the 2025 league lead, and the backdrop that primetime games league-wide have gone under at roughly 56 percent over recent seasons. The direction of the claim survives. The decimal does not.",
+              "The market, for the record, is not acting on any of it: the total opened at 44.5 and has not moved an inch all summer, with reported action on it close to even — and the recreational money expected on the over, riding two top-three scoring offenses. If the under is the sharp side tonight, it is a quiet one."
+            ]
+          },
+          {
+            "title": "The Rocket Scientist",
+            "headline": "From Goddard to the Goal Line",
+            "sub": "The most overqualified man in stripes",
+            "paras": [
+              "Hill's path to the white hat is the best bio in officiating. Electrical engineering and computer science at the University at Buffalo. NASA contract work at Goddard Space Flight Center in the nineties. Principal software engineer at the Johns Hopkins Applied Physics Laboratory, designing fault-management systems for spacecraft — the code that decides what a satellite does when everything goes wrong. Baltimore's Engineer of the Year, 2006. Then he answered a newspaper ad and started calling youth football for thirteen dollars a game.",
+              "He joined the NFL as a line judge in 2010, took over a crew in 2019, and has spent seventeen seasons applying fault-management logic to Sunday chaos — including to himself: carted off on a Thursday night last November with a non-contact leg injury, back for the playoffs anyway. Tonight he opens the season in the loudest building in the sport."
+            ]
+          },
+          {
+            "title": "The Grudge",
+            "headline": "Same Crew, Same Coach",
+            "sub": "October 12, 2025 — the receipts",
+            "paras": [
+              "One more reason New England knows this crew: last October, in Hill's only Patriots assignment of the season, an offensive pass interference call on Stefon Diggs wiped out a 61-yard Drake Maye touchdown — part of roughly 113 yards and a score erased on the day. The Patriots won anyway, and Mike Vrabel still called the officiating 'comical.' Hill answered questions through a pool report. Tonight is the first meeting since.",
+              "The crew's profile explains the friction. In 2025 it threw the second-most flags per game in football — 17.9 — but with a particular flavor: offensive holding at a third above the league rate, while unnecessary roughness and offsides ran far below it. Technique flags, not mayhem flags. That is the desk's read on the under lean, too — a crew that flags holding kills drives, and dead drives kill totals. Treat that as analysis, not gospel: the causal story is tidy, and tidy stories are how referee stats get oversold."
+            ]
+          },
+          {
+            "title": "The Genre",
+            "headline": "Betting the Stripes",
+            "sub": "A short history of referee angles",
+            "paras": [
+              "Referee handicapping is a standing genre now — weekly 'zebra reports,' per-crew databases, assignment trackers that race the books every Wednesday when Football Zebras posts the crews. The canon records all trace to the same trends databases: Tony Corrente, the most profitable under referee ever published at 102–80–4; Carl Cheffers and his home-team splits; Shawn Smith, under whom home teams covered 17 of 49 — and who refereed the Super Bowl these two teams just played.",
+              "The skeptic case is arithmetic. A referee works seventeen games a year; even Corrente's famous 56 percent, across a decade of games, sits within shouting distance of a coin flip. League-wide studies — ESPN's penalty database work, the Harvard Sports Analysis Collective's scrape of twenty thousand flags — find crew-to-crew differences in penalties are real, but no systematic bias a bettor can eat with. And the books read the same pages: one study of the legal era found totals already drift with a crew's penalty rate. The edge, where it exists, is a point of shade, priced by Thursday.",
+              "Why does the genre survive its own math? Because of the one time it was real. Tim Donaghy — an NBA referee betting his own games — produced a stretch of ten straight officiated games where the line moved a point and a half before tip and the big money cashed all ten. He went to prison, the NBA published the Pedowitz Report, and referee data became a permanent fixture of betting culture: the whistle is the one variable on the floor that once provably moved the number."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The canon · referee angles, as published",
+              "cols": [
+                "The angle",
+                "Record, as published",
+                "Grade"
+              ],
+              "rows": [
+                {
+                  "sel": "Tony Corrente — the under machine",
+                  "num": "102–80–4 · 56% · via Bet Labs",
+                  "res": "Retired"
+                },
+                {
+                  "sel": "Carl Cheffers — home cooking",
+                  "num": "85–70–3 ATS · since 2016",
+                  "res": "Noisy"
+                },
+                {
+                  "sel": "Shawn Smith — road covers",
+                  "num": "home teams 17–29–3 ATS",
+                  "res": "Noisy"
+                },
+                {
+                  "sel": "Tim Donaghy — the reason it all exists",
+                  "num": "10-for-10 · the line knew",
+                  "res": "Prison"
+                },
+                {
+                  "sel": "Adrian Hill — the under, tonight",
+                  "num": "62–50–1 · 7–2 in 2025",
+                  "res": "Pending"
+                }
+              ],
+              "record": "44.5",
+              "recordLabel": "The number tonight",
+              "note": "Every record above is as published by its database of origin — attributed, not audited. That is the genre."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "A Feather, Not an Anchor",
+            "sub": "What a referee lean is actually worth",
+            "paras": [
+              "The under case tonight: a referee with the league's best under record last season, a technique-flag crew, a banner-night ceremony, two teams that have not played a snap that counts since February, and a league-wide primetime under lean. The over case: the two best scoring offenses on the field in this game a year ago, both upgraded, the simulation models leaning over, and the recreational money coming in behind them.",
+              "The desk's rule for referee angles is the same as for every trend in this series: they are for reading, not for anchoring. A crew lean is worth a half-point of respect — a reason to like a number you already like, never a reason to bet one you don't. Tonight the desk's two issues point the same direction anyway: the runner-up and the points, and the quiet side of a total that has not moved since May. Both get graded by midnight, in public, like everything in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Tonight · 8:20 ET · Lumen Field",
+          "title": "Under 44.5",
+          "big": "62–50–1",
+          "note": "The league’s best under referee of 2025 opens the season with a total that has not moved since it was posted. The circulating 12–5 is ungradeable; the lean is real; the feather goes on the under.",
+          "tag": "Tail it or fade it",
+          "end": "Graded tonight"
+        }
+      }
+    },
+    {
       "slug": "super-bowl-losers-week-1",
       "league": "NFL",
       "title": "The runner-up hangover: Super Bowl losers are 6–20 in Week 1",
