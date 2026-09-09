@@ -536,23 +536,23 @@
               "The gap is the story. Nothing about his process changes between Saturday and Sunday; the market does. College football still leaves room for a person who watches everything to beat the number. The NFL, the most efficient betting market on earth, mostly does not — even for the best picker on the set."
             ],
             "figure": {
-              "type": "bars",
+              "type": "donuts",
               "label": "Two sports, one picker",
-              "rows": [
+              "items": [
                 {
-                  "l": "CFB",
-                  "v": 0.551,
-                  "note": "648–529–24"
+                  "v": 55.1,
+                  "l": "College · 648–529–24",
+                  "tone": "cash",
+                  "ruleAt": 52.4
                 },
                 {
-                  "l": "NFL",
-                  "v": 0.506,
-                  "note": "166–162–7"
+                  "v": 50.6,
+                  "l": "NFL · 166–162–7",
+                  "tone": "wine",
+                  "ruleAt": 52.4
                 }
               ],
-              "max": 0.7,
-              "ruleAt": 0.524,
-              "caption": "Win percentage against the spread, 2014–2026, as tracked by Cole's Gameday Blog. The rule marks break-even at standard −110 pricing."
+              "caption": "Win percentage against the spread, 2014–2026, per Cole's Gameday Blog. The tick marks break-even at standard −110 pricing — he lives above it on Saturdays and below it on Sundays."
             }
           },
           {
@@ -805,7 +805,7 @@
             ],
             "figures": [
               {
-                "type": "line",
+                "type": "pnl",
                 "label": "The week, in units",
                 "points": [
                   {
@@ -859,7 +859,8 @@
                   "v": 0,
                   "label": "Even"
                 },
-                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
+                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted.",
+                "endLabel": "Sunday night"
               },
               {
                 "type": "seq",
@@ -1167,7 +1168,7 @@
             ],
             "figures": [
               {
-                "type": "line",
+                "type": "pnl",
                 "label": "The running total",
                 "points": [
                   {
@@ -1206,7 +1207,8 @@
                   "v": 0,
                   "label": "Even"
                 },
-                "caption": "Cumulative profit and loss on publicly posted bets, in millions, February 2022 through July 19, 2026, per thedrakecurse.com. The peak came on July 8, 2023; the all-time low arrived with the World Cup final."
+                "caption": "Cumulative profit and loss on publicly posted bets, in millions, February 2022 through July 19, 2026, per thedrakecurse.com. The peak came on July 8, 2023; the all-time low arrived with the World Cup final.",
+                "endLabel": "July 2026"
               },
               {
                 "type": "table",

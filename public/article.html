@@ -307,9 +307,76 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       return '<div class="seq-i ' + cls + '"><div class="n">' + esc(s.l) + '</div><div class="t"></div><div class="r">' + esc(res === 'P' ? '?' : res) + '</div></div>';
     }).join('') + '</div></div>';
   }
+  function figPnl(f) {
+    var pts = f.points || [];
+    var W = 720, H = 310, padL = 20, padR = 100, padT = 42, padB = 34;
+    var vals = pts.map(function (p) { return p.v; }).concat([0]);
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    var span = (hi - lo) || 1; lo -= span * 0.1; hi += span * 0.1; span = hi - lo;
+    function X(i) { return padL + (W - padL - padR) * (pts.length > 1 ? i / (pts.length - 1) : 0.5); }
+    function Y(v) { return padT + (H - padT - padB) * (1 - (v - lo) / span); }
+    var y0 = Y(0), xEnd = X(pts.length - 1);
+    var line = pts.map(function (p, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(p.v).toFixed(1); }).join(' ');
+    var area = line + ' L' + xEnd.toFixed(1) + ',' + y0.toFixed(1) + ' L' + X(0).toFixed(1) + ',' + y0.toFixed(1) + ' Z';
+    var uid = 'pnl' + Math.floor(Math.random() * 1e6);
+    var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '">';
+    s += '<defs><clipPath id="' + uid + 'up"><rect x="0" y="0" width="' + W + '" height="' + y0.toFixed(1) + '"/></clipPath>' +
+      '<clipPath id="' + uid + 'dn"><rect x="0" y="' + y0.toFixed(1) + '" width="' + W + '" height="' + (H - y0).toFixed(1) + '"/></clipPath></defs>';
+    s += '<path d="' + area + '" fill="rgba(46,125,58,0.14)" clip-path="url(#' + uid + 'up)"/>';
+    s += '<path d="' + area + '" fill="rgba(158,27,30,0.14)" clip-path="url(#' + uid + 'dn)"/>';
+    s += '<line x1="' + padL + '" y1="' + y0 + '" x2="' + (W - padR + 60) + '" y2="' + y0 + '" stroke="#8A867C" stroke-width="1" stroke-dasharray="3 4"/>';
+    s += '<text x="' + padL + '" y="' + (y0 - 7) + '" font-size="10.5" letter-spacing="2.5" fill="#8A867C">' + esc(((f.baseline && f.baseline.label) || 'Even').toUpperCase()) + '</text>';
+    s += '<path d="' + line + '" fill="none" stroke="#1A1815" stroke-width="2" clip-path="url(#' + uid + 'up)"/>';
+    s += '<path d="' + line + '" fill="none" stroke="#9E1B1E" stroke-width="2" clip-path="url(#' + uid + 'dn)"/>';
+    var iMax = 0, iMin = 0;
+    pts.forEach(function (p, i) { if (p.v > pts[iMax].v) iMax = i; if (p.v < pts[iMin].v) iMin = i; });
+    pts.forEach(function (p, i) {
+      var last = i === pts.length - 1;
+      var col = p.v >= 0 ? '#1A1815' : '#9E1B1E';
+      s += '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(p.v).toFixed(1) + '" r="' + (last ? 4.5 : 2.8) + '" fill="' + col + '"><title>' + esc(p.l || '') + (p.d != null ? ': ' + esc(String(p.d)) : '') + '</title></circle>';
+    });
+    if (iMax !== pts.length - 1 && pts[iMax].d != null)
+      s += '<text x="' + X(iMax).toFixed(1) + '" y="' + (Y(pts[iMax].v) - 12) + '" font-size="15" font-weight="600" fill="#2E7D3A" text-anchor="middle">' + esc(String(pts[iMax].d)) + '</text>';
+    if (iMin !== pts.length - 1 && iMin !== 0 && pts[iMin].d != null)
+      s += '<text x="' + X(iMin).toFixed(1) + '" y="' + (Y(pts[iMin].v) + 24) + '" font-size="15" font-weight="600" fill="#9E1B1E" text-anchor="middle">' + esc(String(pts[iMin].d)) + '</text>';
+    var pn = pts[pts.length - 1];
+    if (pn && pn.d != null) {
+      var lab = String(pn.d), cw = lab.length * 8.2 + 18, cy = Y(pn.v), bg = pn.v >= 0 ? '#2E7D3A' : '#9E1B1E';
+      s += '<rect x="' + (xEnd + 10) + '" y="' + (cy - 13) + '" width="' + cw + '" height="26" rx="13" fill="' + bg + '"/>';
+      s += '<text x="' + (xEnd + 10 + cw / 2) + '" y="' + (cy + 4.5) + '" font-size="13.5" font-weight="600" fill="#F1EEE5" text-anchor="middle">' + esc(lab) + '</text>';
+    }
+    var p0 = pts[0];
+    if (p0) s += '<text x="' + X(0) + '" y="' + (H - 8) + '" font-size="10.5" letter-spacing="1.5" fill="#8A867C">' + esc((p0.l || '').toUpperCase()) + '</text>';
+    if (pn) s += '<text x="' + (W - padR + 60) + '" y="' + (H - 8) + '" font-size="10.5" letter-spacing="1.5" fill="#8A867C" text-anchor="end">' + esc((f.endLabel || pn.l || '').toUpperCase()) + '</text>';
+    s += '</svg>';
+    return s;
+  }
+  function figDonuts(f) {
+    var out = '<div style="display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:center;">';
+    (f.items || []).forEach(function (it) {
+      var r = 52, c = 2 * Math.PI * r, frac = Math.max(0, Math.min(1, it.v / 100));
+      var col = it.tone === 'cash' ? '#2E7D3A' : it.tone === 'wine' ? '#9E1B1E' : '#1A1815';
+      var tick = '';
+      if (it.ruleAt != null) {
+        var a = (it.ruleAt / 100) * 2 * Math.PI - Math.PI / 2;
+        var x1 = 70 + Math.cos(a) * (r - 12), y1 = 70 + Math.sin(a) * (r - 12);
+        var x2 = 70 + Math.cos(a) * (r + 12), y2 = 70 + Math.sin(a) * (r + 12);
+        tick = '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#1A1815" stroke-width="1.5"/>';
+      }
+      out += '<div style="text-align:center;"><svg width="140" height="140" viewBox="0 0 140 140">' +
+        '<circle cx="70" cy="70" r="' + r + '" fill="none" stroke="rgba(26,24,21,0.1)" stroke-width="11"/>' +
+        '<circle cx="70" cy="70" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="11" stroke-linecap="round" ' +
+        'stroke-dasharray="' + (c * frac).toFixed(1) + ' ' + c.toFixed(1) + '" transform="rotate(-90 70 70)"/>' + tick +
+        '<text x="70" y="76" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-size="26" font-weight="700" fill="#1A1815">' + esc(it.d != null ? it.d : it.v + '%') + '</text>' +
+        '</svg><div class="caps" style="color:var(--soft); margin-top:0.4rem; font-size:0.56rem;">' + esc(it.l || '') + '</div></div>';
+    });
+    return out + '</div>';
+  }
   function figure(f) {
     var inner =
       f.type === 'line' ? figLine(f)
+      : f.type === 'pnl' ? figPnl(f)
+      : f.type === 'donuts' ? figDonuts(f)
       : f.type === 'bars' ? figBars(f)
       : f.type === 'table' ? figTable(f)
       : f.type === 'stats' ? figStats(f)
