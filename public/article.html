@@ -145,15 +145,17 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .seq-i.w .r { color:var(--ink); } .seq-i.p .r { color:var(--soft); }
 
 /* ---- table card ---- */
-.tcard { }
-.trow { display:grid; grid-template-columns:1fr auto 6.2rem; gap:1rem; align-items:baseline; padding:0.85rem 0; border-bottom:1px solid var(--line); }
-.trow.thead { border-bottom:1px solid var(--hair); padding-bottom:0.6rem; }
-.trow.thead span { font-size:0.6rem; font-weight:500; letter-spacing:0.3em; text-transform:uppercase; color:var(--soft); }
-.trow.thead span:last-child { text-align:right; }
-.t-sel { font-family:'Playfair Display',serif; font-weight:500; font-size:1.12rem; }
-.t-num { font-style:italic; color:var(--soft); }
-.t-res { text-align:right; font-size:0.64rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; }
+.tscroll { overflow-x:auto; }
+.ttable { width:100%; border-collapse:collapse; }
+.ttable th { font-size:0.6rem; font-weight:500; letter-spacing:0.3em; text-transform:uppercase; color:var(--soft); text-align:left; padding:0 0 0.6rem; border-bottom:1px solid var(--hair); white-space:nowrap; }
+.ttable th.num { text-align:right; padding-left:1.2rem; }
+.ttable th.res { text-align:right; padding-left:1.6rem; }
+.ttable td { padding:0.85rem 0; border-bottom:1px solid var(--line); vertical-align:baseline; }
+.ttable td.t-sel { font-family:'Playfair Display',serif; font-weight:500; font-size:1.12rem; padding-right:1.2rem; }
+.ttable td.t-num { font-style:italic; color:var(--soft); text-align:right; white-space:nowrap; padding-left:1.2rem; }
+.ttable td.t-res { text-align:right; font-size:0.64rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; padding-left:1.6rem; white-space:nowrap; width:1%; }
 .t-res.lost { color:var(--wine); } .t-res.won { color:var(--ink); } .t-res.pend { color:var(--soft); font-weight:500; }
+@media (max-width:560px) { .ttable td.t-sel { font-size:0.98rem; } .ttable td.t-num { white-space:normal; } }
 .tfoot { display:flex; align-items:center; gap:1.6rem; padding-top:1.5rem; flex-wrap:wrap; }
 .tfoot .rec { font-family:'Playfair Display',serif; font-weight:700; font-size:2.6rem; line-height:1; }
 .tfoot .rec small { font-family:'Newsreader',serif; font-weight:500; font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--soft); margin-left:0.7rem; vertical-align:0.5em; }
@@ -263,15 +265,21 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     }).join('');
   }
   function figTable(f) {
-    var hasNum = (f.rows || []).some(function (r) { return r.num != null; });
-    var s = '<div class="tcard">';
-    s += '<div class="trow thead"><span>Selection</span><span>' + (hasNum ? 'Number' : '') + '</span><span>Result</span></div>';
+    var hasNum = (f.rows || []).some(function (r) { return r.num != null && String(r.num) !== ''; });
+    var cols = f.cols || ['Selection', 'Number', 'Result'];
+    var s = '<div class="tscroll"><table class="ttable"><thead><tr>' +
+      '<th>' + esc(cols[0]) + '</th>' +
+      (hasNum ? '<th class="num">' + esc(cols[1]) + '</th>' : '') +
+      '<th class="res">' + esc(cols[2]) + '</th></tr></thead><tbody>';
     (f.rows || []).forEach(function (r) {
       var res = String(r.res || '').toLowerCase();
       var cls = res === 'lost' || res === 'l' ? 'lost' : res === 'won' || res === 'w' ? 'won' : 'pend';
       var lab = cls === 'lost' ? 'Lost' : cls === 'won' ? 'Won' : (r.res && r.res.length > 2 ? r.res : 'Pending');
-      s += '<div class="trow"><span class="t-sel">' + esc(r.sel) + '</span><span class="t-num">' + esc(r.num || '') + '</span><span class="t-res ' + cls + '">' + esc(lab) + '</span></div>';
+      s += '<tr><td class="t-sel">' + esc(r.sel) + '</td>' +
+        (hasNum ? '<td class="t-num">' + esc(r.num || '') + '</td>' : '') +
+        '<td class="t-res ' + cls + '">' + esc(lab) + '</td></tr>';
     });
+    s += '</tbody></table></div><div class="tcard">';
     if (f.record || f.note || f.photo) {
       s += '<div class="tfoot">';
       if (f.record) s += '<span class="rec">' + esc(f.record) + (f.recordLabel ? '<small>' + esc(f.recordLabel) + '</small>' : '') + '</span>';

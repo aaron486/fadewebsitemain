@@ -220,7 +220,12 @@
                 ],
                 "record": "3–7",
                 "recordLabel": "Last ten openers",
-                "note": "Results verified against box scores. Sunday is their first Week 1 road game since 2021 — and their first as a road favorite in at least sixteen years."
+                "note": "Results verified against box scores. Sunday is their first Week 1 road game since 2021 — and their first as a road favorite in at least sixteen years.",
+                "cols": [
+                  "Opener",
+                  "Score",
+                  "Result"
+                ]
               }
             ]
           },
@@ -330,7 +335,12 @@
                 ],
                 "record": "3–2",
                 "recordLabel": "The crowd",
-                "note": "Won by 41, 38 and 28; Indiana won by 36 and missed, Oregon won by 7 and missed."
+                "note": "Won by 41, 38 and 28; Indiana won by 36 and missed, Oregon won by 7 and missed.",
+                "cols": [
+                  "Side",
+                  "Line",
+                  "Result"
+                ]
               },
               {
                 "type": "table",
@@ -364,7 +374,12 @@
                 ],
                 "record": "5–0",
                 "recordLabel": "The handle",
-                "note": "Texas covered by 22 and a half. And the one underdog on the list — North Texas, against the ticket-list favorite — covered too."
+                "note": "Texas covered by 22 and a half. And the one underdog on the list — North Texas, against the ticket-list favorite — covered too.",
+                "cols": [
+                  "Side",
+                  "Line",
+                  "Result"
+                ]
               }
             ],
             "stats": [
@@ -508,7 +523,12 @@
               "record": "55.1%",
               "recordLabel": "College, all-time",
               "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w600",
-              "note": "The highest win rate of any analyst tracked to a thousand or more picks."
+              "note": "The highest win rate of any analyst tracked to a thousand or more picks.",
+              "cols": [
+                "Entry",
+                "Record",
+                "Verdict"
+              ]
             },
             "stats": [
               {
@@ -692,7 +712,12 @@
               ],
               "record": "$662,050",
               "recordLabel": "The stake",
-              "note": "Five block trades negotiated off-exchange, reported to trace to Game Point Capital, LSU's bonus insurer."
+              "note": "Five block trades negotiated off-exchange, reported to trace to Game Point Capital, LSU's bonus insurer.",
+              "cols": [
+                "Outcome",
+                "Payout",
+                "Status"
+              ]
             }
           },
           {
@@ -986,7 +1011,12 @@
               "record": "2–8",
               "recordLabel": "Graded",
               "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
-              "note": "He lost Furman +46.5 by a single half point — Tennessee won by forty-seven. It was the closest he came to a third winner all week."
+              "note": "He lost Furman +46.5 by a single half point — Tennessee won by forty-seven. It was the closest he came to a third winner all week.",
+              "cols": [
+                "Selection",
+                "Number",
+                "Result"
+              ]
             }
           },
           {
@@ -1248,7 +1278,12 @@
                 "record": "32–56",
                 "recordLabel": "$40.2M staked",
                 "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
-                "note": "His best sport, by return, is cricket — three bets, three wins. His worst is the one he keeps betting the World Cup on."
+                "note": "His best sport, by return, is cricket — three bets, three wins. His worst is the one he keeps betting the World Cup on.",
+                "cols": [
+                  "Sport",
+                  "Record · P/L",
+                  "Verdict"
+                ]
               }
             ],
             "stats": [
@@ -1335,7 +1370,12 @@
               "record": "11",
               "recordLabel": "Actual curses",
               "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
-              "note": "Only eleven of the fifty-six losses were favorites — the 'actual curses.' The rest were just bad bets."
+              "note": "Only eleven of the fifty-six losses were favorites — the 'actual curses.' The rest were just bad bets.",
+              "cols": [
+                "Exhibit",
+                "Stake / Return",
+                "Result"
+              ]
             }
           },
           {
@@ -1492,7 +1532,12 @@
               "record": "9–21",
               "recordLabel": "Thirty wagers",
               "photo": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w600",
-              "note": "The volume loses. The futures, priced long and sized large, have paid for all of it."
+              "note": "The volume loses. The futures, priced long and sized large, have paid for all of it.",
+              "cols": [
+                "Exhibit",
+                "Stake / Return",
+                "Result"
+              ]
             }
           },
           {
@@ -1636,7 +1681,12 @@
               "record": "3–17",
               "recordLabel": "$86M staked",
               "photo": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w600",
-              "note": "The 2022 Astros ticket paid $72.6 million — the largest payout in U.S. legal betting history."
+              "note": "The 2022 Astros ticket paid $72.6 million — the largest payout in U.S. legal betting history.",
+              "cols": [
+                "Exhibit",
+                "Stake / Return",
+                "Result"
+              ]
             }
           },
           {
@@ -1773,7 +1823,12 @@
               "record": "∞",
               "recordLabel": "Fades generated",
               "photo": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w600",
-              "note": "The patron saint of this entire application."
+              "note": "The patron saint of this entire application.",
+              "cols": [
+                "Entry",
+                "Year",
+                "Status"
+              ]
             }
           },
           {
