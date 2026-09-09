@@ -376,17 +376,17 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     document.title = 'Fade Media';
     var el = document.getElementById('art');
     el.innerHTML = '<div class="gate"><div class="gate-in">' +
-      '<span class="caps">Restricted file</span>' +
-      '<h1 class="pf">This issue requires a code.</h1>' +
-      '<p>Enter the access code to open the file.</p>' +
+      '<span class="caps">Restricted desk</span>' +
+      '<h1 class="pf">Fade Media requires a code.</h1>' +
+      '<p>Enter the access code to open the desk.</p>' +
       '<input id="gateCode" type="password" autocomplete="off" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
       '<button id="gateGo">Open the file</button>' +
       '<div class="err" id="gateErr"></div>' +
       '</div></div>';
     var input = document.getElementById('gateCode');
     function attempt() {
-      if (input.value.trim().toLowerCase() === String(a.gate).toLowerCase()) {
-        try { sessionStorage.setItem('fm-gate-' + a.slug, 'ok'); } catch (e) {}
+      if (input.value.trim().toLowerCase() === 'fade2026') {
+        try { sessionStorage.setItem('fm-gate', 'ok'); } catch (e) {}
         render(a);
         window.scrollTo(0, 0);
       } else {
@@ -407,7 +407,9 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     .then(function (d) {
       var a = (d.articles || []).find(function (x) { return x.slug === slug; });
       if (!a) { el.innerHTML = '<div class="missing">Article not found &mdash; <a href="/fademedia" style="text-decoration:underline;">back to the desk</a></div>'; return; }
-      if (a.gate && sessionStorage.getItem('fm-gate-' + a.slug) !== 'ok') { gate(a); return; }
+      var unlocked = false;
+      try { unlocked = sessionStorage.getItem('fm-gate') === 'ok'; } catch (e) {}
+      if (!unlocked) { gate(a); return; }
       render(a);
     })
     .catch(function () { el.innerHTML = '<div class="missing">Could not load this article.</div>'; });
