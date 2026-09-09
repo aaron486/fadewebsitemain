@@ -41,29 +41,46 @@
               "It is not alone — the whole board leans one way. The Cowboys are drawing 95 percent of spread money against the Giants; the Rams are a 79 percent side in the league's first game in Australia; the Jaguars have been called the clearest public team on the board. But nothing matches the Bears, whose over has moved three full points on its own — 44.5 to 47.5 — as bettors, in the words of DraftKings' Johnny Avello, chase an offense that scored twenty-five a game with a plus-22 turnover ratio a year ago."
             ],
             "figure": {
-              "type": "table",
+              "type": "split",
               "label": "Bears −3 at Panthers · the splits",
               "rows": [
                 {
-                  "sel": "BetMGM",
-                  "num": "93% of bets · 91% of money",
-                  "res": "Pending"
+                  "l": "BetMGM",
+                  "a": 93,
+                  "b": 91
                 },
                 {
-                  "sel": "DraftKings",
-                  "num": "83% of bets · 94% of money",
-                  "res": "Pending"
+                  "l": "DraftKings",
+                  "a": 83,
+                  "b": 94
                 },
                 {
-                  "sel": "BetRivers",
-                  "num": "75% of bets · 91% of money",
-                  "res": "Pending"
+                  "l": "BetRivers",
+                  "a": 75,
+                  "b": 91
                 }
               ],
-              "record": "93%",
-              "recordLabel": "The consensus",
-              "note": "BetMGM's ticket figure is from the book's own Week 1 report; the money splits as circulated by splits accounts. Graded Sunday."
-            }
+              "aLabel": "Tickets",
+              "bLabel": "Money",
+              "ruleAt": 50,
+              "max": 100,
+              "caption": "Share of spread bets and dollars on the Bears. The rule marks an even split. BetMGM's ticket figure is from the book's own Week 1 report; money splits as circulated by splits accounts."
+            },
+            "stats": [
+              {
+                "v": "93%",
+                "l": "Of tickets at BetMGM"
+              },
+              {
+                "v": "91%",
+                "l": "Of the money"
+              },
+              {
+                "v": "−3",
+                "l": "The number",
+                "tone": "wine"
+              }
+            ]
           },
           {
             "title": "The Case",
@@ -83,65 +100,129 @@
               "Here is the franchise the public is laying three with: 3–7 straight-up in its last ten season openers. Six consecutive opener losses from 2014 through 2019. No back-to-back opener wins since 2012 and 2013. Last September, in Ben Johnson's debut, the Bears led Minnesota by eleven in the fourth quarter of the opener and lost on twenty-one unanswered points, with twelve penalties for 127 yards. The opener they won the year before, the offense scored no touchdowns at all — a blocked punt and a pick-six did it.",
               "The sharper cut: in the last decade the Bears have been favored in an opener three times, and lost two of them outright — at home. In 2019, as champions of the division and favored by exactly three — the number the public is laying now — they scored three points, total, against Green Bay. And in all that time they have never once been what they are on Sunday: a road favorite in Week 1. By the findable lines, it has not happened in at least sixteen years."
             ],
-            "figure": {
-              "type": "table",
-              "label": "The last ten openers",
-              "rows": [
-                {
-                  "sel": "2025 — Vikings, home",
-                  "num": "24–27 · blew an 11-point 4Q lead",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2024 — Titans, home",
-                  "num": "24–17 · zero offensive TDs",
-                  "res": "Won"
-                },
-                {
-                  "sel": "2023 — Packers, home, favored",
-                  "num": "20–38",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2022 — 49ers, home",
-                  "num": "19–10 · the flooded field",
-                  "res": "Won"
-                },
-                {
-                  "sel": "2021 — at Rams",
-                  "num": "14–34",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2020 — at Lions",
-                  "num": "27–23 · down 17 entering the 4th",
-                  "res": "Won"
-                },
-                {
-                  "sel": "2019 — Packers, home, −3",
-                  "num": "3–10 · three points as champions",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2018 — at Packers",
-                  "num": "23–24 · blew a 20–3 lead",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2017 — Falcons, home",
-                  "num": "17–23",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "2016 — at Texans",
-                  "num": "14–23",
-                  "res": "Lost"
-                }
-              ],
-              "record": "3–7",
-              "recordLabel": "Last ten openers",
-              "note": "Results verified against box scores. Sunday is their first Week 1 road game since 2021 — and their first as a road favorite in at least sixteen years."
-            }
+            "stats": [
+              {
+                "v": "3–7",
+                "l": "Last ten openers",
+                "tone": "wine"
+              },
+              {
+                "v": "6",
+                "l": "Straight opener losses, 2014–19"
+              },
+              {
+                "v": "0",
+                "l": "Openers as a road favorite since 2010"
+              }
+            ],
+            "figures": [
+              {
+                "type": "seq",
+                "label": "The last ten, in order",
+                "items": [
+                  {
+                    "l": "2016",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2017",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2018",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2019",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2020",
+                    "r": "W"
+                  },
+                  {
+                    "l": "2021",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2022",
+                    "r": "W"
+                  },
+                  {
+                    "l": "2023",
+                    "r": "L"
+                  },
+                  {
+                    "l": "2024",
+                    "r": "W"
+                  },
+                  {
+                    "l": "2025",
+                    "r": "L"
+                  }
+                ],
+                "caption": "Season openers, 2016–2025. They have not won two in a row since 2012–13."
+              },
+              {
+                "type": "table",
+                "label": "The last ten openers",
+                "rows": [
+                  {
+                    "sel": "2025 — Vikings, home",
+                    "num": "24–27 · blew an 11-point 4Q lead",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2024 — Titans, home",
+                    "num": "24–17 · zero offensive TDs",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "2023 — Packers, home, favored",
+                    "num": "20–38",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2022 — 49ers, home",
+                    "num": "19–10 · the flooded field",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "2021 — at Rams",
+                    "num": "14–34",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2020 — at Lions",
+                    "num": "27–23 · down 17 entering the 4th",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "2019 — Packers, home, −3",
+                    "num": "3–10 · three points as champions",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2018 — at Packers",
+                    "num": "23–24 · blew a 20–3 lead",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2017 — Falcons, home",
+                    "num": "17–23",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2016 — at Texans",
+                    "num": "14–23",
+                    "res": "Lost"
+                  }
+                ],
+                "record": "3–7",
+                "recordLabel": "Last ten openers",
+                "note": "Results verified against box scores. Sunday is their first Week 1 road game since 2021 — and their first as a road favorite in at least sixteen years."
+              }
+            ]
           },
           {
             "title": "The Other Side",
@@ -285,6 +366,21 @@
                 "recordLabel": "The handle",
                 "note": "Texas covered by 22 and a half. And the one underdog on the list — North Texas, against the ticket-list favorite — covered too."
               }
+            ],
+            "stats": [
+              {
+                "v": "3–2",
+                "l": "Most-bet by tickets"
+              },
+              {
+                "v": "5–0",
+                "l": "Most-bet by money",
+                "tone": "cash"
+              },
+              {
+                "v": "20 of 24",
+                "l": "Top-25 games at 20+ points"
+              }
             ]
           },
           {
@@ -413,7 +509,23 @@
               "recordLabel": "College, all-time",
               "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w600",
               "note": "The highest win rate of any analyst tracked to a thousand or more picks."
-            }
+            },
+            "stats": [
+              {
+                "v": "55.1%",
+                "l": "College, all-time",
+                "tone": "cash"
+              },
+              {
+                "v": "+60.1",
+                "l": "Units since 2014",
+                "tone": "cash"
+              },
+              {
+                "v": "1,201",
+                "l": "Tracked picks"
+              }
+            ]
           },
           {
             "title": "The Asterisk",
@@ -675,63 +787,132 @@
               "Eleven picks went up before Thursday's kickoff — eleven 'winners,' as the column that carries them promised. By Sunday night, eight had lost, and mostly not narrowly. The four long underdogs he asked only to keep things respectable — Stanford, Texas State, Furman, Northern Illinois — lost their games by 39, 52, 47 and 40 points. Clemson, catching ten and a half at LSU, lost Lane Kiffin's debut by 41. The Baylor–Auburn over needed 59 points; the teams produced 33.",
               "Two picks survived: UCLA laying a point and a half at California, which won by three touchdowns, and the Louisville–Ole Miss over, which cashed on a 48-yard field goal as time expired. Graded at one unit per play, the week closed at minus six and two-tenths units — with one bet, Florida State catching three, still alive on Monday night."
             ],
-            "figure": {
-              "type": "line",
-              "label": "The week, in units",
-              "points": [
-                {
-                  "l": "Open",
-                  "v": 0,
-                  "d": "even"
-                },
-                {
-                  "l": "Georgia Tech −6.5, lost",
-                  "v": -1
-                },
-                {
-                  "l": "Stanford +24.5, lost",
-                  "v": -2
-                },
-                {
-                  "l": "Texas State +29.5, lost",
-                  "v": -3
-                },
-                {
-                  "l": "Baylor/Auburn o58.5, lost",
-                  "v": -4
-                },
-                {
-                  "l": "Furman +46.5, lost",
-                  "v": -5
-                },
-                {
-                  "l": "N. Illinois +31.5, lost",
-                  "v": -6
-                },
-                {
-                  "l": "Clemson +10.5, lost",
-                  "v": -7
-                },
-                {
-                  "l": "UCLA −1.5, won",
-                  "v": -6.09
-                },
-                {
-                  "l": "Wisconsin +20.5, lost",
-                  "v": -7.09
-                },
-                {
-                  "l": "Louisville/Ole Miss o55.5, won",
-                  "v": -6.18,
-                  "d": "−6.2"
-                }
-              ],
-              "baseline": {
-                "v": 0,
-                "label": "Even"
+            "stats": [
+              {
+                "v": "2–8",
+                "l": "The week, graded",
+                "tone": "wine"
               },
-              "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
-            }
+              {
+                "v": "−6.2",
+                "l": "Units, at one per play",
+                "tone": "wine"
+              },
+              {
+                "v": "15th",
+                "l": "Consecutive season of picks"
+              }
+            ],
+            "figures": [
+              {
+                "type": "line",
+                "label": "The week, in units",
+                "points": [
+                  {
+                    "l": "Open",
+                    "v": 0,
+                    "d": "even"
+                  },
+                  {
+                    "l": "Georgia Tech −6.5, lost",
+                    "v": -1
+                  },
+                  {
+                    "l": "Stanford +24.5, lost",
+                    "v": -2
+                  },
+                  {
+                    "l": "Texas State +29.5, lost",
+                    "v": -3
+                  },
+                  {
+                    "l": "Baylor/Auburn o58.5, lost",
+                    "v": -4
+                  },
+                  {
+                    "l": "Furman +46.5, lost",
+                    "v": -5
+                  },
+                  {
+                    "l": "N. Illinois +31.5, lost",
+                    "v": -6
+                  },
+                  {
+                    "l": "Clemson +10.5, lost",
+                    "v": -7
+                  },
+                  {
+                    "l": "UCLA −1.5, won",
+                    "v": -6.09
+                  },
+                  {
+                    "l": "Wisconsin +20.5, lost",
+                    "v": -7.09
+                  },
+                  {
+                    "l": "Louisville/Ole Miss o55.5, won",
+                    "v": -6.18,
+                    "d": "−6.2"
+                  }
+                ],
+                "baseline": {
+                  "v": 0,
+                  "label": "Even"
+                },
+                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted."
+              },
+              {
+                "type": "seq",
+                "label": "The week, in order",
+                "items": [
+                  {
+                    "l": "GA Tech",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Stanford",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Texas St",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Bay/Aub",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Furman",
+                    "r": "L"
+                  },
+                  {
+                    "l": "N. Ill",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Clemson",
+                    "r": "L"
+                  },
+                  {
+                    "l": "UCLA",
+                    "r": "W"
+                  },
+                  {
+                    "l": "Wisconsin",
+                    "r": "L"
+                  },
+                  {
+                    "l": "Lou/Miss",
+                    "r": "W"
+                  },
+                  {
+                    "l": "Fla St",
+                    "r": "P"
+                  }
+                ],
+                "caption": "The eleven picks in the order the games went final. Florida State remains pending."
+              }
+            ]
           },
           {
             "title": "The Card",
@@ -1066,6 +1247,22 @@
                 "recordLabel": "$40.2M staked",
                 "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w600",
                 "note": "His best sport, by return, is cricket — three bets, three wins. His worst is the one he keeps betting the World Cup on."
+              }
+            ],
+            "stats": [
+              {
+                "v": "32–56",
+                "l": "The record",
+                "tone": "wine"
+              },
+              {
+                "v": "$40.2M",
+                "l": "Staked since 2022"
+              },
+              {
+                "v": "−$3.06M",
+                "l": "All-time",
+                "tone": "wine"
               }
             ]
           },

@@ -110,6 +110,40 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .barrow .val { color:var(--soft); font-size:0.72rem; letter-spacing:0.2em; }
 .barrow .rulemark { position:absolute; top:-6px; bottom:-6px; width:1px; background:var(--ink); }
 
+/* ---- stat strip ---- */
+.statrow { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); margin-top:clamp(1.4rem,3.5vw,2.2rem); }
+.stat { padding:1.5rem 1rem 1.3rem; text-align:center; border-left:1px solid var(--line); }
+.stat:first-child { border-left:none; }
+.stat .v { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.9rem,4.2vw,2.8rem); line-height:1; }
+.stat .v.wine { color:var(--wine); } .stat .v.cash { color:var(--cash); }
+.stat .l { margin-top:0.55rem; font-size:0.58rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--soft); line-height:1.6; }
+@media (max-width:520px) { .statrow { grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); } .stat { padding:1rem 0.5rem 0.9rem; } }
+
+/* ---- split bars ---- */
+.sprow { display:grid; grid-template-columns:6.4rem 1fr; gap:1.4rem; align-items:center; padding:0.8rem 0; border-bottom:1px solid var(--line); }
+.sprow .bk { font-family:'Playfair Display',serif; font-weight:600; font-size:1.05rem; }
+.sp-tracks { position:relative; display:flex; flex-direction:column; gap:5px; padding:2px 0; }
+.sp-track { position:relative; height:12px; }
+.sp-bar { position:absolute; left:0; top:0; bottom:0; }
+.sp-bar.a { background:var(--ink); } .sp-bar.b { background:var(--wine); }
+.sp-val { position:absolute; top:50%; transform:translateY(-50%); font-size:0.62rem; font-weight:600; letter-spacing:0.08em; color:var(--soft); white-space:nowrap; }
+.sp-rule { position:absolute; top:-4px; bottom:-4px; width:1px; background:var(--ink); opacity:0.55; }
+.sp-legend { display:flex; gap:1.6rem; justify-content:flex-end; padding:0.8rem 0 0.2rem; font-size:0.58rem; font-weight:500; letter-spacing:0.24em; text-transform:uppercase; color:var(--soft); }
+.sp-legend i { display:inline-block; width:10px; height:10px; margin-right:0.5em; vertical-align:-1px; }
+.sp-legend .sa i { background:var(--ink); } .sp-legend .sb i { background:var(--wine); }
+@media (max-width:520px) { .sprow { grid-template-columns:1fr; gap:0.5rem; } }
+
+/* ---- sequence strip ---- */
+.seqwrap { overflow-x:auto; }
+.seq { display:flex; min-width:560px; border-top:1px solid var(--hair); padding-top:1rem; }
+.seq-i { flex:1; text-align:center; min-width:0; }
+.seq-i .n { font-size:0.52rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); margin-bottom:0.55rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 2px; }
+.seq-i .t { width:2px; height:16px; margin:0 auto 0.5rem; background:var(--wine); }
+.seq-i.w .t { background:var(--ink); height:22px; margin-top:-6px; }
+.seq-i.p .t { background:var(--soft); opacity:0.6; }
+.seq-i .r { font-family:'Playfair Display',serif; font-weight:700; font-size:0.85rem; color:var(--wine); }
+.seq-i.w .r { color:var(--ink); } .seq-i.p .r { color:var(--soft); }
+
 /* ---- table card ---- */
 .tcard { }
 .trow { display:grid; grid-template-columns:1fr auto 6.2rem; gap:1rem; align-items:baseline; padding:0.85rem 0; border-bottom:1px solid var(--line); }
@@ -248,11 +282,39 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     s += '</div>';
     return s;
   }
+  function figStats(f) {
+    return '<div class="statrow">' + (f.items || []).map(function (s) {
+      return '<div class="stat"><div class="v' + (s.tone ? ' ' + esc(s.tone) : '') + '">' + esc(s.v) + '</div><div class="l">' + esc(s.l) + '</div></div>';
+    }).join('') + '</div>';
+  }
+  function figSplit(f) {
+    var max = f.max || 100;
+    var rule = f.ruleAt != null ? '<span class="sp-rule" style="left:' + ((f.ruleAt / max) * 100).toFixed(2) + '%"></span>' : '';
+    var rows = (f.rows || []).map(function (r) {
+      function bar(cls, v) {
+        var w = (v / max) * 100;
+        return '<div class="sp-track"><span class="sp-bar ' + cls + '" style="width:' + w.toFixed(1) + '%"></span>' +
+          '<span class="sp-val" style="left:calc(' + w.toFixed(1) + '% + 8px)">' + v + '%</span>' + rule + '</div>';
+      }
+      return '<div class="sprow"><span class="bk">' + esc(r.l) + '</span><div class="sp-tracks">' + bar('a', r.a) + bar('b', r.b) + '</div></div>';
+    }).join('');
+    return '<div class="sp-legend"><span class="sa"><i></i>' + esc(f.aLabel || 'Tickets') + '</span><span class="sb"><i></i>' + esc(f.bLabel || 'Money') + '</span></div>' + rows;
+  }
+  function figSeq(f) {
+    return '<div class="seqwrap"><div class="seq">' + (f.items || []).map(function (s) {
+      var res = String(s.r || '').toUpperCase();
+      var cls = res === 'W' ? 'w' : res === 'L' ? 'l' : 'p';
+      return '<div class="seq-i ' + cls + '"><div class="n">' + esc(s.l) + '</div><div class="t"></div><div class="r">' + esc(res === 'P' ? '?' : res) + '</div></div>';
+    }).join('') + '</div></div>';
+  }
   function figure(f) {
     var inner =
       f.type === 'line' ? figLine(f)
       : f.type === 'bars' ? figBars(f)
       : f.type === 'table' ? figTable(f)
+      : f.type === 'stats' ? figStats(f)
+      : f.type === 'split' ? figSplit(f)
+      : f.type === 'seq' ? figSeq(f)
       : f.type === 'photo' && f.src ? '<div class="photofig"><img src="' + esc(f.src) + '" alt="" /></div>'
       : '';
     if (!inner) return '';
@@ -307,6 +369,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     s += '<div class="sec-run"><span class="caps l">' + romans(i) + ' &middot; ' + esc(sec.title) + '</span><span class="caps r">' + romans(i + 2) + '</span></div>';
     s += '<div class="sec-head"><h2>' + esc(sec.headline || sec.title) + '</h2>' +
       (sec.sub ? '<div class="sub">' + esc(sec.sub) + '</div>' : '') + '<div class="shortrule"></div></div>';
+    if (sec.stats) s += '<div class="narrow">' + figStats({ items: sec.stats }) + '</div>';
     if (paras) s += '<div class="sec-body dropcap' + cols + '">' + paras + '</div>';
     (sec.figures || (sec.figure ? [sec.figure] : [])).forEach(function (f) { s += figure(f); });
     s += '</div></section>';
