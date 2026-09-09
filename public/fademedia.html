@@ -110,9 +110,17 @@ a { color:inherit; text-decoration:none; }
 .ch-ed { text-align:center; padding:1rem 0 1rem; font-family:'Newsreader',Georgia,serif; font-style:italic; letter-spacing:0.28em; text-transform:uppercase; font-size:0.56rem; color:rgba(241,238,229,0.75); }
 .ch-photo img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 0%; filter:grayscale(1) contrast(1.06); }
 @media (max-width:640px) {
-  .ch-grid { grid-template-columns:1fr; }
-  .ch-left, .ch-right { text-align:center; padding-bottom:0.3rem; }
-  .ch-sub { margin-left:auto; margin-right:auto; }
+  .ch-red { padding:0.8rem 1rem 0; }
+  .ch-logo { margin:0.8rem auto 1rem; }
+  .ch-grid { grid-template-columns:1.55fr 1fr; gap:0.9rem; align-items:end; }
+  .ch-left { text-align:left; padding-bottom:0.1rem; }
+  .ch-left .ch-caps { font-size:0.52rem; letter-spacing:0.26em; margin-bottom:0.4rem; }
+  .ch-line { font-size:1.05rem; line-height:1.18; }
+  .ch-sub { display:none; }
+  .ch-right { text-align:right; padding-bottom:0.1rem; }
+  .ch-right .ch-caps { font-size:0.5rem; letter-spacing:0.24em; margin-bottom:0.3rem; }
+  .ch-stat { font-size:1.65rem; }
+  .ch-ed { padding:0.8rem 0 0.85rem; font-size:0.5rem; letter-spacing:0.22em; }
   .ch-photo img { aspect-ratio:4/3; }
 }
 
