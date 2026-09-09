@@ -517,13 +517,13 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       '<span class="caps">Restricted desk</span>' +
       '<h1 class="pf">Fade Media requires a code.</h1>' +
       '<p>Enter the access code to open the desk.</p>' +
-      '<input id="gateCode" type="password" autocomplete="off" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
+      '<input id="gateCode" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />' +
       '<button id="gateGo">Open the file</button>' +
       '<div class="err" id="gateErr"></div>' +
       '</div></div>';
     var input = document.getElementById('gateCode');
     function attempt() {
-      if (input.value.trim().toLowerCase() === 'fade2026') {
+      if (input.value.replace(/[^a-z0-9]/gi, '').toLowerCase() === 'fade2026') {
         try { sessionStorage.setItem('fm-gate', 'ok'); } catch (e) {}
         render(a);
         window.scrollTo(0, 0);
