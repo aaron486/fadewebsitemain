@@ -4,7 +4,7 @@
       "slug": "adrian-hill-under",
       "league": "NFL",
       "title": "The rocket scientist calling tonight’s total",
-      "dek": "Adrian Hill — NASA engineer turned NFL referee — works the kickoff game tonight, and his games lean under: 62–50–1 career, a league-best 7–2 last season. About that 12–5 primetime number going around: the desk graded it.",
+      "dek": "GRADED — WON. Seattle 13, New England 10: under 44.5 by three touchdowns, with 17 flags from a crew that averages 17.9. The profile of the NASA engineer who called the opener, and the number nobody could source.",
       "author": "Fade Desk",
       "published": "2026-09-09T17:30:00Z",
       "image": "/assets/adrian-hill-cover.webp",
@@ -116,13 +116,13 @@
                 },
                 {
                   "sel": "Adrian Hill — the under, tonight",
-                  "num": "62–50–1 · 7–2 in 2025",
-                  "res": "Pending"
+                  "num": "62-50-1 · 7-2 in 2025",
+                  "res": "Won"
                 }
               ],
               "record": "44.5",
               "recordLabel": "The number tonight",
-              "note": "Every record above is as published by its database of origin — attributed, not audited. That is the genre."
+              "note": "Every record above is as published by its database of origin — attributed, not audited. That is the genre. The bottom row graded 13–10."
             }
           },
           {
@@ -131,17 +131,18 @@
             "sub": "What a referee lean is actually worth",
             "paras": [
               "The under case tonight: a referee with the league's best under record last season, a technique-flag crew, a banner-night ceremony, two teams that have not played a snap that counts since February, and a league-wide primetime under lean. The over case: the two best scoring offenses on the field in this game a year ago, both upgraded, the simulation models leaning over, and the recreational money coming in behind them.",
-              "The desk's rule for referee angles is the same as for every trend in this series: they are for reading, not for anchoring. A crew lean is worth a half-point of respect — a reason to like a number you already like, never a reason to bet one you don't. Tonight the desk's two issues point the same direction anyway: the runner-up and the points, and the quiet side of a total that has not moved since May. Both get graded by midnight, in public, like everything in the file."
+              "The desk's rule for referee angles is the same as for every trend in this series: they are for reading, not for anchoring. A crew lean is worth a half-point of respect — a reason to like a number you already like, never a reason to bet one you don't. Tonight the desk's two issues point the same direction anyway: the runner-up and the points, and the quiet side of a total that has not moved since May. Both get graded by midnight, in public, like everything in the file.",
+              "Postscript, Thursday morning: Seattle 13, New England 10. Under 44.5 by twenty-one and a half points — Sam Darnold left on the opening drive, Drake Maye threw three fourth-quarter interceptions, and the crew threw seventeen flags, four-tenths off its yearly average. The feather landed. The file notes, in fairness, that a backup quarterback had more to do with it than the whistle — and that grading honestly is the entire point of this desk."
             ]
           }
         ],
         "call": {
           "kicker": "Tonight · 8:20 ET · Lumen Field",
           "title": "Under 44.5",
-          "big": "62–50–1",
-          "note": "The league’s best under referee of 2025 opens the season with a total that has not moved since it was posted. The circulating 12–5 is ungradeable; the lean is real; the feather goes on the under.",
+          "big": "WON",
+          "note": "GRADED: Seattle 13, New England 10. The under won by three touchdowns; the crew threw seventeen flags, right on its average. The lean was real, the feather landed.",
           "tag": "Tail it or fade it",
-          "end": "Graded tonight",
+          "end": "Final: Under 44.5 — won",
           "photo": "/assets/adrian-hill-cover.webp"
         },
         "coverPhoto": "/assets/adrian-hill-cover.webp"
@@ -151,7 +152,7 @@
       "slug": "super-bowl-losers-week-1",
       "league": "NFL",
       "title": "The runner-up hangover: Super Bowl losers are 6–20 in Week 1",
-      "dek": "Six covers, twenty misses since 2000 — including a perfect 0–12 to open the century. Tonight the reigning runner-up opens the season against the team that beat them, and every trend in the file points at the same number.",
+      "dek": "GRADED — PUSH. Seattle won by exactly three: the runner-up neither covered nor lost, the champion won and did not cover, and the trend moves to 6-20-1. Six covers, twenty misses and now a push since 2000 — the file on the runner-up hangover.",
       "author": "Fade Desk",
       "published": "2026-09-09T14:30:00Z",
       "image": "/assets/sb-loser-cover.jpg",
@@ -171,7 +172,7 @@
         "coverSub": "Super Bowl losers do not cover their next opener. Tonight, the trend kicks off the season.",
         "coverStat": {
           "label": "SB losers, Week 1",
-          "value": "6–20",
+          "value": "6-20-1",
           "sub": "ATS since 2000"
         },
         "quote": {
@@ -185,7 +186,7 @@
             "sub": "Twenty-six Septembers of runners-up",
             "stats": [
               {
-                "v": "6–20",
+                "v": "6-20-1",
                 "l": "ATS since 2000, common count",
                 "tone": "wine"
               },
@@ -268,9 +269,14 @@
                 {
                   "l": "2025",
                   "r": "L"
+                },
+                {
+                  "l": "2026",
+                  "r": "P",
+                  "t": "P"
                 }
               ],
-              "caption": "Reigning Super Bowl losers against the spread in their next opener, 2011–2025, graded at widely posted closing numbers. The 2017 and 2019 games landed on or near the line and grade differently by book. The eleven openers before this strip need none: no loser covered."
+              "caption": "Reigning Super Bowl losers against the spread in their next opener, 2011–2026, graded at widely posted closing numbers. The 2017 and 2019 games landed on or near the line and grade differently by book. P = push: in 2026 the Patriots lost by exactly three. The eleven openers before this strip need none: no loser covered."
             }
           },
           {
@@ -366,17 +372,18 @@
             "sub": "What the desk does with a famous number",
             "paras": [
               "A 23 percent cover rate over a quarter century is a fact. It is also, mostly, a fact about the years 2000 through 2011, when the market hadn't caught up. The desk's read is the same one this section always lands on: the number tonight already contains the hangover — what it may not contain is a banner-night champion that never covers these games, and a runner-up built more like an heir than a hangover.",
-              "One postscript from our own case files: the last time the Patriots played a game this big, Drake had a million dollars on them, lost it, and announced he was off sports betting. He is 4–8 lifetime on Super Bowl wagers, and as of press time has not been sighted on this one. Make of that omen what you will — it gets graded by midnight, like everything else in the file."
+              "One postscript from our own case files: the last time the Patriots played a game this big, Drake had a million dollars on them, lost it, and announced he was off sports betting. He is 4–8 lifetime on Super Bowl wagers, and as of press time has not been sighted on this one. Make of that omen what you will — it gets graded by midnight, like everything else in the file.",
+              "Postscript, Thursday morning: Seattle 13, New England 10 — by exactly three. The runner-up did not cover and did not lose; the champion won its banner game and covered nothing; the books' middle never came and the spread pushed at the closing number. Two tired trends walked into Seattle, and both walked out alive without cashing a ticket — the champ's kickoff no-cover run extends, the loser's hangover file adds a push, and the record is now 6-20-1. The desk notes it was the second pick in this publication's first week to lose by exactly its number. The margins are developing a sense of humor."
             ]
           }
         ],
         "call": {
           "kicker": "Tonight · 8:20 ET · Lumen Field",
           "title": "Patriots +3",
-          "big": "6–20",
-          "note": "The runner-up hangover opens the season against the champion who never covers the banner game. Two tired trends walk into Seattle; one cashes by midnight.",
+          "big": "PUSH",
+          "note": "GRADED: Seattle 13, New England 10 — by exactly three. Push. The runner-up hangover moves to 6-20-1; the champion won and did not cover; nobody cashed. Both trends live to mislead another September.",
           "tag": "Tail it or fade it",
-          "end": "Graded tonight",
+          "end": "Final: push, on the number",
           "photo": "/assets/sb-loser-cover.jpg"
         }
       }
