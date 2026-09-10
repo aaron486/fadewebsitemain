@@ -324,7 +324,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     return '<div class="seqwrap"><div class="seq">' + (f.items || []).map(function (s) {
       var res = String(s.r || '').toUpperCase();
       var cls = res === 'W' ? 'w' : res === 'L' ? 'l' : 'p';
-      return '<div class="seq-i ' + cls + '"><div class="n">' + esc(s.l) + '</div><div class="t"></div><div class="r">' + esc(res === 'P' ? '?' : res) + '</div></div>';
+      return '<div class="seq-i ' + cls + '"><div class="n">' + esc(s.l) + '</div><div class="t"></div><div class="r">' + esc(s.t != null ? s.t : (res === 'P' ? '?' : res)) + '</div></div>';
     }).join('') + '</div></div>';
   }
   function figPnl(f) {

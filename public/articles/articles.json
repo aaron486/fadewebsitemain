@@ -1160,13 +1160,13 @@
     {
       "slug": "clay-travis-week-1-card",
       "league": "CFB",
-      "title": "College football's biggest loser: Clay Travis opens the season 2–8",
-      "dek": "Eleven public picks. Two winners. A half-point bad beat. Six units gone, one bet still alive tonight — and fifteen seasons of receipts saying none of this is new.",
+      "title": "College football's biggest loser: tracking Clay Travis's 2026 season",
+      "dek": "Week 1 closed at 2–8–1 — the last live pick pushed. Now the desk goes standing: every Clay Travis card, graded the moment the games end. Week 2 is up, all fifteen picks of it, blood-bank guarantee included.",
       "author": "Fade Desk",
-      "published": "2026-09-07T16:00:00Z",
+      "published": "2026-09-10T02:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
       "featured": true,
-      "sources": "Game results via ESPN box scores and team sites. The Week 1 card as published by Hard Rock Bet ('11 Winners Starting Thursday Night') and tracked by @ExposingClay on X. Season records as stated in Travis's own OutKick columns; fade ledgers via Eleven Warriors ('Slay Travis,' 2017) and The Daily Gopher ('Fade Clay Travis,' 2024–25); the 2019 streak via TheLines. Quotes verbatim from his posts on X, dated.",
+      "sources": "Picks and records via @ExposingClay on X (Week 1 final: 2–8–1; the Week 2 card as posted); game results via ESPN box scores; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published. This file updates weekly.",
       "mag": {
         "volume": "Volume One",
         "issueLine": "September 2026",
@@ -1191,22 +1191,22 @@
             "paras": [
               "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. This is, by his own count, his fifteenth consecutive season of public picks, a run that began in 2011. The first week of the 2026 edition will enter the canon.",
               "Eleven picks went up before Thursday's kickoff — eleven 'winners,' as the column that carries them promised. By Sunday night, eight had lost, and mostly not narrowly. The four long underdogs he asked only to keep things respectable — Stanford, Texas State, Furman, Northern Illinois — lost their games by 39, 52, 47 and 40 points. Clemson, catching ten and a half at LSU, lost Lane Kiffin's debut by 41. The Baylor–Auburn over needed 59 points; the teams produced 33.",
-              "Two picks survived: UCLA laying a point and a half at California, which won by three touchdowns, and the Louisville–Ole Miss over, which cashed on a 48-yard field goal as time expired. Graded at one unit per play, the week closed at minus six and two-tenths units — with one bet, Florida State catching three, still alive on Monday night."
+              "Two picks survived: UCLA laying a point and a half at California, and the Louisville–Ole Miss over, which cashed on a 48-yard field goal as time expired. And the last live pick — Florida State, catching three on Monday night — lost by exactly three. A push: his stake back, no worse, no better, and somehow the perfect grade for the week. Final accounting, at one unit per play: 2–8–1, minus 6.2 units."
             ],
             "stats": [
               {
-                "v": "2–8",
-                "l": "The week, graded",
+                "v": "2–8–1",
+                "l": "Week 1, final",
                 "tone": "wine"
               },
               {
-                "v": "−6.2",
-                "l": "Units, at one per play",
+                "v": "-6.2",
+                "l": "Season units",
                 "tone": "wine"
               },
               {
-                "v": "15th",
-                "l": "Consecutive season of picks"
+                "v": "15",
+                "l": "Picks on the Week 2 card"
               }
             ],
             "figures": [
@@ -1257,15 +1257,19 @@
                   },
                   {
                     "l": "Louisville/Ole Miss o55.5, won",
+                    "v": -6.18
+                  },
+                  {
+                    "l": "Florida State +3 — push",
                     "v": -6.18,
-                    "d": "−6.2"
+                    "d": "-6.2"
                   }
                 ],
                 "baseline": {
                   "v": 0,
                   "label": "Even"
                 },
-                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order published. Florida State, still pending, is not charted.",
+                "caption": "Cumulative result of the Week 1 card at one unit per play, standard −110 pricing, in the order the games went final. Florida State pushed — the stake returned, the line unmoved.",
                 "endLabel": "Sunday night"
               },
               {
@@ -1314,10 +1318,11 @@
                   },
                   {
                     "l": "Fla St",
-                    "r": "P"
+                    "r": "P",
+                    "t": "P"
                   }
                 ],
-                "caption": "The eleven picks in the order the games went final. Florida State remains pending."
+                "caption": "The eleven picks in the order the games went final. P = push: Florida State, catching three, lost by exactly three."
               }
             ]
           },
@@ -1327,7 +1332,7 @@
             "sub": "Week one, 2026 · As published before kickoff",
             "paras": [
               "The card, as published in his Week 1 column and graded at the posted numbers. Read it top to bottom and the shape of the week is unmistakable: seven straight losses before the first winner, and a slate built on long underdogs and high totals — bets that look brave on Thursday and expensive by Saturday night.",
-              "The cruelty is in the margins. Georgia Tech, laying six and a half against Colorado, lost outright — a touchdown pass with forty-two seconds left, then a blocked field goal on the final play. And Furman, catching forty-six and a half at Tennessee, lost 56–9: a forty-seven-point margin. The cover died by half a point. It was the closest he came to a third winner all week."
+              "The cruelty is in the margins. Georgia Tech, laying six and a half against Colorado, lost outright — a touchdown pass with forty-two seconds left, then a blocked field goal on the final play. Furman, catching forty-six and a half at Tennessee, lost 56–9: a cover dead by half a point. And the finale landed on the number itself — Florida State, catching three, beaten by exactly three. Eleven picks, and not one clean exit."
             ],
             "figure": {
               "type": "table",
@@ -1386,13 +1391,13 @@
                 {
                   "sel": "Florida State",
                   "num": "+3",
-                  "res": "Pending"
+                  "res": "Push"
                 }
               ],
-              "record": "2–8",
-              "recordLabel": "Graded",
+              "record": "2-8-1",
+              "recordLabel": "Final",
               "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
-              "note": "He lost Furman +46.5 by a single half point — Tennessee won by forty-seven. It was the closest he came to a third winner all week.",
+              "note": "He lost Furman +46.5 by a half point and pushed Florida State on the number. The margins tortured him all week; the record did the rest.",
               "cols": [
                 "Selection",
                 "Number",
@@ -1451,35 +1456,124 @@
             ]
           },
           {
-            "title": "The Call",
-            "headline": "One Bet Left",
-            "sub": "Monday night decides the volume",
+            "title": "The Tracker",
+            "headline": "Week 2: Fifteen Picks",
+            "sub": "The file is now standing — graded as the games end",
             "paras": [
-              "The card is not finished. Florida State, catching three against SMU, kicks off Monday night in Tallahassee — the only pick still live and the only chance to close the week above two wins. The market, for what it is worth, has drifted toward SMU by two and a half.",
-              "A fade of a man having this kind of week is not analysis; it is arithmetic. Then again, so was Furman plus forty-six and a half. That tension has a name, and it is the reason this desk exists. The Week 2 card is already up — he likes Texas over Ohio State, Oklahoma over Michigan, Clemson big over Troy — and when the next one drops it will be in Fade the moment it is posted, with a Tail button for the brave and a Fade button for the rest of us."
-            ]
+              "A 2–8–1 week would send most public pickers underground for a few days. Clay Travis responded with the biggest card of his season: fifteen picks for Week 2, posted for the world and logged by @ExposingClay under a hashtag that needs no explanation — #FadeClayTravis.",
+              "The headliner is a 'blood bank guarantee' — his term for a pick absolutely, positively guaranteed to win — on the Oklahoma–Michigan under 43.5. Readers of this file will recall the last blood-bank citation in these pages: it decorated the September 2024 post about digging out of holes by continuing to dig. The rest of the card leans the way his cards lean — favorites laying big numbers, overs, and a 36.5-point underdog for seasoning.",
+              "From this week forward, this file is a tracker. Every card gets logged when he posts it and graded when the games end — the record, the units, and the sequence, kept in one place, in public, indefinitely. The Week 2 slate goes final Saturday night."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The Week 2 card · as posted",
+              "cols": [
+                "Selection",
+                "Number",
+                "Result"
+              ],
+              "rows": [
+                {
+                  "sel": "Missouri",
+                  "num": "-5.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Missouri / Kansas",
+                  "num": "over 50.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Old Dominion",
+                  "num": "+20.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Oregon",
+                  "num": "-22.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Arizona State",
+                  "num": "+14.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Oklahoma",
+                  "num": "-5.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Oklahoma / Michigan — the blood bank guarantee",
+                  "num": "under 43.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Mississippi State / Minnesota",
+                  "num": "over 55.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Cal / Syracuse",
+                  "num": "over 56.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Kentucky",
+                  "num": "+10.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Alabama / Kentucky",
+                  "num": "over 48.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Vanderbilt",
+                  "num": "-21.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Tennessee / Georgia Tech",
+                  "num": "under 55.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Texas",
+                  "num": "-1.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Louisiana Tech",
+                  "num": "+36.5",
+                  "res": "Pending"
+                }
+              ],
+              "record": "15",
+              "recordLabel": "Live picks",
+              "note": "As posted before kickoff and logged by @ExposingClay. Graded here Saturday night."
+            }
           }
         ],
         "call": {
-          "kicker": "One pick remains",
-          "title": "Florida State",
-          "big": "+3",
-          "note": "He is 2–8 on the week and down 6.2 units. Monday night in Tallahassee is the last entry on the card — the only one still live, and the only chance to close Volume One above water.",
+          "kicker": "The season so far",
+          "title": "Fifteen more.",
+          "big": "2-8-1",
+          "note": "He opened the season 2–8–1 and down 6.2 units, then posted his biggest card of the year — guarantee included. The desk logs every pick and grades every card. The file stays open all season.",
           "tag": "Tail it or fade it",
-          "end": "End of Volume One",
+          "end": "Updated weekly",
           "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000"
         }
       },
       "body": [
-        "Every autumn it happens on schedule: Clay Travis publishes his college football card for the world to see, and a measurable share of the internet does the profitable thing — the exact opposite. This is his fifteenth consecutive season of public picks. Week 1 of 2026: eleven picks, eight losses, a card 6.2 units underwater with only Florida State +3 still alive Monday night.",
-        "The margins were not close. His four long underdogs lost by 39, 52, 47 and 40 points. Furman +46.5 lost by exactly forty-seven — a cover dead by half a point. Georgia Tech, laying 6.5, lost outright on a touchdown with 42 seconds left and a blocked field goal at the gun.",
-        "None of this is new. By his own running count, 2024 went from 54–71 to 92–111 by title night. In 2017 and again in 2024 and 2025, fan blogs spent entire seasons mechanically betting the opposite of every pick he posted. All three fades finished profitable.",
-        "He said it himself, in November 2024: 'My college football picks have been such a disaster this year, you may be better off fading all my picks this week. But here they are.'"
+        "Week 1, final: 2–8–1. Eight losses, two winners, and Florida State — catching three on Monday night — losing by exactly three. Even his push was a sweat. At one unit per play, the week closed 6.2 units underwater.",
+        "This file is now a season tracker. Every card he posts gets graded here the moment the games end, starting with Week 2: fifteen picks, his biggest slate of the season, including a 'blood bank guarantee' on the Oklahoma–Michigan under.",
+        "The fade army has a hashtag now. The desk has a ledger. Saturday settles both."
       ],
       "fadeCard": {
         "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000",
         "caption": "Clay Travis · Fade him",
-        "record": "Week 1: 2–8",
+        "record": "Week 1: 2-8-1 · Week 2 card live",
         "slipTitle": "Clay's Week 1 card",
         "picks": [
           {
@@ -1523,11 +1617,10 @@
             "r": "W"
           },
           {
-            "t": "Florida State +3",
-            "r": "T"
+            "t": "Florida State +3 — pushed",
+            "r": "P"
           }
-        ],
-        "tonight": "He's on Florida State +3"
+        ]
       }
     },
     {
