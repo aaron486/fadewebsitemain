@@ -1,6 +1,228 @@
 {
   "articles": [
     {
+      "slug": "week-1-unders",
+      "league": "NFL",
+      "title": "Picking up where we left off: the Week 1 under",
+      "dek": "Week 1 unders went 12-4 last season. The 2026 season opened 13-10 — under by three touchdowns. That makes it 1-0, with fifteen totals left on the board this weekend.",
+      "author": "Fade Desk",
+      "published": "2026-09-10T15:00:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Last season's Week 1 count via FOX Sports and Yahoo (11-2 on the Sunday slate) and BetMGM's Week 1 trends blog (12 unders of 16), with the 12-4 total confirmed against final scores; 2023 (12-4) and 2024 (8-8 by one count, 7-9 by another) via SportsBettingDime and BetMGM, discrepancy noted. Long-run rates (96-79, 54.9% since 2015; 55% since 2005) via BetMGM. Scoring data via OutKick (20.7 team PPG, Week 1 2025) and theScore; the 2022 under run via theScore and The Washington Post. Wednesday's result via ESPN and NFL.com; the Avello quote via FOX Sports and Complex, pregame. This weekend's totals via ESPN, FOX, CBS and Covers odds pages as of September 9-10 — check live numbers before betting.",
+      "body": [
+        "Week 1 unders went 12-4 last season — 11-2 on the Sunday slate alone, with covers by margins of twenty and eighteen points. Teams scored 20.7 points a game, the lowest opening week in decades.",
+        "The 2026 season opened Wednesday night: 13-10, under 44.5 by three touchdowns. The public's parlay money was on the over. It usually is.",
+        "September belongs to the defenses: starters barely play in August, offenses need reps that do not exist yet, and totals are set off last year's scoring. The honest caveat: the books know all this too — the long-run Week 1 under rate is 54.9 percent, thin as an edge, real as a lean. Fifteen totals left this weekend, Jets-Titans at 38.5 the lowest of them."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 5",
+        "issueLine": "September 2026",
+        "edition": "An edition on the early dark",
+        "coverKicker": "The Fade Index",
+        "coverLine": "Picking up where we left off.",
+        "coverSub": "The quietest profitable week in football is back, one game in.",
+        "coverStat": {
+          "label": "Week 1 unders, 2025",
+          "value": "12-4",
+          "sub": "And 1-0 in 2026"
+        },
+        "quote": {
+          "text": "I can't see the public betting anything but the Over.",
+          "attr": "Johnny Avello, DraftKings — the day before the opener stayed 21½ points under the total"
+        },
+        "sections": [
+          {
+            "title": "The Streak",
+            "headline": "Twelve and Four, Then One and Oh",
+            "sub": "The opening week the scoreboard sleeps",
+            "stats": [
+              {
+                "v": "12-4",
+                "l": "Week 1 unders, last season",
+                "tone": "cash"
+              },
+              {
+                "v": "11-2",
+                "l": "On the Sunday slate alone",
+                "tone": "cash"
+              },
+              {
+                "v": "1-0",
+                "l": "2026, after Wednesday night",
+                "tone": "cash"
+              }
+            ],
+            "paras": [
+              "Opening week is football's quietest profitable habit. Last September the under went 12-4 across the sixteen games of Week 1 — including an 11-2 rampage through the Sunday slate — and it was not close: Texans-Rams stayed twenty and a half points under the number, Giants-Commanders eighteen and a half. Teams averaged 20.7 points apiece, the lowest-scoring opening week in decades. The year before that was a coin flip; the year before that, another 12-4. The lean is streaky, but it only ever leans one way.",
+              "The 2026 edition picked up mid-sentence. Wednesday night's opener closed at 44.5 and produced 23 points — under by three full touchdowns, with a backup quarterback playing fifty-eight minutes and the runner-up throwing the ball to the wrong shirts all fourth quarter. That is 1-0, with fifteen totals still on the board."
+            ],
+            "figure": {
+              "type": "bars",
+              "label": "Week 1, under rate by season",
+              "rows": [
+                {
+                  "l": "2023",
+                  "v": 0.75,
+                  "note": "12-4"
+                },
+                {
+                  "l": "2024",
+                  "v": 0.5,
+                  "note": "8-8 · counts differ"
+                },
+                {
+                  "l": "2025",
+                  "v": 0.75,
+                  "note": "12-4"
+                },
+                {
+                  "l": "2026",
+                  "v": 1,
+                  "note": "1-0, so far"
+                }
+              ],
+              "max": 1,
+              "ruleAt": 0.5,
+              "caption": "Share of Week 1 games under the total. 2024 grades 8-8 or 7-9 depending on the count. The rule marks an even split; break-even at the price sits just above it."
+            }
+          },
+          {
+            "title": "The Why",
+            "headline": "Offenses Run on Reps",
+            "sub": "The mechanics of the September under",
+            "paras": [
+              "The mechanism is not mystical. Starters barely play in the preseason anymore, and offense is the rep-dependent side of football — timing routes, protections, and play sequencing all arrive weeks after tackling does. Defenses have spent two years sitting in two-high shells daring offenses to be patient, and September offenses are not patient; they are rusty. Scoring league-wide has drifted down for half a decade, and it bottoms in the season's first weeks.",
+              "The betting version of the story is about lag. Totals open in September priced partly off last season's scoring, and history says the market chases scoring down more slowly than it chases it up — the 2022 season's famous run, when blind unders went 55-38-1 into late October, was exactly that lag being collected. The Week 1 under is the same trade in miniature: the one week a year when the number on the board still remembers last year's offense and the field only has this year's."
+            ]
+          },
+          {
+            "title": "The Exhibit",
+            "headline": "Wednesday Night, Entered into Evidence",
+            "sub": "The opener as thesis statement",
+            "paras": [
+              "If you wanted one game to teach the September under, the opener was it. A champion raising a banner with a backup quarterback by the eleventh minute. A runner-up whose Pro Bowl receiver left in the first half and whose franchise quarterback threw three fourth-quarter interceptions on three straight drives. Seventeen flags. A 7-0 halftime score in a stadium that practices being the loudest place in the sport. Final: 13-10, on a night the recreational money — by DraftKings' own pregame accounting — could not imagine betting anything but the over.",
+              "The desk's referee issue took the under at 44.5 and graded it won by morning; the sharp public commentary leaned the same way. The parlay economy leaned over, as it structurally must — nobody builds a same-game parlay out of punts — and paid for the seats."
+            ]
+          },
+          {
+            "title": "The Card",
+            "headline": "Fifteen Totals Left",
+            "sub": "The rest of Week 1, as posted",
+            "paras": [
+              "The board for the rest of the week, from tonight's Melbourne game to Monday in Kansas City. The furniture worth noting: Jets-Titans carries the lowest total of the week at 38.5 — the market's own under thesis, pre-applied. Bears-Panthers has been steamed up three full points, from 44.5 to 47, by the most public spread money of the weekend. And at Packers-Vikings, 87 percent of the total money is already on the under — which is its own warning, because the moment the under is the public side, the September bettor has lost the thing that made the trade quiet."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "Week 1 totals · as posted September 10",
+              "cols": [
+                "Game",
+                "Total",
+                "Result"
+              ],
+              "rows": [
+                {
+                  "sel": "Rams vs. 49ers — Melbourne, tonight",
+                  "num": "48.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Bills at Texans",
+                  "num": "44.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Colts at Ravens",
+                  "num": "48.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Commanders at Eagles",
+                  "num": "45.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Cowboys at Giants",
+                  "num": "48.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Bears at Panthers — steamed up from 44.5",
+                  "num": "47",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Saints at Lions",
+                  "num": "50",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Buccaneers at Bengals",
+                  "num": "50.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Jets at Titans — the low bar",
+                  "num": "38.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Dolphins at Raiders",
+                  "num": "40.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Steelers vs. Falcons",
+                  "num": "42.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Browns at Jaguars",
+                  "num": "40.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Cardinals at Chargers",
+                  "num": "46.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Packers at Vikings — 87% of total money on the under",
+                  "num": "45.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Broncos at Chiefs — Monday night",
+                  "num": "42.5",
+                  "res": "Pending"
+                }
+              ],
+              "record": "1-0",
+              "recordLabel": "Unders, Week 1",
+              "note": "Totals as posted at major books September 9-10; check live numbers. Graded here as the weekend goes final."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Thin, Real, and Rented",
+            "sub": "What the September under is actually worth",
+            "paras": [
+              "Now the desk does what the desk does to its own thesis. The long-run Week 1 under rate is about 54.9 percent since 2015 — real, and about two points of margin over break-even, which is an edge the way a sweater is a coat. The books shade September totals low on purpose; the year after the last 12-4, the week graded a coin flip, which is exactly what chasing a famous number gets you. And this year the crowd is arriving: when 87 percent of the money at a major book is on an under, the trade is no longer contrarian — it is merely early to its own funeral.",
+              "So the read is the one this desk keeps arriving at: the lean is a reason to like low totals you already like — backup quarterbacks, wind, teams whose offenses are installing rather than executing — and no reason at all to bet sixteen unders like it is 2022. Twelve and four was last year. One and oh is one game. The other fifteen get graded here, in public, by Monday night."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "This weekend · fifteen totals",
+          "title": "Under season.",
+          "big": "1-0",
+          "note": "Twelve and four last September, one and oh after Wednesday night. The scoreboard sleeps in early — and the desk grades the whole card by Monday night.",
+          "tag": "Tail it or fade it",
+          "end": "Graded through Monday"
+        }
+      }
+    },
+    {
       "slug": "adrian-hill-under",
       "league": "NFL",
       "title": "The rocket scientist calling tonight’s total",
