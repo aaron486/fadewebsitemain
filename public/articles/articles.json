@@ -2049,7 +2049,7 @@
       "published": "2026-09-10T02:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
       "featured": true,
-      "sources": "Picks and records via @ExposingClay on X (Week 1 final: 2–8–1; the Week 2 card as posted); game results via ESPN box scores; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published. This file updates weekly.",
+      "sources": "Picks and records via @ExposingClay on X (Week 1 final: 2–8–1; the Week 2 card as posted); game results via ESPN box scores; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published. This file updates weekly. The all-time documented record (243-284-1) sums the season endpoints on public record — 2017 via Eleven Warriors, 2024 via his own columns, 2025 through Week 14, 2026 via this file; no complete career total has ever been published by any outlet.",
       "mag": {
         "volume": "Volume One",
         "issueLine": "September 2026",
@@ -2296,37 +2296,85 @@
               "The record has a literature. In 2017, the Ohio State site Eleven Warriors spent a full season betting ten dollars against every pick he published and finished 83–67 on the fade — a fourteen percent profit, chronicled week by week and toasted by Deadspin. In 2024 and again in 2025, the Minnesota blog The Daily Gopher ran the same experiment, finished 96–80 and then 94–87 betting the opposite, and donated the winnings to charity. Three season-long fades, three profits.",
               "His own columns tell the same story in the first person. The 2024 season, by his own running count, went from 'a disastrous first two months' at 54–71, to 74–90 at Thanksgiving, to 92–111 by the night of the title game. Last season he stood 82–82 in late November before a three-and-nine week erased the year's work. And in 2019, on Fox's own daily gambling show, he opened with thirteen consecutive losing picks.",
               "He knows. 'My college football picks have been such a disaster this year, you may be better off fading all my picks this week,' he posted in November 2024 — and three weeks later captioned a card, 'So feel free to take the opposite.' At OutKick, his betting show with the Vegas handicapper Kelly Stewart was titled, with no apparent irony, The Fade.",
-              "Against all of this stands his own assessment: a claim, made on air, of winning sixty percent of his college bets across a three-year stretch. The handicapper-watchdog site CapperReviews noted that no documented professional has held sixty percent over any three-year period, and publicly challenged him to produce the ledger. The ledger has not appeared."
+              "Against all of this stands his own assessment: a claim, made on air, of winning sixty percent of his college bets across a three-year stretch. The handicapper-watchdog site CapperReviews noted that no documented professional has held sixty percent over any three-year period, and publicly challenged him to produce the ledger. The ledger has not appeared.",
+              "One number has never appeared in print: his true all-time record. Fifteen seasons of public picks, and no outlet — including his own — has ever published the career total; most seasons' final tallies simply vanished with the columns that carried them. What can be counted is what was documented. Summing the season endpoints that exist on the record — 2017 via the fade ledger, 2024 by his own count through title night, 2025 through Week 14, and this season's file — the documented career reads 243-284-1: a 46.1 percent picker, everywhere anyone bothered to write it down."
             ],
-            "figure": {
-              "type": "bars",
-              "label": "And it was not the first",
-              "rows": [
-                {
-                  "l": "2017",
-                  "v": 0.447,
-                  "note": "67–83 · via the season-long fade ledger"
-                },
-                {
-                  "l": "2024",
-                  "v": 0.453,
-                  "note": "92–111 · his own count"
-                },
-                {
-                  "l": "2025",
-                  "v": 0.5,
-                  "note": "82–82 · through Week 13"
-                },
-                {
-                  "l": "2026",
-                  "v": 0.2,
-                  "note": "2–8 · Week 1"
-                }
-              ],
-              "max": 0.7,
-              "ruleAt": 0.5,
-              "caption": "Win percentage on publicly posted college football picks. 2017 inverted from Eleven Warriors' fade record; 2024–25 as stated in Travis's own columns. The rule marks .500 — break-even before the price."
-            }
+            "figures": [
+              {
+                "type": "table",
+                "label": "The all-time ledger · every documented season",
+                "cols": [
+                  "Season",
+                  "Record, as documented",
+                  "Verdict"
+                ],
+                "rows": [
+                  {
+                    "sel": "2017",
+                    "num": "67-83 · via Eleven Warriors' season-long fade",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2022",
+                    "num": "70-69 · through Week 13, his own column",
+                    "res": "Won"
+                  },
+                  {
+                    "sel": "2023",
+                    "num": "below .500 · published counts differ (75-84 or 80-88)",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2024",
+                    "num": "92-111 · his own count, through the title game",
+                    "res": "Lost"
+                  },
+                  {
+                    "sel": "2025",
+                    "num": "82-82 · through Week 14, before a playoff rally",
+                    "res": ".500"
+                  },
+                  {
+                    "sel": "2026",
+                    "num": "2-8-1 · this file, live",
+                    "res": "Pending"
+                  }
+                ],
+                "record": "243-284-1",
+                "recordLabel": "Documented totals",
+                "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
+                "note": "The sum counts only completed documented endpoints: 2017, 2024, 2025 through Week 14, and 2026 to date. The 2022 and 2023 partials are shown but not summed. No fuller career total has ever been published."
+              },
+              {
+                "type": "bars",
+                "label": "And it was not the first",
+                "rows": [
+                  {
+                    "l": "2017",
+                    "v": 0.447,
+                    "note": "67–83 · via the season-long fade ledger"
+                  },
+                  {
+                    "l": "2024",
+                    "v": 0.453,
+                    "note": "92–111 · his own count"
+                  },
+                  {
+                    "l": "2025",
+                    "v": 0.5,
+                    "note": "82–82 · through Week 13"
+                  },
+                  {
+                    "l": "2026",
+                    "v": 0.2,
+                    "note": "2–8 · Week 1"
+                  }
+                ],
+                "max": 0.7,
+                "ruleAt": 0.5,
+                "caption": "Win percentage on publicly posted college football picks. 2017 inverted from Eleven Warriors' fade record; 2024–25 as stated in Travis's own columns. The rule marks .500 — break-even before the price."
+              }
+            ]
           },
           {
             "title": "The House",
@@ -2458,21 +2506,22 @@
           "items": [
             {
               "v": "-6.2",
-              "l": "Units",
+              "l": "Units, 2026",
               "tone": "wine"
             },
             {
-              "v": "-56%",
-              "l": "ROI, at one unit per play",
+              "v": "243-284-1",
+              "l": "All-time, documented seasons",
+              "tone": "wine"
+            },
+            {
+              "v": "46.1%",
+              "l": "Career rate, where counted",
               "tone": "wine"
             },
             {
               "v": "15",
               "l": "Live picks, Week 2"
-            },
-            {
-              "v": "92-111",
-              "l": "His 2024 season"
             }
           ],
           "verdict": "Fade",
