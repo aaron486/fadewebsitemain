@@ -553,7 +553,36 @@
           "end": "Graded through Monday",
           "photo": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/fde4ff0c-6380-4ee8-8e04-8f04b2a7c5fe.jpg"
         },
-        "coverPhoto": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/fde4ff0c-6380-4ee8-8e04-8f04b2a7c5fe.jpg"
+        "coverPhoto": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/fde4ff0c-6380-4ee8-8e04-8f04b2a7c5fe.jpg",
+        "ledger": {
+          "title": "The Week 1 under",
+          "asOf": "2026 card live",
+          "record": {
+            "v": "12-4",
+            "l": "Last season, Week 1",
+            "tone": "cash"
+          },
+          "items": [
+            {
+              "v": "1-0",
+              "l": "2026, after the opener",
+              "tone": "cash"
+            },
+            {
+              "v": "54.9%",
+              "l": "Long-run rate since 2015"
+            },
+            {
+              "v": "20.7",
+              "l": "Team PPG, Week 1 last year",
+              "tone": "wine"
+            },
+            {
+              "v": "15",
+              "l": "Totals pending this weekend"
+            }
+          ]
+        }
       }
     },
     {
@@ -941,6 +970,36 @@
           "tag": "Tail it or fade it",
           "end": "Final: push, on the number",
           "photo": "/assets/sb-loser-cover.jpg"
+        },
+        "ledger": {
+          "title": "Super Bowl losers, next opener",
+          "asOf": "Since 2000 · graded",
+          "record": {
+            "v": "6-20-1",
+            "l": "Against the spread",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "23%",
+              "l": "Cover rate",
+              "tone": "wine"
+            },
+            {
+              "v": "0-12",
+              "l": "From 2000 to 2011",
+              "tone": "wine"
+            },
+            {
+              "v": "2",
+              "l": "Covers belong to the Patriots"
+            },
+            {
+              "v": "PUSH",
+              "l": "2026 · Seattle by exactly 3"
+            }
+          ],
+          "verdict": "Fade"
         }
       }
     },
@@ -1537,6 +1596,38 @@
           "tag": "Tail it or fade it",
           "end": "End of Case File No. 005",
           "photo": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w1000"
+        },
+        "ledger": {
+          "title": "Stanford Steve · tracked since 2014",
+          "asOf": "Via Cole's Gameday Blog",
+          "record": {
+            "v": "648-529-24",
+            "l": "College football, ATS",
+            "tone": "cash"
+          },
+          "items": [
+            {
+              "v": "+60.1",
+              "l": "Units, career",
+              "tone": "cash"
+            },
+            {
+              "v": "+5.0%",
+              "l": "ROI on 1,201 picks",
+              "tone": "cash"
+            },
+            {
+              "v": "CFB",
+              "l": "Best sport · 55.1%",
+              "tone": "cash"
+            },
+            {
+              "v": "NFL",
+              "l": "Worst sport · 166-162-7",
+              "tone": "wine"
+            }
+          ],
+          "verdict": "Tail"
         }
       },
       "fadeCard": {
@@ -2126,6 +2217,83 @@
           "tag": "Tail it or fade it",
           "end": "Updated weekly",
           "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000"
+        },
+        "ledger": {
+          "title": "Clay Travis · 2026 CFB season",
+          "asOf": "Through Week 1",
+          "record": {
+            "v": "2-8-1",
+            "l": "Against the spread",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "-6.2",
+              "l": "Units",
+              "tone": "wine"
+            },
+            {
+              "v": "-56%",
+              "l": "ROI, at one unit per play",
+              "tone": "wine"
+            },
+            {
+              "v": "15",
+              "l": "Live picks, Week 2"
+            },
+            {
+              "v": "92-111",
+              "l": "His 2024 season"
+            }
+          ],
+          "verdict": "Fade",
+          "seq": [
+            {
+              "l": "GT",
+              "r": "L"
+            },
+            {
+              "l": "STAN",
+              "r": "L"
+            },
+            {
+              "l": "TXST",
+              "r": "L"
+            },
+            {
+              "l": "B/A",
+              "r": "L"
+            },
+            {
+              "l": "FUR",
+              "r": "L"
+            },
+            {
+              "l": "NIU",
+              "r": "L"
+            },
+            {
+              "l": "CLEM",
+              "r": "L"
+            },
+            {
+              "l": "UCLA",
+              "r": "W"
+            },
+            {
+              "l": "WIS",
+              "r": "L"
+            },
+            {
+              "l": "L/OM",
+              "r": "W"
+            },
+            {
+              "l": "FSU",
+              "r": "P",
+              "t": "P"
+            }
+          ]
         }
       },
       "body": [
@@ -2444,6 +2612,80 @@
           "tag": "Get notified when he bets",
           "end": "End of Case File No. 001",
           "photo": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000"
+        },
+        "ledger": {
+          "title": "Drake · public bets since Feb 2022",
+          "asOf": "Via thedrakecurse.com · July 2026",
+          "record": {
+            "v": "32-56",
+            "l": "88 posted bets",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "-$3.06M",
+              "l": "All-time P/L",
+              "tone": "wine"
+            },
+            {
+              "v": "-7.6%",
+              "l": "ROI on $40.2M staked",
+              "tone": "wine"
+            },
+            {
+              "v": "Cricket",
+              "l": "Best sport · 3-0, +$997K",
+              "tone": "cash"
+            },
+            {
+              "v": "Soccer",
+              "l": "Worst sport · -$3.17M",
+              "tone": "wine"
+            }
+          ],
+          "verdict": "Fade",
+          "seq": [
+            {
+              "l": "OKC",
+              "r": "L"
+            },
+            {
+              "l": "UFC",
+              "r": "L"
+            },
+            {
+              "l": "SIN",
+              "r": "L"
+            },
+            {
+              "l": "RAV",
+              "r": "L"
+            },
+            {
+              "l": "PAUL",
+              "r": "L"
+            },
+            {
+              "l": "SB LX",
+              "r": "L"
+            },
+            {
+              "l": "CAN",
+              "r": "W"
+            },
+            {
+              "l": "MOR",
+              "r": "W"
+            },
+            {
+              "l": "MCG",
+              "r": "L"
+            },
+            {
+              "l": "ARG",
+              "r": "L"
+            }
+          ]
         }
       },
       "fadeCard": {
