@@ -66,21 +66,21 @@ img { max-width:100%; }
 
 /* ---- ledger panel ---- */
 .ledger { padding-top:clamp(1.6rem,4vw,2.4rem); }
-.ledger-in { border-top:3px solid var(--ink); position:relative; }
-.ledger-in::before { content:''; display:block; border-top:1px solid var(--ink); margin-top:2px; }
-.lg-head { display:flex; justify-content:space-between; padding:0.8rem 0 0; color:var(--soft); }
+.ledger-in { border:1.5px solid var(--ink); border-radius:5px; overflow:hidden; background:var(--paper-hi); }
+.lg-head { display:flex; justify-content:space-between; gap:1rem; padding:0.75rem 1.2rem; color:var(--soft); border-bottom:1px solid var(--ink); background:var(--paper-hi); }
 .lg-head b { color:var(--wine); font-weight:500; }
-.lg-grid { display:flex; flex-wrap:wrap; align-items:center; gap:clamp(1.2rem,3.5vw,3rem); padding:1.2rem 0 1.4rem; border-bottom:1px solid var(--hair); }
-.lg-rec .v { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.6rem,6vw,3.8rem); line-height:1; }
-.lg-rec .v.wine { color:var(--wine); } .lg-rec .v.cash { color:var(--cash); }
-.lg-item .v { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.25rem,2.6vw,1.7rem); line-height:1.1; }
-.lg-item .v.wine { color:var(--wine); } .lg-item .v.cash { color:var(--cash); }
-.lg-rec .l, .lg-item .l { margin-top:0.45rem; font-size:0.54rem; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:var(--soft); line-height:1.5; }
-.lg-stamp { margin-left:auto; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.1rem,2.4vw,1.5rem); letter-spacing:0.12em; color:var(--wine); border:2.5px solid var(--wine); border-radius:6px; padding:0.25em 0.7em; transform:rotate(-6deg); text-transform:uppercase; }
+.lg-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(116px,1fr)); background:var(--paper-hi); }
+.lg-cell { background:var(--paper-hi); box-shadow:0 0 0 0.5px var(--line); padding:1.4rem 0.7rem 1.2rem; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:108px; }
+.lg-cell .v { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.1; }
+.lg-cell.lg-rec .v { font-weight:700; font-size:clamp(1.9rem,4vw,2.6rem); line-height:1; }
+.lg-cell .v.wine { color:var(--wine); } .lg-cell .v.cash { color:var(--cash); }
+.lg-cell .l { margin-top:0.55rem; font-size:0.52rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--soft); line-height:1.6; max-width:16ch; }
+.lg-stamp { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.05rem,2.2vw,1.35rem); letter-spacing:0.12em; color:var(--wine); border:2.5px solid var(--wine); border-radius:6px; padding:0.25em 0.75em; transform:rotate(-6deg); text-transform:uppercase; }
 .lg-stamp.tail { color:var(--cash); border-color:var(--cash); }
-.lg-seq { padding:0.9rem 0 0.2rem; }
+.lg-seq { border-top:1px solid var(--line); background:var(--paper-hi); padding:1rem 1.2rem 0.5rem; }
+.lg-seq .seqwrap { overflow-x:auto; }
 .lg-seq .seq { border-top:none; padding-top:0; min-width:480px; }
-@media (max-width:560px) { .lg-stamp { margin-left:0; } }
+@media (max-width:620px) { .lg-grid { grid-template-columns:repeat(2,1fr); } .lg-cell.lg-rec, .lg-cell.lg-stampcell { grid-column:1 / -1; } .lg-cell { min-height:92px; padding:1.1rem 0.7rem 1rem; } }
 
 /* ---- plain header (no cover) ---- */
 .plainhead { text-align:center; padding:clamp(2.4rem,6vw,4rem) 0 0; }
@@ -456,11 +456,11 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     s += '<div class="lg-head caps"><span><b>The ledger</b>' + (lg.title ? ' &middot; ' + esc(lg.title) : '') + '</span>' +
       (lg.asOf ? '<span>' + esc(lg.asOf) + '</span>' : '') + '</div>';
     s += '<div class="lg-grid">';
-    if (lg.record) s += '<div class="lg-rec"><div class="v' + (lg.record.tone ? ' ' + esc(lg.record.tone) : '') + '">' + fmtStat(lg.record.v) + '</div><div class="l">' + esc(lg.record.l || '') + '</div></div>';
+    if (lg.record) s += '<div class="lg-cell lg-rec"><div class="v' + (lg.record.tone ? ' ' + esc(lg.record.tone) : '') + '">' + fmtStat(lg.record.v) + '</div><div class="l">' + esc(lg.record.l || '') + '</div></div>';
     (lg.items || []).forEach(function (it) {
-      s += '<div class="lg-item"><div class="v' + (it.tone ? ' ' + esc(it.tone) : '') + '">' + fmtStat(it.v) + '</div><div class="l">' + esc(it.l || '') + '</div></div>';
+      s += '<div class="lg-cell"><div class="v' + (it.tone ? ' ' + esc(it.tone) : '') + '">' + fmtStat(it.v) + '</div><div class="l">' + esc(it.l || '') + '</div></div>';
     });
-    if (lg.verdict) s += '<div class="lg-stamp' + (String(lg.verdict).toLowerCase() === 'tail' ? ' tail' : '') + '">' + esc(lg.verdict) + '</div>';
+    if (lg.verdict) s += '<div class="lg-cell lg-stampcell"><span class="lg-stamp' + (String(lg.verdict).toLowerCase() === 'tail' ? ' tail' : '') + '">' + esc(lg.verdict) + '</span></div>';
     s += '</div>';
     if (lg.seq && lg.seq.length) s += '<div class="lg-seq">' + figSeq({ items: lg.seq }) + '</div>';
     s += '</div></section>';
