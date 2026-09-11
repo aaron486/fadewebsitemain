@@ -568,7 +568,7 @@
       "dek": "Week 1 unders went 12-4 last season. The 2026 season opened 13-10 — under by three touchdowns. That makes it 1-0, with fifteen totals left on the board this weekend.",
       "author": "Fade Desk",
       "published": "2026-09-10T15:00:00Z",
-      "image": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/626ddc73-962c-4537-9812-e1c80121282f.jpg",
+      "image": "/assets/unders-cover.jpg",
       "featured": false,
       "sources": "Last season's Week 1 count via FOX Sports and Yahoo (11-2 on the Sunday slate) and BetMGM's Week 1 trends blog (12 unders of 16), with the 12-4 total confirmed against final scores; 2023 (12-4) and 2024 (8-8 by one count, 7-9 by another) via SportsBettingDime and BetMGM, discrepancy noted. Long-run rates (96-79, 54.9% since 2015; 55% since 2005) via BetMGM. Scoring data via OutKick (20.7 team PPG, Week 1 2025) and theScore; the 2022 under run via theScore and The Washington Post. Wednesday's result via ESPN and NFL.com; the Avello quote via FOX Sports and Complex, pregame. This weekend's totals via ESPN, FOX, CBS and Covers odds pages as of September 9-10 — check live numbers before betting.",
       "body": [
@@ -780,9 +780,9 @@
           "note": "Twelve and four last September, one and oh after Wednesday night. The scoreboard sleeps in early — and the desk grades the whole card by Monday night.",
           "tag": "Tail it or fade it",
           "end": "Graded through Monday",
-          "photo": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/626ddc73-962c-4537-9812-e1c80121282f.jpg"
+          "photo": "/assets/unders-cover.jpg"
         },
-        "coverPhoto": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DKa0YvpAn45fhvna1OoqlTThuO/626ddc73-962c-4537-9812-e1c80121282f.jpg",
+        "coverPhoto": "/assets/unders-cover.jpg",
         "ledger": {
           "title": "The Week 1 under",
           "asOf": "2026 card live",
@@ -811,7 +811,8 @@
               "l": "Totals pending this weekend"
             }
           ]
-        }
+        },
+        "coverColor": true
       }
     },
     {
