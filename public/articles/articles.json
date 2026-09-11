@@ -1,6 +1,338 @@
 {
   "articles": [
     {
+      "slug": "week-1-public-board",
+      "league": "NFL",
+      "title": "The public's full Week 1 card, graded before kickoff",
+      "dek": "Everything America is holding this weekend, per BetMGM's board: the Bears again, Aaron Rodgers laying points at forty-two, a rookie's interception at plus money, and a quarterback at 20-to-1 to score. The desk logs all of it — and grades all of it Monday night.",
+      "author": "Fade Desk",
+      "published": "2026-09-11T16:00:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Splits as posted in BetMGM's Week 1 public-betting report, September 11. The Bears 93/91 figure corroborated by Yahoo's betting desk; Cowboys money-side corroborated by SportsBettingDime. Lines are BetMGM's as reported and may differ from consensus (some books show Steelers -3.5 and Jets-Titans 39.5). Player situations verified via ESPN, NFL.com, Spotrac and team sites: Montgomery traded to Houston, Wicks to Philadelphia, Willis signed as Miami's starter (3yr/$67.5M), Walker to Kansas City, Jones re-signed in Minnesota, Rodgers back for season 22. Cam Ward's rookie line via ESPN. Futures-liability notes via SI's Sportsbook Insiders. Grades posted here Monday night.",
+      "body": [
+        "BetMGM published its Week 1 board, and it reads like a psychological profile of America: the Bears at the top of both lists again, Aaron Rodgers laying points at forty-two, three unders among the five most-bet totals, and a prop sheet that bets a rookie to throw an interception he almost never throws.",
+        "The crowd's favorite playground is the worst game of the week — Jets-Titans carries the lowest total on the board and shows up on three different lists at once.",
+        "Every table in this issue is pending. Every table gets graded Monday night."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 6",
+        "issueLine": "September 2026",
+        "edition": "An edition on what America is holding",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The public's full card.",
+        "coverSub": "Sides, dogs, totals and lottery tickets — the whole board, logged before kickoff.",
+        "coverStat": {
+          "label": "Bears -3, at BetMGM",
+          "value": "93%",
+          "sub": "Of tickets · still"
+        },
+        "quote": {
+          "text": "One of the biggest figures we'll see all NFL season.",
+          "attr": "Yahoo's betting desk, on the Bears ticket count at BetMGM"
+        },
+        "sections": [
+          {
+            "title": "The Sides",
+            "headline": "America Is Still on the Bears",
+            "sub": "Most-bet spreads, tickets and money",
+            "paras": [
+              "Start where the crowd starts. The Bears, subject of this desk's first NFL issue, remain the most public side in football — first in tickets, second in money, at the 93-and-91-percent levels a national betting column called one of the biggest figures of the season. Behind them, the tickets and dollars tell slightly different stories. The ticket list adds the Lions laying a touchdown and the Broncos catching points on Monday night; the money list drops both and adds a road underdog — the Colts, catching three and a half in Baltimore — plus the Cowboys, whose spread money has been running north of ninety percent all week.",
+              "And then there is the number two on the money list: Pittsburgh, laying five on BetMGM's board against Atlanta. The story is not the Falcons. The story is that the public's second-biggest position of opening weekend is Aaron Rodgers, at forty-two years old, in his twenty-second season, laying points in his Pittsburgh debut. Some bets are analysis. That one is a memory."
+            ],
+            "figures": [
+              {
+                "type": "table",
+                "label": "Most-bet sides, by tickets",
+                "cols": [
+                  "Side",
+                  "Line",
+                  "Result"
+                ],
+                "rows": [
+                  {
+                    "sel": "Bears at Panthers",
+                    "num": "-3",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Steelers vs. Falcons",
+                    "num": "-5",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Titans vs. Jets",
+                    "num": "-1.5",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Lions vs. Saints",
+                    "num": "-7",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Broncos at Chiefs",
+                    "num": "+2.5",
+                    "res": "Pending"
+                  }
+                ],
+                "note": "Lines as posted at BetMGM in its public-betting report; consensus differs at some books."
+              },
+              {
+                "type": "table",
+                "label": "Most-bet sides, by money",
+                "cols": [
+                  "Side",
+                  "Line",
+                  "Result"
+                ],
+                "rows": [
+                  {
+                    "sel": "Steelers vs. Falcons",
+                    "num": "-5",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Bears at Panthers",
+                    "num": "-3",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Cowboys at Giants",
+                    "num": "-3",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Colts at Ravens",
+                    "num": "+3.5",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Commanders game: Eagles",
+                    "num": "-5.5",
+                    "res": "Pending"
+                  }
+                ],
+                "note": "The dollars drop the Lions and Broncos and add a road dog. Last September, the most-bet CFB money list went 5-0; the tickets went 3-2."
+              }
+            ]
+          },
+          {
+            "title": "The Playground",
+            "headline": "Three Bets on the Worst Game of the Week",
+            "sub": "The dogs — and the Jets-Titans phenomenon",
+            "paras": [
+              "The most-bet underdog moneylines are the weekend's hope portfolio: Denver at plus money in Arrowhead, the Cardinals at 7-to-2 against the week's biggest spread, the Packers at even-ish money in Minnesota, the Browns as a 3-to-1 flyer, and the Jets at even money in Nashville.",
+              "That last one completes a remarkable picture. Jets-Titans carries the lowest total on the board — and the public is on it three different ways at once: Titans minus the points on the tickets list, Jets plus money on the dog list, and the under as the most-bet total in football. America has surrounded the worst game of the week from every direction. One wrinkle the splits do not show: the total has ticked up at some books since opening, the number moving against those under tickets — one more reminder, from a desk that keeps writing it, that tickets are not dollars."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "Most-bet underdog moneylines",
+              "cols": [
+                "Dog",
+                "Price",
+                "Result"
+              ],
+              "rows": [
+                {
+                  "sel": "Broncos at Chiefs",
+                  "num": "+120",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Cardinals at Chargers",
+                  "num": "+350",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Packers at Vikings",
+                  "num": "+105",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Browns at Jaguars",
+                  "num": "+310",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Jets at Titans",
+                  "num": "+100",
+                  "res": "Pending"
+                }
+              ],
+              "note": "Five outright winners at plus money is the dream. One or two is the math."
+            }
+          },
+          {
+            "title": "The Totals",
+            "headline": "The Under Goes Public",
+            "sub": "Which is exactly what this desk warned about",
+            "paras": [
+              "Three of the five most-bet totals are unders — led by the Jets-Titans 38.5, the number this desk's unders issue called the market's own thesis, pre-applied. The September under is now officially a public trade, and readers of that issue know what the desk thinks of that: the moment the crowd joins the quiet side, the quiet is over.",
+              "The two overs are their own tell. One is Saints-Lions, a big number bet bigger. The other is Bears-Panthers over 47 — a total that has already been steamed up three points by the same public that owns 93 percent of the Bears tickets. Opening weekend's most popular combination, in other words, is a single thought held by several million people: Chicago 31, Carolina 13."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "Most-bet totals",
+              "cols": [
+                "Game",
+                "Bet",
+                "Result"
+              ],
+              "rows": [
+                {
+                  "sel": "Jets at Titans",
+                  "num": "under 38.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Buccaneers at Bengals",
+                  "num": "under 51.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Bears at Panthers",
+                  "num": "over 47",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Commanders at Eagles",
+                  "num": "under 44.5",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Saints at Lions",
+                  "num": "over 49.5",
+                  "res": "Pending"
+                }
+              ],
+              "record": "3 of 5",
+              "recordLabel": "Are unders",
+              "note": "The under lean this desk covered two days ago is now the crowd's lean. That is not the same trade."
+            }
+          },
+          {
+            "title": "The Lottery",
+            "headline": "Props, Scorers and Other Fictions",
+            "sub": "The parlay economy, itemized",
+            "paras": [
+              "The prop sheet is where the offseason bites people. The most-bet prop in football is David Montgomery's receiving yards — and Montgomery is a Houston Texan now, traded from Detroit this spring, catching passes against the Bills on Sunday. The third is Kenneth Walker's receptions: the Super Bowl MVP who skipped Seattle's ring ceremony debuts for Kansas City on Monday night, and the public wants his hands involved. The fifth is Malik Willis's rushing yards — popular not because he is anyone's backup anymore, but because Miami released its franchise quarterback and paid Willis $67.5 million to run its offense, legs included, starting Sunday in Las Vegas.",
+              "And the second-most-bet prop deserves its own paragraph: Cam Ward over half an interception, at plus money. The public is betting a pick out of a quarterback who threw seven all season as a rookie — one of the two cleanest 500-attempt rookie seasons in league history. Maybe the crowd knows something. More likely the crowd likes plus money attached to a plausible sentence, which is the entire economics of the prop menu.",
+              "The touchdown lists are pure lottery. Amon-Ra St. Brown at plus money is the respectable anchor; behind him sits Jared Goff at 20-to-1 to score a touchdown — not throw one, score one — which is the kind of ticket printed precisely because it sounds like a story to tell later. The first-scorer list is five names between 7-to-1 and 10-to-1, stapled to a million same-game parlays. None of this is analysis. All of it is inventory — and it all gets graded here anyway."
+            ],
+            "figures": [
+              {
+                "type": "table",
+                "label": "Most-bet player props",
+                "cols": [
+                  "Prop",
+                  "Price",
+                  "Result"
+                ],
+                "rows": [
+                  {
+                    "sel": "David Montgomery over 8.5 receiving yards — a Texan now",
+                    "num": "-160",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Cam Ward over 0.5 interceptions — he threw 7 all last year",
+                    "num": "+110",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Kenneth Walker over 2.5 receptions — the MVP, in red",
+                    "num": "-210",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Dontayvion Wicks over 27.5 receiving yards — an Eagle now",
+                    "num": "-120",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Malik Willis over 37.5 rushing yards — Miami's $67.5M starter",
+                    "num": "-125",
+                    "res": "Pending"
+                  }
+                ],
+                "note": "Three of the five most-bet props involve players who changed teams this offseason. The parlay economy does not read transaction wires."
+              },
+              {
+                "type": "table",
+                "label": "Most-bet touchdown scorers · anytime and first",
+                "cols": [
+                  "Scorer",
+                  "Price",
+                  "Result"
+                ],
+                "rows": [
+                  {
+                    "sel": "Amon-Ra St. Brown — anytime",
+                    "num": "+110",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Jared Goff — anytime. Yes, the quarterback",
+                    "num": "+2000",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Jalen Hurts — anytime",
+                    "num": "+125",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Josh Allen — anytime",
+                    "num": "+120",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Colston Loveland — anytime",
+                    "num": "+165",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Quentin Johnston — first TD",
+                    "num": "+800",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Aaron Jones — first TD",
+                    "num": "+725",
+                    "res": "Pending"
+                  },
+                  {
+                    "sel": "Christian Watson — first TD",
+                    "num": "+1050",
+                    "res": "Pending"
+                  }
+                ],
+                "note": "The first-scorer list is the purest lottery in the book: one team-sized dice roll per ticket."
+              }
+            ]
+          },
+          {
+            "title": "The Verdict",
+            "headline": "A Census, Not a Strategy",
+            "sub": "How to read a public board",
+            "paras": [
+              "What is this board actually for? Not for fading — this desk buried that reflex two issues ago, with the receipts: the most-bet college money went 5-0 on opening weekend while the tickets went 3-2, and the public's Week 1 in the NFL last year was a 3-13 disaster. The crowd is neither an ATM nor an oracle. The board is a census: what America believes, itemized with prices attached. This week America believes in the Bears, in one more Rodgers autumn, in quiet games it has now made loud, and in a Lions quarterback finding the end zone with his own legs at 20-to-1.",
+              "For the record, the bookmakers' own stated nightmares this week are none of these — the industry's biggest reported futures liability is the Raiders at 125-to-1, and its biggest MVP liability is Saquon Barkley. The public's Sunday card and the books' deep sweats are different documents entirely. This one — every table above — gets graded Monday night, in public, like everything in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Sunday and Monday · the whole board",
+          "title": "The full card.",
+          "big": "93%",
+          "note": "Five sides, five dogs, five totals, thirteen lottery tickets — everything America is holding, logged before kickoff and graded when the lights go out Monday.",
+          "tag": "Tail it or fade it",
+          "end": "Graded Monday night"
+        }
+      }
+    },
+    {
       "slug": "week-1-unders",
       "league": "NFL",
       "title": "Picking up where we left off: the Week 1 under",
