@@ -1,6 +1,235 @@
 {
   "articles": [
     {
+      "slug": "week-2-cfb-chalk",
+      "league": "CFB",
+      "title": "Ninety-eight percent sure: the Week 2 chalk stampede",
+      "dek": "Eight Top-25 favorites are drawing 89 to 98 percent of spread tickets at DraftKings — and this week, the money agrees. The all-time receipts on every one of them, and the mathematics of what giant chalk actually pays.",
+      "author": "Fade Desk",
+      "published": "2026-09-11T19:00:00Z",
+      "image": "/assets/dk-week2-cover.jpg",
+      "featured": false,
+      "sources": "Splits as posted in DraftKings' Week 2 report (ticket percentages as supplied; lines have since moved at several books — LSU toward -36.5, USC -31.5, Oregon down to -22.5). Handle figures via Cleatz and VSiN (Georgia and Notre Dame at 99% of money; Oklahoma 73/91). Matchups and Week 1 results verified via ESPN box scores. The -36 threshold study by Steve Makinen via VSiN and RotoWire's Mismatch Index; the 253-0 figure via ESPN; the favorite-longshot literature via Paul & Weinbach and the Journal of Sports Economics; 2024 favorites at 49% via BetMGM. Per-team records as published: Georgia's 38+ record via FOX Sports, Riley's USC ATS via Tony's Picks, Notre Dame via NBC Sports and FanDuel Research, Oregon under Lanning via NBC Sports, LSU via Blue Chip Analytics and Covers; entries without a published record say so. Parlay economics via The Washington Post and Marketplace; the Avello best-case quote via Yahoo. Model dissent via VSiN, BetMGM and CBS.",
+      "body": [
+        "Eight Top-25 favorites are drawing 89 to 98 percent of Week 2 spread tickets at DraftKings, laying between 5.5 and 44.5 points. And unlike most chalk stampedes, the money agrees: Georgia and Notre Dame are pulling 99 percent of the handle.",
+        "The receipts are less unanimous. Georgia was 0-15-1 against the spread laying 38 or more under Kirby Smart until last week. USC is 24-29 ATS under Lincoln Riley. LSU failed to cover this exact number against this exact opponent last season. Oregon is the only one of the eight that missed last week — and the public re-upped.",
+        "The math splits the board in two: the truly absurd numbers historically cover, and the merely huge ones are the sport's most reliable fade. All eight get graded here Saturday night."
+      ],
+      "mag": {
+        "volume": "The Splits, No. 7",
+        "issueLine": "September 2026",
+        "edition": "An edition on the certainty of crowds",
+        "coverKicker": "The Fade Index",
+        "coverLine": "Ninety-eight percent sure.",
+        "coverSub": "Eight giant favorites, one crowd, and the receipts on every ticket.",
+        "coverStat": {
+          "label": "On LSU -35.5",
+          "value": "98%",
+          "sub": "Of tickets at DraftKings"
+        },
+        "coverColor": true,
+        "quote": {
+          "text": "253-0.",
+          "attr": "Favorites of 40 or more points, straight up, 2005 to 2017 — until Howard beat UNLV"
+        },
+        "ledger": {
+          "title": "Giant chalk · the record",
+          "asOf": "Graded Saturday night",
+          "record": {
+            "v": "7-1",
+            "l": "These eight, ATS, last week",
+            "tone": "cash"
+          },
+          "items": [
+            {
+              "v": "18-5",
+              "l": "Home favorites of 36+, ATS, openers since 2013",
+              "tone": "cash"
+            },
+            {
+              "v": "0-15-1",
+              "l": "Georgia laying 38+ under Smart, until last week",
+              "tone": "wine"
+            },
+            {
+              "v": "49%",
+              "l": "All favorites ATS, 2024",
+              "tone": "wine"
+            },
+            {
+              "v": "253-1",
+              "l": "40-point favorites straight up since 2005"
+            }
+          ]
+        },
+        "sections": [
+          {
+            "title": "The Board",
+            "headline": "What the Crowd Bought",
+            "sub": "Eight sides, up to ninety-eight percent",
+            "paras": [
+              "The board reads like a loyalty oath: LSU laying 35 and a half against Louisiana Tech at 98 percent of tickets, SMU at 98 against an FCS opponent, Penn State at 95 over Temple, USC at 94, Georgia at 92 laying 40 and a half, Notre Dame at 89 laying the biggest number of the week, Oregon at 89 — and Oklahoma at 90 percent in the only game of the eight with two real teams in it.",
+              "Two things distinguish this stampede from the ordinary Saturday kind. First, the money is not quietly on the other side — it is louder than the tickets: Georgia and Notre Dame are each drawing 99 percent of the handle, and Oklahoma's dollars run eighteen points ahead of its tickets. Second, the lines are moving with the crowd — LSU has been bet up a point, USC too. The lone exception is Oregon, bet down toward 22 — the market's polite way of noting that the one team here that failed to cover last week is the one the crowd forgave fastest."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The chalk card · tickets at DraftKings",
+              "cols": [
+                "Side",
+                "Tickets",
+                "Result"
+              ],
+              "rows": [
+                {
+                  "sel": "LSU -35.5 vs. Louisiana Tech",
+                  "num": "98%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "SMU -25.5 vs. UC Davis",
+                  "num": "98%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Penn State -23.5 vs. Temple",
+                  "num": "95%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "USC -30.5 vs. Louisiana",
+                  "num": "94%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Georgia -40.5 vs. Western Kentucky",
+                  "num": "92%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Oklahoma -5.5 at Michigan",
+                  "num": "90%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Notre Dame -44.5 vs. Rice",
+                  "num": "89%",
+                  "res": "Pending"
+                },
+                {
+                  "sel": "Oregon -23.5 at Oklahoma State",
+                  "num": "89%",
+                  "res": "Pending"
+                }
+              ],
+              "record": "8",
+              "recordLabel": "Sides, one crowd",
+              "note": "Lines as posted in the DraftKings report; several have since moved — LSU toward -36.5, USC -31.5, Oregon down to -22.5."
+            }
+          },
+          {
+            "title": "The Receipts",
+            "headline": "The All-Time Record on Every Ticket",
+            "sub": "What each of these teams has done to chalk bettors before",
+            "paras": [
+              "The desk's rule: never print a percentage without its history. Here is each side's record as heavy chalk, as published — and where no record exists in print, the table says so rather than inventing one.",
+              "The standouts: Georgia spent the entire Kirby Smart era failing to cover exactly this kind of number — 0-15-1 laying 38 or more — until last Saturday's 63-3 evisceration of Tennessee State produced the first cover of the run. The crowd is now betting, at 92 percent, that the second one arrives seven days after the first. LSU played this precise fixture last year — Louisiana Tech, Death Valley, 36 and a half — won 23-7, and missed by nine and a half points. And Notre Dame, deservedly respected at 12 covers in its last 16 as double-digit chalk, carries the sport's freshest cautionary scars in this exact spot: Week 2 home openers lost outright to Northern Illinois as a 27.5-point favorite in 2024 and to Texas A&M in 2025."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The receipts · as published",
+              "cols": [
+                "Team",
+                "The record as chalk",
+                "Last week"
+              ],
+              "rows": [
+                {
+                  "sel": "Georgia",
+                  "num": "0-15-1 laying 38+ under Smart, until last week",
+                  "res": "Won"
+                },
+                {
+                  "sel": "USC",
+                  "num": "24-29 ATS under Lincoln Riley",
+                  "res": "Won"
+                },
+                {
+                  "sel": "LSU",
+                  "num": "4-8 ATS in 2025 · missed this exact number vs. La Tech last year",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Notre Dame",
+                  "num": "12 of 16 covered as double-digit chalk · but lost Week 2 home openers in 2024 and 2025",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Oregon",
+                  "num": "24-14 as a double-digit favorite under Lanning",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Penn State",
+                  "num": "0-3 ATS laying 40+ last September — the Villanova backdoor",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Oklahoma",
+                  "num": "4-0 ATS on the road in 2025 · no big-chalk split published",
+                  "res": "Won"
+                },
+                {
+                  "sel": "SMU",
+                  "num": "8-6 ATS in 2024 · no big-chalk split published",
+                  "res": "Won"
+                }
+              ],
+              "record": "7-1",
+              "recordLabel": "Last week, ATS",
+              "note": "Records as published by the outlets in the sources line; Oklahoma and SMU have no printed big-favorite splits, and the desk does not invent them."
+            }
+          },
+          {
+            "title": "The Mathematics",
+            "headline": "Where Giant Chalk Actually Pays",
+            "sub": "The -36 line divides the board",
+            "paras": [
+              "The best data on mega-favorites draws a line the crowd has never heard of. A thirteen-season study of opening-week blowouts found that home favorites of 36 or more — the truly cartoonish numbers — went 23-0 straight up and 18-5 against the spread, an unignorable 78 percent. But favorites in the merely huge range, around 30, have been one of the sport's most reliable fades for three years running. By that split, Georgia at 40.5 and Notre Dame at 44.5 sit in the historically safe zone; LSU at 35.5 and USC at 30.5 sit squarely in the fade band.",
+              "The underlying physics: college football margins scatter around the spread with a standard deviation of about sixteen points, which means a four-touchdown favorite is roughly 93 percent to win and a coin flip to cover. Favorites overall covered 49 percent of the time in 2024. The academic literature has said the same thing for decades — betting big underdogs of 28-plus violated a fair bet across a 25-year sample, a reverse favorite-longshot bias the market has never fully priced out.",
+              "And when it goes wrong, it goes wrong in one of two ways. The cinematic way: 253 straight wins by 40-point favorites, and then Howard, plus 45, beating UNLV outright. The ordinary way: Penn State last September, laying 40-plus in three straight games, winning them by an average of 44 — and going 0-3 against the spread, the last one on a Villanova touchdown at triple zeroes. The team that did that is on this week's board at 95 percent."
+            ]
+          },
+          {
+            "title": "The Machine",
+            "headline": "Why the Books Sleep Fine at 98 Percent",
+            "sub": "Tickets, parlays, and the real liability",
+            "paras": [
+              "A book holding 98 percent of tickets on one side sounds like a crisis. It is closer to a Tuesday. Ticket counts are headcounts, not dollars — mostly five-and-twenty-dollar parlay legs — and the industry's real chalk-Saturday exposure is correlated moneyline parlays, which is why DraftKings' own oddsmaker has said the book's best-case scenario on days like this is simply big underdogs keeping games close. The books are not merely tolerating the stampede; they are marketing it — Caesars spent the week promoting a blue-blood parlay built from exactly these games.",
+              "What makes this particular week interesting is that the usual escape hatch — 'the money is on the other side' — is closed. The handle agrees with the herd. The only dissenters left are the models: VSiN's power ratings list Louisiana Tech plus 35.5 and Temple plus 23.5 as the most underpriced underdogs on the board, BetMGM's own simulation gives Temple a 50.3 percent chance to cover against the 95 percent side, and CBS's model backs Oklahoma State against Oregon. Somebody is wrong at scale on Saturday, and for once it is not obvious who."
+            ]
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Eight Sides, Three Categories",
+            "sub": "And one game where everyone agrees",
+            "paras": [
+              "Sort the stampede by the math and it stops being one bet. The absurd numbers — Georgia, Notre Dame — sit where history is kindest to chalk, with team-specific asterisks the size of the spread. The merely huge — LSU, USC, and the re-upped Oregon — sit in the band the data likes to fade, and two of them carry the ugliest personal receipts on the board. The FCS specials — SMU, Penn State — are coin flips wearing certainty costumes.",
+              "And then there is Oklahoma at Michigan, the one entry that is a football game rather than a scheduling agreement. The public is at 90 percent. The sharp money is at 91. The total has been bet down four points by a small group holding large positions. And readers of this desk's Clay Travis tracker will note, with whatever emotion seems appropriate, that the crowd and the sharps have arrived at precisely the position Clay posted Wednesday: Oklahoma minus the points, under the total, blood-bank guarantee attached. The public, the professionals and college football's most faded man, all on one side of one game. The desk has no idea what that means. It knows only that it gets to grade it — all eight rows, Saturday night, in public, like everything in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Saturday · the chalk card",
+          "title": "Ninety-eight percent sure.",
+          "big": "8-0?",
+          "note": "Eight giant favorites, one crowd, and the money in agreement for once. History says somewhere between five and seven of these cover — and that nobody can tell you which ones.",
+          "tag": "Tail it or fade it",
+          "end": "Graded Saturday night",
+          "photo": "/assets/dk-week2-cover.jpg"
+        }
+      }
+    },
+    {
       "slug": "week-1-public-board",
       "league": "NFL",
       "title": "The public's full Week 1 card, graded before kickoff",
