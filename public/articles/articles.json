@@ -1,6 +1,196 @@
 {
   "articles": [
     {
+      "slug": "weekend-ledger-one",
+      "league": "NFL",
+      "title": "The Weekend Ledger: the house, the exchange, and Colin Cowherd",
+      "dek": "Everything opening weekend settled, in one file: a trillion-dollar argument between sportsbooks and prediction markets, a split decision between the house and the public, and the most break-even man in America going 1-4.",
+      "author": "Fade Desk",
+      "published": "2026-09-14T16:00:00Z",
+      "image": "",
+      "featured": false,
+      "sources": "Game results verified against ESPN box scores and team sites; Monday night pending at press time. Prediction-market volume via DeFi Rate's Sept 7-13 report ($983M Kalshi NFL, $2.3B record Saturday), Prediction News ($57B season projection), InGame and Sportico (parlay-taker losses, Susquehanna); sportsbook season estimate via the AGA as reported by ESPN; hold comparison via Next.io and OddsShopper; legal posture via DLA Piper's tracker, The Hill (Ninth Circuit) and CNBC (44 states). House-vs-public splits via FOX Sports (Feazel/Caesars), DraftKings and BetMGM figures as published, Covers and CBS. Cowherd's records scraped live from Cole's Gameday Blog (gamedaycole.com), the independent tracker also behind this desk's Stanford Steve file; his Blazin' Five graded against final scores. Exchange volume is notional and double-counted relative to sportsbook handle; the comparison is directional, not accounting.",
+      "body": [
+        "Opening weekend graded everything this desk has published for two weeks. The chalk card went 3-5, exactly along the -36 threshold. The public split the difference with the house. The unders died in public, as warned. And Clay Travis lost by half a point on a miracle.",
+        "Meanwhile the biggest bet of the weekend wasn't on any game: Kalshi traded $983 million of NFL Week 1 alone, inside a $2.3 billion record Saturday, while undercutting DraftKings' price on all thirty moneyline sides.",
+        "And Colin Cowherd — 731-671-44 lifetime against the NFL spread, the most precisely break-even picker ever tracked — went 1-4, including Panthers +3 in a 59-37 game."
+      ],
+      "mag": {
+        "volume": "The Weekend Ledger, No. 1",
+        "issueLine": "September 2026",
+        "edition": "An edition on everything, settled",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The weekend, graded.",
+        "coverSub": "The house, the exchange, the crowd, and the Blazin’ Five.",
+        "coverStat": {
+          "label": "Kalshi, NFL Week 1",
+          "value": "$983M",
+          "sub": "Traded on one weekend"
+        },
+        "quote": {
+          "text": "59-37.",
+          "attr": "Bears-Panthers — the highest-scoring opening game in NFL history, and the one number the crowd actually hit"
+        },
+        "ledger": {
+          "title": "Opening weekend · every desk card",
+          "asOf": "Monday night pending",
+          "record": {
+            "v": "8-6",
+            "l": "Overs, NFL Week 1",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "3-5",
+              "l": "The CFB chalk card, ATS",
+              "tone": "wine"
+            },
+            {
+              "v": "5-10",
+              "l": "Clay Travis, Week 2",
+              "tone": "wine"
+            },
+            {
+              "v": "2-5",
+              "l": "Public sides, settled",
+              "tone": "wine"
+            },
+            {
+              "v": "1-4",
+              "l": "Cowherd’s Blazin’ Five",
+              "tone": "wine"
+            }
+          ]
+        },
+        "sections": [
+          {
+            "title": "The Weekend",
+            "headline": "Everything Graded at Once",
+            "sub": "Two weeks of theses met one weekend of results",
+            "paras": [
+              "Rarely does a single weekend grade an entire publication. Saturday sorted the chalk stampede precisely along the line this desk drew: the absurd numbers covered — Georgia by fifty, Notre Dame by fifty-two — while the fade band went down in flames and the only two real games on the card, Oklahoma and Oregon, lost outright. Oklahoma State ended a twenty-one-game losing streak against the sixth-ranked team in America. Texas beat No. 1 Ohio State on the largest fourth-quarter comeback ever against a top-ranked team — and still failed to cover a point and a half, costing Clay Travis a winner on the best beat of his young 7-18-1 season.",
+              "Sunday answered Saturday with the highest-scoring opening day in memory: 96 points in Charlotte, 67 in Houston, 61 twice, eight overs against six unders into a market where 80 percent of the total money sat on the under side. Three totals landed within a half point of their number. The Cardinals beat the board's biggest favorite outright at 7-to-2. The Titans lost outright to a Jets team the same public also backed. Nobody — crowd, sharps, desk — owned the weekend. The margins owned the weekend."
+            ]
+          },
+          {
+            "title": "The Exchange",
+            "headline": "A Billion Dollars That Skipped the Window",
+            "sub": "Prediction markets vs. sportsbooks, opening weekend",
+            "stats": [
+              {
+                "v": "$983M",
+                "l": "Kalshi NFL Week 1 volume"
+              },
+              {
+                "v": "$2.3B",
+                "l": "Record Saturday · 60% parlays"
+              },
+              {
+                "v": "4.32%",
+                "l": "Kalshi implied hold — under both books",
+                "tone": "cash"
+              }
+            ],
+            "paras": [
+              "The largest number of the weekend appeared on no scoreboard. Kalshi traded roughly $983 million of NFL Week 1 markets — about triple last year's opening weekend — inside a record $2.3 billion single Saturday and a $14 billion all-venue week. The season projection now runs to $57 billion of football prediction-market volume, against the industry association's estimate of $29.5 billion wagered with licensed sportsbooks all season. The comparison flatters the exchanges — notional volume double-counts and churns in ways handle does not — but the direction is not in dispute, and neither is the growth rate: sportsbook handle is projected up 0.3 percent this year.",
+              "The competition is now visible in the price. Kalshi's implied hold on Week 1 markets was 4.32 percent against FanDuel's 4.44 and DraftKings' 4.51, and it undercut DraftKings on all thirty moneyline sides on the Week 1 board. Add the new tax asymmetry — this year's 90 percent cap on gambling-loss deductions applies to sportsbook bettors but not to exchange contracts, which settle as capital gains — and the structural case writes itself, which is why DraftKings and Flutter have reportedly committed $600 million between them to prediction-market products while the courts split: one circuit says the states can't touch Kalshi, another says they can, forty-four attorneys general disagree with the CFTC, and everyone expects the Supreme Court.",
+              "One thing did transfer intact from the old world to the new: the customer's results. Roughly 60 percent of that record Saturday was parlays, and the record on exchange parlays is grim — retail traders lost about $117 million on Kalshi combinations in the first four months of this year, with firms like Susquehanna standing on the other side. The building changed. The arithmetic commuted."
+            ]
+          },
+          {
+            "title": "The House",
+            "headline": "A Split Decision, Leaning Home",
+            "sub": "How the books did against the public",
+            "paras": [
+              "The public's weekend was neither bloodbath nor jackpot — it was a portfolio. The wins were loud: the Bears, the most public side in football at 93 percent, covered by 22 in the record-setting Charlotte shootout, and the same crowd's over 47 cashed by seven touchdowns. The Cardinals, carrying 81 percent of the game's money, beat the week's biggest favorite outright at 7-to-2 — the public's single best result of the young season.",
+              "The house's wins were quieter and larger. The two heaviest money positions of the week — Cowboys minus three, at 84 percent of the handle, and Eagles minus five and a half — both failed, one of them outright on Sunday night. The under, holding 80 percent of total money, went 6-8. The touchdown-scorer lottery paid one ticket in eight, with the most-bet rookie catching zero passes in a 59-point game. A nationally promoted 25-to-1 parlay went zero for four legs. Pending Denver tonight — the crowd's biggest remaining position, most-bet side and most-bet dog moneyline in a single wager — opening week grades as a points win for the house, on the cards, by decision.",
+              "Which, for the record, is what the last two weeks of this desk kept saying: the crowd is not an ATM and not an oracle, and the house does not need to win every hand. It needs the price, the parlays, and your patience."
+            ]
+          },
+          {
+            "title": "The Cowherd File",
+            "headline": "The Most Break-Even Man in America",
+            "sub": "Via Cole’s Gameday Blog — 1,778 tracked picks",
+            "stats": [
+              {
+                "v": "731-671-44",
+                "l": "All-time NFL, against the spread"
+              },
+              {
+                "v": "52.14%",
+                "l": "Career rate · break-even is 52.4"
+              },
+              {
+                "v": "-6.45",
+                "l": "Units, lifetime NFL",
+                "tone": "wine"
+              }
+            ],
+            "paras": [
+              "The same independent tracker that keeps Stanford Steve's ledger — Cole's Gameday Blog, the desk's database of record — has graded 1,441 Colin Cowherd NFL picks across more than a decade of the Blazin' Five. The career line is a marvel of precision: 731 wins, 671 losses, 44 pushes. That is 52.14 percent — sixty of a percentage point short of break-even at standard pricing — which works out to minus 6.45 units, lifetime. Add his college card (169-158-10, minus 4.36) and the full file reads 900-829-54: a man who has beaten a coin flip for fifteen years and paid the sportsbook industry roughly eleven units for the privilege. Clay Travis is a cautionary tale. Cowherd is something more instructive: proof that being pretty good is, at the window, indistinguishable from being nothing at all.",
+              "This weekend's Blazin' Five will not help the average. Jacksonville minus eight and a half cashed by 24. Everything else died: the Eagles won by two and needed five and a half, the Texans caught a point and a half and lost by five, the Lions won by one in overtime and needed seven — and the headliner, Carolina plus three against the most public team in America, lost by 22 in the highest-scoring opener ever played. One and four: minus 3.09 units, career file to 732-675-44. The most break-even man in America is, this morning, fractionally less break-even."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The Blazin’ Five · Week 1, graded",
+              "cols": [
+                "Pick",
+                "Result",
+                "Grade"
+              ],
+              "rows": [
+                {
+                  "sel": "Eagles -5.5 vs. Commanders",
+                  "num": "won by 2",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Jaguars -8.5 vs. Browns",
+                  "num": "won 34-10",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Texans +1.5 vs. Bills",
+                  "num": "lost 31-36",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Lions -6.5 vs. Saints",
+                  "num": "won by 1, in overtime",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Panthers +3 vs. Bears",
+                  "num": "lost 37-59",
+                  "res": "Lost"
+                }
+              ],
+              "record": "1-4",
+              "recordLabel": "Week 1",
+              "note": "Tracked and graded via Cole’s Gameday Blog. Career NFL file after the weekend: 732-675-44, minus 9.5 units."
+            }
+          },
+          {
+            "title": "The Verdict",
+            "headline": "The Margins Are the House",
+            "sub": "What opening weekend actually taught",
+            "paras": [
+              "Count the half points. Furman by a half. Florida State on the nose. The Patriots on the nose. Texas by one against a point and a half. Three Sunday totals within a half point of their numbers. Washington's two-point try stuffed to keep a total over by exactly half a point. The game is not played against teams or against crowds; it is played against numbers set by people whose entire profession is the half point — and this weekend, across two sports, three graded cards, an exchange doing a billion dollars, and the most break-even picker alive, the numbers won on points.",
+              "The desk's standing conclusions all survived contact: giant chalk sorts at -36, a public under is a dead under, the money list travels until it doesn't, and every record — Clay's 248-294-1, Cowherd's 732-675-44, the crowd's split decision — only exists because somebody wrote it down. That is the whole product. Denver-Kansas City closes the ledger tonight, and Week 2 opens it again Thursday."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Tonight · the last line",
+          "title": "Broncos +2.5",
+          "big": "$983M",
+          "note": "The most-bet side and most-bet dog of the week closes the opening ledger at Arrowhead — while the exchanges count a billion dollars that never touched a sportsbook window.",
+          "tag": "Tail it or fade it",
+          "end": "The ledger rolls to Week 2"
+        }
+      }
+    },
+    {
       "slug": "week-2-cfb-chalk",
       "league": "CFB",
       "title": "Ninety-eight percent sure: the Week 2 chalk stampede",
@@ -234,7 +424,7 @@
       "slug": "week-1-public-board",
       "league": "NFL",
       "title": "The public's full Week 1 card, graded before kickoff",
-      "dek": "Everything America is holding this weekend, per BetMGM's board: the Bears again, Aaron Rodgers laying points at forty-two, a rookie's interception at plus money, and a quarterback at 20-to-1 to score. The desk logs all of it — and grades all of it Monday night.",
+      "dek": "GRADED — a split decision. The Bears cashed by 22 in the highest-scoring opener ever, the Cardinals paid the public 7-to-2, and the Cowboys and Eagles money died. Sides 2-5, dogs 2-2, props 6-6 — with Denver, the crowd's biggest position, closing the books tonight.",
       "author": "Fade Desk",
       "published": "2026-09-11T16:00:00Z",
       "image": "",
@@ -282,31 +472,33 @@
                 "rows": [
                   {
                     "sel": "Bears at Panthers",
-                    "num": "-3",
-                    "res": "Pending"
+                    "num": "-3 · won 59-37",
+                    "res": "Won"
                   },
                   {
                     "sel": "Steelers vs. Falcons",
-                    "num": "-5",
-                    "res": "Pending"
+                    "num": "-5 · won 20-13",
+                    "res": "Won"
                   },
                   {
                     "sel": "Titans vs. Jets",
-                    "num": "-1.5",
-                    "res": "Pending"
+                    "num": "-1.5 · LOST 10-23",
+                    "res": "Lost"
                   },
                   {
                     "sel": "Lions vs. Saints",
-                    "num": "-7",
-                    "res": "Pending"
+                    "num": "-7 · won by 1, in overtime",
+                    "res": "Lost"
                   },
                   {
                     "sel": "Broncos at Chiefs",
-                    "num": "+2.5",
+                    "num": "+2.5 · Monday night",
                     "res": "Pending"
                   }
                 ],
-                "note": "Lines as posted at BetMGM in its public-betting report; consensus differs at some books."
+                "note": "The Bears cashed by 22 in the highest-scoring opener in league history. The Titans lost outright to the Jets.",
+                "record": "2-2",
+                "recordLabel": "Denver pending"
               },
               {
                 "type": "table",
@@ -319,31 +511,33 @@
                 "rows": [
                   {
                     "sel": "Steelers vs. Falcons",
-                    "num": "-5",
-                    "res": "Pending"
+                    "num": "-5 · won 20-13",
+                    "res": "Won"
                   },
                   {
                     "sel": "Bears at Panthers",
-                    "num": "-3",
-                    "res": "Pending"
+                    "num": "-3 · won 59-37",
+                    "res": "Won"
                   },
                   {
                     "sel": "Cowboys at Giants",
-                    "num": "-3",
-                    "res": "Pending"
+                    "num": "-3 · LOST 20-28",
+                    "res": "Lost"
                   },
                   {
                     "sel": "Colts at Ravens",
-                    "num": "+3.5",
-                    "res": "Pending"
+                    "num": "+3.5 · lost by 18",
+                    "res": "Lost"
                   },
                   {
                     "sel": "Commanders game: Eagles",
-                    "num": "-5.5",
-                    "res": "Pending"
+                    "num": "-5.5 · won by 2",
+                    "res": "Lost"
                   }
                 ],
-                "note": "The dollars drop the Lions and Broncos and add a road dog. Last September, the most-bet CFB money list went 5-0; the tickets went 3-2."
+                "note": "The two biggest money magnets — Cowboys -3 and Eagles -5.5 — both went to the house. Last week's CFB money list went 5-0; this one did not travel.",
+                "record": "2-3",
+                "recordLabel": "Final"
               }
             ]
           },
@@ -366,31 +560,33 @@
               "rows": [
                 {
                   "sel": "Broncos at Chiefs",
-                  "num": "+120",
+                  "num": "+120 · Monday night",
                   "res": "Pending"
                 },
                 {
                   "sel": "Cardinals at Chargers",
-                  "num": "+350",
-                  "res": "Pending"
+                  "num": "+350 · WON 26-14",
+                  "res": "Won"
                 },
                 {
                   "sel": "Packers at Vikings",
-                  "num": "+105",
-                  "res": "Pending"
+                  "num": "+105 · led 22-10, lost 22-39",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Browns at Jaguars",
-                  "num": "+310",
-                  "res": "Pending"
+                  "num": "+310 · lost 10-34",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Jets at Titans",
-                  "num": "+100",
-                  "res": "Pending"
+                  "num": "+100 · WON 23-10",
+                  "res": "Won"
                 }
               ],
-              "note": "Five outright winners at plus money is the dream. One or two is the math."
+              "note": "The Cardinals — 81 percent of the game's spread money — beat the board's biggest favorite outright at 7-to-2. The week's biggest upset belonged to the public.",
+              "record": "2-2",
+              "recordLabel": "Denver pending"
             }
           },
           {
@@ -412,33 +608,33 @@
               "rows": [
                 {
                   "sel": "Jets at Titans",
-                  "num": "under 38.5",
-                  "res": "Pending"
+                  "num": "under 38.5 · landed 33",
+                  "res": "Won"
                 },
                 {
                   "sel": "Buccaneers at Bengals",
-                  "num": "under 51.5",
-                  "res": "Pending"
+                  "num": "under 51.5 · landed 60",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Bears at Panthers",
-                  "num": "over 47",
-                  "res": "Pending"
+                  "num": "over 47 · landed 96",
+                  "res": "Won"
                 },
                 {
                   "sel": "Commanders at Eagles",
-                  "num": "under 44.5",
-                  "res": "Pending"
+                  "num": "under 44.5 · landed 46",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Saints at Lions",
-                  "num": "over 49.5",
-                  "res": "Pending"
+                  "num": "over 49.5 · landed 61",
+                  "res": "Won"
                 }
               ],
-              "record": "3 of 5",
-              "recordLabel": "Are unders",
-              "note": "The under lean this desk covered two days ago is now the crowd's lean. That is not the same trade."
+              "record": "3-2",
+              "recordLabel": "Final",
+              "note": "The crowd's single loudest thought — Bears cover, Bears over — cashed twice in one 96-point game. 'Chicago 31, Carolina 13' undersold it by 51 points."
             }
           },
           {
@@ -461,32 +657,34 @@
                 ],
                 "rows": [
                   {
-                    "sel": "David Montgomery over 8.5 receiving yards — a Texan now",
+                    "sel": "David Montgomery over 8.5 receiving yards — 19, plus three TDs",
                     "num": "-160",
-                    "res": "Pending"
+                    "res": "Won"
                   },
                   {
-                    "sel": "Cam Ward over 0.5 interceptions — he threw 7 all last year",
+                    "sel": "Cam Ward over 0.5 interceptions — zero, again",
                     "num": "+110",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
-                    "sel": "Kenneth Walker over 2.5 receptions — the MVP, in red",
+                    "sel": "Kenneth Walker over 2.5 receptions — Monday night",
                     "num": "-210",
                     "res": "Pending"
                   },
                   {
-                    "sel": "Dontayvion Wicks over 27.5 receiving yards — an Eagle now",
+                    "sel": "Dontayvion Wicks over 27.5 receiving yards — 73 and a score",
                     "num": "-120",
-                    "res": "Pending"
+                    "res": "Won"
                   },
                   {
-                    "sel": "Malik Willis over 37.5 rushing yards — Miami's $67.5M starter",
+                    "sel": "Malik Willis over 37.5 rushing yards — 39. By a yard and a half",
                     "num": "-125",
-                    "res": "Pending"
+                    "res": "Won"
                   }
                 ],
-                "note": "Three of the five most-bet props involve players who changed teams this offseason. The parlay economy does not read transaction wires."
+                "note": "The transaction-wire props all cashed — the Texan, the Eagle and the $67.5M Dolphin delivered. The Ward interception never came; his clean streak reached 18 games.",
+                "record": "3-1",
+                "recordLabel": "Walker pending"
               },
               {
                 "type": "table",
@@ -498,47 +696,49 @@
                 ],
                 "rows": [
                   {
-                    "sel": "Amon-Ra St. Brown — anytime",
+                    "sel": "Amon-Ra St. Brown — anytime. Twice, including the OT winner",
                     "num": "+110",
-                    "res": "Pending"
+                    "res": "Won"
                   },
                   {
-                    "sel": "Jared Goff — anytime. Yes, the quarterback",
+                    "sel": "Jared Goff — anytime. Two passing TDs count for nothing here",
                     "num": "+2000",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
-                    "sel": "Jalen Hurts — anytime",
+                    "sel": "Jalen Hurts — anytime. Three passing TDs, zero runs",
                     "num": "+125",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
-                    "sel": "Josh Allen — anytime",
+                    "sel": "Josh Allen — anytime. Two rushing TDs",
                     "num": "+120",
-                    "res": "Pending"
+                    "res": "Won"
                   },
                   {
-                    "sel": "Colston Loveland — anytime",
+                    "sel": "Colston Loveland — anytime. Zero catches in a 59-point game",
                     "num": "+165",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
                     "sel": "Quentin Johnston — first TD",
                     "num": "+800",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
                     "sel": "Aaron Jones — first TD",
                     "num": "+725",
-                    "res": "Pending"
+                    "res": "Lost"
                   },
                   {
-                    "sel": "Christian Watson — first TD",
+                    "sel": "Christian Watson — first TD. An 81-yard bomb",
                     "num": "+1050",
-                    "res": "Pending"
+                    "res": "Won"
                   }
                 ],
-                "note": "The first-scorer list is the purest lottery in the book: one team-sized dice roll per ticket."
+                "note": "The lottery paid exactly like a lottery — with one 10-to-1 jackpot on the Watson bomb.",
+                "record": "3-5",
+                "recordLabel": "Final"
               }
             ]
           },
@@ -548,17 +748,18 @@
             "sub": "How to read a public board",
             "paras": [
               "What is this board actually for? Not for fading — this desk buried that reflex two issues ago, with the receipts: the most-bet college money went 5-0 on opening weekend while the tickets went 3-2, and the public's Week 1 in the NFL last year was a 3-13 disaster. The crowd is neither an ATM nor an oracle. The board is a census: what America believes, itemized with prices attached. This week America believes in the Bears, in one more Rodgers autumn, in quiet games it has now made loud, and in a Lions quarterback finding the end zone with his own legs at 20-to-1.",
-              "For the record, the bookmakers' own stated nightmares this week are none of these — the industry's biggest reported futures liability is the Raiders at 125-to-1, and its biggest MVP liability is Saquon Barkley. The public's Sunday card and the books' deep sweats are different documents entirely. This one — every table above — gets graded Monday night, in public, like everything in the file."
+              "For the record, the bookmakers' own stated nightmares this week are none of these — the industry's biggest reported futures liability is the Raiders at 125-to-1, and its biggest MVP liability is Saquon Barkley. The public's Sunday card and the books' deep sweats are different documents entirely. This one — every table above — gets graded Monday night, in public, like everything in the file.",
+              "Postscript, Monday: a split decision, as censuses usually are. The crowd's flagship cashed spectacularly — the Bears covered by 22 inside the highest-scoring opening game ever played, and the same public that steamed the total to 47 watched it land 96. The Cardinals, carrying 81 percent of the money, beat the board's biggest favorite outright at 7-to-2. But the two heaviest money positions — Cowboys and Eagles — both died, the Titans lost outright to the team the public also backed on the other side, and the touchdown lottery paid one ticket in eight. The house's quiet win: 80 percent of total money sat on unders while the week went over 8-6. Denver at Kansas City — the most-bet side and the most-bet dog in one wager — settles the census tonight."
             ]
           }
         ],
         "call": {
           "kicker": "Sunday and Monday · the whole board",
           "title": "The full card.",
-          "big": "93%",
-          "note": "Five sides, five dogs, five totals, thirteen lottery tickets — everything America is holding, logged before kickoff and graded when the lights go out Monday.",
+          "big": "2-5",
+          "note": "GRADED: the Bears paid, the Cardinals paid 7-to-2, and nearly everything else went to the house. Denver tonight is the last line of the census.",
           "tag": "Tail it or fade it",
-          "end": "Graded Monday night"
+          "end": "Final after Monday night"
         }
       }
     },
@@ -566,7 +767,7 @@
       "slug": "week-1-unders",
       "league": "NFL",
       "title": "Picking up where we left off: the Week 1 under",
-      "dek": "Week 1 unders went 12-4 last season. The 2026 season opened 13-10 — under by three touchdowns. That makes it 1-0, with fifteen totals left on the board this weekend.",
+      "dek": "GRADED — the sequel flopped. After 12-4 last September and a 1-0 start, the rest of Week 1 went OVER 8-6, capped by the highest-scoring opener in NFL history. The desk's own warning — the under had gone public — graded prophetic.",
       "author": "Fade Desk",
       "published": "2026-09-10T15:00:00Z",
       "image": "/assets/unders-cover.jpg",
@@ -684,74 +885,74 @@
               ],
               "rows": [
                 {
-                  "sel": "Rams vs. 49ers — Melbourne, tonight",
-                  "num": "48.5",
-                  "res": "Pending"
+                  "sel": "Rams vs. 49ers — Melbourne",
+                  "num": "48.5 · landed 34",
+                  "res": "Won"
                 },
                 {
                   "sel": "Bills at Texans",
-                  "num": "44.5",
-                  "res": "Pending"
+                  "num": "44.5 · landed 67",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Colts at Ravens",
-                  "num": "48.5",
-                  "res": "Pending"
+                  "num": "48.5 · landed 64",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Commanders at Eagles",
-                  "num": "45.5",
-                  "res": "Pending"
+                  "num": "45.5 · landed 46, over by a half",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Cowboys at Giants",
-                  "num": "48.5",
-                  "res": "Pending"
+                  "num": "48.5 · landed 48, under by a half",
+                  "res": "Won"
                 },
                 {
-                  "sel": "Bears at Panthers — steamed up from 44.5",
-                  "num": "47",
-                  "res": "Pending"
+                  "sel": "Bears at Panthers",
+                  "num": "47 · landed 96",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Saints at Lions",
-                  "num": "50",
-                  "res": "Pending"
+                  "num": "50 · landed 61 in overtime",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Buccaneers at Bengals",
-                  "num": "50.5",
-                  "res": "Pending"
+                  "num": "50.5 · landed 60",
+                  "res": "Lost"
                 },
                 {
-                  "sel": "Jets at Titans — the low bar",
-                  "num": "38.5",
-                  "res": "Pending"
+                  "sel": "Jets at Titans — the low bar held",
+                  "num": "38.5 · landed 33",
+                  "res": "Won"
                 },
                 {
                   "sel": "Dolphins at Raiders",
-                  "num": "40.5",
-                  "res": "Pending"
+                  "num": "40.5 · landed 40, under by a half",
+                  "res": "Won"
                 },
                 {
                   "sel": "Steelers vs. Falcons",
-                  "num": "42.5",
-                  "res": "Pending"
+                  "num": "42.5 · landed 33",
+                  "res": "Won"
                 },
                 {
                   "sel": "Browns at Jaguars",
-                  "num": "40.5",
-                  "res": "Pending"
+                  "num": "40.5 · landed 44",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Cardinals at Chargers",
-                  "num": "46.5",
-                  "res": "Pending"
+                  "num": "46.5 · landed 40",
+                  "res": "Won"
                 },
                 {
-                  "sel": "Packers at Vikings — 87% of total money on the under",
-                  "num": "45.5",
-                  "res": "Pending"
+                  "sel": "Packers at Vikings",
+                  "num": "45.5 · landed 61",
+                  "res": "Lost"
                 },
                 {
                   "sel": "Broncos at Chiefs — Monday night",
@@ -759,9 +960,9 @@
                   "res": "Pending"
                 }
               ],
-              "record": "1-0",
-              "recordLabel": "Unders, Week 1",
-              "note": "Totals as posted at major books September 9-10; check live numbers. Graded here as the weekend goes final."
+              "record": "6-8",
+              "recordLabel": "Unders on this card",
+              "note": "Graded from final scores; Monday night pending. Three totals landed within a half point of the number."
             }
           },
           {
@@ -770,23 +971,24 @@
             "sub": "What the September under is actually worth",
             "paras": [
               "Now the desk does what the desk does to its own thesis. The long-run Week 1 under rate is about 54.9 percent since 2015 — real, and about two points of margin over break-even, which is an edge the way a sweater is a coat. The books shade September totals low on purpose; the year after the last 12-4, the week graded a coin flip, which is exactly what chasing a famous number gets you. And this year the crowd is arriving: when 87 percent of the money at a major book is on an under, the trade is no longer contrarian — it is merely early to its own funeral.",
-              "So the read is the one this desk keeps arriving at: the lean is a reason to like low totals you already like — backup quarterbacks, wind, teams whose offenses are installing rather than executing — and no reason at all to bet sixteen unders like it is 2022. Twelve and four was last year. One and oh is one game. The other fifteen get graded here, in public, by Monday night."
+              "So the read is the one this desk keeps arriving at: the lean is a reason to like low totals you already like — backup quarterbacks, wind, teams whose offenses are installing rather than executing — and no reason at all to bet sixteen unders like it is 2022. Twelve and four was last year. One and oh is one game. The other fifteen get graded here, in public, by Monday night.",
+              "Postscript, Monday: the sequel flopped. After Wednesday's 23-point opener, the rest of the week scored like it was offended by this article — 8 overs against 6 unders, a 67-point shootout in Houston, 61 in two different stadiums, and Bears-Panthers landing 96, the highest-scoring opening game in NFL history, over its number by seven touchdowns. The under finished 7-8 with Monday night pending. The verdict chapter aged better than the thesis: the public had 80 percent of total money on unders this week, and the desk wrote that a crowded under is 'early to its own funeral.' The funeral was Sunday, 1 o'clock Eastern. Three of the fourteen totals landed within a half point of the number — the margins remain undefeated."
             ]
           }
         ],
         "call": {
           "kicker": "This weekend · fifteen totals",
           "title": "Under season.",
-          "big": "1-0",
-          "note": "Twelve and four last September, one and oh after Wednesday night. The scoreboard sleeps in early — and the desk grades the whole card by Monday night.",
+          "big": "7-8",
+          "note": "GRADED: twelve-and-four was last year. This year the crowd joined the trade, the scoreboard woke up angry, and the week went over — exactly the outcome the verdict chapter priced. Monday night settles the last total.",
           "tag": "Tail it or fade it",
-          "end": "Graded through Monday",
+          "end": "Final: the unders lost",
           "photo": "/assets/unders-cover.jpg"
         },
         "coverPhoto": "/assets/unders-cover.jpg",
         "ledger": {
           "title": "The Week 1 under",
-          "asOf": "2026 card live",
+          "asOf": "Graded · Monday night game pending",
           "record": {
             "v": "12-4",
             "l": "Last season, Week 1",
@@ -794,22 +996,23 @@
           },
           "items": [
             {
-              "v": "1-0",
-              "l": "2026, after the opener",
-              "tone": "cash"
+              "v": "7-8",
+              "l": "2026 Week 1, one game pending",
+              "tone": "wine"
             },
             {
               "v": "54.9%",
               "l": "Long-run rate since 2015"
             },
             {
-              "v": "20.7",
-              "l": "Team PPG, Week 1 last year",
+              "v": "80%",
+              "l": "Of total money was on unders",
               "tone": "wine"
             },
             {
-              "v": "15",
-              "l": "Totals pending this weekend"
+              "v": "96",
+              "l": "Points in Bears-Panthers",
+              "tone": "wine"
             }
           ]
         },
