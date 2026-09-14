@@ -7,8 +7,8 @@
       "dek": "Everything opening weekend settled, in one file: a trillion-dollar argument between sportsbooks and prediction markets, a split decision between the house and the public, and the most break-even man in America going 1-4.",
       "author": "Fade Desk",
       "published": "2026-09-14T16:00:00Z",
-      "image": "",
-      "featured": false,
+      "image": "/assets/cowherd-cover.jpg",
+      "featured": true,
       "sources": "Game results verified against ESPN box scores and team sites; Monday night pending at press time. Prediction-market volume via DeFi Rate's Sept 7-13 report ($983M Kalshi NFL, $2.3B record Saturday), Prediction News ($57B season projection), InGame and Sportico (parlay-taker losses, Susquehanna); sportsbook season estimate via the AGA as reported by ESPN; hold comparison via Next.io and OddsShopper; legal posture via DLA Piper's tracker, The Hill (Ninth Circuit) and CNBC (44 states). House-vs-public splits via FOX Sports (Feazel/Caesars), DraftKings and BetMGM figures as published, Covers and CBS. Cowherd's records scraped live from Cole's Gameday Blog (gamedaycole.com), the independent tracker also behind this desk's Stanford Steve file; his Blazin' Five graded against final scores. Exchange volume is notional and double-counted relative to sportsbook handle; the comparison is directional, not accounting.",
       "body": [
         "Opening weekend graded everything this desk has published for two weeks. The chalk card went 3-5, exactly along the -36 threshold. The public split the difference with the house. The unders died in public, as warned. And Clay Travis lost by half a point on a miracle.",
@@ -20,12 +20,12 @@
         "issueLine": "September 2026",
         "edition": "An edition on everything, settled",
         "coverKicker": "The Fade Index",
-        "coverLine": "The weekend, graded.",
-        "coverSub": "The house, the exchange, the crowd, and the Blazin’ Five.",
+        "coverLine": "The most break-even man in America.",
+        "coverSub": "Colin Cowherd, graded: fifteen years at 52.14 percent — and the weekend everything else settled too.",
         "coverStat": {
-          "label": "Kalshi, NFL Week 1",
-          "value": "$983M",
-          "sub": "Traded on one weekend"
+          "label": "Lifetime NFL, ATS",
+          "value": "731-671-44",
+          "sub": "-6.45 units"
         },
         "quote": {
           "text": "59-37.",
@@ -186,8 +186,10 @@
           "big": "$983M",
           "note": "The most-bet side and most-bet dog of the week closes the opening ledger at Arrowhead — while the exchanges count a billion dollars that never touched a sportsbook window.",
           "tag": "Tail it or fade it",
-          "end": "The ledger rolls to Week 2"
-        }
+          "end": "The ledger rolls to Week 2",
+          "photo": "/assets/cowherd-cover.jpg"
+        },
+        "coverPhoto": "/assets/cowherd-cover.jpg"
       }
     },
     {
@@ -2253,7 +2255,7 @@
       "author": "Fade Desk",
       "published": "2026-09-14T14:00:00Z",
       "image": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
-      "featured": true,
+      "featured": false,
       "sources": "Picks and records via @ExposingClay on X (Week 1 final: 2–8–1; the Week 2 card as posted); game results via ESPN box scores; the 2024 record as posted by Travis himself. All picks graded at one unit, standard −110 pricing, at the numbers as published. This file updates weekly. The all-time documented record (248-294-1) sums the season endpoints on public record — 2017 via Eleven Warriors, 2024 via his own columns, 2025 through Week 14, 2026 via this file; no complete career total has ever been published by any outlet.",
       "mag": {
         "volume": "Volume One",
