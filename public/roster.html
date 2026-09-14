@@ -44,11 +44,12 @@ a { color:inherit; text-decoration:none; }
 .c-body h2 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,4.4vw,3rem); line-height:1; margin-bottom:0.8rem; }
 .c-note { font-size:0.8rem; color:var(--soft); max-width:64ch; margin-bottom:1.1rem; }
 .c-note b { color:var(--carbon); }
-.chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.2rem; }
-.chip { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border:1.5px solid var(--carbon); border-radius:4px; padding:0.4rem 0.8rem; background:var(--paper); transition:all 0.15s ease; }
-.chip:hover { background:var(--carbon); color:var(--paper); }
-.chip span { color:var(--soft); font-weight:600; }
-.chip:hover span { color:rgba(244,242,234,0.7); }
+.socials { margin-bottom:1.3rem; border-top:1.5px solid var(--carbon); }
+.soc { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding:0.5rem 0; border-bottom:1px dashed var(--line); font-size:0.7rem; }
+.soc .pl { font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+.soc a.pl:hover { color:var(--tail); text-decoration:underline; }
+.soc .n { font-weight:700; color:var(--carbon); white-space:nowrap; }
+.soc .n span { font-weight:600; color:var(--soft); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; margin-left:0.3rem; }
 .p-label { font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); border-top:1px dashed var(--line); padding-top:0.9rem; margin-bottom:0.4rem; }
 .p-list div { position:relative; padding:0.32rem 0 0.32rem 1.2rem; font-size:0.72rem; color:var(--soft); border-bottom:1px dashed var(--line); }
 .p-list div:last-child { border-bottom:none; }
@@ -100,10 +101,10 @@ a { color:inherit; text-decoration:none; }
       <div class="c-kick">Recording Artist &middot; Atlanta</div>
       <h2>Lil Baby</h2>
       <p class="c-note">Atlanta's defining rap superstar of the streaming era &mdash; a <b>Grammy winner</b> whose 4PF imprint made him a mogul as well as an artist. He operates where hip-hop meets sports and global culture: courtside at State Farm Arena, and fronting the <b>official FIFA World Cup anthem</b> for Budweiser.</p>
-      <div class="chips">
-        <a class="chip" href="https://www.instagram.com/lilbaby/" target="_blank" rel="noopener">Instagram <span>&middot; 23M</span></a>
-        <a class="chip" href="https://www.tiktok.com/@lilbaby" target="_blank" rel="noopener">TikTok <span>&middot; 6.4M</span></a>
-        <a class="chip" href="https://www.youtube.com/@lilbabyatl" target="_blank" rel="noopener">YouTube <span>&middot; 10M</span></a>
+      <div class="socials">
+    <div class="soc"><a class="pl" href="https://www.instagram.com/lilbaby/" target="_blank" rel="noopener">Instagram</a><span class="n">23M<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://www.tiktok.com/@lilbaby" target="_blank" rel="noopener">TikTok</a><span class="n">6.4M<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://www.youtube.com/@lilbabyatl" target="_blank" rel="noopener">YouTube</a><span class="n">10M<span>followers</span></span></div>
       </div>
       <div class="p-label">Selected partnerships</div>
       <div class="p-list">
@@ -121,9 +122,9 @@ a { color:inherit; text-decoration:none; }
       <div class="c-kick">Recording Artist &middot; Detroit</div>
       <h2>Veeze</h2>
       <p class="c-note">The cult-favorite Detroit rapper whose 2023 album <b>Ganger</b> made national year-end lists and turned a local legend into a tastemaker. A Billboard Hot 100 entry with Lil Yachty, festival main stages, and his own <b>Navy Wavy</b> label in partnership with Warner Records &mdash; with no consumer brand deals yet, his lane is wide open.</p>
-      <div class="chips">
-        <a class="chip" href="https://www.instagram.com/veezeworst/" target="_blank" rel="noopener">Instagram <span>&middot; 800K</span></a>
-        <a class="chip" href="https://music.youtube.com/channel/UC4WllQ3vORyygOrM0eba_5A" target="_blank" rel="noopener">YouTube Music</a>
+      <div class="socials">
+    <div class="soc"><a class="pl" href="https://www.instagram.com/veezeworst/" target="_blank" rel="noopener">Instagram</a><span class="n">800K<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://music.youtube.com/channel/UC4WllQ3vORyygOrM0eba_5A" target="_blank" rel="noopener">YouTube Music</a><span class="n">&mdash;</span></div>
       </div>
       <div class="p-label">Selected partnerships</div>
       <div class="p-list">
@@ -140,10 +141,10 @@ a { color:inherit; text-decoration:none; }
       <div class="c-kick">Pro Football Hall of Fame</div>
       <h2>Terrell Owens</h2>
       <p class="c-note">One of the most electrifying receivers to ever play &mdash; <b>Hall of Famer, six-time Pro Bowler, third all-time in receiving yards</b> &mdash; and a pop-culture force whose celebrations changed the sport's relationship with entertainment. Still loudly in the conversation through his new podcast and media ventures.</p>
-      <div class="chips">
-        <a class="chip" href="https://x.com/terrellowens" target="_blank" rel="noopener">X <span>&middot; 1.2M</span></a>
-        <a class="chip" href="https://www.instagram.com/terrellowens/" target="_blank" rel="noopener">Instagram</a>
-        <a class="chip" href="https://terrellowens.com" target="_blank" rel="noopener">terrellowens.com</a>
+      <div class="socials">
+    <div class="soc"><a class="pl" href="https://www.instagram.com/terrellowens/" target="_blank" rel="noopener">Instagram</a><span class="n">600K+<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://x.com/terrellowens" target="_blank" rel="noopener">X</a><span class="n">1.2M<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://terrellowens.com" target="_blank" rel="noopener">terrellowens.com</a><span class="n">&mdash;</span></div>
       </div>
       <div class="p-label">Selected partnerships</div>
       <div class="p-list">
@@ -162,10 +163,10 @@ a { color:inherit; text-decoration:none; }
       <div class="c-kick">CFB Creator &middot; The Players Club</div>
       <h2>Darien Rencher</h2>
       <p class="c-note">The former Clemson walk-on-turned-scholarship back who became one of the <b>NIL era's original athlete-creators</b> &mdash; co-leading the 2020 #WeWantToPlay movement and building The Players Club, the player's-eye view of college football. He gets the sit-downs coaches and quarterbacks don't give press conferences.</p>
-      <div class="chips">
-        <a class="chip" href="https://x.com/D_Rench_" target="_blank" rel="noopener">X</a>
-        <a class="chip" href="https://www.instagram.com/d_rench/" target="_blank" rel="noopener">Instagram <span>&middot; 110K</span></a>
-        <a class="chip" href="https://podcasts.apple.com/us/podcast/the-players-club-podcast-with-darien-rencher/id1586013621" target="_blank" rel="noopener">The Players Club</a>
+      <div class="socials">
+    <div class="soc"><a class="pl" href="https://www.instagram.com/d_rench/" target="_blank" rel="noopener">Instagram</a><span class="n">110K<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://x.com/D_Rench_" target="_blank" rel="noopener">X</a><span class="n">&mdash;</span></div>
+    <div class="soc"><a class="pl" href="https://podcasts.apple.com/us/podcast/the-players-club-podcast-with-darien-rencher/id1586013621" target="_blank" rel="noopener">The Players Club</a><span class="n">&mdash;</span></div>
       </div>
       <div class="p-label">Selected partnerships</div>
       <div class="p-list">
@@ -183,9 +184,10 @@ a { color:inherit; text-decoration:none; }
       <div class="c-kick">Recording Artist &middot; Detroit</div>
       <h2>42 Dugg</h2>
       <p class="c-note">Detroit's raspy-voiced star, jointly signed to <b>Lil Baby's 4PF and Yo Gotti's CMG</b>, with platinum records &ldquo;We Paid&rdquo; and &ldquo;Grace.&rdquo; He embodies the Detroit&ndash;Atlanta pipeline &mdash; and a comeback arc, returning to a top-charting 2024 album, <b>4eva Us Neva Them</b>.</p>
-      <div class="chips">
-        <a class="chip" href="https://www.instagram.com/42_dugggg/" target="_blank" rel="noopener">Instagram <span>&middot; 2.3M</span></a>
-        <a class="chip" href="https://x.com/42_Dugg" target="_blank" rel="noopener">X <span>&middot; 340K</span></a>
+      <div class="socials">
+    <div class="soc"><a class="pl" href="https://www.instagram.com/42_dugggg/" target="_blank" rel="noopener">Instagram</a><span class="n">2.3M<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://x.com/42_Dugg" target="_blank" rel="noopener">X</a><span class="n">340K<span>followers</span></span></div>
+    <div class="soc"><a class="pl" href="https://www.youtube.com/channel/UChFLDvWugOtrzxmUCAjfnGg" target="_blank" rel="noopener">YouTube</a><span class="n">300K+<span>followers</span></span></div>
       </div>
       <div class="p-label">Selected partnerships</div>
       <div class="p-list">
