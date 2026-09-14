@@ -171,6 +171,16 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .seq-i .r { font-family:'Playfair Display',serif; font-weight:700; font-size:0.85rem; color:var(--wine); }
 .seq-i.w .r { color:var(--ink); } .seq-i.p .r { color:var(--soft); }
 
+/* ---- fadeable faces ---- */
+.facerow { display:grid; grid-template-columns:2.6rem 74px 1fr auto; gap:1.1rem; align-items:center; padding:1rem 0; border-bottom:1px solid var(--line); }
+.face-rank { font-family:'Playfair Display',serif; font-weight:700; font-size:1.7rem; color:var(--wine); text-align:center; }
+.face-img { width:74px; height:74px; border-radius:50%; object-fit:cover; object-position:50% 20%; filter:grayscale(1) contrast(1.05); border:1.5px solid var(--hair); }
+.face-name { font-family:'Playfair Display',serif; font-weight:600; font-size:1.25rem; line-height:1.15; }
+.face-sub { margin-top:0.3rem; font-size:0.56rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--soft); }
+.face-rec { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--wine); text-align:right; }
+.face-rec.cash { color:var(--cash); }
+@media (max-width:520px) { .facerow { grid-template-columns:2rem 56px 1fr auto; gap:0.8rem; } .face-img { width:56px; height:56px; } .face-name { font-size:1.05rem; } }
+
 /* ---- table card ---- */
 .tscroll { overflow-x:auto; }
 .ttable { width:100%; border-collapse:collapse; }
@@ -410,6 +420,17 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     });
     return out + '</div>';
   }
+  function figFaces(f) {
+    return (f.items || []).map(function (x, i) {
+      return '<div class="facerow">' +
+        '<div class="face-rank">' + (x.rank != null ? esc(x.rank) : (i + 1)) + '</div>' +
+        (x.photo ? '<img class="face-img" src="' + esc(x.photo) + '" alt="" loading="lazy" />' : '<span></span>') +
+        '<div><div class="face-name">' + esc(x.name) + '</div>' +
+        (x.sub ? '<div class="face-sub">' + esc(x.sub) + '</div>' : '') + '</div>' +
+        '<div class="face-rec' + (x.tone === 'cash' ? ' cash' : '') + '">' + esc(x.rec) + '</div>' +
+        '</div>';
+    }).join('');
+  }
   function figure(f) {
     var inner =
       f.type === 'line' ? figLine(f)
@@ -420,6 +441,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       : f.type === 'stats' ? figStats(f)
       : f.type === 'split' ? figSplit(f)
       : f.type === 'seq' ? figSeq(f)
+      : f.type === 'faces' ? figFaces(f)
       : f.type === 'photo' && f.src ? '<div class="photofig"><img src="' + esc(f.src) + '" alt="" /></div>'
       : '';
     if (!inner) return '';

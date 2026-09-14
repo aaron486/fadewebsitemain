@@ -171,6 +171,35 @@
             }
           },
           {
+            "title": "The Most Fadeable",
+            "headline": "Fade of the Week: The Leaderboard",
+            "sub": "The faces the receipts point away from",
+            "paras": [
+              "The recap the whole desk builds toward: the week’s most fadeable public bettors, ranked by damage done to anyone who followed them — with the receipts attached. The leaderboard grows as the case files do."
+            ],
+            "figure": {
+              "type": "faces",
+              "label": "Opening weekend · the fadeable board",
+              "items": [
+                {
+                  "rank": 1,
+                  "photo": "/assets/face-cowherd.jpg",
+                  "name": "Colin Cowherd",
+                  "sub": "Blazin' Five · career 731-671-44, -6.45 units",
+                  "rec": "1-4"
+                },
+                {
+                  "rank": 2,
+                  "photo": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w600",
+                  "name": "Clay Travis",
+                  "sub": "Fifteen-pick card · season 7-18-1, -11.6 units",
+                  "rec": "5-10"
+                }
+              ],
+              "caption": "Graded from final scores. Records shown are opening-weekend cards; career lines per the desk’s tracked ledgers. More names join the board as the files open."
+            }
+          },
+          {
             "title": "The Verdict",
             "headline": "The Margins Are the House",
             "sub": "What opening weekend actually taught",
