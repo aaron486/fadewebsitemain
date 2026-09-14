@@ -1,5 +1,5 @@
 // Server-side access gate for the Fade Media section.
-export const config = { matcher: ['/fademedia', '/fade-media', '/article'] };
+export const config = { matcher: ['/fademedia', '/fade-media', '/article', '/roster', '/roster.html'] };
 
 export default function middleware(req) {
   const cookie = req.headers.get('cookie') || '';
