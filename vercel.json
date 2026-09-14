@@ -22,6 +22,10 @@
       "destination": "/support.html"
     },
     {
+      "source": "/roster",
+      "destination": "/roster.html"
+    },
+    {
       "source": "/teamfade",
       "destination": "/teamfade.html"
     },

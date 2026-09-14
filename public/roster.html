@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Roster — Fade</title>
+<meta name="description" content="Creators in the Fade network." />
+<meta name="theme-color" content="#F4F2EA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --paper:#F4F2EA; --paper-hi:#FBFAF5; --carbon:#141412; --soft:#6E6B60;
+  --line:rgba(20,20,18,0.16); --line-hard:rgba(20,20,18,0.85);
+  --tail:#2F52E0; --fade:#D92D20; --cash:#2E9E44;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--paper); color:var(--carbon); font-family:'IBM Plex Mono',monospace; line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+.anton { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.01em; }
+.wrap { max-width:1080px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
+
+.topline { border-bottom:1.5px solid var(--carbon); }
+.topline-in { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+.topline-in a:hover { color:var(--carbon); }
+
+.mast { text-align:center; padding:2.6rem 0 2.2rem; border-bottom:1.5px solid var(--carbon); }
+.mast img { width:min(300px,60%); display:block; margin:0 auto 1.2rem; }
+.mast h1 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(2.6rem,7vw,4.4rem); line-height:1; }
+.mast .dek { margin-top:0.9rem; font-size:0.8rem; color:var(--soft); max-width:52ch; margin-left:auto; margin-right:auto; }
+.mast .kick { display:inline-block; margin-top:1.1rem; font-size:0.62rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--fade); border:1.5px solid var(--fade); border-radius:4px; padding:0.35rem 0.9rem; }
+
+.intro { padding:2rem 0 0.6rem; }
+.intro p { font-size:0.85rem; color:var(--soft); max-width:74ch; }
+.intro b { color:var(--carbon); }
+
+.creator { display:grid; grid-template-columns:280px 1fr; gap:2rem; border:2px solid var(--carbon); border-radius:8px; background:var(--paper-hi); box-shadow:6px 6px 0 rgba(20,20,18,0.16); margin:2rem 0; overflow:hidden; }
+.c-photo { background:var(--carbon); display:flex; align-items:center; justify-content:center; min-height:280px; position:relative; }
+.c-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 15%; display:block; position:absolute; inset:0; }
+.c-mono { font-family:'Anton',sans-serif; font-size:5.5rem; color:var(--paper); letter-spacing:0.04em; }
+.c-body { padding:1.8rem 2rem 1.8rem 0; }
+.c-kick { font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--tail); margin-bottom:0.5rem; }
+.c-body h2 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.9rem,4.4vw,3rem); line-height:1; margin-bottom:0.8rem; }
+.c-note { font-size:0.8rem; color:var(--soft); max-width:64ch; margin-bottom:1.1rem; }
+.c-note b { color:var(--carbon); }
+.chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.2rem; }
+.chip { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; border:1.5px solid var(--carbon); border-radius:4px; padding:0.4rem 0.8rem; background:var(--paper); transition:all 0.15s ease; }
+.chip:hover { background:var(--carbon); color:var(--paper); }
+.chip span { color:var(--soft); font-weight:600; }
+.chip:hover span { color:rgba(244,242,234,0.7); }
+.p-label { font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); border-top:1px dashed var(--line); padding-top:0.9rem; margin-bottom:0.4rem; }
+.p-list div { position:relative; padding:0.32rem 0 0.32rem 1.2rem; font-size:0.72rem; color:var(--soft); border-bottom:1px dashed var(--line); }
+.p-list div:last-child { border-bottom:none; }
+.p-list div::before { content:'\2192'; position:absolute; left:0; color:var(--fade); font-weight:700; }
+.p-list b { color:var(--carbon); }
+
+.cta { border:2px solid var(--carbon); border-radius:8px; background:var(--carbon); color:var(--paper); text-align:center; padding:2.6rem 1.5rem; margin:3rem 0; box-shadow:6px 6px 0 rgba(20,20,18,0.2); }
+.cta h2 { font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(1.8rem,5vw,2.8rem); margin-bottom:0.7rem; }
+.cta p { font-size:0.78rem; color:rgba(244,242,234,0.75); max-width:56ch; margin:0 auto 1.4rem; }
+.cta a.btn { display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--carbon); background:var(--paper); border-radius:4px; padding:0.85rem 1.8rem; margin:0 0.4rem; }
+.cta a.btn:hover { background:#fff; }
+.cta a.btn.ghost { background:transparent; color:var(--paper); border:1.5px solid rgba(244,242,234,0.5); }
+.cta a.btn.ghost:hover { border-color:var(--paper); }
+
+.foot { border-top:1.5px solid var(--carbon); padding:1.2rem 0 2rem; display:flex; justify-content:space-between; font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+
+@media (max-width:760px) {
+  .creator { grid-template-columns:1fr; }
+  .c-photo { min-height:230px; }
+  .c-body { padding:1.4rem 1.4rem 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topline"><div class="wrap"><div class="topline-in">
+  <a href="/">&larr; Fade.bet</a>
+  <span>The Roster &middot; Partnerships</span>
+  <a href="mailto:info@fade.bet">Contact</a>
+</div></div></div>
+
+<header class="mast"><div class="wrap">
+  <img src="assets/fade-logo.svg" alt="FADE" />
+  <h1>The Roster</h1>
+  <p class="dek">The creators in Fade's network &mdash; the artists, athletes and voices who move sports culture, and who move with us.</p>
+  <span class="kick">Partnership Network</span>
+</div></header>
+
+<main class="wrap">
+
+  <div class="intro">
+    <p>Fade sits where sports, betting and culture meet &mdash; and so do our partners. <b>The roster below works with Fade</b> across content, campaigns and in-app moments. Every name comes with an audience, a story, and a reason sports fans already listen.</p>
+  </div>
+
+  <!-- LIL BABY -->
+  <section class="creator">
+    <div class="c-photo"><span class="c-mono">LB</span></div>
+    <div class="c-body">
+      <div class="c-kick">Recording Artist &middot; Atlanta</div>
+      <h2>Lil Baby</h2>
+      <p class="c-note">Atlanta's defining rap superstar of the streaming era &mdash; a <b>Grammy winner</b> whose 4PF imprint made him a mogul as well as an artist. He operates where hip-hop meets sports and global culture: courtside at State Farm Arena, and fronting the <b>official FIFA World Cup anthem</b> for Budweiser.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.instagram.com/lilbaby/" target="_blank" rel="noopener">Instagram <span>&middot; 23M</span></a>
+        <a class="chip" href="https://www.tiktok.com/@lilbaby" target="_blank" rel="noopener">TikTok <span>&middot; 6.4M</span></a>
+        <a class="chip" href="https://www.youtube.com/@lilbabyatl" target="_blank" rel="noopener">YouTube <span>&middot; 10M</span></a>
+      </div>
+      <div class="p-label">Selected partnerships</div>
+      <div class="p-list">
+        <div><b>Budweiser</b> &mdash; official FIFA World Cup anthem, &ldquo;The World Is Yours to Take&rdquo;</div>
+        <div><b>Foot Locker</b> &mdash; recurring Atlanta back-to-school campaign</div>
+        <div><b>Axe</b> &mdash; brand ambassador</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VEEZE -->
+  <section class="creator">
+    <div class="c-photo"><span class="c-mono">VZ</span></div>
+    <div class="c-body">
+      <div class="c-kick">Recording Artist &middot; Detroit</div>
+      <h2>Veeze</h2>
+      <p class="c-note">The cult-favorite Detroit rapper whose 2023 album <b>Ganger</b> made national year-end lists and turned a local legend into a tastemaker. A Billboard Hot 100 entry with Lil Yachty, festival main stages, and his own <b>Navy Wavy</b> label in partnership with Warner Records &mdash; with no consumer brand deals yet, his lane is wide open.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.instagram.com/veezeworst/" target="_blank" rel="noopener">Instagram <span>&middot; 800K</span></a>
+        <a class="chip" href="https://music.youtube.com/channel/UC4WllQ3vORyygOrM0eba_5A" target="_blank" rel="noopener">YouTube Music</a>
+      </div>
+      <div class="p-label">Selected partnerships</div>
+      <div class="p-list">
+        <div><b>Warner Records</b> &mdash; Navy Wavy label venture</div>
+        <div><b>Fade</b> &mdash; first brand partnership in the space</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERRELL OWENS -->
+  <section class="creator">
+    <div class="c-photo"><span class="c-mono">TO</span></div>
+    <div class="c-body">
+      <div class="c-kick">Pro Football Hall of Fame</div>
+      <h2>Terrell Owens</h2>
+      <p class="c-note">One of the most electrifying receivers to ever play &mdash; <b>Hall of Famer, six-time Pro Bowler, third all-time in receiving yards</b> &mdash; and a pop-culture force whose celebrations changed the sport's relationship with entertainment. Still loudly in the conversation through his new podcast and media ventures.</p>
+      <div class="chips">
+        <a class="chip" href="https://x.com/terrellowens" target="_blank" rel="noopener">X <span>&middot; 1.2M</span></a>
+        <a class="chip" href="https://www.instagram.com/terrellowens/" target="_blank" rel="noopener">Instagram</a>
+        <a class="chip" href="https://terrellowens.com" target="_blank" rel="noopener">terrellowens.com</a>
+      </div>
+      <div class="p-label">Selected partnerships</div>
+      <div class="p-list">
+        <div><b>The Intersection / SMAC</b> &mdash; &ldquo;Get TO The Point&rdquo; podcast with Chris Spencer</div>
+        <div><b>Prototype81</b> &mdash; his own apparel brand</div>
+        <div><b>Eighty-One</b> &mdash; wine label</div>
+        <div><b>Fan Controlled Football</b> &mdash; record-setting alt-football run</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARIEN RENCHER -->
+  <section class="creator">
+    <div class="c-photo"><span class="c-mono">DR</span></div>
+    <div class="c-body">
+      <div class="c-kick">CFB Creator &middot; The Players Club</div>
+      <h2>Darien Rencher</h2>
+      <p class="c-note">The former Clemson walk-on-turned-scholarship back who became one of the <b>NIL era's original athlete-creators</b> &mdash; co-leading the 2020 #WeWantToPlay movement and building The Players Club, the player's-eye view of college football. He gets the sit-downs coaches and quarterbacks don't give press conferences.</p>
+      <div class="chips">
+        <a class="chip" href="https://x.com/D_Rench_" target="_blank" rel="noopener">X</a>
+        <a class="chip" href="https://www.instagram.com/d_rench/" target="_blank" rel="noopener">Instagram <span>&middot; 110K</span></a>
+        <a class="chip" href="https://podcasts.apple.com/us/podcast/the-players-club-podcast-with-darien-rencher/id1586013621" target="_blank" rel="noopener">The Players Club</a>
+      </div>
+      <div class="p-label">Selected partnerships</div>
+      <div class="p-list">
+        <div><b>Allstate, Raising Cane's, Taco Bell, Dr Pepper</b> &mdash; NIL-era brand campaigns</div>
+        <div><b>Athletic Brewing, Whatnot Sports</b> &mdash; creator partnerships</div>
+        <div><b>Clemson NIL venture</b> &mdash; co-founded with Ben Boulware</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 42 DUGG -->
+  <section class="creator">
+    <div class="c-photo"><span class="c-mono">42</span></div>
+    <div class="c-body">
+      <div class="c-kick">Recording Artist &middot; Detroit</div>
+      <h2>42 Dugg</h2>
+      <p class="c-note">Detroit's raspy-voiced star, jointly signed to <b>Lil Baby's 4PF and Yo Gotti's CMG</b>, with platinum records &ldquo;We Paid&rdquo; and &ldquo;Grace.&rdquo; He embodies the Detroit&ndash;Atlanta pipeline &mdash; and a comeback arc, returning to a top-charting 2024 album, <b>4eva Us Neva Them</b>.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.instagram.com/42_dugggg/" target="_blank" rel="noopener">Instagram <span>&middot; 2.3M</span></a>
+        <a class="chip" href="https://x.com/42_Dugg" target="_blank" rel="noopener">X <span>&middot; 340K</span></a>
+      </div>
+      <div class="p-label">Selected partnerships</div>
+      <div class="p-list">
+        <div><b>CMG &times; 4PF &times; Interscope</b> &mdash; joint-venture label deal</div>
+        <div><b>Warner Chappell</b> &mdash; co-publishing deal</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Partner With Fade</h2>
+    <p>Campaigns, content and in-app moments with the roster above &mdash; and the network behind it. Fade brokers the partnership end to end.</p>
+    <a class="btn" href="mailto:info@fade.bet">info@fade.bet</a>
+    <a class="btn ghost" href="/">fade.bet &rarr;</a>
+  </div>
+
+</main>
+
+<footer class="foot"><div class="wrap" style="display:flex; justify-content:space-between; width:100%;">
+  <span>FADE &middot; The Roster</span>
+  <span>21+ &middot; Please play responsibly</span>
+</div></footer>
+
+</body>
+</html>
