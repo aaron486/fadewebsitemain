@@ -1,6 +1,206 @@
 {
   "articles": [
     {
+      "slug": "download-war-week-1",
+      "league": "BETTING",
+      "title": "The download war: the two most downloaded betting apps of Week 1 were not sportsbooks",
+      "dek": "Polymarket, 762,000 installs. Kalshi, 592,000. DraftKings and FanDuel, 680,000 combined. The opening-week app chart just redrew the map of American betting — with asterisks the size of billboards.",
+      "author": "Fade Desk",
+      "published": "2026-09-15T14:00:00Z",
+      "image": "/assets/download-war-figure.jpg",
+      "featured": false,
+      "sources": "Download figures per an analyst app-download tracker shared with the desk, in the format of Citizens' (formerly JMP Securities) weekly gaming note; the desk could not independently locate these exact figures in public coverage, and prints the year-over-year column as shown, unreconciled. Polymarket timeline via CNBC (Sept 3, 2025 CFTC green light), CoinDesk (Dec 3, 2025 app launch), PR Newswire (amended CFTC order, Nov 25, 2025) and SBC Americas/InGame (waitlist dissolved May 13, 2026). App Store finance-chart ranking and the LeBron James / Manning-Jeter campaign via iGamingBusiness. Operator responses via Sportico (DraftKings Predictions, Railbird, CME), iGamingBusiness (FanDuel Predicts five-state rollout) and DeFi Rate (Sleeper Markets via Kalshi, Feb 2026). Handle projection (~$35B regulated football handle, up ~5%) via Citizens as reported by InGame; Kalshi implied-hold comparison via NEXT.io. Week 1 2026 ran September 9-14.",
+      "body": [
+        "The two most downloaded betting apps of NFL Week 1 were not sportsbooks. Polymarket took 762,000 installs and Kalshi 592,000 — a quarter and a fifth of all tracked betting-app downloads, respectively — while DraftKings fell 46 percent and FanDuel 36.",
+        "The asterisks matter: Polymarket's year-over-year growth is measured against a September when it had no US app at all, and downloads are not dollars — the same analysts project regulated football handle up five percent this season.",
+        "But attention moves first, and the money argues about it later. The desk read the opening-week chart, the launch that produced it, and what it does and does not prove."
+      ],
+      "mag": {
+        "volume": "The Fade Index",
+        "issueLine": "September 2026",
+        "edition": "An edition on the app store standings",
+        "coverKicker": "The Download War",
+        "coverLine": "The most downloaded betting app in America does not book bets.",
+        "coverSub": "Polymarket and Kalshi took the top two spots on the Week 1 install chart. The sportsbooks fell double digits. The money is a longer story.",
+        "coverStat": {
+          "label": "Polymarket · Week 1 installs",
+          "value": "762K",
+          "sub": "Kalshi: 592K · DK + FD: 680K"
+        },
+        "quote": {
+          "text": "+13,509%.",
+          "attr": "Polymarket installs, year over year — against a September when the US app did not exist"
+        },
+        "ledger": {
+          "title": "Week 1 · the install chart",
+          "asOf": "Per the tracker, as shared",
+          "record": {
+            "v": "762K",
+            "l": "Polymarket · 25% of tracked installs",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "592K",
+              "l": "Kalshi · 20% share"
+            },
+            {
+              "v": "415K",
+              "l": "DraftKings · down 46%",
+              "tone": "wine"
+            },
+            {
+              "v": "265K",
+              "l": "FanDuel · down 36%",
+              "tone": "wine"
+            },
+            {
+              "v": "45%",
+              "l": "Share taken by the two exchanges"
+            }
+          ],
+          "verdict": "SHIFT"
+        },
+        "sections": [
+          {
+            "title": "The Board",
+            "headline": "Two Exchanges at the Top of the Chart",
+            "sub": "Week 1 installs, per the tracker",
+            "stats": [
+              {
+                "v": "762K",
+                "l": "Polymarket installs, Week 1"
+              },
+              {
+                "v": "592K",
+                "l": "Kalshi installs, Week 1"
+              },
+              {
+                "v": "-46%",
+                "l": "DraftKings, year over year",
+                "tone": "wine"
+              }
+            ],
+            "paras": [
+              "The figure crossed the desk in the format of the weekly download trackers the sell side has published for years: seven operators, one football week, installs in thousands. What is new is the order. Polymarket, which did not have a US app twelve months ago, leads at 762,000. Kalshi follows at 592,000. The two federally regulated exchanges took 45 percent of every tracked betting-app download of opening week — more than DraftKings, FanDuel, bet365 and Hard Rock combined.",
+              "The sportsbook column reads like a different industry. DraftKings down 46 percent year over year. FanDuel down 36. bet365 down 41. Only Hard Rock, up 24 percent from a small base, grew at all. Sleeper's 239,000 sits somewhere in between and belongs to neither camp cleanly: it is a fantasy app whose September install spike is draft season, now with Kalshi-powered prediction markets bolted on since February."
+            ],
+            "figures": [
+              {
+                "type": "bars",
+                "label": "Week 1 installs by operator",
+                "rows": [
+                  {
+                    "l": "Polymarket",
+                    "v": 762,
+                    "note": "25% share · +13,509% YoY"
+                  },
+                  {
+                    "l": "Kalshi",
+                    "v": 592,
+                    "note": "20% · +878%"
+                  },
+                  {
+                    "l": "DraftKings",
+                    "v": 415,
+                    "note": "14% · -46%"
+                  },
+                  {
+                    "l": "FanDuel",
+                    "v": 265,
+                    "note": "9% · -36%"
+                  },
+                  {
+                    "l": "Sleeper",
+                    "v": 239,
+                    "note": "8% · -9%"
+                  },
+                  {
+                    "l": "bet365",
+                    "v": 104,
+                    "note": "3% · -41%"
+                  },
+                  {
+                    "l": "Hard Rock",
+                    "v": 97,
+                    "note": "3% · +24%"
+                  }
+                ],
+                "max": 800,
+                "caption": "Installs in thousands, NFL Week 1 (September 9-14), per the tracker as shared with the desk. Share is share of new downloads among tracked apps — not of money."
+              },
+              {
+                "type": "photo",
+                "src": "/assets/download-war-figure.jpg",
+                "caption": "The figure as it crossed the desk: Week 1 downloads, change, and share by operator."
+              }
+            ]
+          },
+          {
+            "title": "The Launch",
+            "headline": "Nine Months From Banned to No. 1",
+            "sub": "How Polymarket built the spike",
+            "paras": [
+              "The 762,000 has a paper trail. Polymarket bought its way back into the United States through a licensed exchange called QCEX in July 2025, got its green light from the CFTC that September, and put an app in the US store on December 3 — behind an invite waitlist, sports-first. The waitlist did not fully come down until May 13 of this year. Which means opening week was the first NFL kickoff in Polymarket's American existence with the doors actually open.",
+              "It did not arrive quietly. LeBron James signed on over Labor Day weekend — moving from DraftKings, which made its own statement — and an Eli Manning and Derek Jeter campaign debuted within forty-eight hours of the opener. By the Tuesday before kickoff, per iGamingBusiness, Polymarket ranked No. 1 among free finance apps in the App Store, ahead of Kalshi, Capital One, PayPal and Venmo. The trade press called it the most frenzied marketing push since PASPA fell.",
+              "Now the asterisk, printed at full size: plus 13,509 percent is measured against a September in which the US app did not exist. Growth from approximately zero is not growth; it is arrival. The honest read of the number is not that Polymarket grew a hundredfold — it is that a brand-new entrant, on its first real football weekend, outdrew every incumbent in the store."
+            ]
+          },
+          {
+            "title": "The Incumbents",
+            "headline": "Why the Sportsbooks Bleed Installs",
+            "sub": "Mature apps, no new states, and a defensive pivot",
+            "paras": [
+              "The sportsbook declines deserve their own honest read. DraftKings and FanDuel have been live nationally for the better part of a decade; nearly everyone who wants their apps already has them. This is the second straight season opening without a major new state launch — the sell side framed last year's declines exactly that way, with access to new customers at its lowest point in the PASPA era. A mature app shedding install volume is not a business shrinking. It is a market running out of first-time downloaders.",
+              "But the incumbents are not acting like the chart is noise. DraftKings stood up a separate Predictions app in December — CME markets first, its acquired Railbird exchange to follow — and has guided hundreds of millions of dollars toward prediction-market customer acquisition this year. FanDuel answered with FanDuel Predicts, deliberately slow, five states to start. When both giants build lifeboats shaped exactly like the ships overtaking them, the download chart stops looking like an anomaly and starts looking like a forecast they believe."
+            ]
+          },
+          {
+            "title": "The Asterisks",
+            "headline": "Downloads Are Not Dollars",
+            "sub": "What the chart does not prove",
+            "stats": [
+              {
+                "v": "~$35B",
+                "l": "Projected regulated football handle · up ~5%",
+                "tone": "cash"
+              },
+              {
+                "v": "~5%",
+                "l": "Analyst estimate of handle cannibalized"
+              },
+              {
+                "v": "4.32%",
+                "l": "Kalshi implied hold · under both books"
+              }
+            ],
+            "paras": [
+              "Hold the chart next to the money and the story complicates. The same analyst shop whose tracker format this figure follows projects regulated sportsbook football handle up roughly five percent this season, to about thirty-five billion dollars. Estimates of how much betting volume the exchanges have actually taken from the books run near five percent. Exchange volume is contract turnover, not stakes, and is not comparable to handle — a distinction this desk prints every time because the industry mostly does not.",
+              "An install is the cheapest unit of attention there is. Polymarket's opening week was bought with a celebrity blitz against a zero base; Sleeper's number is draft season; the books' declines are partly arithmetic. What the chart proves is narrower and still remarkable: on the weekend American football came back, the apps America reached for first were the two that trade on it rather than book it."
+            ]
+          },
+          {
+            "title": "The Verdict",
+            "headline": "Attention Moves First",
+            "sub": "How the desk reads the chart",
+            "paras": [
+              "Every migration in betting has run the same order of operations: attention first, money later, regulation last. The exchanges now own the attention column — the installs, the App Store charts, the celebrity endorsements, and, as this desk documented in the Weekend Ledger, a price that undercuts both major books on the exact same games. The books still own the money column, and by the analysts' own numbers will grow it this season.",
+              "The desk's read: do not confuse the columns, and do not dismiss the chart because it is only attention. A quarter of opening week's downloads went to an app that has taken American bets for nine months. The last time an install chart looked like this, the companies at the top of it were named DraftKings and FanDuel."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "The season to date",
+          "title": "Two exchanges, 45% of installs",
+          "big": "762K",
+          "note": "The tracker rolls weekly. The desk will keep printing the chart next to the money — and flagging which column is which.",
+          "tag": "The ledger rolls on",
+          "end": "Filed to the download war",
+          "photo": "/assets/download-war-figure.jpg"
+        }
+      }
+    },
+    {
       "slug": "case-006-colin-cowherd",
       "league": "NFL",
       "title": "Case File 006: Colin Cowherd, the most break-even man in America",
