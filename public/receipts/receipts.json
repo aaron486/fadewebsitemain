@@ -1,0 +1,338 @@
+{
+  "note": "One receipt per person the desk has written a case study on. Every figure is carried from a graded ledger already published in /articles/articles.json — nothing here is estimated. `featured: true` picks the receipt the front page runs; if none is flagged, the highest case number wins.",
+  "updated": "2026-09-15",
+  "receipts": [
+    {
+      "slug": "colin-cowherd",
+      "featured": true,
+      "name": "Colin Cowherd",
+      "role": "The Herd · Blazin' Five",
+      "caseNo": "006",
+      "verdict": "FADE",
+      "portrait": "/assets/face-cowherd.jpg",
+      "headline": "The most break-even man in America.",
+      "dek": "Fifteen years of the Blazin' Five, 1,783 tracked picks, and a career line that sits a quarter of a point short of free.",
+      "article": "/article?s=case-006-colin-cowherd",
+      "period": "Fifteen years of Blazin' Five",
+      "asOf": "After Week 1, 2026",
+      "source": "Cole's Gameday Blog",
+      "figures": [
+        {
+          "v": "732–675–44",
+          "l": "All-time, ATS"
+        },
+        {
+          "v": "52.0%",
+          "l": "Cover rate",
+          "tone": "down"
+        },
+        {
+          "v": "−9.5u",
+          "l": "Lifetime units",
+          "tone": "down"
+        },
+        {
+          "v": "1,446",
+          "l": "Picks tracked"
+        }
+      ],
+      "kicker": "Break-even is 52.4%",
+      "recent": [
+        {
+          "l": "PHI",
+          "r": "L"
+        },
+        {
+          "l": "JAX",
+          "r": "W"
+        },
+        {
+          "l": "HOU",
+          "r": "L"
+        },
+        {
+          "l": "DET",
+          "r": "L"
+        },
+        {
+          "l": "CAR",
+          "r": "L"
+        }
+      ],
+      "recentLabel": "Last 5 graded"
+    },
+    {
+      "slug": "stanford-steve",
+      "name": "Stanford Steve",
+      "role": "ESPN College GameDay",
+      "caseNo": "005",
+      "verdict": "TAIL",
+      "portrait": "https://drive.google.com/thumbnail?id=1Ccrw_v7lxo3TOiLCT9TJWuAOv-K_mMf1&sz=w1000",
+      "headline": "The sharpest voice on the set.",
+      "dek": "Twelve years of tracked picks. 648–529 against the spread. Plus 60 units.",
+      "article": "/article?s=stanford-steve-gameday-best-picker",
+      "period": "Tracked since 2014",
+      "asOf": "2026",
+      "source": "Cole's Gameday Blog",
+      "figures": [
+        {
+          "v": "648–529–24",
+          "l": "College, ATS"
+        },
+        {
+          "v": "55.1%",
+          "l": "Cover rate",
+          "tone": "up"
+        },
+        {
+          "v": "+60.1u",
+          "l": "Career units",
+          "tone": "up"
+        },
+        {
+          "v": "1,201",
+          "l": "Picks tracked"
+        }
+      ],
+      "kicker": "+5.0% ROI"
+    },
+    {
+      "slug": "trent-attyah",
+      "name": "Trent Attyah",
+      "role": "BookIt Sports · The Fade God",
+      "caseNo": "004",
+      "verdict": "FADE",
+      "portrait": "https://drive.google.com/thumbnail?id=14MYFjjQa2H0-D4cpiUdqGu9Z_NPL8Etx&sz=w1000",
+      "headline": "He turned getting faded into a career.",
+      "dek": "Trent Attyah did what no bettor had done before: turned getting faded into a career.",
+      "article": "/article?s=case-004-trent-attyah",
+      "period": "Since 2020",
+      "asOf": "2026",
+      "source": "The public record",
+      "figures": [
+        {
+          "v": "260K+",
+          "l": "Watching every slip"
+        },
+        {
+          "v": "No ledger",
+          "l": "Nothing graded yet"
+        }
+      ],
+      "kicker": "Every fade cashes twice"
+    },
+    {
+      "slug": "mattress-mack",
+      "name": "Mattress Mack",
+      "role": "Jim McIngvale · Gallery Furniture",
+      "caseNo": "003",
+      "verdict": "TAIL",
+      "portrait": "https://drive.google.com/thumbnail?id=1GZz7Ql8LG5eU3DVb-kKsZf6tfdiCe-x_&sz=w1000",
+      "headline": "The record is ugly. The structure wins.",
+      "dek": "3–17 across $86 million in reported stakes — and up $23.5 million anyway.",
+      "article": "/article?s=case-003-mattress-mack",
+      "period": "2019–2026",
+      "asOf": "2026",
+      "source": "Publicly reported wagers",
+      "figures": [
+        {
+          "v": "3–17",
+          "l": "Reported record",
+          "tone": "down"
+        },
+        {
+          "v": "15%",
+          "l": "Hit rate",
+          "tone": "down"
+        },
+        {
+          "v": "+$23.5M",
+          "l": "Profit / loss",
+          "tone": "up"
+        },
+        {
+          "v": "$86M",
+          "l": "Reported stake"
+        }
+      ],
+      "kicker": "Largest payout in U.S. betting history"
+    },
+    {
+      "slug": "portnoy",
+      "name": "Dave Portnoy",
+      "role": "Barstool Sports",
+      "caseNo": "002",
+      "verdict": "FADE",
+      "portrait": "https://drive.google.com/thumbnail?id=1ocKR-WORMFKqeDeK9b35LZqZtVEBPVtn&sz=w1000",
+      "headline": "Loudly, publicly, in seven figures.",
+      "dek": "A 30 percent hit rate that is somehow up $2.7 million.",
+      "article": "/article?s=case-002-portnoy",
+      "period": "2021–2025",
+      "asOf": "2025",
+      "source": "Reported and DraftKings-confirmed wagers",
+      "figures": [
+        {
+          "v": "9–21",
+          "l": "Reported record",
+          "tone": "down"
+        },
+        {
+          "v": "30%",
+          "l": "Hit rate",
+          "tone": "down"
+        },
+        {
+          "v": "+$2.7M",
+          "l": "Profit / loss",
+          "tone": "up"
+        },
+        {
+          "v": "30",
+          "l": "Wagers on file"
+        }
+      ],
+      "kicker": "Up anyway"
+    },
+    {
+      "slug": "drake",
+      "name": "Drake",
+      "role": "Recording artist",
+      "caseNo": "001",
+      "verdict": "FADE",
+      "portrait": "https://drive.google.com/thumbnail?id=1ZVFHfxl0QpyVGXeNgbNDPWFYEhFn5d4g&sz=w1000",
+      "headline": "The most public bettor alive.",
+      "dek": "Eighty-eight bets. Forty million dollars staked. Three million down.",
+      "article": "/article?s=case-001-drake-curse",
+      "period": "Public bets since Feb 2022",
+      "asOf": "July 2026",
+      "source": "thedrakecurse.com",
+      "figures": [
+        {
+          "v": "32–56",
+          "l": "Posted record",
+          "tone": "down"
+        },
+        {
+          "v": "−7.6%",
+          "l": "ROI",
+          "tone": "down"
+        },
+        {
+          "v": "−$3.06M",
+          "l": "Profit / loss",
+          "tone": "down"
+        },
+        {
+          "v": "$40.2M",
+          "l": "Staked"
+        }
+      ],
+      "kicker": "The curse, graded",
+      "recent": [
+        {
+          "l": "OKC",
+          "r": "L"
+        },
+        {
+          "l": "UFC",
+          "r": "L"
+        },
+        {
+          "l": "SIN",
+          "r": "L"
+        },
+        {
+          "l": "RAV",
+          "r": "L"
+        },
+        {
+          "l": "PAUL",
+          "r": "L"
+        },
+        {
+          "l": "SB LX",
+          "r": "L"
+        },
+        {
+          "l": "CAN",
+          "r": "W"
+        },
+        {
+          "l": "MOR",
+          "r": "W"
+        }
+      ],
+      "recentLabel": "Last 8 graded"
+    },
+    {
+      "slug": "clay-travis",
+      "name": "Clay Travis",
+      "role": "OutKick",
+      "verdict": "FADE",
+      "portrait": "https://drive.google.com/thumbnail?id=1PwqIpBxTEQ6YZHtJLSpAHNoENs1eX0zX&sz=w1000",
+      "headline": "College football's biggest loser.",
+      "dek": "The season stands 7–18–1, minus 11.6 units, and the desk is grading every card.",
+      "article": "/article?s=clay-travis-week-1-card",
+      "period": "2026 college football season",
+      "asOf": "Through Week 2",
+      "source": "Graded by the Fade desk",
+      "figures": [
+        {
+          "v": "7–18–1",
+          "l": "Season, ATS",
+          "tone": "down"
+        },
+        {
+          "v": "45.8%",
+          "l": "Career rate",
+          "tone": "down"
+        },
+        {
+          "v": "−11.6u",
+          "l": "Units, 2026",
+          "tone": "down"
+        },
+        {
+          "v": "248-294-1",
+          "l": "All-time"
+        }
+      ],
+      "kicker": "Tracked weekly",
+      "recent": [
+        {
+          "l": "MIZ",
+          "r": "W"
+        },
+        {
+          "l": "M/K o",
+          "r": "W"
+        },
+        {
+          "l": "ODU",
+          "r": "L"
+        },
+        {
+          "l": "ORE",
+          "r": "L"
+        },
+        {
+          "l": "ASU",
+          "r": "L"
+        },
+        {
+          "l": "OU",
+          "r": "L"
+        },
+        {
+          "l": "O/M u",
+          "r": "W"
+        },
+        {
+          "l": "MSU o",
+          "r": "L"
+        }
+      ],
+      "recentLabel": "Last 8 graded"
+    }
+  ]
+}

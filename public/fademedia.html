@@ -391,28 +391,74 @@ a { color:inherit; text-decoration:none; }
 .film figcaption { margin-top:0.55rem; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
 .film figcaption span { display:block; color:var(--soft); font-weight:600; letter-spacing:0.08em; margin-top:0.15rem; text-transform:none; }
 
-/* receipts band — links the desk to the graded ledgers at /the-receipts.
-   Deliberately in the dark Receipts territory so it reads as its own product. */
-.rcpt { background:var(--carbon); color:var(--paper); border-radius:8px; padding:clamp(1.5rem,3.2vw,2.4rem) clamp(1.3rem,3vw,2.2rem); margin:2.2rem 0 0.6rem; }
-.rcpt-top { display:flex; align-items:flex-end; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; padding-bottom:1.2rem; border-bottom:1px solid rgba(244,242,234,0.18); }
-.rcpt-top h3 { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(1.7rem,4vw,2.7rem); line-height:0.95; }
-.rcpt-top p { font-size:0.8rem; color:rgba(244,242,234,0.65); margin-top:0.5rem; max-width:44ch; line-height:1.6; }
-.rcpt-go { flex:0 0 auto; font-size:0.64rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; background:var(--paper); color:var(--carbon); border-radius:3px; padding:0.75rem 1.3rem; }
-.rcpt-go:hover { background:#16C77E; }
-.rcpt-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.9rem; margin-top:1.2rem; }
-.rcpt-slip { background:#F2F0E9; color:#121212; padding:0.9rem 0.95rem 1rem; font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; transition:transform 0.15s ease; }
-.rcpt-slip:hover { transform:translateY(-3px); }
-.rcpt-slip .nm { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:1.02rem; line-height:1.1; text-transform:uppercase; letter-spacing:-0.01em; }
-.rcpt-slip .rw { display:flex; justify-content:space-between; gap:0.5rem; font-size:0.6rem; margin-top:0.55rem; padding-top:0.5rem; border-top:1px dashed rgba(18,18,18,0.25); }
-.rcpt-slip .rw .k { color:#6B6862; text-transform:uppercase; letter-spacing:0.1em; }
-.rcpt-slip .rw .v { font-weight:700; }
-.rcpt-slip .pl { display:flex; align-items:baseline; justify-content:space-between; gap:0.5rem; margin-top:0.6rem; }
-.rcpt-slip .pl .n { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:1.25rem; line-height:1; }
-.rcpt-slip .pl .n.up { color:#0F8F5C; } .rcpt-slip .pl .n.down { color:#C4291C; }
-.rcpt-slip .pl .st { font-size:0.54rem; font-weight:700; letter-spacing:0.08em; border:2px double currentColor; padding:0.05em 0.3em; transform:rotate(-5deg); }
-.rcpt-slip .pl .st.fade { color:#C4291C; } .rcpt-slip .pl .st.tail { color:#0F8F5C; }
-@media (max-width:900px) { .rcpt-grid { grid-template-columns:1fr 1fr; } }
-@media (max-width:520px) { .rcpt-grid { grid-template-columns:1fr; } }
+/* ---- the receipt ------------------------------------------------------
+   One person we have written a case study on: their picture, their record
+   at a glance, and a door into the full file. Set in the paper's own
+   language — ruled cells, Playfair figures, a stamped verdict. */
+.receipt { margin:2.4rem 0 0.6rem; border-top:1.5px solid var(--carbon); border-bottom:4px double var(--carbon); padding:0 0 1.4rem; }
+.rc-head { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding:0.6rem 0 0.8rem; border-bottom:1.5px solid var(--carbon); }
+.rc-head h2 { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:1.5rem; letter-spacing:0.01em; }
+.rc-head .no { font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); text-align:right; }
+.rc-head .no b { color:var(--carbon); }
+
+.rc-body { display:grid; grid-template-columns:minmax(250px,0.85fr) 1.55fr; gap:clamp(1.3rem,3.2vw,2.6rem); padding-top:1.4rem; }
+
+.rc-photo { position:relative; border:1.5px solid var(--carbon); background:var(--paper-hi); align-self:start; }
+.rc-photo img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 14%; filter:grayscale(1) contrast(1.08); }
+.rc-photo .fallback { display:none; aspect-ratio:4/5; align-items:center; justify-content:center; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:3.6rem; color:var(--soft); }
+.rc-photo.dead img { display:none; }
+.rc-photo.dead .fallback { display:flex; }
+.rc-photo figcaption { border-top:1.5px solid var(--carbon); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); padding:0.5rem 0.7rem; text-align:center; }
+.rc-stamp { position:absolute; right:-0.55rem; top:0.8rem; transform:rotate(7deg); font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:1.45rem; letter-spacing:0.05em; color:var(--fade); border:3px double var(--fade); background:rgba(244,242,234,0.92); padding:0.05em 0.42em; }
+.rc-stamp.tail { color:var(--cash); border-color:var(--cash); }
+
+.rc-name { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(2rem,4.6vw,3.3rem); line-height:0.96; letter-spacing:-0.01em; }
+.rc-role { margin-top:0.45rem; font-size:0.62rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); }
+.rc-line { margin-top:1rem; padding-top:0.9rem; border-top:1px solid var(--line); font-family:'Playfair Display',Georgia,serif; font-weight:600; font-style:italic; font-size:clamp(1.05rem,2vw,1.45rem); line-height:1.28; }
+.rc-dek { margin-top:0.6rem; font-size:0.86rem; line-height:1.6; color:var(--soft); max-width:56ch; }
+
+.rc-figs { display:grid; grid-template-columns:repeat(4,1fr); border:1.5px solid var(--carbon); margin-top:1.2rem; background:var(--paper-hi); }
+.rc-figs.n2 { grid-template-columns:repeat(2,1fr); }
+.rc-fig { padding:0.9rem 0.8rem 0.85rem; border-left:1px solid var(--line); text-align:center; }
+.rc-fig:first-child { border-left:none; }
+.rc-fig .v { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(1.15rem,2.3vw,1.7rem); line-height:1; }
+.rc-fig .v.up { color:var(--cash); } .rc-fig .v.down { color:var(--fade); }
+.rc-fig .l { margin-top:0.45rem; font-size:0.54rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); line-height:1.5; }
+
+.rc-recent { margin-top:1.1rem; padding-top:0.85rem; border-top:1px solid var(--line); }
+.rc-recent .lbl { font-size:0.56rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:0.55rem; }
+.rc-seq { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.rc-chip { flex:0 0 auto; min-width:3.1rem; border:1.5px solid var(--carbon); background:var(--paper-hi); text-align:center; padding:0.4rem 0.4rem 0.35rem; }
+.rc-chip .t { font-size:0.54rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); white-space:nowrap; }
+.rc-chip .r { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.95rem; line-height:1.1; margin-top:0.1rem; }
+.rc-chip.w { background:rgba(46,158,68,0.1); } .rc-chip.w .r { color:var(--cash); }
+.rc-chip.l { background:rgba(217,45,32,0.09); } .rc-chip.l .r { color:var(--fade); }
+.rc-chip.p .r { color:var(--soft); }
+
+.rc-foot { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-top:1rem; }
+.rc-src { font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); line-height:1.7; }
+.rc-src b { color:var(--carbon); }
+.rc-open { flex:0 0 auto; font-size:0.66rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border:2px solid var(--carbon); border-radius:4px; padding:0.75rem 1.5rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); transition:all 0.15s ease; }
+.rc-open:hover { background:var(--fade); border-color:var(--fade); transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.28); }
+
+.rc-also { display:flex; align-items:baseline; gap:0.8rem; flex-wrap:wrap; margin-top:1.3rem; padding-top:0.75rem; border-top:1px solid var(--line); }
+.rc-also .lbl { font-size:0.58rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); }
+.rc-also a { font-size:0.76rem; font-weight:700; }
+.rc-also a .n { color:var(--fade); font-size:0.6rem; letter-spacing:0.1em; margin-right:0.3rem; }
+.rc-also a:hover { text-decoration:underline; }
+.rc-also .sep { color:var(--line); }
+
+@media (max-width:760px) {
+  .rc-head { flex-direction:column; align-items:flex-start; gap:0.25rem; }
+  .rc-head .no { text-align:left; }
+  .rc-body { grid-template-columns:1fr; }
+  .rc-photo { max-width:260px; }
+  .rc-stamp { right:0.6rem; }
+  .rc-figs { grid-template-columns:1fr 1fr; }
+  .rc-fig:nth-child(3) { border-left:none; }
+  .rc-fig:nth-child(3), .rc-fig:nth-child(4) { border-top:1px solid var(--line); }
+  .rc-open { width:100%; text-align:center; }
+}
 
 /* app cta */
 .appcta { border-top:1.5px solid var(--carbon); text-align:center; padding:2.6rem 0 3rem; }
@@ -514,6 +560,9 @@ a { color:inherit; text-decoration:none; }
   <!-- photo story grid -->
   <section class="grid" id="storyGrid"></section>
 
+  <!-- the receipt: one case study, featured -->
+  <section class="receipt" id="receipt" hidden></section>
+
   <!-- app promo band -->
   <section class="appband" id="appBand">
     <div class="ab-copy">
@@ -549,18 +598,6 @@ a { color:inherit; text-decoration:none; }
       <span>Celebrity betting records &middot; documented &middot; receipts attached</span>
     </div>
     <div id="cfBody"></div>
-  </section>
-
-  <!-- receipts -->
-  <section class="rcpt" id="rcptBand" hidden>
-    <div class="rcpt-top">
-      <div>
-        <h3>The Receipts</h3>
-        <p>Everybody posts their winners. We post everything &mdash; every tracked name, their all-time record, and the number at the bottom.</p>
-      </div>
-      <a class="rcpt-go" href="/the-receipts">See every receipt &rarr;</a>
-    </div>
-    <div class="rcpt-grid" id="rcptGrid"></div>
   </section>
 
   <!-- app cta -->
@@ -1083,29 +1120,86 @@ a { color:inherit; text-decoration:none; }
       (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
       '<span class="ct-open">Open the file &rarr;</span></div></a></article>';
   }
-  /* receipts band: four slips pulled from the same ledger the /the-receipts
-     page uses, so the front page can never drift from the graded record */
-  (function initReceipts() {
-    var band = document.getElementById('rcptBand');
-    var grid = document.getElementById('rcptGrid');
-    if (!band || !grid) return;
-    fetch('/receipts-data/receipts.json')
+  /* ---- the receipt ---------------------------------------------------
+     Renders the featured case study: portrait, verdict stamp, the record
+     at a glance, and the door into the full file. Reads the same ledger
+     the case files are written from, so the two cannot drift. */
+  (function initReceipt() {
+    var host = document.getElementById('receipt');
+    if (!host) return;
+    fetch('/receipts/receipts.json')
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
       .then(function (d) {
-        var rows = (d.receipts || []).filter(function (r) { return r.record && r.pnl; }).slice(0, 4);
-        if (!rows.length) return;
-        grid.innerHTML = rows.map(function (r) {
-          var tail = r.verdict === 'TAIL';
-          return '<a class="rcpt-slip" href="' + esc(r.article) + '">' +
-            '<div class="nm">' + esc(r.name) + '</div>' +
-            '<div class="rw"><span class="k">Record</span><span class="v">' + esc(r.record) + '</span></div>' +
-            '<div class="pl"><span class="st ' + (tail ? 'tail' : 'fade') + '">' + esc(r.verdict) + '</span>' +
-            '<span class="n ' + (r.pnlTone === 'up' ? 'up' : 'down') + '">' + esc(r.pnl) + '</span></div>' +
-            '</a>';
-        }).join('');
-        band.hidden = false;
+        var all = (d.receipts || []).filter(function (r) { return r.name && r.article; });
+        if (!all.length) return;
+        var lead = all.filter(function (r) { return r.featured; })[0];
+        if (!lead) {
+          lead = all.slice().sort(function (a, b) {
+            return (parseInt(b.caseNo, 10) || 0) - (parseInt(a.caseNo, 10) || 0);
+          })[0];
+        }
+        var rest = all.filter(function (r) { return r !== lead && r.caseNo; })
+          .sort(function (a, b) { return (parseInt(b.caseNo, 10) || 0) - (parseInt(a.caseNo, 10) || 0); });
+
+        var tail = lead.verdict === 'TAIL';
+        var figs = (lead.figures || []).slice(0, 4);
+        var initials = lead.name.split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join('').toUpperCase();
+
+        host.innerHTML =
+          '<div class="rc-head">' +
+            '<h2>The Receipt</h2>' +
+            '<div class="no">' + (lead.caseNo ? 'Case File No. <b>' + esc(lead.caseNo) + '</b>' : '<b>Tracked weekly</b>') +
+              ' &middot; ' + esc(lead.asOf || '') + '</div>' +
+          '</div>' +
+          '<div class="rc-body">' +
+            '<figure class="rc-photo">' +
+              '<img src="' + esc(lead.portrait || '') + '" alt="' + esc(lead.name) + '" loading="lazy" />' +
+              '<div class="fallback">' + esc(initials) + '</div>' +
+              '<span class="rc-stamp' + (tail ? ' tail' : '') + '">' + esc(lead.verdict) + '</span>' +
+              '<figcaption>' + esc(lead.kicker || lead.role || '') + '</figcaption>' +
+            '</figure>' +
+            '<div class="rc-copy">' +
+              '<a href="' + esc(lead.article) + '"><h3 class="rc-name">' + esc(lead.name) + '</h3></a>' +
+              '<div class="rc-role">' + esc(lead.role || '') + '</div>' +
+              '<div class="rc-line">' + esc(lead.headline || '') + '</div>' +
+              (lead.dek ? '<p class="rc-dek">' + esc(lead.dek) + '</p>' : '') +
+              '<div class="rc-figs' + (figs.length === 2 ? ' n2' : '') + '">' +
+                figs.map(function (f) {
+                  return '<div class="rc-fig"><div class="v ' + esc(f.tone || '') + '">' + esc(f.v) + '</div>' +
+                    '<div class="l">' + esc(f.l) + '</div></div>';
+                }).join('') +
+              '</div>' +
+              (lead.recent && lead.recent.length
+                ? '<div class="rc-recent"><div class="lbl">' + esc(lead.recentLabel || 'Last graded') + '</div>' +
+                  '<div class="rc-seq">' + lead.recent.map(function (x) {
+                    var cls = x.r === 'W' ? 'w' : x.r === 'L' ? 'l' : 'p';
+                    return '<div class="rc-chip ' + cls + '"><div class="t">' + esc(x.l) + '</div>' +
+                      '<div class="r">' + esc(x.r) + '</div></div>';
+                  }).join('') + '</div></div>'
+                : '') +
+              '<div class="rc-foot">' +
+                '<div class="rc-src"><b>Source:</b> ' + esc(lead.source || '') + '<br>' + esc(lead.period || '') + '</div>' +
+                '<a class="rc-open" href="' + esc(lead.article) + '">Read the full case file &rarr;</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          (rest.length
+            ? '<div class="rc-also"><span class="lbl">Also on file</span>' +
+              rest.map(function (r) {
+                return '<a href="' + esc(r.article) + '"><span class="n">' + esc(r.caseNo) + '</span>' + esc(r.name) + '</a>';
+              }).join('<span class="sep">/</span>') +
+              '</div>'
+            : '');
+
+        /* a portrait that will not load falls back to initials, never a hole */
+        var img = host.querySelector('.rc-photo img');
+        if (img) {
+          img.addEventListener('error', function () { img.parentNode.classList.add('dead'); });
+          if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('dead');
+        }
+        host.hidden = false;
       })
-      .catch(function () { /* band stays hidden rather than showing an empty shell */ });
+      .catch(function () { /* stays hidden rather than printing an empty frame */ });
   })();
 
   var promoTimer = null;
