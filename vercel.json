@@ -110,6 +110,10 @@
       "destination": "/fademedia.html"
     },
     {
+      "source": "/fade-media/directions",
+      "destination": "/fademedia-directions.html"
+    },
+    {
       "source": "/case-studies",
       "destination": "/case-studies/index.html"
     },

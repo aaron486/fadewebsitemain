@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fade Media — Front Page Directions</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#141412" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   SHARED TOKENS — identical to the live /fade-media page
+   ============================================================ */
+:root {
+  --paper:#F4F2EA; --paper-hi:#FBFAF5; --carbon:#141412; --soft:#6E6B60;
+  --line:rgba(20,20,18,0.16); --hair:rgba(20,20,18,0.28);
+  --tail:#2F52E0; --fade:#D92D20; --cash:#2E9E44; --wine:#9E1B1E;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:#2A2A26; font-family:'Newsreader',Georgia,serif; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; }
+.pf { font-family:'Playfair Display',Georgia,serif; }
+
+/* ============================================================
+   PREVIEW CHROME (not part of any direction)
+   ============================================================ */
+.pv-bar { position:sticky; top:0; z-index:200; background:#141412; color:#F4F2EA; border-bottom:1px solid rgba(244,242,234,0.2); }
+.pv-in { max-width:1400px; margin:0 auto; padding:0.7rem clamp(1rem,3vw,2rem); display:flex; align-items:center; gap:1.4rem; flex-wrap:wrap; }
+.pv-title { font-size:0.62rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:rgba(244,242,234,0.55); }
+.pv-title b { color:#F4F2EA; }
+.pv-tabs { display:flex; gap:0.4rem; }
+.pv-tab { font-family:'Newsreader',Georgia,serif; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,242,234,0.6); background:none; border:1px solid rgba(244,242,234,0.28); border-radius:3px; padding:0.42rem 0.9rem; cursor:pointer; transition:all 0.15s ease; }
+.pv-tab:hover { color:#F4F2EA; border-color:rgba(244,242,234,0.7); }
+.pv-tab.on { background:#F4F2EA; color:#141412; border-color:#F4F2EA; }
+.pv-right { margin-left:auto; display:flex; align-items:center; gap:0.6rem; }
+.pv-w { display:flex; border:1px solid rgba(244,242,234,0.28); border-radius:3px; overflow:hidden; }
+.pv-w button { font-family:'Newsreader',Georgia,serif; font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(244,242,234,0.6); background:none; border:none; border-left:1px solid rgba(244,242,234,0.2); padding:0.42rem 0.8rem; cursor:pointer; }
+.pv-w button:first-child { border-left:none; }
+.pv-w button.on { background:rgba(244,242,234,0.9); color:#141412; }
+
+.pv-note { max-width:1400px; margin:0 auto; padding:1.6rem clamp(1rem,3vw,2rem) 0.4rem; color:rgba(244,242,234,0.75); }
+.pv-note h2 { font-family:'Playfair Display',serif; font-weight:700; font-size:1.7rem; color:#F4F2EA; line-height:1.1; }
+.pv-note .lede { font-size:0.9rem; font-style:italic; margin-top:0.5rem; max-width:62ch; color:rgba(244,242,234,0.7); }
+.pv-note ul { margin:0.9rem 0 0; padding-left:1.1rem; max-width:70ch; }
+.pv-note li { font-size:0.82rem; line-height:1.65; margin-bottom:0.3rem; }
+.pv-note li b { color:#F4F2EA; }
+.pv-tagrow { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
+.pv-tagrow span { font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; border:1px solid rgba(244,242,234,0.3); border-radius:3px; padding:0.3rem 0.6rem; color:rgba(244,242,234,0.65); }
+
+/* the page-under-test sits in a paper frame */
+.stage { max-width:1400px; margin:1.2rem auto 3.5rem; padding:0 clamp(1rem,3vw,2rem); }
+.paper { background:var(--paper); color:var(--carbon); line-height:1.6; box-shadow:0 18px 50px rgba(0,0,0,0.45); overflow:hidden; }
+.stage.narrow .paper { max-width:430px; margin:0 auto; }
+.dir { display:none; }
+.dir.on { display:block; }
+.wrap { max-width:1180px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem); }
+
+/* shared skeleton state */
+.ld { padding:4rem 0; text-align:center; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+
+/* ============================================================
+   DIRECTION A — THE BROADSHEET
+   Hierarchy from type scale and rules. No cards, no shadows.
+   The lead gets a full news well; wire is relegated to a gutter.
+   ============================================================ */
+.A .a-util { border-bottom:1px solid var(--carbon); }
+.A .a-util-in { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:0.45rem 0; font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+.A .a-util .hot { color:var(--fade); }
+
+.A .a-mast { border-bottom:3px solid var(--carbon); padding:1.6rem 0 0; }
+.A .a-mast-in { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; gap:1.5rem; }
+.A .a-ear { font-size:0.6rem; line-height:1.7; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); }
+.A .a-ear b { display:block; font-family:'Playfair Display',serif; font-size:1.9rem; letter-spacing:0; text-transform:none; color:var(--carbon); line-height:1; margin-bottom:0.2rem; }
+.A .a-ear.r { text-align:right; }
+.A .a-logo { width:clamp(230px,30vw,400px); }
+.A .a-logo svg { display:block; width:100%; height:auto; fill:var(--carbon); }
+.A .a-creed { margin-top:1.1rem; border-top:1px solid var(--carbon); border-bottom:1px solid var(--carbon); }
+.A .a-creed-in { display:flex; justify-content:center; gap:clamp(1rem,4vw,2.6rem); padding:0.5rem 0; font-size:0.62rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; }
+
+/* nav sits directly under the masthead — its resting place, not mid-page */
+.A .a-nav { position:sticky; top:0; z-index:30; background:var(--paper); border-bottom:2px solid var(--carbon); }
+.A .a-nav-in { display:flex; justify-content:center; gap:clamp(1rem,3.6vw,2.4rem); padding:0.7rem 0; flex-wrap:wrap; }
+.A .a-nav button { font-family:'Newsreader',Georgia,serif; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); background:none; border:none; padding:0.1rem 0; cursor:pointer; position:relative; }
+.A .a-nav button:hover { color:var(--carbon); }
+.A .a-nav button.on { color:var(--carbon); }
+.A .a-nav button.on::after { content:''; position:absolute; left:-3px; right:-3px; bottom:-0.45rem; height:3px; background:var(--carbon); }
+
+/* the news well: wire gutter | lead | slate ear */
+.A .a-well { display:grid; grid-template-columns:0.72fr 2.1fr 0.85fr; gap:0; padding-top:1.5rem; }
+.A .a-col { padding:0 1.6rem; }
+.A .a-col:first-child { padding-left:0; border-right:1px solid var(--hair); }
+.A .a-col:last-child { padding-right:0; border-left:1px solid var(--hair); }
+
+.A .a-colhead { font-size:0.62rem; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; padding-bottom:0.4rem; border-bottom:2px solid var(--carbon); margin-bottom:0.8rem; display:flex; justify-content:space-between; align-items:baseline; }
+.A .a-colhead span { font-size:0.55rem; letter-spacing:0.12em; color:var(--soft); font-weight:600; }
+
+/* wire gutter: headlines only, no art — deliberately subordinate */
+.A .a-wire-item { padding:0.62rem 0; border-bottom:1px dotted var(--hair); }
+.A .a-wire-item:last-child { border-bottom:none; }
+.A .a-wire-src { font-size:0.52rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--tail); margin-bottom:0.2rem; }
+.A .a-wire-item h4 { font-family:'Newsreader',serif; font-size:0.8rem; font-weight:600; line-height:1.3; }
+.A .a-wire-item h4:hover { text-decoration:underline; }
+.A .a-wire-t { font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); margin-top:0.25rem; }
+
+/* the lead */
+.A .a-lead .k { font-size:0.62rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--fade); margin-bottom:0.6rem; }
+.A .a-lead h1 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.1rem,4.9vw,4rem); line-height:0.98; letter-spacing:-0.012em; }
+.A .a-lead h1:hover { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
+.A .a-lead .dek { font-family:'Newsreader',serif; font-style:italic; font-size:clamp(1rem,1.5vw,1.2rem); line-height:1.45; color:var(--soft); margin-top:0.8rem; max-width:48ch; }
+.A .a-byrule { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin:1rem 0 1.1rem; padding:0.4rem 0; border-top:1px solid var(--carbon); border-bottom:1px solid var(--carbon); font-size:0.58rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+.A .a-byrule b { color:var(--carbon); }
+.A .a-leadart { position:relative; margin-bottom:0.9rem; }
+.A .a-leadart img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:50% 25%; filter:grayscale(1) contrast(1.08); }
+.A .a-leadart figcaption { font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); padding-top:0.4rem; border-bottom:1px solid var(--hair); padding-bottom:0.5rem; }
+/* the stat the issue is built on, set as a broadsheet standfirst */
+.A .a-bignum { display:flex; align-items:baseline; gap:1.2rem; padding:0.9rem 0; border-bottom:1px solid var(--hair); margin-bottom:0.9rem; }
+.A .a-bignum .n { flex:0 0 auto; font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(2.4rem,5vw,3.6rem); line-height:0.85; color:var(--wine); }
+.A .a-bignum .l { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); line-height:1.7; }
+.A .a-bignum .l i { display:block; font-style:normal; letter-spacing:0.12em; color:var(--carbon); }
+.A .a-leadbody { columns:2; column-gap:2.4rem; font-size:0.94rem; line-height:1.62; }
+.A .a-leadbody p { margin-bottom:0.85rem; break-inside:avoid; }
+.A .a-leadbody > p:first-child::first-letter { float:left; font-family:'Playfair Display',serif; font-weight:700; font-size:3.4em; line-height:0.78; padding:0.06em 0.1em 0 0; color:var(--wine); }
+.A .a-jump { display:inline-block; margin-top:0.5rem; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--tail); border-bottom:1.5px solid var(--tail); padding-bottom:1px; }
+
+/* two secondary leads under the main one */
+.A .a-secs { display:grid; grid-template-columns:1fr 1fr; gap:0 2.2rem; margin-top:1.6rem; padding-top:1.2rem; border-top:4px double var(--carbon); }
+.A .a-sec:last-child { border-left:1px solid var(--hair); padding-left:2.2rem; }
+.A .a-sec .k { font-size:0.56rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin-bottom:0.4rem; }
+.A .a-sec h3 { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.2rem,2vw,1.6rem); line-height:1.08; margin-bottom:0.5rem; }
+.A .a-sec h3:hover { text-decoration:underline; }
+.A .a-sec .dek { font-size:0.78rem; color:var(--soft); line-height:1.55; }
+.A .a-sec .st { margin-top:0.6rem; font-family:'Playfair Display',serif; font-weight:700; font-size:1.4rem; color:var(--wine); }
+.A .a-sec .st em { font-family:'Newsreader',serif; font-style:normal; font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); display:block; margin-top:0.15rem; }
+
+/* the slate ear */
+.A .a-slate-row { padding:0.6rem 0; border-bottom:1px dotted var(--hair); }
+.A .a-slate-m { display:flex; justify-content:space-between; align-items:baseline; gap:0.6rem; font-size:0.74rem; font-weight:700; }
+.A .a-slate-m .o { color:var(--tail); font-size:0.68rem; }
+.A .a-slate-t { font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); margin-top:0.2rem; }
+.A .a-slate-live { color:var(--fade); }
+.A .a-stamp { display:block; text-align:center; margin-top:1rem; font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper); background:var(--carbon); padding:0.75rem 0.8rem; }
+.A .a-stamp:hover { background:var(--wine); }
+.A .a-earnote { margin-top:1.1rem; padding-top:0.8rem; border-top:1px solid var(--hair); font-size:0.66rem; font-style:italic; line-height:1.6; color:var(--soft); }
+
+/* the index: the rest of the run, as a ruled index not a card wall */
+.A .a-index { margin-top:2.2rem; border-top:4px double var(--carbon); padding-top:1rem; }
+.A .a-index-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.8rem; }
+.A .a-index-head h2 { font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; }
+.A .a-index-head span { font-size:0.58rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); }
+.A .a-index-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0 1.6rem; }
+.A .a-ix { padding:0.75rem 0; border-top:1px solid var(--hair); display:flex; gap:0.7rem; align-items:flex-start; }
+.A .a-ix .no { font-family:'Playfair Display',serif; font-weight:700; font-size:0.9rem; color:var(--wine); flex:0 0 auto; width:1.5rem; }
+.A .a-ix h4 { font-size:0.82rem; font-weight:600; line-height:1.28; }
+.A .a-ix h4:hover { text-decoration:underline; }
+.A .a-ix .vol { font-size:0.52rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); margin-top:0.3rem; }
+
+@media (max-width:1000px) {
+  .A .a-well { grid-template-columns:1fr; }
+  .A .a-col { padding:0; border:none !important; margin-bottom:1.8rem; }
+  .A .a-col:first-child { order:2; } .A .a-col:nth-child(2) { order:1; } .A .a-col:last-child { order:3; }
+  .A .a-leadbody { columns:1; }
+  .A .a-secs { grid-template-columns:1fr; }
+  .A .a-sec:last-child { border-left:none; padding-left:0; padding-top:1rem; margin-top:0.6rem; border-top:1px solid var(--hair); }
+  .A .a-index-grid { grid-template-columns:1fr 1fr; }
+  .A .a-mast-in { grid-template-columns:1fr; justify-items:center; }
+  .A .a-ear, .A .a-ear.r { display:none; }
+}
+@media (max-width:560px) { .A .a-index-grid { grid-template-columns:1fr; } }
+
+/* ============================================================
+   DIRECTION B — THE NEWSSTAND
+   Every issue is already a magazine cover. Show the covers.
+   Owned editorial is the product; the wire is a footnote.
+   ============================================================ */
+.B .b-util { background:var(--carbon); color:var(--paper); }
+.B .b-util-in { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:0.5rem 0; font-size:0.58rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(244,242,234,0.6); }
+.B .b-util b { color:var(--paper); }
+.B .b-util .hot { color:#FF7A6E; }
+
+.B .b-mast { text-align:center; padding:2rem 0 1.4rem; border-bottom:2px solid var(--carbon); }
+.B .b-logo { display:block; margin:0 auto; width:clamp(210px,32vw,360px); }
+.B .b-logo svg { display:block; width:100%; height:auto; fill:var(--carbon); }
+.B .b-tag { display:inline-block; margin-top:0.9rem; font-size:0.62rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; border-top:1px solid var(--carbon); border-bottom:1px solid var(--carbon); padding:0.35rem 1.1rem; }
+
+/* live slate reduced to a hairline strip — present, not dominant */
+.B .b-strip { display:flex; align-items:stretch; border-bottom:2px solid var(--carbon); background:var(--paper-hi); overflow:hidden; }
+.B .b-strip-l { flex:0 0 auto; display:flex; align-items:center; gap:0.45rem; font-size:0.55rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; background:var(--carbon); color:var(--paper); padding:0.5rem 0.9rem; }
+.B .b-strip-l i { width:6px; height:6px; border-radius:50%; background:var(--fade); animation:bpulse 1.6s ease-in-out infinite; }
+@keyframes bpulse { 50% { opacity:0.25; } }
+.B .b-strip-v { flex:1; overflow-x:auto; display:flex; scrollbar-width:none; }
+.B .b-strip-v::-webkit-scrollbar { display:none; }
+.B .b-sg { flex:0 0 auto; display:inline-flex; align-items:baseline; gap:0.45rem; padding:0.5rem 1rem; border-right:1px solid var(--line); font-size:0.66rem; white-space:nowrap; }
+.B .b-sg .tm { font-weight:700; } .B .b-sg .od { color:var(--tail); font-weight:700; font-size:0.62rem; }
+.B .b-sg .lg { font-size:0.52rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); }
+
+.B .b-nav { position:sticky; top:0; z-index:30; background:var(--paper); border-bottom:2px solid var(--carbon); }
+.B .b-nav-in { display:flex; justify-content:center; gap:clamp(1rem,3.6vw,2.4rem); padding:0.7rem 0; flex-wrap:wrap; }
+.B .b-nav button { font-family:'Newsreader',Georgia,serif; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); background:none; border:none; cursor:pointer; position:relative; padding:0.1rem 0; }
+.B .b-nav button.on { color:var(--carbon); }
+.B .b-nav button.on::after { content:''; position:absolute; left:-3px; right:-3px; bottom:-0.45rem; height:3px; background:var(--wine); }
+
+/* ---- the current issue, presented as a cover on a stand ---- */
+.B .b-current { display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(1.6rem,4vw,3.4rem); align-items:center; padding:clamp(1.8rem,4vw,3rem) 0; }
+.B .b-cur-copy .k { font-size:0.6rem; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:var(--wine); margin-bottom:0.9rem; }
+.B .b-cur-copy h1 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.9rem,3.7vw,3.1rem); line-height:1.02; letter-spacing:-0.01em; }
+.B .b-cur-copy .dek { font-style:italic; font-size:1.02rem; line-height:1.5; color:var(--soft); margin-top:0.9rem; max-width:44ch; }
+.B .b-cur-meta { margin-top:1.1rem; padding-top:0.6rem; border-top:1px solid var(--carbon); font-size:0.58rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+.B .b-cur-meta b { color:var(--carbon); }
+.B .b-cur-cta { display:inline-block; margin-top:1.3rem; font-size:0.66rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--paper); background:var(--carbon); padding:0.8rem 1.6rem; box-shadow:4px 4px 0 rgba(20,20,18,0.22); transition:all 0.15s ease; }
+.B .b-cur-cta:hover { background:var(--wine); transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18,0.26); }
+
+/* ---- the cover object (shared by hero and rack) ---- */
+.B .cv { display:block; background:var(--wine); border:1.5px solid var(--carbon); overflow:hidden; box-shadow:6px 7px 0 rgba(20,20,18,0.2); transition:transform 0.18s ease, box-shadow 0.18s ease; }
+.B .cv:hover { transform:translate(-2px,-3px); box-shadow:9px 11px 0 rgba(20,20,18,0.24); }
+.B .cv-top { display:flex; justify-content:space-between; gap:0.7rem; padding:0 0 0.55rem; border-bottom:1px solid rgba(241,238,229,0.35); }
+.B .cv-band { color:#F1EEE5; padding:0.85rem 1rem 0; }
+.B .cv-caps { font-size:0.5rem; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:rgba(241,238,229,0.85); }
+.B .cv-logo { margin:0.8rem auto 0.85rem; width:64%; }
+.B .cv-logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
+.B .cv-grid { display:grid; grid-template-columns:1fr auto; gap:0.9rem; align-items:end; }
+.B .cv-line { font-family:'Playfair Display',serif; font-weight:600; font-size:0.95rem; line-height:1.18; color:#F1EEE5; }
+.B .cv-stat { font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; line-height:1; color:#F1EEE5; text-align:right; }
+.B .cv-right { text-align:right; }
+.B .cv-right .cv-caps { display:block; margin-bottom:0.3rem; }
+.B .cv-ed { text-align:center; padding:0.75rem 0 0.8rem; font-style:italic; letter-spacing:0.24em; text-transform:uppercase; font-size:0.5rem; color:rgba(241,238,229,0.75); }
+.B .cv-photo { background:var(--carbon); position:relative; }
+.B .cv-photo img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 12%; filter:grayscale(1) contrast(1.06); }
+/* graceful degradation: a dead cover image falls back to the typographic cover */
+.B .cv-photo.dead img { display:none; }
+.B .cv-photo.dead { background:#F1EEE5; border-top:1px solid var(--carbon); }
+.B .cv-photo.dead::after { content:attr(data-fb); display:flex; align-items:center; justify-content:center; text-align:center; aspect-ratio:16/10; padding:1rem; font-family:'Playfair Display',serif; font-weight:800; font-size:2rem; line-height:1; color:var(--wine); }
+/* typographic cover for issues with no photography */
+.B .cv-nophoto { background:#F1EEE5; padding:1.1rem 1rem 1.2rem; text-align:center; border-top:1px solid var(--carbon); }
+.B .cv-nophoto .n { font-family:'Playfair Display',serif; font-weight:800; font-size:2.3rem; line-height:0.9; color:var(--wine); }
+.B .cv-nophoto .l { font-size:0.52rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); margin-top:0.45rem; line-height:1.6; }
+
+/* hero cover runs bigger */
+.B .b-hero .cv-band { padding:1.3rem 1.6rem 0; }
+.B .b-hero .cv-caps { font-size:0.58rem; letter-spacing:0.3em; }
+.B .b-hero .cv-logo { margin:1.4rem auto 1.4rem; width:72%; }
+.B .b-hero .cv-line { font-size:clamp(1.1rem,2vw,1.55rem); }
+.B .b-hero .cv-stat { font-size:clamp(1.9rem,3.4vw,2.7rem); }
+.B .b-hero .cv-ed { font-size:0.56rem; padding:1.1rem 0 1.1rem; }
+.B .b-hero .cv-photo img { aspect-ratio:16/11; }
+.B .b-hero .cv-nophoto { padding:1.9rem 1.2rem 2rem; }
+.B .b-hero .cv-nophoto .n { font-size:3.6rem; }
+
+/* ---- the rack ---- */
+.B .b-shelf { padding:1.6rem 0 0.4rem; }
+.B .b-shelf-head { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; padding-bottom:0.5rem; border-bottom:2px solid var(--carbon); margin-bottom:1.5rem; }
+.B .b-shelf-head h2 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.4rem,2.6vw,2rem); line-height:1; }
+.B .b-shelf-head .sub { font-size:0.58rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); }
+.B .b-rack { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.1rem,2.2vw,1.9rem); }
+/* covers on a rack must line up: clamp the variable-length bits so every
+   spine is the same height regardless of cover-line length or photography.
+   At tile scale the hero's line-left / stat-right composition squeezes the
+   cover line to nothing, so the tile stacks them instead: line full width,
+   stat on its own baseline underneath. */
+.B .b-rack .cv-grid { grid-template-columns:1fr; gap:0.55rem; }
+.B .b-rack .cv-right { text-align:left; display:flex; align-items:baseline; gap:0.5rem; border-top:1px solid rgba(241,238,229,0.3); padding-top:0.5rem; }
+.B .b-rack .cv-right .cv-caps { margin-bottom:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.B .b-rack .cv-stat { font-size:1.35rem; margin-left:auto; }
+.B .b-rack .cv-line { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; min-height:3.55em; }
+.B .b-rack .cv-ed { min-height:2.4em; display:flex; align-items:center; justify-content:center; }
+.B .b-rack .cv-nophoto { display:flex; flex-direction:column; align-items:center; justify-content:center; aspect-ratio:16/10; padding:1rem; }
+.B .b-issue { display:flex; flex-direction:column; }
+.B .b-issue .cap { margin-top:0.8rem; }
+.B .b-issue .cap h3 { font-family:'Playfair Display',serif; font-weight:600; font-size:1.02rem; line-height:1.18; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.B .b-issue:hover .cap h3 { text-decoration:underline; }
+.B .b-issue .cap .m { font-size:0.52rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); margin-top:0.35rem; }
+
+/* case files get their own numbered shelf */
+.B .b-cases { background:var(--carbon); color:var(--paper); margin-top:2.4rem; padding:clamp(1.6rem,3.5vw,2.6rem) 0; }
+.B .b-cases .b-shelf-head { border-bottom-color:rgba(244,242,234,0.4); }
+.B .b-cases .b-shelf-head h2 { color:var(--paper); }
+.B .b-cases .b-shelf-head .sub { color:rgba(244,242,234,0.55); }
+.B .b-spines { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,2vw,1.6rem); }
+.B .b-spine { display:block; border:1px solid rgba(244,242,234,0.28); background:rgba(244,242,234,0.03); transition:all 0.16s ease; }
+.B .b-spine:hover { background:rgba(244,242,234,0.08); border-color:rgba(244,242,234,0.6); transform:translateY(-3px); }
+.B .b-spine-photo { position:relative; aspect-ratio:16/10; overflow:hidden; background:#1E1E1A; }
+.B .b-spine-photo.dead img { display:none; }
+.B .b-spine-photo.dead::before { content:attr(data-fb); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-weight:800; font-size:2.6rem; color:rgba(244,242,234,0.22); }
+.B .b-spine-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 12%; filter:grayscale(1) contrast(1.1) brightness(0.92); }
+.B .b-spine-no { position:absolute; left:0; bottom:0; background:var(--paper); color:var(--carbon); font-size:0.54rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding:0.35rem 0.75rem; }
+.B .b-spine-stamp { position:absolute; right:0.6rem; top:0.6rem; transform:rotate(7deg); font-family:'Playfair Display',serif; font-weight:700; font-size:1.05rem; color:#FF5F52; border:2px solid #FF5F52; padding:0 0.35em; background:rgba(20,20,18,0.55); }
+.B .b-spine-stamp.tail { color:#6FD481; border-color:#6FD481; }
+.B .b-spine-body { padding:0.85rem 1rem 1rem; }
+.B .b-spine-body h3 { font-family:'Playfair Display',serif; font-weight:600; font-size:1.15rem; line-height:1.12; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.24em; }
+.B .b-spine-body .st { font-family:'Playfair Display',serif; font-weight:700; font-size:1.3rem; color:#FFD9D4; margin-top:0.5rem; }
+.B .b-spine-body .l { font-size:0.52rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,242,234,0.5); margin-top:0.25rem; }
+
+/* the wire, explicitly demoted to the bottom */
+.B .b-wire { padding:2rem 0 2.4rem; }
+.B .b-wire-head { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:0.45rem; border-bottom:1px solid var(--carbon); margin-bottom:0.3rem; }
+.B .b-wire-head h2 { font-family:'Playfair Display',serif; font-weight:600; font-size:1.2rem; }
+.B .b-wire-head span { font-size:0.55rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); }
+.B .b-wire-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 2.6rem; }
+.B .b-wl { display:flex; gap:0.7rem; align-items:baseline; padding:0.55rem 0; border-bottom:1px dotted var(--hair); font-size:0.78rem; line-height:1.35; }
+.B .b-wl .s { flex:0 0 auto; font-size:0.5rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--tail); width:4.6rem; }
+.B .b-wl a:hover { text-decoration:underline; }
+.B .b-wl .t { margin-left:auto; flex:0 0 auto; font-size:0.55rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); }
+
+@media (max-width:1040px) { .B .b-rack { grid-template-columns:repeat(3,1fr); } .B .b-spines { grid-template-columns:1fr 1fr; } }
+@media (max-width:820px) {
+  .B .b-current { grid-template-columns:1fr; }
+  .B .b-rack { grid-template-columns:1fr 1fr; }
+  .B .b-spines { grid-template-columns:1fr; }
+  .B .b-wire-grid { grid-template-columns:1fr; }
+}
+@media (max-width:480px) { .B .b-rack { grid-template-columns:1fr; } }
+
+/* ============================================================
+   DIRECTION C — THE DESK
+   A working blotter. One chronological spine; everything the
+   desk touched today, stamped owned or wire, newest first.
+   ============================================================ */
+.C .c-top { background:var(--carbon); color:var(--paper); }
+.C .c-top-in { display:flex; align-items:center; gap:1.4rem; padding:0.7rem 0; flex-wrap:wrap; }
+.C .c-top .c-logo { width:118px; flex:0 0 auto; }
+.C .c-top .c-logo svg { display:block; width:100%; height:auto; fill:var(--paper); }
+.C .c-top .slug { font-size:0.56rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(244,242,234,0.55); border-left:1px solid rgba(244,242,234,0.28); padding-left:1.4rem; }
+.C .c-top .rt { margin-left:auto; display:flex; align-items:center; gap:1.2rem; font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,242,234,0.6); }
+.C .c-top .rt .on { color:#FF7A6E; display:inline-flex; align-items:center; gap:0.4rem; }
+.C .c-top .rt .on i { width:6px; height:6px; border-radius:50%; background:#FF7A6E; animation:cpulse 1.5s ease-in-out infinite; }
+@keyframes cpulse { 50% { opacity:0.25; } }
+.C .c-get { font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; background:var(--paper); color:var(--carbon); padding:0.5rem 1rem; }
+
+/* the live board is the one thing that stays pinned */
+.C .c-board { position:sticky; top:0; z-index:30; background:var(--paper-hi); border-bottom:1.5px solid var(--carbon); }
+.C .c-board-in { display:flex; align-items:stretch; }
+.C .c-board-l { flex:0 0 auto; display:flex; align-items:center; gap:0.4rem; font-size:0.54rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:0.5rem 0.9rem 0.5rem 0; color:var(--soft); border-right:1px solid var(--line); }
+.C .c-board-v { flex:1; display:flex; overflow-x:auto; scrollbar-width:none; }
+.C .c-board-v::-webkit-scrollbar { display:none; }
+.C .c-bg { flex:0 0 auto; padding:0.42rem 0.95rem; border-right:1px solid var(--line); white-space:nowrap; }
+.C .c-bg.live { background:rgba(217,45,32,0.06); box-shadow:inset 3px 0 0 var(--fade); }
+.C .c-bg .r1 { display:flex; align-items:baseline; gap:0.5rem; font-size:0.68rem; font-weight:700; }
+.C .c-bg .r2 { display:flex; align-items:baseline; gap:0.5rem; font-size:0.68rem; font-weight:700; color:var(--soft); }
+.C .c-bg .sc { margin-left:auto; padding-left:0.7rem; }
+.C .c-bg .st { font-size:0.5rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); margin-top:0.15rem; }
+.C .c-bg.live .st { color:var(--fade); }
+
+/* filing header */
+.C .c-filing { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; padding:1.5rem 0 0.7rem; border-bottom:2px solid var(--carbon); }
+.C .c-filing h1 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.6rem,3.2vw,2.5rem); line-height:1; }
+.C .c-filing .sub { font-size:0.58rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); margin-top:0.4rem; }
+.C .c-filter { display:flex; gap:0.35rem; flex-wrap:wrap; }
+.C .c-filter button { font-family:'Newsreader',serif; font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); background:none; border:1px solid var(--line); padding:0.35rem 0.75rem; cursor:pointer; transition:all 0.14s ease; }
+.C .c-filter button:hover { border-color:var(--carbon); color:var(--carbon); }
+.C .c-filter button.on { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+
+/* the spine */
+.C .c-spine { position:relative; padding-left:clamp(4.6rem,9vw,7.5rem); }
+.C .c-spine::before { content:''; position:absolute; left:clamp(3.4rem,7vw,5.8rem); top:0; bottom:0; width:1px; background:var(--hair); }
+.C .c-entry { position:relative; padding:1.5rem 0; border-bottom:1px solid var(--line); }
+.C .c-time { position:absolute; left:calc(-1 * clamp(4.6rem,9vw,7.5rem)); top:1.75rem; width:clamp(3.4rem,7vw,5.8rem); text-align:right; padding-right:0.85rem; font-size:0.56rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); line-height:1.5; }
+.C .c-dot { position:absolute; left:calc(-1 * clamp(4.6rem,9vw,7.5rem) + clamp(3.4rem,7vw,5.8rem) - 4px); top:1.95rem; width:9px; height:9px; border-radius:50%; background:var(--paper); border:1.5px solid var(--hair); }
+.C .c-entry.own .c-dot { background:var(--wine); border-color:var(--wine); }
+.C .c-entry.own .c-time { color:var(--wine); }
+
+/* owned filings: a slab with the stat and cover art */
+.C .c-own { display:grid; grid-template-columns:1.55fr 0.85fr; gap:clamp(1.1rem,2.5vw,2.2rem); align-items:start; }
+.C .c-badge { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.52rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--paper); background:var(--wine); padding:0.24rem 0.6rem; margin-bottom:0.7rem; }
+.C .c-badge.wire { background:none; color:var(--tail); border:1px solid rgba(47,82,224,0.4); }
+.C .c-own h2 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.3rem,2.5vw,2rem); line-height:1.05; }
+.C .c-own h2:hover { text-decoration:underline; }
+.C .c-own .dek { font-size:0.86rem; line-height:1.55; color:var(--soft); margin-top:0.6rem; max-width:56ch; }
+.C .c-own .by { margin-top:0.8rem; font-size:0.55rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+.C .c-own .by b { color:var(--carbon); }
+.C .c-statbox { border:1.5px solid var(--carbon); background:var(--paper-hi); }
+.C .c-statbox .top { display:flex; justify-content:space-between; gap:0.5rem; font-size:0.5rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); padding:0.45rem 0.7rem; border-bottom:1px solid var(--line); }
+.C .c-statbox .n { font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(1.7rem,3.4vw,2.5rem); line-height:1; color:var(--wine); text-align:center; padding:1rem 0.6rem 0.3rem; }
+.C .c-statbox .l { font-size:0.52rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); text-align:center; padding:0 0.7rem 0.9rem; line-height:1.6; }
+.C .c-statbox img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 12%; filter:grayscale(1) contrast(1.06); border-top:1px solid var(--line); }
+.C .c-statbox img.dead { display:none; }
+.C .c-open { display:block; text-align:center; font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; background:var(--carbon); color:var(--paper); padding:0.55rem; }
+.C .c-own:hover .c-open { background:var(--wine); }
+
+/* wire filings: one line, no art */
+.C .c-wire-e { display:flex; gap:0.9rem; align-items:baseline; }
+.C .c-wire-e .src { flex:0 0 auto; font-size:0.52rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--tail); width:5.4rem; }
+.C .c-wire-e h3 { font-size:0.95rem; font-weight:600; line-height:1.35; }
+.C .c-wire-e h3:hover { text-decoration:underline; }
+.C .c-wire-e .dek { font-size:0.76rem; color:var(--soft); margin-top:0.3rem; line-height:1.5; max-width:70ch; }
+.C .c-entry.wire { padding:0.9rem 0; }
+
+.C .c-more { display:block; width:100%; margin:1.6rem 0 2.4rem; font-family:'Newsreader',serif; font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--carbon); background:none; border:1.5px solid var(--carbon); padding:0.85rem; cursor:pointer; }
+.C .c-more:hover { background:var(--carbon); color:var(--paper); }
+
+@media (max-width:820px) {
+  .C .c-own { grid-template-columns:1fr; }
+  .C .c-statbox { max-width:320px; }
+  .C .c-spine { padding-left:0; }
+  .C .c-spine::before { display:none; }
+  .C .c-time { position:static; width:auto; text-align:left; padding:0 0 0.5rem; }
+  .C .c-dot { display:none; }
+  .C .c-wire-e { flex-direction:column; gap:0.3rem; }
+  .C .c-wire-e .src { width:auto; }
+  .C .c-top .slug { display:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="pv-bar"><div class="pv-in">
+  <span class="pv-title"><b>Fade Media</b> &middot; front page directions</span>
+  <div class="pv-tabs">
+    <button class="pv-tab on" data-d="A">A &middot; The Broadsheet</button>
+    <button class="pv-tab" data-d="B">B &middot; The Newsstand</button>
+    <button class="pv-tab" data-d="C">C &middot; The Desk</button>
+  </div>
+  <div class="pv-right">
+    <div class="pv-w">
+      <button class="on" data-w="wide">Desktop</button>
+      <button data-w="narrow">Phone</button>
+    </div>
+  </div>
+</div></div>
+
+<div class="pv-note" id="pvNote"></div>
+
+<div class="stage" id="stage">
+  <div class="paper">
+    <section class="dir A on" id="dirA"><div class="ld">Loading the desk&hellip;</div></section>
+    <section class="dir B" id="dirB"><div class="ld">Loading the desk&hellip;</div></section>
+    <section class="dir C" id="dirC"><div class="ld">Loading the desk&hellip;</div></section>
+  </div>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------------- shared helpers ---------------- */
+var APP = 'https://testflight.apple.com/join/scH3svgB';
+var LOGO = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 158" role="img" aria-label="Fade"><g transform="translate(-80,-416)"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g></svg>';
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }
+function ago(iso) {
+  var m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+  if (!isFinite(m) || m < 0) return '';
+  if (m < 60) return m + 'm ago';
+  var h = Math.round(m / 60);
+  if (h < 24) return h + 'h ago';
+  return Math.round(h / 24) + 'd ago';
+}
+function clock(iso) {
+  var d = new Date(iso);
+  if (isNaN(d)) return '';
+  return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+}
+function daystamp(iso) {
+  var d = new Date(iso);
+  if (isNaN(d)) return '';
+  return d.toLocaleDateString([], { month: 'short', day: 'numeric' });
+}
+function fmtStat(v) { return esc(String(v == null ? '' : v).replace(/^−/, '−')); }
+function href(a) { return a.custom ? esc(a.url) : esc(a.url); }
+function ext(a) { return a.custom ? '' : ' target="_blank" rel="noopener"'; }
+
+/* wire fallback so the preview renders with `vite dev`, where /api/news
+   is not served. On Vercel the real feed replaces this. */
+var WIRE_FALLBACK = [
+  { league:'NFL', src:'ESPN', title:'Chiefs open as three-point road favorites in the rematch', dek:'Kansas City opened -3 at most shops within minutes of the Sunday night final.', url:'#', published:new Date(Date.now()-22*6e4).toISOString(), img:'' },
+  { league:'BETTING', src:'VSiN', title:'Sharp money hammers the Week 2 under in prime time', dek:'Two of the three biggest ticket counts of the morning landed on totals.', url:'#', published:new Date(Date.now()-51*6e4).toISOString(), img:'' },
+  { league:'CFB', src:'ESPN', title:'Top-ten upset swings the conference futures board', dek:'The playoff number moved a full win overnight.', url:'#', published:new Date(Date.now()-96*6e4).toISOString(), img:'' },
+  { league:'BETTING', src:'Legal Sports Report', title:'Another state clears the last procedural hurdle on mobile', dek:'Launch window now points at the back half of the season.', url:'#', published:new Date(Date.now()-140*6e4).toISOString(), img:'' },
+  { league:'NBA', src:'ESPN', title:'Preseason win totals land with two clear outliers', dek:'The market disagrees with the projection systems on both coasts.', url:'#', published:new Date(Date.now()-190*6e4).toISOString(), img:'' },
+  { league:'MLB', src:'ESPN', title:'Division race tightens to a single game with ten to play', dek:'Both clubs shortened on the pennant overnight.', url:'#', published:new Date(Date.now()-240*6e4).toISOString(), img:'' },
+  { league:'BETTING', src:'Sports Handle', title:'Handle sets another September record', dek:'Operators point to a heavier-than-usual opening slate.', url:'#', published:new Date(Date.now()-300*6e4).toISOString(), img:'' },
+  { league:'NFL', src:'ESPN', title:'Injury report reshapes the Sunday afternoon spreads', dek:'Two starters ruled out; the number moved before the news conference ended.', url:'#', published:new Date(Date.now()-360*6e4).toISOString(), img:'' },
+  { league:'BETTING', src:'InGame', title:'Parlay mix keeps climbing as a share of total handle', dek:'Same-game product now drives the majority of tickets on a full slate.', url:'#', published:new Date(Date.now()-430*6e4).toISOString(), img:'' },
+  { league:'CFB', src:'ESPN', title:'Heisman market consolidates around three names', dek:'Everyone else drifted past 25-1.', url:'#', published:new Date(Date.now()-500*6e4).toISOString(), img:'' },
+  { league:'NHL', src:'ESPN', title:'Camp opens with the Cup number unchanged', dek:'No movement on the favorite through the summer.', url:'#', published:new Date(Date.now()-600*6e4).toISOString(), img:'' },
+  { league:'WNBA', src:'ESPN', title:'Playoff series price swings on a late scratch', dek:'The series line moved two full points inside an hour.', url:'#', published:new Date(Date.now()-700*6e4).toISOString(), img:'' }
+];
+
+var SLATE_FALLBACK = [
+  { lg:'NFL', a:'Chiefs', b:'Bills', o:'-3', t:'8:20p ET', live:false },
+  { lg:'NFL', a:'Eagles', b:'Cowboys', o:'-6.5', t:'4:25p ET', live:false },
+  { lg:'CFB', a:'Georgia', b:'Alabama', o:'-2.5', t:'7:30p ET', live:true, sa:'21', sb:'17' },
+  { lg:'MLB', a:'Dodgers', b:'Padres', o:'-140', t:'9:10p ET', live:true, sa:'3', sb:'2' },
+  { lg:'NBA', a:'Celtics', b:'Knicks', o:'-4', t:'7:40p ET', live:false },
+  { lg:'NFL', a:'49ers', b:'Rams', o:'-1.5', t:'1:00p ET', live:false }
+];
+
+/* ============================================================
+   DIRECTION A — THE BROADSHEET
+   ============================================================ */
+function renderA(own, wire, slate) {
+  var lead = own[0];
+  var secs = own.slice(1, 3);
+  var index = own.slice(3, 15);
+  var live = slate.filter(function (g) { return g.live; }).length;
+  var today = new Date().toLocaleDateString([], { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+
+  var h = '';
+  h += '<div class="a-util"><div class="wrap"><div class="a-util-in">' +
+    '<span>' + esc(today) + '</span>' +
+    '<span class="hot">' + live + ' games live now</span>' +
+    '<span>21+ &middot; Play responsibly</span>' +
+    '</div></div></div>';
+
+  h += '<header class="a-mast"><div class="wrap">' +
+    '<div class="a-mast-in">' +
+      '<div class="a-ear"><b>' + own.length + '</b>Issues in the archive</div>' +
+      '<div class="a-logo">' + LOGO + '</div>' +
+      '<div class="a-ear r"><b>' + wire.length + '</b>Wire stories today</div>' +
+    '</div>' +
+    '</div>' +
+    '<div class="a-creed"><div class="wrap"><div class="a-creed-in">' +
+      '<span>The Front Page of Sports Betting</span>' +
+    '</div></div></div>' +
+    '</header>';
+
+  h += '<nav class="a-nav"><div class="wrap"><div class="a-nav-in">' +
+    ['All','NFL','CFB','MLB','NBA','Cases'].map(function (t, i) {
+      return '<button class="' + (i === 0 ? 'on' : '') + '">' + t + '</button>';
+    }).join('') +
+    '</div></div></nav>';
+
+  h += '<div class="wrap"><div class="a-well">';
+
+  /* wire gutter */
+  h += '<div class="a-col">' +
+    '<div class="a-colhead">The Wire<span>' + wire.length + '</span></div>' +
+    wire.slice(0, 11).map(function (a) {
+      return '<div class="a-wire-item">' +
+        '<div class="a-wire-src">' + esc(a.src || a.league) + '</div>' +
+        '<a href="' + href(a) + '"' + ext(a) + '><h4>' + esc(a.title) + '</h4></a>' +
+        '<div class="a-wire-t">' + esc(ago(a.published)) + '</div>' +
+        '</div>';
+    }).join('') +
+    '</div>';
+
+  /* the lead */
+  var m = lead.mag || {};
+  var stat = m.coverStat || null;
+  var photo = m.coverPhoto || lead.img || '';
+  var paras = (lead.body || []).slice(0, 4);
+  h += '<div class="a-col"><div class="a-lead">' +
+    '<div class="k">' + esc(m.volume || lead.league) + '</div>' +
+    '<a href="' + href(lead) + '"><h1>' + esc(lead.title) + '</h1></a>' +
+    (lead.dek ? '<p class="dek">' + esc(lead.dek) + '</p>' : '') +
+    '<div class="a-byrule"><span>By <b>' + esc(lead.author || 'The Fade Desk') + '</b></span>' +
+      '<span>' + esc(m.edition || m.issueLine || daystamp(lead.published)) + '</span></div>' +
+    (photo ? '<figure class="a-leadart"><img src="' + esc(photo) + '" alt="" />' +
+      '<figcaption>' + esc(m.coverKicker || lead.league) + ' &middot; ' + esc(m.issueLine || daystamp(lead.published)) + '</figcaption></figure>' : '') +
+    (stat ? '<div class="a-bignum"><div class="n">' + fmtStat(stat.value) + '</div>' +
+      '<div class="l">' + esc(stat.label || '') + (stat.sub ? '<i>' + esc(stat.sub) + '</i>' : '') + '</div></div>' : '') +
+    (paras.length ? '<div class="a-leadbody">' + paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' : '') +
+    '<a class="a-jump" href="' + href(lead) + '">Continue reading the issue &rarr;</a>';
+
+  h += '<div class="a-secs">' + secs.map(function (a) {
+    var mm = a.mag || {}; var st = mm.coverStat;
+    return '<div class="a-sec">' +
+      '<div class="k">' + esc(mm.volume || a.league) + '</div>' +
+      '<a href="' + href(a) + '"><h3>' + esc(a.title) + '</h3></a>' +
+      (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
+      (st ? '<div class="st">' + fmtStat(st.value) + '<em>' + esc(st.label || '') + '</em></div>' : '') +
+      '</div>';
+  }).join('') + '</div>';
+
+  h += '</div></div>';
+
+  /* the slate ear */
+  h += '<div class="a-col">' +
+    '<div class="a-colhead">The Slate<span>Today</span></div>' +
+    slate.map(function (g) {
+      return '<div class="a-slate-row">' +
+        '<div class="a-slate-m"><span>' + esc(g.a) + ' <span style="color:var(--soft)">at</span> ' + esc(g.b) + '</span>' +
+        '<span class="o">' + esc(g.o) + '</span></div>' +
+        '<div class="a-slate-t' + (g.live ? ' a-slate-live' : '') + '">' + esc(g.lg) + ' &middot; ' +
+        (g.live ? 'Live &middot; ' + esc(g.sa || '') + '&ndash;' + esc(g.sb || '') : esc(g.t)) + '</div>' +
+        '</div>';
+    }).join('') +
+    '<a class="a-stamp" href="' + APP + '" target="_blank" rel="noopener">Read the desk in the app</a>' +
+    '<p class="a-earnote">Every pick in this paper is tracked to a settled result. Nothing here is a tout.</p>' +
+    '</div>';
+
+  h += '</div>';
+
+  /* the index */
+  h += '<section class="a-index">' +
+    '<div class="a-index-head"><h2 class="pf">The rest of the run</h2>' +
+    '<span>' + own.length + ' issues &middot; the full archive</span></div>' +
+    '<div class="a-index-grid">' +
+    index.map(function (a, i) {
+      var mm = a.mag || {};
+      return '<a class="a-ix" href="' + href(a) + '">' +
+        '<span class="no">' + (i + 1 < 10 ? '0' : '') + (i + 1) + '</span>' +
+        '<span><h4>' + esc(a.title) + '</h4>' +
+        '<div class="vol">' + esc(mm.volume || a.league) + ' &middot; ' + esc(daystamp(a.published)) + '</div></span>' +
+        '</a>';
+    }).join('') +
+    '</div></section>';
+
+  h += '</div>';
+  return h;
+}
+
+/* ============================================================
+   DIRECTION B — THE NEWSSTAND
+   ============================================================ */
+function coverHtml(a, cls) {
+  var m = a.mag || {};
+  var st = m.coverStat || null;
+  var photo = m.coverPhoto || a.img || '';
+  var s = '<a class="cv' + (cls ? ' ' + cls : '') + '" href="' + href(a) + '">' +
+    '<div class="cv-band">' +
+      '<div class="cv-top"><span class="cv-caps">' + esc(m.issueLine || daystamp(a.published)) + '</span>' +
+        '<span class="cv-caps">' + esc(m.volume || 'Fade Media') + '</span></div>' +
+      '<div class="cv-logo">' + LOGO + '</div>' +
+      '<div class="cv-grid">' +
+        '<div class="cv-left"><div class="cv-line">' + esc(m.coverLine || a.title) + '</div></div>' +
+        (st && photo ? '<div class="cv-right"><span class="cv-caps">' + esc(st.label || '') + '</span>' +
+          '<div class="cv-stat">' + fmtStat(st.value) + '</div></div>' : '') +
+      '</div>' +
+      (m.edition ? '<div class="cv-ed">' + esc(m.edition) + '</div>' : '<div class="cv-ed">&nbsp;</div>') +
+    '</div>';
+  s += photo
+    ? '<div class="cv-photo" data-fb="' + (st ? fmtStat(st.value) : esc(m.volume || '')) + '">' +
+      '<img src="' + esc(photo) + '" alt="" loading="lazy" /></div>'
+    : '<div class="cv-nophoto"><div class="n">' + (st ? fmtStat(st.value) : '&mdash;') + '</div>' +
+      '<div class="l">' + esc((st && st.sub) || (st && st.label) || a.league) + '</div></div>';
+  return s + '</a>';
+}
+
+function renderB(own, wire, slate) {
+  var cases = own.filter(function (a) { return a.caseNo; });
+  var issues = own.filter(function (a) { return !a.caseNo; });
+  /* the hero is the shop window: lead with the newest issue that carries real
+     cover photography rather than a chart or a bare typographic cover */
+  var hero = issues.filter(function (a) { return a.mag && a.mag.coverPhoto; })[0] || issues[0] || own[0];
+  var rack = issues.filter(function (a) { return a !== hero; }).slice(0, 8);
+  var live = slate.filter(function (g) { return g.live; }).length;
+  var hm = hero.mag || {};
+
+  var h = '';
+  h += '<div class="b-util"><div class="wrap"><div class="b-util-in">' +
+    '<span><b>Fade Media</b> &middot; the pre-bet desk</span>' +
+    '<span class="hot">&#9679; ' + live + ' live</span>' +
+    '<span>21+ &middot; 1-800-GAMBLER</span>' +
+    '</div></div></div>';
+
+  h += '<header class="b-mast"><div class="wrap">' +
+    '<div class="b-logo">' + LOGO + '</div>' +
+    '<div class="b-tag">The Front Page of Sports Betting</div>' +
+    '</div></header>';
+
+  h += '<div class="b-strip"><div class="b-strip-l"><i></i>The slate</div><div class="b-strip-v">' +
+    slate.concat(slate).map(function (g) {
+      return '<span class="b-sg"><span class="lg">' + esc(g.lg) + '</span>' +
+        '<span class="tm">' + esc(g.a) + '</span><span style="color:var(--soft)">at</span>' +
+        '<span class="tm">' + esc(g.b) + '</span><span class="od">' + esc(g.o) + '</span>' +
+        '<span class="lg">' + (g.live ? 'Live' : esc(g.t)) + '</span></span>';
+    }).join('') +
+    '</div></div>';
+
+  h += '<nav class="b-nav"><div class="wrap"><div class="b-nav-in">' +
+    ['The Issue','The Rack','Case Files','The Wire','Leagues'].map(function (t, i) {
+      return '<button class="' + (i === 0 ? 'on' : '') + '">' + t + '</button>';
+    }).join('') +
+    '</div></div></nav>';
+
+  /* current issue on the stand */
+  h += '<div class="wrap"><section class="b-current">' +
+    '<div class="b-hero">' + coverHtml(hero) + '</div>' +
+    '<div class="b-cur-copy">' +
+      '<div class="k">This week&rsquo;s issue &middot; ' + esc(hm.volume || hero.league) + '</div>' +
+      '<a href="' + href(hero) + '"><h1>' + esc(hero.title) + '</h1></a>' +
+      (hero.dek ? '<p class="dek">' + esc(hero.dek) + '</p>' : '') +
+      '<div class="b-cur-meta">By <b>' + esc(hero.author || 'The Fade Desk') + '</b> &nbsp;&middot;&nbsp; ' +
+        esc(hm.issueLine || daystamp(hero.published)) + ' &nbsp;&middot;&nbsp; ' + esc(ago(hero.published)) + '</div>' +
+      '<a class="b-cur-cta" href="' + href(hero) + '">Read the issue &rarr;</a>' +
+    '</div>' +
+    '</section>';
+
+  /* the rack */
+  h += '<section class="b-shelf">' +
+    '<div class="b-shelf-head"><h2>The Rack</h2><span class="sub">' + issues.length + ' issues &middot; every one tracked to a settled result</span></div>' +
+    '<div class="b-rack">' +
+    rack.map(function (a) {
+      var mm = a.mag || {};
+      return '<div class="b-issue">' + coverHtml(a) +
+        '<a class="cap" href="' + href(a) + '"><h3>' + esc(a.title) + '</h3>' +
+        '<div class="m">' + esc(mm.volume || a.league) + ' &middot; ' + esc(daystamp(a.published)) + '</div></a>' +
+        '</div>';
+    }).join('') +
+    '</div></section></div>';
+
+  /* the case files shelf */
+  h += '<section class="b-cases"><div class="wrap">' +
+    '<div class="b-shelf-head"><h2>The Case Files</h2><span class="sub">' + cases.length + ' documented &middot; receipts attached</span></div>' +
+    '<div class="b-spines">' +
+    cases.map(function (a) {
+      var mm = a.mag || {}; var st = mm.coverStat || {};
+      var stamp = (a.fadeCard && a.fadeCard.stamp) || 'FADE';
+      var photo = mm.coverPhoto || a.img || '';
+      return '<a class="b-spine" href="' + href(a) + '">' +
+        (photo ? '<div class="b-spine-photo" data-fb="' + esc(a.caseNo || '') + '"><img src="' + esc(photo) + '" alt="" loading="lazy" />' +
+          '<span class="b-spine-no">Case File ' + esc(a.caseNo) + '</span>' +
+          (stamp !== 'NONE' ? '<span class="b-spine-stamp' + (stamp === 'TAIL' ? ' tail' : '') + '">' + esc(stamp) + '</span>' : '') +
+          '</div>' : '') +
+        '<div class="b-spine-body"><h3>' + esc(a.title) + '</h3>' +
+        (st.value ? '<div class="st">' + fmtStat(st.value) + '</div><div class="l">' + esc(st.label || '') + '</div>' : '') +
+        '</div></a>';
+    }).join('') +
+    '</div></div></section>';
+
+  /* the wire, demoted */
+  h += '<div class="wrap"><section class="b-wire">' +
+    '<div class="b-wire-head"><h2>The Wire</h2><span>What everyone else is reporting</span></div>' +
+    '<div class="b-wire-grid">' +
+    wire.slice(0, 16).map(function (a) {
+      return '<div class="b-wl"><span class="s">' + esc(a.src || a.league) + '</span>' +
+        '<a href="' + href(a) + '"' + ext(a) + '>' + esc(a.title) + '</a>' +
+        '<span class="t">' + esc(ago(a.published)) + '</span></div>';
+    }).join('') +
+    '</div></section></div>';
+
+  return h;
+}
+
+/* ============================================================
+   DIRECTION C — THE DESK
+   ============================================================ */
+function renderC(own, wire, slate) {
+  var live = slate.filter(function (g) { return g.live; }).length;
+  var today = new Date().toLocaleDateString([], { weekday:'short', month:'short', day:'numeric' });
+
+  /* One chronological spine — but strict chronology buries the desk's own work,
+     because the wire files all day and an issue lands once. So the spine stays
+     time-ordered while never letting more than MAX_RUN wire items pass without
+     surfacing the next Fade original. */
+  var MAX_RUN = 3;
+  var ownQ = own.slice(0, 8).map(function (a) { return { a:a, own:true }; });
+  var wireQ = wire.slice(0, 12).map(function (a) { return { a:a, own:false }; });
+  ownQ.sort(function (x, y) { return new Date(y.a.published) - new Date(x.a.published); });
+  wireQ.sort(function (x, y) { return new Date(y.a.published) - new Date(x.a.published); });
+
+  var feed = [];
+  var run = 0;
+  /* the desk always leads with its own filing */
+  if (ownQ.length) { feed.push(ownQ.shift()); }
+  while ((ownQ.length || wireQ.length) && feed.length < 16) {
+    var takeOwn = ownQ.length && (run >= MAX_RUN || !wireQ.length ||
+      new Date(ownQ[0].a.published) >= new Date(wireQ[0].a.published));
+    if (takeOwn) { feed.push(ownQ.shift()); run = 0; }
+    else { feed.push(wireQ.shift()); run++; }
+  }
+
+  var h = '';
+  h += '<div class="c-top"><div class="wrap"><div class="c-top-in">' +
+    '<span class="c-logo">' + LOGO + '</span>' +
+    '<span class="slug">The Pre-Bet Desk</span>' +
+    '<span class="rt">' +
+      '<span class="on"><i></i>' + live + ' live</span>' +
+      '<span>' + esc(today) + '</span>' +
+      '<a class="c-get" href="' + APP + '" target="_blank" rel="noopener">Get the app</a>' +
+    '</span>' +
+    '</div></div></div>';
+
+  h += '<div class="c-board"><div class="wrap"><div class="c-board-in">' +
+    '<span class="c-board-l">The board</span>' +
+    '<div class="c-board-v">' +
+    slate.map(function (g) {
+      return '<div class="c-bg' + (g.live ? ' live' : '') + '">' +
+        '<div class="r1"><span>' + esc(g.a) + '</span><span class="sc">' + esc(g.live ? (g.sa || '') : g.o) + '</span></div>' +
+        '<div class="r2"><span>' + esc(g.b) + '</span><span class="sc">' + esc(g.live ? (g.sb || '') : '') + '</span></div>' +
+        '<div class="st">' + esc(g.lg) + ' &middot; ' + (g.live ? 'Live' : esc(g.t)) + '</div>' +
+        '</div>';
+    }).join('') +
+    '</div></div></div></div>';
+
+  h += '<div class="wrap">';
+  h += '<div class="c-filing"><div><h1 class="pf">The Desk</h1>' +
+    '<div class="sub">Everything we filed and everything that moved &middot; newest first</div></div>' +
+    '<div class="c-filter">' +
+    ['Everything','Fade originals','Wire only','Case files'].map(function (t, i) {
+      return '<button class="' + (i === 0 ? 'on' : '') + '">' + t + '</button>';
+    }).join('') +
+    '</div></div>';
+
+  h += '<div class="c-spine">';
+  h += feed.map(function (row) {
+    var a = row.a;
+    if (!row.own) {
+      return '<div class="c-entry wire">' +
+        '<span class="c-time">' + esc(clock(a.published)) + '</span><span class="c-dot"></span>' +
+        '<div class="c-wire-e"><span class="src">' + esc(a.src || a.league) + '</span>' +
+        '<div><a href="' + href(a) + '"' + ext(a) + '><h3>' + esc(a.title) + '</h3></a>' +
+        (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') + '</div></div>' +
+        '</div>';
+    }
+    var m = a.mag || {}; var st = m.coverStat || null;
+    var photo = m.coverPhoto || a.img || '';
+    return '<div class="c-entry own">' +
+      '<span class="c-time">' + esc(clock(a.published)) + '<br>' + esc(daystamp(a.published)) + '</span><span class="c-dot"></span>' +
+      '<a class="c-own" href="' + href(a) + '">' +
+        '<div>' +
+          '<span class="c-badge">' + esc(a.caseNo ? 'Case File ' + a.caseNo : 'Fade original') + '</span>' +
+          '<h2>' + esc(a.title) + '</h2>' +
+          (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
+          '<div class="by">By <b>' + esc(a.author || 'The Fade Desk') + '</b> &middot; ' + esc(m.volume || a.league) + '</div>' +
+        '</div>' +
+        '<div class="c-statbox">' +
+          '<div class="top"><span>' + esc(m.volume || a.league) + '</span><span>' + esc(ago(a.published)) + '</span></div>' +
+          (st ? '<div class="n">' + fmtStat(st.value) + '</div><div class="l">' + esc(st.label || '') + '</div>' : '') +
+          (photo ? '<img src="' + esc(photo) + '" alt="" loading="lazy" />' : '') +
+          '<span class="c-open">Open the file &rarr;</span>' +
+        '</div>' +
+      '</a></div>';
+  }).join('');
+  h += '</div>';
+  h += '<button class="c-more">Load earlier filings</button>';
+  h += '</div>';
+  return h;
+}
+
+/* ============================================================
+   NOTES PANEL
+   ============================================================ */
+var NOTES = {
+  A: {
+    t: 'A &middot; The Broadsheet',
+    l: 'A real newspaper front page. Hierarchy comes from type scale and rules — no cards, no drop shadows, nothing that looks like a CMS.',
+    pts: [
+      '<b>The lead gets a news well.</b> Headline up to 4rem, italic dek, byline rule, lead art, the issue’s defining stat set as a standfirst, then the first three paragraphs in two columns with a wine drop cap — so the reader starts reading on the front page instead of deciding whether to click.',
+      '<b>The wire is demoted to a gutter.</b> Headlines only, no thumbnails, dotted rules. ESPN can no longer outrank you on your own front page.',
+      '<b>The slate becomes an ear box</b> on the right, the way a paper runs weather and markets — present and useful, but not the first thing you see.',
+      '<b>The back catalogue becomes a ruled index</b>, numbered 01–12, four across. Twelve issues in the space the current grid gives three cards.',
+      '<b>Nav sits directly under the masthead</b>, which is where it belongs — not below the lead well.'
+    ],
+    tags: ['Editorial-first','Type-driven','Highest text density','Most traditional']
+  },
+  B: {
+    t: 'B &middot; The Newsstand',
+    l: 'You already produce magazine covers — wine band, volume title, cover line, cover stat, cover photography. Today exactly one of them is ever shown. This direction shows all of them.',
+    pts: [
+      '<b>The rack is the front page.</b> Every issue renders as its real cover, pulled from the <code>mag</code> object you already author. Nothing new to write — the art direction already exists in the data.',
+      '<b>The current issue stands alone</b> at the top, cover plus copy, the way a magazine presents this week’s number.',
+      '<b>Case files get their own shelf</b> on carbon — numbered spines, FADE / TAIL stamps, the headline stat. They read as a collectible series, which is what they are.',
+      '<b>The wire moves to the bottom</b> under the honest label “what everyone else is reporting.” It stops competing with your own work.',
+      '<b>Issues without photography</b> fall back to a typographic cover built on the cover stat, so the rack never breaks.'
+    ],
+    tags: ['Most distinctive','Uses assets you already have','Strongest brand','Lowest wire weight']
+  },
+  C: {
+    t: 'C &middot; The Desk',
+    l: 'A working blotter. One chronological spine carrying everything the desk touched today — your filings and the wire on the same timeline, stamped so the difference is never in doubt.',
+    pts: [
+      '<b>One spine, newest first.</b> Timestamps run down the left rail; wine dots mark your own filings, hairline dots mark the wire. The page reads as a live record rather than a curated grid.',
+      '<b>Owned filings get a slab</b> — headline, dek, byline and a bordered stat box carrying the cover number and cover art. Wire items get one line and no art. The asymmetry does the ranking.',
+      '<b>The board stays pinned</b> under the header, redesigned as a compact live strip — the utility survives without taking the fold.',
+      '<b>Filters instead of league tabs:</b> Everything / Fade originals / Wire only / Case files. Sorting by who wrote it matters more here than sorting by sport.',
+      'Closest of the three to what you have now — the smallest migration, but it fixes the owned-vs-wire ranking problem head on.'
+    ],
+    tags: ['Most familiar','Highest update frequency','Chronological','Smallest migration']
+  }
+};
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+var noteEl = document.getElementById('pvNote');
+var stage = document.getElementById('stage');
+
+/* Seven of the run's covers are hot-linked Google Drive thumbnails, which are
+   rate-limited and fail without warning. A cover that cannot load should read
+   as a typographic cover, never as a black rectangle. */
+document.addEventListener('error', function (e) {
+  var img = e.target;
+  if (!img || img.tagName !== 'IMG') return;
+  var holder = img.closest('.cv-photo, .b-spine-photo');
+  if (holder) { holder.classList.add('dead'); return; }
+  img.classList.add('dead');
+}, true);
+
+function showNote(k) {
+  var n = NOTES[k];
+  noteEl.innerHTML = '<h2>' + n.t + '</h2><p class="lede">' + n.l + '</p>' +
+    '<ul>' + n.pts.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>' +
+    '<div class="pv-tagrow">' + n.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>';
+}
+
+Array.prototype.forEach.call(document.querySelectorAll('.pv-tab'), function (b) {
+  b.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.pv-tab'), function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    Array.prototype.forEach.call(document.querySelectorAll('.dir'), function (d) { d.classList.remove('on'); });
+    document.getElementById('dir' + b.dataset.d).classList.add('on');
+    showNote(b.dataset.d);
+    window.scrollTo({ top: 0 });
+  });
+});
+Array.prototype.forEach.call(document.querySelectorAll('.pv-w button'), function (b) {
+  b.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.pv-w button'), function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    stage.classList.toggle('narrow', b.dataset.w === 'narrow');
+  });
+});
+showNote('A');
+
+function mapCustom(a) {
+  return {
+    league: a.league || 'DESK', title: a.title || '', dek: a.dek || '',
+    img: a.image || '', url: '/article?s=' + encodeURIComponent(a.slug || ''),
+    published: a.published || '', author: a.author || 'Fade Desk',
+    featured: !!a.featured, custom: true, fadeCard: a.fadeCard || null,
+    caseNo: a.caseNo || '', mag: a.mag || null, body: a.body || []
+  };
+}
+
+function slateFromBoard(board) {
+  var out = [];
+  (board || []).forEach(function (lg) {
+    (lg.games || []).forEach(function (g) {
+      var t = g.teams || [];
+      if (t.length < 2 || g.state === 'post') return;
+      out.push({
+        lg: lg.label || lg.key,
+        a: t[0].abbr || t[0].name || '', b: t[1].abbr || t[1].name || '',
+        o: g.odds || 'PK', t: g.detail || '', live: g.state === 'in',
+        sa: t[0].score, sb: t[1].score
+      });
+    });
+  });
+  /* live first, then the next games up */
+  out.sort(function (a, b) { return (b.live ? 1 : 0) - (a.live ? 1 : 0); });
+  return out.slice(0, 8);
+}
+
+Promise.allSettled([
+  fetch('/articles/articles.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+  fetch('/api/news').then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+  fetch('/api/scoreboard').then(function (r) { if (!r.ok) throw 0; return r.json(); })
+]).then(function (res) {
+  var own = res[0].status === 'fulfilled'
+    ? ((res[0].value && res[0].value.articles) || []).map(mapCustom)
+      .sort(function (a, b) { return new Date(b.published) - new Date(a.published); })
+    : [];
+  var wire = res[1].status === 'fulfilled' ? ((res[1].value && res[1].value.articles) || []) : [];
+  if (!wire.length) wire = WIRE_FALLBACK;
+  wire = wire.slice().sort(function (a, b) { return new Date(b.published) - new Date(a.published); });
+
+  var slate = res[2].status === 'fulfilled'
+    ? slateFromBoard((res[2].value && res[2].value.leagues) || res[2].value)
+    : [];
+  if (!slate.length) slate = SLATE_FALLBACK;
+
+  if (!own.length) {
+    document.querySelector('.paper').innerHTML =
+      '<div class="ld">Could not load /articles/articles.json &mdash; serve this page from the site root.</div>';
+    return;
+  }
+
+  /* put the featured issue at the head of the run, as the live page does */
+  var feat = own.filter(function (a) { return a.featured; })[0];
+  if (feat) { own = [feat].concat(own.filter(function (a) { return a !== feat; })); }
+
+  document.getElementById('dirA').innerHTML = renderA(own, wire, slate);
+  document.getElementById('dirB').innerHTML = renderB(own, wire, slate);
+  document.getElementById('dirC').innerHTML = renderC(own, wire, slate);
+});
+
+})();
+</script>
+
+</body>
+</html>
