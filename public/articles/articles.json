@@ -7,7 +7,7 @@
       "dek": "Fifteen years of the Blazin' Five, 1,783 tracked picks, and a career line that sits a quarter of a point short of free. The full Cowherd file, graded.",
       "author": "Fade Desk",
       "published": "2026-09-15T01:00:00Z",
-      "image": "/assets/cowherd-cover.jpg",
+      "image": "/assets/cowherd-shrug.jpg",
       "featured": true,
       "caseNo": "006",
       "sources": "All records scraped live from Cole's Gameday Blog (gamedaycole.com/pickers/colin-cowherd), the independent tracker also behind this desk's Stanford Steve file: all-time NFL 731-671-44 (52.14 percent, minus 6.45 units, 1,441 entries) and college 169-158-10 (51.68 percent, minus 4.36 units, 337 entries) entering the weekend. Week 1 Blazin' Five as posted September 13, all at -110, graded against final scores; panel figures updated for the 1-4 week. Break-even at standard -110 pricing is 52.38 percent.",
@@ -28,7 +28,7 @@
           "value": "1-4",
           "sub": "Lifetime: 732-675-44 ATS"
         },
-        "coverPhoto": "/assets/cowherd-cover.jpg",
+        "coverPhoto": "/assets/cowherd-shrug.jpg",
         "quote": {
           "text": "52.14%.",
           "attr": "Fifteen years of Blazin' Five picks — a quarter of a point short of free"
@@ -205,8 +205,9 @@
           "note": "Five more picks drop before Sunday. The file says they will land within a point of even — and cost a little more than they pay.",
           "tag": "The desk grades them all",
           "end": "The file stays open",
-          "photo": "/assets/cowherd-cover.jpg"
-        }
+          "photo": "/assets/cowherd-shrug.jpg"
+        },
+        "coverColor": true
       }
     },
     {
