@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Receipts — Fade</title>
+<meta name="description" content="Everybody posts their winners. Fade posts everything. Every tracked celebrity bettor, their all-time record, and the number at the bottom." />
+<link rel="canonical" href="https://fade.bet/the-receipts" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Receipts — Fade" />
+<meta property="og:description" content="Every tracked celebrity bettor, their all-time record, and the number at the bottom." />
+<meta property="og:url" content="https://fade.bet/the-receipts" />
+<meta property="og:site_name" content="Fade" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;900&family=Saira:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+/* Territory 02 tokens — carried over from /receipts so the lane stays one brand */
+:root {
+  --bg:#000; --surface:#0d0d0d; --surface-2:#151515;
+  --ink:#fff; --ink-dim:#8a8a8a; --ink-dimmer:#555;
+  --line:rgba(255,255,255,0.09); --line-bright:rgba(255,255,255,0.20);
+  --green:#16C77E; --red:#FF4B3E;
+  --slip:#F2F0E9; --slip-ink:#121212; --slip-dim:#6B6862; --slip-line:rgba(18,18,18,0.22);
+  --display:"Saira Condensed",Impact,sans-serif;
+  --body:"Saira",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink); font-family:var(--body); line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; display:block; }
+.wrap { max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.4rem); }
+
+/* ---------- top bar ---------- */
+.bar { position:sticky; top:0; z-index:40; background:rgba(0,0,0,0.82); backdrop-filter:blur(18px); border-bottom:1px solid var(--line); }
+.bar-in { display:flex; align-items:center; gap:1.2rem; padding:0.75rem 0; }
+.bar .mark { width:84px; flex:0 0 auto; }
+.bar .mark svg { width:100%; height:auto; fill:var(--ink); }
+.bar .back { font-size:0.66rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-dim); border-left:1px solid var(--line); padding-left:1.2rem; }
+.bar .back:hover { color:var(--ink); }
+.bar .cta { margin-left:auto; font-size:0.66rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; background:var(--ink); color:#000; padding:0.6rem 1.1rem; border-radius:2px; }
+.bar .cta:hover { background:var(--green); }
+
+/* ---------- masthead ---------- */
+.hero { padding:clamp(2.6rem,7vw,5.5rem) 0 clamp(1.6rem,3vw,2.4rem); border-bottom:1px solid var(--line); }
+.hero .eyebrow { font-size:0.64rem; font-weight:700; letter-spacing:0.36em; text-transform:uppercase; color:var(--green); margin-bottom:1rem; }
+.hero h1 { font-family:var(--display); font-weight:900; font-size:clamp(3.4rem,14vw,10rem); line-height:0.82; letter-spacing:-0.02em; text-transform:uppercase; }
+.hero .sub { margin-top:1.4rem; font-size:clamp(1rem,2vw,1.35rem); font-weight:500; color:var(--ink-dim); max-width:46ch; line-height:1.4; }
+.hero .sub b { color:var(--ink); font-weight:600; }
+
+/* ---------- counters ---------- */
+.counts { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--line); }
+.count { padding:1.4rem 0 1.5rem; border-left:1px solid var(--line); padding-left:1.3rem; }
+.count:first-child { border-left:none; padding-left:0; }
+.count .n { font-family:var(--display); font-weight:900; font-size:clamp(1.9rem,4.5vw,3.2rem); line-height:0.9; }
+.count .n.up { color:var(--green); } .count .n.down { color:var(--red); }
+.count .l { margin-top:0.5rem; font-family:var(--mono); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-dimmer); line-height:1.6; }
+
+/* ---------- controls ---------- */
+.controls { display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; padding:1.4rem 0 0.4rem; }
+.chip { font-family:var(--mono); font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-dim); background:var(--surface); border:1px solid var(--line-bright); border-radius:2px; padding:0.5rem 1rem; cursor:pointer; transition:all 0.15s ease; }
+.chip:hover { color:var(--ink); border-color:var(--ink); }
+.chip.on { background:var(--ink); color:#000; border-color:var(--ink); }
+.chip.on.fade { background:var(--red); border-color:var(--red); color:#fff; }
+.chip.on.tail { background:var(--green); border-color:var(--green); color:#000; }
+.controls .spacer { margin-left:auto; font-family:var(--mono); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-dimmer); }
+
+/* ---------- the rack of slips ---------- */
+.slips { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.2rem,2.6vw,2.2rem); padding:1.6rem 0 4rem; align-items:start; }
+
+.slip { position:relative; background:var(--slip); color:var(--slip-ink); font-family:var(--mono); display:block;
+  padding:1.5rem 1.35rem 1.7rem; transition:transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.55);
+}
+/* Torn perforation top and bottom, the way a slip leaves the printer.
+   Drawn as page-coloured triangles over the slip edges: exact, and it does
+   not depend on mask compositing, which Chromium and Safari disagree about. */
+.slip::before, .slip::after { content:''; position:absolute; left:0; right:0; height:9px; z-index:3; pointer-events:none; }
+.slip::before { top:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' preserveAspectRatio='none'%3E%3Cpath d='M0 0h14L7 9z' fill='%23000'/%3E%3C/svg%3E") repeat-x; }
+.slip::after { bottom:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' preserveAspectRatio='none'%3E%3Cpath d='M0 9h14L7 0z' fill='%23000'/%3E%3C/svg%3E") repeat-x; }
+.slip:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,0.7); }
+.slip.hidden { display:none; }
+
+.s-head { display:flex; align-items:center; justify-content:space-between; gap:0.7rem; padding-bottom:0.7rem; }
+.s-head .mk { width:44px; }
+.s-head .mk svg { width:100%; height:auto; fill:var(--slip-ink); }
+.s-head .no { font-size:0.54rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--slip-dim); text-align:right; }
+.s-kind { font-size:0.52rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--slip-dim); text-align:center; padding-bottom:0.9rem; border-bottom:2px solid var(--slip-ink); }
+
+.s-name { font-family:var(--display); font-weight:900; font-size:clamp(1.7rem,3.2vw,2.3rem); line-height:0.94; text-transform:uppercase; letter-spacing:-0.005em; padding-top:0.9rem; }
+.s-role { font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--slip-dim); margin-top:0.4rem; }
+
+.s-rule { border-top:1px dashed var(--slip-line); margin:0.95rem 0; }
+.s-row { display:flex; align-items:baseline; gap:0.6rem; font-size:0.68rem; line-height:1.9; }
+.s-row .k { color:var(--slip-dim); text-transform:uppercase; letter-spacing:0.1em; font-size:0.58rem; white-space:nowrap; }
+.s-row .dots { flex:1; border-bottom:1px dotted rgba(18,18,18,0.3); transform:translateY(-3px); min-width:0.8rem; }
+.s-row .v { font-weight:700; white-space:nowrap; }
+.s-row .v.up { color:#0F8F5C; } .s-row .v.down { color:#C4291C; }
+.s-row.big .k { font-size:0.62rem; font-weight:700; color:var(--slip-ink); }
+.s-row.big .v { font-size:0.95rem; }
+
+/* The stamp sits beside the total rather than over the figures — a receipt
+   that hides its own numbers is not a receipt. */
+.s-total { display:flex; align-items:center; justify-content:space-between; gap:0.8rem; padding-top:0.5rem; }
+.s-total .tside { text-align:right; margin-left:auto; }
+.s-total .tl { display:block; font-size:0.54rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--slip-dim); line-height:1.5; margin-bottom:0.3rem; }
+.s-total .tv { font-family:var(--display); font-weight:900; font-size:clamp(1.9rem,4.2vw,2.7rem); line-height:0.85; letter-spacing:-0.01em; }
+.s-total .tv.up { color:#0F8F5C; } .s-total .tv.down { color:#C4291C; }
+.s-total .tv.none { font-size:0.82rem; font-family:var(--mono); font-weight:700; color:var(--slip-dim); line-height:1.4; max-width:14ch; }
+
+.s-stamp { flex:0 0 auto; transform:rotate(-7deg); font-family:var(--display); font-weight:900; font-size:1.6rem; letter-spacing:0.05em; padding:0.08em 0.34em; border:3px double currentColor; opacity:0.9; }
+.s-stamp.fade { color:#C4291C; }
+.s-stamp.tail { color:#0F8F5C; }
+
+.s-bars { display:flex; align-items:flex-end; gap:2px; height:38px; margin:1.1rem 0 0.55rem; }
+.s-bars i { display:block; background:var(--slip-ink); height:100%; }
+.s-code { font-size:0.54rem; letter-spacing:0.22em; text-align:center; color:var(--slip-dim); }
+.s-src { margin-top:0.85rem; padding-top:0.7rem; border-top:1px dashed var(--slip-line); font-size:0.55rem; line-height:1.7; letter-spacing:0.04em; color:var(--slip-dim); }
+.s-src b { color:var(--slip-ink); font-weight:700; }
+.s-open { margin-top:0.8rem; display:flex; align-items:center; justify-content:center; gap:0.5rem; font-size:0.58rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; background:var(--slip-ink); color:var(--slip); padding:0.65rem; }
+.slip:hover .s-open { background:#C4291C; }
+.slip.is-tail:hover .s-open { background:#0F8F5C; }
+
+/* ---------- footer note ---------- */
+.foot { border-top:1px solid var(--line); padding:2rem 0 4rem; }
+.foot .big { font-family:var(--display); font-weight:900; font-size:clamp(1.6rem,4vw,2.6rem); text-transform:uppercase; line-height:0.95; max-width:22ch; }
+.foot p { margin-top:1rem; font-size:0.85rem; color:var(--ink-dim); max-width:60ch; line-height:1.65; }
+.foot .fine { margin-top:1.6rem; font-family:var(--mono); font-size:0.56rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-dimmer); line-height:1.9; }
+.foot .go { display:inline-block; margin-top:1.4rem; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; background:var(--green); color:#000; padding:0.85rem 1.7rem; border-radius:2px; }
+.foot .go:hover { background:var(--ink); }
+
+.loading { padding:5rem 0; text-align:center; font-family:var(--mono); font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-dimmer); grid-column:1/-1; }
+
+@media (max-width:1040px) { .slips { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:720px) {
+  .slips { grid-template-columns:1fr; }
+  .counts { grid-template-columns:1fr 1fr; }
+  .count { padding-left:1rem; }
+  .count:nth-child(3) { border-left:none; padding-left:0; }
+  .count:nth-child(3), .count:nth-child(4) { border-top:1px solid var(--line); }
+  .bar .back { display:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap"><div class="bar-in">
+  <a class="mark" href="/" aria-label="Fade"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 158"><g transform="translate(-80,-416)"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g></svg></a>
+  <a class="back" href="/fade-media">&larr; Fade Media</a>
+  <a class="cta" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Get the app</a>
+</div></div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Verified &middot; Graded &middot; Public</div>
+  <h1>Receipts</h1>
+  <p class="sub">Everybody posts their winners. <b>Fade posts everything</b> &mdash; every tracked name, every graded ledger, and the number at the bottom of the slip.</p>
+</div></header>
+
+<div class="wrap">
+  <section class="counts" id="counts"></section>
+  <div class="controls">
+    <button class="chip on" data-f="all">All receipts</button>
+    <button class="chip" data-f="FADE">Fade</button>
+    <button class="chip" data-f="TAIL">Tail</button>
+    <span class="spacer" id="shown"></span>
+  </div>
+  <section class="slips" id="slips"><div class="loading">Printing the receipts&hellip;</div></section>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <h2 class="big">Your receipt is the one that matters.</h2>
+  <p>These are the public ledgers we could grade. Yours is the one nobody has seen &mdash; sync your books to Fade and every bet you place gets the same treatment: win, loss, ROI, streak, nothing hidden.</p>
+  <a class="go" href="https://testflight.apple.com/join/scH3svgB" target="_blank" rel="noopener">Print my receipt &rarr;</a>
+  <div class="fine">
+    Every figure on this page is carried from a graded ledger published on Fade Media &middot; sources printed on each slip<br />
+    Fade is a social platform, not a sportsbook &middot; 21+ &middot; Gambling problem? Call 1-800-GAMBLER
+  </div>
+</div></footer>
+
+<script>
+(function () {
+'use strict';
+var MARK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 158" role="img" aria-label="Fade"><g transform="translate(-80,-416)"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g></svg>';
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); }
+
+/* a stable pseudo-barcode per name, so a slip always prints the same code */
+function barcode(seed) {
+  var h = 0, i;
+  for (i = 0; i < seed.length; i++) { h = ((h << 5) - h + seed.charCodeAt(i)) | 0; }
+  var bars = '', n;
+  for (i = 0; i < 44; i++) {
+    h = (h * 1103515245 + 12345) & 0x7fffffff;
+    n = 1 + (h >> 7) % 3;
+    bars += '<i style="width:' + n + 'px;height:' + (60 + ((h >> 3) % 40)) + '%"></i>';
+  }
+  return bars;
+}
+function codeNo(seed) {
+  var h = 0;
+  for (var i = 0; i < seed.length; i++) { h = ((h << 5) - h + seed.charCodeAt(i)) | 0; }
+  var s = String(Math.abs(h)).padStart(10, '0').slice(0, 10);
+  return s.slice(0, 4) + ' ' + s.slice(4, 7) + ' ' + s.slice(7);
+}
+
+function slipHtml(r) {
+  var isTail = r.verdict === 'TAIL';
+  var rows = '';
+  if (r.record) rows += row('Record', r.record, '', true);
+  if (r.sample) rows += row('Sample', r.sample, '');
+  (r.lines || []).forEach(function (l) { rows += row(l.k, l.v, l.tone || ''); });
+
+  var total = r.pnl
+    ? '<span class="tv ' + (r.pnlTone === 'up' ? 'up' : 'down') + '">' + esc(r.pnl) + '</span>'
+    : '<span class="tv none">No graded ledger</span>';
+
+  return '<a class="slip' + (isTail ? ' is-tail' : '') + '" data-v="' + esc(r.verdict) + '" href="' + esc(r.article) + '">' +
+    '<div class="s-head"><span class="mk">' + MARK + '</span>' +
+      '<span class="no">' + (r.caseNo ? 'Case file ' + esc(r.caseNo) : 'Tracked') + '<br>' + esc(r.asOf || '') + '</span></div>' +
+    '<div class="s-kind">Verified betting receipt</div>' +
+    '<div class="s-name">' + esc(r.name) + '</div>' +
+    (r.role ? '<div class="s-role">' + esc(r.role) + '</div>' : '') +
+    '<div class="s-rule"></div>' +
+    rows +
+    '<div class="s-rule"></div>' +
+    '<div class="s-total">' +
+      '<span class="s-stamp ' + (isTail ? 'tail' : 'fade') + '">' + esc(r.verdict) + '</span>' +
+      '<span class="tside"><span class="tl">' + esc(r.pnlLabel || 'Profit / loss') + '</span>' + total + '</span>' +
+    '</div>' +
+    '<div class="s-bars">' + barcode(r.slug) + '</div>' +
+    '<div class="s-code">' + codeNo(r.slug) + '</div>' +
+    '<div class="s-src"><b>Source:</b> ' + esc(r.source || '') + '<br>' + esc(r.period || '') + '</div>' +
+    '<div class="s-open">Open the file &rarr;</div>' +
+    '</a>';
+}
+function row(k, v, tone, big) {
+  return '<div class="s-row' + (big ? ' big' : '') + '"><span class="k">' + esc(k) + '</span>' +
+    '<span class="dots"></span><span class="v ' + esc(tone) + '">' + esc(v) + '</span></div>';
+}
+
+var slipsEl = document.getElementById('slips');
+var countsEl = document.getElementById('counts');
+var shownEl = document.getElementById('shown');
+var DATA = [];
+
+function renderCounts() {
+  var graded = DATA.filter(function (r) { return !!r.record; });
+  var fades = DATA.filter(function (r) { return r.verdict === 'FADE'; });
+  var tails = DATA.filter(function (r) { return r.verdict === 'TAIL'; });
+  countsEl.innerHTML =
+    cell(String(DATA.length), 'Names on file') +
+    cell(String(graded.length), 'With a graded ledger') +
+    cell(String(fades.length), 'Verdict: fade', 'down') +
+    cell(String(tails.length), 'Verdict: tail', 'up');
+}
+function cell(n, l, tone) {
+  return '<div class="count"><div class="n ' + (tone || '') + '">' + esc(n) + '</div><div class="l">' + esc(l) + '</div></div>';
+}
+
+function applyFilter(f) {
+  var n = 0;
+  Array.prototype.forEach.call(slipsEl.querySelectorAll('.slip'), function (el) {
+    var hit = f === 'all' || el.dataset.v === f;
+    el.classList.toggle('hidden', !hit);
+    if (hit) n++;
+  });
+  shownEl.textContent = n + ' of ' + DATA.length + ' receipts';
+}
+
+Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (b) {
+  b.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (x) { x.classList.remove('on', 'fade', 'tail'); });
+    b.classList.add('on');
+    if (b.dataset.f === 'FADE') b.classList.add('fade');
+    if (b.dataset.f === 'TAIL') b.classList.add('tail');
+    applyFilter(b.dataset.f);
+  });
+});
+
+fetch('/receipts-data/receipts.json')
+  .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+  .then(function (d) {
+    DATA = d.receipts || [];
+    if (!DATA.length) throw 0;
+    slipsEl.innerHTML = DATA.map(slipHtml).join('');
+    renderCounts();
+    applyFilter('all');
+  })
+  .catch(function () {
+    slipsEl.innerHTML = '<div class="loading">Could not load the receipts.</div>';
+  });
+})();
+</script>
+
+</body>
+</html>
