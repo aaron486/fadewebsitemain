@@ -1,31 +1,240 @@
 {
   "articles": [
     {
-      "slug": "weekend-ledger-one",
+      "slug": "case-006-colin-cowherd",
       "league": "NFL",
-      "title": "The Weekend Ledger: the house, the exchange, and Colin Cowherd",
-      "dek": "Everything opening weekend settled, in one file: a trillion-dollar argument between sportsbooks and prediction markets, a split decision between the house and the public, and the most break-even man in America going 1-4.",
+      "title": "Case File 006: Colin Cowherd, the most break-even man in America",
+      "dek": "Fifteen years of the Blazin' Five, 1,783 tracked picks, and a career line that sits a quarter of a point short of free. The full Cowherd file, graded.",
       "author": "Fade Desk",
-      "published": "2026-09-14T16:00:00Z",
+      "published": "2026-09-15T01:00:00Z",
       "image": "/assets/cowherd-cover.jpg",
       "featured": true,
-      "sources": "Game results verified against ESPN box scores and team sites; Monday night pending at press time. Prediction-market volume via DeFi Rate's Sept 7-13 report ($983M Kalshi NFL, $2.3B record Saturday), Prediction News ($57B season projection), InGame and Sportico (parlay-taker losses, Susquehanna); sportsbook season estimate via the AGA as reported by ESPN; hold comparison via Next.io and OddsShopper; legal posture via DLA Piper's tracker, The Hill (Ninth Circuit) and CNBC (44 states). House-vs-public splits via FOX Sports (Feazel/Caesars), DraftKings and BetMGM figures as published, Covers and CBS. Cowherd's records scraped live from Cole's Gameday Blog (gamedaycole.com), the independent tracker also behind this desk's Stanford Steve file; his Blazin' Five graded against final scores. Exchange volume is notional and double-counted relative to sportsbook handle; the comparison is directional, not accounting.",
+      "caseNo": "006",
+      "sources": "All records scraped live from Cole's Gameday Blog (gamedaycole.com/pickers/colin-cowherd), the independent tracker also behind this desk's Stanford Steve file: all-time NFL 731-671-44 (52.14 percent, minus 6.45 units, 1,441 entries) and college 169-158-10 (51.68 percent, minus 4.36 units, 337 entries) entering the weekend. Week 1 Blazin' Five as posted September 13, all at -110, graded against final scores; panel figures updated for the 1-4 week. Break-even at standard -110 pricing is 52.38 percent.",
+      "body": [
+        "Colin Cowherd has posted a Blazin' Five nearly every NFL week for fifteen years, and an independent tracker has graded every one of them: 732 wins, 675 losses, 44 pushes after opening weekend.",
+        "That is 52.0 percent — sixty of a percentage point short of break-even at standard pricing — which works out to minus 9.5 units, lifetime.",
+        "This is the desk's sixth case file, and the most instructive one: proof that being pretty good is, at the window, indistinguishable from being nothing at all."
+      ],
+      "mag": {
+        "volume": "The Cowherd File",
+        "issueLine": "September 2026",
+        "edition": "Case File 006 · A study in almost",
+        "coverKicker": "The Fade Index",
+        "coverLine": "The most break-even man in America.",
+        "coverSub": "Colin Cowherd went 1-4 on opening weekend. Career: fifteen years at 52 percent — and minus 9.5 units.",
+        "coverStat": {
+          "label": "Blazin' Five, Week 1",
+          "value": "1-4",
+          "sub": "Lifetime: 732-675-44 ATS"
+        },
+        "coverPhoto": "/assets/cowherd-cover.jpg",
+        "quote": {
+          "text": "52.14%.",
+          "attr": "Fifteen years of Blazin' Five picks — a quarter of a point short of free"
+        },
+        "ledger": {
+          "title": "The Cowherd ledger · via Cole's Gameday Blog",
+          "asOf": "After Week 1, 2026",
+          "record": {
+            "v": "732-675-44",
+            "l": "All-time NFL, against the spread",
+            "tone": "wine"
+          },
+          "items": [
+            {
+              "v": "52.0%",
+              "l": "Career rate · break-even 52.4"
+            },
+            {
+              "v": "-9.5",
+              "l": "Units, lifetime NFL",
+              "tone": "wine"
+            },
+            {
+              "v": "169-158-10",
+              "l": "College card · -4.36 units"
+            },
+            {
+              "v": "1,446",
+              "l": "NFL picks tracked"
+            }
+          ],
+          "verdict": "FADE",
+          "seq": [
+            {
+              "l": "PHI",
+              "r": "L"
+            },
+            {
+              "l": "JAX",
+              "r": "W"
+            },
+            {
+              "l": "HOU",
+              "r": "L"
+            },
+            {
+              "l": "DET",
+              "r": "L"
+            },
+            {
+              "l": "CAR",
+              "r": "L"
+            }
+          ]
+        },
+        "sections": [
+          {
+            "title": "The File",
+            "headline": "Almost Is a Career",
+            "sub": "1,783 tracked picks, one tick short of free",
+            "stats": [
+              {
+                "v": "732-675-44",
+                "l": "All-time NFL, against the spread"
+              },
+              {
+                "v": "52.0%",
+                "l": "Career rate · break-even is 52.4"
+              },
+              {
+                "v": "-9.5",
+                "l": "Units, lifetime NFL",
+                "tone": "wine"
+              }
+            ],
+            "paras": [
+              "The same independent tracker that keeps Stanford Steve's ledger — Cole's Gameday Blog, the desk's database of record — has graded 1,446 Colin Cowherd NFL picks across more than a decade of the Blazin' Five. The career line is a marvel of precision: 732 wins, 675 losses, 44 pushes. That is 52.0 percent, four tenths of a point short of break-even at standard pricing, which works out to minus 9.5 units, lifetime. Add his college card — 169-158-10, minus 4.36 — and the full file reads 901-833-54: a man who has beaten a coin flip for fifteen years and paid the sportsbook industry roughly fourteen units for the privilege."
+            ],
+            "figure": {
+              "type": "bars",
+              "label": "Career hit rate vs. the break-even line",
+              "rows": [
+                {
+                  "l": "NFL",
+                  "v": 0.52,
+                  "note": "732-675-44 · 1,446 graded"
+                },
+                {
+                  "l": "CFB",
+                  "v": 0.517,
+                  "note": "169-158-10 · 337 graded"
+                },
+                {
+                  "l": "Combined",
+                  "v": 0.519,
+                  "note": "901-833-54 · -13.9 units"
+                }
+              ],
+              "max": 0.6,
+              "ruleAt": 0.5238,
+              "caption": "Win rate against the spread, all picks tracked by Cole’s Gameday Blog. The rule is break-even at standard -110 pricing: 52.38 percent. Fifteen years, a quarter of a point short — and the vig collects every year."
+            }
+          },
+          {
+            "title": "The Week",
+            "headline": "One and Four",
+            "sub": "The Blazin' Five, opening weekend",
+            "paras": [
+              "This weekend's Blazin' Five will not help the average. Jacksonville minus eight and a half cashed by 24. Everything else died: the Eagles won by two and needed five and a half, the Texans caught a point and a half and lost by five, the Lions won by one in overtime and needed seven — and the headliner, Carolina plus three against the most public team in America, lost by 22 in the highest-scoring opener ever played. One and four: minus 3.09 units, career file to 732-675-44."
+            ],
+            "figure": {
+              "type": "table",
+              "label": "The Blazin’ Five · Week 1, graded",
+              "cols": [
+                "Pick",
+                "Result",
+                "Grade"
+              ],
+              "rows": [
+                {
+                  "sel": "Eagles -5.5 vs. Commanders",
+                  "num": "won by 2",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Jaguars -8.5 vs. Browns",
+                  "num": "won 34-10",
+                  "res": "Won"
+                },
+                {
+                  "sel": "Texans +1.5 vs. Bills",
+                  "num": "lost 31-36",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Lions -6.5 vs. Saints",
+                  "num": "won by 1, in overtime",
+                  "res": "Lost"
+                },
+                {
+                  "sel": "Panthers +3 vs. Bears",
+                  "num": "lost 37-59",
+                  "res": "Lost"
+                }
+              ],
+              "record": "1-4",
+              "recordLabel": "Week 1",
+              "note": "Tracked and graded via Cole’s Gameday Blog. Career NFL file after the weekend: 732-675-44, minus 9.5 units."
+            }
+          },
+          {
+            "title": "The Margin",
+            "headline": "What a Quarter Point Costs",
+            "sub": "The arithmetic of almost",
+            "paras": [
+              "At standard -110 pricing a bettor must win 52.38 percent of the time to break exactly even. Cowherd's career sits at 52.0. The gap is invisible week to week — one pick a month, roughly — and it is everything: across 1,446 graded picks it compounds into nine and a half units handed to the window. He is not bad at this. Over fifteen years, almost nobody stays this close to the line in either direction. That is precisely what makes the file instructive.",
+              "Clay Travis, 7-18-1 on the young season, is a cautionary tale. Cowherd is something more useful: proof that being pretty good is, at the window, indistinguishable from being nothing at all. The crowd hears fifteen years of confident Friday picks. The ledger hears a coin that comes up heads 52 times in a hundred and charges you eleven-to-ten for the privilege of calling it."
+            ]
+          },
+          {
+            "title": "The Verdict",
+            "headline": "The File Stays Open",
+            "sub": "How the desk reads it",
+            "paras": [
+              "The stamp on this file says fade, and he opened the season No. 1 on the desk's fadeable board — 1-4 on the week, minus 3.09 units to anyone who tailed. But read the fine print: a 52-percent picker faded is a 48-percent bet, and that loses too. The true lesson of the Cowherd file is not that fading him prints. It is that following him certainly doesn't — and that fifteen years of television conviction can sit, mathematically, on the exact spot where nothing lives.",
+              "Five more picks drop this week. The desk will grade them all, in public, like everything in the file."
+            ]
+          }
+        ],
+        "call": {
+          "kicker": "Next card",
+          "title": "Blazin' Five, Week 2",
+          "big": "732-675-44",
+          "note": "Five more picks drop before Sunday. The file says they will land within a point of even — and cost a little more than they pay.",
+          "tag": "The desk grades them all",
+          "end": "The file stays open",
+          "photo": "/assets/cowherd-cover.jpg"
+        }
+      }
+    },
+    {
+      "slug": "weekend-ledger-one",
+      "league": "NFL",
+      "title": "The Weekend Ledger: the house, the exchange, and the margins",
+      "dek": "Everything opening weekend settled, in one file: a trillion-dollar argument between sportsbooks and prediction markets, a split decision between the house and the public, and margins that beat everybody. Colin Cowherd's 1-4 gets its own case file.",
+      "author": "Fade Desk",
+      "published": "2026-09-14T16:00:00Z",
+      "image": null,
+      "featured": false,
+      "sources": "Game results verified against ESPN box scores and team sites; Monday night pending at press time. Prediction-market volume via DeFi Rate's Sept 7-13 report ($983M Kalshi NFL, $2.3B record Saturday), Prediction News ($57B season projection), InGame and Sportico (parlay-taker losses, Susquehanna); sportsbook season estimate via the AGA as reported by ESPN; hold comparison via Next.io and OddsShopper; legal posture via DLA Piper's tracker, The Hill (Ninth Circuit) and CNBC (44 states). House-vs-public splits via FOX Sports (Feazel/Caesars), DraftKings and BetMGM figures as published, Covers and CBS. Cowherd's weekend is graded in full in Case File 006. Exchange volume is notional and double-counted relative to sportsbook handle; the comparison is directional, not accounting.",
       "body": [
         "Opening weekend graded everything this desk has published for two weeks. The chalk card went 3-5, exactly along the -36 threshold. The public split the difference with the house. The unders died in public, as warned. And Clay Travis lost by half a point on a miracle.",
         "Meanwhile the biggest bet of the weekend wasn't on any game: Kalshi traded $983 million of NFL Week 1 alone, inside a $2.3 billion record Saturday, while undercutting DraftKings' price on all thirty moneyline sides.",
-        "And Colin Cowherd — 731-671-44 lifetime against the NFL spread, the most precisely break-even picker ever tracked — went 1-4, including Panthers +3 in a 59-37 game."
+        "And Colin Cowherd went 1-4 — the full fifteen-year Cowherd file, 732-675-44 and minus 9.5 units lifetime, now has its own case file."
       ],
       "mag": {
         "volume": "The Weekend Ledger, No. 1",
         "issueLine": "September 2026",
         "edition": "An edition on everything, settled",
         "coverKicker": "The Fade Index",
-        "coverLine": "The most break-even man in America.",
-        "coverSub": "Colin Cowherd went 1-4 on opening weekend. Career: fifteen years at 52.14 percent — and minus 6.45 units.",
+        "coverLine": "The margins owned the weekend.",
+        "coverSub": "96 points in Charlotte, a billion dollars that skipped the sportsbook window, and a split decision between the house and the public.",
         "coverStat": {
-          "label": "Blazin' Five, Week 1",
-          "value": "1-4",
-          "sub": "Lifetime: 731-671-44 ATS"
+          "label": "Kalshi · NFL Week 1",
+          "value": "$983M",
+          "sub": "$2.3B record Saturday"
         },
         "quote": {
           "text": "59-37.",
@@ -108,74 +317,11 @@
             ]
           },
           {
-            "title": "The Cowherd File",
-            "headline": "The Most Break-Even Man in America",
-            "sub": "Via Cole’s Gameday Blog — 1,778 tracked picks",
-            "stats": [
-              {
-                "v": "731-671-44",
-                "l": "All-time NFL, against the spread"
-              },
-              {
-                "v": "52.14%",
-                "l": "Career rate · break-even is 52.4"
-              },
-              {
-                "v": "-6.45",
-                "l": "Units, lifetime NFL",
-                "tone": "wine"
-              }
-            ],
-            "paras": [
-              "The same independent tracker that keeps Stanford Steve's ledger — Cole's Gameday Blog, the desk's database of record — has graded 1,441 Colin Cowherd NFL picks across more than a decade of the Blazin' Five. The career line is a marvel of precision: 731 wins, 671 losses, 44 pushes. That is 52.14 percent — sixty of a percentage point short of break-even at standard pricing — which works out to minus 6.45 units, lifetime. Add his college card (169-158-10, minus 4.36) and the full file reads 900-829-54: a man who has beaten a coin flip for fifteen years and paid the sportsbook industry roughly eleven units for the privilege. Clay Travis is a cautionary tale. Cowherd is something more instructive: proof that being pretty good is, at the window, indistinguishable from being nothing at all.",
-              "This weekend's Blazin' Five will not help the average. Jacksonville minus eight and a half cashed by 24. Everything else died: the Eagles won by two and needed five and a half, the Texans caught a point and a half and lost by five, the Lions won by one in overtime and needed seven — and the headliner, Carolina plus three against the most public team in America, lost by 22 in the highest-scoring opener ever played. One and four: minus 3.09 units, career file to 732-675-44. The most break-even man in America is, this morning, fractionally less break-even."
-            ],
-            "figure": {
-              "type": "table",
-              "label": "The Blazin’ Five · Week 1, graded",
-              "cols": [
-                "Pick",
-                "Result",
-                "Grade"
-              ],
-              "rows": [
-                {
-                  "sel": "Eagles -5.5 vs. Commanders",
-                  "num": "won by 2",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "Jaguars -8.5 vs. Browns",
-                  "num": "won 34-10",
-                  "res": "Won"
-                },
-                {
-                  "sel": "Texans +1.5 vs. Bills",
-                  "num": "lost 31-36",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "Lions -6.5 vs. Saints",
-                  "num": "won by 1, in overtime",
-                  "res": "Lost"
-                },
-                {
-                  "sel": "Panthers +3 vs. Bears",
-                  "num": "lost 37-59",
-                  "res": "Lost"
-                }
-              ],
-              "record": "1-4",
-              "recordLabel": "Week 1",
-              "note": "Tracked and graded via Cole’s Gameday Blog. Career NFL file after the weekend: 732-675-44, minus 9.5 units."
-            }
-          },
-          {
             "title": "The Most Fadeable",
             "headline": "Fade of the Week: The Leaderboard",
             "sub": "The faces the receipts point away from",
             "paras": [
-              "The recap the whole desk builds toward: the week’s most fadeable public bettors, ranked by damage done to anyone who followed them — with the receipts attached. The leaderboard grows as the case files do."
+              "The recap the whole desk builds toward: the week’s most fadeable public bettors, ranked by damage done to anyone who followed them — with the receipts attached. The leaderboard grows as the case files do. Colin Cowherd opens the season at No. 1 — his full fifteen-year file is Case 006."
             ],
             "figure": {
               "type": "faces",
@@ -215,10 +361,8 @@
           "big": "$983M",
           "note": "The most-bet side and most-bet dog of the week closes the opening ledger at Arrowhead — while the exchanges count a billion dollars that never touched a sportsbook window.",
           "tag": "Tail it or fade it",
-          "end": "The ledger rolls to Week 2",
-          "photo": "/assets/cowherd-cover.jpg"
-        },
-        "coverPhoto": "/assets/cowherd-cover.jpg"
+          "end": "The ledger rolls to Week 2"
+        }
       }
     },
     {
