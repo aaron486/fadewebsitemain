@@ -305,27 +305,72 @@
                 {
                   "sel": "Eagles −5.5 vs. Commanders",
                   "note": "won by 2",
-                  "r": "L"
+                  "r": "L",
+                  "team": {
+                    "abbr": "PHI",
+                    "name": "Eagles"
+                  },
+                  "opp": {
+                    "abbr": "WSH",
+                    "name": "Commanders"
+                  },
+                  "league": "nfl"
                 },
                 {
                   "sel": "Jaguars −8.5 vs. Browns",
                   "note": "won 34–10",
-                  "r": "W"
+                  "r": "W",
+                  "team": {
+                    "abbr": "JAX",
+                    "name": "Jaguars"
+                  },
+                  "opp": {
+                    "abbr": "CLE",
+                    "name": "Browns"
+                  },
+                  "league": "nfl"
                 },
                 {
                   "sel": "Texans +1.5 vs. Bills",
                   "note": "lost 31–36",
-                  "r": "L"
+                  "r": "L",
+                  "team": {
+                    "abbr": "HOU",
+                    "name": "Texans"
+                  },
+                  "opp": {
+                    "abbr": "BUF",
+                    "name": "Bills"
+                  },
+                  "league": "nfl"
                 },
                 {
                   "sel": "Lions −6.5 vs. Saints",
                   "note": "won by 1, in overtime",
-                  "r": "L"
+                  "r": "L",
+                  "team": {
+                    "abbr": "DET",
+                    "name": "Lions"
+                  },
+                  "opp": {
+                    "abbr": "NO",
+                    "name": "Saints"
+                  },
+                  "league": "nfl"
                 },
                 {
                   "sel": "Panthers +3 vs. Bears",
                   "note": "lost 37–59",
-                  "r": "L"
+                  "r": "L",
+                  "team": {
+                    "abbr": "CAR",
+                    "name": "Panthers"
+                  },
+                  "opp": {
+                    "abbr": "CHI",
+                    "name": "Bears"
+                  },
+                  "league": "nfl"
                 }
               ],
               "flip": "Tap for the all-time record",
@@ -416,7 +461,8 @@
               ],
               "flip": "Tap for this season"
             },
-            "derivation": "Week 1 swing is the difference between the two figures Cole's Gameday Blog publishes either side of the weekend: −6.45u entering, −9.5u after. Everything else is quoted as tracked."
+            "derivation": "Week 1 swing is the difference between the two figures Cole's Gameday Blog publishes either side of the weekend: −6.45u entering, −9.5u after. Everything else is quoted as tracked.",
+            "logoNote": "Team marks are served from ESPN's public team-logo CDN, the same source the live scoreboard uses. Set an explicit `logo` on a team to override; anything that fails to load falls back to the abbreviation."
           }
         },
         "sections": [

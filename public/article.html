@@ -104,6 +104,19 @@ img { max-width:100%; }
 
 .lc-sec { font-family:var(--mono); font-size:0.54rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin:1.2rem 0 0.5rem; padding-top:0.85rem; border-top:1px solid var(--line); }
 .lc-pick { display:flex; align-items:center; gap:0.7rem; padding:0.5rem 0; border-bottom:1px dotted var(--line); }
+/* the matchup, picked team first and opponent behind it */
+.lc-logos { flex:0 0 auto; display:inline-flex; align-items:center; }
+.lc-logo { width:30px; height:30px; border-radius:50%; background:var(--paper); border:1px solid var(--line);
+  display:inline-flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto; }
+.lc-logo img { width:78%; height:78%; object-fit:contain; display:block; }
+.lc-logo .ab { font-family:var(--mono); font-size:0.46rem; font-weight:700; letter-spacing:0.01em; color:var(--soft); }
+/* the picked team sits in front of its opponent, not behind the card */
+.lc-logo.pick { position:relative; z-index:1; }
+.lc-logo.opp { width:24px; height:24px; margin-left:-8px; opacity:0.6; }
+.lc-logo.opp img { width:74%; height:74%; }
+.lc-logo.opp .ab { font-size:0.36rem; }
+.lc-logo.dead img { display:none; }
+.lc-logo:not(.dead) .ab { display:none; }
 .lc-pick:last-child { border-bottom:none; }
 .lc-pick .r { flex:0 0 auto; width:1.35rem; height:1.35rem; display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-weight:900; font-size:0.82rem; border-radius:2px; }
 .lc-pick .r.w { background:rgba(30,138,76,0.14); color:var(--gain); }
@@ -552,6 +565,29 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
      Used when a ledger carries a `card` object. Face one is the current
      season, face two the career. Falls back to the flat ledger panel for
      every article that has not been given the two faces yet. */
+  /* ESPN's public team-logo CDN, the same source the live scoreboard reads.
+     A team may carry an explicit `logo` to override it. */
+  function teamLogo(t, league) {
+    if (!t) return '';
+    if (t.logo) return t.logo;
+    if (!t.abbr) return '';
+    return 'https://a.espncdn.com/i/teamlogos/' + encodeURIComponent(league || 'nfl') +
+      '/500/' + encodeURIComponent(String(t.abbr).toLowerCase()) + '.png';
+  }
+  function logoMark(t, league, cls) {
+    if (!t) return '';
+    var src = teamLogo(t, league);
+    var ab = esc(t.abbr || '');
+    return '<span class="lc-logo ' + cls + '" title="' + esc(t.name || t.abbr || '') + '">' +
+      (src ? '<img src="' + esc(src) + '" alt="' + esc(t.name || t.abbr || '') + '" loading="lazy" />' : '') +
+      '<span class="ab">' + ab + '</span></span>';
+  }
+  function logosHtml(p) {
+    if (!p.team && !p.opp) return '';
+    return '<span class="lc-logos">' + logoMark(p.team, p.league, 'pick') +
+      logoMark(p.opp, p.league, 'opp') + '</span>';
+  }
+
   function faceHtml(f, lg, side) {
     var s = '<div class="lcard-face ' + side + '">';
     s += '<div class="lc-top"><span class="t">The ledger<b>' + esc(lg.title || '') + '</b></span>' +
@@ -572,6 +608,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       s += f.picks.map(function (p) {
         var cls = p.r === 'W' ? 'w' : 'l';
         return '<div class="lc-pick"><span class="r ' + cls + '">' + esc(p.r) + '</span>' +
+          logosHtml(p) +
           '<span><span class="s">' + esc(p.sel) + '</span>' +
           (p.note ? '<span class="n">' + esc(p.note) + '</span>' : '') + '</span>' +
           '<span class="rt">' + (p.r === 'W' ? 'Won' : 'Lost') + '</span></div>';
@@ -637,6 +674,11 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       btn.setAttribute('aria-label', flipped
         ? 'Turn the ledger card back to this season'
         : 'Turn the ledger card to see the all-time record');
+    });
+    /* a team mark that fails shows its abbreviation rather than a hole */
+    Array.prototype.forEach.call(card.querySelectorAll('.lc-logo img'), function (img) {
+      img.addEventListener('error', function () { img.parentNode.classList.add('dead'); });
+      if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('dead');
     });
     sizeLedgerCard();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeLedgerCard);
