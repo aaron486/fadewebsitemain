@@ -90,39 +90,18 @@ a { color:inherit; text-decoration:none; }
 .rail-cta { display:block; text-align:center; margin-top:1rem; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); background:var(--carbon); border:2px solid var(--carbon); border-radius:4px; padding:0.7rem 1rem; box-shadow:3px 3px 0 rgba(20,20,18,0.25); }
 .rail-cta:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 rgba(20,20,18,0.3); }
 
-/* magazine cover hero */
-.cover-hero { display:block; border:1.5px solid var(--carbon); border-radius:6px; overflow:hidden; box-shadow:4px 4px 0 rgba(20,20,18,0.22); background:#9E1B1E; }
-.cover-hero:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 rgba(20,20,18,0.26); }
-.ch-red { background:#9E1B1E; color:#F1EEE5; padding:1rem 1.3rem 0; }
-.ch-caps { font-family:'Newsreader',Georgia,serif; font-size:0.6rem; font-weight:500; letter-spacing:0.32em; text-transform:uppercase; color:rgba(241,238,229,0.85); }
-.ch-top { display:flex; justify-content:space-between; padding-bottom:0.7rem; border-bottom:1px solid rgba(241,238,229,0.35); }
-.ch-logo { margin:1rem auto 1.1rem; }
-.ch-logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
-.ch-grid { display:grid; grid-template-columns:1fr auto; gap:1.4rem; align-items:end; }
-.ch-left { padding-bottom:0.2rem; }
-.ch-left .ch-caps { display:block; margin-bottom:0.55rem; }
-.ch-line { font-family:'Playfair Display',Georgia,serif; font-weight:600; font-size:clamp(1.1rem,2.1vw,1.55rem); line-height:1.2; }
-.ch-sub { margin-top:0.5rem; font-family:'Newsreader',Georgia,serif; font-style:italic; font-size:0.8rem; color:rgba(241,238,229,0.8); max-width:34ch; }
-.ch-right { text-align:right; padding-bottom:0.2rem; }
-.ch-right .ch-caps { display:block; margin-bottom:0.45rem; }
-.ch-stat { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(1.7rem,3vw,2.4rem); line-height:1; }
-.ch-stat + .ch-caps { margin-top:0.5rem; margin-bottom:0; }
-.ch-ed { text-align:center; padding:1rem 0 1rem; font-family:'Newsreader',Georgia,serif; font-style:italic; letter-spacing:0.28em; text-transform:uppercase; font-size:0.56rem; color:rgba(241,238,229,0.75); }
-.ch-photo img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 0%; filter:grayscale(1) contrast(1.06); }
-@media (max-width:640px) {
-  .ch-red { padding:0.8rem 1rem 0; }
-  .ch-logo { margin:0.8rem auto 1rem; }
-  .ch-grid { grid-template-columns:1.55fr 1fr; gap:0.9rem; align-items:end; }
-  .ch-left { text-align:left; padding-bottom:0.1rem; }
-  .ch-left .ch-caps { font-size:0.52rem; letter-spacing:0.26em; margin-bottom:0.4rem; }
-  .ch-line { font-size:1.05rem; line-height:1.18; }
-  .ch-sub { display:none; }
-  .ch-right { text-align:right; padding-bottom:0.1rem; }
-  .ch-right .ch-caps { font-size:0.5rem; letter-spacing:0.24em; margin-bottom:0.3rem; }
-  .ch-stat { font-size:1.65rem; }
-  .ch-ed { padding:0.8rem 0 0.85rem; font-size:0.5rem; letter-spacing:0.22em; }
-  .ch-photo img { aspect-ratio:4/3; }
-}
+/* editorial lead art */
+.lead-art { display:block; border:1.5px solid var(--carbon); background:var(--paper-hi); overflow:hidden; }
+.lead-art img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 12%; filter:grayscale(1) contrast(1.06); }
+.lead-art.color img { filter:none; }
+.lead-art figcaption { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; border-top:1.5px solid var(--carbon); padding:0.5rem 0.85rem; font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+.lead-art figcaption b { color:var(--carbon); }
+.lead-art:hover figcaption { background:var(--carbon); color:var(--paper); }
+.lead-art:hover figcaption b { color:var(--paper); }
+.lead-stat { display:flex; align-items:baseline; gap:1rem; margin-top:0.9rem; padding:0.75rem 0; border-top:1.5px solid var(--carbon); border-bottom:1px solid var(--line); }
+.lead-stat .n { flex:0 0 auto; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:clamp(1.9rem,4.2vw,2.9rem); line-height:0.86; }
+.lead-stat .l { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); line-height:1.7; }
+.lead-stat .l b { display:block; color:var(--carbon); }
 
 /* newsroom front */
 .nf { display:grid; grid-template-columns:2.1fr 1fr; gap:2rem; padding:2rem 0 1.2rem; }
@@ -1057,29 +1036,25 @@ a { color:inherit; text-decoration:none; }
       (a.dek ? '<p class="dek">' + esc(a.dek) + '</p>' : '') +
       '</article>';
   }
-  var COVER_LOGO = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 158" role="img" aria-label="FADE"><g transform="translate(-80,-416)"><polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7"/><path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z"/><polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1"/><polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9"/></g></svg>';
   function heroCover(a) {
     var m = a.mag;
     var photo = m.coverPhoto || (a.fadeCard && a.fadeCard.photo) || a.img || '';
-    return '<a class="cover-hero" href="' + esc(a.url) + '">' +
-      '<div class="ch-red">' +
-        '<div class="ch-top"><span class="ch-caps">' + esc(m.issueLine || '') + '</span><span class="ch-caps">' + esc(m.volume || 'Fade Media') + '</span></div>' +
-        '<div class="ch-logo">' + COVER_LOGO + '</div>' +
-        '<div class="ch-grid">' +
-          '<div class="ch-left">' +
-            (m.coverKicker ? '<span class="ch-caps">' + esc(m.coverKicker) + '</span>' : '') +
-            '<div class="ch-line">' + esc(m.coverLine || a.title) + '</div>' +
-            (m.coverSub ? '<div class="ch-sub">' + esc(m.coverSub) + '</div>' : '') +
-          '</div>' +
-          '<div class="ch-right">' +
-            (m.coverStat ? '<span class="ch-caps">' + esc(m.coverStat.label) + '</span><div class="ch-stat">' + esc(String(m.coverStat.value).replace(/^\u2212/, '-')) + '</div><span class="ch-caps">' + esc(m.coverStat.sub || '') + '</span>' : '') +
-          '</div>' +
-        '</div>' +
-        (m.edition ? '<div class="ch-ed">' + esc(m.edition) + '</div>' : '') +
-      '</div>' +
-      (photo ? '<div class="ch-photo"><img src="' + esc(photo) + '" alt="" /></div>' : '') +
-      '</a>';
+    var st = m.coverStat;
+    var line = [m.volume, m.issueLine].filter(Boolean).join(' \u00b7 ');
+    var s = '';
+    if (photo) {
+      s += '<a class="lead-art' + (m.coverColor ? ' color' : '') + '" href="' + esc(a.url) + '">' +
+        '<img src="' + esc(photo) + '" alt="" />' +
+        '<figcaption><span><b>' + esc(m.coverKicker || a.league || '') + '</b></span>' +
+        (line ? '<span>' + esc(line) + '</span>' : '') + '</figcaption></a>';
+    }
+    if (st) {
+      s += '<div class="lead-stat"><div class="n">' + esc(String(st.value).replace(/^\u2212/, '-')) + '</div>' +
+        '<div class="l"><b>' + esc(st.label || '') + '</b>' + esc(st.sub || '') + '</div></div>';
+    }
+    return s;
   }
+
   function fadeCardHero(a) {
     var fc = a.fadeCard;
     var picks = (fc.picks || []).map(function (p) {

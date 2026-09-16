@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fade Media</title>
-<meta name="theme-color" content="#9E1B1E" />
+<meta name="theme-color" content="#F1EEE5" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Saira+Condensed:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -34,39 +34,31 @@ img { max-width:100%; }
 .runhead .caps { color:var(--soft); }
 .runhead a.caps:hover { color:var(--ink); }
 
-/* ---- cover ---- */
-.cover { background:var(--wine); color:#F1EEE5; padding:clamp(1.4rem,3vw,2.4rem) 0 0; overflow:hidden; }
-.cover .caps { color:rgba(241,238,229,0.85); }
-.cover-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:1rem; border-bottom:1px solid rgba(241,238,229,0.35); }
-.cover-logo { display:block; width:100%; margin:clamp(1.2rem,4vw,2.6rem) auto clamp(1.4rem,3.5vw,2.4rem); }
-.cover-logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
-.cover-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(1.4rem,4vw,3rem); align-items:end; }
-.cover-left { text-align:left; padding-bottom:0.4rem; }
-.cover-left .caps { display:block; margin-bottom:0.8rem; }
-.cover-line { font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(1.35rem,2.8vw,2rem); line-height:1.2; max-width:26ch; }
-.cover-sub { margin-top:0.7rem; font-style:italic; font-size:0.92rem; color:rgba(241,238,229,0.8); max-width:38ch; }
-.cover-right { text-align:right; padding-bottom:0.4rem; }
-.cover-right .caps { display:block; margin-bottom:0.6rem; }
-.cover-stat { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.2rem,4.5vw,3.2rem); line-height:1; }
-.cover-stat-sub { margin-top:0.6rem; }
-.cover-edition { text-align:center; padding:clamp(1.4rem,3.5vw,2.2rem) 0 1.3rem; font-style:italic; letter-spacing:0.3em; text-transform:uppercase; font-size:0.66rem; color:rgba(241,238,229,0.75); }
-.cover-photo-band { background:var(--wine); }
-.cover-photo-band img { display:block; width:100%; max-height:64vh; object-fit:cover; object-position:50% 0%; filter:grayscale(1) contrast(1.06); }
-.cover-photo-band.color img { filter:none; }
-@media (max-width:700px) {
-  .cover { padding-top:1.1rem; }
-  .cover-logo { margin:1.1rem auto 1.3rem; }
-  .cover-grid { grid-template-columns:1.55fr 1fr; gap:1rem; align-items:end; }
-  .cover-left { text-align:left; padding-bottom:0.1rem; }
-  .cover-left .caps { font-size:0.56rem; letter-spacing:0.28em; margin-bottom:0.5rem; }
-  .cover-line { font-size:1.22rem; line-height:1.18; }
-  .cover-sub { font-size:0.78rem; margin-top:0.45rem; }
-  .cover-right { text-align:right; padding-bottom:0.1rem; }
-  .cover-right .caps { font-size:0.54rem; letter-spacing:0.26em; margin-bottom:0.35rem; }
-  .cover-stat { font-size:1.9rem; }
-  .cover-stat-sub { margin-top:0.4rem; }
-  .cover-edition { padding:1rem 0 0.9rem; font-size:0.56rem; letter-spacing:0.24em; }
-}
+/* ---- the opening ----------------------------------------------------
+   A feature opening, not a magazine cover: kicker, headline, dek, a ruled
+   byline and then the photograph. The subject's defining number runs
+   under the art as a standfirst, where a paper would set it. */
+.opener { padding:clamp(2rem,5vw,3.6rem) 0 0; }
+.opener .kick { display:block; color:var(--soft); margin-bottom:1.1rem; }
+.opener h1 { font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.1rem,5.6vw,4rem); line-height:1.0; letter-spacing:-0.012em; max-width:20ch; }
+.opener .sub { margin-top:1rem; font-style:italic; font-size:clamp(1rem,1.7vw,1.3rem); line-height:1.45; color:var(--soft); max-width:50ch; }
+.opener-by { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap;
+  margin-top:1.5rem; padding:0.55rem 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); }
+.opener-by .caps { color:var(--soft); }
+.opener-by .caps b { color:var(--ink); }
+
+.opener-art { margin-top:clamp(1.3rem,3vw,2rem); }
+.opener-art img { display:block; width:100%; max-height:62vh; object-fit:cover; object-position:50% 12%; filter:grayscale(1) contrast(1.06); }
+.opener-art.color img { filter:none; }
+.opener-art figcaption { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  padding:0.55rem 0 0; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); }
+
+/* the defining number, set as a standfirst under the art */
+.opener-stat { display:flex; align-items:baseline; gap:clamp(1rem,2.5vw,1.8rem); margin-top:clamp(1.2rem,3vw,1.8rem);
+  padding:1rem 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--hair); }
+.opener-stat .n { flex:0 0 auto; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(2.4rem,6vw,4rem); line-height:0.84; }
+.opener-stat .l { font-size:0.66rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); line-height:1.8; }
+.opener-stat .l b { display:block; color:var(--ink); }
 
 /* ---- the ledger card -------------------------------------------------
    A two-sided trading card. Face one is the current season: the graded
@@ -291,7 +283,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .photofig img { display:block; width:100%; filter:grayscale(1) contrast(1.05); }
 
 /* ---- call (closing plate) ---- */
-.call { position:relative; margin-top:clamp(3rem,7vw,5rem); background:var(--wine); color:#F1EEE5; overflow:hidden; }
+.call { position:relative; margin-top:clamp(3rem,7vw,5rem); background:var(--ink); color:#F1EEE5; overflow:hidden; }
 .call .bg { position:absolute; inset:0; }
 .call .bg img { width:100%; height:100%; object-fit:cover; filter:grayscale(1); opacity:0.34; }
 .call .bg::after { content:''; position:absolute; inset:0; background:rgba(158,27,30,0.55); }
@@ -305,7 +297,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
 .call .logo { width:min(220px,55%); margin:1.4rem auto 0; }
 .call .logo svg { display:block; width:100%; height:auto; fill:#F1EEE5; }
 .call .cta { display:inline-block; margin-top:2rem; border:1px solid rgba(241,238,229,0.7); padding:0.85rem 2rem; font-size:0.64rem; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; }
-.call .cta:hover { background:#F1EEE5; color:var(--wine); }
+.call .cta:hover { background:#F1EEE5; color:var(--ink); }
 .call .fine { margin-top:2.6rem; font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(241,238,229,0.65); }
 
 /* ---- end matter ---- */
@@ -544,27 +536,36 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
   function coverHtml(a, m) {
     var pub = new Date(a.published);
     var issue = m.issueLine || pub.toLocaleDateString([], { month: 'long', year: 'numeric' });
-    return '<header class="cover"><div class="wrap">' +
-      '<div class="cover-top"><span class="caps">' + esc(issue) + '</span><span class="caps">' + esc(m.volume || 'Fade Media') + '</span></div>' +
-      '<div class="cover-logo">' + LOGO + '</div>' +
-      '<div class="cover-grid">' +
-        '<div class="cover-left">' +
-          (m.coverKicker ? '<span class="caps">' + esc(m.coverKicker) + '</span>' : '') +
-          '<div class="cover-line">' + esc(m.coverLine || a.title) + '</div>' +
-          (m.coverSub ? '<div class="cover-sub">' + esc(m.coverSub) + '</div>' : '') +
-        '</div>' +
-        '<div class="cover-right">' +
-          (m.coverStat ? '<span class="caps">' + esc(m.coverStat.label) + '</span><div class="cover-stat">' + fmtStat(m.coverStat.value) + '</div><div class="caps cover-stat-sub">' + esc(m.coverStat.sub || '') + '</div>' : '') +
-        '</div>' +
-      '</div></div>' +
-      (m.edition ? '<div class="cover-edition">' + esc(m.edition) + '</div>' : '') +
-      '</header>' +
-      (m.coverPhoto || a.image ? '<div class="cover-photo-band' + (m.coverColor ? ' color' : '') + '"><img src="' + esc((m.coverPhoto || a.image).replace('sz=w600','sz=w1200')) + '" alt="" /></div>' : '');
+    var kick = [m.volume, issue].filter(Boolean).join(' \u00b7 ');
+    var photo = m.coverPhoto || a.image || '';
+    var st = m.coverStat;
+    var date = pub.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' });
+
+    var s = '<header class="opener"><div class="wrap">' +
+      (kick ? '<span class="caps kick">' + esc(kick) + '</span>' : '') +
+      '<h1>' + esc(m.coverLine || a.title) + '</h1>' +
+      (m.coverSub ? '<p class="sub">' + esc(m.coverSub) + '</p>' : '') +
+      '<div class="opener-by"><span class="caps">By <b>' + esc(a.author || 'The Fade Desk') + '</b></span>' +
+        '<span class="caps">' + esc(date) + '</span></div>' +
+      '</div>';
+
+    if (photo) {
+      s += '<figure class="opener-art' + (m.coverColor ? ' color' : '') + '"><div class="wrap">' +
+        '<img src="' + esc(photo.replace('sz=w600', 'sz=w1200')) + '" alt="" />' +
+        '<figcaption><span>' + esc(m.coverKicker || a.league || '') + '</span>' +
+        (m.edition ? '<span>' + esc(m.edition) + '</span>' : '') + '</figcaption>' +
+        '</div></figure>';
+    }
+
+    if (st) {
+      s += '<div class="wrap"><div class="opener-stat">' +
+        '<div class="n">' + fmtStat(st.value) + '</div>' +
+        '<div class="l"><b>' + esc(st.label || '') + '</b>' + esc(st.sub || '') + '</div>' +
+        '</div></div>';
+    }
+    return s + '</header>';
   }
-  /* ---- two-sided ledger card ----------------------------------------
-     Used when a ledger carries a `card` object. Face one is the current
-     season, face two the career. Falls back to the flat ledger panel for
-     every article that has not been given the two faces yet. */
+
   /* Team marks resolve in three tiers:
        1. an explicit `logo` on the team, if the data carries one;
        2. the documented CDN path, which holds for nfl / nba / mlb where the
