@@ -565,27 +565,74 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
      Used when a ledger carries a `card` object. Face one is the current
      season, face two the career. Falls back to the flat ledger panel for
      every article that has not been given the two faces yet. */
-  /* ESPN's public team-logo CDN, the same source the live scoreboard reads.
-     A team may carry an explicit `logo` to override it. */
+  /* Team marks resolve in three tiers:
+       1. an explicit `logo` on the team, if the data carries one;
+       2. the documented CDN path, which holds for nfl / nba / mlb where the
+          team abbreviation keys the file;
+       3. /api/teams, which returns the logo ESPN publishes per team. College
+          teams are keyed by numeric id rather than abbreviation, so tier 2
+          cannot be derived for them and this is the only path that works.
+     Anything still unresolved shows the abbreviation. */
+  var DERIVABLE = { nfl: 1, nba: 1, mlb: 1 };
+  var teamsCache = {};
+
   function teamLogo(t, league) {
     if (!t) return '';
     if (t.logo) return t.logo;
-    if (!t.abbr) return '';
-    return 'https://a.espncdn.com/i/teamlogos/' + encodeURIComponent(league || 'nfl') +
+    var lg = String(league || 'nfl').toLowerCase();
+    if (!t.abbr || !DERIVABLE[lg]) return '';
+    return 'https://a.espncdn.com/i/teamlogos/' + encodeURIComponent(lg) +
       '/500/' + encodeURIComponent(String(t.abbr).toLowerCase()) + '.png';
   }
   function logoMark(t, league, cls) {
     if (!t) return '';
     var src = teamLogo(t, league);
-    var ab = esc(t.abbr || '');
-    return '<span class="lc-logo ' + cls + '" title="' + esc(t.name || t.abbr || '') + '">' +
+    return '<span class="lc-logo ' + cls + (src ? '' : ' dead') + '"' +
+      ' data-league="' + esc(String(league || 'nfl').toLowerCase()) + '"' +
+      ' data-abbr="' + esc(t.abbr || '') + '" data-id="' + esc(t.id || '') + '"' +
+      ' title="' + esc(t.name || t.abbr || '') + '">' +
       (src ? '<img src="' + esc(src) + '" alt="' + esc(t.name || t.abbr || '') + '" loading="lazy" />' : '') +
-      '<span class="ab">' + ab + '</span></span>';
+      '<span class="ab">' + esc(t.abbr || t.id || '') + '</span></span>';
   }
   function logosHtml(p) {
     if (!p.team && !p.opp) return '';
     return '<span class="lc-logos">' + logoMark(p.team, p.league, 'pick') +
       logoMark(p.opp, p.league, 'opp') + '</span>';
+  }
+
+  /* Ask /api/teams for any mark tiers 1 and 2 could not produce. One request
+     per league, only when something actually needs it. */
+  function resolveTeamMarks(card) {
+    var pending = card.querySelectorAll('.lc-logo.dead');
+    if (!pending.length) return;
+    var leagues = {};
+    Array.prototype.forEach.call(pending, function (el) {
+      if (el.dataset.abbr || el.dataset.id) leagues[el.dataset.league || 'nfl'] = 1;
+    });
+    Object.keys(leagues).forEach(function (lg) {
+      var got = teamsCache[lg] || (teamsCache[lg] = fetch('/api/teams?league=' + encodeURIComponent(lg))
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) { return d.logos || {}; })
+        .catch(function () { return {}; }));
+      got.then(function (map) {
+        Array.prototype.forEach.call(card.querySelectorAll('.lc-logo.dead'), function (el) {
+          if ((el.dataset.league || 'nfl') !== lg) return;
+          var href = map[(el.dataset.abbr || '').toUpperCase()] || map[el.dataset.id];
+          if (!href) return;
+          var img = el.querySelector('img');
+          if (!img) {
+            img = document.createElement('img');
+            img.alt = el.getAttribute('title') || '';
+            img.loading = 'lazy';
+            img.addEventListener('error', function () { el.classList.add('dead'); });
+            el.insertBefore(img, el.firstChild);
+          }
+          img.src = href;
+          el.classList.remove('dead');
+        });
+        sizeLedgerCard();
+      });
+    });
   }
 
   function faceHtml(f, lg, side) {
@@ -677,9 +724,13 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
     });
     /* a team mark that fails shows its abbreviation rather than a hole */
     Array.prototype.forEach.call(card.querySelectorAll('.lc-logo img'), function (img) {
-      img.addEventListener('error', function () { img.parentNode.classList.add('dead'); });
+      img.addEventListener('error', function () {
+        img.parentNode.classList.add('dead');
+        resolveTeamMarks(card);
+      });
       if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('dead');
     });
+    resolveTeamMarks(card);
     sizeLedgerCard();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeLedgerCard);
     var t;

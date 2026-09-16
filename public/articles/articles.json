@@ -462,7 +462,7 @@
               "flip": "Tap for this season"
             },
             "derivation": "Week 1 swing is the difference between the two figures Cole's Gameday Blog publishes either side of the weekend: −6.45u entering, −9.5u after. Everything else is quoted as tracked.",
-            "logoNote": "Team marks are served from ESPN's public team-logo CDN, the same source the live scoreboard uses. Set an explicit `logo` on a team to override; anything that fails to load falls back to the abbreviation."
+            "logoNote": "Team marks resolve in three tiers: an explicit `logo` on the team, then ESPN's documented CDN path (valid for nfl/nba/mlb, where the abbreviation keys the file), then /api/teams, which returns the logo ESPN publishes per team. College teams are keyed by numeric id rather than abbreviation, so they need tier three and an `id` on the team. Anything unresolved shows the abbreviation."
           }
         },
         "sections": [
