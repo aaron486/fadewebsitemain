@@ -140,15 +140,45 @@ a { color:inherit; text-decoration:none; }
 .story.promo .go { margin-top:auto; text-align:center; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--carbon); background:var(--paper); border-radius:4px; padding:0.65rem 1rem; }
 .story.promo .go:hover { background:#fff; }
 
-/* more headlines */
-.more-wrap { padding:1.8rem 0 0.5rem; }
-.more-head { font-family:'Playfair Display',Georgia,serif; font-weight:600; font-size:1.3rem; padding-bottom:0.5rem; border-bottom:1.5px solid var(--carbon); margin-bottom:0.4rem; }
-.more-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 2.5rem; }
-.more-item { display:flex; gap:0.7rem; align-items:baseline; padding:0.6rem 0; border-bottom:1px dashed var(--line); font-size:0.78rem; font-weight:700; line-height:1.4; }
-.more-item .lg { flex:0 0 auto; font-size:0.58rem; letter-spacing:0.12em; color:var(--tail); }
-.more-item a:hover { text-decoration:underline; }
-.more-item .ago { margin-left:auto; flex:0 0 auto; font-weight:600; font-size:0.6rem; color:var(--soft); }
-.nf-loading { padding:3rem 0; text-align:center; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); grid-column:1/-1; }
+/* data rail — Top 25, stat leaders */
+.rail-wrap { padding:2rem 0 0.5rem; }
+.rail-head { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding-bottom:0.5rem; border-bottom:1.5px solid var(--carbon); }
+.rail-head h2 { font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:1.4rem; }
+.rail-tabs { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.rail-tab { font-family:'Newsreader',Georgia,serif; font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); background:none; border:1.5px solid var(--line); border-radius:3px; padding:0.4rem 0.8rem; cursor:pointer; transition:all 0.14s ease; }
+.rail-tab:hover { color:var(--carbon); border-color:var(--carbon); }
+.rail-tab.on { background:var(--carbon); color:var(--paper); border-color:var(--carbon); }
+.rail-panel { padding-top:1rem; }
+.rail-panel[hidden] { display:none; }
+.rail-sub { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--soft); }
+
+/* top 25 */
+.t25 { display:grid; grid-template-columns:1fr 1fr; gap:0 2.4rem; }
+.t25-row { display:flex; align-items:center; gap:0.7rem; padding:0.45rem 0; border-bottom:1px dashed var(--line); }
+.t25-row .rk { flex:0 0 auto; width:1.6rem; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.95rem; text-align:right; }
+.t25-row .lg { flex:0 0 auto; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; }
+.t25-row .lg img { width:100%; height:100%; object-fit:contain; }
+.t25-row .lg .ab { font-size:0.5rem; font-weight:700; color:var(--soft); }
+.t25-row .lg.dead img { display:none; }
+.t25-row .lg:not(.dead) .ab { display:none; }
+.t25-row .nm { font-size:0.8rem; font-weight:700; line-height:1.3; }
+.t25-row .rec { margin-left:auto; flex:0 0 auto; font-size:0.62rem; color:var(--soft); }
+.t25-row .tr { flex:0 0 auto; width:1.7rem; text-align:right; font-size:0.58rem; font-weight:700; }
+.t25-row .tr.up { color:var(--cash); } .t25-row .tr.down { color:var(--fade); } .t25-row .tr.flat { color:var(--soft); }
+
+/* stat leaders */
+.lead-cats { display:grid; grid-template-columns:repeat(3,1fr); gap:0 2rem; }
+.lead-cat { padding-top:0.2rem; }
+.lead-cat h3 { font-size:0.62rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--carbon); padding-bottom:0.4rem; border-bottom:1.5px solid var(--carbon); margin-bottom:0.3rem; }
+.lead-row { display:flex; align-items:baseline; gap:0.55rem; padding:0.42rem 0; border-bottom:1px dashed var(--line); }
+.lead-row .rk { flex:0 0 auto; width:0.9rem; font-size:0.6rem; font-weight:700; color:var(--fade); }
+.lead-row .nm { font-size:0.76rem; font-weight:700; line-height:1.3; }
+.lead-row .tm { font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); }
+.lead-row .v { margin-left:auto; flex:0 0 auto; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.9rem; }
+.rail-empty { padding:1.6rem 0; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); text-align:center; }
+
+@media (max-width:860px) { .lead-cats { grid-template-columns:1fr; gap:1.4rem; } }
+@media (max-width:640px) { .t25 { grid-template-columns:1fr; } }
 
 /* fade-watch designed hero */
 .fw-card { display:grid; grid-template-columns:1.4fr 1fr; gap:1.2rem; margin-bottom:1.2rem; align-items:stretch; }
@@ -565,9 +595,12 @@ a { color:inherit; text-decoration:none; }
   </section>
 
   <!-- more headlines -->
-  <section class="more-wrap" id="moreWrap" hidden>
-    <div class="more-head">More headlines</div>
-    <div class="more-grid" id="moreList"></div>
+  <section class="rail-wrap" id="dataRail" hidden>
+    <div class="rail-head">
+      <h2 id="railTitle">Top 25</h2>
+      <div class="rail-tabs" id="railTabs"></div>
+    </div>
+    <div class="rail-panel" id="railBody"></div>
   </section>
 
   <!-- case files (Cases tab) -->
@@ -1007,8 +1040,6 @@ a { color:inherit; text-decoration:none; }
   var nfLead = document.getElementById('nfLead');
   var nfSide = document.getElementById('nfSide');
   var grid = document.getElementById('storyGrid');
-  var moreWrap = document.getElementById('moreWrap');
-  var moreList = document.getElementById('moreList');
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ago(iso) {
     var m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
@@ -1177,6 +1208,110 @@ a { color:inherit; text-decoration:none; }
       .catch(function () { /* stays hidden rather than printing an empty frame */ });
   })();
 
+  /* ---- data rail: Top 25 and stat leaders ---------------------------
+     Each tab loads once, on demand, and a tab whose feed is down removes
+     itself rather than sitting there empty. */
+  (function initRail() {
+    var host = document.getElementById('dataRail');
+    var tabsEl = document.getElementById('railTabs');
+    var bodyEl = document.getElementById('railBody');
+    var titleEl = document.getElementById('railTitle');
+    if (!host || !tabsEl || !bodyEl) return;
+
+    var TABS = [
+      { key: 'top25',    label: 'Top 25',       title: 'Top 25',            url: '/api/rankings?league=cfb' },
+      { key: 'nfl',      label: 'NFL leaders',  title: 'NFL stat leaders',  url: '/api/leaders?league=nfl' },
+      { key: 'cfb',      label: 'CFB leaders',  title: 'CFB stat leaders',  url: '/api/leaders?league=cfb' }
+    ];
+    var cache = {};
+    var live = [];
+
+    function logoCell(t) {
+      return '<span class="lg' + (t.logo ? '' : ' dead') + '">' +
+        (t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy" />' : '') +
+        '<span class="ab">' + esc(t.abbr || '') + '</span></span>';
+    }
+    function trendCell(t) {
+      var v = String(t.trend || '').trim();
+      if (!v || v === '-' || v === '--') return '<span class="tr flat">&ndash;</span>';
+      var up = v.charAt(0) === '+';
+      return '<span class="tr ' + (up ? 'up' : 'down') + '">' + esc(v) + '</span>';
+    }
+    function renderTop25(d) {
+      var poll = (d.polls || [])[0];
+      if (!poll) return '';
+      return (poll.headline || d.updated
+        ? '<div class="rail-sub" style="margin-bottom:0.8rem;">' + esc(poll.full || poll.name) +
+          (d.updated ? ' &middot; ' + esc(d.updated) : '') + '</div>'
+        : '') +
+        '<div class="t25">' + poll.teams.slice(0, 25).map(function (t) {
+          return '<div class="t25-row"><span class="rk">' + esc(t.rank) + '</span>' +
+            logoCell(t) +
+            '<span class="nm">' + esc(t.name) + '</span>' +
+            (t.record ? '<span class="rec">' + esc(t.record) + '</span>' : '<span class="rec"></span>') +
+            trendCell(t) + '</div>';
+        }).join('') + '</div>';
+    }
+    function renderLeaders(d) {
+      var cats = (d.categories || []).slice(0, 6);
+      if (!cats.length) return '';
+      return '<div class="lead-cats">' + cats.map(function (c) {
+        return '<div class="lead-cat"><h3>' + esc(c.name) + '</h3>' +
+          c.leaders.slice(0, 5).map(function (l) {
+            return '<div class="lead-row"><span class="rk">' + esc(l.rank) + '</span>' +
+              '<span><span class="nm">' + esc(l.short || l.name) + '</span> ' +
+              '<span class="tm">' + esc([l.team, l.position].filter(Boolean).join(' \u00b7 ')) + '</span></span>' +
+              '<span class="v">' + esc(l.value) + '</span></div>';
+          }).join('') + '</div>';
+      }).join('') + '</div>';
+    }
+
+    function paint(tab) {
+      titleEl.textContent = tab.title;
+      Array.prototype.forEach.call(tabsEl.querySelectorAll('.rail-tab'), function (b) {
+        b.classList.toggle('on', b.dataset.k === tab.key);
+      });
+      bodyEl.innerHTML = '<div class="rail-empty">Loading&hellip;</div>';
+      cache[tab.key].then(function (d) {
+        var html = tab.key === 'top25' ? renderTop25(d) : renderLeaders(d);
+        bodyEl.innerHTML = html || '<div class="rail-empty">Nothing to show right now.</div>';
+        Array.prototype.forEach.call(bodyEl.querySelectorAll('.lg img'), function (img) {
+          img.addEventListener('error', function () { img.parentNode.classList.add('dead'); });
+          if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('dead');
+        });
+      });
+    }
+
+    function drawTabs() {
+      tabsEl.innerHTML = live.map(function (t) {
+        return '<button class="rail-tab" data-k="' + esc(t.key) + '">' + esc(t.label) + '</button>';
+      }).join('');
+      Array.prototype.forEach.call(tabsEl.querySelectorAll('.rail-tab'), function (b) {
+        b.addEventListener('click', function () {
+          var tab = live.filter(function (t) { return t.key === b.dataset.k; })[0];
+          if (tab) paint(tab);
+        });
+      });
+    }
+
+    /* probe every feed first so a dead one never becomes an empty tab */
+    Promise.all(TABS.map(function (t) {
+      cache[t.key] = fetch(t.url)
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .catch(function () { return null; });
+      return cache[t.key].then(function (d) {
+        var ok = d && ((d.polls && d.polls.length) || (d.categories && d.categories.length));
+        return ok ? t : null;
+      });
+    })).then(function (rows) {
+      live = rows.filter(Boolean);
+      if (!live.length) return;
+      host.hidden = false;
+      drawTabs();
+      paint(live[0]);
+    });
+  })();
+
   var promoTimer = null;
   var PROMO_VIDS = ['assets/demo-feed.mp4', 'assets/demo-sync.mp4', 'assets/demo-fadeiq-2.mp4', 'assets/demo-profile-2.mp4'];
   (function initPromo() {
@@ -1219,7 +1354,6 @@ a { color:inherit; text-decoration:none; }
         gridItems.push(b);
       });
       gridItems.sort(function (a, b) { return new Date(b.published) - new Date(a.published); });
-      var more = rest.filter(function (a) { return gridItems.indexOf(a) === -1; }).slice(0, 14);
       if (lead.custom && lead.mag) {
         nfLead.innerHTML = heroCover(lead) +
           '<div class="kicker games" style="margin-top:1rem;">' + meta(lead) + '</div>' +
@@ -1241,16 +1375,9 @@ a { color:inherit; text-decoration:none; }
           '<div class="meta">' + meta(a) + '</div></div></div>';
       }).join('');
       grid.innerHTML = gridItems.map(card).join('');
-      if (more.length) {
-        moreWrap.hidden = false;
-        moreList.innerHTML = more.map(function (a) {
-          return '<div class="more-item"><span class="lg">' + esc(a.league) + '</span>' +
-            link(a, esc(a.title)) + '<span class="ago">' + ago(a.published) + '</span></div>';
-        }).join('');
-      } else { moreWrap.hidden = true; }
+
     } else {
       nf.style.display = '';
-      moreWrap.hidden = true;
       var filtered = articles.filter(function (a) { return a.league.toLowerCase() === cat; });
       grid.classList.toggle('cases-mode', cat === 'cases');
       if (cat === 'cases') {
