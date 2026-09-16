@@ -175,6 +175,19 @@ a { color:inherit; text-decoration:none; }
 .lead-row .nm { font-size:0.76rem; font-weight:700; line-height:1.3; }
 .lead-row .tm { font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); }
 .lead-row .v { margin-left:auto; flex:0 0 auto; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.9rem; }
+/* fantasy points leaders */
+.fnt { display:grid; grid-template-columns:1fr 1fr; gap:0 2.4rem; }
+.fnt-row { display:flex; align-items:baseline; gap:0.6rem; padding:0.45rem 0; border-bottom:1px dashed var(--line); }
+.fnt-row .rk { flex:0 0 auto; width:1.5rem; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.9rem; text-align:right; color:var(--fade); }
+.fnt-row .nm { font-size:0.8rem; font-weight:700; line-height:1.3; }
+.fnt-row .tm { font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--soft); }
+.fnt-row .avg { margin-left:auto; flex:0 0 auto; font-size:0.6rem; color:var(--soft); }
+.fnt-row .pts { flex:0 0 auto; width:3.4rem; text-align:right; font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:0.95rem; }
+.rail-credit { margin-top:0.9rem; padding-top:0.6rem; border-top:1px solid var(--line); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); }
+.rail-credit a { border-bottom:1px solid var(--line); }
+.rail-credit a:hover { color:var(--carbon); border-color:var(--carbon); }
+@media (max-width:640px) { .fnt { grid-template-columns:1fr; } }
+
 .rail-empty { padding:1.6rem 0; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); text-align:center; }
 
 @media (max-width:860px) { .lead-cats { grid-template-columns:1fr; gap:1.4rem; } }
@@ -1221,7 +1234,8 @@ a { color:inherit; text-decoration:none; }
     var TABS = [
       { key: 'top25',    label: 'Top 25',       title: 'Top 25',            url: '/api/rankings?league=cfb' },
       { key: 'nfl',      label: 'NFL leaders',  title: 'NFL stat leaders',  url: '/api/leaders?league=nfl' },
-      { key: 'cfb',      label: 'CFB leaders',  title: 'CFB stat leaders',  url: '/api/leaders?league=cfb' }
+      { key: 'cfb',      label: 'CFB leaders',  title: 'CFB stat leaders',  url: '/api/leaders?league=cfb' },
+      { key: 'fantasy',  label: 'Fantasy',      title: 'Top 25 fantasy points', url: '/api/fantasy?limit=25' }
     ];
     var cache = {};
     var live = [];
@@ -1266,6 +1280,22 @@ a { color:inherit; text-decoration:none; }
       }).join('') + '</div>';
     }
 
+    function renderFantasy(d) {
+      var rows = d.leaders || [];
+      if (!rows.length) return '';
+      return '<div class="fnt">' + rows.map(function (l) {
+        return '<div class="fnt-row"><span class="rk">' + esc(l.rank) + '</span>' +
+          '<span><span class="nm">' + esc(l.name) + '</span> ' +
+          '<span class="tm">' + esc([l.team, l.position].filter(Boolean).join(' \u00b7 ')) + '</span></span>' +
+          (l.avg ? '<span class="avg">' + esc(l.avg) + '/g</span>' : '<span class="avg"></span>') +
+          '<span class="pts">' + esc(l.points) + '</span></div>';
+      }).join('') + '</div>' +
+      (d.source
+        ? '<div class="rail-credit">Fantasy points via <a href="' + esc(d.sourceUrl || '#') +
+          '" target="_blank" rel="noopener">' + esc(d.source) + '</a></div>'
+        : '');
+    }
+
     function paint(tab) {
       titleEl.textContent = tab.title;
       Array.prototype.forEach.call(tabsEl.querySelectorAll('.rail-tab'), function (b) {
@@ -1273,7 +1303,9 @@ a { color:inherit; text-decoration:none; }
       });
       bodyEl.innerHTML = '<div class="rail-empty">Loading&hellip;</div>';
       cache[tab.key].then(function (d) {
-        var html = tab.key === 'top25' ? renderTop25(d) : renderLeaders(d);
+        var html = tab.key === 'top25' ? renderTop25(d)
+          : tab.key === 'fantasy' ? renderFantasy(d)
+          : renderLeaders(d);
         bodyEl.innerHTML = html || '<div class="rail-empty">Nothing to show right now.</div>';
         Array.prototype.forEach.call(bodyEl.querySelectorAll('.lg img'), function (img) {
           img.addEventListener('error', function () { img.parentNode.classList.add('dead'); });
@@ -1300,7 +1332,9 @@ a { color:inherit; text-decoration:none; }
         .then(function (r) { if (!r.ok) throw 0; return r.json(); })
         .catch(function () { return null; });
       return cache[t.key].then(function (d) {
-        var ok = d && ((d.polls && d.polls.length) || (d.categories && d.categories.length));
+        var ok = d && ((d.polls && d.polls.length) ||
+          (d.categories && d.categories.length) ||
+          (d.leaders && d.leaders.length));
         return ok ? t : null;
       });
     })).then(function (rows) {
