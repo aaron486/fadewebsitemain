@@ -282,7 +282,142 @@
               "l": "CAR",
               "r": "L"
             }
-          ]
+          ],
+          "card": {
+            "stamp": "FADE",
+            "front": {
+              "kicker": "Blazin' Five · Week 1, 2026",
+              "big": "1-4",
+              "bigLabel": "Week 1, against the spread",
+              "chips": [
+                {
+                  "v": "−3.05u",
+                  "l": "Week 1 swing",
+                  "tone": "down"
+                },
+                {
+                  "v": "−110",
+                  "l": "Every pick priced at"
+                }
+              ],
+              "picksLabel": "The card, graded",
+              "picks": [
+                {
+                  "sel": "Eagles −5.5 vs. Commanders",
+                  "note": "won by 2",
+                  "r": "L"
+                },
+                {
+                  "sel": "Jaguars −8.5 vs. Browns",
+                  "note": "won 34–10",
+                  "r": "W"
+                },
+                {
+                  "sel": "Texans +1.5 vs. Bills",
+                  "note": "lost 31–36",
+                  "r": "L"
+                },
+                {
+                  "sel": "Lions −6.5 vs. Saints",
+                  "note": "won by 1, in overtime",
+                  "r": "L"
+                },
+                {
+                  "sel": "Panthers +3 vs. Bears",
+                  "note": "lost 37–59",
+                  "r": "L"
+                }
+              ],
+              "flip": "Tap for the all-time record",
+              "rowsLabel": "What the week cost him",
+              "rows": [
+                {
+                  "k": "Career before Week 1",
+                  "v": "731-671-44"
+                },
+                {
+                  "k": "Career after Week 1",
+                  "v": "732-675-44"
+                },
+                {
+                  "k": "Units before",
+                  "v": "−6.45u",
+                  "tone": "down"
+                },
+                {
+                  "k": "Units after",
+                  "v": "−9.5u",
+                  "tone": "down"
+                }
+              ]
+            },
+            "back": {
+              "kicker": "All-time · fifteen years of the Blazin' Five",
+              "big": "732-675-44",
+              "bigLabel": "All-time NFL, against the spread",
+              "chips": [
+                {
+                  "v": "52.0%",
+                  "l": "Career cover rate",
+                  "tone": "down"
+                },
+                {
+                  "v": "52.38%",
+                  "l": "Break-even at −110"
+                }
+              ],
+              "splitsLabel": "Broken out by sport",
+              "splitCols": [
+                "Record",
+                "Rate",
+                "Units"
+              ],
+              "splits": [
+                {
+                  "l": "NFL",
+                  "a": "732-675-44",
+                  "b": "52.0%",
+                  "c": "−9.5u",
+                  "tone": "down"
+                },
+                {
+                  "l": "CFB",
+                  "a": "169-158-10",
+                  "b": "51.7%",
+                  "c": "−4.36u",
+                  "tone": "down"
+                },
+                {
+                  "l": "Combined",
+                  "a": "901-833-54",
+                  "b": "51.9%",
+                  "c": "−13.9u",
+                  "tone": "down"
+                }
+              ],
+              "rows": [
+                {
+                  "k": "Best sport",
+                  "v": "NFL · 52.0%"
+                },
+                {
+                  "k": "Worst sport",
+                  "v": "CFB · 51.7%"
+                },
+                {
+                  "k": "Picks tracked",
+                  "v": "1,783"
+                },
+                {
+                  "k": "Short of break-even by",
+                  "v": "0.38 pts",
+                  "tone": "down"
+                }
+              ],
+              "flip": "Tap for this season"
+            },
+            "derivation": "Week 1 swing is the difference between the two figures Cole's Gameday Blog publishes either side of the weekend: −6.45u entering, −9.5u after. Everything else is quoted as tracked."
+          }
         },
         "sections": [
           {

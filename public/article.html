@@ -7,12 +7,16 @@
 <meta name="theme-color" content="#9E1B1E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Saira+Condensed:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
 :root {
   --paper:#F1EEE5; --paper-hi:#F7F5EE; --ink:#1A1815; --soft:#8A867C;
   --line:rgba(26,24,21,0.14); --hair:rgba(26,24,21,0.28);
   --wine:#9E1B1E; --cash:#2E7D3A;
+  /* the app's ledger palette, for data surfaces that mirror the product */
+  --loss:#D93A28; --gain:#1E8A4C;
+  --disp:"Saira Condensed",Impact,sans-serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -62,6 +66,77 @@ img { max-width:100%; }
   .cover-stat { font-size:1.9rem; }
   .cover-stat-sub { margin-top:0.4rem; }
   .cover-edition { padding:1rem 0 0.9rem; font-size:0.56rem; letter-spacing:0.24em; }
+}
+
+/* ---- the ledger card -------------------------------------------------
+   A two-sided trading card. Face one is the current season: the graded
+   card, this week's number. Face two is the whole career, broken out by
+   sport. Set in the app's data language — condensed numerals, mono
+   labels, red and green that mean loss and gain — on the paper stock. */
+.lcard { margin-top:clamp(1.6rem,4vw,2.4rem); }
+.lcard-btn { display:block; width:100%; text-align:left; background:none; border:none; padding:0; font:inherit; color:inherit; cursor:pointer; perspective:1800px; }
+.lcard-inner { position:relative; transition:transform 0.62s cubic-bezier(0.2,0.7,0.3,1); transform-style:preserve-3d; }
+.lcard.flipped .lcard-inner { transform:rotateY(180deg); }
+.lcard-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  background:var(--paper-hi); border:1.5px solid var(--ink); border-radius:4px; overflow:hidden;
+  display:flex; flex-direction:column; }
+.lcard-face.back { transform:rotateY(180deg); }
+.lcard-btn:hover .lcard-face { box-shadow:0 6px 0 rgba(26,24,21,0.1); }
+
+.lc-top { display:flex; align-items:center; justify-content:space-between; gap:0.8rem; padding:0.8rem 1.1rem; border-bottom:1.5px solid var(--ink); }
+.lc-top .t { font-family:var(--mono); font-size:0.58rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--soft); line-height:1.6; }
+.lc-top .t b { display:block; color:var(--ink); }
+.lc-stamp { flex:0 0 auto; font-family:var(--disp); font-weight:900; font-size:1.05rem; letter-spacing:0.06em; color:var(--loss); border:2.5px double var(--loss); padding:0.04em 0.4em; transform:rotate(-5deg); }
+.lc-stamp.tail { color:var(--gain); border-color:var(--gain); }
+
+.lc-body { padding:1.15rem 1.1rem 0.4rem; flex:1; }
+.lc-kick { font-family:var(--mono); font-size:0.56rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); }
+.lc-big { font-family:var(--disp); font-weight:900; font-size:clamp(2.7rem,9vw,4.4rem); line-height:0.84; letter-spacing:-0.01em; margin-top:0.5rem; }
+.lc-big.down { color:var(--loss); } .lc-big.up { color:var(--gain); }
+.lc-biglabel { font-family:var(--mono); font-size:0.58rem; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); margin-top:0.55rem; }
+
+.lc-chips { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
+.lc-chip { border:1.5px solid var(--hair); border-radius:3px; padding:0.4rem 0.65rem; }
+.lc-chip .v { font-family:var(--mono); font-size:0.78rem; font-weight:700; line-height:1.1; }
+.lc-chip .l { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); margin-top:0.2rem; }
+.lc-chip.down { border-color:var(--loss); } .lc-chip.down .v { color:var(--loss); }
+.lc-chip.up { border-color:var(--gain); } .lc-chip.up .v { color:var(--gain); }
+
+.lc-sec { font-family:var(--mono); font-size:0.54rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--soft); margin:1.2rem 0 0.5rem; padding-top:0.85rem; border-top:1px solid var(--line); }
+.lc-pick { display:flex; align-items:center; gap:0.7rem; padding:0.5rem 0; border-bottom:1px dotted var(--line); }
+.lc-pick:last-child { border-bottom:none; }
+.lc-pick .r { flex:0 0 auto; width:1.35rem; height:1.35rem; display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-weight:900; font-size:0.82rem; border-radius:2px; }
+.lc-pick .r.w { background:rgba(30,138,76,0.14); color:var(--gain); }
+.lc-pick .r.l { background:rgba(217,58,40,0.13); color:var(--loss); }
+.lc-pick .s { display:block; font-family:var(--mono); font-size:0.7rem; font-weight:700; line-height:1.35; }
+.lc-pick .n { display:block; font-family:var(--mono); font-size:0.58rem; color:var(--soft); margin-top:0.12rem; }
+.lc-pick .rt { margin-left:auto; flex:0 0 auto; font-family:var(--mono); font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--soft); }
+
+.lc-split { width:100%; border-collapse:collapse; }
+.lc-split th { font-family:var(--mono); font-size:0.5rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--soft); text-align:right; padding:0 0 0.4rem; border-bottom:1px solid var(--line); }
+.lc-split th:first-child { text-align:left; }
+.lc-split td { font-family:var(--mono); font-size:0.7rem; font-weight:700; text-align:right; padding:0.5rem 0; border-bottom:1px dotted var(--line); white-space:nowrap; }
+.lc-split td:first-child { text-align:left; letter-spacing:0.08em; }
+.lc-split tr:last-child td { border-bottom:none; }
+.lc-split td.down { color:var(--loss); } .lc-split td.up { color:var(--gain); }
+
+.lc-row { display:flex; align-items:baseline; gap:0.6rem; padding:0.42rem 0; border-bottom:1px dotted var(--line); }
+.lc-row:last-child { border-bottom:none; }
+.lc-row .k { font-family:var(--mono); font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); }
+.lc-row .dots { flex:1; border-bottom:1px dotted var(--line); transform:translateY(-3px); min-width:0.6rem; }
+.lc-row .v { font-family:var(--mono); font-size:0.72rem; font-weight:700; }
+.lc-row .v.down { color:var(--loss); } .lc-row .v.up { color:var(--gain); }
+
+.lc-flip { display:flex; align-items:center; justify-content:center; gap:0.5rem; margin-top:0.9rem; padding:0.7rem; border-top:1.5px solid var(--ink); background:var(--ink); color:var(--paper-hi);
+  font-family:var(--mono); font-size:0.56rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; }
+.lcard-btn:hover .lc-flip { background:var(--loss); }
+.lc-note { font-family:var(--mono); font-size:0.5rem; line-height:1.8; letter-spacing:0.06em; color:var(--soft); margin-top:0.7rem; text-align:center; }
+
+@media (prefers-reduced-motion: reduce) { .lcard-inner { transition:none; } }
+@media (max-width:520px) {
+  .lc-pick .rt { display:none; }
+  .lc-top { padding:0.7rem 0.85rem; }
+  .lc-body { padding:1rem 0.85rem 0.4rem; }
 }
 
 /* ---- ledger panel ---- */
@@ -473,7 +548,104 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       '</header>' +
       (m.coverPhoto || a.image ? '<div class="cover-photo-band' + (m.coverColor ? ' color' : '') + '"><img src="' + esc((m.coverPhoto || a.image).replace('sz=w600','sz=w1200')) + '" alt="" /></div>' : '');
   }
+  /* ---- two-sided ledger card ----------------------------------------
+     Used when a ledger carries a `card` object. Face one is the current
+     season, face two the career. Falls back to the flat ledger panel for
+     every article that has not been given the two faces yet. */
+  function faceHtml(f, lg, side) {
+    var s = '<div class="lcard-face ' + side + '">';
+    s += '<div class="lc-top"><span class="t">The ledger<b>' + esc(lg.title || '') + '</b></span>' +
+      (lg.card.stamp ? '<span class="lc-stamp' + (String(lg.card.stamp).toUpperCase() === 'TAIL' ? ' tail' : '') + '">' +
+        esc(lg.card.stamp) + '</span>' : '') + '</div>';
+    s += '<div class="lc-body">';
+    if (f.kicker) s += '<div class="lc-kick">' + esc(f.kicker) + '</div>';
+    if (f.big) s += '<div class="lc-big ' + esc(f.bigTone || '') + '">' + fmtStat(f.big) + '</div>';
+    if (f.bigLabel) s += '<div class="lc-biglabel">' + esc(f.bigLabel) + '</div>';
+    if ((f.chips || []).length) {
+      s += '<div class="lc-chips">' + f.chips.map(function (c) {
+        return '<div class="lc-chip ' + esc(c.tone || '') + '"><div class="v">' + fmtStat(c.v) + '</div>' +
+          '<div class="l">' + esc(c.l || '') + '</div></div>';
+      }).join('') + '</div>';
+    }
+    if ((f.picks || []).length) {
+      s += '<div class="lc-sec">' + esc(f.picksLabel || 'The card, graded') + '</div>';
+      s += f.picks.map(function (p) {
+        var cls = p.r === 'W' ? 'w' : 'l';
+        return '<div class="lc-pick"><span class="r ' + cls + '">' + esc(p.r) + '</span>' +
+          '<span><span class="s">' + esc(p.sel) + '</span>' +
+          (p.note ? '<span class="n">' + esc(p.note) + '</span>' : '') + '</span>' +
+          '<span class="rt">' + (p.r === 'W' ? 'Won' : 'Lost') + '</span></div>';
+      }).join('');
+    }
+    if ((f.splits || []).length) {
+      var cols = f.splitCols || ['Record', 'Rate', 'Units'];
+      s += '<div class="lc-sec">' + esc(f.splitsLabel || 'Broken out by sport') + '</div>';
+      s += '<table class="lc-split"><thead><tr><th></th>' +
+        cols.map(function (c) { return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        f.splits.map(function (r) {
+          return '<tr><td>' + esc(r.l) + '</td><td>' + fmtStat(r.a) + '</td><td>' + fmtStat(r.b) + '</td>' +
+            '<td class="' + esc(r.tone || '') + '">' + fmtStat(r.c) + '</td></tr>';
+        }).join('') + '</tbody></table>';
+    }
+    if ((f.rows || []).length) {
+      s += '<div class="lc-sec">' + esc(f.rowsLabel || 'The rest of the file') + '</div>';
+      s += f.rows.map(function (r) {
+        return '<div class="lc-row"><span class="k">' + esc(r.k) + '</span><span class="dots"></span>' +
+          '<span class="v ' + esc(r.tone || '') + '">' + fmtStat(r.v) + '</span></div>';
+      }).join('');
+    }
+    s += '</div>';
+    s += '<div class="lc-flip">' + esc(f.flip || 'Tap to turn the card') + ' &#8644;</div>';
+    return s + '</div>';
+  }
+
+  function ledgerCardHtml(lg) {
+    var c = lg.card;
+    return '<section class="ledger wrap"><div class="lcard" id="lcard">' +
+      '<button class="lcard-btn" type="button" aria-pressed="false" ' +
+        'aria-label="Turn the ledger card to see the all-time record">' +
+        '<div class="lcard-inner">' + faceHtml(c.front, lg, 'front') + faceHtml(c.back, lg, 'back') + '</div>' +
+      '</button>' +
+      (c.derivation ? '<p class="lc-note">' + esc(c.derivation) + '</p>' : '') +
+      '</div></section>';
+  }
+
+  /* Both faces are absolutely positioned so they can share a footprint, so
+     the card has no natural height — measure the taller face and pin to it.
+     Re-measured once webfonts land and on resize, since both change it. */
+  function sizeLedgerCard() {
+    var card = document.getElementById('lcard');
+    if (!card) return;
+    var inner = card.querySelector('.lcard-inner');
+    var faces = card.querySelectorAll('.lcard-face');
+    var h = 0;
+    Array.prototype.forEach.call(faces, function (f) {
+      f.style.position = 'static';
+      h = Math.max(h, f.offsetHeight);
+      f.style.position = '';
+    });
+    if (h) inner.style.height = h + 'px';
+  }
+
+  function initLedgerCard() {
+    var card = document.getElementById('lcard');
+    if (!card) return;
+    var btn = card.querySelector('.lcard-btn');
+    btn.addEventListener('click', function () {
+      var flipped = card.classList.toggle('flipped');
+      btn.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+      btn.setAttribute('aria-label', flipped
+        ? 'Turn the ledger card back to this season'
+        : 'Turn the ledger card to see the all-time record');
+    });
+    sizeLedgerCard();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeLedgerCard);
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(sizeLedgerCard, 120); });
+  }
+
   function ledgerHtml(lg) {
+    if (lg.card && lg.card.front && lg.card.back) return ledgerCardHtml(lg);
     var s = '<section class="ledger wrap"><div class="ledger-in">';
     s += '<div class="lg-head caps"><span><b>The ledger</b>' + (lg.title ? ' &middot; ' + esc(lg.title) : '') + '</span>' +
       (lg.asOf ? '<span>' + esc(lg.asOf) + '</span>' : '') + '</div>';
@@ -576,6 +748,7 @@ svg.chart text { font-family:'Newsreader',Georgia,serif; }
       html += endMatterHtml();
     }
     document.getElementById('art').innerHTML = html;
+    initLedgerCard();
   }
 
   var slug = new URLSearchParams(location.search).get('s');
