@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Advertise &amp; Promote With FADE — For Creators, Brands &amp; Sportsbooks</title>
+<meta name="description" content="FADE provides advertising, marketing and promotion services for creators, cappers, athletes, brands and sportsbooks in the field of sports wagering — promoting their betting content to the FADE community." />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ===== FADE DESIGN TOKENS — mirrors src/App.jsx ===== */
+:root {
+  --fade-black:#08090B;
+  --fade-dark:#0D0F13;
+  --fade-surface:#14171D;
+  --fade-elevated:#1B2028;
+  --text-hi:#ECEFF3;
+  --text-mid:#9EA8B5;
+  --text-low:#738092;
+  --tail:#0066FF;
+  --tail-hover:#0052CC;
+  --tail-light:#4D94FF;
+  --tail-muted:rgba(0,102,255,0.15);
+  --fade-action:#FF0C00;
+  --win:#00D632;
+  --border:#2A303C;
+  --border-hi:#3C4655;
+  --shadow-card:0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-elevated:0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --glow-tail:0 0 20px rgba(0,102,255,0.4);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body { font-family:'Inter',-apple-system,sans-serif; background:var(--fade-black); color:var(--text-hi); -webkit-font-smoothing:antialiased; overflow-x:hidden; line-height:1.7; }
+a { color:inherit; text-decoration:none; }
+
+/* ===== HEADER ===== */
+.header { display:flex; align-items:center; justify-content:space-between; padding:1.25rem clamp(1.5rem,5vw,4rem); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50; background:rgba(8,9,11,0.82); backdrop-filter:blur(14px); }
+.header-brand { display:flex; align-items:center; gap:0.75rem; }
+.header-nav { display:flex; align-items:center; gap:1.75rem; }
+.header-nav a { color:var(--text-mid); font-size:0.875rem; font-weight:500; transition:color 0.2s; }
+.header-nav a:hover { color:var(--text-hi); }
+.header-cta { background:var(--tail); color:#fff!important; padding:0.5rem 1.25rem; border-radius:8px; font-size:0.8125rem; font-weight:600; box-shadow:0 0 20px rgba(0,102,255,0.2); transition:all 0.25s; }
+.header-cta:hover { transform:translateY(-1px); box-shadow:0 0 30px rgba(0,102,255,0.35); }
+@media(max-width:720px){ .header-nav a:not(.header-cta){ display:none; } }
+
+/* ===== HERO ===== */
+.hero { position:relative; text-align:center; padding:5.5rem clamp(1.5rem,5vw,4rem) 4rem; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-10%; left:50%; transform:translateX(-50%); width:min(900px,94vw); height:520px; background:radial-gradient(ellipse at center, rgba(0,102,255,0.22) 0%, rgba(0,102,255,0.05) 42%, transparent 70%); filter:blur(40px); pointer-events:none; }
+.eyebrow { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--tail-light); margin-bottom:1.25rem; position:relative; }
+.hero h1 { font-size:clamp(2.25rem,5.5vw,4rem); font-weight:900; letter-spacing:-0.045em; line-height:1.04; margin-bottom:1.25rem; position:relative; }
+.hero h1 .accent { color:var(--tail); }
+.hero-sub { font-size:clamp(1rem,1.5vw,1.1875rem); color:var(--text-mid); max-width:660px; margin:0 auto 2rem; position:relative; }
+.hero-actions { display:flex; align-items:center; justify-content:center; gap:0.75rem; flex-wrap:wrap; position:relative; }
+
+/* ===== BUTTONS ===== */
+.btn-primary { display:inline-flex; align-items:center; gap:0.5rem; background:var(--tail); color:#fff; padding:0.9rem 2rem; border-radius:10px; font-size:1rem; font-weight:600; border:none; cursor:pointer; box-shadow:0 2px 16px rgba(0,102,255,0.28); transition:all 0.25s; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(0,102,255,0.4); }
+.btn-secondary { display:inline-flex; align-items:center; gap:0.5rem; background:var(--fade-surface); color:var(--text-hi); padding:0.9rem 2rem; border-radius:10px; font-size:1rem; font-weight:600; border:1px solid var(--border-hi); cursor:pointer; transition:all 0.25s; }
+.btn-secondary:hover { border-color:var(--tail); color:#fff; }
+
+/* ===== SECTION LAYOUT ===== */
+.section { max-width:1100px; margin:0 auto; padding:4rem clamp(1.5rem,5vw,4rem); }
+.section-head { text-align:center; max-width:680px; margin:0 auto 3rem; }
+.section-head h2 { font-size:clamp(1.75rem,3.5vw,2.75rem); font-weight:800; letter-spacing:-0.035em; line-height:1.1; margin-bottom:1rem; }
+.section-head p { font-size:1.0625rem; color:var(--text-mid); }
+.divider { border:0; height:1px; background:var(--border); max-width:1100px; margin:0 auto; }
+
+/* ===== SERVICE CARDS ===== */
+.service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+.service-card { background:var(--fade-surface); border:1px solid var(--border); border-radius:16px; padding:2rem; box-shadow:var(--shadow-card); transition:border-color 0.25s, transform 0.25s; }
+.service-card:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+.service-icon { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:var(--tail-muted); color:var(--tail-light); margin-bottom:1.25rem; }
+.service-card h3 { font-size:1.1875rem; font-weight:700; margin-bottom:0.625rem; }
+.service-card p { font-size:0.9375rem; color:var(--text-mid); }
+
+/* ===== AUDIENCE / "FOR OTHERS" BLOCKS ===== */
+.audience { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+.aud-card { background:linear-gradient(180deg,var(--fade-surface),var(--fade-dark)); border:1px solid var(--border); border-radius:18px; padding:2.25rem; }
+.aud-tag { font-family:'IBM Plex Mono',monospace; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--tail-light); background:var(--tail-muted); padding:0.35rem 0.75rem; border-radius:6px; display:inline-block; margin-bottom:1.25rem; }
+.aud-card h3 { font-size:1.375rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.875rem; }
+.aud-card p { font-size:0.9688rem; color:var(--text-mid); margin-bottom:1.25rem; }
+.aud-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+.aud-list li { display:flex; gap:0.625rem; font-size:0.9375rem; color:var(--text-hi); }
+.aud-list li svg { flex-shrink:0; margin-top:3px; color:var(--win); }
+
+/* ===== STATS ===== */
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.5rem; text-align:center; }
+.stat-val { font-size:clamp(2rem,4vw,2.75rem); font-weight:900; letter-spacing:-0.03em; color:var(--tail-light); }
+.stat-label { font-size:0.875rem; color:var(--text-mid); margin-top:0.375rem; }
+
+/* ===== SPORTSBOOK LOGOS ===== */
+.sb-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; max-width:920px; margin:0 auto; }
+.sb-chip { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1.1rem; background:var(--fade-surface); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow-card); transition:border-color 0.25s, transform 0.25s; }
+.sb-chip:hover { border-color:var(--border-hi); transform:translateY(-2px); }
+.sb-chip img { width:40px; height:40px; border-radius:10px; flex-shrink:0; }
+.sb-chip span { font-size:0.9375rem; font-weight:600; color:var(--text-hi); }
+
+/* ===== STEPS ===== */
+.steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; counter-reset:step; }
+.step { background:var(--fade-surface); border:1px solid var(--border); border-radius:14px; padding:1.75rem; }
+.step-num { font-family:'IBM Plex Mono',monospace; font-size:0.875rem; font-weight:700; color:var(--tail); margin-bottom:0.75rem; }
+.step h4 { font-size:1.0625rem; font-weight:700; margin-bottom:0.5rem; }
+.step p { font-size:0.9063rem; color:var(--text-mid); }
+
+/* ===== CONTACT / ENGAGE SERVICE ===== */
+.engage { background:linear-gradient(135deg,rgba(0,102,255,0.12),rgba(0,102,255,0.02)); border:1px solid rgba(0,102,255,0.2); border-radius:22px; max-width:1100px; margin:0 auto; padding:clamp(2.25rem,5vw,3.5rem); text-align:center; }
+.engage h2 { font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:900; letter-spacing:-0.035em; margin-bottom:0.875rem; }
+.engage p { font-size:1.0625rem; color:var(--text-mid); max-width:560px; margin:0 auto 2rem; }
+.form-row { display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; max-width:560px; margin:0 auto; }
+.form-row input, .form-row select { flex:1; min-width:200px; padding:0.9rem 1.1rem; background:var(--fade-black); border:1px solid var(--border-hi); border-radius:10px; color:var(--text-hi); font-family:'Inter',sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.2s; }
+.form-row input:focus, .form-row select:focus { border-color:var(--tail); }
+.form-row input::placeholder { color:var(--text-low); }
+.engage-note { font-size:0.875rem; color:var(--text-mid); margin-top:1.25rem; }
+.engage-note a { color:var(--tail-light); font-weight:600; }
+
+/* ===== FOOTER ===== */
+.footer { border-top:1px solid var(--border); padding:3rem clamp(1.5rem,5vw,4rem) 1.5rem; max-width:1200px; margin:3rem auto 0; }
+.footer-top { display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:flex-start; }
+.footer-brand { max-width:320px; }
+.footer-brand p { font-size:0.875rem; color:var(--text-mid); margin-top:1rem; }
+.footer-links { display:flex; gap:3rem; flex-wrap:wrap; }
+.footer-col h5 { font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-low); margin-bottom:0.875rem; }
+.footer-col a { display:block; font-size:0.875rem; color:var(--text-mid); margin-bottom:0.625rem; transition:color 0.2s; }
+.footer-col a:hover { color:var(--text-hi); }
+.footer-bottom { margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.8125rem; color:var(--text-low); }
+.disclaimer { max-width:1200px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem) 2.5rem; font-size:0.75rem; color:var(--text-low); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <a class="header-brand" href="/" aria-label="FADE home">
+    <svg viewBox="80 420 840 170" height="26" fill="var(--text-hi)" aria-hidden="true">
+      <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7" />
+      <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z" />
+      <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1" />
+      <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9" />
+    </svg>
+  </a>
+  <nav class="header-nav">
+    <a href="#services">Services</a>
+    <a href="#creators">Creators</a>
+    <a href="#brands">Brands</a>
+    <a href="#contact" class="header-cta">Partner With Us</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <span class="eyebrow">FADE for Creators &amp; Partners</span>
+  <h1>Promote your sports betting content<br />to the <span class="accent">FADE community.</span></h1>
+  <p class="hero-sub">FADE is the advertising, marketing and promotion partner for cappers, creators, athletes, brands and sportsbooks. We put your picks, your profile and your brand in front of one of the largest sports wagering communities in the world — and give you the tools to grow it.</p>
+  <div class="hero-actions">
+    <a href="#creators" class="btn-primary">Apply to the Creator Program</a>
+    <a href="#brands" class="btn-secondary">Advertise With FADE</a>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="section-head">
+    <h2>Advertising &amp; promotion services, built for others</h2>
+    <p>Everything FADE does here is in service of <strong>you</strong> — the creators, athletes and businesses who want to reach, grow and monetize a sports wagering audience.</p>
+  </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+      <h3>Content Promotion</h3>
+      <p>We market and promote your betting content — picks, slips, breakdowns and video — to engaged bettors across the FADE feed, alerts and discovery surfaces.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Audience Growth</h3>
+      <p>Featured placement, spotlights, leaderboards and promotional campaigns designed to grow your following and turn FADE members into your fans.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 14l3-3 3 3 4-5"/></svg></div>
+      <h3>Marketing Analytics</h3>
+      <p>Performance dashboards, verified records and shareable bet cards you can use to market yourself — on FADE and anywhere else you post.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+      <h3>Campaign Management</h3>
+      <p>For brands and sportsbooks, we plan, place and run sponsored promotions and advertising campaigns across the FADE community — managed end to end.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== FOR OTHERS: CREATORS + BRANDS ===== -->
+<section class="section">
+  <div class="audience">
+    <div class="aud-card" id="creators">
+      <span class="aud-tag">For Creators &amp; Cappers</span>
+      <h3>We promote your picks. You grow your name.</h3>
+      <p>Join the FADE Creator Program and let us do the marketing. We put your sports wagering content in front of the right bettors and help you build a verified, monetizable following.</p>
+      <ul class="aud-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Featured placement in the feed, alerts and discovery</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Promotional campaigns and creator spotlights</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Verified records that build trust with your audience</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Shareable bet cards to promote yourself everywhere</li>
+      </ul>
+    </div>
+    <div class="aud-card" id="brands">
+      <span class="aud-tag">For Brands &amp; Sportsbooks</span>
+      <h3>Reach a betting audience that's actually betting.</h3>
+      <p>FADE offers advertising, sponsorship and promotional placements that put your brand in front of active sports bettors — planned, placed and measured by our team.</p>
+      <ul class="aud-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sponsored promotions across feed and community channels</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Creator partnerships and co-marketing campaigns</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sportsbook promotion tied to real sync and export activity</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Campaign reporting and audience insights</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== SPORTSBOOKS ===== -->
+<section class="section" id="sportsbooks">
+  <div class="section-head">
+    <h2>The sportsbooks our community plays</h2>
+    <p>FADE promotes brands and sportsbooks to active bettors synced across every major book — the exact audience your campaign wants to reach.</p>
+  </div>
+  <div class="sb-grid">
+    <div class="sb-chip"><img src="/assets/sportsbooks/fanduel.png" alt="FanDuel" /><span>FanDuel</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/draftkings.png" alt="DraftKings" /><span>DraftKings</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/betmgm.png" alt="BetMGM" /><span>BetMGM</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/caesars.png" alt="Caesars" /><span>Caesars</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/espnbet.png" alt="ESPN BET" /><span>ESPN BET</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/hardrock.png" alt="Hard Rock" /><span>Hard Rock</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/betrivers.png" alt="BetRivers" /><span>BetRivers</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/prizepicks.png" alt="PrizePicks" /><span>PrizePicks</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/underdog.png" alt="Underdog" /><span>Underdog</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/sleeper.png" alt="Sleeper" /><span>Sleeper</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/fliff.png" alt="Fliff" /><span>Fliff</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/kalshi.png" alt="Kalshi" /><span>Kalshi</span></div>
+    <div class="sb-chip"><img src="/assets/sportsbooks/thescore.png" alt="theScore" /><span>theScore</span></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section">
+  <div class="section-head">
+    <h2>How we promote you</h2>
+    <p>A simple path from sign-up to a promoted, growing presence on FADE.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h4>Apply</h4><p>Tell us about your content or brand and the audience you want to reach in sports wagering.</p></div>
+    <div class="step"><div class="step-num">02</div><h4>Onboard</h4><p>We set up your verified profile, promotional assets and campaign plan with FADE.</p></div>
+    <div class="step"><div class="step-num">03</div><h4>Promote</h4><p>We market your picks or brand across the FADE community — feed, alerts, spotlights and channels.</p></div>
+    <div class="step"><div class="step-num">04</div><h4>Grow</h4><p>Track performance with FADE analytics and scale what works, campaign after campaign.</p></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== STATS ===== -->
+<section class="section">
+  <div class="stats">
+    <div><div class="stat-val">1,000+</div><div class="stat-label">Creators &amp; cappers promoted</div></div>
+    <div><div class="stat-val">12+</div><div class="stat-label">Sportsbooks integrated</div></div>
+    <div><div class="stat-val">Millions</div><div class="stat-label">Of bets tracked and shared</div></div>
+    <div><div class="stat-val">24/7</div><div class="stat-label">Promotion across the community</div></div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===== ENGAGE / CONTACT ===== -->
+<section class="section" id="contact">
+  <div class="engage">
+    <h2>Let FADE promote you.</h2>
+    <p>Apply to the Creator Program or start an advertising campaign. Tell us who you are and we'll be in touch within 2 business days.</p>
+    <form class="form-row" action="mailto:partners@fade.bet" method="post" enctype="text/plain" onsubmit="return true;">
+      <input type="text" name="name" placeholder="Your name or brand" aria-label="Your name or brand" required />
+      <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+      <select name="type" aria-label="I am a">
+        <option value="creator">I'm a creator / capper</option>
+        <option value="athlete">I'm an athlete</option>
+        <option value="brand">I'm a brand / sportsbook</option>
+      </select>
+      <button type="submit" class="btn-primary">Partner With FADE</button>
+    </form>
+    <p class="engage-note">Prefer email? Reach our partnerships team at <a href="mailto:partners@fade.bet">partners@fade.bet</a>.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <svg viewBox="80 420 840 170" height="24" fill="var(--text-hi)" aria-hidden="true">
+        <polygon points="231.7,573.7 370,426.3 430.5,426.3 468.8,573.7 348.9,573.7 348.9,541.4 403.7,541.4 390,488.4 304,573.7" />
+        <path d="M684,426.3H517l-48.2,147.4H634l22.9-14.7l36.9-113.3L684,426.3z M596.5,541.8H547l26.9-82.6h49.5L596.5,541.8z" />
+        <polygon points="775.7,459.1 766.2,488.2 848.3,488.2 840.5,511.8 758.5,511.8 748.7,541.8 858.7,541.8 848.3,573.7 674.4,573.7 722.4,426.3 896.3,426.3 885.6,459.1" />
+        <polygon points="207,458.6 197.7,487.8 275.6,488.4 254.3,511 190.1,511 169.9,573.7 103.7,573.7 151.8,426.3 333.8,426.3 303.2,458.9" />
+      </svg>
+      <p>FADE promotes creators, athletes, brands and sportsbooks to the largest social sports wagering community. Advertising, marketing and promotion services for others.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col"><h5>Partner</h5><a href="#creators">For Creators</a><a href="#brands">For Brands</a><a href="#contact">Contact</a></div>
+      <div class="footer-col"><h5>Product</h5><a href="/">The App</a><a href="/#features">Features</a><a href="/#compatibility">Sportsbooks</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="https://www.fade.bet/about-1">About</a><a href="https://www.fade.bet/support">Support</a><a href="https://www.fade.bet/privacy">Privacy</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 FADE. All rights reserved. You must be 21+ to use FADE. Please bet responsibly.</div>
+</footer>
+<div class="disclaimer">FADE is a social platform for sharing sports betting picks and for promoting creators, athletes and brands to a sports wagering community. FADE does not accept wagers or facilitate gambling. Always gamble responsibly. If you or someone you know has a gambling problem, call 1-800-GAMBLER.</div>
+
+</body>
+</html>
