@@ -230,6 +230,26 @@
       "destination": "/ros.html"
     },
     {
+      "source": "/partners",
+      "destination": "/partners.html"
+    },
+    {
+      "source": "/partner",
+      "destination": "/partners.html"
+    },
+    {
+      "source": "/advertise",
+      "destination": "/partners.html"
+    },
+    {
+      "source": "/promote",
+      "destination": "/partners.html"
+    },
+    {
+      "source": "/for-creators",
+      "destination": "/partners.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
